@@ -1,0 +1,9 @@
+﻿<ExtensionModel>
+  <Extension path="/CocoStudio/Ide/Pads">
+    <Pad id = "Modules.Communal.ResourcePanel.ResourcePad"
+      _label = "ResourcePad"
+      class = "Modules.Communal.ResourcePanel.ResourcePad"
+      defaultPlacement = "Modules.UI.ComTool.ComToolPad/Bottom"
+      defaultLayout="*"/>
+  </Extension>
+</ExtensionModel>
