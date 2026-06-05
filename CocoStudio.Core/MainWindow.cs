@@ -428,7 +428,6 @@ namespace CocoStudio.Core
 				}
 				foreach (DockItem dockItem in this.dock.GetItems())
 				{
-					DockItem dockItem;
 					if (!hashSet.Contains(dockItem.Id) && (dockItem.Behavior & DockItemBehavior.Sticky) == DockItemBehavior.Normal && dockItem != this.documentDockItem)
 					{
 						dockItem.Visible = false;

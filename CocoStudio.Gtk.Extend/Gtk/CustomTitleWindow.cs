@@ -64,7 +64,7 @@ namespace Gtk
 		// Token: 0x06000366 RID: 870 RVA: 0x0000F6C0 File Offset: 0x0000D8C0
 		private void HandleKeyPressed(object o, KeyPressEventArgs args)
 		{
-			if (args.Event.Key == Key.Escape)
+			if (args.Event.Key == Gdk.Key.Escape)
 			{
 				this.Destroy();
 			}

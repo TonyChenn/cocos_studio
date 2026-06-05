@@ -2,11 +2,11 @@
 using Xwt;
 using Xwt.GtkBackend;
 
-namespace Gtk.Web
-{
-	// Token: 0x02000090 RID: 144
-	public class WebView : WebView, IWebView
+	namespace Gtk.Web
 	{
+		// Token: 0x02000090 RID: 144
+		public class WebView : Xwt.WebView, IWebView
+		{
 		// Token: 0x1700008B RID: 139
 		// (get) Token: 0x06000307 RID: 775 RVA: 0x0000C87C File Offset: 0x0000AA7C
 		public Widget GtkWidget

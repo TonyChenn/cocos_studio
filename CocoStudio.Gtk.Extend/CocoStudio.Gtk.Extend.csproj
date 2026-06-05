@@ -31,6 +31,25 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cocos.Launcher.Resource">
       <HintPath>..\\dlls\\Cocos.Launcher.Resource.dll</HintPath>
@@ -41,12 +60,15 @@
     <Reference Include="gdk-sharp" />
     <Reference Include="glib-sharp" />
     <Reference Include="gtk-sharp" />
+    <Reference Include="atk-sharp" />
     <Reference Include="Modules.Communal.MultiLanguage">
       <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\Modules.Communal.MultiLanguage.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cairo" />
     <Reference Include="Mono.Cairo" />
-    <Reference Include="Mono.Posix" />
+    <Reference Include="Mono.Posix">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\MonoBleedingEdge\lib\mono\4.8-api\Mono.Posix.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.TextEditor">
       <HintPath>..\\dlls\\Mono.TextEditor.dll</HintPath>
     </Reference>
@@ -69,10 +91,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\Controls\OpenFileDialogEx.cs" />
+    <Compile Include="CustomControls\Controls\OpenFileDialogEx.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Gdk\Colors.cs" />
     <Compile Include="Gdk\Cursors.cs" />
     <Compile Include="Gdk\KeyboardExtend.cs" />
@@ -207,8 +236,12 @@
     <Compile Include="OpenDialogs\NMHDR.cs" />
     <Compile Include="OpenDialogs\OFNOTIFY.cs" />
     <Compile Include="OpenDialogs\OpenDialogNative.cs" />
-    <Compile Include="OpenDialogs\OpenFilesDialog.cs" />
-    <Compile Include="OpenDialogs\OpenFloderDialog.cs" />
+    <Compile Include="OpenDialogs\OpenFilesDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OpenDialogs\OpenFloderDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="OpenDialogs\POINT.cs" />
     <Compile Include="OpenDialogs\RECT.cs" />
     <Compile Include="OpenDialogs\SetWindowPosFlags.cs" />
@@ -254,10 +287,9 @@
       <Project>{9751112a-bbbb-4a1c-b265-f23595b2372a}</Project>
       <Name>CocoStudio.Model.Basic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MonoDevelop.Core\MonoDevelop.Core.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23731}</Project>
-      <Name>MonoDevelop.Core</Name>
-    </ProjectReference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -142,7 +142,7 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				this.flags |= flag;
 				return;
 			}
-			this.flags &= ~flag;
+			this.flags = (byte)(this.flags & (byte)(~flag));
 		}
 
 		// Token: 0x170002DE RID: 734

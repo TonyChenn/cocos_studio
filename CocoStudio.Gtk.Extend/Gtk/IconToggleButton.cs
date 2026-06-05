@@ -1,5 +1,5 @@
 ﻿using System;
-using Xwt.Drawing;
+using XwtImage = Xwt.Drawing.Image;
 
 namespace Gtk
 {
@@ -31,14 +31,14 @@ namespace Gtk
 		public event EventHandler CheckChanged;
 
 		// Token: 0x06000045 RID: 69 RVA: 0x00002D54 File Offset: 0x00000F54
-		public IconToggleButton(Image normal, Image check = null) : base(normal)
+		public IconToggleButton(XwtImage normal, XwtImage check = null) : base(normal)
 		{
 			this.checkedIcon = check;
 			this.OnCheckedChanged();
 		}
 
 		// Token: 0x06000046 RID: 70 RVA: 0x00002D6E File Offset: 0x00000F6E
-		public void ChangeImage(Image normal, Image check)
+		public void ChangeImage(XwtImage normal, XwtImage check)
 		{
 			this.checkedIcon = check;
 			base.ChangeImage(normal);
@@ -75,7 +75,7 @@ namespace Gtk
 		// Token: 0x06000048 RID: 72 RVA: 0x00002E80 File Offset: 0x00001080
 		protected override void OnRefreshIcon()
 		{
-			Image normalIcon;
+			XwtImage normalIcon;
 			if (this.IsChecked)
 			{
 				normalIcon = this.checkedIcon;
@@ -122,7 +122,7 @@ namespace Gtk
 		}
 
 		// Token: 0x0400001C RID: 28
-		protected Image checkedIcon;
+		protected XwtImage checkedIcon;
 
 		// Token: 0x0400001D RID: 29
 		protected bool _IsChecked;

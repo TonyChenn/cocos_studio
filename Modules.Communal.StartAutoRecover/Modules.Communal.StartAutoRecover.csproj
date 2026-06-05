@@ -31,11 +31,38 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Addins">
       <HintPath>..\\dlls\\Mono.Addins.dll</HintPath>
     </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\\dlls\\MonoDevelop.Ide.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
@@ -53,6 +80,10 @@
       <Project>{9751112a-bbbb-4a1c-b265-f23595b23726}</Project>
       <Name>CocoStudio.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.UndoManager\CocoStudio.UndoManager.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372c}</Project>
+      <Name>CocoStudio.UndoManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
       <Project>{9751112a-bbbb-4a1c-b265-f23595b2372b}</Project>
       <Name>CocoStudio.Projects</Name>
@@ -61,10 +92,9 @@
       <Project>{9751112a-bbbb-4a1c-b265-f23595b2372d}</Project>
       <Name>CocoStudio.UserStatistics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MonoDevelop.Core\MonoDevelop.Core.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23731}</Project>
-      <Name>MonoDevelop.Core</Name>
-    </ProjectReference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

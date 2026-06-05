@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -149,9 +148,6 @@ namespace OpenDialogs
 		[ComImport]
 		public class ShellLink
 		{
-			// Token: 0x06000139 RID: 313
-			[MethodImpl(MethodImplOptions.InternalCall)]
-			public extern ShellLink();
 		}
 	}
 }

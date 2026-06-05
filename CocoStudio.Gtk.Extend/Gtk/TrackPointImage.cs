@@ -42,7 +42,7 @@ namespace Gtk
 		}
 
 		// Token: 0x060003B0 RID: 944 RVA: 0x00012FA8 File Offset: 0x000111A8
-		public void SetImage(Image image)
+		public void SetImage(Xwt.Drawing.Image image)
 		{
 			this.alignment_mainImage.RemoveChild();
 			if (image == null)
@@ -70,7 +70,7 @@ namespace Gtk
 			else
 			{
 				string resourceID = string.Format("CocoStudio.DefaultResource.Images.TrackPoint.{0}.png", this._PointType);
-				Image icon = ImageIcon.GetIcon(resourceID);
+                Xwt.Drawing.Image icon = ImageIcon.GetIcon(resourceID);
 				this.alignment_point.Add(new ImageView(icon));
 				this.alignment_point.WidthRequest = (int)icon.Width;
 				this.alignment_point.HeightRequest = (int)icon.Height;

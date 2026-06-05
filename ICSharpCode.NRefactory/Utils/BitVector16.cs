@@ -25,7 +25,7 @@ namespace ICSharpCode.NRefactory.Utils
 					this.data |= mask;
 					return;
 				}
-				this.data &= ~mask;
+				this.data = (ushort)(this.data & (ushort)(~mask));
 			}
 		}
 

@@ -80,7 +80,7 @@ namespace Modules.Communal.MutualEditor
 			string result = string.Empty;
 			if (!File.Exists(prjSlnPath))
 			{
-				result = string.Format("%s %s", prjSlnPath, LanguageInfo.MessageBox_Content100);
+				result = string.Format("{0} {1}", prjSlnPath, LanguageInfo.MessageBox_Content100);
 			}
 			else if (RegexModel.HasChinese(prjSlnPath))
 			{

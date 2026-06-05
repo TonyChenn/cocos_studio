@@ -9,7 +9,7 @@ namespace ICSharpCode.NRefactory.Utils
 	/// Can not be used to store null values.
 	/// </summary>
 	// Token: 0x02000145 RID: 325
-	public sealed class ComparableList<T> : IList<!0>, ICollection<!0>, IEnumerable<!0>, IEnumerable, IEquatable<ComparableList<T>>
+	public sealed class ComparableList<T> : IList<T>, ICollection<T>, IEnumerable<T>, IEnumerable, IEquatable<ComparableList<T>>
 	{
 		// Token: 0x06000B1A RID: 2842 RVA: 0x00022474 File Offset: 0x00021474
 		public ComparableList()

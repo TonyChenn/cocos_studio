@@ -47,7 +47,7 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		// Token: 0x06000922 RID: 2338 RVA: 0x00018850 File Offset: 0x00017850
 		public int GetHashCode(IMember obj)
 		{
-			int num = (int)(obj.SymbolKind * (SymbolKind)33 + (byte)this.nameComparer.GetHashCode(obj.Name));
+			int num = (int)obj.SymbolKind * 33 + this.nameComparer.GetHashCode(obj.Name);
 			IParameterizedMember parameterizedMember = obj as IParameterizedMember;
 			if (parameterizedMember != null)
 			{

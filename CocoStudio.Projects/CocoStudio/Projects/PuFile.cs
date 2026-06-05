@@ -71,7 +71,7 @@ namespace CocoStudio.Projects
 			if (this.imageFiles != null)
 			{
 				this.imageFiles = (from n in this.imageFiles
-				where !n.IsDirectory
+				where !((FilePath)n).IsDirectory
 				select n).ToList<string>();
 			}
 			DataError dataError = base.OnCheckDataError();

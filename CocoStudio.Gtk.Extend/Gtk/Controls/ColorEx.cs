@@ -44,7 +44,7 @@ namespace Gtk.Controls
 		// Token: 0x06000094 RID: 148 RVA: 0x00004128 File Offset: 0x00002328
 		private void entry_KeyReleaseEvent(object o, KeyReleaseEventArgs args)
 		{
-			if ((args.Event.Key == Key.Return || args.Event.Key == Key.KP_Enter || args.Event.Key == Key.ISO_Enter) && this.entry.IsFocus)
+			if ((args.Event.Key == Gdk.Key.Return || args.Event.Key == Gdk.Key.KP_Enter || args.Event.Key == Gdk.Key.ISO_Enter) && this.entry.IsFocus)
 			{
 				this.SetColorText();
 			}

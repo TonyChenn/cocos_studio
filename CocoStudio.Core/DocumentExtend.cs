@@ -97,21 +97,25 @@ namespace CocoStudio.Core
 		}
 
 		// Token: 0x06000224 RID: 548 RVA: 0x0000A2C0 File Offset: 0x000084C0
-		bool IEditableDocument.get_IsDirty()
+		bool IEditableDocument.IsDirty
 		{
-			return base.IsDirty;
-		}
-
-		// Token: 0x06000225 RID: 549 RVA: 0x0000A2D7 File Offset: 0x000084D7
-		void IEditableDocument.set_IsDirty(bool value)
-		{
-			base.IsDirty = value;
+			get
+			{
+				return base.IsDirty;
+			}
+			set
+			{
+				base.IsDirty = value;
+			}
 		}
 
 		// Token: 0x06000226 RID: 550 RVA: 0x0000A2E0 File Offset: 0x000084E0
-		string IEditableDocument.get_Name()
+		string IEditableDocument.Name
 		{
-			return base.Name;
+			get
+			{
+				return base.Name;
+			}
 		}
 	}
 }

@@ -353,7 +353,7 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x060001FB RID: 507
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSVectorString_getitemcopy")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSVectorString_getitemcopy(HandleRef jarg1, int jarg2);
 
 		// Token: 0x060001FC RID: 508
@@ -2534,15 +2534,15 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x0600041C RID: 1052
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_new_CSResourceData__SWIG_1")]
-		public static extern IntPtr new_CSResourceData__SWIG_1([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern IntPtr new_CSResourceData__SWIG_1([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x0600041D RID: 1053
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_new_CSResourceData__SWIG_2")]
-		public static extern IntPtr new_CSResourceData__SWIG_2([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1, int jarg2);
+		public static extern IntPtr new_CSResourceData__SWIG_2([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1, int jarg2);
 
 		// Token: 0x0600041E RID: 1054
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_new_CSResourceData__SWIG_3")]
-		public static extern IntPtr new_CSResourceData__SWIG_3([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1, int jarg2, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg3);
+		public static extern IntPtr new_CSResourceData__SWIG_3([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1, int jarg2, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg3);
 
 		// Token: 0x0600041F RID: 1055
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_new_CSResourceData__SWIG_4")]
@@ -2558,7 +2558,7 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x06000422 RID: 1058
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSResourceData_GetPath")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSResourceData_GetPath(HandleRef jarg1);
 
 		// Token: 0x06000423 RID: 1059
@@ -2567,7 +2567,7 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x06000424 RID: 1060
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSResourceData_GetPlistFile")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSResourceData_GetPlistFile(HandleRef jarg1);
 
 		// Token: 0x06000425 RID: 1061
@@ -2724,12 +2724,12 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x0600044B RID: 1099
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSVisualObject_GetName")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSVisualObject_GetName(HandleRef jarg1);
 
 		// Token: 0x0600044C RID: 1100
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSVisualObject_SetName")]
-		public static extern void CSVisualObject_SetName(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSVisualObject_SetName(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x0600044D RID: 1101
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSVisualObject_GetVisible")]
@@ -3053,7 +3053,7 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x0600049D RID: 1181
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSNode2D_InitIcon__SWIG_0")]
-		public static extern void CSNode2D_InitIcon__SWIG_0(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSNode2D_InitIcon__SWIG_0(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x0600049E RID: 1182
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSNode2D_InitIcon__SWIG_1")]
@@ -3377,11 +3377,11 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x060004EE RID: 1262
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_new_CSWindow__SWIG_0")]
-		public static extern IntPtr new_CSWindow__SWIG_0(int jarg1, int jarg2, int jarg3, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg4, int jarg5);
+		public static extern IntPtr new_CSWindow__SWIG_0(int jarg1, int jarg2, int jarg3, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg4, int jarg5);
 
 		// Token: 0x060004EF RID: 1263
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_new_CSWindow__SWIG_1")]
-		public static extern IntPtr new_CSWindow__SWIG_1(IntPtr jarg1, IntPtr jarg2, int jarg3, int jarg4, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg5, int jarg6);
+		public static extern IntPtr new_CSWindow__SWIG_1(IntPtr jarg1, IntPtr jarg2, int jarg3, int jarg4, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg5, int jarg6);
 
 		// Token: 0x060004F0 RID: 1264
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSWindow_Draw")]
@@ -3421,8 +3421,8 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x060004F9 RID: 1273
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_ConvertPath")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
-		public static extern string CSCocosHelp_ConvertPath([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
+		public static extern string CSCocosHelp_ConvertPath([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x060004FA RID: 1274
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_ClearResurceCache")]
@@ -3430,60 +3430,60 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x060004FB RID: 1275
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_LoadPListFileToCache")]
-		public static extern void CSCocosHelp_LoadPListFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_LoadPListFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x060004FC RID: 1276
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_IsPngLoadedFromCache")]
-		public static extern bool CSCocosHelp_IsPngLoadedFromCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern bool CSCocosHelp_IsPngLoadedFromCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x060004FD RID: 1277
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_RenamePngFileToCache")]
-		public static extern void CSCocosHelp_RenamePngFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSCocosHelp_RenamePngFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x060004FE RID: 1278
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_ReloadPngFileToCache")]
-		public static extern void CSCocosHelp_ReloadPngFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_ReloadPngFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x060004FF RID: 1279
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_ReloadPlistFileToCache")]
-		public static extern void CSCocosHelp_ReloadPlistFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_ReloadPlistFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000500 RID: 1280
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_ReloadFntFileToCache")]
-		public static extern void CSCocosHelp_ReloadFntFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_ReloadFntFileToCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000501 RID: 1281
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_UnloadTTFFileFromCache")]
-		public static extern void CSCocosHelp_UnloadTTFFileFromCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_UnloadTTFFileFromCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000502 RID: 1282
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_RemovePngFileFromCache")]
-		public static extern void CSCocosHelp_RemovePngFileFromCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_RemovePngFileFromCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000503 RID: 1283
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_RemovePlistFileFromCache")]
-		public static extern void CSCocosHelp_RemovePlistFileFromCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_RemovePlistFileFromCache([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000504 RID: 1284
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_GetTmxMapImageArray")]
-		public static extern IntPtr CSCocosHelp_GetTmxMapImageArray([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern IntPtr CSCocosHelp_GetTmxMapImageArray([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000505 RID: 1285
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_GetMeshResourceArray")]
-		public static extern IntPtr CSCocosHelp_GetMeshResourceArray([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern IntPtr CSCocosHelp_GetMeshResourceArray([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000506 RID: 1286
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_GetSprite3DTextureArray")]
-		public static extern IntPtr CSCocosHelp_GetSprite3DTextureArray([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern IntPtr CSCocosHelp_GetSprite3DTextureArray([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000507 RID: 1287
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_ConvertToBinProto")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSCocosHelp_ConvertToBinProto(string jarg1, string jarg2, string jarg3);
 
 		// Token: 0x06000508 RID: 1288
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_ConvertToBinByFlat")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSCocosHelp_ConvertToBinByFlat(string jarg1, string jarg2, string jarg3);
 
 		// Token: 0x06000509 RID: 1289
@@ -3492,11 +3492,11 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x0600050A RID: 1290
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_SetResourcePath")]
-		public static extern void CSCocosHelp_SetResourcePath([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_SetResourcePath([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x0600050B RID: 1291
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_AddSearchPath")]
-		public static extern void CSCocosHelp_AddSearchPath([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern void CSCocosHelp_AddSearchPath([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x0600050C RID: 1292
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_CheckOpenGLVersion")]
@@ -3504,11 +3504,11 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x0600050D RID: 1293
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_CheckBMFontResource")]
-		public static extern bool CSCocosHelp_CheckBMFontResource([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern bool CSCocosHelp_CheckBMFontResource([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x0600050E RID: 1294
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_CheckImageFormat")]
-		public static extern bool CSCocosHelp_CheckImageFormat([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern bool CSCocosHelp_CheckImageFormat([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x0600050F RID: 1295
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_IsEngineInitialized")]
@@ -3532,7 +3532,7 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x06000514 RID: 1300
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_GetBaseTypeFromLua")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSCocosHelp_GetBaseTypeFromLua(string jarg1);
 
 		// Token: 0x06000515 RID: 1301
@@ -3545,11 +3545,11 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x06000517 RID: 1303
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_CheckSprite3DFile")]
-		public static extern bool CSCocosHelp_CheckSprite3DFile([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern bool CSCocosHelp_CheckSprite3DFile([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000518 RID: 1304
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSCocosHelp_CheckParticle3DFile")]
-		public static extern bool CSCocosHelp_CheckParticle3DFile([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg1);
+		public static extern bool CSCocosHelp_CheckParticle3DFile([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg1);
 
 		// Token: 0x06000519 RID: 1305
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_new_CSSkyBox")]
@@ -3913,7 +3913,7 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x06000573 RID: 1395
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSParticle3D_InitParticle3DSystem")]
-		public static extern void CSParticle3D_InitParticle3DSystem(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSParticle3D_InitParticle3DSystem(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x06000574 RID: 1396
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSParticle3D_StartParticleIfPossible")]
@@ -4317,12 +4317,12 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x060005D8 RID: 1496
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSSimpleAudio_GetName")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSSimpleAudio_GetName(HandleRef jarg1);
 
 		// Token: 0x060005D9 RID: 1497
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSSimpleAudio_SetName")]
-		public static extern void CSSimpleAudio_SetName(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSSimpleAudio_SetName(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x060005DA RID: 1498
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSSimpleAudio_GetVolume")]
@@ -4762,21 +4762,21 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x06000647 RID: 1607
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSButton_GetText")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSButton_GetText(HandleRef jarg1);
 
 		// Token: 0x06000648 RID: 1608
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSButton_SetText")]
-		public static extern void CSButton_SetText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSButton_SetText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x06000649 RID: 1609
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSButton_GetFontName")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSButton_GetFontName(HandleRef jarg1);
 
 		// Token: 0x0600064A RID: 1610
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSButton_SetFontName")]
-		public static extern void CSButton_SetFontName(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSButton_SetFontName(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x0600064B RID: 1611
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSButton_GetFontSize")]
@@ -4980,7 +4980,7 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x0600067D RID: 1661
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSText_GetFontName")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSText_GetFontName(HandleRef jarg1);
 
 		// Token: 0x0600067E RID: 1662
@@ -4997,12 +4997,12 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x06000681 RID: 1665
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSText_GetLabelText")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSText_GetLabelText(HandleRef jarg1);
 
 		// Token: 0x06000682 RID: 1666
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSText_SetLabelText")]
-		public static extern void CSText_SetLabelText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSText_SetLabelText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x06000683 RID: 1667
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSText_GetHorizontalAlignmentType")]
@@ -5078,11 +5078,11 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x06000695 RID: 1685
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextAtlas_SetStartChar")]
-		public static extern void CSTextAtlas_SetStartChar(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSTextAtlas_SetStartChar(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x06000696 RID: 1686
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextAtlas_GetStartChar")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSTextAtlas_GetStartChar(HandleRef jarg1);
 
 		// Token: 0x06000697 RID: 1687
@@ -5103,12 +5103,12 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x0600069B RID: 1691
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextAtlas_GetText")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSTextAtlas_GetText(HandleRef jarg1);
 
 		// Token: 0x0600069C RID: 1692
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextAtlas_SetText")]
-		public static extern void CSTextAtlas_SetText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSTextAtlas_SetText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x0600069D RID: 1693
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextAtlas_GetAtlasFile")]
@@ -5128,12 +5128,12 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x060006A1 RID: 1697
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextBMFont_GetText")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSTextBMFont_GetText(HandleRef jarg1);
 
 		// Token: 0x060006A2 RID: 1698
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextBMFont_SetText")]
-		public static extern void CSTextBMFont_SetText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSTextBMFont_SetText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x060006A3 RID: 1699
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextBMFont_GetFntFile")]
@@ -5273,7 +5273,7 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x060006C5 RID: 1733
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextField_GetFontName")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSTextField_GetFontName(HandleRef jarg1);
 
 		// Token: 0x060006C6 RID: 1734
@@ -5290,21 +5290,21 @@ namespace CocoStudio.EngineAdapterWrap
 
 		// Token: 0x060006C9 RID: 1737
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextField_GetLabelText")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSTextField_GetLabelText(HandleRef jarg1);
 
 		// Token: 0x060006CA RID: 1738
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextField_SetLabelText")]
-		public static extern void CSTextField_SetLabelText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSTextField_SetLabelText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x060006CB RID: 1739
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextField_GetPlaceHolderText")]
-		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)]
+		[return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))]
 		public static extern string CSTextField_GetPlaceHolderText(HandleRef jarg1);
 
 		// Token: 0x060006CC RID: 1740
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextField_SetPlaceHolderText")]
-		public static extern void CSTextField_SetPlaceHolderText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = CocoStudio.EngineAdapterWrap.UTF8Marshaler)] string jarg2);
+		public static extern void CSTextField_SetPlaceHolderText(HandleRef jarg1, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(CocoStudio.EngineAdapterWrap.UTF8Marshaler))] string jarg2);
 
 		// Token: 0x060006CD RID: 1741
 		[DllImport("CocoStudioEngineAdapter", EntryPoint = "CSharp_CSTextField_GetPlaceHolderTextColor")]

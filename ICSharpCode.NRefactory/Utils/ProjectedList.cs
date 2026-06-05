@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace ICSharpCode.NRefactory.Utils
 {
 	// Token: 0x02000123 RID: 291
-	public sealed class ProjectedList<TInput, TOutput> : IList<TOutput>, ICollection<TOutput>, IEnumerable<!1>, IEnumerable where TOutput : class
+	public sealed class ProjectedList<TInput, TOutput> : IList<TOutput>, ICollection<TOutput>, IEnumerable<TOutput>, IEnumerable where TOutput : class
 	{
 		// Token: 0x06000A3B RID: 2619 RVA: 0x0001E714 File Offset: 0x0001D714
 		public ProjectedList(IList<TInput> input, Func<TInput, TOutput> projection)
@@ -38,7 +38,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x170003EB RID: 1003
-		TOutput IList<!1>.this[int index]
+		TOutput IList<TOutput>.this[int index]
 		{
 			get
 			{
@@ -62,7 +62,7 @@ namespace ICSharpCode.NRefactory.Utils
 
 		// Token: 0x170003ED RID: 1005
 		// (get) Token: 0x06000A40 RID: 2624 RVA: 0x0001E7CF File Offset: 0x0001D7CF
-		bool ICollection<!1>.IsReadOnly
+		bool ICollection<TOutput>.IsReadOnly
 		{
 			get
 			{
@@ -71,7 +71,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A41 RID: 2625 RVA: 0x0001E7D4 File Offset: 0x0001D7D4
-		int IList<!1>.IndexOf(TOutput item)
+		int IList<TOutput>.IndexOf(TOutput item)
 		{
 			EqualityComparer<TOutput> @default = EqualityComparer<TOutput>.Default;
 			for (int i = 0; i < this.Count; i++)
@@ -85,31 +85,31 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A42 RID: 2626 RVA: 0x0001E80B File Offset: 0x0001D80B
-		void IList<!1>.Insert(int index, TOutput item)
+		void IList<TOutput>.Insert(int index, TOutput item)
 		{
 			throw new NotSupportedException();
 		}
 
 		// Token: 0x06000A43 RID: 2627 RVA: 0x0001E812 File Offset: 0x0001D812
-		void IList<!1>.RemoveAt(int index)
+		void IList<TOutput>.RemoveAt(int index)
 		{
 			throw new NotSupportedException();
 		}
 
 		// Token: 0x06000A44 RID: 2628 RVA: 0x0001E819 File Offset: 0x0001D819
-		void ICollection<!1>.Add(TOutput item)
+		void ICollection<TOutput>.Add(TOutput item)
 		{
 			throw new NotSupportedException();
 		}
 
 		// Token: 0x06000A45 RID: 2629 RVA: 0x0001E820 File Offset: 0x0001D820
-		void ICollection<!1>.Clear()
+		void ICollection<TOutput>.Clear()
 		{
 			throw new NotSupportedException();
 		}
 
 		// Token: 0x06000A46 RID: 2630 RVA: 0x0001E828 File Offset: 0x0001D828
-		bool ICollection<!1>.Contains(TOutput item)
+		bool ICollection<TOutput>.Contains(TOutput item)
 		{
 			EqualityComparer<TOutput> @default = EqualityComparer<TOutput>.Default;
 			for (int i = 0; i < this.Count; i++)
@@ -123,7 +123,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A47 RID: 2631 RVA: 0x0001E860 File Offset: 0x0001D860
-		void ICollection<!1>.CopyTo(TOutput[] array, int arrayIndex)
+		void ICollection<TOutput>.CopyTo(TOutput[] array, int arrayIndex)
 		{
 			for (int i = 0; i < this.items.Length; i++)
 			{
@@ -132,7 +132,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A48 RID: 2632 RVA: 0x0001E890 File Offset: 0x0001D890
-		bool ICollection<!1>.Remove(TOutput item)
+		bool ICollection<TOutput>.Remove(TOutput item)
 		{
 			throw new NotSupportedException();
 		}

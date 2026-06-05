@@ -83,7 +83,12 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 		{
 			get
 			{
-				return this.parentContext.CurrentTypeDefinition ?? SpecialType.UnknownType;
+				IType type = this.parentContext.CurrentTypeDefinition;
+				if (type != null)
+				{
+					return type;
+				}
+				return SpecialType.UnknownType;
 			}
 		}
 

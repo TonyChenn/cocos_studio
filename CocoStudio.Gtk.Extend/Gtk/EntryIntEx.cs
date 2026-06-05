@@ -212,9 +212,9 @@ namespace Gtk
 		protected override bool OnKeyPressEvent(EventKey evnt)
 		{
 			bool result;
-			if (evnt.Key == Key.Up || evnt.Key == Key.Down)
+			if (evnt.Key == Gdk.Key.Up || evnt.Key == Gdk.Key.Down)
 			{
-				this.ScrollValueByOneStep(evnt.Key == Key.Up);
+				this.ScrollValueByOneStep(evnt.Key == Gdk.Key.Up);
 				result = true;
 			}
 			else
@@ -234,7 +234,7 @@ namespace Gtk
 			}
 			else
 			{
-				if ((evnt.Key == Key.Return || evnt.Key == Key.KP_Enter || evnt.Key == Key.ISO_Enter) && base.IsFocus)
+				if ((evnt.Key == Gdk.Key.Return || evnt.Key == Gdk.Key.KP_Enter || evnt.Key == Gdk.Key.ISO_Enter) && base.IsFocus)
 				{
 					double num = 0.0;
 					if (double.TryParse(base.Text, out num))

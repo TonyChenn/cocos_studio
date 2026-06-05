@@ -7,6 +7,8 @@ namespace Gtk
 	// Token: 0x02000059 RID: 89
 	public static class GtkWidgetExtend
 	{
+		private const double PangoScaleFactor = 1024.0;
+
 		// Token: 0x060001E2 RID: 482 RVA: 0x00008844 File Offset: 0x00006A44
 		public static void SetFontSize(this Widget widget, double fontSize)
 		{
@@ -14,7 +16,7 @@ namespace Gtk
 			{
 				widget.ModifyFont(new FontDescription
 				{
-					AbsoluteSize = fontSize * Scale.PangoScale
+					AbsoluteSize = fontSize * PangoScaleFactor
 				});
 			}
 		}

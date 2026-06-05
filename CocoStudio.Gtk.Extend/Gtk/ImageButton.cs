@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using MonoDevelop.Components;
-using Xwt.Drawing;
+using MonoDevelopImageView = MonoDevelop.Components.ImageView;
+using XwtImage = Xwt.Drawing.Image;
 
 namespace Gtk
 {
@@ -11,7 +12,7 @@ namespace Gtk
 		// Token: 0x17000009 RID: 9
 		// (get) Token: 0x0600001E RID: 30 RVA: 0x00002440 File Offset: 0x00000640
 		// (set) Token: 0x0600001F RID: 31 RVA: 0x00002458 File Offset: 0x00000658
-		public Image NormalImage
+		public XwtImage NormalImage
 		{
 			get
 			{
@@ -28,7 +29,7 @@ namespace Gtk
 		// Token: 0x1700000A RID: 10
 		// (get) Token: 0x06000020 RID: 32 RVA: 0x0000247C File Offset: 0x0000067C
 		// (set) Token: 0x06000021 RID: 33 RVA: 0x00002494 File Offset: 0x00000694
-		public Image HoverImage
+		public XwtImage HoverImage
 		{
 			get
 			{
@@ -45,7 +46,7 @@ namespace Gtk
 		// Token: 0x1700000B RID: 11
 		// (get) Token: 0x06000022 RID: 34 RVA: 0x000024B8 File Offset: 0x000006B8
 		// (set) Token: 0x06000023 RID: 35 RVA: 0x000024D0 File Offset: 0x000006D0
-		public Image PressedImage
+		public XwtImage PressedImage
 		{
 			get
 			{
@@ -62,7 +63,7 @@ namespace Gtk
 		// Token: 0x1700000C RID: 12
 		// (get) Token: 0x06000024 RID: 36 RVA: 0x000024F4 File Offset: 0x000006F4
 		// (set) Token: 0x06000025 RID: 37 RVA: 0x0000250C File Offset: 0x0000070C
-		public Image DisabledImage
+		public XwtImage DisabledImage
 		{
 			get
 			{
@@ -79,10 +80,10 @@ namespace Gtk
 		// Token: 0x06000026 RID: 38 RVA: 0x00002530 File Offset: 0x00000730
 		public ImageButton()
 		{
-			this.imageView = new ImageView();
+			this.imageView = new MonoDevelopImageView();
 			base.Add(this.imageView);
 			this.imageView.Show();
-			this.imageDictionary = new Dictionary<ButtonState, Image>();
+			this.imageDictionary = new Dictionary<ButtonState, XwtImage>();
 		}
 
 		// Token: 0x06000027 RID: 39 RVA: 0x0000256C File Offset: 0x0000076C
@@ -104,7 +105,7 @@ namespace Gtk
 		{
 			if (this.imageDictionary.ContainsKey(base.CurrentState))
 			{
-				Image image = this.imageDictionary[base.CurrentState];
+				XwtImage image = this.imageDictionary[base.CurrentState];
 				if (image != null)
 				{
 					this.imageView.Image = image;
@@ -113,21 +114,21 @@ namespace Gtk
 		}
 
 		// Token: 0x0400000E RID: 14
-		protected ImageView imageView;
+		protected MonoDevelopImageView imageView;
 
 		// Token: 0x0400000F RID: 15
-		private Dictionary<ButtonState, Image> imageDictionary;
+		private Dictionary<ButtonState, XwtImage> imageDictionary;
 
 		// Token: 0x04000010 RID: 16
-		private Image normalImg;
+		private XwtImage normalImg;
 
 		// Token: 0x04000011 RID: 17
-		private Image hoverImg;
+		private XwtImage hoverImg;
 
 		// Token: 0x04000012 RID: 18
-		private Image pressedImg;
+		private XwtImage pressedImg;
 
 		// Token: 0x04000013 RID: 19
-		private Image disabledImg;
+		private XwtImage disabledImg;
 	}
 }

@@ -284,7 +284,7 @@ namespace CocoStudio.Projects
 		// Token: 0x0600035D RID: 861 RVA: 0x0000BDE0 File Offset: 0x00009FE0
 		internal string ToAbsolute(ResourceData resourceData)
 		{
-			return resourceData.Path.ToAbsolute(this.CurrentSolution.ItemDirectory);
+			return ((FilePath)resourceData.Path).ToAbsolute(this.CurrentSolution.ItemDirectory);
 		}
 
 		// Token: 0x0600035E RID: 862 RVA: 0x0000BE10 File Offset: 0x0000A010
@@ -452,7 +452,7 @@ namespace CocoStudio.Projects
 			{
 				throw new ArgumentException("Can't convert to full path.");
 			}
-			return resourceData.Path.ToAbsolute(this.CurrentSolution.ItemDirectory);
+			return ((FilePath)resourceData.Path).ToAbsolute(this.CurrentSolution.ItemDirectory);
 		}
 
 		// Token: 0x0600036E RID: 878 RVA: 0x0000C18A File Offset: 0x0000A38A
@@ -687,7 +687,7 @@ namespace CocoStudio.Projects
 			{
 				return;
 			}
-			FilePath filePath = resourceData.Path.ToAbsolute(publishDirectory);
+			FilePath filePath = ((FilePath)resourceData.Path).ToAbsolute(publishDirectory);
 			if (!Directory.Exists(filePath.ParentDirectory))
 			{
 				Directory.CreateDirectory(filePath.ParentDirectory);

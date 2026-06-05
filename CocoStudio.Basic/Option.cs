@@ -145,7 +145,7 @@ namespace CocoStudio.Basic
 				}
 				else
 				{
-					text = Option.NormalizeUpdateServerURL("http://update.cocostudio.org:121/");
+					text = Option.NormalizeUpdateServerURL("http://localhost/");
 				}
 				if (!string.IsNullOrEmpty(text))
 				{

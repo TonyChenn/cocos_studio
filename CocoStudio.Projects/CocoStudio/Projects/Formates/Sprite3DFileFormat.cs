@@ -110,7 +110,7 @@ namespace CocoStudio.Projects.Formates
 			}
 			foreach (string name in sprite3DTextureArray)
 			{
-				string item = name.ToAbsolute(directoryName);
+				string item = ((FilePath)name).ToAbsolute(directoryName);
 				list.Add(item);
 			}
 			return list;

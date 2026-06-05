@@ -158,7 +158,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					type = this.ResolveInAllAssemblies(context);
 				}
 			}
-			return type ?? new UnknownType(this.fullTypeName);
+			if (type != null)
+			{
+				return type;
+			}
+			return new UnknownType(this.fullTypeName);
 		}
 
 		// Token: 0x060007BE RID: 1982 RVA: 0x00013868 File Offset: 0x00012868

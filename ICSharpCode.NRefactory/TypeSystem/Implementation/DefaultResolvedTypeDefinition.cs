@@ -1006,7 +1006,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 		{
 			if ((options & GetMemberOptions.IgnoreInheritedMembers) == GetMemberOptions.IgnoreInheritedMembers)
 			{
-				return this.GetFilteredMethods(((IUnresolvedMethod m) => !m.IsConstructor).And(filter));
+				Predicate<IUnresolvedMethod> predicate = delegate(IUnresolvedMethod m)
+				{
+					return !m.IsConstructor;
+				};
+				return this.GetFilteredMethods(predicate.And(filter));
 			}
 			return GetMembersHelper.GetMethods(this, filter, options);
 		}
@@ -1038,7 +1042,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 			if ((options & GetMemberOptions.IgnoreInheritedMembers) == GetMemberOptions.IgnoreInheritedMembers)
 			{
-				return this.GetFilteredMethods(((IUnresolvedMethod m) => m.IsConstructor && !m.IsStatic).And(filter));
+				Predicate<IUnresolvedMethod> predicate = delegate(IUnresolvedMethod m)
+				{
+					return m.IsConstructor && !m.IsStatic;
+				};
+				return this.GetFilteredMethods(predicate.And(filter));
 			}
 			return GetMembersHelper.GetConstructors(this, filter, options);
 		}

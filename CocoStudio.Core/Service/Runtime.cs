@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using CocoStudio.Basic;
@@ -23,7 +24,7 @@ namespace CocoStudio.Core.Service
 		{
 			get
 			{
-				return Runtime.ProcessService;
+				return MonoDevelop.Core.Runtime.ProcessService;
 			}
 		}
 
@@ -34,10 +35,10 @@ namespace CocoStudio.Core.Service
 			{
 				Platform.Initialize();
 				SynchronizationContext.SetSynchronizationContext(new GtkSynchronizationContext());
-				Runtime.MainSynchronizationContext = SynchronizationContext.Current;
+				MonoDevelop.Core.Runtime.MainSynchronizationContext = SynchronizationContext.Current;
 				Runtime.InitializeAddins(configDir, addinsDir);
 				Runtime.systemAssemblyService = new SystemAssemblyService();
-				Runtime.SystemAssemblyService = Runtime.systemAssemblyService;
+				MonoDevelop.Core.Runtime.SystemAssemblyService = Runtime.systemAssemblyService;
 				Runtime.systemAssemblyService.Initialize();
 				Runtime.initialized = true;
 			}
@@ -125,7 +126,10 @@ namespace CocoStudio.Core.Service
 				i++;
 				try
 				{
-					configDir.Delete();
+					if (Directory.Exists(configDir))
+					{
+						Directory.Delete(configDir, true);
+					}
 					break;
 				}
 				catch (Exception exception)

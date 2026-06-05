@@ -3,7 +3,8 @@ using System.ComponentModel;
 using CocoStudio.Basic;
 using MonoDevelop.Components;
 using Stetic;
-using Xwt.Drawing;
+using MonoDevelopImageView = MonoDevelop.Components.ImageView;
+using XwtImage = Xwt.Drawing.Image;
 
 namespace Gtk
 {
@@ -18,14 +19,14 @@ namespace Gtk
 		}
 
 		// Token: 0x060002FD RID: 765 RVA: 0x0000C2B0 File Offset: 0x0000A4B0
-		public void SetImageView(Image image)
+		public void SetImageView(XwtImage image)
 		{
 			try
 			{
 				this.alignment_img.RemoveChild();
 				if (image != null)
 				{
-					this.CurrentImage = new ImageView(image);
+					this.CurrentImage = new MonoDevelopImageView(image);
 					this.alignment_img.Add(this.CurrentImage);
 					this.CurrentImage.Show();
 				}
@@ -37,7 +38,7 @@ namespace Gtk
 		}
 
 		// Token: 0x060002FE RID: 766 RVA: 0x0000C330 File Offset: 0x0000A530
-		public ImageView GetImageView()
+		public MonoDevelopImageView GetImageView()
 		{
 			return this.CurrentImage;
 		}
@@ -89,7 +90,7 @@ namespace Gtk
 		}
 
 		// Token: 0x04000370 RID: 880
-		private ImageView CurrentImage;
+		private MonoDevelopImageView CurrentImage;
 
 		// Token: 0x04000371 RID: 881
 		private VBox vbox_main;

@@ -22,4 +22,4 @@ using PostSharp.ImplementationDetails_28512dc1;
 {
 
 })]
-[assembly: MulticastImplementationDetailsType(typeof(<>z__Multicast))]
+[assembly: MulticastImplementationDetailsType(typeof(__z__Multicast))]

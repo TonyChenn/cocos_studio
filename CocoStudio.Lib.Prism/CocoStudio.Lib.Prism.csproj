@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="gtk-sharp" />
+    <Reference Include="atk-sharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>

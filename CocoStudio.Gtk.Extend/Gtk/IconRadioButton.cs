@@ -1,5 +1,5 @@
 ﻿using System;
-using Xwt.Drawing;
+using XwtImage = Xwt.Drawing.Image;
 
 namespace Gtk
 {
@@ -12,7 +12,7 @@ namespace Gtk
 		public string GroupName { get; set; }
 
 		// Token: 0x06000051 RID: 81 RVA: 0x000030D8 File Offset: 0x000012D8
-		public IconRadioButton(Image normalIcon) : base(normalIcon, null)
+		public IconRadioButton(XwtImage normalIcon) : base(normalIcon, null)
 		{
 			RadioButtonManager.Instance.Add(this);
 		}

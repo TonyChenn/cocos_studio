@@ -122,7 +122,7 @@ namespace CocoStudio.Projects
 		protected override void OnMove(FilePath newMovePath)
 		{
 			int startIndex = newMovePath.ToString().LastIndexOf(this.Name);
-			newMovePath = newMovePath.ToString().Remove(startIndex).Combine(new string[]
+			newMovePath = ((FilePath)newMovePath.ToString().Remove(startIndex)).Combine(new string[]
 			{
 				this.FileName.FileName
 			});
@@ -133,7 +133,7 @@ namespace CocoStudio.Projects
 		protected override void OnSetLocation(FilePath newFilePath, bool isRename = true)
 		{
 			int startIndex = newFilePath.ToString().LastIndexOf(this.Name);
-			newFilePath = newFilePath.ToString().Remove(startIndex).Combine(new string[]
+			newFilePath = ((FilePath)newFilePath.ToString().Remove(startIndex)).Combine(new string[]
 			{
 				this.FileName.FileName
 			});

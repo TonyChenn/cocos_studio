@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="gtk-sharp" />
+    <Reference Include="atk-sharp" />
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>

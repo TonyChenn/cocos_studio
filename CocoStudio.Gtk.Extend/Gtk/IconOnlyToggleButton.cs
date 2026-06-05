@@ -1,5 +1,5 @@
 ﻿using System;
-using Xwt.Drawing;
+using XwtImage = Xwt.Drawing.Image;
 
 namespace Gtk
 {
@@ -7,7 +7,7 @@ namespace Gtk
 	public class IconOnlyToggleButton : IconToggleButton
 	{
 		// Token: 0x0600004B RID: 75 RVA: 0x00002F80 File Offset: 0x00001180
-		public IconOnlyToggleButton(Image normal, Image check = null) : base(normal, check)
+		public IconOnlyToggleButton(XwtImage normal, XwtImage check = null) : base(normal, check)
 		{
 		}
 
@@ -26,7 +26,7 @@ namespace Gtk
 		// Token: 0x0600004E RID: 78 RVA: 0x00002FC0 File Offset: 0x000011C0
 		protected override void OnRefreshIcon()
 		{
-			Image image;
+			XwtImage image;
 			if (base.IsChecked)
 			{
 				image = this.checkedIcon;

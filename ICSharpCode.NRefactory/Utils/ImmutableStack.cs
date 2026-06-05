@@ -12,7 +12,7 @@ namespace ICSharpCode.NRefactory.Utils
 	/// </summary>
 	// Token: 0x0200011C RID: 284
 	[Serializable]
-	public sealed class ImmutableStack<T> : IEnumerable<!0>, IEnumerable
+	public sealed class ImmutableStack<T> : IEnumerable<T>, IEnumerable
 	{
 		// Token: 0x06000A12 RID: 2578 RVA: 0x0001E0EA File Offset: 0x0001D0EA
 		private ImmutableStack()

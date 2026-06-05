@@ -134,7 +134,7 @@ namespace Gtk
 		// Token: 0x060000CA RID: 202 RVA: 0x00004F38 File Offset: 0x00003138
 		protected override bool OnKeyReleaseEvent(EventKey evnt)
 		{
-			if ((evnt.Key == Key.Return || evnt.Key == Key.KP_Enter || evnt.Key == Key.ISO_Enter) && base.IsFocus)
+			if ((evnt.Key == Gdk.Key.Return || evnt.Key == Gdk.Key.KP_Enter || evnt.Key == Gdk.Key.ISO_Enter) && base.IsFocus)
 			{
 				if (!this.CheckFinalValue(base.Text))
 				{

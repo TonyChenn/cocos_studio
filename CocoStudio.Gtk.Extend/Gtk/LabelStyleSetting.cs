@@ -7,6 +7,8 @@ namespace Gtk
 	// Token: 0x0200008F RID: 143
 	public class LabelStyleSetting
 	{
+		private const double PangoScaleFactor = 1024.0;
+
 		// Token: 0x0400038A RID: 906
 		public static Gdk.Color LabelHoverColor = new Gdk.Color(53, 165, byte.MaxValue);
 
@@ -41,27 +43,27 @@ namespace Gtk
 		public static string ToolTipFamily = "冬青黑体简体中文 W6";
 
 		// Token: 0x04000395 RID: 917
-		public static double LinkSize = 16.0 * Scale.PangoScale;
+		public static double LinkSize = 16.0 * PangoScaleFactor;
 
 		// Token: 0x04000396 RID: 918
-		public static double MainTitleSize = 28.0 * Scale.PangoScale;
+		public static double MainTitleSize = 28.0 * PangoScaleFactor;
 
 		// Token: 0x04000397 RID: 919
-		public static double LeftTitleSize = 20.0 * Scale.PangoScale;
+		public static double LeftTitleSize = 20.0 * PangoScaleFactor;
 
 		// Token: 0x04000398 RID: 920
-		public static double RightTitleSize = 28.0 * Scale.PangoScale;
+		public static double RightTitleSize = 28.0 * PangoScaleFactor;
 
 		// Token: 0x04000399 RID: 921
-		public static double SampleDesSize = 12.0 * Scale.PangoScale;
+		public static double SampleDesSize = 12.0 * PangoScaleFactor;
 
 		// Token: 0x0400039A RID: 922
-		public static double SampleTitleSize = 14.0 * Scale.PangoScale;
+		public static double SampleTitleSize = 14.0 * PangoScaleFactor;
 
 		// Token: 0x0400039B RID: 923
-		public static double LoginLinkSize = 14.0 * Scale.PangoScale;
+		public static double LoginLinkSize = 14.0 * PangoScaleFactor;
 
 		// Token: 0x0400039C RID: 924
-		public static double TooltipDesSize = 12.0 * Scale.PangoScale;
+		public static double TooltipDesSize = 12.0 * PangoScaleFactor;
 	}
 }

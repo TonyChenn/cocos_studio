@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using Mono.Addins;
+using MonoDevelop.Core;
 using MonoDevelop.Core.Serialization;
 using Newtonsoft.Json;
 
@@ -38,7 +39,7 @@ namespace CocoStudio.Projects
 			}
 			else
 			{
-				string name = handler.SerializationContext.BaseFile.ParentDirectory.Combine(new string[]
+				FilePath name = ((FilePath)handler.SerializationContext.BaseFile).ParentDirectory.Combine(new string[]
 				{
 					"CocosStudio".ToLower()
 				});

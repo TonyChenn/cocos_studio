@@ -21,7 +21,7 @@ namespace Gtk
 		public static extern bool Gdk_window_ensure_native(IntPtr gdkWindow);
 
 		// Token: 0x06000322 RID: 802 RVA: 0x0000CE10 File Offset: 0x0000B010
-		public static NSWindow GetNSWindow(Window gdkWindow)
+		public static NSWindow GetNSWindow(Gdk.Window gdkWindow)
 		{
 			IntPtr windowHandle = NativeGdkMac.GetWindowHandle(gdkWindow.Handle);
 			return new NSWindow
@@ -31,7 +31,7 @@ namespace Gtk
 		}
 
 		// Token: 0x06000323 RID: 803 RVA: 0x0000CE40 File Offset: 0x0000B040
-		public static void SetNSWindowStyle(Window gdkWindow, NSWindowStyle style)
+		public static void SetNSWindowStyle(Gdk.Window gdkWindow, NSWindowStyle style)
 		{
 			NSWindow nswindow = NativeGdkMac.GetNSWindow(gdkWindow);
 			nswindow.StyleMask = style;

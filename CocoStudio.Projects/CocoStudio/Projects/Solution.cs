@@ -201,7 +201,7 @@ namespace CocoStudio.Projects
 				this.PublishDirectory = this.Config.PublishDirectory;
 				return;
 			}
-			this.PublishDirectory = this.Config.PublishDirectory.ToAbsolute(base.BaseDirectory);
+			this.PublishDirectory = ((FilePath)this.Config.PublishDirectory).ToAbsolute(base.BaseDirectory);
 		}
 
 		// Token: 0x0600040F RID: 1039 RVA: 0x0000D8AC File Offset: 0x0000BAAC
@@ -216,7 +216,7 @@ namespace CocoStudio.Projects
 				this.PackageDirectory = this.Config.PackageDirectory;
 				return;
 			}
-			this.PackageDirectory = this.Config.PackageDirectory.ToAbsolute(base.BaseDirectory);
+			this.PackageDirectory = ((FilePath)this.Config.PackageDirectory).ToAbsolute(base.BaseDirectory);
 		}
 
 		// Token: 0x06000410 RID: 1040 RVA: 0x0000D928 File Offset: 0x0000BB28

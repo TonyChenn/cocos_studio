@@ -12,16 +12,16 @@ namespace CocoStudio.Core
 			this.flockhandle.l_len = 0L;
 			this.flockhandle.l_pid = Syscall.getpid();
 			this.flockhandle.l_start = 0L;
-			this.flockhandle.l_type = 1;
-			this.flockhandle.l_whence = 0;
+			this.flockhandle.l_type = LockType.F_WRLCK;
+			this.flockhandle.l_whence = SeekFlags.SEEK_SET;
 		}
 
 		// Token: 0x06000169 RID: 361 RVA: 0x000064E0 File Offset: 0x000046E0
 		protected override bool OnLockFile(string filepath)
 		{
-			this.flockhandle.l_type = 1;
-			this.flockfd = Syscall.open(filepath, 66, 438);
-			int num = Syscall.fcntl(this.flockfd, 13, ref this.flockhandle);
+			this.flockhandle.l_type = LockType.F_WRLCK;
+			this.flockfd = Syscall.open(filepath, OpenFlags.O_CREAT | OpenFlags.O_RDWR, FilePermissions.DEFFILEMODE);
+			int num = Syscall.fcntl(this.flockfd, FcntlCommand.F_SETLK, ref this.flockhandle);
 			if (num != -1)
 			{
 				return true;
@@ -40,15 +40,16 @@ namespace CocoStudio.Core
 			}
 			else
 			{
-				this.flockhandle.l_type = 1;
-				int num = Syscall.open(filePath, 2, 438);
-				int num2 = Syscall.fcntl(num, 13, ref this.flockhandle);
+				this.flockhandle.l_type = LockType.F_WRLCK;
+				int num = Syscall.open(filePath, OpenFlags.O_RDWR, FilePermissions.DEFFILEMODE);
+				int num2 = Syscall.fcntl(num, FcntlCommand.F_SETLK, ref this.flockhandle);
 				if (num2 != -1)
 				{
 					flag = false;
 				}
-				this.flockhandle.l_type = 2;
-				Syscall.fcntl(num, 13, ref this.flockhandle);
+				this.flockhandle.l_type = LockType.F_UNLCK;
+				Syscall.fcntl(num, FcntlCommand.F_SETLK, ref this.flockhandle);
+				Syscall.close(num);
 				result = flag;
 			}
 			return result;
@@ -57,8 +58,8 @@ namespace CocoStudio.Core
 		// Token: 0x0600016B RID: 363 RVA: 0x000065C8 File Offset: 0x000047C8
 		protected override void OnReleaseLock()
 		{
-			this.flockhandle.l_type = 2;
-			int num = Syscall.fcntl(this.flockfd, 13, ref this.flockhandle);
+			this.flockhandle.l_type = LockType.F_UNLCK;
+			int num = Syscall.fcntl(this.flockfd, FcntlCommand.F_SETLK, ref this.flockhandle);
 			if (num == -1)
 			{
 				throw new InvalidOperationException("Release Lock File failed: " + base.CurrLockFilePath);

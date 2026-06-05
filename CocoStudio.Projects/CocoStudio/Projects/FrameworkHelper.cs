@@ -16,14 +16,11 @@ namespace CocoStudio.Projects
 	{
 		// Token: 0x1700004A RID: 74
 		// (get) Token: 0x06000225 RID: 549 RVA: 0x0000863C File Offset: 0x0000683C
-		private static IEnumerable<string> ServerVersionFilePaths
+		private static string ServerVersionFilePath
 		{
 			get
 			{
-				foreach (string text in Option.UpdateServerURLs)
-				{
-					yield return text + "FrameworkVersionList.xml";
-				}
+				return Option.UpdateServerURL + "FrameworkVersionList.xml";
 			}
 		}
 
@@ -149,27 +146,21 @@ namespace CocoStudio.Projects
 		// Token: 0x0600022B RID: 555 RVA: 0x000088AC File Offset: 0x00006AAC
 		private static XElement GetXmlInfoFromServer()
 		{
-			foreach (string text in FrameworkHelper.ServerVersionFilePaths)
+			try
 			{
-				try
-				{
-					Uri requestUri = new Uri(text);
-					WebRequest webRequest = WebRequest.Create(requestUri);
-					webRequest.Credentials = CredentialCache.DefaultCredentials;
-					webRequest.Timeout = 2000;
-					HttpWebResponse httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
-					Stream responseStream = httpWebResponse.GetResponseStream();
-					XElement xelement = XElement.Load(responseStream);
-					responseStream.Close();
-					if (xelement != null)
-					{
-						return xelement;
-					}
-				}
-				catch (Exception exception)
-				{
-					LogConfig.Logger.Error("从服务器上获取XML信息时出错", exception);
-				}
+				Uri requestUri = new Uri(FrameworkHelper.ServerVersionFilePath);
+				WebRequest webRequest = WebRequest.Create(requestUri);
+				webRequest.Credentials = CredentialCache.DefaultCredentials;
+				webRequest.Timeout = 2000;
+				HttpWebResponse httpWebResponse = (HttpWebResponse)webRequest.GetResponse();
+				Stream responseStream = httpWebResponse.GetResponseStream();
+				XElement xelement = XElement.Load(responseStream);
+				responseStream.Close();
+				return xelement;
+			}
+			catch (Exception exception)
+			{
+				LogConfig.Logger.Error("从服务器上获取XML信息时出错", exception);
 			}
 			return null;
 		}

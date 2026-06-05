@@ -83,7 +83,7 @@ namespace CocoStudio.Projects.Formates
 				return null;
 			}
 			string directoryName = Path.GetDirectoryName(filePath);
-			filePath2 = filePath2.ToAbsolute(directoryName);
+			filePath2 = filePath2.ToAbsolute((FilePath)directoryName);
 			return new List<string>
 			{
 				filePath2

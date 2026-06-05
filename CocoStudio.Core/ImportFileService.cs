@@ -171,26 +171,26 @@ namespace CocoStudio.Core
 				List<FileCopyInfo> list = new List<FileCopyInfo>();
 				try
 				{
-					bool flag = true;
+					bool hasPendingFiles = true;
 					int count = copyQueue.Count;
 					int num = 0;
-					while (flag)
+					while (hasPendingFiles)
 					{
 						num++;
 						if (monitor.IsCancelRequested)
 						{
 							return list;
 						}
-						if (copyQueue.Count == 0 && flag)
+						if (copyQueue.Count == 0 && hasPendingFiles)
 						{
 							autoReset.WaitOne();
 						}
-						flag = (copyQueue.Count > 0);
+						hasPendingFiles = (copyQueue.Count > 0);
 						FileCopyInfo fileCopyInfo;
 						if (copyQueue.TryDequeue(out fileCopyInfo))
 						{
 							monitor.Step(1);
-							if (!filterList.Contains(fileCopyInfo.SourcePath, StringComparer.InvariantCultureIgnoreCase))
+							if (!filterList.Any((string sourcePath) => string.Equals(sourcePath, fileCopyInfo.SourcePath, StringComparison.InvariantCultureIgnoreCase)))
 							{
 								bool flag2 = fileCopyInfo.Copy(monitor);
 								if (flag2)

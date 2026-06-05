@@ -132,7 +132,7 @@ namespace Gtk
 		// Token: 0x06000386 RID: 902 RVA: 0x00011150 File Offset: 0x0000F350
 		private void KeyPressedHandler(object o, KeyPressEventArgs args)
 		{
-			if (args.Event.Key == Key.Escape)
+			if (args.Event.Key == Gdk.Key.Escape)
 			{
 				this.CloseWindow();
 			}

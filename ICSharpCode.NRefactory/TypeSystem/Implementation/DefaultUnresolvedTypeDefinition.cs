@@ -314,7 +314,12 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			{
 				throw new ArgumentException("An ITypeDefinition cannot be resolved in a context without a current assembly.");
 			}
-			return context.CurrentAssembly.GetTypeDefinition(this.FullTypeName) ?? new UnknownType(this.Namespace, base.Name, this.TypeParameters.Count);
+			IType type = context.CurrentAssembly.GetTypeDefinition(this.FullTypeName);
+			if (type != null)
+			{
+				return type;
+			}
+			return new UnknownType(this.Namespace, base.Name, this.TypeParameters.Count);
 		}
 
 		// Token: 0x0600076F RID: 1903 RVA: 0x0001304F File Offset: 0x0001204F

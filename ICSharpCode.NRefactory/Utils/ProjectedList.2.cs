@@ -39,7 +39,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x170003EF RID: 1007
-		TOutput IList<!2>.this[int index]
+		TOutput IList<TOutput>.this[int index]
 		{
 			get
 			{
@@ -63,7 +63,7 @@ namespace ICSharpCode.NRefactory.Utils
 
 		// Token: 0x170003F1 RID: 1009
 		// (get) Token: 0x06000A50 RID: 2640 RVA: 0x0001EA31 File Offset: 0x0001DA31
-		bool ICollection<!2>.IsReadOnly
+		bool ICollection<TOutput>.IsReadOnly
 		{
 			get
 			{
@@ -72,7 +72,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A51 RID: 2641 RVA: 0x0001EA34 File Offset: 0x0001DA34
-		int IList<!2>.IndexOf(TOutput item)
+		int IList<TOutput>.IndexOf(TOutput item)
 		{
 			EqualityComparer<TOutput> @default = EqualityComparer<TOutput>.Default;
 			for (int i = 0; i < this.Count; i++)
@@ -86,31 +86,31 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A52 RID: 2642 RVA: 0x0001EA6B File Offset: 0x0001DA6B
-		void IList<!2>.Insert(int index, TOutput item)
+		void IList<TOutput>.Insert(int index, TOutput item)
 		{
 			throw new NotSupportedException();
 		}
 
 		// Token: 0x06000A53 RID: 2643 RVA: 0x0001EA72 File Offset: 0x0001DA72
-		void IList<!2>.RemoveAt(int index)
+		void IList<TOutput>.RemoveAt(int index)
 		{
 			throw new NotSupportedException();
 		}
 
 		// Token: 0x06000A54 RID: 2644 RVA: 0x0001EA79 File Offset: 0x0001DA79
-		void ICollection<!2>.Add(TOutput item)
+		void ICollection<TOutput>.Add(TOutput item)
 		{
 			throw new NotSupportedException();
 		}
 
 		// Token: 0x06000A55 RID: 2645 RVA: 0x0001EA80 File Offset: 0x0001DA80
-		void ICollection<!2>.Clear()
+		void ICollection<TOutput>.Clear()
 		{
 			throw new NotSupportedException();
 		}
 
 		// Token: 0x06000A56 RID: 2646 RVA: 0x0001EA88 File Offset: 0x0001DA88
-		bool ICollection<!2>.Contains(TOutput item)
+		bool ICollection<TOutput>.Contains(TOutput item)
 		{
 			EqualityComparer<TOutput> @default = EqualityComparer<TOutput>.Default;
 			for (int i = 0; i < this.Count; i++)
@@ -124,7 +124,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A57 RID: 2647 RVA: 0x0001EAC0 File Offset: 0x0001DAC0
-		void ICollection<!2>.CopyTo(TOutput[] array, int arrayIndex)
+		void ICollection<TOutput>.CopyTo(TOutput[] array, int arrayIndex)
 		{
 			for (int i = 0; i < this.items.Length; i++)
 			{
@@ -133,7 +133,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A58 RID: 2648 RVA: 0x0001EAF0 File Offset: 0x0001DAF0
-		bool ICollection<!2>.Remove(TOutput item)
+		bool ICollection<TOutput>.Remove(TOutput item)
 		{
 			throw new NotSupportedException();
 		}

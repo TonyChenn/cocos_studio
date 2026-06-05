@@ -12,7 +12,7 @@ namespace Gdk
 		// Token: 0x17000088 RID: 136
 		// (get) Token: 0x060002DF RID: 735 RVA: 0x0000BB7C File Offset: 0x00009D7C
 		// (set) Token: 0x060002E0 RID: 736 RVA: 0x0000BB93 File Offset: 0x00009D93
-		internal static Window MainWindow
+		internal static Gtk.Window MainWindow
 		{
 			get
 			{
@@ -45,7 +45,7 @@ namespace Gdk
 		}
 
 		// Token: 0x060002E4 RID: 740 RVA: 0x0000BC38 File Offset: 0x00009E38
-		private static void SetMainWindow(Window oldWindow, Window newWindow)
+		private static void SetMainWindow(Gtk.Window oldWindow, Gtk.Window newWindow)
 		{
 			if (oldWindow != null)
 			{
@@ -94,11 +94,11 @@ namespace Gdk
 		// Token: 0x060002E9 RID: 745 RVA: 0x0000BD40 File Offset: 0x00009F40
 		public static bool IsEnterKey(Key key)
 		{
-			return key == Key.ISO_Enter || key == Key.Key_3270_Enter || key == Key.KP_Enter || key == Key.Return;
+			return key == global::Gdk.Key.ISO_Enter || key == global::Gdk.Key.Key_3270_Enter || key == global::Gdk.Key.KP_Enter || key == global::Gdk.Key.Return;
 		}
 
 		// Token: 0x0400035B RID: 859
-		private static Window mainWindow;
+		private static Gtk.Window mainWindow;
 
 		// Token: 0x0400035C RID: 860
 		private static HashSet<Key> pressKeys = new HashSet<Key>();

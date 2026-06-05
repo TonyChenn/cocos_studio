@@ -30,7 +30,7 @@ namespace Gtk
 		}
 
 		// Token: 0x0600006E RID: 110 RVA: 0x000036E0 File Offset: 0x000018E0
-		public IconTrackPointButton(Image icon)
+		public IconTrackPointButton(Xwt.Drawing.Image icon)
 		{
 			this.normalIcon = icon;
 			this.trackPntImg = new TrackPointImage();

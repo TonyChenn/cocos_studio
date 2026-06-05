@@ -73,7 +73,7 @@ namespace CocoStudio.Projects.Formates
 			}
 			foreach (string name in meshResourceArray)
 			{
-				string item = name.ToAbsolute(directoryName);
+				string item = ((FilePath)name).ToAbsolute(directoryName);
 				list.Add(item);
 			}
 			return list;

@@ -73,7 +73,7 @@ namespace CocoStudio.Projects
 		// Token: 0x17000021 RID: 33
 		// (get) Token: 0x06000161 RID: 353 RVA: 0x000060B3 File Offset: 0x000042B3
 		// (set) Token: 0x06000162 RID: 354 RVA: 0x000060BB File Offset: 0x000042BB
-		private protected virtual int DisplayIndex { protected get; private set; }
+		protected virtual int DisplayIndex { get; private set; }
 
 		// Token: 0x06000163 RID: 355 RVA: 0x000060C4 File Offset: 0x000042C4
 		public int CompareTo(object other)

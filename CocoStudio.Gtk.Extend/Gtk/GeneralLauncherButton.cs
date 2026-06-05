@@ -84,7 +84,7 @@ namespace Gtk
 		// Token: 0x0600028D RID: 653 RVA: 0x0000A878 File Offset: 0x00008A78
 		private void HandleKeyPressedEvent(object o, KeyPressEventArgs args)
 		{
-			if (KeyboardExtend.IsEnterKey(args.Event.Key) || args.Event.Key == Key.space)
+			if (KeyboardExtend.IsEnterKey(args.Event.Key) || args.Event.Key == Gdk.Key.space)
 			{
 				base.RaiseClickedEvent(new ButtonReleaseEventArgs());
 			}

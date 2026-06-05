@@ -114,7 +114,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x170003E7 RID: 999
-		IEnumerable<TValue> ILookup<!0, !1>.this[TKey key]
+		IEnumerable<TValue> ILookup<TKey, TValue>.this[TKey key]
 		{
 			get
 			{
@@ -123,7 +123,7 @@ namespace ICSharpCode.NRefactory.Utils
 		}
 
 		// Token: 0x06000A32 RID: 2610 RVA: 0x0001E511 File Offset: 0x0001D511
-		bool ILookup<!0, !1>.Contains(TKey key)
+		bool ILookup<TKey, TValue>.Contains(TKey key)
 		{
 			return this.dict.ContainsKey(key);
 		}
@@ -151,7 +151,7 @@ namespace ICSharpCode.NRefactory.Utils
 		private readonly Dictionary<TKey, List<TValue>> dict;
 
 		// Token: 0x02000121 RID: 289
-		private sealed class Grouping : IGrouping<TKey, TValue>, IEnumerable<!1>, IEnumerable
+		private sealed class Grouping : IGrouping<TKey, TValue>, IEnumerable<TValue>, IEnumerable
 		{
 			// Token: 0x06000A36 RID: 2614 RVA: 0x0001E694 File Offset: 0x0001D694
 			public Grouping(TKey key, List<TValue> values)

@@ -10,17 +10,17 @@ namespace Gtk
 		// Token: 0x17000002 RID: 2
 		// (get) Token: 0x06000004 RID: 4 RVA: 0x00002080 File Offset: 0x00000280
 		// (set) Token: 0x06000005 RID: 5 RVA: 0x00002097 File Offset: 0x00000297
-		private protected bool IsMouseIn { protected get; private set; }
+		protected bool IsMouseIn { get; private set; }
 
 		// Token: 0x17000003 RID: 3
 		// (get) Token: 0x06000006 RID: 6 RVA: 0x000020A0 File Offset: 0x000002A0
 		// (set) Token: 0x06000007 RID: 7 RVA: 0x000020B7 File Offset: 0x000002B7
-		private protected bool IsMouseInWhenPressed { protected get; private set; }
+		protected bool IsMouseInWhenPressed { get; private set; }
 
 		// Token: 0x17000004 RID: 4
 		// (get) Token: 0x06000008 RID: 8 RVA: 0x000020C0 File Offset: 0x000002C0
 		// (set) Token: 0x06000009 RID: 9 RVA: 0x000020D7 File Offset: 0x000002D7
-		private protected ButtonState CurrentState { protected get; private set; }
+		protected ButtonState CurrentState { get; private set; }
 
 		// Token: 0x17000005 RID: 5
 		// (get) Token: 0x0600000A RID: 10 RVA: 0x000020E0 File Offset: 0x000002E0

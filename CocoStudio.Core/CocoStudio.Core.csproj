@@ -31,10 +31,30 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="gdk-sharp" />
     <Reference Include="glib-sharp" />
     <Reference Include="gtk-sharp" />
+    <Reference Include="atk-sharp" />
     <Reference Include="Modules.Communal.MultiLanguage">
       <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\Modules.Communal.MultiLanguage.dll</HintPath>
     </Reference>
@@ -47,12 +67,18 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Xwt">
       <HintPath>..\\dlls\\Xwt.dll</HintPath>
     </Reference>
     <Reference Include="Xwt.Gtk">
       <HintPath>..\\dlls\\Xwt.Gtk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -191,10 +217,9 @@
       <Project>{9751112a-bbbb-4a1c-b265-f23595b2372d}</Project>
       <Name>CocoStudio.UserStatistics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MonoDevelop.Core\MonoDevelop.Core.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23731}</Project>
-      <Name>MonoDevelop.Core</Name>
-    </ProjectReference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
