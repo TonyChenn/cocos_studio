@@ -1,0 +1,2 @@
+D:\CSharpProjects\CocosEngine\cocos_studio\Modules.Communal.StartAutoRecover\obj\Debug\Modules.Communal.StartAutoRecover.csproj.AssemblyReference.cache
+D:\CSharpProjects\CocosEngine\cocos_studio\Modules.Communal.StartAutoRecover\obj\Debug\Modules.Communal.StartAutoRecover.csproj.CoreCompileInputs.cache

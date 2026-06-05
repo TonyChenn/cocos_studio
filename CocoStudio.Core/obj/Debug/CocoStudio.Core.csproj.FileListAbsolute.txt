@@ -1,0 +1,2 @@
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Core\obj\Debug\CocoStudio.Core.csproj.AssemblyReference.cache
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Core\obj\Debug\CocoStudio.Core.csproj.CoreCompileInputs.cache

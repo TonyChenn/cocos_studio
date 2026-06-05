@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9751112A-BBBB-4A1C-B265-F23595B23721}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Cocos.Launcher.Control</RootNamespace>
+    <AssemblyName>Cocos.Launcher.Control</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="gdk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="Modules.Communal.MultiLanguage">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\Modules.Communal.MultiLanguage.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Xwt">
+      <HintPath>..\\dlls\\Xwt.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ButtonView.cs" />
+    <Compile Include="CheckboxView.cs" />
+    <Compile Include="ConstantConfig.cs" />
+    <Compile Include="ConstsColor.cs" />
+    <Compile Include="ConstsLink.cs" />
+    <Compile Include="ConstsLinkZhTW.cs" />
+    <Compile Include="ConstsPath.cs" />
+    <Compile Include="ENConstsLink.cs" />
+    <Compile Include="IConstsLink.cs" />
+    <Compile Include="ImageButtonView.cs" />
+    <Compile Include="LinkClickedEventArgs.cs" />
+    <Compile Include="LinkView.cs" />
+    <Compile Include="PlaceholderEntry.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartEnum.cs" />
+    <Compile Include="WebHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23728}</Project>
+      <Name>CocoStudio.Gtk.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoDevelop.Core\MonoDevelop.Core.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23731}</Project>
+      <Name>MonoDevelop.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

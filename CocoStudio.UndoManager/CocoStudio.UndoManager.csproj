@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9751112A-BBBB-4A1C-B265-F23595B2372C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CocoStudio.UndoManager</RootNamespace>
+    <AssemblyName>CocoStudio.UndoManager</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArgumentValidator.cs" />
+    <Compile Include="CancelableEventArgs.cs" />
+    <Compile Include="CollectionUndoTask.cs" />
+    <Compile Include="CompositeException.cs" />
+    <Compile Include="CompositeTask.cs" />
+    <Compile Include="CompositeTaskManager.cs" />
+    <Compile Include="FusePropertyChangeAttribute.cs" />
+    <Compile Include="ICompositeTaskService.cs" />
+    <Compile Include="IEditableDocument.cs" />
+    <Compile Include="IInsertableList.cs" />
+    <Compile Include="INotifyStateChanged.cs" />
+    <Compile Include="ITaskAction.cs" />
+    <Compile Include="ITaskService.cs" />
+    <Compile Include="IUndoManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyUndoTask.cs" />
+    <Compile Include="Recorder\BaseRecorder.cs" />
+    <Compile Include="Recorder\DefaultRecorder.cs" />
+    <Compile Include="Recorder\EmptyRecorder.cs" />
+    <Compile Include="Recorder\IRecordableCallback.cs" />
+    <Compile Include="Recorder\RecorderCreatedEventArgs.cs" />
+    <Compile Include="Recorder\RecorderTaskEventArgs.cs" />
+    <Compile Include="StateChangedEventArgs.cs" />
+    <Compile Include="TaskModel\CancellableTaskServiceEventArgs.cs" />
+    <Compile Include="TaskModel\CompositeTask.cs" />
+    <Compile Include="TaskModel\CompositeUndoableTask.cs" />
+    <Compile Include="TaskModel\IInternalTask.cs" />
+    <Compile Include="TaskModel\IInternalTaskService.cs" />
+    <Compile Include="TaskModel\ITask.cs" />
+    <Compile Include="TaskModel\IUndoableTask.cs" />
+    <Compile Include="TaskModel\Task.cs" />
+    <Compile Include="TaskModel\TaskBase.cs" />
+    <Compile Include="TaskModel\TaskEventArgs.cs" />
+    <Compile Include="TaskModel\TaskMode.cs" />
+    <Compile Include="TaskModel\TaskResult.cs" />
+    <Compile Include="TaskModel\TaskService.cs" />
+    <Compile Include="TaskModel\TaskServiceEventArgs.cs" />
+    <Compile Include="TaskModel\UndoableTask.cs" />
+    <Compile Include="TaskModel\UndoableTaskBase.cs" />
+    <Compile Include="TaskModel\UndoableTaskEventArgs.cs" />
+    <Compile Include="TaskModel\UndoableTask\SequentiallyCompositeUndoableTask.cs" />
+    <Compile Include="TaskServiceLock.cs" />
+    <Compile Include="TaskServiceSingleton.cs" />
+    <Compile Include="UndoPropertyAttribute.cs" />
+    <Compile Include="UndoTask.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

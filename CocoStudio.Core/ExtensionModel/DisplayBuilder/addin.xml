@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ExtensionModel>
+
+  <ExtensionPoint path="CocoStudio/Ide/DisplayBuilder">
+    <ExtensionNode name="Class" >
+      <Description>A display builder.</Description>
+    </ExtensionNode>
+  </ExtensionPoint>
+
+   <Extension path = "CocoStudio/Ide/DisplayBuilder">
+      <Class class = "CocoStudio.Core.View.DefaultViewDisplayBuilder"/>
+   </Extension>
+
+</ExtensionModel>

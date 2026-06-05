@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9751112A-BBBB-4A1C-B265-F23595B2372F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Modules.Communal.MutualEditor</RootNamespace>
+    <AssemblyName>Modules.Communal.MutualEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="gdk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="Modules.Communal.MultiLanguage">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\Modules.Communal.MultiLanguage.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Addins">
+      <HintPath>..\\dlls\\Mono.Addins.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\\dlls\\MonoDevelop.Ide.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Xwt.Gtk">
+      <HintPath>..\\dlls\\Xwt.Gtk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action.cs" />
+    <Compile Include="BaseHandler.cs" />
+    <Compile Include="EditorHandler.cs" />
+    <Compile Include="InitCommand.cs" />
+    <Compile Include="InstallerHandler.cs" />
+    <Compile Include="IUDPHandler.cs" />
+    <Compile Include="LauncherHandler.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="MessageArgs.cs" />
+    <Compile Include="MutualCore.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializersHelper.cs" />
+    <Compile Include="StartInfoService.cs" />
+    <Compile Include="UDPPort.cs" />
+    <Compile Include="UDPSocket.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23726}</Project>
+      <Name>CocoStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23728}</Project>
+      <Name>CocoStudio.Gtk.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372b}</Project>
+      <Name>CocoStudio.Projects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.StartAutoRecover\Modules.Communal.StartAutoRecover.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23730}</Project>
+      <Name>Modules.Communal.StartAutoRecover</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoDevelop.Core\MonoDevelop.Core.csproj">
+      <Project>{9751112a-bbbb-4a1c-b265-f23595b23731}</Project>
+      <Name>MonoDevelop.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

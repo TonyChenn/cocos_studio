@@ -1,0 +1,25 @@
+﻿using System;
+
+namespace OpenDialogs
+{
+	// Token: 0x02000035 RID: 53
+	public enum DialogChangeProperties
+	{
+		// Token: 0x04000102 RID: 258
+		CDM_FIRST = 1124,
+		// Token: 0x04000103 RID: 259
+		CDM_GETSPEC = 1124,
+		// Token: 0x04000104 RID: 260
+		CDM_GETFILEPATH,
+		// Token: 0x04000105 RID: 261
+		CDM_GETFOLDERPATH,
+		// Token: 0x04000106 RID: 262
+		CDM_GETFOLDERIDLIST,
+		// Token: 0x04000107 RID: 263
+		CDM_SETCONTROLTEXT,
+		// Token: 0x04000108 RID: 264
+		CDM_HIDECONTROL,
+		// Token: 0x04000109 RID: 265
+		CDM_SETDEFEXT
+	}
+}

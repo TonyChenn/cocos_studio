@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ExtensionModel>
+
+  <ExtensionPoint path = "/CocoStudio/Core/PlatformService" name = "Platform Service">
+    <Description>Implementations of platform-dependent code wrapped in a platform-agnostic API.</Description>
+    <ExtensionNode name="Class" />
+  </ExtensionPoint>
+
+</ExtensionModel>

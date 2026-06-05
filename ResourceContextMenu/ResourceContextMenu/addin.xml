@@ -1,8 +1,0 @@
-﻿<ExtensionModel>
-  
-  <!--<Extension path = "/CocoStudio/Ide/ResourcePanel/Menu/Context">
-    <MenuItem id="ContextMenu.ExportPlist" label="Dialog_ExportPlist_windowTile" handler="Addins.Sample.ExportPlistMenuHandler"
-              insertafter="Modules.Communal.ResourcePanel.EResourceCmd.CreateSerialFrameCmd" />
-  </Extension>-->
-  
-</ExtensionModel>

@@ -1,0 +1,16 @@
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\CocoStudio.Lib.Prism.dll
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\CocoStudio.Lib.Prism.pdb
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\gtk-sharp.dll
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\glib-sharp.dll
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\atk-sharp.dll
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\gdk-sharp.dll
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\pango-sharp.dll
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\glib-sharp.pdb
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\atk-sharp.pdb
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\gdk-sharp.pdb
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\bin\Debug\pango-sharp.pdb
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\obj\Debug\CocoStudio.Lib.Prism.csproj.AssemblyReference.cache
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\obj\Debug\CocoStudio.Lib.Prism.csproj.CoreCompileInputs.cache
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\obj\Debug\CocoStud.3DE9A8B5.Up2Date
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\obj\Debug\CocoStudio.Lib.Prism.dll
+D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Lib.Prism\obj\Debug\CocoStudio.Lib.Prism.pdb

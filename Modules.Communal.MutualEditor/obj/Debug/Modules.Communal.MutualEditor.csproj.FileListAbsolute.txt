@@ -1,0 +1,2 @@
+D:\CSharpProjects\CocosEngine\cocos_studio\Modules.Communal.MutualEditor\obj\Debug\Modules.Communal.MutualEditor.csproj.AssemblyReference.cache
+D:\CSharpProjects\CocosEngine\cocos_studio\Modules.Communal.MutualEditor\obj\Debug\Modules.Communal.MutualEditor.csproj.CoreCompileInputs.cache
