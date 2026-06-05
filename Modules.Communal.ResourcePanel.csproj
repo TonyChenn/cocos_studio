@@ -86,6 +86,9 @@
     <Reference Include="MonoDevelop.Ide">
       <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Ide.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="pango-sharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
