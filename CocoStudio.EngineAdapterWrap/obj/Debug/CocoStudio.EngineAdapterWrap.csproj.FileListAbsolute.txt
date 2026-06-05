@@ -1,2 +1,0 @@
-D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.EngineAdapterWrap\obj\Debug\CocoStudio.EngineAdapterWrap.csproj.AssemblyReference.cache
-D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.EngineAdapterWrap\obj\Debug\CocoStudio.EngineAdapterWrap.csproj.CoreCompileInputs.cache

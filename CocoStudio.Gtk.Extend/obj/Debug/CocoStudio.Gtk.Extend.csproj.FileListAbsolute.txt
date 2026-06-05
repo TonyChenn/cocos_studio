@@ -1,2 +1,0 @@
-D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Gtk.Extend\obj\Debug\CocoStudio.Gtk.Extend.csproj.AssemblyReference.cache
-D:\CSharpProjects\CocosEngine\cocos_studio\CocoStudio.Gtk.Extend\obj\Debug\CocoStudio.Gtk.Extend.csproj.CoreCompileInputs.cache

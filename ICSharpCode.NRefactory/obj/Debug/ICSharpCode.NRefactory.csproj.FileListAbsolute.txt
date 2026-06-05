@@ -1,2 +1,0 @@
-D:\CSharpProjects\CocosEngine\cocos_studio\ICSharpCode.NRefactory\obj\Debug\ICSharpCode.NRefactory.csproj.AssemblyReference.cache
-D:\CSharpProjects\CocosEngine\cocos_studio\ICSharpCode.NRefactory\obj\Debug\ICSharpCode.NRefactory.csproj.CoreCompileInputs.cache
