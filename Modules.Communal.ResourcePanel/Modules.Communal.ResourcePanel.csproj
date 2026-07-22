@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{65E21E22-4793-47E4-AC65-FA6B8543E58D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Modules.Communal.ResourcePanel</RootNamespace>
+    <AssemblyName>Modules.Communal.ResourcePanel</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="gdk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="atk-sharp" />
+    <Reference Include="Mono.Addins">
+      <HintPath>..\dlls\Mono.Addins.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cairo" />
+    <Reference Include="Mono.Cairo" />
+    <Reference Include="Mono.Posix" />
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="pango-sharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Xwt">
+      <HintPath>..\dlls\Xwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Xwt.Gtk">
+      <HintPath>..\dlls\Xwt.Gtk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Addins\Sample\ExportPlistMenuHandler.cs" />
+    <Compile Include="Addins\Sample\OptionDialog.cs" />
+    <Compile Include="AudioFileBuild.cs" />
+    <Compile Include="CellRenderHelper.cs" />
+    <Compile Include="CocosFileBuild.cs" />
+    <Compile Include="CocosItemBuild.cs" />
+    <Compile Include="CustomCellRendererImage.cs" />
+    <Compile Include="CustomCellRendererText.cs" />
+    <Compile Include="ExtendTreeView.cs" />
+    <Compile Include="FileTypeItem.cs" />
+    <Compile Include="FileTypeItemChangedArgs.cs" />
+    <Compile Include="FileTypeItemGroup.cs" />
+    <Compile Include="FntFileBuild.cs" />
+    <Compile Include="GameFileBuild.cs" />
+    <Compile Include="IconInfo.cs" />
+    <Compile Include="ImageFileBuild.cs" />
+    <Compile Include="ITreeBuild.cs" />
+    <Compile Include="ITreeBuilderContext.cs" />
+    <Compile Include="ITreeNavigator.cs" />
+    <Compile Include="NewFileDialog.cs" />
+    <Compile Include="NodeBuilder.cs" />
+    <Compile Include="NodeBuildes\CodeFileBuild.cs" />
+    <Compile Include="NodeBuildes\ExtendNodeBuildes\Sprite3DBuild.cs" />
+    <Compile Include="NodeHashtable.cs" />
+    <Compile Include="NodeInfo.cs" />
+    <Compile Include="PlistCocosFileBuild.cs" />
+    <Compile Include="PlistImageFileBuild.cs" />
+    <Compile Include="PlistImageFloderBuild.cs" />
+    <Compile Include="PlistParticleFileBuild.cs" />
+    <Compile Include="PreviewControl.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceFileBuild.cs" />
+    <Compile Include="ResourceFolderBuild.cs" />
+    <Compile Include="ResourceItemBuild.cs" />
+    <Compile Include="ResourceMenu.cs" />
+    <Compile Include="ResourceMenuHandlers.cs" />
+    <Compile Include="ResourcePad.cs" />
+    <Compile Include="ResourcePanelExtensionAttribute.cs" />
+    <Compile Include="ResourcePanelExtensionNode.cs" />
+    <Compile Include="ResourcePanelManager.cs" />
+    <Compile Include="ResourceTreeBuilder.cs" />
+    <Compile Include="ResourceTreeView.cs" />
+    <Compile Include="ResourceWidget.cs" />
+    <Compile Include="SolutionBuild.cs" />
+    <Compile Include="StaticVariable.cs" />
+    <Compile Include="Stetic\ActionGroups.cs" />
+    <Compile Include="Stetic\BinContainer.cs" />
+    <Compile Include="Stetic\Gui.cs" />
+    <Compile Include="TmxFileBuild.cs" />
+    <Compile Include="TreeBuilderContext.cs" />
+    <Compile Include="UnknowGameSceneBuild.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gui.stetic" />
+    <EmbeddedResource Include="Images\Close.png" />
+    <EmbeddedResource Include="Images\Close@2x.png" />
+    <EmbeddedResource Include="Images\commonFile.png" />
+    <EmbeddedResource Include="Images\commonFile@2x.png" />
+    <EmbeddedResource Include="Images\commonFolder.png" />
+    <EmbeddedResource Include="Images\commonFolder@2x.png" />
+    <EmbeddedResource Include="Images\file.png" />
+    <EmbeddedResource Include="Images\file@2x.png" />
+    <EmbeddedResource Include="Images\fntFile.png" />
+    <EmbeddedResource Include="Images\fntFile@2x.png" />
+    <EmbeddedResource Include="Images\folder.png" />
+    <EmbeddedResource Include="Images\folder@2x.png" />
+    <EmbeddedResource Include="Images\plistFile.png" />
+    <EmbeddedResource Include="Images\plistFile@2x.png" />
+    <EmbeddedResource Include="Images\plistFolder.png" />
+    <EmbeddedResource Include="Images\plistFolder@2x.png" />
+    <EmbeddedResource Include="Images\plistinfoFile.png" />
+    <EmbeddedResource Include="Images\plistinfoFile@2x.png" />
+    <EmbeddedResource Include="Images\psdFile.png" />
+    <EmbeddedResource Include="Images\psdFile@2x.png" />
+    <EmbeddedResource Include="Images\psdFolder.png" />
+    <EmbeddedResource Include="Images\psdFolder@2x.png" />
+    <EmbeddedResource Include="Images\refresh.png" />
+    <EmbeddedResource Include="Images\refresh@2x.png" />
+    <EmbeddedResource Include="Menu\addin.xml" />
+    <EmbeddedResource Include="Pad\addin.xml" />
+    <EmbeddedResource Include="ResourceContextMenu\gtk_gui\gui.stetic" />
+    <EmbeddedResource Include="ResourceContextMenu\ResourceContextMenu\addin.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.ControlLib\CocoStudio.ControlLib.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23725}</Project>
+      <Name>CocoStudio.ControlLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23726}</Project>
+      <Name>CocoStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23728}</Project>
+      <Name>CocoStudio.Gtk.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Lib.Prism\CocoStudio.Lib.Prism.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23729}</Project>
+      <Name>CocoStudio.Lib.Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF91}</Project>
+      <Name>CocoStudio.Model.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372B}</Project>
+      <Name>CocoStudio.Projects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.UndoManager\CocoStudio.UndoManager.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372C}</Project>
+      <Name>CocoStudio.UndoManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.UserStatistics\CocoStudio.UserStatistics.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372D}</Project>
+      <Name>CocoStudio.UserStatistics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ICSharpCode.NRefactory\ICSharpCode.NRefactory.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372E}</Project>
+      <Name>ICSharpCode.NRefactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.MultiLanguage\Modules.Communal.MultiLanguage.csproj">
+      <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
+      <Name>Modules.Communal.MultiLanguage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Model\CocoStudio.Model.csproj">
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF92}</Project>
+      <Name>CocoStudio.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modules.Communal.Packer\Modules.Communal.Packer.csproj">
+      <Project>{63CB54F8-9358-4C89-923E-2DDC289510C3}</Project>
+      <Name>Modules.Communal.Packer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

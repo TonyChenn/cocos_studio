@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63CB54F8-9358-4C89-923E-2DDC289510C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Modules.Communal.PList</RootNamespace>
+    <AssemblyName>Modules.Communal.PList</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Internal\PListBinaryReader.cs" />
+    <Compile Include="Internal\PListBinaryWriter.cs" />
+    <Compile Include="Internal\PListElement.cs" />
+    <Compile Include="Internal\PListElementFactory.cs" />
+    <Compile Include="IPListElement.cs" />
+    <Compile Include="PListArray.cs" />
+    <Compile Include="PListBool.cs" />
+    <Compile Include="PListData.cs" />
+    <Compile Include="PListDate.cs" />
+    <Compile Include="PListDict.cs" />
+    <Compile Include="PListException.cs" />
+    <Compile Include="PListFill.cs" />
+    <Compile Include="PListFormat.cs" />
+    <Compile Include="PListFormatException.cs" />
+    <Compile Include="PListInteger.cs" />
+    <Compile Include="PListNull.cs" />
+    <Compile Include="PListReal.cs" />
+    <Compile Include="PListRoot.cs" />
+    <Compile Include="PListString.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

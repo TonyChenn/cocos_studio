@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoDevelop.Core">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Core.dll</HintPath>
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -100,9 +100,10 @@
       <Project>{9751112A-BBBB-4A1C-B265-F23595B2372F}</Project>
       <Name>Modules.Communal.MutualEditor</Name>
     </ProjectReference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\ICSharpCode.NRefactory\ICSharpCode.NRefactory.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372E}</Project>
+      <Name>ICSharpCode.NRefactory</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

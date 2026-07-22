@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE2E6DCF-B30D-4A03-BF56-67765709CF92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CocoStudio.Model</RootNamespace>
+    <AssemblyName>CocoStudio.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CocoStudio.DefaultResource">
+      <HintPath>..\dlls\CocoStudio.DefaultResource.dll</HintPath>
+    </Reference>
+    <Reference Include="gdk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="ICSharpCode.NRefactory, Version=5.0.0.0, Culture=neutral, PublicKeyToken=d4bfe873e7598c49">
+      <HintPath>..\dlls\ICSharpCode.NRefactory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Addins">
+      <HintPath>..\dlls\Mono.Addins.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cairo" />
+    <Reference Include="Mono.Cairo" />
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Xwt">
+      <HintPath>..\dlls\Xwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Xwt.Gtk">
+      <HintPath>..\dlls\Xwt.Gtk.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseProjectFileTemplate.cs" />
+    <Compile Include="CanvasSizes.cs" />
+    <Compile Include="Command\CommandHandles.cs" />
+    <Compile Include="ControlGroupAttribute.cs" />
+    <Compile Include="DataModel\AbstractNodeObjectData.cs" />
+    <Compile Include="DataModel\ActionTagManager.cs" />
+    <Compile Include="DataModel\AnimationInfoData.cs" />
+    <Compile Include="DataModel\BaseObjectData.cs" />
+    <Compile Include="DataModel\BlendFuncFrameData.cs" />
+    <Compile Include="DataModel\BoolFrameData.cs" />
+    <Compile Include="DataModel\ButtonObjectData.cs" />
+    <Compile Include="DataModel\CameraData.cs" />
+    <Compile Include="DataModel\CheckBoxObjectData.cs" />
+    <Compile Include="DataModel\ColorData.cs" />
+    <Compile Include="DataModel\ColorFrameData.cs" />
+    <Compile Include="DataModel\DataTypeCache.cs" />
+    <Compile Include="DataModel\EventFrameData.cs" />
+    <Compile Include="DataModel\FileNodeObjectData.cs" />
+    <Compile Include="DataModel\FloatFrameData.cs" />
+    <Compile Include="DataModel\FrameData.cs" />
+    <Compile Include="DataModel\FrameDataEqualHelper.cs" />
+    <Compile Include="DataModel\GameFileBinding.cs" />
+    <Compile Include="DataModel\GameFileContent.cs" />
+    <Compile Include="DataModel\GameFileData.cs" />
+    <Compile Include="DataModel\GameFileLoader.cs" />
+    <Compile Include="DataModel\GameFileLoadResult.cs" />
+    <Compile Include="DataModel\GameFileUpgrader.cs" />
+    <Compile Include="DataModel\GameFileUpgrader_206.cs" />
+    <Compile Include="DataModel\GameFileUpgrader_208.cs" />
+    <Compile Include="DataModel\GameFileUpgrader_221.cs" />
+    <Compile Include="DataModel\GameLayerObjectData.cs" />
+    <Compile Include="DataModel\GameMapObjectData.cs" />
+    <Compile Include="DataModel\GameNodeObjectData.cs" />
+    <Compile Include="DataModel\GuidesData.cs" />
+    <Compile Include="DataModel\IDataConvert.cs" />
+    <Compile Include="DataModel\IDataInitialize.cs" />
+    <Compile Include="DataModel\IFrameDataLuaExtend.cs" />
+    <Compile Include="DataModel\ImageViewObjectData.cs" />
+    <Compile Include="DataModel\InnerActionFrameData.cs" />
+    <Compile Include="DataModel\IntFrameData.cs" />
+    <Compile Include="DataModel\LayerObjectData.cs" />
+    <Compile Include="DataModel\ListViewObjectData.cs" />
+    <Compile Include="DataModel\LoadingBarObjectData.cs" />
+    <Compile Include="DataModel\NodeObjectData.cs" />
+    <Compile Include="DataModel\NodeType.cs" />
+    <Compile Include="DataModel\PageViewObjectData.cs" />
+    <Compile Include="DataModel\PanelObjectData.cs" />
+    <Compile Include="DataModel\ParticleObjectData.cs" />
+    <Compile Include="DataModel\PointFrameData.cs" />
+    <Compile Include="DataModel\PropertyAccessorHandler.cs" />
+    <Compile Include="DataModel\ScaleValueFrameData.cs" />
+    <Compile Include="DataModel\ScrollViewObjectData.cs" />
+    <Compile Include="DataModel\SimpleAudioObjectData.cs" />
+    <Compile Include="DataModel\SingleNodeObjectData.cs" />
+    <Compile Include="DataModel\SliderObjectData.cs" />
+    <Compile Include="DataModel\SpriteObjectData.cs" />
+    <Compile Include="DataModel\StringFrameData.cs" />
+    <Compile Include="DataModel\TextAtlasObjectData.cs" />
+    <Compile Include="DataModel\TextBMFontObjectData.cs" />
+    <Compile Include="DataModel\TextFieldObjectData.cs" />
+    <Compile Include="DataModel\TextObjectData.cs" />
+    <Compile Include="DataModel\TextureFrameData.cs" />
+    <Compile Include="DataModel\TimelineActionData.cs" />
+    <Compile Include="DataModel\TimelineData.cs" />
+    <Compile Include="DataModel\Upgrade\GameFileUpgrader_231.cs" />
+    <Compile Include="DataModel\VisualObjectData.cs" />
+    <Compile Include="DataModel\WidgetObjectData.cs" />
+    <Compile Include="DragOperation.cs" />
+    <Compile Include="DragOperation2D.cs" />
+    <Compile Include="EditorController\AtlasCharWidthController.cs" />
+    <Compile Include="EditorController\Base2DController.cs" />
+    <Compile Include="EditorController\Controller2DService.cs" />
+    <Compile Include="EditorController\ListViewController.cs" />
+    <Compile Include="EditorController\OperationModeController.cs" />
+    <Compile Include="EditorController\OutlineController.cs" />
+    <Compile Include="EditorController\PanelColorController.cs" />
+    <Compile Include="EditorController\PropertyNodeFilter.cs" />
+    <Compile Include="EditorController\ShadowController.cs" />
+    <Compile Include="EditorController\SizeController.cs" />
+    <Compile Include="EditorController\SwitchBtnController.cs" />
+    <Compile Include="Editor\AnchorPointEditor.cs" />
+    <Compile Include="Editor\AnimateListEditor.cs" />
+    <Compile Include="Editor\BlendFuncEditor.cs" />
+    <Compile Include="Editor\CallBackPropertyEditor.cs" />
+    <Compile Include="Editor\CallBackPropertyRootEditor.cs" />
+    <Compile Include="Editor\ChangeUnitButton.cs" />
+    <Compile Include="Editor\CheckBoxEditor.cs" />
+    <Compile Include="Editor\CheckBoxValue.cs" />
+    <Compile Include="Editor\CurrentRange.cs" />
+    <Compile Include="Editor\EntryTextViewEditor.cs" />
+    <Compile Include="Editor\FilpEditor.cs" />
+    <Compile Include="Editor\FilpValue.cs" />
+    <Compile Include="Editor\FixZoomDrawArea.cs" />
+    <Compile Include="Editor\FixZoomEditor.cs" />
+    <Compile Include="Editor\FixZoomEventArgs.cs" />
+    <Compile Include="Editor\FixZoomEventBox.cs" />
+    <Compile Include="Editor\FixZoomRectangle.cs" />
+    <Compile Include="Editor\HBoxProp2D.cs" />
+    <Compile Include="Editor\ImageEventBox.cs" />
+    <Compile Include="Editor\LayerSizeEditor.cs" />
+    <Compile Include="Editor\LengthLimitEditor.cs" />
+    <Compile Include="Editor\MultipleComboxEditor.cs" />
+    <Compile Include="Editor\NumberEntryEditor.cs" />
+    <Compile Include="Editor\OutlineEnableEditor.cs" />
+    <Compile Include="Editor\PasswordEditor.cs" />
+    <Compile Include="Editor\PlayControlEditor.cs" />
+    <Compile Include="Editor\PlayControlWidget.cs" />
+    <Compile Include="Editor\PointFEditor.cs" />
+    <Compile Include="Editor\PositionEditor.cs" />
+    <Compile Include="Editor\PropertyColorEditor.cs" />
+    <Compile Include="Editor\ResourceFileBaseEditor.cs" />
+    <Compile Include="Editor\ResourceFileEditor.cs" />
+    <Compile Include="Editor\ResourceFilterAttributeExtend.cs" />
+    <Compile Include="Editor\ResourceGroupEditor.cs" />
+    <Compile Include="Editor\ResourceImageEditor.cs" />
+    <Compile Include="Editor\RotationEditor.cs" />
+    <Compile Include="Editor\Scale9DrawingArea.cs" />
+    <Compile Include="Editor\Scale9Editor.cs" />
+    <Compile Include="Editor\Scale9EventArgs.cs" />
+    <Compile Include="Editor\Scale9EventBox.cs" />
+    <Compile Include="Editor\ScaleEditor.cs" />
+    <Compile Include="Editor\ScrollAreaSizeEditor.cs" />
+    <Compile Include="Editor\ShadowOffsetEditor.cs" />
+    <Compile Include="Editor\SizeValue.cs" />
+    <Compile Include="Editor\SkewEditor.cs" />
+    <Compile Include="Editor\SliderEditor.cs" />
+    <Compile Include="Editor\UISizeEditor.cs" />
+    <Compile Include="Editor\ValidTextEditor.cs" />
+    <Compile Include="EnumModelType.cs" />
+    <Compile Include="Event\AdjustRenderOrderEvent.cs" />
+    <Compile Include="Event\AdjustRenderOrderEventArgs.cs" />
+    <Compile Include="Event\AlignVisualObjectsEvent.cs" />
+    <Compile Include="Event\CanvasSizeChangeEvent.cs" />
+    <Compile Include="Event\CanvasSizeChangeEventArgs.cs" />
+    <Compile Include="Event\CanvasZoomChangeEvent.cs" />
+    <Compile Include="Event\CanvasZoomChangeEventArgs.cs" />
+    <Compile Include="Event\CopyVisualObjectsEvent.cs" />
+    <Compile Include="Event\CreateSerialFrameEvent.cs" />
+    <Compile Include="Event\CreateSerialFrameEventArgs.cs" />
+    <Compile Include="Event\CutVisualObjectsEvent.cs" />
+    <Compile Include="Event\DeleteVisualObjectsEvent.cs" />
+    <Compile Include="Event\MoveOrderType.cs" />
+    <Compile Include="Event\OutputInfoEvent.cs" />
+    <Compile Include="Event\OutputInfoEventArgs.cs" />
+    <Compile Include="Event\PasteObjectsChangeEventArgs.cs" />
+    <Compile Include="Event\PasteVisualObjectsEvent.cs" />
+    <Compile Include="Event\RenderEngineLoadedEvent.cs" />
+    <Compile Include="Event\RenderEngineLoadedEventArgs.cs" />
+    <Compile Include="Event\SelectedVisualObjectsChangeEvent.cs" />
+    <Compile Include="Event\SelectedVisualObjectsChangeEventArgs.cs" />
+    <Compile Include="ExtensionModel\BaseModelScanner.cs" />
+    <Compile Include="ExtensionModel\CsdToJsonConvertor.cs" />
+    <Compile Include="ExtensionModel\FlatbufSerializer.cs" />
+    <Compile Include="ExtensionModel\FloatJsonConvert.cs" />
+    <Compile Include="ExtensionModel\FrameExtensionAttribute.cs" />
+    <Compile Include="ExtensionModel\FrameExtensionNode.cs" />
+    <Compile Include="ExtensionModel\FrameTypeManager.cs" />
+    <Compile Include="ExtensionModel\IModelScanner.cs" />
+    <Compile Include="ExtensionModel\JsonSerializer.cs" />
+    <Compile Include="ExtensionModel\ProtobufSerializer.cs" />
+    <Compile Include="ExtensionModel\ViewModel\DefaultModelScanner.cs" />
+    <Compile Include="HorizontalBerthEdge.cs" />
+    <Compile Include="IBlendFunc.cs" />
+    <Compile Include="IFlipped.cs" />
+    <Compile Include="ILabelEffect.cs" />
+    <Compile Include="ILayoutMargin.cs" />
+    <Compile Include="IListViewType.cs" />
+    <Compile Include="Interface\ICallBackEvent.cs" />
+    <Compile Include="Interface\IDragOperation.cs" />
+    <Compile Include="Interface\ITimeline.cs" />
+    <Compile Include="IPlayControl.cs" />
+    <Compile Include="IProjectFileCreator.cs" />
+    <Compile Include="IProjectFileRenderView.cs" />
+    <Compile Include="IResetSize.cs" />
+    <Compile Include="IScale9.cs" />
+    <Compile Include="ISizeType.cs" />
+    <Compile Include="IStretchSize.cs" />
+    <Compile Include="LabelTooltipEditor.cs" />
+    <Compile Include="ListViewDirectionType.cs" />
+    <Compile Include="ListViewHorizontal.cs" />
+    <Compile Include="ListViewVertical.cs" />
+    <Compile Include="ModelDragData.cs" />
+    <Compile Include="ModelExtensionAttribute.cs" />
+    <Compile Include="ModelExtensionNode.cs" />
+    <Compile Include="ModelManager.cs" />
+    <Compile Include="ModelMetaData.cs" />
+    <Compile Include="ProjectFileTemplateService.cs" />
+    <Compile Include="ProjectFileView\LayerProjectFileTemplate.cs" />
+    <Compile Include="ProjectFileView\NodeProjectFileTemplate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceItemData.cs" />
+    <Compile Include="SceneProjectFileTemplate.cs" />
+    <Compile Include="VerticalBerthEdge.cs" />
+    <Compile Include="ViewModel\AbstractNodeObject.cs" />
+    <Compile Include="ViewModel\AnimateStatesArgs.cs" />
+    <Compile Include="ViewModel\AnimationInfo.cs" />
+    <Compile Include="ViewModel\AnimationInfoChangedHandler.cs" />
+    <Compile Include="ViewModel\AnimationPlayHandler.cs" />
+    <Compile Include="ViewModel\AstrictLengthValue.cs" />
+    <Compile Include="ViewModel\BaseExtender.cs" />
+    <Compile Include="ViewModel\BaseObject.cs" />
+    <Compile Include="ViewModel\BillBoardMode.cs" />
+    <Compile Include="ViewModel\BlendFuncFrame.cs" />
+    <Compile Include="ViewModel\BoolFrame.cs" />
+    <Compile Include="ViewModel\ButtonObject.cs" />
+    <Compile Include="ViewModel\CameraFlag.cs" />
+    <Compile Include="ViewModel\CameraObject.cs" />
+    <Compile Include="ViewModel\CanvasObject.cs" />
+    <Compile Include="ViewModel\CheckBoxObject.cs" />
+    <Compile Include="ViewModel\ColorFrame.cs" />
+    <Compile Include="ViewModel\CompositeExtender.cs" />
+    <Compile Include="ViewModel\CurrentFrameIndexChangedHandler.cs" />
+    <Compile Include="ViewModel\DragOperationManager.cs" />
+    <Compile Include="ViewModel\DrawNodeObject.cs" />
+    <Compile Include="ViewModel\EasingValue.cs" />
+    <Compile Include="ViewModel\EBlendDst.cs" />
+    <Compile Include="ViewModel\EBlendSrc.cs" />
+    <Compile Include="ViewModel\EventFrame.cs" />
+    <Compile Include="ViewModel\ExtenderFactory.cs" />
+    <Compile Include="ViewModel\FileNodeObject.cs" />
+    <Compile Include="ViewModel\FloatFrame.cs" />
+    <Compile Include="ViewModel\Frame.cs" />
+    <Compile Include="ViewModel\FrameChangeTimelineRenderArgs.cs" />
+    <Compile Include="ViewModel\FrameCollection.cs" />
+    <Compile Include="ViewModel\FrameComparer.cs" />
+    <Compile Include="ViewModel\FrameIndexChangedEventArgs.cs" />
+    <Compile Include="ViewModel\GameFileNest.cs" />
+    <Compile Include="ViewModel\GameLayerObject.cs" />
+    <Compile Include="ViewModel\GameMapObject.cs" />
+    <Compile Include="ViewModel\GameNodeObject.cs" />
+    <Compile Include="ViewModel\GameWindow.cs" />
+    <Compile Include="ViewModel\GuidesList.cs" />
+    <Compile Include="ViewModel\GuidesObject.cs" />
+    <Compile Include="ViewModel\GUIType.cs" />
+    <Compile Include="ViewModel\HandlerFrame.cs" />
+    <Compile Include="ViewModel\HitTest\BaseTestResult.cs" />
+    <Compile Include="ViewModel\HitTest\ControlPointType.cs" />
+    <Compile Include="ViewModel\HitTest\HitTestResult.cs" />
+    <Compile Include="ViewModel\HitTest\MouseOperationType.cs" />
+    <Compile Include="ViewModel\HitTest\RectTestResult.cs" />
+    <Compile Include="ViewModel\IDisplayState.cs" />
+    <Compile Include="ViewModel\IgnoreResizeAttribute.cs" />
+    <Compile Include="ViewModel\IInnerActoinNode.cs" />
+    <Compile Include="ViewModel\ImageViewObject.cs" />
+    <Compile Include="ViewModel\InnerActionFrame.cs" />
+    <Compile Include="ViewModel\InnerActionType.cs" />
+    <Compile Include="ViewModel\InnerActionValue.cs" />
+    <Compile Include="ViewModel\Input\MouseWheelEventArgs.cs" />
+    <Compile Include="ViewModel\IntFrame.cs" />
+    <Compile Include="ViewModel\IResourceObject.cs" />
+    <Compile Include="ViewModel\LayoutExtender.cs" />
+    <Compile Include="ViewModel\LayoutRefrencePoint.cs" />
+    <Compile Include="ViewModel\LayoutRefreshAttribute.cs" />
+    <Compile Include="ViewModel\LightFlag.cs" />
+    <Compile Include="ViewModel\LightType.cs" />
+    <Compile Include="ViewModel\ListViewObject.cs" />
+    <Compile Include="ViewModel\LoadingBarDirectionType.cs" />
+    <Compile Include="ViewModel\LoadingBarObject.cs" />
+    <Compile Include="ViewModel\MouseEventArgs.cs" />
+    <Compile Include="ViewModel\NodeCollection.cs" />
+    <Compile Include="ViewModel\NodeObject.cs" />
+    <Compile Include="ViewModel\NotificationObject.cs" />
+    <Compile Include="ViewModel\PageViewObject.cs" />
+    <Compile Include="ViewModel\PanelColorFillType.cs" />
+    <Compile Include="ViewModel\PanelObject.cs" />
+    <Compile Include="ViewModel\ParticleObject.cs" />
+    <Compile Include="ViewModel\PasswordValue.cs" />
+    <Compile Include="ViewModel\PointFrame.cs" />
+    <Compile Include="ViewModel\PropertySupport.cs" />
+    <Compile Include="ViewModel\RenderFrameIndexChangedEventArgs.cs" />
+    <Compile Include="ViewModel\ResourceExtender.cs" />
+    <Compile Include="ViewModel\ScaleValueFrame.cs" />
+    <Compile Include="ViewModel\SceneObject.cs" />
+    <Compile Include="ViewModel\ScrollViewDirectionType.cs" />
+    <Compile Include="ViewModel\ScrollViewObject.cs" />
+    <Compile Include="ViewModel\SimpleAudioObject.cs" />
+    <Compile Include="ViewModel\SingleNodeObject.cs" />
+    <Compile Include="ViewModel\SliderObject.cs" />
+    <Compile Include="ViewModel\SpeedChangedArgs.cs" />
+    <Compile Include="ViewModel\SpriteObject.cs" />
+    <Compile Include="ViewModel\StringFrame.cs" />
+    <Compile Include="ViewModel\TextAtlasObject.cs" />
+    <Compile Include="ViewModel\TextBMFontObject.cs" />
+    <Compile Include="ViewModel\TextFieldObject.cs" />
+    <Compile Include="ViewModel\TextHorizontalType.cs" />
+    <Compile Include="ViewModel\TextObject.cs" />
+    <Compile Include="ViewModel\TextureFrame.cs" />
+    <Compile Include="ViewModel\TextureFrameExtender.cs" />
+    <Compile Include="ViewModel\TextVerticalType.cs" />
+    <Compile Include="ViewModel\Timeline.cs" />
+    <Compile Include="ViewModel\TimelineAction.cs" />
+    <Compile Include="ViewModel\TimelineActionManager.cs" />
+    <Compile Include="ViewModel\TimelineDurationChangedEventArgs.cs" />
+    <Compile Include="ViewModel\TimelineUndoManager.cs" />
+    <Compile Include="ViewModel\TweenType.cs" />
+    <Compile Include="ViewModel\UISizeType.cs" />
+    <Compile Include="ViewModel\UserCameraPreviewObject.cs" />
+    <Compile Include="ViewModel\ViewObjectCategory.cs" />
+    <Compile Include="ViewModel\ViewOrder.cs" />
+    <Compile Include="ViewModel\VisualObject.cs" />
+    <Compile Include="ViewModel\WidgetObject.cs" />
+    <Compile Include="Visiter\GameFileVisiter.cs" />
+    <Compile Include="Window\WindowHelp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PostSharp.ImplementationDetails_c065fe4d.EnhancedByPostSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">
+      <Project>{ae2e6dcf-b30d-4a03-bf56-67765709cf91}</Project>
+      <Name>CocoStudio.Model.Basic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23726}</Project>
+      <Name>CocoStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.EngineAdapterWrap\CocoStudio.EngineAdapterWrap.csproj">
+      <Project>{C16A1C9E-99C2-4D23-9503-017E93CBD07F}</Project>
+      <Name>CocoStudio.EngineAdapterWrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23728}</Project>
+      <Name>CocoStudio.Gtk.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Lib.Prism\CocoStudio.Lib.Prism.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23729}</Project>
+      <Name>CocoStudio.Lib.Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372B}</Project>
+      <Name>CocoStudio.Projects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.UndoManager\CocoStudio.UndoManager.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372C}</Project>
+      <Name>CocoStudio.UndoManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.UserStatistics\CocoStudio.UserStatistics.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372D}</Project>
+      <Name>CocoStudio.UserStatistics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.MultiLanguage\Modules.Communal.MultiLanguage.csproj">
+      <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
+      <Name>Modules.Communal.MultiLanguage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modules.Communal.PropertyGrid\Modules.Communal.PropertyGrid.csproj">
+      <Project>{63CB54F8-9358-4C89-923E-2DDC289510C8}</Project>
+      <Name>Modules.Communal.PropertyGrid</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

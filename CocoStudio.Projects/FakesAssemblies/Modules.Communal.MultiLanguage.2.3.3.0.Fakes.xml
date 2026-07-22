@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Modules.Communal.MultiLanguage.2.3.3.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter">
+            <summary>Modules.Communal.MultiLanguage.LanguageAdapter 的填充码类型</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.CheckIsServerSurportedLanguageType">
+            <summary>设置 LanguageAdapter.CheckIsServerSurported(LanguageType language) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.GetCurrentNameEnumNameFormatBoolean">
+            <summary>设置 LanguageAdapter.GetCurrentName(EnumNameFormat format, Boolean isUsedInServer) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.GetDefaultFontSize">
+            <summary>设置 LanguageAdapter.GetDefaultFontSize() 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.GetLocalizedUrlString">
+            <summary>设置 LanguageAdapter.GetLocalizedUrl(String urlFormat) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageAdapter.GetNameLanguageTypeEnumNameFormat">
+            <summary>设置 LanguageAdapter.GetName(LanguageType language, EnumNameFormat format) 的 填充码</summary>
+        </member>
+        <member name="T:Modules.Communal.MultiLanguage.Fakes.ShimLanguageInfo">
+            <summary>Modules.Communal.MultiLanguage.LanguageInfo 的填充码类型</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageInfo.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageInfo.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageInfo.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageInfo.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageInfo.StaticConstructor">
+            <summary>设置 LanguageInfo.LanguageInfo() 的 填充码</summary>
+        </member>
+        <member name="T:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption">
+            <summary>Modules.Communal.MultiLanguage.LanguageOption 的填充码类型</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.#ctor">
+            <summary>初始化新的填充码实例</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.BehaveAsCurrent">
+            <summary>为已填充的类型的所有方法分配“Current”行为</summary>
+        </member>
+        <member name="M:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.BehaveAsNotImplemented">
+            <summary>为已填充的类型的所有方法分配“NotImplemented”行为</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.Behavior">
+            <summary>为已填充的类型的所有方法分配行为</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.CreateLanguageDictonaryString">
+            <summary>设置 LanguageOption.CreateLanguageDictonary(String xmlFilePath) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.CreateXmlItemStringString">
+            <summary>设置 LanguageOption.CreateXmlItem(String key, String value) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.CurrentLanguageGet">
+            <summary>设置 LanguageOption.get_CurrentLanguage() 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.CurrentLanguageSetLanguageType">
+            <summary>设置 LanguageOption.set_CurrentLanguage(LanguageType value) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.GetDefaultLanguage">
+            <summary>设置 LanguageOption.GetDefaultLanguage() 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.GetLanguageFromOldConfigFile">
+            <summary>设置 LanguageOption.GetLanguageFromOldConfigFile() 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.GetMarkFromTypeLanguageType">
+            <summary>设置 LanguageOption.GetMarkFromType(LanguageType type) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.GetValueBykeyString">
+            <summary>设置 LanguageOption.GetValueBykey(String key) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.GetXmlFilePathLanguageType">
+            <summary>设置 LanguageOption.GetXmlFilePath(LanguageType languageType) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.Init">
+            <summary>设置 LanguageOption.Init() 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.InitLanguageType">
+            <summary>设置 LanguageOption.Init(LanguageType languageType) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.SetEditorLanguageLanguageType">
+            <summary>设置 LanguageOption.SetEditorLanguage(LanguageType languageType) 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.StaticConstructor">
+            <summary>设置 LanguageOption.LanguageOption() 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.WriteChineseXml">
+            <summary>设置 LanguageOption.WriteChineseXml() 的 填充码</summary>
+        </member>
+        <member name="P:Modules.Communal.MultiLanguage.Fakes.ShimLanguageOption.WriteLanguageXmlLanguageType">
+            <summary>设置 LanguageOption.WriteLanguageXml(LanguageType type) 的 填充码</summary>
+        </member>
+    </members>
+</doc>

@@ -362,8 +362,7 @@ namespace CocoStudio.Core.View
 				IViewDisplayBuilder viewDisplayBuilder;
 				if (openFileInfo.DisplayBuilder != null)
 				{
-					displayBuilder = openFileInfo.DisplayBuilder;
-					viewDisplayBuilder = (displayBuilder as IViewDisplayBuilder);
+					viewDisplayBuilder = (IViewDisplayBuilder)(displayBuilder = openFileInfo.DisplayBuilder);
 				}
 				else
 				{

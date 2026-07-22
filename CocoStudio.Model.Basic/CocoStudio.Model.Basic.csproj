@@ -4,13 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9751112A-BBBB-4A1C-B265-F23595B2372A}</ProjectGuid>
+    <ProjectGuid>{AE2E6DCF-B30D-4A03-BF56-67765709CF91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>CocoStudio.Model</RootNamespace>
     <AssemblyName>CocoStudio.Model.Basic</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,15 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="gdk-sharp" />
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\\dlls\\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\dlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="MonoDevelop.Core">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
@@ -75,7 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23724}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
       <Name>CocoStudio.Basic</Name>
     </ProjectReference>
   </ItemGroup>

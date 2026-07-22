@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -52,28 +52,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cocos.Launcher.Resource">
-      <HintPath>..\\dlls\\Cocos.Launcher.Resource.dll</HintPath>
+      <HintPath>..\dlls\Cocos.Launcher.Resource.dll</HintPath>
     </Reference>
     <Reference Include="CocoStudio.DefaultResource">
-      <HintPath>..\\dlls\\CocoStudio.DefaultResource.dll</HintPath>
+      <HintPath>..\dlls\CocoStudio.DefaultResource.dll</HintPath>
     </Reference>
     <Reference Include="gdk-sharp" />
     <Reference Include="glib-sharp" />
     <Reference Include="gtk-sharp" />
     <Reference Include="atk-sharp" />
-    <Reference Include="Modules.Communal.MultiLanguage">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\Modules.Communal.MultiLanguage.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Cairo" />
     <Reference Include="Mono.Cairo" />
     <Reference Include="Mono.Posix">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\MonoBleedingEdge\lib\mono\4.8-api\Mono.Posix.dll</HintPath>
+      <HintPath>..\dlls\Mono.Posix.dll</HintPath>
     </Reference>
     <Reference Include="Mono.TextEditor">
-      <HintPath>..\\dlls\\Mono.TextEditor.dll</HintPath>
+      <HintPath>..\dlls\Mono.TextEditor.dll</HintPath>
     </Reference>
     <Reference Include="MonoDevelop.Ide">
-      <HintPath>..\\dlls\\MonoDevelop.Ide.dll</HintPath>
+      <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
     </Reference>
     <Reference Include="pango-sharp" />
     <Reference Include="System" />
@@ -81,18 +78,18 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="Xamarin.Mac">
-      <HintPath>..\\dlls\\Xamarin.Mac.dll</HintPath>
+      <HintPath>..\dlls\Xamarin.Mac.dll</HintPath>
     </Reference>
     <Reference Include="Xwt">
-      <HintPath>..\\dlls\\Xwt.dll</HintPath>
+      <HintPath>..\dlls\Xwt.dll</HintPath>
     </Reference>
     <Reference Include="Xwt.Gtk">
-      <HintPath>..\\dlls\\Xwt.Gtk.dll</HintPath>
+      <HintPath>..\dlls\Xwt.Gtk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoDevelop.Core">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Core.dll</HintPath>
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -280,16 +277,21 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23724}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
       <Name>CocoStudio.Basic</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372a}</Project>
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF91}</Project>
       <Name>CocoStudio.Model.Basic</Name>
     </ProjectReference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Modules.Communal.MultiLanguage\Modules.Communal.MultiLanguage.csproj">
+      <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
+      <Name>Modules.Communal.MultiLanguage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ICSharpCode.NRefactory\ICSharpCode.NRefactory.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372E}</Project>
+      <Name>ICSharpCode.NRefactory</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

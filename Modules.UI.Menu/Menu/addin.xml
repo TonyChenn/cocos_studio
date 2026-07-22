@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionModel>
+
+  <Extension path = "/CocoStudio/Ide/MainMenu">
+
+    <Condition id="Platform" value="mac">
+      <MenuSet id="Mac" label="Cocos Studio">
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.AboutCmd" isInternal="true"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.CheckUpdateCmd" isInternal="true"/>
+        <SeparatorItem id="MacAboutSeparator"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.PreferencesCmd" isInternal="true"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.HelpCmd" isInternal="true"/>
+        <SeparatorItem id="MacQuitSeparator"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.QuitCmd" isInternal="true"/>
+      </MenuSet>
+    </Condition>
+
+    <MenuSet id="File" label="Menu_File" macLabel="Menu_File_MacVer">
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.NewCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.NewFileCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.OpenCmd" isInternal="true"/>
+      <MenuSet id="RecentProject" label="Menu_File_RecentProject" autohide="true">
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.RecentProjectCmd" isInternal="true"/>
+      </MenuSet>
+      <SeparatorItem id="FileCloseSeparator"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.CloseCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.CloseProjectCmd" isInternal="true"/>
+      <SeparatorItem id="FileSaveSeparator"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.SaveCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.SaveAllCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.SaveAsCmd" isInternal="true"/>
+      <SeparatorItem id="FileImportSeparator"/>
+      <MenuSet id="Import" label="Menu_File_Import">
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportCmd" isInternal="true"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportProjectCmd" isInternal="true"/>
+      </MenuSet>
+      <SeparatorItem id="FileQuitSeparator"/>
+      <Condition id="Platform" value="!mac">
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.QuitCmd" isInternal="true"/>
+      </Condition>
+    </MenuSet>
+
+    <MenuSet id="Edit" label="Menu_Edit" macLabel="Menu_Edit_MacVer">
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.UndoCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.RedoCmd" isInternal="true"/>
+      <SeparatorItem id="EditSeparator"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ContentSizeCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ContentScaleCmd" isInternal="true"/>
+      <Condition id="Platform" value="!mac">
+        <SeparatorItem id="EditSeparator"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.PreferencesCmd" isInternal="true"/>
+      </Condition>
+    </MenuSet>
+
+    <MenuSet id="Project" label="Menu_Project" macLabel="Menu_Project_MacVer">
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.RunProjectCmd" isInternal="true"/>
+      <SeparatorItem id="Separator"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.PublishPackageCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.PublishPackageLastCmd" isInternal="true"/>
+      <SeparatorItem id="Separator"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ProjectSettingCmd" isInternal="true"/>
+    </MenuSet>
+
+    <MenuSet id="View" label="Menu_View" macLabel="Menu_View_MacVer">
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.AnchorPointCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.RulerCmd" isInternal="true"/>
+      <SeparatorItem id="Separator"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.GuidesCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.LockGuidesCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ClearGuidesCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.NewGuidesCmd" isInternal="true"/>
+    </MenuSet>
+
+    <MenuSet id="Window" label="Menu_Window" macLabel="Menu_Window_MacVer">
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.PadCmd" isInternal="true"/>
+      <SeparatorItem id="StartLauncherSeparator"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.StartLauncherCmd" isInternal="true"/>
+      <SeparatorItem id="WindowResetSeparator"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ResetLayoutCmd" isInternal="true"/>
+    </MenuSet>
+
+    <MenuSet id="Language" label="Menu_Language" macLabel="Menu_Language_MacVer">
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.SetEnglishCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.SetChineseCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.SetTraditionalChineseCmd" isInternal="true"/>
+    </MenuSet>
+    
+    <Condition id="Platform" value="!mac">
+      <MenuSet id="Help" label="Menu_Help">
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.HelpCmd" isInternal="true"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.CheckUpdateCmd" isInternal="true"/>
+        <SeparatorItem id="AboutSeparator"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.AboutCmd" isInternal="true"/>
+      </MenuSet>
+    </Condition>
+
+  </Extension>
+
+</ExtensionModel>

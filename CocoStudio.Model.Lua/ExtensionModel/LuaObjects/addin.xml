@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionModel>
+
+  <ExtensionPoint path="/CocoStudio/Model/Lua/Templates">
+    <ExtensionNode name="Class" >
+      <Description>A lua object serializer.</Description>
+    </ExtensionNode>
+  </ExtensionPoint>
+
+  <Extension path = "/CocoStudio/Model/Lua/Templates">
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaGameFileData"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaBaseObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaNodeObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaVisualObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaButtonObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaCheckBoxObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaGameMapObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaImageViewObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaListViewObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaLoadingBarObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaPageViewObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaPanelObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaParticleObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaProjectNodeObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaScrollViewObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaSimpleAudioObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaSliderObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaSpriteObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaTextAtlasObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaTextBMFontObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaTextFieldObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaTextObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaWidgetObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaTimelineAction"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaTimeline"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaBoolFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaStringFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaIntFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaColorFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaEventFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaInnerActionFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaTextureFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaPointFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaScaleValueFrame"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaAnimationInfoData"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaArmatureNodeObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaGameNodeObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaGameLayerObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaBoneNodeObject"/>
+    <Class class = "CocoStudio.Model.Lua.Templates.LuaSkeletonNodeObject"/>
+  </Extension>
+
+</ExtensionModel>

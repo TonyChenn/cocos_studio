@@ -1,0 +1,6 @@
+D:\CSharpProjects\cocos_studio\cocos_studio\CocoStudio.Projects\Fakes\Modules.Communal.MultiLanguage.fakes : warning : 无法为 Modules.Communal.MultiLanguage.LanguageAdapter 生成存根: 类型没有对程序集可见的构造函数。构造函数本身或参数可能不可见。。
+D:\CSharpProjects\cocos_studio\cocos_studio\CocoStudio.Projects\Fakes\Modules.Communal.MultiLanguage.fakes : warning : 无法为 Modules.Communal.MultiLanguage.LanguageConfig 生成存根: 类型对 exported or assembly(Modules.Communal.MultiLanguage.2.3.3.0.Fakes) 不可见。
+D:\CSharpProjects\cocos_studio\cocos_studio\CocoStudio.Projects\Fakes\Modules.Communal.MultiLanguage.fakes : warning : 无法为 Modules.Communal.MultiLanguage.LanguageInfo 生成存根: 类型没有对程序集可见的构造函数。构造函数本身或参数可能不可见。。
+D:\CSharpProjects\cocos_studio\cocos_studio\CocoStudio.Projects\Fakes\Modules.Communal.MultiLanguage.fakes : warning : 无法为 Modules.Communal.MultiLanguage.LanguageOption 生成存根: 类型没有对程序集可见的构造函数。构造函数本身或参数可能不可见。。
+D:\CSharpProjects\cocos_studio\cocos_studio\CocoStudio.Projects\Fakes\Modules.Communal.MultiLanguage.fakes : warning : 无法为 Modules.Communal.MultiLanguage.LanguageConfig 生成填充码: 类型对 exported or assembly(Modules.Communal.MultiLanguage.2.3.3.0.Fakes) 不可见。
+D:\CSharpProjects\cocos_studio\cocos_studio\CocoStudio.Projects\Fakes\Modules.Communal.MultiLanguage.fakes : warning : 编译失败，将在不使用代码协定的情况下重试

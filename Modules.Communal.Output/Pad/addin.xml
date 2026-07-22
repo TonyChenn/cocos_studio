@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionModel>
+  <Extension path="/CocoStudio/Ide/Pads">
+    <Pad id = "Modules.Communal.Output.OutputPad"
+      _label = "Output"
+      class = "Modules.Communal.Output.OutputPad"
+      defaultPlacement = "Bottom"
+      defaultLayout="*"/>   <!--defaultStatus="AutoHide"-->
+  </Extension>
+</ExtensionModel>

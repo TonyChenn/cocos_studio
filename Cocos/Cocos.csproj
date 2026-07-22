@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43E58EA6-9CF8-47EC-94FD-DCB682ED5537}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Cocos</RootNamespace>
+    <AssemblyName>Cocos</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Cocos.2.ico</ApplicationIcon>
+    <StartupObject>Cocos.Launcher.Start.Program</StartupObject>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gtk-sharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Launcher\Start\ParseArguments.cs" />
+    <Compile Include="Launcher\Start\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cocos.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cocos.Launcher.Control\Cocos.Launcher.Control.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23721}</Project>
+      <Name>Cocos.Launcher.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cocos.Launcher.Core\Cocos.Launcher.Core.csproj">
+      <Project>{307E660A-49E7-4AC8-BEAE-052DA94AD1FF}</Project>
+      <Name>Cocos.Launcher.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23726}</Project>
+      <Name>CocoStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.MultiLanguage\Modules.Communal.MultiLanguage.csproj">
+      <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
+      <Name>Modules.Communal.MultiLanguage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.MutualEditor\Modules.Communal.MutualEditor.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372F}</Project>
+      <Name>Modules.Communal.MutualEditor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -53,30 +53,30 @@
     <EmbeddedResource Include="gui.stetic" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23724}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
       <Name>CocoStudio.Basic</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23726}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23726}</Project>
       <Name>CocoStudio.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.UndoManager\CocoStudio.UndoManager.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372c}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372C}</Project>
       <Name>CocoStudio.UndoManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\Modules.Communal.MutualEditor\Modules.Communal.MutualEditor.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372f}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372F}</Project>
       <Name>Modules.Communal.MutualEditor</Name>
     </ProjectReference>
     <ProjectReference Include="..\Modules.Communal.StartAutoRecover\Modules.Communal.StartAutoRecover.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23730}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23730}</Project>
       <Name>Modules.Communal.StartAutoRecover</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="app.manifest" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

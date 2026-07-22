@@ -31,54 +31,31 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
     <Reference Include="gdk-sharp" />
     <Reference Include="glib-sharp" />
     <Reference Include="gtk-sharp" />
-    <Reference Include="atk-sharp" />
-    <Reference Include="Modules.Communal.MultiLanguage">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\Modules.Communal.MultiLanguage.dll</HintPath>
-    </Reference>
+    <Reference Include="ICSharpCode.NRefactory, Version=5.0.0.0, Culture=neutral, PublicKeyToken=d4bfe873e7598c49" />
     <Reference Include="Mono.Addins">
-      <HintPath>..\\dlls\\Mono.Addins.dll</HintPath>
+      <HintPath>..\dlls\Mono.Addins.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Posix" />
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
+    </Reference>
     <Reference Include="MonoDevelop.Ide">
-      <HintPath>..\\dlls\\MonoDevelop.Ide.dll</HintPath>
+      <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Xwt">
-      <HintPath>..\\dlls\\Xwt.dll</HintPath>
+      <HintPath>..\dlls\Xwt.dll</HintPath>
     </Reference>
     <Reference Include="Xwt.Gtk">
-      <HintPath>..\\dlls\\Xwt.Gtk.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="MonoDevelop.Core">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Core.dll</HintPath>
+      <HintPath>..\dlls\Xwt.Gtk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -174,52 +151,53 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cocos.Launcher.Control\Cocos.Launcher.Control.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23721}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23721}</Project>
       <Name>Cocos.Launcher.Control</Name>
     </ProjectReference>
     <ProjectReference Include="..\Cocos.Launcher.Library\Cocos.Launcher.Library.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23722}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23722}</Project>
       <Name>Cocos.Launcher.Library</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23724}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
       <Name>CocoStudio.Basic</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.ControlLib\CocoStudio.ControlLib.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23725}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23725}</Project>
       <Name>CocoStudio.ControlLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.EngineAdapterWrap\CocoStudio.EngineAdapterWrap.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23727}</Project>
+      <Project>{C16A1C9E-99C2-4D23-9503-017E93CBD07F}</Project>
       <Name>CocoStudio.EngineAdapterWrap</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23728}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23728}</Project>
       <Name>CocoStudio.Gtk.Extend</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Lib.Prism\CocoStudio.Lib.Prism.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23729}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23729}</Project>
       <Name>CocoStudio.Lib.Prism</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372a}</Project>
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF91}</Project>
       <Name>CocoStudio.Model.Basic</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372b}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372B}</Project>
       <Name>CocoStudio.Projects</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.UndoManager\CocoStudio.UndoManager.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372c}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372C}</Project>
       <Name>CocoStudio.UndoManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.UserStatistics\CocoStudio.UserStatistics.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372d}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372D}</Project>
       <Name>CocoStudio.UserStatistics</Name>
     </ProjectReference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Modules.Communal.MultiLanguage\Modules.Communal.MultiLanguage.csproj">
+      <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
+      <Name>Modules.Communal.MultiLanguage</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

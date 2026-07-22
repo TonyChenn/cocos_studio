@@ -72,7 +72,6 @@ namespace CocoStudio.Core.Commands
 			GlobalCommand.RedoCmd.Update += GlobalCommandHandle.RedoCmd_CanExecute;
 			GlobalCommand.PadCmd.Execute += GlobalCommandHandle.PadCmd_Execute;
 			GlobalCommand.PadCmd.Update += GlobalCommandHandle.PadCmd_Update;
-			GlobalCommand.CheckUpdateCmd.Execute += GlobalCommandHandle.CheckUpdateCmd_Execute;
 			GlobalCommand.StartLauncherCmd.Execute += GlobalCommandHandle.StartLauncherCmd_Execute;
 			GlobalCommand.ResetLayoutCmd.Execute += GlobalCommandHandle.ResetLayoutCmd_Execute;
 			GlobalCommand.SetChineseCmd.Execute += GlobalCommandHandle.SetChineseCmd_Execute;
@@ -351,19 +350,8 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000127 RID: 295 RVA: 0x00005A70 File Offset: 0x00003C70
-		private static void CheckUpdateCmd_Execute(object sender, CommandRunArgs e)
-		{
-			GlobalCommandHandle.StartLauncherPage(3);
-		}
-
 		// Token: 0x06000128 RID: 296 RVA: 0x00005AA0 File Offset: 0x00003CA0
 		private static void StartLauncherCmd_Execute(object sender, CommandRunArgs e)
-		{
-			GlobalCommandHandle.StartLauncherPage(3);
-		}
-
-		private static void StartLauncherPage(int pageIndex)
 		{
 			string fileName = string.Empty;
 			if (Platform.IsWindows)
@@ -376,7 +364,7 @@ namespace CocoStudio.Core.Commands
 			}
 			try
 			{
-				ProcessStartInfo startInfo = new ProcessStartInfo(fileName, string.Format("-page*{0}", pageIndex));
+				ProcessStartInfo startInfo = new ProcessStartInfo(fileName, "-page*3");
 				Process.Start(startInfo);
 			}
 			catch (Exception ex)

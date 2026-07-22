@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{485242EE-FF89-4DA2-8D60-36C0BA5965CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Modules.UI.RenderContextMenu3D</RootNamespace>
+    <AssemblyName>Modules.UI.RenderContextMenu3D</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="atk-sharp" />
+    <Reference Include="gdk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="Mono.Addins">
+      <HintPath>..\dlls\Mono.Addins.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23726}</Project>
+      <Name>CocoStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Lib.Prism\CocoStudio.Lib.Prism.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23729}</Project>
+      <Name>CocoStudio.Lib.Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF91}</Project>
+      <Name>CocoStudio.Model.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372B}</Project>
+      <Name>CocoStudio.Projects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.UndoManager\CocoStudio.UndoManager.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372C}</Project>
+      <Name>CocoStudio.UndoManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.MultiLanguage\Modules.Communal.MultiLanguage.csproj">
+      <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
+      <Name>Modules.Communal.MultiLanguage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ObjectContextMenu3D.cs" />
+    <Compile Include="ObjectContextMenuModel3D.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modules.UI.RenderContextMenu\Modules.UI.RenderContextMenu.csproj">
+      <Project>{485242ee-ff89-4da2-8d60-36c0ba5965ce}</Project>
+      <Name>Modules.UI.RenderContextMenu</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Model\CocoStudio.Model.csproj">
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF92}</Project>
+      <Name>CocoStudio.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Model3D\CocoStudio.Model3D.csproj">
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF94}</Project>
+      <Name>CocoStudio.Model3D</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modules.Communal.Render\Modules.Communal.Render.csproj">
+      <Project>{63CB54F8-9358-4C89-923E-2DDC289510CA}</Project>
+      <Name>Modules.Communal.Render</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

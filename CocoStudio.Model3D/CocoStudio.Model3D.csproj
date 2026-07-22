@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE2E6DCF-B30D-4A03-BF56-67765709CF94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CocoStudio</RootNamespace>
+    <AssemblyName>CocoStudio.Model3D</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="gdk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="ICSharpCode.NRefactory, Version=5.0.0.0, Culture=neutral, PublicKeyToken=d4bfe873e7598c49, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dlls\ICSharpCode.NRefactory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Addins">
+      <HintPath>..\dlls\Mono.Addins.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model3D\ViewModel\Property3DFilter.cs" />
+    <Compile Include="Model3D\ViewModel\Scene3DCocosFileTemplate.cs" />
+    <Compile Include="Model\DataModel\CocosFileUpgrader_232.cs" />
+    <Compile Include="Model\DataModel\GameNode3DObjectData.cs" />
+    <Compile Include="Model\DataModel\Light3DObjectData.cs" />
+    <Compile Include="Model\DataModel\Node3DObjectData.cs" />
+    <Compile Include="Model\DataModel\Particle3DObjectData.cs" />
+    <Compile Include="Model\DataModel\Slice3DObjectData.cs" />
+    <Compile Include="Model\DataModel\Sprite3DObjectData.cs" />
+    <Compile Include="Model\DataModel\UserCameraObjectData.cs" />
+    <Compile Include="Model\DragOperation3D.cs" />
+    <Compile Include="Model\EditorController\Base3DController.cs" />
+    <Compile Include="Model\EditorController\Light3DController.cs" />
+    <Compile Include="Model\Editor\AnimationSpeedEditor.cs" />
+    <Compile Include="Model\Editor\ClipPlaneEditor.cs" />
+    <Compile Include="Model\Editor\FovEditor.cs" />
+    <Compile Include="Model\Editor\FrameRateEditor.cs" />
+    <Compile Include="Model\Editor\OneNumberEditor.cs" />
+    <Compile Include="Model\Editor\Position3DEditor.cs" />
+    <Compile Include="Model\Editor\Rotation3DEditor.cs" />
+    <Compile Include="Model\Editor\Scale3DEditor.cs" />
+    <Compile Include="Model\Editor\SkyBoxImageEditor.cs" />
+    <Compile Include="Model\Editor\SliceSizeEditor.cs" />
+    <Compile Include="Model\Editor\TextureAnimationEditor.cs" />
+    <Compile Include="Model\Editor\ThreeNumberEditor.cs" />
+    <Compile Include="Model\Editor\TwoNumberEditor.cs" />
+    <Compile Include="Model\Editor\ViewSizeEditor.cs" />
+    <Compile Include="Model\ViewModel\ControlNode3D.cs" />
+    <Compile Include="Model\ViewModel\Dumy3DObject.cs" />
+    <Compile Include="Model\ViewModel\GameNode3DObject.cs" />
+    <Compile Include="Model\ViewModel\ISkyBox.cs" />
+    <Compile Include="Model\ViewModel\Light3DHelper.cs" />
+    <Compile Include="Model\ViewModel\Light3DObject.cs" />
+    <Compile Include="Model\ViewModel\Node3DObject.cs" />
+    <Compile Include="Model\ViewModel\Particle3DObject.cs" />
+    <Compile Include="Model\ViewModel\SkyBoxManager.cs" />
+    <Compile Include="Model\ViewModel\Slice3DObject.cs" />
+    <Compile Include="Model\ViewModel\Sprite3DObject.cs" />
+    <Compile Include="Model\ViewModel\UserCameraObject.cs" />
+    <Compile Include="Projects\ExtensionModel\GameFileUpgrader_233.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">
+      <Project>{ae2e6dcf-b30d-4a03-bf56-67765709cf91}</Project>
+      <Name>CocoStudio.Model.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Model\CocoStudio.Model.csproj">
+      <Project>{ae2e6dcf-b30d-4a03-bf56-67765709cf92}</Project>
+      <Name>CocoStudio.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23726}</Project>
+      <Name>CocoStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.EngineAdapterWrap\CocoStudio.EngineAdapterWrap.csproj">
+      <Project>{C16A1C9E-99C2-4D23-9503-017E93CBD07F}</Project>
+      <Name>CocoStudio.EngineAdapterWrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23728}</Project>
+      <Name>CocoStudio.Gtk.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Lib.Prism\CocoStudio.Lib.Prism.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23729}</Project>
+      <Name>CocoStudio.Lib.Prism</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372B}</Project>
+      <Name>CocoStudio.Projects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.UndoManager\CocoStudio.UndoManager.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372C}</Project>
+      <Name>CocoStudio.UndoManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.MultiLanguage\Modules.Communal.MultiLanguage.csproj">
+      <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
+      <Name>Modules.Communal.MultiLanguage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modules.Communal.PropertyGrid\Modules.Communal.PropertyGrid.csproj">
+      <Project>{63CB54F8-9358-4C89-923E-2DDC289510C8}</Project>
+      <Name>Modules.Communal.PropertyGrid</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

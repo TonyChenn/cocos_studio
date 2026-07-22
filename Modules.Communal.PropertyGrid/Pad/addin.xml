@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionModel>
+  <Extension path="/CocoStudio/Ide/Pads">
+    <Pad id = "Modules.Communal.PropertyGrid.PropertyGridPad"
+      _label = "PropertyGridPad"
+      class = "Modules.Communal.PropertyGrid.PropertyGridPad"
+      defaultPlacement = "Right"
+      defaultLayout="*"/>
+  </Extension>
+</ExtensionModel>

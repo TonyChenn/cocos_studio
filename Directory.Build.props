@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+    <OutDir>$(RepositoryRoot)bin\$(Configuration)\</OutDir>
+    <OutputPath>$(OutDir)</OutputPath>
+    <BaseIntermediateOutputPath>$(RepositoryRoot)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Configuration)\</IntermediateOutputPath>
+    <ReferencePath>$(RepositoryRoot)dlls\;$(ReferencePath)</ReferencePath>
+  </PropertyGroup>
+</Project>

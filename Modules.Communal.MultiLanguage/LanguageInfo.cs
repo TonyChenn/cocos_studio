@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Modules.Communal.MultiLanguage
 {
@@ -199,6 +199,12 @@ namespace Modules.Communal.MultiLanguage
 
 		// Token: 0x04000051 RID: 81
 		public static string Menu_Language_SetSP = "Español";
+
+		// Token: 0x04000052 RID: 82
+		public static string Menu_Tools = " 工具(_T) ";
+
+		// Token: 0x04000053 RID: 83
+		public static string Menu_Tools_MacVer = " 工具 ";
 
 		// Token: 0x04000052 RID: 82
 		public static string Menu_Launcher_Minimize = "最小化";

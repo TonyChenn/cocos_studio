@@ -95,27 +95,5 @@ namespace CocoStudio.Core
 		{
 			return ((SdiWorkspaceWindow)base.Window).CloseWindow(force, true);
 		}
-
-		// Token: 0x06000224 RID: 548 RVA: 0x0000A2C0 File Offset: 0x000084C0
-		bool IEditableDocument.IsDirty
-		{
-			get
-			{
-				return base.IsDirty;
-			}
-			set
-			{
-				base.IsDirty = value;
-			}
-		}
-
-		// Token: 0x06000226 RID: 550 RVA: 0x0000A2E0 File Offset: 0x000084E0
-		string IEditableDocument.Name
-		{
-			get
-			{
-				return base.Name;
-			}
-		}
 	}
 }

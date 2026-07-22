@@ -42,16 +42,42 @@ namespace CocoStudio.Core
 		// Token: 0x06000328 RID: 808 RVA: 0x0000E6E0 File Offset: 0x0000C8E0
 		private static Tuple<string, string> GetDirectory(EnumApp editorType)
 		{
-			Tuple<string, string> result;
+			string text;
+			string item;
 			if (editorType == EnumApp.Studio || editorType == EnumApp.Tool)
 			{
-				result = new Tuple<string, string>(Option.AddinConfigFolder, Option.AddinLocationFolder);
+				text = Option.AddinConfigFolder;
+				item = Option.AddinLocationFolder;
 			}
 			else
 			{
-				result = new Tuple<string, string>(Option.LauncherAddinConfigFolder, null);
+				text = Option.LauncherAddinConfigFolder;
+				item = null;
 			}
-			return result;
+			if (!Starter.IsInstalledLocation())
+			{
+				text = Path.Combine(Option.AssemblyDir, "AddinConfig", editorType.ToString());
+			}
+			return new Tuple<string, string>(text, item);
+		}
+
+		private static bool IsInstalledLocation()
+		{
+			if (string.IsNullOrWhiteSpace(Option.AssemblyDir) || string.IsNullOrWhiteSpace(Option.CocosInstallDir))
+			{
+				return false;
+			}
+			string text = Path.GetFullPath(Option.AssemblyDir).TrimEnd(new char[]
+			{
+				Path.DirectorySeparatorChar,
+				Path.AltDirectorySeparatorChar
+			});
+			string text2 = Path.GetFullPath(Option.CocosInstallDir).TrimEnd(new char[]
+			{
+				Path.DirectorySeparatorChar,
+				Path.AltDirectorySeparatorChar
+			});
+			return text.Equals(text2, StringComparison.OrdinalIgnoreCase) || text.StartsWith(text2 + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
 		}
 
 		// Token: 0x06000329 RID: 809 RVA: 0x0000E721 File Offset: 0x0000C921

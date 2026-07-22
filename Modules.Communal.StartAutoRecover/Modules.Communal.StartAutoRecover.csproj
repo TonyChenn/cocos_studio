@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,16 +53,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Addins">
-      <HintPath>..\\dlls\\Mono.Addins.dll</HintPath>
+      <HintPath>..\dlls\Mono.Addins.dll</HintPath>
     </Reference>
     <Reference Include="MonoDevelop.Ide">
-      <HintPath>..\\dlls\\MonoDevelop.Ide.dll</HintPath>
+      <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoDevelop.Core">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\MonoDevelop.Core.dll</HintPath>
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -73,28 +74,33 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23724}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
       <Name>CocoStudio.Basic</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b23726}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23726}</Project>
       <Name>CocoStudio.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.UndoManager\CocoStudio.UndoManager.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372c}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372C}</Project>
       <Name>CocoStudio.UndoManager</Name>
     </ProjectReference>
     <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372b}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372B}</Project>
       <Name>CocoStudio.Projects</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF91}</Project>
+      <Name>CocoStudio.Model.Basic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CocoStudio.UserStatistics\CocoStudio.UserStatistics.csproj">
-      <Project>{9751112a-bbbb-4a1c-b265-f23595b2372d}</Project>
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372D}</Project>
       <Name>CocoStudio.UserStatistics</Name>
     </ProjectReference>
-    <Reference Include="ICSharpCode.NRefactory">
-      <HintPath>C:\Program Files (x86)\Cocos\Cocos Studio\ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\ICSharpCode.NRefactory\ICSharpCode.NRefactory.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372E}</Project>
+      <Name>ICSharpCode.NRefactory</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

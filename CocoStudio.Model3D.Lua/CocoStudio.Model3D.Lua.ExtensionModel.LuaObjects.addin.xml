@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionModel>
+  <Extension path = "/CocoStudio/Model/Lua/Templates">
+    <Class class = "CocoStudio.Model3D.Lua.Templates.LuaNode3DObject"/>
+    <Class class = "CocoStudio.Model3D.Lua.Templates.LuaParticle3DObject"/>
+    <Class class = "CocoStudio.Model3D.Lua.Templates.LuaSprite3DObject"/>
+    <Class class = "CocoStudio.Model3D.Lua.Templates.LuaUserCameraObject"/>
+    <Class class = "CocoStudio.Model3D.Lua.Templates.LuaGameNode3DObject"/>
+    <Class class = "CocoStudio.Model3D.Lua.Templates.LuaLight3DObject"/>
+  </Extension>
+</ExtensionModel>

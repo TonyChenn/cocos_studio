@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63CB54F8-9358-4C89-923E-2DDC289510C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Modules.Communal.Preference</RootNamespace>
+    <AssemblyName>Modules.Communal.Preference</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="atk-sharp" />
+    <Reference Include="gdk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="Mono.Addins">
+      <HintPath>..\dlls\Mono.Addins.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cairo" />
+    <Reference Include="Mono.Posix" />
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Xamarin.Mac">
+      <HintPath>..\dlls\Xamarin.Mac.dll</HintPath>
+    </Reference>
+    <Reference Include="Xwt">
+      <HintPath>..\dlls\Xwt.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CocosRoutineWidget.cs" />
+    <Compile Include="EnumPreferenceSetting.cs" />
+    <Compile Include="EnvironmentWarningInfo.cs" />
+    <Compile Include="GeneralWidget.cs" />
+    <Compile Include="GuidesSettingsWidget.cs" />
+    <Compile Include="HotkeyWidget.cs" />
+    <Compile Include="IPreferenceWidget.cs" />
+    <Compile Include="Model\CellGuidesColorInfo.cs" />
+    <Compile Include="Model\GuidesColorData.cs" />
+    <Compile Include="Model\GuidesColorInfo.cs" />
+    <Compile Include="MultireSolutionWidget.cs" />
+    <Compile Include="PlatformWidget.cs" />
+    <Compile Include="PreferenceManager.cs" />
+    <Compile Include="PreferencesDialog.cs" />
+    <Compile Include="PreferenceUC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResolutionSettingDialog.cs" />
+    <Compile Include="SimulatorWidget.cs" />
+    <Compile Include="Stetic\ActionGroups.cs" />
+    <Compile Include="Stetic\BinContainer.cs" />
+    <Compile Include="Stetic\Gui.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gui.stetic" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cocos.Launcher.Control\Cocos.Launcher.Control.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23721}</Project>
+      <Name>Cocos.Launcher.Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Core\CocoStudio.Core.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23726}</Project>
+      <Name>CocoStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23728}</Project>
+      <Name>CocoStudio.Gtk.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Model\CocoStudio.Model.csproj">
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF92}</Project>
+      <Name>CocoStudio.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">
+      <Project>{AE2E6DCF-B30D-4A03-BF56-67765709CF91}</Project>
+      <Name>CocoStudio.Model.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CocoStudio.Projects\CocoStudio.Projects.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372B}</Project>
+      <Name>CocoStudio.Projects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.CocosAdapter\Modules.Communal.CocosAdapter.csproj">
+      <Project>{63cb54f8-9358-4c89-923e-2ddc289510c0}</Project>
+      <Name>Modules.Communal.CocosAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.CocosCodeIDE\Modules.Communal.CocosCodeIDE.csproj">
+      <Project>{41CB032B-BA5E-4E92-8586-E11FE72AAF68}</Project>
+      <Name>Modules.Communal.CocosCodeIDE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.MultiLanguage\Modules.Communal.MultiLanguage.csproj">
+      <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
+      <Name>Modules.Communal.MultiLanguage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.Render\Modules.Communal.Render.csproj">
+      <Project>{63cb54f8-9358-4c89-923e-2ddc289510ca}</Project>
+      <Name>Modules.Communal.Render</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.Status\Modules.Communal.Status.csproj">
+      <Project>{7ABF72A6-F57E-4A50-A473-06E88F57B542}</Project>
+      <Name>Modules.Communal.Status</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading;
 using CocoStudio.Basic;
@@ -126,10 +125,7 @@ namespace CocoStudio.Core.Service
 				i++;
 				try
 				{
-					if (Directory.Exists(configDir))
-					{
-						Directory.Delete(configDir, true);
-					}
+					System.IO.Directory.Delete(configDir, true);
 					break;
 				}
 				catch (Exception exception)

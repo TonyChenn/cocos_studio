@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionModel>
+  <Extension path="/CocoStudio/Ide/Pads">
+    <Pad id = "Modules.UI.ComTool.ComToolPad"
+      _label = "ObjectPad"
+      class = "Modules.UI.ComTool.ComToolPad"
+      defaultPlacement = "Left"
+      defaultLayout="*"/>
+  </Extension>
+</ExtensionModel>

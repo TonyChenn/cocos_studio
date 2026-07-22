@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+    <target-gtk-version>2.12</target-gtk-version>
+  </configuration>
+  <import>
+    <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <widget-library name="../../../../monodevelop/main/external/xwt/Xwt.Gtk/bin/Debug/Xwt.Gtk.dll" />
+    <widget-library name="../../../CocoStudio.Core/bin/Debug.Mac/CocoStudio.Core.dll" />
+    <widget-library name="../../../CocoStudio.Gtk.Extend/bin/Debug.Mac/CocoStudio.Gtk.Extend.dll" />
+    <widget-library name="../../../CocoStudio.Lib.Events/bin/Debug.Mac/CocoStudio.Lib.Prism.dll" />
+    <widget-library name="../../../Debug.Mac/CocoStudio.ToolKit.dll" />
+    <widget-library name="../../../CocoStudio.UndoManager/bin/Debug.Mac/CocoStudio.UndoManager.dll" />
+    <widget-library name="../../../CocoStudioCommon/EditorCommon/bin/Debug.Mac/CocoStudio.Model.dll" />
+    <widget-library name="../../Modules.Communal.Language/bin/Debug.Mac/Modules.Communal.MultiLanguage.dll" />
+    <widget-library name="../../../../monodevelop/main/build/bin/MonoDevelop.Ide.dll" />
+    <widget-library name="../../../CocoStudio.Basic/bin/Debug.Mac/CocoStudio.Basic.dll" />
+    <widget-library name="../bin/Debug.Mac/Modules.UI.ComTool.dll" internal="true" />
+  </import>
+  <widget class="Gtk.Bin" id="Modules.UI.ComTool.ComponentItem" design-size="72 72">
+    <property name="MemberName" />
+    <property name="WidthRequest">72</property>
+    <property name="HeightRequest">72</property>
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.EventBox" id="evtbx_bg">
+        <property name="MemberName" />
+        <child>
+          <widget class="Gtk.VBox" id="vbox_main">
+            <property name="MemberName" />
+            <property name="WidthRequest">70</property>
+            <property name="HeightRequest">100</property>
+            <property name="Spacing">6</property>
+            <child>
+              <widget class="Gtk.HBox" id="hbox_top">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Alignment" id="alignment_mainIcon">
+                    <property name="MemberName" />
+                    <property name="LeftPadding">20</property>
+                    <property name="TopPadding">6</property>
+                    <child>
+                      <widget class="Gtk.ImageBin" id="imgIcon">
+                        <property name="MemberName" />
+                        <property name="WidthRequest">32</property>
+                        <property name="HeightRequest">32</property>
+                        <property name="Events">ButtonPressMask</property>
+                      </widget>
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.VBox" id="vbox_info">
+                    <property name="MemberName" />
+                    <property name="Spacing">6</property>
+                    <child>
+                      <widget class="Gtk.EventBox" id="evtbx_Detail">
+                        <property name="MemberName" />
+                        <property name="WidthRequest">12</property>
+                        <property name="HeightRequest">12</property>
+                        <child>
+                          <placeholder />
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">0</property>
+                        <property name="AutoSize">False</property>
+                        <property name="Expand">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <placeholder />
+                    </child>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">0</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.VBox" id="vbox_topOccupy">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <placeholder />
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">1</property>
+                <property name="AutoSize">True</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.VBox" id="vbox_labels">
+                <property name="MemberName" />
+                <property name="Spacing">1</property>
+                <child>
+                  <widget class="Gtk.Label" id="labComName">
+                    <property name="MemberName" />
+                    <property name="WidthRequest">70</property>
+                    <property name="LabelProp" translatable="yes">自定义字体</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="label_secondLine">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">第二行</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">True</property>
+                    <property name="Expand">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">2</property>
+                <property name="AutoSize">True</property>
+                <property name="Expand">False</property>
+                <property name="Fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.VBox" id="vbox_bottomOccupy">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <placeholder />
+                </child>
+              </widget>
+              <packing>
+                <property name="Position">3</property>
+                <property name="AutoSize">True</property>
+              </packing>
+            </child>
+          </widget>
+        </child>
+      </widget>
+    </child>
+  </widget>
+  <widget class="Gtk.Bin" id="Modules.UI.ComTool.ComponentPanel" design-size="300 300">
+    <property name="MemberName" />
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.ScrolledWindow" id="scrolledwindow1">
+        <property name="MemberName" />
+        <property name="CanFocus">True</property>
+        <property name="ShadowType">In</property>
+        <child>
+          <widget class="Gtk.Viewport" id="GtkViewport">
+            <property name="MemberName" />
+            <property name="ShadowType">None</property>
+            <child>
+              <widget class="Gtk.EventBox" id="evtbx_root">
+                <property name="MemberName" />
+                <child>
+                  <widget class="Gtk.HBox" id="hbx_root">
+                    <property name="MemberName" />
+                    <property name="Spacing">6</property>
+                    <child>
+                      <placeholder />
+                    </child>
+                  </widget>
+                </child>
+              </widget>
+            </child>
+          </widget>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>
