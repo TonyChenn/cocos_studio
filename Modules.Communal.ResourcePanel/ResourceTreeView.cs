@@ -351,6 +351,21 @@ namespace Modules.Communal.ResourcePanel
 			return nodeBuilder;
 		}
 
+		internal Pixbuf GetResourceIcon(ResourceItem resourceItem)
+		{
+			TreeIter iter;
+			if (resourceItem == null || !this.builder.GetFirstNode(resourceItem, out iter))
+			{
+				return null;
+			}
+			NodeInfo nodeInfo = this.store.GetValue(iter, 0) as NodeInfo;
+			if (nodeInfo == null || nodeInfo.IconInfo == null || nodeInfo.IconInfo.ExpandIcon == null)
+			{
+				return null;
+			}
+			return nodeInfo.IconInfo.ExpandIcon.GetPixbuf();
+		}
+
 		// Token: 0x06000178 RID: 376 RVA: 0x000081E0 File Offset: 0x000063E0
 		private void SetBuilders(IList<NodeBuilder> buildersArray)
 		{
@@ -508,6 +523,12 @@ namespace Modules.Communal.ResourcePanel
 		[CommandUpdateHandler(CmdEnum.DeleteCmd)]
 		private void DeleteCmdCanExecute(CommandInfo info)
 		{
+			if (this.ResourceWidget.IsGridViewActive && !this.ResourceWidget.GridHasSelection)
+			{
+				info.Enabled = false;
+				info.Bypass = true;
+				return;
+			}
 			if (this.IsRanameStatus || this.ResourceWidget.SearchBoxFocus)
 			{
 				info.Enabled = false;
@@ -549,6 +570,12 @@ namespace Modules.Communal.ResourcePanel
 		[CommandHandler(CmdEnum.RenameCmd)]
 		public void RenameCmd()
 		{
+			if (this.ResourceWidget.IsGridViewActive)
+			{
+				this.ResourceWidget.StartGridLabelEdit();
+				Tracker.Add(ViewRegions.ResourcePanel, "RightMenuRename", "", "");
+				return;
+			}
 			this.IsRanameStatus = true;
 			GLib.Timeout.Add(20U, new TimeoutHandler(this.wantFocus));
 			Tracker.Add(ViewRegions.ResourcePanel, "RightMenuRename", "", "");
@@ -558,6 +585,11 @@ namespace Modules.Communal.ResourcePanel
 		[CommandUpdateHandler(CmdEnum.RenameCmd)]
 		public void RenameCmd(CommandInfo info)
 		{
+			if (this.ResourceWidget.IsGridViewActive && !this.ResourceWidget.GridHasSelection)
+			{
+				info.Enabled = false;
+				return;
+			}
 			if (Services.ProjectOperations.CurrentSelectedSolution == null || this.IsMutilSelecteState() || this.Tree.Selection.GetSelectedRows().Length == 0)
 			{
 				info.Enabled = false;
@@ -789,6 +821,15 @@ namespace Modules.Communal.ResourcePanel
 			catch (Exception message)
 			{
 				LogConfig.Logger.Error(message);
+			}
+		}
+
+		internal void RenameResource(ResourceItem resourceItem, string newName)
+		{
+			TreeIter iter;
+			if (resourceItem != null && this.builder.GetFirstNode(resourceItem, out iter))
+			{
+				this.Raname(iter, newName, false);
 			}
 		}
 

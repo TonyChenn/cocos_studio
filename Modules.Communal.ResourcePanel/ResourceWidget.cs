@@ -52,6 +52,34 @@ namespace Modules.Communal.ResourcePanel
 			boxChild2.Fill = false;
 			this.btn_exprot.Clicked += this.btn_exprot_Clicked;
 			this.btn_refresh.Clicked += new EventHandler<ButtonReleaseEventArgs>(this.btn_refresh_Clicked);
+			this.btn_viewMode = new Button("网格");
+			this.btn_viewMode.SetSizeRequest(44, 20);
+			this.btn_viewMode.Relief = ReliefStyle.None;
+			this.btn_viewMode.TooltipText = "切换到 GridView";
+			this.hb_flot.Add(this.btn_viewMode);
+			Box.BoxChild boxChild3 = (Box.BoxChild)this.hb_flot[this.btn_viewMode];
+			boxChild3.Position = 2;
+			boxChild3.Expand = false;
+			boxChild3.Fill = false;
+			this.btn_gridBack = new Button();
+			this.btn_gridBack.Add(new Gtk.Image(Stock.GoUp, IconSize.Menu));
+			this.btn_gridBack.SetSizeRequest(24, 20);
+			this.btn_gridBack.Relief = ReliefStyle.None;
+			this.btn_gridBack.TooltipText = "上一级目录";
+			this.hb_flot.Add(this.btn_gridBack);
+			Box.BoxChild boxChild4 = (Box.BoxChild)this.hb_flot[this.btn_gridBack];
+			boxChild4.Position = 3;
+			boxChild4.Expand = false;
+			boxChild4.Fill = false;
+			Box.BoxChild searchBoxChild = (Box.BoxChild)this.hb_flot[this.footEvent];
+			searchBoxChild.Position = 4;
+			searchBoxChild.Expand = true;
+			searchBoxChild.Fill = true;
+			this.btn_viewMode.Clicked += this.btn_viewMode_Clicked;
+			this.btn_gridBack.Clicked += this.btn_gridBack_Clicked;
+			this.btn_viewMode.ShowAll();
+			this.btn_gridBack.ShowAll();
+			this.btn_gridBack.Hide();
 		}
 
 		// Token: 0x060001DE RID: 478 RVA: 0x0000A458 File Offset: 0x00008658
@@ -83,6 +111,29 @@ namespace Modules.Communal.ResourcePanel
 		private void btn_refresh_Clicked(object sender, EventArgs e)
 		{
 			this.treeview.Builder.UpdateAll();
+			this.ReloadGridView();
+		}
+
+		private void btn_gridBack_Clicked(object sender, EventArgs e)
+		{
+			ResourceFolder parent = this.gridview.CurrentFolder == null ? null : this.gridview.CurrentFolder.Parent as ResourceFolder;
+			if (parent != null)
+			{
+				this.NavigateGridTo(parent);
+			}
+		}
+
+		private void btn_viewMode_Clicked(object sender, EventArgs e)
+		{
+			this.SetGridViewActive(!this.IsGridViewActive);
+		}
+
+		private void TreeSelection_Changed(object sender, EventArgs e)
+		{
+			if (!this.IsGridViewActive && this.gridview != null)
+			{
+				this.gridview.SetCurrentFolder(this.GetFolderForGridView());
+			}
 		}
 
 		// Token: 0x1700003F RID: 63
@@ -100,7 +151,13 @@ namespace Modules.Communal.ResourcePanel
 		{
 			this.treeview = new ResourceTreeView();
 			this.treeview.ResourceWidget = this;
-			this.evnt_TreeView.Add(this.treeview);
+			this.gridview = new ResourceGridView(this);
+			this.gridview.NoShowAll = true;
+			this.gridview.Hide();
+			this.viewBox = new VBox();
+			this.viewBox.PackStart(this.treeview, true, true, 0U);
+			this.viewBox.PackStart(this.gridview, true, true, 0U);
+			this.evnt_TreeView.Add(this.viewBox);
 			ImageIcon.GetIcon("Modules.Communal.ResourcePanel.Images.Close.png");
 			this.searchBox = new SearchEntry();
 			this.searchBox.HeightRequest = 20;
@@ -115,6 +172,23 @@ namespace Modules.Communal.ResourcePanel
 			this.filter.VisibleFunc = new TreeModelFilterVisibleFunc(this.FilterTree);
 			this.treeview.Tree.Model = this.filter;
 			this.treeview.Tree.Filter = this.filter;
+			this.treeview.Tree.Selection.Changed += this.TreeSelection_Changed;
+			this.treeview.Store.RowChanged += delegate
+			{
+				this.QueueGridRefresh();
+			};
+			this.treeview.Store.RowInserted += delegate
+			{
+				this.QueueGridRefresh();
+			};
+			this.treeview.Store.RowDeleted += delegate
+			{
+				this.QueueGridRefresh();
+			};
+			this.treeview.Store.RowsReordered += delegate
+			{
+				this.QueueGridRefresh();
+			};
 			Solution currentSelectedSolution = Services.ProjectOperations.CurrentSelectedSolution;
 			if (currentSelectedSolution != null)
 			{
@@ -141,6 +215,10 @@ namespace Modules.Communal.ResourcePanel
 			}
 			ResourceFolder rootFolder = currentSelectedSolution.GetRootFolder();
 			this.filterText = this.searchBox.Entry.Text;
+			if (rootFolder == null)
+			{
+				return;
+			}
 			if (!string.IsNullOrWhiteSpace(this.filterText))
 			{
 				this.treeview.Tree.IsSearchState = true;
@@ -148,7 +226,16 @@ namespace Modules.Communal.ResourcePanel
 				ResourceWidget.Filter(rootFolder, this.filterText);
 				this.filter.Refilter();
 			}
+			else
+			{
+				this.treeview.Tree.IsSearchState = false;
+			}
 			this.filter.Refilter();
+			if (this.IsGridViewActive)
+			{
+				this.ReloadGridView();
+				return;
+			}
 			if (!string.IsNullOrWhiteSpace(this.filterText))
 			{
 				this.treeview.Tree.ExpandAll();
@@ -158,7 +245,24 @@ namespace Modules.Communal.ResourcePanel
 			this.treeview.Tree.CurrentModel.GetIterFirst(out iter);
 			TreePath path = this.treeview.Tree.CurrentModel.GetPath(iter);
 			this.treeview.Tree.ExpandRow(path, false);
-			this.treeview.Tree.IsSearchState = false;
+		}
+
+		internal bool IsGridViewActive { get; private set; }
+
+		internal ResourceTreeView TreeView
+		{
+			get
+			{
+				return this.treeview;
+			}
+		}
+
+		internal bool GridHasSelection
+		{
+			get
+			{
+				return this.gridview != null && this.gridview.HasSelection;
+			}
 		}
 
 		// Token: 0x060001E3 RID: 483 RVA: 0x0000A7F0 File Offset: 0x000089F0
@@ -194,6 +298,162 @@ namespace Modules.Communal.ResourcePanel
 		public object GetNextCommandTarget()
 		{
 			return this.treeview;
+		}
+
+		internal void ReloadGridView()
+		{
+			if (!this.IsGridViewActive || this.gridview == null)
+			{
+				return;
+			}
+			if (this.gridview.CurrentFolder == null)
+			{
+				this.gridview.SetCurrentFolder(this.GetFolderForGridView());
+			}
+			this.gridview.Refresh(this.filterText);
+			this.UpdateGridBackButton();
+		}
+
+		internal void QueueGridRefresh()
+		{
+			if (this.gridview != null)
+			{
+				this.gridview.InvalidateThumbnails();
+			}
+			if (!this.IsGridViewActive)
+			{
+				return;
+			}
+			if (this.gridRefreshTimeout != 0U)
+			{
+				Source.Remove(this.gridRefreshTimeout);
+			}
+			this.gridRefreshTimeout = GLib.Timeout.Add(60U, delegate
+			{
+				this.gridRefreshTimeout = 0U;
+				this.ReloadGridView();
+				return false;
+			});
+		}
+
+		internal Pixbuf GetResourceIcon(ResourceItem resourceItem)
+		{
+			return this.treeview.GetResourceIcon(resourceItem);
+		}
+
+		internal void SelectGridResources(IList<ResourceItem> resourceItems)
+		{
+			if (resourceItems == null || resourceItems.Count == 0)
+			{
+				if (this.gridview.CurrentFolder != null)
+				{
+					this.treeview.Builder.SetSelecteResources(new ResourceItem[]
+					{
+						this.gridview.CurrentFolder
+					});
+				}
+				else
+				{
+					this.treeview.Tree.Selection.UnselectAll();
+				}
+				return;
+			}
+			this.treeview.Builder.SetSelecteResources(resourceItems);
+		}
+
+		internal void NavigateGridTo(ResourceFolder folder)
+		{
+			if (folder == null)
+			{
+				return;
+			}
+			this.gridview.SetCurrentFolder(folder);
+			if (!string.IsNullOrWhiteSpace(this.searchBox.Entry.Text))
+			{
+				this.searchBox.Entry.Text = string.Empty;
+			}
+			this.treeview.Builder.SetSelecteResources(new ResourceItem[]
+			{
+				folder
+			});
+			this.ReloadGridView();
+		}
+
+		internal void OpenGridResource(ResourceItem resourceItem)
+		{
+			if (resourceItem != null)
+			{
+				this.treeview.Builder.OpenResource(resourceItem);
+			}
+		}
+
+		internal void RenameGridResource(ResourceItem resourceItem, string newName)
+		{
+			this.treeview.RenameResource(resourceItem, newName);
+			this.QueueGridRefresh();
+		}
+
+		internal void StartGridLabelEdit()
+		{
+			this.gridview.StartLabelEdit();
+		}
+
+		private void SetGridViewActive(bool active)
+		{
+			this.IsGridViewActive = active;
+			this.btn_viewMode.Label = active ? "树形" : "网格";
+			this.btn_viewMode.TooltipText = active ? "切换到 TreeView" : "切换到 GridView";
+			if (active)
+			{
+				this.treeview.NoShowAll = true;
+				this.gridview.NoShowAll = false;
+				if (this.gridview.CurrentFolder == null)
+				{
+					this.gridview.SetCurrentFolder(this.GetFolderForGridView());
+				}
+				this.ReloadGridView();
+				this.treeview.Hide();
+				this.gridview.ShowAll();
+				this.viewBox.QueueResize();
+				this.btn_gridBack.ShowAll();
+				this.gridview.GrabFocus();
+				return;
+			}
+			this.gridview.NoShowAll = true;
+			this.treeview.NoShowAll = false;
+			this.gridview.Hide();
+			this.btn_gridBack.Hide();
+			this.treeview.ShowAll();
+			this.viewBox.QueueResize();
+			this.treeview.Tree.GrabFocus();
+		}
+
+		private ResourceFolder GetFolderForGridView()
+		{
+			List<ResourceItem> selectedItems = this.treeview.Builder.GetCurrentSelectes();
+			if (selectedItems != null && selectedItems.Count > 0)
+			{
+				ResourceFolder selectedFolder = selectedItems[0] as ResourceFolder;
+				if (selectedFolder != null)
+				{
+					return selectedFolder;
+				}
+				ResourceFolder parent = selectedItems[0].Parent as ResourceFolder;
+				if (parent != null)
+				{
+					return parent;
+				}
+			}
+			Solution solution = Services.ProjectOperations.CurrentSelectedSolution;
+			return solution == null ? null : solution.GetRootFolder();
+		}
+
+		private void UpdateGridBackButton()
+		{
+			if (this.btn_gridBack != null)
+			{
+				this.btn_gridBack.Sensitive = this.gridview != null && this.gridview.CurrentFolder != null && this.gridview.CurrentFolder.Parent is ResourceFolder;
+			}
 		}
 
 		// Token: 0x060001E6 RID: 486 RVA: 0x0000A892 File Offset: 0x00008A92
@@ -326,10 +586,29 @@ namespace Modules.Communal.ResourcePanel
 		// Token: 0x060001F0 RID: 496 RVA: 0x0000ABD4 File Offset: 0x00008DD4
 		public void Reset()
 		{
+			if (this.gridRefreshTimeout != 0U)
+			{
+				Source.Remove(this.gridRefreshTimeout);
+				this.gridRefreshTimeout = 0U;
+			}
 			this.searchBox.Entry.Text = string.Empty;
 			this.filterText = string.Empty;
 			this.treeview.Tree.IsSearchState = false;
 			ResourceWidget.filterHash.Clear();
+			if (this.gridview != null)
+			{
+				this.gridview.Clear();
+			}
+		}
+
+		protected override void OnDestroyed()
+		{
+			if (this.gridRefreshTimeout != 0U)
+			{
+				Source.Remove(this.gridRefreshTimeout);
+				this.gridRefreshTimeout = 0U;
+			}
+			base.OnDestroyed();
 		}
 
 		// Token: 0x060001F1 RID: 497 RVA: 0x0000AC14 File Offset: 0x00008E14
@@ -385,11 +664,19 @@ namespace Modules.Communal.ResourcePanel
 		// Token: 0x040000A0 RID: 160
 		private IconButton btn_refresh;
 
+		private Button btn_gridBack;
+
+		private Button btn_viewMode;
+
 		// Token: 0x040000A1 RID: 161
 		public bool IsSearchState;
 
 		// Token: 0x040000A2 RID: 162
 		private ResourceTreeView treeview;
+
+		private ResourceGridView gridview;
+
+		private VBox viewBox;
 
 		// Token: 0x040000A3 RID: 163
 		private SearchEntry searchBox;
@@ -426,5 +713,7 @@ namespace Modules.Communal.ResourcePanel
 
 		// Token: 0x040000AE RID: 174
 		private EventBox footEvent;
+
+		private uint gridRefreshTimeout;
 	}
 }

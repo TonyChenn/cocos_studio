@@ -121,7 +121,7 @@ namespace Modules.Communal.ResourcePanel
 		}
 
 		// Token: 0x06000111 RID: 273 RVA: 0x000053A4 File Offset: 0x000035A4
-		private async void ImportResources(string[] selectPath, ResourceFolder folder)
+		internal async void ImportResources(string[] selectPath, ResourceFolder folder)
 		{
 			List<ResourceItem> importItems = await Services.ProjectOperations.ImportResourcesAsync(folder, selectPath, null);
 			if (importItems != null && importItems.Count > 0)
@@ -410,19 +410,45 @@ namespace Modules.Communal.ResourcePanel
 					IEnumerable<string> fileArray = args.SelectionData.GetFileArray().FileArray;
 					if (fileArray != null && fileArray.Count<string>() > 0)
 					{
-						ResourceFolder folder = Services.ProjectOperations.CurrentResourceGroup.RootFolder;
-						if (this.lastHoreItem != null)
-						{
-							NodeBuilder builder = this.pad.GetBuilder(this.lastHoreItem.GetType());
-							if (builder != null)
-							{
-								folder = builder.GetTargetFolder(this.lastHoreItem);
-							}
-						}
+						ResourceFolder folder = this.GetImportTargetFolder(o as Widget, args.X, args.Y);
 						this.ImportResources(fileArray.ToArray<string>(), folder);
 					}
 				}
 			}
+		}
+
+		private ResourceFolder GetImportTargetFolder(Widget dragWidget, int x, int y)
+		{
+			ResourceFolder rootFolder = Services.ProjectOperations.CurrentResourceGroup.RootFolder;
+			if (dragWidget != null && dragWidget != this.tree)
+			{
+				int treeX;
+				int treeY;
+				if (!dragWidget.TranslateCoordinates(this.tree, x, y, out treeX, out treeY))
+				{
+					return rootFolder;
+				}
+				x = treeX;
+				y = treeY;
+			}
+			TreePath path;
+			if (!this.tree.GetPathAtPos(x, y, out path))
+			{
+				return rootFolder;
+			}
+			TreeIter iter;
+			if (!this.tree.CurrentModel.GetIter(out iter, path))
+			{
+				return rootFolder;
+			}
+			ResourceItem resourceItem = this.GetDateItemByIter(iter) as ResourceItem;
+			ResourceFolder folder = resourceItem as ResourceFolder;
+			if (folder != null)
+			{
+				return folder;
+			}
+			ResourceFolder parentFolder = resourceItem == null ? null : resourceItem.Parent as ResourceFolder;
+			return parentFolder ?? rootFolder;
 		}
 
 		// Token: 0x0600011A RID: 282 RVA: 0x00005DBC File Offset: 0x00003FBC
@@ -540,8 +566,12 @@ namespace Modules.Communal.ResourcePanel
 		// Token: 0x06000120 RID: 288 RVA: 0x00006000 File Offset: 0x00004200
 		private void tree_DragBegin(object o, DragBeginArgs args)
 		{
-			DragContext context = args.Context;
 			args.RetVal = false;
+			this.SetDragData(args.Context);
+		}
+
+		internal void SetDragData(DragContext context)
+		{
 			if (!this.CanDrag())
 			{
 				context.SetDragData(null);
@@ -788,14 +818,7 @@ namespace Modules.Communal.ResourcePanel
 			ResourceFile resourceFile = dateItemByIter as ResourceFile;
 			if (resourceFile != null)
 			{
-				resourceFile.Refresh();
-				Services.Workbench.OpenDocument(resourceFile.FullPath, resourceFile as CocosItem, true);
-				CocosItem cocosItem = resourceFile as CocosItem;
-				if (cocosItem != null)
-				{
-					Tracker.Add(ViewRegions.ResourcePanel, "OpenFile", "Open" + cocosItem.ContentType, "");
-					return;
-				}
+				this.OpenResource(resourceFile);
 			}
 			else
 			{
@@ -843,6 +866,22 @@ namespace Modules.Communal.ResourcePanel
 				}
 				widget.GrabFocus();
 				widget.HasFocus = true;
+			}
+		}
+
+		internal void OpenResource(ResourceItem resourceItem)
+		{
+			ResourceFile resourceFile = resourceItem as ResourceFile;
+			if (resourceFile == null)
+			{
+				return;
+			}
+			resourceFile.Refresh();
+			Services.Workbench.OpenDocument(resourceFile.FullPath, resourceFile as CocosItem, true);
+			CocosItem cocosItem = resourceFile as CocosItem;
+			if (cocosItem != null)
+			{
+				Tracker.Add(ViewRegions.ResourcePanel, "OpenFile", "Open" + cocosItem.ContentType, "");
 			}
 		}
 
@@ -1619,16 +1658,41 @@ namespace Modules.Communal.ResourcePanel
 			List<TreePath> list = new List<TreePath>();
 			foreach (ResourceItem key in seletes)
 			{
-				object obj;
-				if (this.nodeHash.ContainsKey(key) && this.nodeHash.TryGetValue(key, out obj))
+				object selectionKey = key;
+				if (Services.ProjectsService.CurrentResourceGroup != null && key == Services.ProjectsService.CurrentResourceGroup.RootFolder)
 				{
-					TreeIter treeIter = (TreeIter)obj;
-					TreePath path = this.store.GetPath(treeIter);
-					list.Add(path);
-					TreeIter zero = TreeIter.Zero;
-					this.store.IterParent(out zero, treeIter);
-					TreePath path2 = this.store.GetPath(zero);
-					this.tree.ExpandToPath(path2);
+					selectionKey = Services.ProjectsService.CurrentSolution;
+				}
+				object obj;
+				if (this.nodeHash.ContainsKey(selectionKey) && this.nodeHash.TryGetValue(selectionKey, out obj))
+				{
+					TreeIter[] candidateIters = obj is TreeIter ? new TreeIter[]
+					{
+						(TreeIter)obj
+					} : (TreeIter[])obj;
+					foreach (TreeIter treeIter in candidateIters)
+					{
+						TreePath path = this.store.GetPath(treeIter);
+						if (this.tree.IsSearchState && this.tree.Filter != null)
+						{
+							path = this.tree.Filter.ConvertChildPathToPath(path);
+							if (path == null)
+							{
+								continue;
+							}
+						}
+						list.Add(path);
+						if (!this.tree.IsSearchState)
+						{
+							TreeIter zero = TreeIter.Zero;
+							if (this.store.IterParent(out zero, treeIter))
+							{
+								TreePath path2 = this.store.GetPath(zero);
+								this.tree.ExpandToPath(path2);
+							}
+						}
+						break;
+					}
 				}
 			}
 			this.tree.SetSelectes(list);

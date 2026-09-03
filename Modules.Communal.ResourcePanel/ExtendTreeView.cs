@@ -211,9 +211,14 @@ namespace Modules.Communal.ResourcePanel
 			{
 				return;
 			}
+			List<TreePath> paths = selectesPath.ToList<TreePath>();
 			base.Selection.UnselectAll();
-			base.Selection.SelectFunction = ((TreeSelection selection, TreeModel model, TreePath path, bool path_currently_selected) => selectesPath.Contains(path));
-			base.ScrollToCell(selectesPath.FirstOrDefault<TreePath>(), base.Columns.FirstOrDefault<TreeViewColumn>(), false, 0.5f, 0.5f);
+			if (paths.Count == 0)
+			{
+				return;
+			}
+			base.Selection.SelectFunction = ((TreeSelection selection, TreeModel model, TreePath path, bool path_currently_selected) => paths.Contains(path));
+			base.ScrollToCell(paths[0], base.Columns.FirstOrDefault<TreeViewColumn>(), false, 0.5f, 0.5f);
 			base.Selection.SelectAll();
 			base.Selection.SelectFunction = ((TreeSelection selection, TreeModel model, TreePath path, bool path_currently_selected) => true);
 		}
