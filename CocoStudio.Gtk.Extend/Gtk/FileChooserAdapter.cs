@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using AppKit;
 using Foundation;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using MonoDevelop.Core;
 using OpenDialogs;
 
@@ -35,13 +37,42 @@ namespace Gtk
 			}
 			else if (Platform.IsWindows)
 			{
-				result = this.WinOpenFile(IsWin7Style);
+				if (this.UseModernWindowsDialog && (this.FileChooserAction == FileAction.Open || this.FileChooserAction == FileAction.SelectFolder))
+				{
+					result = this.WindowsCommonOpenDialog();
+				}
+				else
+				{
+					result = this.WinOpenFile(IsWin7Style);
+				}
 			}
 			else
 			{
 				result = this.GtkOpenFile();
 			}
 			return result;
+		}
+
+		private bool WindowsCommonOpenDialog()
+		{
+			using (CommonOpenFileDialog commonOpenFileDialog = new CommonOpenFileDialog())
+			{
+				commonOpenFileDialog.Title = this.Title;
+				commonOpenFileDialog.Multiselect = this.AllowMultipleSelect;
+				commonOpenFileDialog.IsFolderPicker = this.FileChooserAction == FileAction.SelectFolder;
+				commonOpenFileDialog.EnsurePathExists = true;
+				if (!string.IsNullOrWhiteSpace(this.InitialDirectory) && Directory.Exists(this.InitialDirectory))
+				{
+					commonOpenFileDialog.InitialDirectory = this.InitialDirectory;
+				}
+				if (commonOpenFileDialog.ShowDialog() != CommonFileDialogResult.Ok)
+				{
+					return false;
+				}
+				this.Paths = commonOpenFileDialog.FileNames.ToArray<string>();
+				this.Path = this.Paths.FirstOrDefault<string>();
+				return this.Paths.Length > 0;
+			}
 		}
 
 		// Token: 0x060002CC RID: 716 RVA: 0x0000AEFC File Offset: 0x000090FC
@@ -340,6 +371,8 @@ namespace Gtk
 
 		// Token: 0x04000353 RID: 851
 		public bool AllowMultipleSelect;
+
+		public bool UseModernWindowsDialog;
 
 		// Token: 0x04000354 RID: 852
 		public string Title;

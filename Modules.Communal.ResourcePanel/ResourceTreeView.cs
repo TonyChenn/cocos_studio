@@ -428,7 +428,8 @@ namespace Modules.Communal.ResourcePanel
 		}
 
 		// Token: 0x06000180 RID: 384 RVA: 0x000083A0 File Offset: 0x000065A0
-		[CommandUpdateHandler(CmdEnum.ImportCmd)]
+		[CommandUpdateHandler(CmdEnum.ImportFileCmd)]
+		[CommandUpdateHandler(CmdEnum.ImportDirCmd)]
 		[CommandUpdateHandler(CmdEnum.NewFolderCmd)]
 		[CommandUpdateHandler(CmdEnum.NewFileCmd)]
 		private void NewFileCmd_Update(CommandInfo info)

@@ -8,7 +8,8 @@
     <MenuSet id="Context" label="右键菜单">
       <MenuItem id="CocoStudio.Core.Commands.CmdEnum.NewFileCmd" isInternal="true"/>
       <MenuItem id="CocoStudio.Core.Commands.CmdEnum.NewFolderCmd" isInternal="true"/>
-      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportFileCmd" isInternal="true"/>
+      <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportDirCmd" isInternal="true"/>
       <MenuItem id="Modules.Communal.ResourcePanel.ImportFromPsd"
                 label="从PSD导入"
                 handler="Modules.Communal.ResourcePanel.ImportFromPsdHandler" />

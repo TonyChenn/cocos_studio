@@ -6,10 +6,11 @@ namespace Gtk
 	public class FileChooserDialogModel
 	{
 		// Token: 0x060002D3 RID: 723 RVA: 0x0000B74C File Offset: 0x0000994C
-		public static SelectFolderDialogResult GetBrowseDialogPath(string title = "Select Folder", bool selectMultiple = false, string initialDirectory = "", bool IsWin7Style = false)
+		public static SelectFolderDialogResult GetBrowseDialogPath(string title = "Select Folder", bool selectMultiple = false, string initialDirectory = "", bool IsWin7Style = false, bool useModernWindowsDialog = false)
 		{
 			SelectFolderDialogResult selectFolderDialogResult = default(SelectFolderDialogResult);
 			FileChooserAdapter fileChooserAdapter = new FileChooserAdapter(FileAction.SelectFolder, title, selectMultiple, initialDirectory);
+			fileChooserAdapter.UseModernWindowsDialog = useModernWindowsDialog;
 			SelectFolderDialogResult result;
 			if (fileChooserAdapter.Run(IsWin7Style))
 			{
@@ -25,7 +26,7 @@ namespace Gtk
 		}
 
 		// Token: 0x060002D4 RID: 724 RVA: 0x0000B7A0 File Offset: 0x000099A0
-		public static SelectFileDialogResult GetOpenFilePath(string[] fileTypes = null, string title = "Open File", bool selectMultiple = false, string initialDirectory = "")
+		public static SelectFileDialogResult GetOpenFilePath(string[] fileTypes = null, string title = "Open File", bool selectMultiple = false, string initialDirectory = "", bool useModernWindowsDialog = false)
 		{
 			SelectFileDialogResult selectFileDialogResult = default(SelectFileDialogResult);
 			if (fileTypes != null)
@@ -37,6 +38,7 @@ namespace Gtk
 			}
 			FileChooserAdapter fileChooserAdapter = new FileChooserAdapter(FileAction.Open, title, selectMultiple, initialDirectory);
 			fileChooserAdapter.AllowedFileTypes = fileTypes;
+			fileChooserAdapter.UseModernWindowsDialog = useModernWindowsDialog;
 			SelectFileDialogResult result;
 			if (fileChooserAdapter.Run(false))
 			{

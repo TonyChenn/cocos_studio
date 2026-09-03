@@ -31,7 +31,8 @@
       <MenuItem id="CocoStudio.Core.Commands.CmdEnum.SaveAsCmd" isInternal="true"/>
       <SeparatorItem id="FileImportSeparator"/>
       <MenuSet id="Import" label="Menu_File_Import">
-        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportCmd" isInternal="true"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportFileCmd" isInternal="true"/>
+        <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportDirCmd" isInternal="true"/>
         <MenuItem id="CocoStudio.Core.Commands.CmdEnum.ImportProjectCmd" isInternal="true"/>
       </MenuSet>
       <SeparatorItem id="FileQuitSeparator"/>

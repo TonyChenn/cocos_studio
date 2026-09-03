@@ -29,7 +29,8 @@ namespace Modules.Communal.ResourcePanel
 		// Token: 0x0600010E RID: 270 RVA: 0x0000502C File Offset: 0x0000322C
 		private void InitiaCommand()
 		{
-			GlobalCommand.ImportCmd.Execute += this.ImportResourceCmd_Execute;
+			GlobalCommand.ImportFileCmd.Execute += this.ImportResourceFileCmd_Execute;
+			GlobalCommand.ImportDirCmd.Execute += this.ImportResourceFolderCmd_Execute;
 			GlobalCommand.NewFileCmd.Execute += this.NewFileCmd_Execute;
 			ResourceMenu.InitMenu();
 		}
@@ -86,12 +87,23 @@ namespace Modules.Communal.ResourcePanel
 		}
 
 		// Token: 0x06000110 RID: 272 RVA: 0x000051F4 File Offset: 0x000033F4
-		private void ImportResourceCmd_Execute(object sender, CommandRunArgs args)
+		private void ImportResourceFileCmd_Execute(object sender, CommandRunArgs args)
 		{
-			ResourceFolder rootFolder = Services.ProjectOperations.CurrentResourceGroup.RootFolder;
-			string[] fileNames = FileChooserDialogModel.GetOpenFilesPath(null, LanguageInfo.Select_File, true, Services.RecentFileService.LastImportLocation).FileNames;
-			if (fileNames != null && fileNames.Count<string>() > 0)
+			string[] fileNames = FileChooserDialogModel.GetOpenFilePath(null, LanguageInfo.Menu_File_ImportFile, true, Services.RecentFileService.LastImportLocation, true).FileNames;
+			this.ImportSelectedResources(fileNames);
+		}
+
+		private void ImportResourceFolderCmd_Execute(object sender, CommandRunArgs args)
+		{
+			string[] folders = FileChooserDialogModel.GetBrowseDialogPath(LanguageInfo.Menu_File_ImportFolder, true, Services.RecentFileService.LastImportLocation, false, true).Folders;
+			this.ImportSelectedResources(folders);
+		}
+
+		private void ImportSelectedResources(string[] paths)
+		{
+			if (paths != null && paths.Length > 0)
 			{
+				ResourceFolder rootFolder = Services.ProjectOperations.CurrentResourceGroup.RootFolder;
 				TreeIter treeIter;
 				ResourceFolder resourceFolder = this.GetFolderBySelected(out treeIter);
 				if (resourceFolder == null)
@@ -99,8 +111,8 @@ namespace Modules.Communal.ResourcePanel
 					resourceFolder = rootFolder;
 					this.GetFirstNode(Services.ProjectOperations.CurrentSelectedSolution, out treeIter);
 				}
-				this.ImportResources(fileNames, resourceFolder);
-				Services.RecentFileService.LastImportLocation = Path.GetDirectoryName(fileNames[0]);
+				this.ImportResources(paths, resourceFolder);
+				Services.RecentFileService.LastImportLocation = Directory.Exists(paths[0]) ? paths[0] : Path.GetDirectoryName(paths[0]);
 			}
 			if (MonoDevelop.Core.Platform.IsWindows && Services.MainWindow.HasToplevelFocus)
 			{

@@ -72,6 +72,12 @@
     <Reference Include="MonoDevelop.Ide">
       <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack">
+      <HintPath>..\dlls\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>..\dlls\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="pango-sharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />

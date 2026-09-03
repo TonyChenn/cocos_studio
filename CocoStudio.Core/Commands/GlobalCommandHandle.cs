@@ -63,7 +63,8 @@ namespace CocoStudio.Core.Commands
 			GlobalCommand.SaveAllCmd.Update += GlobalCommandHandle.HasSolution_CanExecute;
 			GlobalCommand.SaveAsCmd.Execute += GlobalCommandHandle.SaveAsCmd_Execute;
 			GlobalCommand.SaveAsCmd.Update += GlobalCommandHandle.HasSolution_CanExecute;
-			GlobalCommand.ImportCmd.Update += GlobalCommandHandle.HasSolution_CanExecute;
+			GlobalCommand.ImportFileCmd.Update += GlobalCommandHandle.HasSolution_CanExecute;
+			GlobalCommand.ImportDirCmd.Update += GlobalCommandHandle.HasSolution_CanExecute;
 			GlobalCommand.ImportProjectCmd.Update += GlobalCommandHandle.HasSolution_CanExecute;
 			GlobalCommand.QuitCmd.Execute += GlobalCommandHandle.QuitCmd_Execute;
 			GlobalCommand.UndoCmd.Execute += GlobalCommandHandle.UndoCmd_Execute;
