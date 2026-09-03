@@ -51,9 +51,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net">
-      <HintPath>..\dlls\log4net.dll</HintPath>
-    </Reference>
+    <PackageReference Include="log4net" Version="3.4.0" />
     <Reference Include="Mono.Addins">
       <HintPath>..\dlls\Mono.Addins.dll</HintPath>
     </Reference>
