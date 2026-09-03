@@ -110,16 +110,15 @@ namespace Cocos.Launcher.Library
 						ZipEntry nextEntry;
 						while ((nextEntry = zipInputStream.GetNextEntry()) != null)
 						{
-							string directoryName = Path.GetDirectoryName(nextEntry.Name);
+							string path2 = ZipModel.GetSafeExtractionPath(unZipDir, nextEntry.Name);
+							string directoryName = Path.GetDirectoryName(path2);
 							string fileName = Path.GetFileName(nextEntry.Name);
-							string path = Path.Combine(unZipDir, directoryName);
-							if (!Directory.Exists(path))
+							if (!string.IsNullOrEmpty(directoryName) && !Directory.Exists(directoryName))
 							{
-								Directory.CreateDirectory(path);
+								Directory.CreateDirectory(directoryName);
 							}
 							if (fileName != string.Empty)
 							{
-								string path2 = Path.Combine(unZipDir, nextEntry.Name);
 								using (FileStream fileStream = File.Create(path2))
 								{
 									if (nextEntry.Size != 0L)
@@ -143,6 +142,18 @@ namespace Cocos.Launcher.Library
 				this.Error = "Failed to unpack:  " + ex.Message;
 				LogConfig.Logger.Error(string.Format("Failed to unpack \"{0}\".", zipFilePath), ex);
 			}
+		}
+
+		private static string GetSafeExtractionPath(string unZipDir, string entryName)
+		{
+			string fullPath = Path.GetFullPath(unZipDir);
+			string text = fullPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar) + Path.DirectorySeparatorChar;
+			string fullPath2 = Path.GetFullPath(Path.Combine(text, entryName));
+			if (!fullPath2.StartsWith(text, StringComparison.OrdinalIgnoreCase))
+			{
+				throw new InvalidDataException("The zip entry is outside the destination directory: " + entryName);
+			}
+			return fullPath2;
 		}
 
 		// Token: 0x0400001D RID: 29
