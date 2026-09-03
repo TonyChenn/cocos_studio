@@ -51,7 +51,7 @@ namespace CocoStudio.Projects
 			{
 				return text;
 			}
-			return text;
+			return (FilePath)text;
 		}
 	}
 }
