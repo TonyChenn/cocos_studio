@@ -1,0 +1,36 @@
+<Project>
+  <!-- Only projects already referencing Gtk# participate in this migration. -->
+  <ItemGroup>
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'atk-sharp'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'gdk-sharp'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'glib-sharp'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'gtk-sharp'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'Mono.Cairo'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'pango-sharp'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'glade-sharp'))" />
+    <_LegacyGtkReference Include="@(Reference->WithMetadataValue('Identity', 'gtk-dotnet'))" />
+  </ItemGroup>
+  <ItemGroup Condition="'@(_LegacyGtkReference)' != ''">
+    <!-- The package also bundles Mono.Posix 2.0. Do not import its assets or build targets. -->
+    <PackageReference Include="Mono.GtkSharp" Version="2.12.0.1" GeneratePathProperty="true" ExcludeAssets="all" PrivateAssets="all" />
+    <!-- Gtk's transitive assembly references must not pull Mono.Posix 2.0 back from the GAC. -->
+    <PackageReference Include="Mono.Posix-4.5" Version="4.5.0" Condition="'@(PackageReference->WithMetadataValue('Identity', 'Mono.Posix-4.5'))' == ''" />
+    <Reference Remove="@(_LegacyGtkReference)" />
+    <_GtkSharpAssembly Include="atk-sharp;gdk-sharp;glade-sharp;glib-sharp;gtk-dotnet;gtk-sharp;Mono.Cairo;pango-sharp" />
+    <Reference Include="@(_GtkSharpAssembly)">
+      <HintPath>$(PkgMono_GtkSharp)\lib\net45\%(Identity).dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <!-- Keep Mono dllmap files with their managed assemblies; native GTK remains an installation prerequisite. -->
+    <None Include="@(_GtkSharpAssembly->'$(PkgMono_GtkSharp)\build\%(Identity).dll.config')">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+  <Target Name="ValidateNuGetGtkSharp" BeforeTargets="ResolveAssemblyReferences" Condition="'@(_GtkSharpAssembly)' != ''">
+    <Error Condition="!Exists('$(PkgMono_GtkSharp)\lib\net45\%(_GtkSharpAssembly.Identity).dll')" Text="Gtk# NuGet asset missing: %(_GtkSharpAssembly.Identity). Restore packages before building." />
+  </Target>
+</Project>

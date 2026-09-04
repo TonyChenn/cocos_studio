@@ -17,12 +17,13 @@
 | Xwt / Xwt.Gtk / Xwt.WPF | 0.2.251 |
 | Mono.Posix-4.5 | 4.5.0 |
 | ICSharpCode.NRefactory | 5.5.1 |
+| Mono.GtkSharp（第三方 Gtk# 2.12 封装，筛选托管资产） | 2.12.0.1 |
 
 具体引用以项目文件为准；程序集版本不一定等于 NuGet 包版本。
 `CocosStudio.sln` 和 `CocosStudio.slnx` 都不再构建旧 NRefactory 源码项目，
 避免同名输出覆盖 NuGet DLL；源码目录仍保留。
 
-## 本批清理
+## 第八批清理
 
 删除 `dlls/Modules.Communal.MutualEditor.dll` 的旧预编译副本。
 四处项目依赖均为 ProjectReference；全局复制规则本就排除此同名源码项目的 DLL。
@@ -53,7 +54,7 @@ Mono.Addins.Gui / CecilReflector、Mono.TextEditor、Mono.Debugging、IKVM 配�
 Xamarin.Mac。没有因为缺少直接 csproj 引用就删除它们：运行时发现和二进制间接依赖
 同样需要考虑。此清单不代表这些库仍被维护或已经通过全部平台测试。
 
-## 本批验证
+## 第八批验证
 
 - 隔离输出目录：`bin/NuGetPhase8Debug`；未覆盖正在使用的 `bin/Debug`。
 - `CocosStudio.sln` Debug/x86 重建：0 错误，108 警告。
@@ -71,3 +72,63 @@ Xamarin.Mac。没有因为缺少直接 csproj 引用就删除它们：运行时�
 [CecilReflector 1.3.7](https://www.nuget.org/packages/Mono.Addins.CecilReflector/1.3.7)、
 [IKVM.Reflection 7.2.4630.5](https://www.nuget.org/packages/IKVM.Reflection/7.2.4630.5)、
 [Mono.Debugging 版本索引](https://api.nuget.org/v3-flatcontainer/mono.debugging/index.json)。
+
+## 第九批：Gtk# 托管引用迁移
+
+Gtk# 2.12 原先由本机安装环境提供，不在 `dlls` 的 24 个保留 DLL 中。
+本批改用第三方 NuGet 包 [Mono.GtkSharp 2.12.0.1](https://www.nuget.org/packages/Mono.GtkSharp/2.12.0.1)
+提供编译和分发所需的托管 DLL；保留既有原生 GTK 安装，不安装 GTK 3，不修改 GAC。
+
+- 对第八批输出中引用 gtk-sharp、glib-sharp、gdk-sharp、atk-sharp、pango-sharp 的
+  8,999 处成员引用检查：0 处缺失；确认解析路径实际指向下载包。
+- 这五个程序集的版本/公钥与当前安装版一致，但文件 SHA-256 不同。
+  静态 API 检查通过不能证明原生交互或界面行为一致。
+- 包内直接携带 Mono.Posix 2.0.0.0，而本工程已经通过 Mono.Posix-4.5 使用
+  4.0.0.0 程序集；该内嵌文件不是 NuGet 依赖项，不能仅靠依赖版本解析将其升级。
+  `build/GtkSharp.targets` 使用 `ExcludeAssets="all"` / `PrivateAssets="all"` 禁止自动引入，
+  再通过 `GeneratePathProperty` 定位包，只显式引用并复制 8 个选定 DLL 和对应 dllmap 配置。
+  不导入包自身的构建目标，也不复制其 Mono.Posix 文件。
+- 包的 `lib/net45` 含 9 个托管 DLL，没有 GTK 原生运行库；现有绑定仍调用
+  `libgtk-win32-2.0-0.dll`、`gtksharpglue-2` 等原生模块。
+  使用此包不等于摆脱 Gtk# / GTK 安装环境。
+- 原有 Gtk# 项目通过共享 targets 统一使用这套引用，并明确使用 Mono.Posix-4.5 4.5.0。
+  UndoManager 也补充了该包引用，防止其间接依赖从系统目录复制旧 Mono.Posix。
+- 最终主方案 Debug/x86 重建 0 错误、108 警告；编译命令和复制日志中，
+  从系统 Gtk# 安装目录取托管库的记录均为 0。8 个输出 DLL 的哈希与 NuGet 包一致，
+  Mono.Posix 输出仍为 4.0.0.0。
+- `.slnx` Debug/x86 重建 0 错误、108 警告；ExternalImport Debug/Any CPU 重建
+  0 错误、1 个架构警告。
+- x86 冒烟测试分别验证了默认加载方式和强制使用候选输出的方式：隐藏控件、UTF-8 文本、
+  IconView 选择/滚动、Gdk 图片及 Cairo 绘图通过。
+- 候选输出还通过 Xwt/GTK 图片转换、编辑器图标按钮、进度对话框、Mono.Posix 翻译回退测试。
+  默认和候选加载下的组件注册清单均为 47 项，与第八批相同。
+
+### 运行时边界
+
+本机默认启动仍优先加载 GAC 中同身份的 Gtk#，不能将此路径的成功当作新 DLL 的验证。
+候选测试仅在临时测试程序配置启用 developmentMode，并设置进程级 DEVPATH，
+逐个断言 8 个程序集来自测试目录；原生 GTK 路径仍指向现有安装。
+正式编辑器配置、machine.config、GAC 和系统环境变量均未改动。
+DEVPATH 会放宽版本匹配，只用于测试，不能复制此设置到发布环境。
+
+因此本批完成的是托管依赖的 NuGet 管理和兼容性冒烟验证，不是无安装依赖的 GTK 分发。
+仍未验证完整人工界面流程、没有 GAC 的干净机器以及 macOS；运行环境需要原生 GTK 2。
+
+### 重复运行基础测试
+
+在仓库根目录的 PowerShell 中运行：
+
+```powershell
+.\tests\Test-GtkSharp.ps1 -OutputDirectory .\bin\NuGetPhase9Debug
+```
+
+可以通过 `-GtkNativeDirectory` 指定现有 GTK 2 原生库目录。
+测试源码在 `tests/GtkSharpSmoke.cs`；脚本编译 x86 测试程序，拷贝待测输出到独立
+`obj/GtkSharpSmoke-*` 目录，运行两种加载模式并保存日志，不覆盖编辑器输出或系统文件。
+此测试验证指定输出的行为，输出是否来自预期 NuGet 包仍应结合文件哈希核对。
+
+本机下载包、构建日志和额外审计脚本位于被忽略的 `obj/NuGetPhase9Audit/`。
+本批没有删除额外 DLL，其余 DLL 保持第八批结论。
+
+构建机制参考：[NuGet 资产筛选与包路径属性](https://learn.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files)。
+测试机制参考：[DEVPATH 仅用于开发测试](https://learn.microsoft.com/en-us/dotnet/framework/configure-apps/how-to-locate-assemblies-by-using-devpath)。
