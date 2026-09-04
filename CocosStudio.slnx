@@ -66,7 +66,6 @@
     <Project Path="CocoStudio.UserStatistics/CocoStudio.UserStatistics.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b2372d">
       <Platform Solution="Release|x86" Project="x86" />
     </Project>
-    <Project Path="ICSharpCode.NRefactory/ICSharpCode.NRefactory.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b2372e" />
   </Folder>
   <Folder Name="/04 Models/">
     <Project Path="CocoStudio.Model.Basic/CocoStudio.Model.Basic.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf91" />
