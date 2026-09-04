@@ -120,12 +120,14 @@ Mono.Debugging 与指定 NuGet 包一致。397 处成员引用、112 项资源�
 模拟退出事件、上层类型加载通过。包含应用程序集的旧/新模块扫描各为 47 项，清单相同。
 Gtk# 默认加载与强制本地候选加载的基础控件/图像测试也通过。
 
-## DesignerSupport 恢复与验证范围
+## Refactoring 恢复与验证范围
 
 Refactoring 的原始导出在 `obj/NuGetPhase22Audit/Refactoring`，126 个源码文件未改写业务逻辑。
 1,187 项接口与 8 个资源匹配，测试覆盖注入真实已加载编辑器的文本替换、光标、撤销/重做/保存及问题列表可见性。
 未打开文件自动发现依赖完整 Workbench，未包含在此冒烟环境；跨工程重命名和批量修复仍待验证。
 对照脚本的旧模式同时恢复旧 Refactoring，候选模式校验实际加载路径。
+
+## DesignerSupport 恢复与验证范围
 
 本库保留程序集版本 `2.6.0.0`、Addin 注册和全部资源逻辑名称；源码未改写，项目显式引用
 System.Drawing / System.Design 等框架程序集及现有版本的 Cecil / Xwt / NRefactory / Mono.Addins / Gtk# / Mono.Posix 包。

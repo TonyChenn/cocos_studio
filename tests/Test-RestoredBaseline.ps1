@@ -30,3 +30,10 @@ foreach ($target in 'Restore','PrepareForBuild','CopyDllsToOutputDir') {
     if ($LASTEXITCODE -eq 0 -or "$result" -notlike '*Legacy MonoDevelop fallback has been removed*') { throw "Legacy fallback not rejected at $target : $result" }
 }
 'PASS legacy fallback rejected during restore, build preparation and copying'
+$fixture = Join-Path $test.FullName 'baseline-reference.proj'
+$targetsPath = [Security.SecurityElement]::Escape((Join-Path $root 'build\RestoredMonoDevelop.targets'))
+$baselinePath = [Security.SecurityElement]::Escape((Join-Path $baseline 'Mono.Debugging.dll'))
+"<Project><ItemGroup><ReferencePath Include=`"$baselinePath`" /></ItemGroup><Import Project=`"$targetsPath`" /></Project>" | Set-Content -LiteralPath $fixture -Encoding UTF8
+$result = & $MSBuild $fixture /t:RejectTestBaselineReferences /v:quiet /nologo 2>&1
+if ($LASTEXITCODE -eq 0 -or "$result" -notlike '*Production builds cannot reference test baseline assemblies*') { throw "Production baseline reference was not rejected: $result" }
+'PASS production baseline reference rejected'
