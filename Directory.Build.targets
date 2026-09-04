@@ -8,7 +8,6 @@
       <SourceProjectDlls Include="@(SourceProjectFiles->'$(MSBuildThisFileDirectory)dlls\%(Filename).dll')" />
       <DllFiles Include="$(MSBuildThisFileDirectory)dlls\*.dll" />
       <DllFiles Remove="@(SourceProjectDlls)" />
-      <DllFiles Include="$(MSBuildThisFileDirectory)dlls\ICSharpCode.NRefactory.dll" Condition="Exists('$(MSBuildThisFileDirectory)dlls\ICSharpCode.NRefactory.dll')" />
       <RuntimeAssetFiles Include="$(MSBuildThisFileDirectory)runtime-assets\**\*" />
     </ItemGroup>
     <Copy SourceFiles="@(DllFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />

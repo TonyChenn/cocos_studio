@@ -31,9 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.NRefactory, Version=5.0.0.0, Culture=neutral, PublicKeyToken=d4bfe873e7598c49">
-      <HintPath>..\dlls\ICSharpCode.NRefactory.dll</HintPath>
-    </Reference>
+    <PackageReference Include="ICSharpCode.NRefactory" Version="5.5.1" />
     <Reference Include="gdk-sharp" />
     <Reference Include="glib-sharp" />
     <Reference Include="gtk-sharp" />

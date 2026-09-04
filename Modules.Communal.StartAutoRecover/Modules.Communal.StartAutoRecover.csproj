@@ -95,10 +95,7 @@
       <Project>{9751112A-BBBB-4A1C-B265-F23595B2372D}</Project>
       <Name>CocoStudio.UserStatistics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ICSharpCode.NRefactory\ICSharpCode.NRefactory.csproj">
-      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372E}</Project>
-      <Name>ICSharpCode.NRefactory</Name>
-    </ProjectReference>
+    <PackageReference Include="ICSharpCode.NRefactory" Version="5.5.1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -113,10 +113,7 @@
       <Project>{80909F4B-FD59-4FAD-99F3-1345795E6348}</Project>
       <Name>Modules.Communal.MultiLanguage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ICSharpCode.NRefactory\ICSharpCode.NRefactory.csproj">
-      <Project>{9751112A-BBBB-4A1C-B265-F23595B2372E}</Project>
-      <Name>ICSharpCode.NRefactory</Name>
-    </ProjectReference>
+    <PackageReference Include="ICSharpCode.NRefactory" Version="5.5.1" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
