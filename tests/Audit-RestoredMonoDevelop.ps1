@@ -1,7 +1,10 @@
-param(
+param([string]$BaselineDirectory,
+
     [string]$CandidateDirectory = "$PSScriptRoot/../bin/RestoredMonoDevelopTest"
 )
 $ErrorActionPreference = 'Stop'
+. "$PSScriptRoot/RestoredBaseline.ps1"
+$originals = Get-RestoredBaseline -BaselineDirectory $BaselineDirectory
 $root = (Resolve-Path "$PSScriptRoot/..").Path
 $baseline = (Resolve-Path $CandidateDirectory).Path
 $candidate = (Resolve-Path $CandidateDirectory).Path
@@ -49,7 +52,7 @@ function Get-AttributeKey($attribute) {
     "$($attribute.AttributeType.FullName):$($parts -join '|')"
 }
 foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
-    $old = [Mono.Cecil.AssemblyDefinition]::ReadAssembly("$root/dlls/$name.dll", $parameters)
+    $old = [Mono.Cecil.AssemblyDefinition]::ReadAssembly("$originals/$name.dll", $parameters)
     $new = [Mono.Cecil.AssemblyDefinition]::ReadAssembly("$candidate/$name.dll", $parameters)
     $oldSurface = @(Get-Surface $old | Sort-Object -Unique)
     $newSurface = @(Get-Surface $new | Sort-Object -Unique)

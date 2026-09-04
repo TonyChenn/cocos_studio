@@ -1,5 +1,8 @@
-param([string]$OutputDirectory = "$PSScriptRoot/../bin/RestoredMonoDevelopTest")
+param([string]$BaselineDirectory,
+[string]$OutputDirectory = "$PSScriptRoot/../bin/RestoredMonoDevelopTest")
 $ErrorActionPreference = 'Stop'
+. "$PSScriptRoot/RestoredBaseline.ps1"
+$originals = Get-RestoredBaseline -BaselineDirectory $BaselineDirectory
 $root = (Resolve-Path "$PSScriptRoot/..").Path
 $output = (Resolve-Path $OutputDirectory).Path
 $test = New-Item -ItemType Directory -Path (Join-Path $root ('obj\RestoredMSBuildSmoke-' + [Guid]::NewGuid().ToString('N')))
@@ -9,7 +12,7 @@ foreach ($mode in 'old','new') {
     $bin = New-Item -ItemType Directory -Path (Join-Path $test.FullName $mode)
     $work = New-Item -ItemType Directory -Path (Join-Path $bin.FullName 'work')
     $source = Join-Path $output $library
-    if ($mode -eq 'old') { $source = Join-Path "$root/dlls" $library }
+    if ($mode -eq 'old') { $source = Join-Path $originals $library }
     Copy-Item -LiteralPath $source -Destination $bin.FullName
     if ((Get-FileHash $source).Hash -ne (Get-FileHash "$($bin.FullName)/$library").Hash) { throw 'Copied bridge hash differs' }
     $exe = Join-Path $bin.FullName 'MSBuildSmoke.exe'

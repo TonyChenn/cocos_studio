@@ -1,4 +1,18 @@
 <Project>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'CocosStudio' or '$(IsRestoredMonoDevelopProject)' == 'true'">
+    <!-- Restored projects are outside the solution list. Preserve the caller's Release/Debug configuration. -->
+    <ShouldUnsetParentConfigurationAndPlatform>false</ShouldUnsetParentConfigurationAndPlatform>
+  </PropertyGroup>
+  <!-- Source/NuGet-only since the legacy DLL cleanup; historical comments below describe earlier rollout stages. -->
+  <Target Name="RejectLegacyMonoDevelopFallback" BeforeTargets="_GenerateRestoreGraphProjectEntry;Restore;BeforeClean;PrepareForBuild;CopyDllsToOutputDir">
+    <Error Condition="'$(UseRestoredMonoDevelop)' != 'true'" Text="Legacy MonoDevelop fallback has been removed. Use source/NuGet builds; restore a complete Git revision to roll back." />
+  </Target>
+  <Target Name="RejectTestBaselineReferences" AfterTargets="ResolveAssemblyReferences">
+    <ItemGroup>
+      <_TestBaselineReference Include="@(ReferencePath)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(ReferencePath.FullPath)', '(?i)[\\/]obj[\\/]RestoredBaseline[\\/]'))" />
+    </ItemGroup>
+    <Error Condition="'@(_TestBaselineReference)' != ''" Text="Production builds cannot reference test baseline assemblies: @(_TestBaselineReference)" />
+  </Target>
   <!-- Historical restriction below is superseded: source builds are now the default; false retains the legacy fallback. -->
   <!-- Opt-in only: the restored libraries are not yet approved for normal editor builds. -->
   <ItemGroup Condition="'$(UseRestoredMonoDevelop)' == 'true'">
@@ -24,7 +38,7 @@
   </ItemGroup>
   <Target Name="ValidateRestoredMonoDevelop" BeforeTargets="BeforeClean;PrepareForBuild;ResolveAssemblyReferences"
           Condition="'$(UseRestoredMonoDevelop)' == 'true' or '$(IsRestoredMonoDevelopProject)' == 'true'">
-    <Error Condition="'$(UseRestoredMonoDevelop)' != 'true'" Text="Restored MonoDevelop projects require UseRestoredMonoDevelop=true. Build the main solution to use the legacy fallback." />
+    <Error Condition="'$(UseRestoredMonoDevelop)' != 'true'" Text="Legacy MonoDevelop fallback has been removed. Restore a complete Git revision to roll back." />
     <PropertyGroup Condition="'$(RestoredMonoDevelopTestBuild)' == 'true'">
       <_RestoredActualOutput>$([System.IO.Path]::GetFullPath('$(OutDir)'))</_RestoredActualOutput>
       <_RestoredExpectedOutput>$([System.IO.Path]::GetFullPath('$(RepositoryRoot)bin\RestoredMonoDevelopTest\'))</_RestoredExpectedOutput>

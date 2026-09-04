@@ -1,9 +1,12 @@
-param(
+param([string]$BaselineDirectory,
+
     [string]$OutputDirectory = "$PSScriptRoot/../bin/RestoredMonoDevelopTest",
     [string]$GtkNativeDirectory = 'C:\Program Files (x86)\GtkSharp\2.12\bin',
     [ValidateSet('old','new')][string]$Mode = 'new'
 )
 $ErrorActionPreference = 'Stop'
+. "$PSScriptRoot/RestoredBaseline.ps1"
+$originals = Get-RestoredBaseline -BaselineDirectory $BaselineDirectory
 $output = (Resolve-Path $OutputDirectory).Path
 $native = (Resolve-Path $GtkNativeDirectory).Path
 $root = (Resolve-Path "$PSScriptRoot/..").Path
@@ -14,12 +17,12 @@ Get-ChildItem $output -File | Copy-Item -Destination $binaries.FullName
 if ($Mode -eq 'old') {
     # Compare editor generations with the same repaired Windows adapter; this is not an all-old platform baseline.
     foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.SourceEditor') {
-        Copy-Item -LiteralPath "$root/dlls/$name.dll" -Destination $binaries.FullName
+        Copy-Item -LiteralPath "$originals/$name.dll" -Destination $binaries.FullName
     }
 }
 foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor') {
     $expectedDirectory = $output
-    if ($Mode -eq 'old' -and $name -ne 'CocoStudio.WindowsPlatform') { $expectedDirectory = Join-Path $root 'dlls' }
+    if ($Mode -eq 'old' -and $name -ne 'CocoStudio.WindowsPlatform') { $expectedDirectory = $originals }
     if ((Get-FileHash "$expectedDirectory/$name.dll").Hash -ne (Get-FileHash "$($binaries.FullName)/$name.dll").Hash) {
         throw "Unexpected test assembly: $name"
     }

@@ -1,5 +1,17 @@
 # MonoDevelop 定制库恢复源码（默认源码构建）
 
+## 当前构建与历史测试基准
+
+已移除八份原 DLL，正式构建只使用源码/NuGet。`UseRestoredMonoDevelop=false` 在还原、构建或复制时明确报错；
+回滚应通过 Git 恢复完整版本，不再提供混合旧库的构建路径。
+对照测试统一使用 `tests/RestoredBaseline.ps1` 从提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d` 按二进制流提取原库，
+存入忽略的 `obj/RestoredBaseline/<commit>` 并校验固定 SHA-256。历史缺失或哈希不符会失败，不会自动下载或替换为候选。
+无 Git 历史的环境可给对照脚本传 `-BaselineDirectory`，仍必须通过相同校验。正式构建不引用这个测试缓存。
+`.gitattributes` 禁止 Git 转换嵌入 XML/Stetic 资源的换行；方案外源码项目保留父级配置，Release 不再悄悄回落到 Debug。
+`Build-RestoredMonoDevelop.ps1 -DefaultOutput -Configuration Release` 可构建并校验 Release；
+`Test-RestoredBaseline.ps1` 覆盖历史缺失、显式基准、哈希损坏和旧回退开关拒绝。
+以下来源表中的 `dlls/` 路径指固定提交中的历史位置，不表示工作区仍保留这些 DLL。
+
 本目录包含 MonoDevelop 底层定制库与 Cocos Studio 上层适配库，不是直接使用 MonoDevelop 官方源码替换定制版本。
 Debugger / SourceEditor2 两个目录的 178 个 C# 文件与 85 项资源，来自当前仓库 DLL 的反编译导出，内容未改写。
 另恢复 CocoStudio.WindowsPlatform 的 4 个 C# 文件和 1 项资源，并为其浏览器适配器补齐 Xwt 接口，详见下文。
@@ -51,7 +63,7 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
 ## 接入方式与隔离
 
 - 项目文件名使用 `.Restored.csproj`，程序集名称保留原名，现包含 Debugger / SourceEditor2 / DesignerSupport / CocoStudio.WindowsPlatform / CocoStudio.SourceEditor / MonoDevelop.Projects.Formats.MSBuild / CocoStudio.LuaBinding 七库。
-  文件名刻意不同，避免根构建按项目文件名扫描时，自动停止复制回退构建所需的旧 DLL。
+  文件名沿用恢复阶段的 `.Restored.csproj` 命名；旧库回退已取消。
 - 按用户要求，`UseRestoredMonoDevelop` 现默认启用，普通 Debug/Release 构建使用这七份恢复源码及新版 Mono.Debugging。
   `build/RestoredMonoDevelop.Test.props` 仍可用于隔离测试，将输出限定为
   `bin/RestoredMonoDevelopTest/`，中间文件限定为 `obj/RestoredMonoDevelopTest/`。
@@ -67,8 +79,7 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
 - 根 ReferencePath 的旧 DLL 搜索顺序早于 HintPath，因此源码构建目标明确把 Mono.Debugging 包目录放在前面。
   同时排除旧八库的统一复制及旧七份源码库的间接复制，最后核对实际输出哈希。
 - 普通构建使用 `bin/Debug` 或 `bin/Release`；启用隔离测试模式时，构建前和清理前仍验证测试输出路径。
-- `dlls` 中八份原库继续保留。需要回退时，对主方案传 `/p:UseRestoredMonoDevelop=false` 并还原包、完整重建，
-  不要只覆盖部分 DLL，以免新旧依赖混用。该回退保留原 Windows 适配层的已知 Xwt 不兼容问题，不是完整依赖回滚。
+- `dlls` 中八份原库已删除。不要只覆盖部分 DLL 回滚，以免新旧依赖混用；通过 Git 恢复完整版本。
   未改变 GAC、用户环境或现用编辑器进程。
 
 ## 构建和自动测试

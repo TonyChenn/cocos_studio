@@ -1,0 +1,3 @@
+# Embedded resources must retain their original bytes across clean checkouts.
+third-party/MonoDevelop/**/*.xml -text
+third-party/MonoDevelop/**/gui.stetic -text

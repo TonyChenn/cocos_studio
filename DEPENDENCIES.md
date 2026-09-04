@@ -1,5 +1,20 @@
 # DLL / NuGet 迁移记录
 
+## 当前清理状态
+
+已将前期源码恢复按模块提交，并删除八份已替换的旧 DLL：Mono.Debugging、MonoDevelop.Debugger、SourceEditor2、
+DesignerSupport、Projects.Formats.MSBuild，以及 CocoStudio.SourceEditor、LuaBinding、WindowsPlatform。
+`dlls` 从 24 个减至 16 个；未删除仍被使用的库。以下旧批次的“保留/回退”描述仅记录历史状态。
+当前取消 `UseRestoredMonoDevelop=false` 构建；恢复完整历史版本应使用 Git。
+旧库对照测试统一从固定提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d` 提取并校验 SHA-256，
+测试缓存不受版本控制，也不能参与正式构建；历史缺失时可显式提供同样受校验的基准目录。
+
+本批全新工作副本验证暴露并修复两个问题：Git 自动换行改变嵌入资源字节，现通过 `.gitattributes` 对资源禁用文本转换；
+方案外源码项目在 Release 时被 MSBuild 清除父配置，现保留父配置，构建脚本按实际 Debug/Release 校验各份产物。
+Debug 两种方案、Release/x86 重建与接口/资源审计通过；397 处引用、104 项资源、编辑器/Lua/DesignerSupport、
+断点/47 项模块扫描及 MSBuild 桥接回归通过。缺少基准历史、损坏哈希和旧回退开关均明确失败。
+完整 IDE 交互和实际调试仍由用户验收，不以自动测试替代。
+
 核对日期：2026-09-04。目标是兼容现有 .NET Framework 4.8 / Gtk# 编辑器，
 不是把所有依赖强制更新到最新版本。源码目录和代码注释保留。
 

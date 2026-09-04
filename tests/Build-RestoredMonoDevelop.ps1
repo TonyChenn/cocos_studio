@@ -1,6 +1,7 @@
 param(
     [string]$MSBuild,
     [ValidateSet('sln','slnx')][string]$SolutionFormat = 'sln',
+    [ValidateSet('Debug','Release')][string]$Configuration = 'Debug',
     [switch]$DefaultOutput
 )
 $ErrorActionPreference = 'Stop'
@@ -18,7 +19,7 @@ $intermediate = Join-Path $root 'obj\RestoredMonoDevelopTest'
 $buildProperties = @("/p:DirectoryBuildPropsPath=$props")
 $logName = "$SolutionFormat-build.log"
 if ($DefaultOutput) {
-    $output = Join-Path $root 'bin\Debug'
+    $output = Join-Path $root "bin\$Configuration"
     $intermediate = Join-Path $root 'obj'
     $buildProperties = @()
     $logName = "default-$SolutionFormat-build.log"
@@ -28,10 +29,11 @@ $runningEditor = @(Get-Process CocosStudio -ErrorAction SilentlyContinue | Where
 })
 if ($runningEditor.Count) { throw "Close the editor using $output before rebuilding. No process was stopped." }
 $log = Join-Path $logs.FullName $logName
-& $MSBuild $solution /restore /t:Rebuild /m:1 /p:Configuration=Debug /p:Platform=x86 @buildProperties /v:quiet /nologo /fl "/flp:logfile=$log;encoding=UTF-8" /clp:ErrorsOnly
+if ($Configuration -ne 'Debug') { $log = Join-Path $logs.FullName "$Configuration-$logName" }
+& $MSBuild $solution /restore /t:Rebuild /m:1 "/p:Configuration=$Configuration" /p:Platform=x86 @buildProperties /v:quiet /nologo /fl "/flp:logfile=$log;encoding=UTF-8" /clp:ErrorsOnly
 if ($LASTEXITCODE -ne 0) { throw "Build failed; see $log" }
 foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
-    $sourceBuild = Join-Path $intermediate "$name.Restored\Debug\$name.dll"
+    $sourceBuild = Join-Path $intermediate "$name.Restored\$Configuration\$name.dll"
     $outputDll = Join-Path $output "$name.dll"
     if ((Get-FileHash $sourceBuild).Hash -ne (Get-FileHash $outputDll).Hash) { throw "Source build overwritten in test output: $name" }
 }

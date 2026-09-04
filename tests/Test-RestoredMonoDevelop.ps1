@@ -1,5 +1,8 @@
-param([string]$OutputDirectory = "$PSScriptRoot/../bin/RestoredMonoDevelopTest")
+param([string]$BaselineDirectory,
+[string]$OutputDirectory = "$PSScriptRoot/../bin/RestoredMonoDevelopTest")
 $ErrorActionPreference = 'Stop'
+. "$PSScriptRoot/RestoredBaseline.ps1"
+$originals = Get-RestoredBaseline -BaselineDirectory $BaselineDirectory
 $baseline = (Resolve-Path $OutputDirectory).Path
 $repository = (Resolve-Path "$PSScriptRoot/..").Path
 $testRoot = Join-Path "$repository/obj" ('RestoredMonoDevelopSmoke-' + [Guid]::NewGuid().ToString('N'))
@@ -11,7 +14,7 @@ foreach ($destination in $oldRoot,$newRoot) {
     Get-ChildItem $baseline -File | Copy-Item -Destination $destination.FullName
 }
 foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
-    Copy-Item -LiteralPath "$repository/dlls/$name.dll" -Destination $oldRoot.FullName
+    Copy-Item -LiteralPath "$originals/$name.dll" -Destination $oldRoot.FullName
 }
 $executable = Join-Path $oldRoot.FullName 'DebuggingSmoke.exe'
 $source = Join-Path $PSScriptRoot 'RestoredMonoDevelopSmoke.cs'
