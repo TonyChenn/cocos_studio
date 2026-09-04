@@ -34,7 +34,7 @@
     <Reference Include="gdk-sharp" />
     <Reference Include="glib-sharp" />
     <Reference Include="gtk-sharp" />
-    <Reference Include="Mono.Posix" />
+    <PackageReference Include="Mono.Posix-4.5" Version="4.5.0" />
     <Reference Include="MonoDevelop.Core">
       <HintPath>..\dlls\MonoDevelop.Core.dll</HintPath>
     </Reference>

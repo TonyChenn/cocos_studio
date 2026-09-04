@@ -55,9 +55,7 @@
     <Reference Include="glib-sharp" />
     <Reference Include="gtk-sharp" />
     <Reference Include="atk-sharp" />
-    <Reference Include="Mono.Posix">
-      <HintPath>..\dlls\Mono.Posix.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Mono.Posix-4.5" Version="4.5.0" />
     <Reference Include="MonoDevelop.Ide">
       <HintPath>..\dlls\MonoDevelop.Ide.dll</HintPath>
     </Reference>
