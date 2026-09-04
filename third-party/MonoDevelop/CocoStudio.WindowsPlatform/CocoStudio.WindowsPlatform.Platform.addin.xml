@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ExtensionModel>
+
+  <Extension path = "/CocoStudio/Core/PlatformService">
+    <Condition id = "Platform" value = "win32">
+      <Class id      = "PlatformService"
+			       class   = "CocoStudio.WindowsPlatform.CSWindowsPlatformService"/>
+    </Condition>
+  </Extension>
+
+</ExtensionModel>
