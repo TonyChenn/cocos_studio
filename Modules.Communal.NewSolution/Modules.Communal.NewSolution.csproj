@@ -54,9 +54,7 @@
     <Reference Include="Xamarin.Mac">
       <HintPath>..\dlls\Xamarin.Mac.dll</HintPath>
     </Reference>
-    <Reference Include="Xwt">
-      <HintPath>..\dlls\Xwt.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Xwt" Version="0.2.251" />
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />

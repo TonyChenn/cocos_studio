@@ -43,9 +43,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xwt">
-      <HintPath>..\dlls\Xwt.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Xwt" Version="0.2.251" />
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />

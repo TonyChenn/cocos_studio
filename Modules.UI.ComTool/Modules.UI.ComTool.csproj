@@ -45,9 +45,7 @@
     <Reference Include="pango-sharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="Xwt">
-      <HintPath>..\dlls\Xwt.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Xwt" Version="0.2.251" />
     <ProjectReference Include="..\CocoStudio.Basic\CocoStudio.Basic.csproj">
       <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
       <Name>CocoStudio.Basic</Name>

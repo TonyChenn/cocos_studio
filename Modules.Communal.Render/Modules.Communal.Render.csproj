@@ -50,12 +50,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="Xwt">
-      <HintPath>..\dlls\Xwt.dll</HintPath>
-    </Reference>
-    <Reference Include="Xwt.Gtk">
-      <HintPath>..\dlls\Xwt.Gtk.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Xwt" Version="0.2.251" />
+    <PackageReference Include="Xwt.Gtk" Version="0.2.251" />
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />

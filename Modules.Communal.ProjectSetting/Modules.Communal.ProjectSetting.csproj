@@ -45,9 +45,7 @@
     </Reference>
     <Reference Include="pango-sharp" />
     <Reference Include="System" />
-    <Reference Include="Xwt">
-      <HintPath>..\dlls\Xwt.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Xwt" Version="0.2.251" />
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />

@@ -47,12 +47,8 @@
     <Reference Include="pango-sharp" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xwt">
-      <HintPath>..\dlls\Xwt.dll</HintPath>
-    </Reference>
-    <Reference Include="Xwt.Gtk">
-      <HintPath>..\dlls\Xwt.Gtk.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Xwt" Version="0.2.251" />
+    <PackageReference Include="Xwt.Gtk" Version="0.2.251" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoDevelop.Core">

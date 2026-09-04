@@ -60,9 +60,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Xwt.Gtk">
-      <HintPath>..\dlls\Xwt.Gtk.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Xwt.Gtk" Version="0.2.251" />
+    <PackageReference Include="Xwt.WPF" Version="0.2.251" IncludeAssets="runtime" />
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
