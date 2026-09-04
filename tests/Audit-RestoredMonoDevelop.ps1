@@ -48,7 +48,7 @@ function Get-AttributeKey($attribute) {
     $parts += @($attribute.Fields | ForEach-Object { "F:$($_.Name)=$($_.Argument.Value)" } | Sort-Object)
     "$($attribute.AttributeType.FullName):$($parts -join '|')"
 }
-foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','CocoStudio.WindowsPlatform') {
+foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
     $old = [Mono.Cecil.AssemblyDefinition]::ReadAssembly("$root/dlls/$name.dll", $parameters)
     $new = [Mono.Cecil.AssemblyDefinition]::ReadAssembly("$candidate/$name.dll", $parameters)
     $oldSurface = @(Get-Surface $old | Sort-Object -Unique)
@@ -78,10 +78,19 @@ foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','CocoStudio
         $match = @($new.CustomAttributes | Where-Object { (Get-AttributeKey $_) -eq $key })
         if (!$match.Count) { $failures.Add("ATTRIBUTE MISSING $name $key") }
     }
+    foreach ($type in $old.MainModule.Types) {
+        $newType = $new.MainModule.Types | Where-Object FullName -eq $type.FullName
+        foreach ($attribute in $type.CustomAttributes | Where-Object { $_.AttributeType.FullName -like 'Mono.Addins.*' }) {
+            $key = Get-AttributeKey $attribute
+            if (!$newType -or !@($newType.CustomAttributes | Where-Object { (Get-AttributeKey $_) -eq $key }).Count) {
+                $failures.Add("TYPE ATTRIBUTE MISSING $name $($type.FullName) $key")
+            }
+        }
+    }
     "ASSEMBLY=$name SURFACE=$($oldSurface.Count) DIFFERENCES=$($differences.Count) RESOURCES=$resources"
     $new.MainModule.AssemblyReferences | Where-Object Name -eq 'Mono.Debugging' | ForEach-Object { "REFERENCE=$($_.FullName)" }
 }
-$targets = @('MonoDevelop.Debugger','MonoDevelop.SourceEditor2','Mono.Debugging')
+$targets = @('MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','Mono.Debugging','MonoDevelop.Projects.Formats.MSBuild')
 $counts = @{}
 $paths = @{}
 foreach ($file in Get-ChildItem $baseline -File | Where-Object Extension -in '.dll','.exe') {

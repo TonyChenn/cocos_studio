@@ -30,12 +30,13 @@ if ($runningEditor.Count) { throw "Close the editor using $output before rebuild
 $log = Join-Path $logs.FullName $logName
 & $MSBuild $solution /restore /t:Rebuild /m:1 /p:Configuration=Debug /p:Platform=x86 @buildProperties /v:quiet /nologo /fl "/flp:logfile=$log;encoding=UTF-8" /clp:ErrorsOnly
 if ($LASTEXITCODE -ne 0) { throw "Build failed; see $log" }
-foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','CocoStudio.WindowsPlatform') {
+foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
     $sourceBuild = Join-Path $intermediate "$name.Restored\Debug\$name.dll"
     $outputDll = Join-Path $output "$name.dll"
     if ((Get-FileHash $sourceBuild).Hash -ne (Get-FileHash $outputDll).Hash) { throw "Source build overwritten in test output: $name" }
 }
-$assets = Get-Content -Raw "$intermediate/CocosStudio/project.assets.json" | ConvertFrom-Json
+# NuGet writes UTF-8 without a BOM, including localized warning messages; Windows PowerShell otherwise uses ANSI.
+$assets = Get-Content -Raw -Encoding UTF8 "$intermediate/CocosStudio/project.assets.json" | ConvertFrom-Json
 $package = @($assets.packageFolders.PSObject.Properties.Name | ForEach-Object {
     Join-Path $_ 'mono.debugging\1.0.20170212.42\lib\net40\Mono.Debugging.dll'
 } | Where-Object { Test-Path -LiteralPath $_ })

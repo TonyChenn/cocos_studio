@@ -29,7 +29,7 @@
 四处项目依赖均为 ProjectReference；全局复制规则本就排除此同名源码项目的 DLL。
 模块功能、源码和项目引用不变，输出继续来自源码编译。
 
-## 暂不能直接替换的候选库
+## 第八批候选库调查（历史结论，后续进展见各批次）
 
 | 库 | 实际障碍 | 本轮决定 |
 | --- | --- | --- |
@@ -311,3 +311,106 @@ PkgMono_GtkSharp 为空时不生成根目录复制项，并在解析引用或收
 新增 `tests/Test-NuGetProjectDeclarations.ps1` 检查直接包声明、VS 风格构建属性下 StartAutoRecover 的 8 项间接复制路径，
 以及人为置空包路径时的提前失败；三项均通过。未操作实际 VS 界面，不等同于 IDE 端重新还原验证。
 用户需重新加载方案、还原 NuGet 包并重建，以刷新旧项目系统的已加载项目状态。未提交、未推送。
+
+## 第十七批：恢复上层 CocoStudio.SourceEditor
+
+本批不强换另一套 NuGet 库，而是补齐已恢复的底层 SourceEditor2 之上的应用封装源码。
+`CocoStudio.SourceEditor.dll` 原 SHA-256 为 `BBAD404B771F239C7117E85176433596CF109C38C9CF09062E6EE419937E112B`。
+使用相同 ILSpy 工具导出 3 个业务类及 AssemblyInfo，纳入 `third-party/MonoDevelop/CocoStudio.SourceEditor/`；
+仅规范文本换行，未改写逻辑、程序集标识或原注释/属性。原始导出保存在被忽略的 `obj/NuGetPhase17Audit/`。
+
+主程序现在依次通过 ProjectReference 构建 CocoStudio.SourceEditor → MonoDevelop.SourceEditor2 → MonoDevelop.Debugger。
+新项目保留显式 NuGet 声明，并引用现有 Core / Projects / Basic 源码项目；补充基类所需 DesignerSupport 编译引用。
+默认和独立测试输出都排除旧上层 DLL 的统一/间接复制，并校验它确实来自本次源码编译。
+
+验证：
+
+- `.sln` 隔离 Debug/x86 与 `.slnx` 普通 Debug/x86 重建均为 0 错误、164 警告；四份恢复库产物哈希一致。
+- 上层 36 项接口与原 DLL 一致，AddinRoot、依赖和类型 Extension 注册属性保留；原 351 处依赖引用审计继续通过。
+- 上层工厂创建的真实 TextEditorView：大小写 Lua 文件识别、非 Lua 拒绝、加载/保存/重新加载、光标、撤销/重做、
+  文件视图复用规则测试通过。新旧上层/底层组合在各自独立进程下均通过；普通 bin/Debug 输出复测通过。
+- 断点双向互读、模拟退出事件、47 项模块扫描继续通过；56 个项目直接包声明检查通过，其中 47 个引用 Gtk#。
+- 显式关闭源码开关时，复制得到原五库，已核对哈希。原 DLL 暂不删除。
+
+测试最初在底层编辑操作之后才初始化上层，初始化会禁用并等待自动保存线程，导致无主事件循环的测试进程超时。
+调整为先初始化上层绑定再打开编辑器后通过，没有据此改动产品代码。测试使用临时文件和独立配置，未启动完整编辑器。
+本批默认 `bin/Debug` 已更新，未提交、未推送；真实调试与完整工作台交互仍待用户回归。
+
+## 第十八批：MSBuild 桥接源码恢复及 Windows 元数据读取修复
+
+恢复 `MonoDevelop.Projects.Formats.MSBuild` 的 17 个 C# 文件至 `third-party/MonoDevelop/`，
+原 DLL SHA-256 为 `910A447AB3D71F9B6B9EFF7C715BD758F4ADF797E587B77989EF229FEE21A72D`。
+默认源码构建与测试输出均接入，原库及显式回退仍保留；这不是把旧 MSBuild 引擎升级为现代版本。
+
+实际测试发现原 ProjectBuilder 依赖 Mono 私有 `BuildItem.evaluatedMetadata` 字段，Windows 实现不存在它，
+读取项目条目时出现空引用异常。仅修改该类，改为公开 CustomMetadataNames / GetEvaluatedMetadata，
+同时避免重复反转义；其他 16 个源码文件规范换行后与原导出一致。公开接口、原属性和注释保留。
+API 说明见 [Microsoft BuildItem](https://learn.microsoft.com/en-us/dotnet/api/microsoft.build.buildengine.builditem)。
+
+验证结果：
+
+- `.sln` 独立输出与 `.slnx` 默认 Debug/x86 重建均为 0 错误、174 警告；五份源码产物与输出哈希一致。
+- 该库 166 项接口无差异、29 处调用引用解析通过；连同此前库共检查 380 处成员引用。
+- 新增 `tests/Test-RestoredMSBuild.ps1`，通过跨 AppDomain 的 IBuildEngine / IProjectBuilder 验证项目求值、
+  自定义元数据与转义、目标执行、日志回调、警告/错误、未保存/磁盘刷新、非法 XML、卸载和结果序列化。
+  旧库的条目读取失败作为基线缺陷明确复现，新库通过回归，不能将旧模式退出码 0 解释为旧库无缺陷。
+- 57 个项目显式包声明检查、默认输出接口审计及现有编辑器/断点/模块注册回归通过。
+- 关闭源码构建后，六份原始 DLL 的回退复制哈希检查通过。
+
+本批另检查了 `WindowsPlatform.dll`：除旧 Code Pack 程序集身份外，还使用 IFileDialogCustomize、
+内部 Attach/SyncUnmanagedProperties 以及 customize/nativeDialog 等内部成员，不能直接重建后强行使用新版包。
+其原始反编译结果仅留在忽略的 `obj/NuGetPhase18Audit/WindowsPlatform`，本轮未替换或修改它。
+
+默认 `bin/Debug` 已更新；完整 IDE、独立构建进程启动协议、真实工程编译及其他平台尚未验证。
+未提交、未推送；既有资源定位修改及三个 .sln 删除记录保持不动。
+
+## 第十九批：恢复 CocoStudio.LuaBinding
+
+恢复 `CocoStudio.LuaBinding.dll` 的 23 个 C# 文件及 8 个资源到
+`third-party/MonoDevelop/CocoStudio.LuaBinding/`，原 DLL SHA-256 为
+`DE22BC4A54EBDC0A4671F8D20ADC41245283F53E54538E5B3886E593B67278AD`。
+原始导出保存在忽略的 `obj/NuGetPhase19Audit/LuaBinding`；所有源码仅规范换行，未改写业务逻辑。
+资源按字节保留，程序集版本 `0.0.0.0`、Addin 属性和 XML 注册不变。
+
+该库通过主程序条件 ProjectReference 构建，依赖使用已有 NuGet 版本，包含旧项目 VS 还原所需显式包声明。
+默认/隔离输出排除旧 DLL 的统一及间接复制；原 DLL 保留，不是替换为通用 Lua 包或升级 Lua 语言版本。
+
+验证：
+
+- `.sln` 隔离输出与 `.slnx` 默认 Debug/x86 均为 0 错误、174 警告；六份源码 DLL 输出哈希通过。
+- 本库 139 项接口、8 项资源与原库一致；现有 380 处调用引用解析审计通过。
+- 新旧独立进程验证 Lua 文件识别、注释标记、可选参数、提示签名、中文路径错误解析、两份语法资源及内置补全数据。
+- 58 个项目显式包声明检查通过，其中 48 个使用 Gtk#；StartAutoRecover 的 8 项配置复制检查通过。
+- 原编辑器、断点持久化、模块注册与 MSBuild 桥接回归通过；七份原 DLL 的回退复制哈希通过。
+
+对照测试发现原 `LuaParameterDataProvider.Unpack` 对嵌套可选参数丢失逗号，
+`list [, i [, j]]` 实际展开为 `list|list i|list i, j`；新旧均如此，本批作为已知缺陷保留并单独标记。
+`LuaParser.GetLocals` 原本就是空实现，不据此推断 LuaTextEditorCompletion 中的其他局部变量处理无效。
+没有实际运行 Lua/luac、完整工作台补全窗口或真实 Lua 工程编译。
+
+默认 `bin/Debug` 已更新。未提交、未推送；未改动其他功能修改及三个已有 .sln 删除记录。
+
+## 第二十批：恢复 MonoDevelop.DesignerSupport
+
+恢复 85 个 C# 文件与 10 项资源至 `third-party/MonoDevelop/MonoDevelop.DesignerSupport/`，
+原 DLL SHA-256 为 `37058746AD28C9A6D0617DCBDF01BD317BF1E55548CA8B19549F2F0D6974D498`。
+原始导出沿用 `obj/NuGetPhase19Audit/DesignerSupport`；源码仅规范换行，未改写业务逻辑、属性或原注释。
+版本 `2.6.0.0`、模块注册及所有资源逻辑名称保持不变。
+
+SourceEditor2 和 CocoStudio.SourceEditor 直接引用该源码项目；依赖使用已有 NuGet 版本，补齐 System.Drawing 等框架引用。
+默认/隔离构建排除旧 DLL 的统一及间接复制，显式关闭源码模式仍复制原库。
+
+验证：
+
+- 隔离 `.sln` 编译 0 错误、183 警告；默认 `.slnx` 编译及完整输出验证 0 错误、179 警告。
+- 883 项接口、10 项资源无差异，17 处调用引用解析到候选；全部恢复库共检查 397 处引用、104 项资源。
+- 新旧独立进程验证属性只读标记、取值/重置、事件订阅解绑、文本工具箱筛选/预览/相等性、类型加载与转换。
+- 59 个项目直接包声明检查通过，其中 49 个使用 Gtk#；StartAutoRecover 的 8 项间接配置复制路径通过。
+- 既有编辑器、Lua、断点、模块注册、MSBuild 桥接回归及八份原 DLL 的回退复制哈希检查通过。
+
+隔离还原曾因 NuGet 服务不可达产生中文 NU1900；Windows PowerShell 默认 ANSI 读取 UTF-8 assets 导致编译后的验证失败。
+修正脚本为显式 UTF-8，使用原警告文件验证解析及包哈希成功；后续默认构建完整通过，未再出现 NU1900，未禁用漏洞审计。
+一次隔离编辑器测试退出有 GDK clipboard assertion 警告，测试断言和退出码通过；剪贴板真实交互未验证。
+完整设计器 UI、外部组件加载及远程设计进程尚未验证，没有据此升级或重写原有序列化逻辑。
+
+默认 `bin/Debug` 已更新。原 DLL 保留，未提交、未推送；其他已有修改与三个 .sln 删除记录保持原样。

@@ -9,11 +9,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(UseRestoredMonoDevelop)' == 'true' and '$(MSBuildProjectName)' == 'CocosStudio'">
+    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\CocoStudio.LuaBinding\CocoStudio.LuaBinding.Restored.csproj">
+      <Name>CocoStudio.LuaBinding.Restored</Name>
+    </ProjectReference>
+    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\MonoDevelop.Projects.Formats.MSBuild\MonoDevelop.Projects.Formats.MSBuild.Restored.csproj">
+      <Name>MonoDevelop.Projects.Formats.MSBuild.Restored</Name>
+    </ProjectReference>
     <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\CocoStudio.WindowsPlatform\CocoStudio.WindowsPlatform.Restored.csproj">
       <Name>CocoStudio.WindowsPlatform.Restored</Name>
     </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\MonoDevelop.SourceEditor2\MonoDevelop.SourceEditor2.Restored.csproj">
-      <Name>MonoDevelop.SourceEditor2.Restored</Name>
+    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\CocoStudio.SourceEditor\CocoStudio.SourceEditor.Restored.csproj">
+      <Name>CocoStudio.SourceEditor.Restored</Name>
     </ProjectReference>
   </ItemGroup>
   <Target Name="ValidateRestoredMonoDevelop" BeforeTargets="BeforeClean;PrepareForBuild;ResolveAssemblyReferences"
@@ -37,6 +43,10 @@
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.Debugger'))" />
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.SourceEditor2'))" />
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'CocoStudio.WindowsPlatform'))" />
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'CocoStudio.SourceEditor'))" />
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'CocoStudio.LuaBinding'))" />
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.DesignerSupport'))" />
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.Projects.Formats.MSBuild'))" />
     </ItemGroup>
   </Target>
 </Project>

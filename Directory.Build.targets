@@ -12,6 +12,10 @@
       <DllFiles Remove="@(SourceProjectDlls)" />
       <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\Mono.Debugging.dll;$(MSBuildThisFileDirectory)dlls\MonoDevelop.Debugger.dll;$(MSBuildThisFileDirectory)dlls\MonoDevelop.SourceEditor2.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
       <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\CocoStudio.WindowsPlatform.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+      <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\CocoStudio.SourceEditor.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+      <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\CocoStudio.LuaBinding.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+      <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\MonoDevelop.DesignerSupport.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+      <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\MonoDevelop.Projects.Formats.MSBuild.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
       <RuntimeAssetFiles Include="$(MSBuildThisFileDirectory)runtime-assets\**\*" />
     </ItemGroup>
     <Copy SourceFiles="@(DllFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
