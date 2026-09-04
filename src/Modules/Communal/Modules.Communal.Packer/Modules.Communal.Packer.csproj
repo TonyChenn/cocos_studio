@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63CB54F8-9358-4C89-923E-2DDC289510C3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Modules.Communal.Packer</RootNamespace>
+    <AssemblyName>Modules.Communal.Packer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="gdk-sharp" />
+    <Reference Include="glib-sharp" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImageInfo.cs" />
+    <Compile Include="Model\CustomRectangle.cs" />
+    <Compile Include="Model\MaxRectsBinPack.cs" />
+    <Compile Include="Nuclex\Game\Packing\ArevaloRectanglePacker.cs" />
+    <Compile Include="Nuclex\Game\Packing\CygonRectanglePacker.cs" />
+    <Compile Include="Nuclex\Game\Packing\OutOfSpaceException.cs" />
+    <Compile Include="Nuclex\Game\Packing\RectanglePacker.cs" />
+    <Compile Include="Nuclex\Game\Packing\SimpleRectanglePacker.cs" />
+    <Compile Include="PackerSprite.cs" />
+    <Compile Include="PListImageReader.cs" />
+    <Compile Include="PlistParticleReader.cs" />
+    <Compile Include="PlistReader\Formates\PlistFormats.cs" />
+    <Compile Include="PlistReader\PlistFormatCocos2d.cs" />
+    <Compile Include="PlistReader\PlistFormatCocos2d_0994.cs" />
+    <Compile Include="PlistReader\PlistFormatCocos2d_Original.cs" />
+    <Compile Include="PlistReader\PlistFormatHelp.cs" />
+    <Compile Include="PlistReader\PlistFormatZwoptex.cs" />
+    <Compile Include="PlistReader\PlistImageFormat.cs" />
+    <Compile Include="PlistReader\PlistImageFormatFactory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Stetic\ActionGroups.cs" />
+    <Compile Include="Stetic\Gui.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Framework\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Framework\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23728}</Project>
+      <Name>CocoStudio.Gtk.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules.Communal.PList\Modules.Communal.PList.csproj">
+      <Project>{63cb54f8-9358-4c89-923e-2ddc289510c4}</Project>
+      <Name>Modules.Communal.PList</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="Mono.Debugging" Version="1.0.20170212.42" GeneratePathProperty="true" ExcludeAssets="all" PrivateAssets="all" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+    <PackageReference Include="Mono.GtkSharp" Version="2.12.0.1" GeneratePathProperty="true" ExcludeAssets="all" PrivateAssets="all" />
+    <PackageReference Include="Mono.Posix-4.5" Version="4.5.0" />
+  </ItemGroup>
+</Project>

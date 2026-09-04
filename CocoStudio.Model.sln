@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model.Basic", "CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model.Basic", "src\Models\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model.Lua", "CocoStudio.Model.Lua\CocoStudio.Model.Lua.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model.Lua", "src\Models\CocoStudio.Model.Lua\CocoStudio.Model.Lua.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model3D.Lua", "CocoStudio.Model3D.Lua\CocoStudio.Model3D.Lua.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model3D.Lua", "src\Models\CocoStudio.Model3D.Lua\CocoStudio.Model3D.Lua.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model3D", "CocoStudio.Model3D\CocoStudio.Model3D.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model3D", "src\Models\CocoStudio.Model3D\CocoStudio.Model3D.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model", "CocoStudio.Model\CocoStudio.Model.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoStudio.Model", "src\Models\CocoStudio.Model\CocoStudio.Model.csproj", "{AE2E6DCF-B30D-4A03-BF56-67765709CF92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -33,7 +33,7 @@ foreach ($project in $projects) {
     }
 }
 "PASS direct package declarations: projects=$($projects.Count), Gtk#=$gtkCount"
-$projectFile = Join-Path $root 'Modules.Communal.StartAutoRecover\Modules.Communal.StartAutoRecover.csproj'
+$projectFile = Join-Path $root 'src\Modules\Communal\Modules.Communal.StartAutoRecover\Modules.Communal.StartAutoRecover.csproj'
 # Exercise the transitive copy path without rebuilding project references, as in a Visual Studio build.
 $json = & $MSBuild $projectFile /t:GetCopyToOutputDirectoryItems /p:Configuration=Debug /p:Platform=x86 /p:BuildingInsideVisualStudio=true /p:BuildProjectReferences=false -getTargetResult:GetCopyToOutputDirectoryItems /nologo
 if ($LASTEXITCODE -ne 0) { throw 'Transitive copy collection failed; restore NuGet packages first.' }
@@ -46,7 +46,7 @@ foreach ($name in 'atk-sharp','gdk-sharp','glade-sharp','glib-sharp','gtk-dotnet
     }
 }
 'PASS StartAutoRecover transitive copy: 8 configs resolve to the restored package'
-$gtkProject = Join-Path $root 'CocoStudio.Core\CocoStudio.Core.csproj'
+$gtkProject = Join-Path $root 'src\Framework\CocoStudio.Core\CocoStudio.Core.csproj'
 $missing = & $MSBuild $gtkProject /t:GetCopyToOutputDirectoryItems /p:Configuration=Debug /p:PkgMono_GtkSharp= /p:BuildProjectReferences=false /v:quiet /nologo 2>&1
 if ($LASTEXITCODE -eq 0 -or ($missing -join "`n") -notmatch 'Mono.GtkSharp package path is missing') {
     throw 'Missing package path did not fail with the expected restore diagnostic.'

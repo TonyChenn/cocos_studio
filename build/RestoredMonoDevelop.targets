@@ -26,16 +26,16 @@
     <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\MonoDevelop.Refactoring\MonoDevelop.Refactoring.Restored.csproj">
       <Name>MonoDevelop.Refactoring.Restored</Name>
     </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\CocoStudio.LuaBinding\CocoStudio.LuaBinding.Restored.csproj">
+    <ProjectReference Include="$(RepositoryRoot)src\Editor\CocoStudio.LuaBinding\CocoStudio.LuaBinding.Restored.csproj">
       <Name>CocoStudio.LuaBinding.Restored</Name>
     </ProjectReference>
     <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\MonoDevelop.Projects.Formats.MSBuild\MonoDevelop.Projects.Formats.MSBuild.Restored.csproj">
       <Name>MonoDevelop.Projects.Formats.MSBuild.Restored</Name>
     </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\CocoStudio.WindowsPlatform\CocoStudio.WindowsPlatform.Restored.csproj">
+    <ProjectReference Include="$(RepositoryRoot)src\Platforms\CocoStudio.WindowsPlatform\CocoStudio.WindowsPlatform.Restored.csproj">
       <Name>CocoStudio.WindowsPlatform.Restored</Name>
     </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\CocoStudio.SourceEditor\CocoStudio.SourceEditor.Restored.csproj">
+    <ProjectReference Include="$(RepositoryRoot)src\Editor\CocoStudio.SourceEditor\CocoStudio.SourceEditor.Restored.csproj">
       <Name>CocoStudio.SourceEditor.Restored</Name>
     </ProjectReference>
   </ItemGroup>

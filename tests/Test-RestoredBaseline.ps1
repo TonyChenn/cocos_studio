@@ -26,7 +26,7 @@ if (!$MSBuild) {
     $MSBuild = & $vswhere -latest -products '*' -requires Microsoft.Component.MSBuild -find 'MSBuild\**\Bin\MSBuild.exe' | Select-Object -First 1
 }
 foreach ($target in 'Restore','PrepareForBuild','CopyDllsToOutputDir') {
-    $result = & $MSBuild "$root/CocosStudio/CocosStudio.csproj" "/t:$target" /p:UseRestoredMonoDevelop=false /p:Configuration=Debug /v:quiet /nologo 2>&1
+    $result = & $MSBuild "$root/src/Applications/CocosStudio/CocosStudio.csproj" "/t:$target" /p:UseRestoredMonoDevelop=false /p:Configuration=Debug /v:quiet /nologo 2>&1
     if ($LASTEXITCODE -eq 0 -or "$result" -notlike '*Legacy MonoDevelop fallback has been removed*') { throw "Legacy fallback not rejected at $target : $result" }
 }
 'PASS legacy fallback rejected during restore, build preparation and copying'

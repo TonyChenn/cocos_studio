@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.ComTool", "Modules.UI.ComTool\Modules.UI.ComTool.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.ComTool", "src\Modules\UI\Modules.UI.ComTool\Modules.UI.ComTool.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.MainTool", "Modules.UI.MainTool\Modules.UI.MainTool.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.MainTool", "src\Modules\UI\Modules.UI.MainTool\Modules.UI.MainTool.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.Menu", "Modules.UI.Menu\Modules.UI.Menu.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.Menu", "src\Modules\UI\Modules.UI.Menu\Modules.UI.Menu.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.RenderContextMenu3D", "Modules.UI.RenderContextMenu3D\Modules.UI.RenderContextMenu3D.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.RenderContextMenu3D", "src\Modules\UI\Modules.UI.RenderContextMenu3D\Modules.UI.RenderContextMenu3D.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.RenderContextMenu", "Modules.UI.RenderContextMenu\Modules.UI.RenderContextMenu.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.UI.RenderContextMenu", "src\Modules\UI\Modules.UI.RenderContextMenu\Modules.UI.RenderContextMenu.csproj", "{485242EE-FF89-4DA2-8D60-36C0BA5965CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

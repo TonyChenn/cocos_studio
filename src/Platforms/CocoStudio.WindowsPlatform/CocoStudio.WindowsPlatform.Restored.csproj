@@ -1,0 +1,44 @@
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IsRestoredMonoDevelopProject>true</IsRestoredMonoDevelopProject>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AssemblyName>CocoStudio.WindowsPlatform</AssemblyName>
+    <RootNamespace>CocoStudio.WindowsPlatform</RootNamespace>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="gtk-sharp" />
+    <Reference Include="gdk-sharp" />
+    <Reference Include="MonoDevelop.Core"><HintPath>$(RepositoryRoot)dlls\MonoDevelop.Core.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="MonoDevelop.Ide"><HintPath>$(RepositoryRoot)dlls\MonoDevelop.Ide.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="WindowsPlatform"><HintPath>$(RepositoryRoot)dlls\WindowsPlatform.dll</HintPath><Private>false</Private></Reference>
+    <ProjectReference Include="..\..\Framework\CocoStudio.Basic\CocoStudio.Basic.csproj" />
+    <ProjectReference Include="..\..\Framework\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj" />
+    <PackageReference Include="Xwt" Version="0.2.251" />
+    <PackageReference Include="Xwt.Gtk" Version="0.2.251" />
+    <PackageReference Include="Xwt.WPF" Version="0.2.251" />
+    <PackageReference Include="Mono.Addins" Version="1.3.7" />
+    <Compile Include="**\*.cs" Exclude="obj\**;bin\**" />
+    <EmbeddedResource Include="CocoStudio.WindowsPlatform.Platform.addin.xml"><LogicalName>CocoStudio.WindowsPlatform.Platform.addin.xml</LogicalName></EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="Mono.Debugging" Version="1.0.20170212.42" GeneratePathProperty="true" ExcludeAssets="all" PrivateAssets="all" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+    <PackageReference Include="Mono.GtkSharp" Version="2.12.0.1" GeneratePathProperty="true" ExcludeAssets="all" PrivateAssets="all" />
+    <PackageReference Include="Mono.Posix-4.5" Version="4.5.0" />
+  </ItemGroup>
+</Project>

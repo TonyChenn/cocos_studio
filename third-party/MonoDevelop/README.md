@@ -12,7 +12,10 @@
 `Test-RestoredBaseline.ps1` 覆盖历史缺失、显式基准、哈希损坏和旧回退开关拒绝。
 以下来源表中的 `dlls/` 路径指固定提交中的历史位置，不表示工作区仍保留这些 DLL。
 
-本目录包含 MonoDevelop 底层定制库与 Cocos Studio 上层适配库，不是直接使用 MonoDevelop 官方源码替换定制版本。
+本目录仅存放 MonoDevelop 底层定制库，不是直接使用 MonoDevelop 官方源码替换定制版本。
+Cocos Studio 自身模块放在 `src` 下，按职责与其他应用项目分组：
+`src/Editor/CocoStudio.LuaBinding/`、`src/Editor/CocoStudio.SourceEditor/`、`src/Platforms/CocoStudio.WindowsPlatform/`。
+本文仍集中记录恢复来源和共同验证流程；依赖 MonoDevelop 不代表模块归属 MonoDevelop。
 Debugger / SourceEditor2 两个目录的 178 个 C# 文件与 85 项资源，来自当前仓库 DLL 的反编译导出，内容未改写。
 另恢复 CocoStudio.WindowsPlatform 的 4 个 C# 文件和 1 项资源，并为其浏览器适配器补齐 Xwt 接口，详见下文。
 同时恢复 CocoStudio.SourceEditor 的 3 个业务类及 AssemblyInfo，共 4 个 C# 文件。
@@ -66,6 +69,8 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
 
 - 项目文件名使用 `.Restored.csproj`，程序集名称保留原名，现包含 Debugger / SourceEditor2 / DesignerSupport / Refactoring / CocoStudio.WindowsPlatform / CocoStudio.SourceEditor / MonoDevelop.Projects.Formats.MSBuild / CocoStudio.LuaBinding 八库。
   文件名沿用恢复阶段的 `.Restored.csproj` 命名；旧库回退已取消。
+  三个 CocoStudio 项目迁至 `src` 后，仍复用 `IsRestoredMonoDevelopProject` 构建标记；
+  它仅控制恢复项目的配置传递和校验，不表示项目属于第三方库。程序集名称、资源名和输出路径保持不变。
 - 按用户要求，`UseRestoredMonoDevelop` 现默认启用，普通 Debug/Release 构建使用这八份恢复源码及新版 Mono.Debugging。
   `build/RestoredMonoDevelop.Test.props` 仍可用于隔离测试，将输出限定为
   `bin/RestoredMonoDevelopTest/`，中间文件限定为 `obj/RestoredMonoDevelopTest/`。
