@@ -32,10 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\dlls\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
