@@ -1,0 +1,29 @@
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IsRestoredMonoDevelopProject>true</IsRestoredMonoDevelopProject>
+    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AssemblyName>MonoDevelop.Projects.Formats.MSBuild</AssemblyName>
+    <RootNamespace>MonoDevelop.Projects.Formats.MSBuild</RootNamespace>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Engine" />
+    <PackageReference Include="Mono.Debugging" Version="1.0.20170212.42" GeneratePathProperty="true" ExcludeAssets="all" PrivateAssets="all" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+    <Compile Include="**\*.cs" Exclude="obj\**;bin\**" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
