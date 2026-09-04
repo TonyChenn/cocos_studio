@@ -63,9 +63,7 @@
     </Reference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <Reference Include="pango-sharp" />
-    <Reference Include="PostSharp">
-      <HintPath>..\dlls\PostSharp.dll</HintPath>
-    </Reference>
+    <PackageReference Include="PostSharp" Version="4.0.43" IncludeAssets="compile;runtime" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
