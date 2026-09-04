@@ -41,6 +41,14 @@
       <HintPath>$(CocosStudioBinDir)\CocoStudio.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="CocoStudio.Lib.Prism">
+      <HintPath>$(CocosStudioBinDir)\CocoStudio.Lib.Prism.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CocoStudio.Model.Basic">
+      <HintPath>$(CocosStudioBinDir)\CocoStudio.Model.Basic.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="CocoStudio.Projects">
       <HintPath>$(CocosStudioBinDir)\CocoStudio.Projects.dll</HintPath>
       <Private>False</Private>
@@ -49,12 +57,20 @@
       <HintPath>$(CocosStudioBinDir)\glib-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>$(CocosStudioBinDir)\ICSharpCode.NRefactory.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Mono.Addins">
       <HintPath>$(CocosStudioBinDir)\Mono.Addins.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MonoDevelop.Core">
       <HintPath>$(CocosStudioBinDir)\MonoDevelop.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MonoDevelop.Ide">
+      <HintPath>$(CocosStudioBinDir)\MonoDevelop.Ide.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
