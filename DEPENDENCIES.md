@@ -5,6 +5,7 @@
 已将前期源码恢复按模块提交，并删除八份已替换的旧 DLL：Mono.Debugging、MonoDevelop.Debugger、SourceEditor2、
 DesignerSupport、Projects.Formats.MSBuild，以及 CocoStudio.SourceEditor、LuaBinding、WindowsPlatform。
 `dlls` 从 24 个减至 16 个；未删除仍被使用的库。以下旧批次的“保留/回退”描述仅记录历史状态。
+随后完成 Refactoring 同批恢复和删除，当前进一步减至 15 个，累计删除九份已替换旧库。
 当前取消 `UseRestoredMonoDevelop=false` 构建；恢复完整历史版本应使用 Git。
 旧库对照测试统一从固定提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d` 提取并校验 SHA-256，
 测试缓存不受版本控制，也不能参与正式构建；历史缺失时可显式提供同样受校验的基准目录。
@@ -429,3 +430,19 @@ SourceEditor2 和 CocoStudio.SourceEditor 直接引用该源码项目；依赖�
 完整设计器 UI、外部组件加载及远程设计进程尚未验证，没有据此升级或重写原有序列化逻辑。
 
 默认 `bin/Debug` 已更新。原 DLL 保留，未提交、未推送；其他已有修改与三个 .sln 删除记录保持原样。
+
+## 第二十二批：恢复 Refactoring 并同批删除原 DLL
+
+恢复 `MonoDevelop.Refactoring` 的 126 个 C# 文件和 8 项资源，原始导出在忽略的 `obj/NuGetPhase22Audit/Refactoring`。
+所有源码仅规范换行，版本 `2.6.0.0`、模块属性和资源逻辑名称保持原样；未改写业务逻辑。
+原 DLL SHA-256 为 `D61254DA8795752ECEA8C6216AFD90CD7B4FFEA9E0B2571A2F833D9E4CF847FD`。
+主程序通过 ProjectReference 构建它，依赖已恢复的 SourceEditor2 / DesignerSupport / Debugger 及现有 NuGet 包。
+旧 DLL 已删除；对照基准同样来自固定 Git 提交，不参与生产构建。
+
+- 1,187 项接口与 8 个资源无差异；全量审计为 397 处成员引用、112 个资源。
+- 新旧独立进程验证内存及真实已加载编辑器中的替换、光标、撤销/重做、保存、BOM/CRLF、参数拒绝、问题列表可见性。
+- 测试最初直接执行未打开文件替换，因没有完整 Workbench 而触发旧 TextFileProvider 空引用；改为注入真实已加载编辑器，未修改产品代码。
+- 没有验证完整工作台的未打开文件发现、跨工程重命名、批量修复或实际调试，不能将本轮回归当作完整重构功能验收。
+- 删除后的全新 `.sln` Debug 与默认 `.slnx` Debug 构建为 0 错误、206 警告；全新 `.slnx` Release 为 0 错误、205 警告。
+
+默认 `bin/Debug` 已更新；继续保留内置模块发现和现有平台支持，不改 Lua 的已知功能缺陷。

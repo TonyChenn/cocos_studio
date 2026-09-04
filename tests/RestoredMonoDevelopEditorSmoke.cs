@@ -19,6 +19,11 @@ internal sealed class ProbeEditorView : SourceEditorView
 
 internal static class RestoredMonoDevelopEditorSmoke
 {
+    private sealed class TextReplaceProbe : MonoDevelop.Refactoring.TextReplaceChange
+    {
+        public Mono.TextEditor.TextEditorData Data;
+        protected override Mono.TextEditor.TextEditorData TextEditorData { get { return Data; } }
+    }
     private sealed class DesignerDescriptorProbe : MonoDevelop.DesignerSupport.CustomDescriptor
     {
         [System.ComponentModel.DefaultValue("initial")]
@@ -74,6 +79,66 @@ internal static class RestoredMonoDevelopEditorSmoke
             Check(editor.Text == prefix + content, "Upper editor reload differs");
         }
         Console.WriteLine("PASS upper Lua binding/factory, load/save/reload, caret, undo/redo and view reuse");
+    }
+
+    private static void TestRefactoring(string work)
+    {
+        var data = new Mono.TextEditor.TextEditorData();
+        try
+        {
+            data.Text = "abc中文def";
+            data.Caret.Offset = 7;
+            var change = new TextReplaceProbe { Data = data, Offset = 3, RemovedChars = 2, InsertedText = "X" };
+            change.PerformChange(null, new MonoDevelop.Refactoring.RefactoringOptions());
+            Check(data.Text == "abcXdef" && data.Caret.Offset == 6, "Refactoring replacement/caret adjustment changed");
+            change.Offset = 0;
+            change.RemovedChars = 0;
+            change.InsertedText = "前";
+            change.MoveCaretToReplace = true;
+            change.PerformChange(null, new MonoDevelop.Refactoring.RefactoringOptions());
+            Check(data.Text == "前abcXdef" && data.Caret.Offset == 1, "Refactoring explicit caret move changed");
+            bool rejected = false;
+            try { change.RemovedChars = -1; } catch (ArgumentOutOfRangeException) { rejected = true; }
+            Check(rejected, "Negative removal was accepted");
+            rejected = false;
+            try { change.PerformChange(null, null); } catch (InvalidOperationException) { rejected = true; }
+            Check(rejected, "Missing refactoring context was accepted");
+        }
+        finally { data.Dispose(); }
+        string file = Path.Combine(work, "重构-BOM.cs");
+        string content = "// 中文\r\nreturn 1;\r\n";
+        File.WriteAllText(file, content, new UTF8Encoding(true));
+        // Supply the loaded editor directly; closed-file discovery requires a full IDE workbench.
+        using (var view = new ProbeEditorView())
+        {
+            view.Load(file);
+            var edit = new TextReplaceProbe { Data = view.TextEditor.GetTextEditorData(), FileName = file, Offset = content.IndexOf("1"), RemovedChars = 1, InsertedText = "2" };
+            edit.PerformChange(null, new MonoDevelop.Refactoring.RefactoringOptions());
+            Check(view.Text == content.Replace("1", "2"), "Refactoring did not edit the loaded view");
+            view.Undo();
+            Check(view.Text == content, "Refactoring undo failed");
+            view.Redo();
+            Check(view.Text == content.Replace("1", "2"), "Refactoring redo failed");
+            view.Save(file);
+        }
+        byte[] bytes = File.ReadAllBytes(file);
+        Check(bytes[0] == 0xef && bytes[1] == 0xbb && bytes[2] == 0xbf && File.ReadAllText(file) == content.Replace("1", "2"), "Disk refactoring changed encoding or newlines");
+
+        var group = new MonoDevelop.CodeIssues.IssueGroup(MonoDevelop.CodeIssues.NullGroupingProvider.Instance, "检查");
+        var issue = new MonoDevelop.CodeIssues.IssueSummary { IssueDescription = "提示" };
+        var tree = (MonoDevelop.CodeIssues.IIssueTreeNode)group;
+        var leaf = (MonoDevelop.CodeIssues.IIssueTreeNode)issue;
+        group.AddIssue(issue);
+        Check(group.IssueCount == 1 && tree.Children.Count == 1 && tree.Visible && tree.Text == "检查 (1)", "Issue group population changed");
+        int changes = 0;
+        tree.TextChanged += delegate { changes++; };
+        leaf.Visible = false;
+        Check(!tree.Visible && tree.Text == "检查 (0)" && changes == 1, "Issue visibility propagation changed");
+        leaf.Visible = true;
+        Check(tree.Visible && changes == 2, "Issue visibility restoration changed");
+        group.ClearStatistics();
+        Check(group.IssueCount == 0 && tree.AllChildren.Count == 0 && !tree.Visible, "Issue group reset changed");
+        Console.WriteLine("PASS Refactoring memory/loaded-editor replacements, undo/redo/save, caret, BOM/CRLF, validation and issue visibility");
     }
 
     private static void TestDesignerSupport()
@@ -215,7 +280,7 @@ internal static class RestoredMonoDevelopEditorSmoke
         try
         {
             Console.OutputEncoding = new UTF8Encoding(false);
-            foreach (string name in new string[] { "Mono.Debugging", "MonoDevelop.Debugger", "MonoDevelop.SourceEditor2", "MonoDevelop.DesignerSupport", "CocoStudio.WindowsPlatform", "CocoStudio.SourceEditor", "CocoStudio.LuaBinding" })
+            foreach (string name in new string[] { "Mono.Debugging", "MonoDevelop.Debugger", "MonoDevelop.SourceEditor2", "MonoDevelop.DesignerSupport", "MonoDevelop.Refactoring", "CocoStudio.WindowsPlatform", "CocoStudio.SourceEditor", "CocoStudio.LuaBinding" })
             {
                 string expected = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, name + ".dll");
                 Assembly loaded = Assembly.LoadFrom(expected);
@@ -254,6 +319,7 @@ internal static class RestoredMonoDevelopEditorSmoke
             TestUpperEditor(work, profile);
             TestLuaBinding();
             TestDesignerSupport();
+            TestRefactoring(work);
             var view = new ProbeEditorView();
             Console.WriteLine("EDITOR_CONSTRUCTED");
             string file = Path.Combine(work, "中文-load-save.lua");

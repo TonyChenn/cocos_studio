@@ -3,6 +3,7 @@ function Get-RestoredBaseline {
     param([string]$BaselineDirectory, [string]$RepositoryRoot = "$PSScriptRoot/..")
     $revision = '632862e2e3dc6485fadc3f30d4454f97a9187c2d'
     $hashes = [ordered]@{
+        'MonoDevelop.Refactoring.dll' = 'D61254DA8795752ECEA8C6216AFD90CD7B4FFEA9E0B2571A2F833D9E4CF847FD'
         'Mono.Debugging.dll' = 'ADBC06E24AF54E2D5BAE778BC55756AE14AA2DDAAF56BD2CC982401FA606BACE'
         'MonoDevelop.Debugger.dll' = 'F18016A71BB89405759658319E12AA9A4B35E2894E9A78088190285A599CCF02'
         'MonoDevelop.SourceEditor2.dll' = 'B4718C10AA8A14FDDA59F65E9D48FD192211112A51D662E6F3ECB71890745836'

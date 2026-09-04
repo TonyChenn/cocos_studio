@@ -16,11 +16,11 @@ $work = New-Item -ItemType Directory -Path (Join-Path $test.FullName 'work')
 Get-ChildItem $output -File | Copy-Item -Destination $binaries.FullName
 if ($Mode -eq 'old') {
     # Compare editor generations with the same repaired Windows adapter; this is not an all-old platform baseline.
-    foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.SourceEditor') {
+    foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.SourceEditor') {
         Copy-Item -LiteralPath "$originals/$name.dll" -Destination $binaries.FullName
     }
 }
-foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor') {
+foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor') {
     $expectedDirectory = $output
     if ($Mode -eq 'old' -and $name -ne 'CocoStudio.WindowsPlatform') { $expectedDirectory = $originals }
     if ((Get-FileHash "$expectedDirectory/$name.dll").Hash -ne (Get-FileHash "$($binaries.FullName)/$name.dll").Hash) {
@@ -29,7 +29,7 @@ foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEdi
 }
 $exe = Join-Path $binaries.FullName 'EditorSmoke.exe'
 $source = Join-Path $PSScriptRoot 'RestoredMonoDevelopEditorSmoke.cs'
-$references = @('MonoDevelop.Core','MonoDevelop.Ide','MonoDevelop.SourceEditor2','MonoDevelop.Debugger','MonoDevelop.DesignerSupport','Mono.TextEditor','Mono.Debugging','Mono.Addins','Xwt','ICSharpCode.NRefactory','gtk-sharp','gdk-sharp','glib-sharp','pango-sharp','atk-sharp','Mono.Cairo') | ForEach-Object { '/r:' + (Join-Path $binaries.FullName ($_.ToString() + '.dll')) }
+$references = @('MonoDevelop.Core','MonoDevelop.Ide','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.Debugger','MonoDevelop.DesignerSupport','Mono.TextEditor','Mono.Debugging','Mono.Addins','Xwt','ICSharpCode.NRefactory','gtk-sharp','gdk-sharp','glib-sharp','pango-sharp','atk-sharp','Mono.Cairo') | ForEach-Object { '/r:' + (Join-Path $binaries.FullName ($_.ToString() + '.dll')) }
 & "$env:WINDIR\Microsoft.NET\Framework\v4.0.30319\csc.exe" /nologo /debug /target:exe /platform:x86 /r:System.Windows.Forms.dll "/out:$exe" @references $source
 if ($LASTEXITCODE -ne 0) { throw 'Editor smoke compilation failed' }
 Copy-Item "$output/CocosStudio.exe.config" ($exe + '.config')

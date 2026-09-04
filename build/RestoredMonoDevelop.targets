@@ -23,6 +23,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup Condition="'$(UseRestoredMonoDevelop)' == 'true' and '$(MSBuildProjectName)' == 'CocosStudio'">
+    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\MonoDevelop.Refactoring\MonoDevelop.Refactoring.Restored.csproj">
+      <Name>MonoDevelop.Refactoring.Restored</Name>
+    </ProjectReference>
     <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\CocoStudio.LuaBinding\CocoStudio.LuaBinding.Restored.csproj">
       <Name>CocoStudio.LuaBinding.Restored</Name>
     </ProjectReference>
@@ -60,6 +63,7 @@
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'CocoStudio.SourceEditor'))" />
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'CocoStudio.LuaBinding'))" />
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.DesignerSupport'))" />
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.Refactoring'))" />
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.Projects.Formats.MSBuild'))" />
     </ItemGroup>
   </Target>

@@ -32,7 +32,7 @@ $log = Join-Path $logs.FullName $logName
 if ($Configuration -ne 'Debug') { $log = Join-Path $logs.FullName "$Configuration-$logName" }
 & $MSBuild $solution /restore /t:Rebuild /m:1 "/p:Configuration=$Configuration" /p:Platform=x86 @buildProperties /v:quiet /nologo /fl "/flp:logfile=$log;encoding=UTF-8" /clp:ErrorsOnly
 if ($LASTEXITCODE -ne 0) { throw "Build failed; see $log" }
-foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
+foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
     $sourceBuild = Join-Path $intermediate "$name.Restored\$Configuration\$name.dll"
     $outputDll = Join-Path $output "$name.dll"
     if ((Get-FileHash $sourceBuild).Hash -ne (Get-FileHash $outputDll).Hash) { throw "Source build overwritten in test output: $name" }

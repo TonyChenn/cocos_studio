@@ -13,7 +13,7 @@ foreach ($destination in $oldRoot,$newRoot) {
     # Include application assemblies too: their AddinRoot attributes are part of the registry baseline.
     Get-ChildItem $baseline -File | Copy-Item -Destination $destination.FullName
 }
-foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
+foreach ($name in 'Mono.Debugging','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
     Copy-Item -LiteralPath "$originals/$name.dll" -Destination $oldRoot.FullName
 }
 $executable = Join-Path $oldRoot.FullName 'DebuggingSmoke.exe'

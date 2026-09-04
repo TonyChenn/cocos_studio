@@ -2,7 +2,7 @@
 
 ## 当前构建与历史测试基准
 
-已移除八份原 DLL，正式构建只使用源码/NuGet。`UseRestoredMonoDevelop=false` 在还原、构建或复制时明确报错；
+已移除九份原 DLL（包含 Refactoring），正式构建只使用源码/NuGet。`UseRestoredMonoDevelop=false` 在还原、构建或复制时明确报错；
 回滚应通过 Git 恢复完整版本，不再提供混合旧库的构建路径。
 对照测试统一使用 `tests/RestoredBaseline.ps1` 从提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d` 按二进制流提取原库，
 存入忽略的 `obj/RestoredBaseline/<commit>` 并校验固定 SHA-256。历史缺失或哈希不符会失败，不会自动下载或替换为候选。
@@ -19,6 +19,7 @@ Debugger / SourceEditor2 两个目录的 178 个 C# 文件与 85 项资源，来
 另恢复 MSBuild 构建桥接库的 17 个 C# 文件，并修复 Windows 上的项目条目元数据读取。
 另恢复 CocoStudio.LuaBinding 的 23 个 C# 文件及 8 项资源；本批不改写 Lua 业务逻辑。
 另恢复 MonoDevelop.DesignerSupport 的 85 个 C# 文件及 10 项资源，源码仅规范换行。
+另恢复 MonoDevelop.Refactoring 的 126 个 C# 文件及 8 项资源，源码仅规范换行，原 DLL 已同批删除。
 
 ## 来源
 
@@ -31,6 +32,7 @@ Debugger / SourceEditor2 两个目录的 178 个 C# 文件与 85 项资源，来
 | `dlls/MonoDevelop.Projects.Formats.MSBuild.dll` | `910A447AB3D71F9B6B9EFF7C715BD758F4ADF797E587B77989EF229FEE21A72D` |
 | `dlls/CocoStudio.LuaBinding.dll` | `DE22BC4A54EBDC0A4671F8D20ADC41245283F53E54538E5B3886E593B67278AD` |
 | `dlls/MonoDevelop.DesignerSupport.dll` | `37058746AD28C9A6D0617DCBDF01BD317BF1E55548CA8B19549F2F0D6974D498` |
+| `dlls/MonoDevelop.Refactoring.dll` | `D61254DA8795752ECEA8C6216AFD90CD7B4FFEA9E0B2571A2F833D9E4CF847FD` |
 
 - 反编译工具：ILSpy `ilspycmd 11.0.0.9375`，项目模式，C# 7.3，分层命名空间目录。
 - 原始导出在本机被忽略的 `obj/DecompiledMonoDevelop`；本目录本身不依赖该目录或第九批构建输出。
@@ -62,9 +64,9 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
 
 ## 接入方式与隔离
 
-- 项目文件名使用 `.Restored.csproj`，程序集名称保留原名，现包含 Debugger / SourceEditor2 / DesignerSupport / CocoStudio.WindowsPlatform / CocoStudio.SourceEditor / MonoDevelop.Projects.Formats.MSBuild / CocoStudio.LuaBinding 七库。
+- 项目文件名使用 `.Restored.csproj`，程序集名称保留原名，现包含 Debugger / SourceEditor2 / DesignerSupport / Refactoring / CocoStudio.WindowsPlatform / CocoStudio.SourceEditor / MonoDevelop.Projects.Formats.MSBuild / CocoStudio.LuaBinding 八库。
   文件名沿用恢复阶段的 `.Restored.csproj` 命名；旧库回退已取消。
-- 按用户要求，`UseRestoredMonoDevelop` 现默认启用，普通 Debug/Release 构建使用这七份恢复源码及新版 Mono.Debugging。
+- 按用户要求，`UseRestoredMonoDevelop` 现默认启用，普通 Debug/Release 构建使用这八份恢复源码及新版 Mono.Debugging。
   `build/RestoredMonoDevelop.Test.props` 仍可用于隔离测试，将输出限定为
   `bin/RestoredMonoDevelopTest/`，中间文件限定为 `obj/RestoredMonoDevelopTest/`。
 - 主程序通过条件 ProjectReference 引用 CocoStudio.SourceEditor，后者引用 SourceEditor2，再引用 Debugger；`.sln` 和 `.slnx` 都沿此依赖构建，
@@ -77,9 +79,9 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
   继续采用现有 NuGet 版本。Core、Ide、Mono.TextEditor 暂时引用仓库原 DLL。
   包声明直接保存在各 csproj 中，避免旧格式项目在 VS 还原时漏掉集中 targets 注入的包。
 - 根 ReferencePath 的旧 DLL 搜索顺序早于 HintPath，因此源码构建目标明确把 Mono.Debugging 包目录放在前面。
-  同时排除旧八库的统一复制及旧七份源码库的间接复制，最后核对实际输出哈希。
+  同时排除旧九库的统一复制及旧八份源码库的间接复制，最后核对实际输出哈希。
 - 普通构建使用 `bin/Debug` 或 `bin/Release`；启用隔离测试模式时，构建前和清理前仍验证测试输出路径。
-- `dlls` 中八份原库已删除。不要只覆盖部分 DLL 回滚，以免新旧依赖混用；通过 Git 恢复完整版本。
+- `dlls` 中九份原库已删除。不要只覆盖部分 DLL 回滚，以免新旧依赖混用；通过 Git 恢复完整版本。
   未改变 GAC、用户环境或现用编辑器进程。
 
 ## 构建和自动测试
@@ -113,12 +115,17 @@ MonoDevelop 测试不使用 DEVPATH，也不添加 Mono.Debugging 绑定重定�
 
 先完成构建，再运行测试；不要同时重建和复制同一候选输出。
 
-当前验证：隔离 `.sln` 为 0 错误、183 警告，默认 `.slnx` 为 0 错误、179 警告；输出的七份恢复库与各自编译产物哈希一致，
-Mono.Debugging 与指定 NuGet 包一致。397 处成员引用、104 项资源、定制接口、断点样本双向互读、
+当前验证：全新 `.sln` Debug 与默认 `.slnx` Debug 为 0 错误、206 警告，全新 `.slnx` Release 为 0 错误、205 警告；八份恢复库与各自编译产物哈希一致，
+Mono.Debugging 与指定 NuGet 包一致。397 处成员引用、112 项资源、定制接口、断点样本双向互读、
 模拟退出事件、上层类型加载通过。包含应用程序集的旧/新模块扫描各为 47 项，清单相同。
 Gtk# 默认加载与强制本地候选加载的基础控件/图像测试也通过。
 
 ## DesignerSupport 恢复与验证范围
+
+Refactoring 的原始导出在 `obj/NuGetPhase22Audit/Refactoring`，126 个源码文件未改写业务逻辑。
+1,187 项接口与 8 个资源匹配，测试覆盖注入真实已加载编辑器的文本替换、光标、撤销/重做/保存及问题列表可见性。
+未打开文件自动发现依赖完整 Workbench，未包含在此冒烟环境；跨工程重命名和批量修复仍待验证。
+对照脚本的旧模式同时恢复旧 Refactoring，候选模式校验实际加载路径。
 
 本库保留程序集版本 `2.6.0.0`、Addin 注册和全部资源逻辑名称；源码未改写，项目显式引用
 System.Drawing / System.Design 等框架程序集及现有版本的 Cecil / Xwt / NRefactory / Mono.Addins / Gtk# / Mono.Posix 包。
