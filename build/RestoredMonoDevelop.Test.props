@@ -1,0 +1,11 @@
+<Project>
+  <Import Project="..\Directory.Build.props" />
+  <PropertyGroup>
+    <UseRestoredMonoDevelop>true</UseRestoredMonoDevelop>
+    <RestoredMonoDevelopTestBuild>true</RestoredMonoDevelopTestBuild>
+    <OutDir>$(RepositoryRoot)bin\RestoredMonoDevelopTest\</OutDir>
+    <OutputPath>$(OutDir)</OutputPath>
+    <BaseIntermediateOutputPath>$(RepositoryRoot)obj\RestoredMonoDevelopTest\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+</Project>

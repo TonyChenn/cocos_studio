@@ -14,9 +14,8 @@
   </ItemGroup>
   <ItemGroup Condition="'@(_LegacyGtkReference)' != ''">
     <!-- The package also bundles Mono.Posix 2.0. Do not import its assets or build targets. -->
-    <PackageReference Include="Mono.GtkSharp" Version="2.12.0.1" GeneratePathProperty="true" ExcludeAssets="all" PrivateAssets="all" />
+    <!-- PackageReference declarations live in each legacy csproj so Visual Studio's NuGet restore can see them. -->
     <!-- Gtk's transitive assembly references must not pull Mono.Posix 2.0 back from the GAC. -->
-    <PackageReference Include="Mono.Posix-4.5" Version="4.5.0" Condition="'@(PackageReference->WithMetadataValue('Identity', 'Mono.Posix-4.5'))' == ''" />
     <Reference Remove="@(_LegacyGtkReference)" />
     <_GtkSharpAssembly Include="atk-sharp;gdk-sharp;glade-sharp;glib-sharp;gtk-dotnet;gtk-sharp;Mono.Cairo;pango-sharp" />
     <Reference Include="@(_GtkSharpAssembly)">
@@ -24,13 +23,15 @@
       <Private>true</Private>
     </Reference>
     <!-- Keep Mono dllmap files with their managed assemblies; native GTK remains an installation prerequisite. -->
-    <None Include="@(_GtkSharpAssembly->'$(PkgMono_GtkSharp)\build\%(Identity).dll.config')">
+    <None Include="@(_GtkSharpAssembly->'$(PkgMono_GtkSharp)\build\%(Identity).dll.config')" Condition="'$(PkgMono_GtkSharp)' != ''">
       <Link>%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>false</Visible>
     </None>
   </ItemGroup>
-  <Target Name="ValidateNuGetGtkSharp" BeforeTargets="ResolveAssemblyReferences" Condition="'@(_GtkSharpAssembly)' != ''">
+  <Target Name="ValidateNuGetGtkSharp" BeforeTargets="ResolveAssemblyReferences;GetCopyToOutputDirectoryItems" Condition="'@(_GtkSharpAssembly)' != ''">
+    <Error Condition="'$(PkgMono_GtkSharp)' == ''" Text="Mono.GtkSharp package path is missing. Reload the solution and restore NuGet packages before building." />
     <Error Condition="!Exists('$(PkgMono_GtkSharp)\lib\net45\%(_GtkSharpAssembly.Identity).dll')" Text="Gtk# NuGet asset missing: %(_GtkSharpAssembly.Identity). Restore packages before building." />
+    <Error Condition="!Exists('$(PkgMono_GtkSharp)\build\%(_GtkSharpAssembly.Identity).dll.config')" Text="Gtk# NuGet config missing: %(_GtkSharpAssembly.Identity).dll.config. Restore packages before building." />
   </Target>
 </Project>

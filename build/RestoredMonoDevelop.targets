@@ -1,0 +1,42 @@
+<Project>
+  <!-- Historical restriction below is superseded: source builds are now the default; false retains the legacy fallback. -->
+  <!-- Opt-in only: the restored libraries are not yet approved for normal editor builds. -->
+  <ItemGroup Condition="'$(UseRestoredMonoDevelop)' == 'true'">
+    <!-- Declare the package directly in each legacy csproj for Visual Studio NuGet restore compatibility. -->
+    <Reference Include="Mono.Debugging">
+      <HintPath>$(PkgMono_Debugging)\lib\net40\Mono.Debugging.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseRestoredMonoDevelop)' == 'true' and '$(MSBuildProjectName)' == 'CocosStudio'">
+    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\CocoStudio.WindowsPlatform\CocoStudio.WindowsPlatform.Restored.csproj">
+      <Name>CocoStudio.WindowsPlatform.Restored</Name>
+    </ProjectReference>
+    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\MonoDevelop.SourceEditor2\MonoDevelop.SourceEditor2.Restored.csproj">
+      <Name>MonoDevelop.SourceEditor2.Restored</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="ValidateRestoredMonoDevelop" BeforeTargets="BeforeClean;PrepareForBuild;ResolveAssemblyReferences"
+          Condition="'$(UseRestoredMonoDevelop)' == 'true' or '$(IsRestoredMonoDevelopProject)' == 'true'">
+    <Error Condition="'$(UseRestoredMonoDevelop)' != 'true'" Text="Restored MonoDevelop projects require UseRestoredMonoDevelop=true. Build the main solution to use the legacy fallback." />
+    <PropertyGroup Condition="'$(RestoredMonoDevelopTestBuild)' == 'true'">
+      <_RestoredActualOutput>$([System.IO.Path]::GetFullPath('$(OutDir)'))</_RestoredActualOutput>
+      <_RestoredExpectedOutput>$([System.IO.Path]::GetFullPath('$(RepositoryRoot)bin\RestoredMonoDevelopTest\'))</_RestoredExpectedOutput>
+    </PropertyGroup>
+    <Error Condition="'$(RestoredMonoDevelopTestBuild)' == 'true' and '$(_RestoredActualOutput)' != '$(_RestoredExpectedOutput)'" Text="Isolated MonoDevelop test builds must write only to bin/RestoredMonoDevelopTest/." />
+    <Error Condition="!Exists('$(PkgMono_Debugging)\lib\net40\Mono.Debugging.dll')" Text="Restore Mono.Debugging 1.0.20170212.42 before building." />
+    <PropertyGroup>
+      <!-- The repository ReferencePath precedes HintPath. Same assembly identity is not enough to select the new API. -->
+      <AssemblySearchPaths>$(PkgMono_Debugging)\lib\net40;$(AssemblySearchPaths)</AssemblySearchPaths>
+    </PropertyGroup>
+  </Target>
+  <Target Name="ExcludeLegacyMonoDevelopCopies" BeforeTargets="_CopyFilesMarkedCopyLocal" Condition="'$(UseRestoredMonoDevelop)' == 'true'">
+    <ItemGroup>
+      <!-- Their source projects write to the shared test output; never copy transitive vendored versions over them. -->
+      <!-- The same exclusion applies to the shared Debug/Release output after enabling source builds by default. -->
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.Debugger'))" />
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.SourceEditor2'))" />
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'CocoStudio.WindowsPlatform'))" />
+    </ItemGroup>
+  </Target>
+</Project>

@@ -112,4 +112,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="Mono.Debugging" Version="1.0.20170212.42" GeneratePathProperty="true" ExcludeAssets="all" PrivateAssets="all" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+  </ItemGroup>
 </Project>
