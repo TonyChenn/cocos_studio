@@ -61,10 +61,7 @@
       <HintPath>$(CocosStudioBinDir)\ICSharpCode.NRefactory.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Mono.Addins">
-      <HintPath>$(CocosStudioBinDir)\Mono.Addins.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
+    <PackageReference Include="Mono.Addins" Version="1.3.7" />
     <Reference Include="MonoDevelop.Core">
       <HintPath>$(CocosStudioBinDir)\MonoDevelop.Core.dll</HintPath>
       <Private>False</Private>
