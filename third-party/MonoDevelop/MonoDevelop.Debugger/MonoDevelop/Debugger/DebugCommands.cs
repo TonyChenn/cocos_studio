@@ -1,0 +1,33 @@
+namespace MonoDevelop.Debugger
+{
+	public enum DebugCommands
+	{
+		Debug,
+		DebugEntry,
+		DebugApplication,
+		ToggleBreakpoint,
+		StepOver,
+		StepInto,
+		StepOut,
+		Pause,
+		Continue,
+		ClearAllBreakpoints,
+		AttachToProcess,
+		Detach,
+		EnableDisableBreakpoint,
+		DisableAllBreakpoints,
+		ShowDisassembly,
+		NewBreakpoint,
+		RemoveBreakpoint,
+		ShowBreakpointProperties,
+		ExpressionEvaluator,
+		ShowCurrentExecutionLine,
+		AddWatch,
+		StopEvaluation,
+		RunToCursor,
+		SetNextStatement,
+		ShowNextStatement,
+		NewCatchpoint,
+		NewFunctionBreakpoint
+	}
+}
