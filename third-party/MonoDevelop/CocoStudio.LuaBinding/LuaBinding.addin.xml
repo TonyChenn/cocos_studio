@@ -1,0 +1,81 @@
+<Addin 	id			= "LuaBinding"
+		namespace	= "LuaBinding"
+		name		= "Lua Language Binding"
+		author		= "Kate Adams"
+		url			= "https://github.com/c0bra61/LuaBinding"
+		description	= "Lua Language Binding"
+		category	= "Language bindings"
+		version		= "1.0.14">
+	
+	<Runtime>
+		<Import assembly = "CocoStudio.LuaBinding.dll" />
+		<!-- <Import assembly = "ICSharpCode.NRefactory.dll"/> -->
+	</Runtime>
+	
+	<Extension path = "/MonoDevelop/Ide/ProjectTemplates">
+		<ProjectTemplate id = "LuaConsoleProject" resource = "LuaConsoleProject.xpt.xml"/>
+		<ProjectTemplate id = "LuaGmodAddon" resource = "LuaGmodAddon.xpt.xml"/>
+	</Extension>
+	<Extension path = "/MonoDevelop/Ide/FileFilters">
+		<FileFilter id = "Lua Files" _label = "Lua Files" extensions = "*.lua"/>
+	</Extension>
+
+	<Extension path = "/MonoDevelop/ProjectModel/Gui/ItemOptionPanels/Build">
+		<Condition id="ItemType" value="CocoStudio.LuaBinding.LuaProject">
+			<Section 
+				id = "LuaCompilerParametersPanel"
+				_label = "Interpreter"
+				insertafter = "General"
+				class = "CocoStudio.LuaBinding.CompilerParametersPanel"/>
+		</Condition>
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Ide/GlobalOptionsDialog/Other">
+		<Section id = "LuaMainPanel"
+				_label = "Lua"
+				class = "CocoStudio.LuaBinding.InterpreterOptionsBinding" />
+	</Extension>
+
+	<Extension path = "/MonoDevelop/ProjectModel/LanguageBindings">
+		<LanguageBinding id = "Lua" supportedextensions = ".lua" class = "CocoStudio.LuaBinding.LuaLanguageBinding"/>
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/Ide/FileTemplates">
+		<FileTemplate id = "EmptyLuaFile" resource = "EmptyLuaFile.xft.xml" />
+		<FileTemplate id = "EmptyLuaModule" resource = "EmptyLuaModule.xft.xml" />
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/ProjectModel/ProjectBindings">
+		<ProjectBinding id = "LuaProject" class = "CocoStudio.LuaBinding.LuaProjectBinding" />
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/ProjectModel/SerializableClasses">
+		<DataType class = "CocoStudio.LuaBinding.LuaCompilerParameters" />
+		<DataType class = "CocoStudio.LuaBinding.LuaProject" />
+		<DataType class = "CocoStudio.LuaBinding.LuaConfigurationProject" />
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/ProjectModel/MSBuildItemTypes">
+		<DotNetProject  language="Lua" extension="luaproj" guid="{bf51a8ef-4e44-4a82-8ba3-cc09ab0476cf}"/>
+	</Extension>
+	
+	<!--- Syntax related -->
+	<Extension path = "/MonoDevelop/Core/MimeTypes">
+		<MimeType id="text/x-lua" _description="Lua files" isText="true">
+			<File pattern="*.lua" />
+		</MimeType>
+	</Extension>
+	
+	<Extension path = "/MonoDevelop/SourceEditor2/CustomModes">
+    	<SyntaxMode mimeTypes="text/x-lua" class="CocoStudio.LuaBinding.LuaSyntaxMode"/>
+  	</Extension>
+	
+	<Extension path = "/MonoDevelop/SourceEditor2/SyntaxModes">
+		<Templates resource="LuaSyntaxMode.xml" />
+	</Extension>
+
+	<Extension path = "/MonoDevelop/Ide/TextEditorExtensions">
+		<Class fileExtensions = ".lua" id = "CocoStudio.LuaBinding.LuaTextEditorIndentation" class = "CocoStudio.LuaBinding.LuaTextEditorIndentation" />
+		<Class fileExtensions = ".lua" id = "CocoStudio.LuaBinding.LuaTextEditorCompletion" class = "CocoStudio.LuaBinding.LuaTextEditorCompletion" />
+	</Extension>
+</Addin>
