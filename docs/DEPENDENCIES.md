@@ -4,7 +4,7 @@
 
 前期曾将十份库恢复为源码或 NuGet 并删除原 DLL。复核维护价值后，Mono.TextEditor、MonoDevelop.DesignerSupport、
 MonoDevelop.Refactoring 以及成组的 MonoDevelop.Debugger / Mono.Debugging 已恢复为固定 DLL；它们没有需要 Studio 维护的
-Cocos 业务定制。当前 `dlls` 共 19 个。
+Cocos 业务定制。随后将 Cocos.Launcher.Resource 与 CocoStudio.DefaultResource 恢复为源码资源项目并删除原 DLL，当前 `dlls` 共 17 个。
 
 继续维护源码的范围是 MonoDevelop.SourceEditor2、MonoDevelop.Projects.Formats.MSBuild，以及位于 `src/` 的
 CocoStudio.SourceEditor、CocoStudio.LuaBinding、CocoStudio.WindowsPlatform。以下旧批次记录保留为历史过程，
@@ -482,3 +482,20 @@ Mono.Cairo 引用身份的预期迁移已在审计中固定，不使用新增绑
 用户已完成完整编辑器的打开/保存、补全弹窗、实际断点、属性面板、长文件滚动和 Stetic 设计器交互验收。
 随后在独立工作副本先删除旧 DLL，再清空候选输出与中间目录；Debug/x86 和 Release/x86 重新冷构建及关键回归通过。
 `dlls/Mono.TextEditor.dll` 已删除，正式构建只使用恢复源码；固定 Git 历史仍为新旧对照测试提供受哈希校验的基准。
+
+## 第二十四批：恢复应用资源程序集
+
+`Cocos.Launcher.Resource` 与 `CocoStudio.DefaultResource` 都是纯资源程序集，仅包含一个静态 `Resources.GetResourceStream(string)`
+入口及 PNG 嵌入资源，没有业务逻辑或第三方程序集依赖。源码项目分别放入：
+
+- `src/Launcher/Cocos.Launcher.Resource/`
+- `src/Resources/CocoStudio.DefaultResource/`
+
+从固定提交 `200fed451ace6f21802f8a4542057a21de8f0c2c` 中的原 DLL 以二进制流提取 83 和 302 个资源，保留完整清单名称与原始字节。
+资源文件使用完整清单名作为文件名，项目通过 `LogicalName` 原样嵌入；同时显式设置 `WithCulture=false`，避免
+`ResourcePanelResource.bg.png` 中的 `bg` 被 MSBuild 误识别为保加利亚语卫星资源。
+
+两个项目统一使用 .NET Framework 4.8；5 个直接 DLL 引用已切为 ProjectReference，两个项目加入 `CocosStudio.slnx`。
+Debug/x86 与 Release/x86 在删除原 DLL 后均完整重建通过；
+专项测试确认程序集名称与版本 `2.3.3.0`、静态访问接口、缺失资源行为，以及全部 385 个资源名称和 SHA-256 均与原版一致。
+旧 `dlls/Cocos.Launcher.Resource.dll` 和 `dlls/CocoStudio.DefaultResource.dll` 已删除，测试基准缓存不参与正式构建。

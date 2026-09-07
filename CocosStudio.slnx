@@ -43,6 +43,10 @@
     <Project Path="src/Launcher/Cocos.Launcher.Control/Cocos.Launcher.Control.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23721" />
     <Project Path="src/Launcher/Cocos.Launcher.Core/Cocos.Launcher.Core.csproj" Id="307e660a-49e7-4ac8-beae-052da94ad1ff" />
     <Project Path="src/Launcher/Cocos.Launcher.Library/Cocos.Launcher.Library.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23722" />
+    <Project Path="src/Launcher/Cocos.Launcher.Resource/Cocos.Launcher.Resource.csproj" Id="7c1a9e26-27b3-4b91-ae0d-a3c338acb201" />
+  </Folder>
+  <Folder Name="/03 Framework/Resources/">
+    <Project Path="src/Resources/CocoStudio.DefaultResource/CocoStudio.DefaultResource.csproj" Id="55d7ddb2-2921-4ca8-8d5f-7a4a9f4b8c02" />
   </Folder>
   <Folder Name="/03 Framework/">
     <Project Path="src/Framework/CocoStudio.Basic/CocoStudio.Basic.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23724">

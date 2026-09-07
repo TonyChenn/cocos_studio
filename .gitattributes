@@ -6,3 +6,5 @@ src/Editor/CocoStudio.LuaBinding/**/*.xml -text whitespace=-blank-at-eol,-blank-
 src/Editor/CocoStudio.LuaBinding/**/gui.stetic -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
 src/Platforms/CocoStudio.WindowsPlatform/**/*.xml -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
 runtime-assets/Mono.TextEditor.dll.config -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+src/Launcher/Cocos.Launcher.Resource/Resources/** -text
+src/Resources/CocoStudio.DefaultResource/Resources/** -text

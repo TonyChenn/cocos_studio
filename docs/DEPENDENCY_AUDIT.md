@@ -1,6 +1,6 @@
 # 剩余二进制依赖审计
 
-核对日期：2026-09-07。按维护价值复核后恢复五份通用底层 DLL，当前 `dlls` 共 19 个。
+核对日期：2026-09-07。Cocos.Launcher.Resource 与 CocoStudio.DefaultResource 已恢复为源码资源项目并删除旧 DLL，当前 `dlls` 共 17 个。
 项目声明已按目录迁移后的当前源码重新扫描；二进制消费者仍来自迁移前的 `bin/Debug` 完整构建快照，不构成新目录已编译的证明。
 源码项目统计含主方案外项目，不等于全部项目均已构建。
 审计同时读取程序集引用、模块注册属性、原生导入以及 IL 字符串；字符串命中只提供调查线索，不证明分支在运行时执行。
@@ -13,8 +13,6 @@
 | Addins.LuaExtend | 有 Addin 注册；与现有模块发现流程相关 | 应用专用模块，先核对 Lua 扩展契约和原始生成来源，不能按无直接引用删除 |
 | Addins.LuaExtendWrap | 被 Addins.LuaExtend 引用 | 与扩展模块成组恢复，避免只替换包装层 |
 | Addins.ModelExtend | CocoStudio.Model.Lua 直接引用且输出仍有程序集引用 | 模型/Lua 桥接专用库，需要接口和模型行为回归 |
-| Cocos.Launcher.Resource | CocoStudio.Gtk.Extend 直接及二进制引用 | 属于资源程序集；恢复资源标识、内容及所有消费路径后才能去掉 DLL |
-| CocoStudio.DefaultResource | 4 个项目直接引用，4 个输出引用 | 同上，不能用通用 NuGet 包替代应用资源 |
 | Modules.Animation | 有 Addin 注册及 32 处名称字符串候选 | 动画内置模块；需时间轴/序列化/模块加载回归，不属于在线插件安装功能 |
 | Mono.Addins.CecilReflector | Mono.Addins 的 GetReflectorForFile、OnResolveAddinAssembly 共 4 处加载字符串 | 是内置模块扫描器；Cecil 包升级必须连同扫描器及其他调用方验证 |
 | Mono.Addins.Gui | MonoDevelop.Ide 有程序集引用 | 不用安装/更新界面不代表引用已消失；先在 Ide 源码中解除依赖或恢复对应库 |
@@ -43,7 +41,7 @@
 1. **编辑器基础层**：Mono.TextEditor、Debugger、DesignerSupport、Refactoring 保留 DLL；SourceEditor2 保留定制源码。Core、Ide 暂不源码化，除非出现明确维护需求。
 2. **Windows 文件对话框层**：针对旧 WindowsPlatform 的 `Attach`、`IFileDialogCustomize`、`customize/nativeDialog` 等内部访问设计公开 API 适配；以真实文件/目录选择验证，未通过前不强换 Code Pack。
 3. **程序集扫描/导入层**：CecilReflector/Cecil 与 NRefactory.IKVM/IKVM 分别成组处理。重新核对届时候选包身份和 API；第八批历史包调查不是永久结论，也不表示最新包已测试。
-4. **应用专用模块与资源**：独立核对来源及生成过程；不把反编译视为恢复了原始注释、授权信息或所有运行时行为。
+4. **应用专用模块**：独立核对来源及生成过程；资源程序集已采用原始资源文件和最小访问类恢复，其他业务模块仍不得把反编译等同于原始源码。
 
 每批继续执行“替换 → 对照/冷构建验证 → 删除旧副本 → 更新文档 → 本地提交”，不推送。
 以上为后续独立任务边界，本轮没有实施这些高风险组，也没有移除平台或内置模块功能。

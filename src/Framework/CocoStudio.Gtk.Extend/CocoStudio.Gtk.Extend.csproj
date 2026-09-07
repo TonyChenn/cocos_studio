@@ -51,12 +51,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cocos.Launcher.Resource">
-      <HintPath>..\..\..\dlls\Cocos.Launcher.Resource.dll</HintPath>
-    </Reference>
-    <Reference Include="CocoStudio.DefaultResource">
-      <HintPath>..\..\..\dlls\CocoStudio.DefaultResource.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\Launcher\Cocos.Launcher.Resource\Cocos.Launcher.Resource.csproj">
+      <Project>{7C1A9E26-27B3-4B91-AE0D-A3C338ACB201}</Project>
+      <Name>Cocos.Launcher.Resource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\CocoStudio.DefaultResource\CocoStudio.DefaultResource.csproj">
+      <Project>{55D7DDB2-2921-4CA8-8D5F-7A4A9F4B8C02}</Project>
+      <Name>CocoStudio.DefaultResource</Name>
+    </ProjectReference>
     <Reference Include="gdk-sharp" />
     <Reference Include="glib-sharp" />
     <Reference Include="gtk-sharp" />

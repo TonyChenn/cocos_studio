@@ -4,6 +4,7 @@
 
 - `src/Applications/`：CocosStudio 主程序、Cocos 启动入口和 Cocos.Update。
 - `src/Launcher/`：启动器公共库。
+- `src/Resources/`：Studio 公共资源程序集及其原始资源文件。
 - `src/Framework/`：Core、Basic、控件、工程管理、撤销及公共服务。
 - `src/Models/`：Model、Model3D 及对应 Lua 模型。
 - `src/Editor/`：CocoStudio.SourceEditor、CocoStudio.LuaBinding。
@@ -27,6 +28,12 @@
 
 ```powershell
 .\tests\Test-RepositoryLayout.ps1
+```
+
+资源程序集完成构建后，可逐项核对程序集身份、访问接口和全部嵌入资源哈希：
+
+```powershell
+.\tests\Test-ResourceAssemblies.ps1 -CandidateDirectory .\bin\RestoredMonoDevelopTest
 ```
 
 源码目录迁移后，首次实际构建需要重新还原包，不能把旧 `obj` 的项目路径缓存当作新布局已验证的证据。

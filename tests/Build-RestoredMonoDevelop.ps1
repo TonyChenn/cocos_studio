@@ -36,6 +36,11 @@ foreach ($name in 'MonoDevelop.SourceEditor2','CocoStudio.LuaBinding','CocoStudi
     $outputDll = Join-Path $output "$name.dll"
     if ((Get-FileHash $sourceBuild).Hash -ne (Get-FileHash $outputDll).Hash) { throw "Source build overwritten in test output: $name" }
 }
+foreach ($name in 'Cocos.Launcher.Resource','CocoStudio.DefaultResource') {
+    $sourceBuild = Join-Path $intermediate "$name\$Configuration\$name.dll"
+    $outputDll = Join-Path $output "$name.dll"
+    if ((Get-FileHash $sourceBuild).Hash -ne (Get-FileHash $outputDll).Hash) { throw "Resource source build overwritten in test output: $name" }
+}
 foreach ($name in 'Mono.Debugging','Mono.TextEditor','MonoDevelop.Debugger','MonoDevelop.DesignerSupport','MonoDevelop.Refactoring') {
     $frozenDll = Join-Path $root "dlls\$name.dll"
     $outputDll = Join-Path $output "$name.dll"
