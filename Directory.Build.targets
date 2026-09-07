@@ -17,6 +17,7 @@
       <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\MonoDevelop.DesignerSupport.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
       <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\MonoDevelop.Refactoring.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
       <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\MonoDevelop.Projects.Formats.MSBuild.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
+      <DllFiles Remove="$(MSBuildThisFileDirectory)dlls\Mono.TextEditor.dll" Condition="'$(UseRestoredMonoDevelop)' == 'true'" />
       <RuntimeAssetFiles Include="$(MSBuildThisFileDirectory)runtime-assets\**\*" />
     </ItemGroup>
     <Copy SourceFiles="@(DllFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />

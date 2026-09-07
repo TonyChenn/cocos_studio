@@ -2,7 +2,7 @@
 
 ## 当前构建与历史测试基准
 
-已移除九份原 DLL（包含 Refactoring），正式构建只使用源码/NuGet。`UseRestoredMonoDevelop=false` 在还原、构建或复制时明确报错；
+已移除十份原 DLL（包含 Refactoring 和 Mono.TextEditor），正式构建只使用源码/NuGet。`UseRestoredMonoDevelop=false` 在还原、构建或复制时明确报错；
 回滚应通过 Git 恢复完整版本，不再提供混合旧库的构建路径。
 对照测试统一使用 `tests/RestoredBaseline.ps1` 从提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d` 按二进制流提取原库，
 存入忽略的 `obj/RestoredBaseline/<commit>` 并校验固定 SHA-256。历史缺失或哈希不符会失败，不会自动下载或替换为候选。
@@ -23,8 +23,8 @@ Debugger / SourceEditor2 两个目录的 178 个 C# 文件与 85 项资源，来
 另恢复 CocoStudio.LuaBinding 的 23 个 C# 文件及 8 项资源；本批不改写 Lua 业务逻辑。
 另恢复 MonoDevelop.DesignerSupport 的 85 个 C# 文件及 10 项资源，源码仅规范换行。
 另恢复 MonoDevelop.Refactoring 的 126 个 C# 文件及 8 项资源，源码仅规范换行，原 DLL 已同批删除。
-Mono.TextEditor 仍使用 `dlls/Mono.TextEditor.dll`；固定基准、依赖约束和后续源码接入规则见
-[`docs/MONO_TEXT_EDITOR_RECOVERY.md`](../../docs/MONO_TEXT_EDITOR_RECOVERY.md)，本批没有把反编译候选加入正式构建。
+Mono.TextEditor 的官方 5.9 源码已放入本目录并接入 8 个直接消费者；没有复制反编译 C#，39 项资源与原 DLL 字节一致。独立 Debug/Release 冷构建、程序集对照、自动回归及用户交互验收已通过；删除旧 DLL 后再次清空输出重建并复验。固定基准、来源判断和依赖约束见
+[`docs/MONO_TEXT_EDITOR_RECOVERY.md`](../../docs/MONO_TEXT_EDITOR_RECOVERY.md)。
 
 ## 来源
 
@@ -38,6 +38,7 @@ Mono.TextEditor 仍使用 `dlls/Mono.TextEditor.dll`；固定基准、依赖约�
 | `dlls/CocoStudio.LuaBinding.dll` | `DE22BC4A54EBDC0A4671F8D20ADC41245283F53E54538E5B3886E593B67278AD` |
 | `dlls/MonoDevelop.DesignerSupport.dll` | `37058746AD28C9A6D0617DCBDF01BD317BF1E55548CA8B19549F2F0D6974D498` |
 | `dlls/MonoDevelop.Refactoring.dll` | `D61254DA8795752ECEA8C6216AFD90CD7B4FFEA9E0B2571A2F833D9E4CF847FD` |
+| `dlls/Mono.TextEditor.dll` | `47DAA700220831CD86F0135E8CC57B920D4D8BF76AB734D781DE6BC27D0800B6` |
 
 - 反编译工具：ILSpy `ilspycmd 11.0.0.9375`，项目模式，C# 7.3，分层命名空间目录。
 - 原始导出在本机被忽略的 `obj/DecompiledMonoDevelop`；本目录本身不依赖该目录或第九批构建输出。
@@ -54,6 +55,8 @@ Mono.TextEditor 仍使用 `dlls/Mono.TextEditor.dll`；固定基准、依赖约�
 - `UPSTREAM-REFERENCE-NOTICES.txt` 保留该对照版本两个模块 111 个源文件的原始版权/许可头注释。
   原程序集中的版权、模块注册及内部访问授权属性原样保留。此处不重新声明第三方代码的权属或许可。
   原始注释和所有定制历史不能从 DLL 完整恢复，发布前仍需核对原始来源及所需声明。
+- Mono.TextEditor 采用官方 5.9.5.10 提交 `48d16bc4f12ce3938964fc7c3d72fdc6887ad4ad` 的源码；
+  逐文件哈希和边界记录在 `Mono.TextEditor/SOURCE_MANIFEST.tsv` 与 `SOURCE_PROVENANCE.md`。
 
 ## LuaBinding 恢复与验证范围
 
@@ -69,11 +72,11 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
 
 ## 接入方式与隔离
 
-- 项目文件名使用 `.Restored.csproj`，程序集名称保留原名，现包含 Debugger / SourceEditor2 / DesignerSupport / Refactoring / CocoStudio.WindowsPlatform / CocoStudio.SourceEditor / MonoDevelop.Projects.Formats.MSBuild / CocoStudio.LuaBinding 八库。
+- 项目文件名使用 `.Restored.csproj`，程序集名称保留原名，现包含 Debugger / SourceEditor2 / DesignerSupport / Refactoring / Mono.TextEditor / CocoStudio.WindowsPlatform / CocoStudio.SourceEditor / MonoDevelop.Projects.Formats.MSBuild / CocoStudio.LuaBinding 九库。
   文件名沿用恢复阶段的 `.Restored.csproj` 命名；旧库回退已取消。
   三个 CocoStudio 项目迁至 `src` 后，仍复用 `IsRestoredMonoDevelopProject` 构建标记；
   它仅控制恢复项目的配置传递和校验，不表示项目属于第三方库。程序集名称、资源名和输出路径保持不变。
-- 按用户要求，`UseRestoredMonoDevelop` 现默认启用，普通 Debug/Release 构建使用这八份恢复源码及新版 Mono.Debugging。
+- 按用户要求，`UseRestoredMonoDevelop` 现默认启用；普通 Debug/Release 构建使用这九份恢复源码及新版 Mono.Debugging。
   `build/RestoredMonoDevelop.Test.props` 仍可用于隔离测试，将输出限定为
   `bin/RestoredMonoDevelopTest/`，中间文件限定为 `obj/RestoredMonoDevelopTest/`。
 - 主程序通过条件 ProjectReference 引用 CocoStudio.SourceEditor，后者引用 SourceEditor2，再引用 Debugger；`CocosStudio.slnx` 沿此依赖构建，
@@ -83,12 +86,12 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
   LuaBinding 也由主程序条件引用，模块注册与嵌入资源保持原样。
   SourceEditor2 与 CocoStudio.SourceEditor 通过 ProjectReference 引用 DesignerSupport，不再直接引用旧 DLL。
 - 源码模式下所有项目使用同一个 NuGet `Mono.Debugging 1.0.20170212.42`；NRefactory、Mono.Addins、Xwt、Gtk# 等
-  继续采用现有 NuGet 版本。Core、Ide、Mono.TextEditor 暂时引用仓库原 DLL。
+  继续采用现有 NuGet 版本。Core、Ide 暂时引用仓库原 DLL；Mono.TextEditor 的直接消费者已改为源码项目引用。
   包声明直接保存在各 csproj 中，避免旧格式项目在 VS 还原时漏掉集中 targets 注入的包。
 - 根 ReferencePath 的旧 DLL 搜索顺序早于 HintPath，因此源码构建目标明确把 Mono.Debugging 包目录放在前面。
-  同时排除旧九库的统一复制及旧八份源码库的间接复制，最后核对实际输出哈希。
+  同时排除旧十库的统一复制及旧九份源码库的间接复制，最后核对实际输出哈希。
 - 普通构建使用 `bin/Debug` 或 `bin/Release`；启用隔离测试模式时，构建前和清理前仍验证测试输出路径。
-- `dlls` 中九份原库已删除。不要只覆盖部分 DLL 回滚，以免新旧依赖混用；通过 Git 恢复完整版本。
+- `dlls` 中十份原库已删除。不要只覆盖部分 DLL 回滚，以免新旧依赖混用；通过 Git 恢复完整版本。
   未改变 GAC、用户环境或现用编辑器进程。
 
 ## 构建和自动测试

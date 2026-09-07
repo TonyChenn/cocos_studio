@@ -21,7 +21,7 @@
     <Reference Include="gtk-sharp" />
     <Reference Include="MonoDevelop.Core"><HintPath>$(RepositoryRoot)dlls\MonoDevelop.Core.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="MonoDevelop.Ide"><HintPath>$(RepositoryRoot)dlls\MonoDevelop.Ide.dll</HintPath><Private>false</Private></Reference>
-    <Reference Include="Mono.TextEditor"><HintPath>$(RepositoryRoot)dlls\Mono.TextEditor.dll</HintPath><Private>false</Private></Reference>
+    <ProjectReference Include="..\..\..\third-party\MonoDevelop\Mono.TextEditor\Mono.TextEditor.Restored.csproj" />
     <ProjectReference Include="..\..\..\third-party\MonoDevelop\MonoDevelop.DesignerSupport\MonoDevelop.DesignerSupport.Restored.csproj" />
     <ProjectReference Include="..\..\..\third-party\MonoDevelop\MonoDevelop.SourceEditor2\MonoDevelop.SourceEditor2.Restored.csproj" />
     <ProjectReference Include="..\..\Framework\CocoStudio.Core\CocoStudio.Core.csproj" />

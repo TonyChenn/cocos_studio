@@ -28,7 +28,7 @@
     <Reference Include="Mono.Cairo" />
     <Reference Include="MonoDevelop.Core"><HintPath>$(RepositoryRoot)dlls\MonoDevelop.Core.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="MonoDevelop.Ide"><HintPath>$(RepositoryRoot)dlls\MonoDevelop.Ide.dll</HintPath><Private>false</Private></Reference>
-    <Reference Include="Mono.TextEditor"><HintPath>$(RepositoryRoot)dlls\Mono.TextEditor.dll</HintPath><Private>false</Private></Reference>
+    <ProjectReference Include="..\Mono.TextEditor\Mono.TextEditor.Restored.csproj" />
     <ProjectReference Include="..\MonoDevelop.DesignerSupport\MonoDevelop.DesignerSupport.Restored.csproj" />
     <ProjectReference Include="..\MonoDevelop.Debugger\MonoDevelop.Debugger.Restored.csproj"><Name>MonoDevelop.Debugger.Restored</Name></ProjectReference>
     <PackageReference Include="ICSharpCode.NRefactory" Version="5.5.1" />

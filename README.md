@@ -27,6 +27,7 @@
 
 ```powershell
 .\tests\Test-RepositoryLayout.ps1
+.\tests\Test-MonoTextEditorSource.ps1
 ```
 
 源码目录迁移后，首次实际构建需要重新还原包，不能把旧 `obj` 的项目路径缓存当作新布局已验证的证据。

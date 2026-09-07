@@ -37,7 +37,8 @@ function Get-Surface($assembly) {
                 "METHOD $($method.FullName) $($method.Attributes)"
             }
             foreach ($field in $type.Fields | Where-Object { !$_.IsPrivate }) {
-                "FIELD $($field.FullName) $($field.Attributes)"
+                $fieldName = $field.FullName -replace '<Device>e__FixedBuffer0?', '<fixed-buffer>'
+                "FIELD $fieldName $($field.Attributes)"
             }
             foreach ($property in $type.Properties) { "PROPERTY $($property.FullName)" }
             foreach ($event in $type.Events) { "EVENT $($event.FullName)" }
@@ -51,7 +52,7 @@ function Get-AttributeKey($attribute) {
     $parts += @($attribute.Fields | ForEach-Object { "F:$($_.Name)=$($_.Argument.Value)" } | Sort-Object)
     "$($attribute.AttributeType.FullName):$($parts -join '|')"
 }
-foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
+foreach ($name in 'Mono.TextEditor','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
     $old = [Mono.Cecil.AssemblyDefinition]::ReadAssembly("$originals/$name.dll", $parameters)
     $new = [Mono.Cecil.AssemblyDefinition]::ReadAssembly("$candidate/$name.dll", $parameters)
     $oldSurface = @(Get-Surface $old | Sort-Object -Unique)

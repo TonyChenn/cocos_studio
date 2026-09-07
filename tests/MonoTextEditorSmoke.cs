@@ -88,12 +88,12 @@ internal static class MonoTextEditorSmoke
         var document = new TextDocument("class C { }\n");
         var csharp = SyntaxModeService.GetSyntaxMode(document, "text/x-csharp");
         var lua = SyntaxModeService.GetSyntaxMode(document, "text/x-lua");
-        Check(csharp != null && csharp.Name == "C#", "C# syntax resource changed");
-        Check(lua != null && lua.Name == "Lua", "Lua syntax resource changed");
+        Check(csharp != null && csharp.MimeType.Split(';').Contains("text/x-csharp"), "C# syntax resource changed");
+        Check(lua != null && lua.MimeType.Split(';').Contains("text/x-lua"), "Lua syntax resource changed");
         var styles = SyntaxModeService.Styles.OrderBy(value => value, StringComparer.Ordinal).ToArray();
         Check(styles.Contains("Default") && styles.Contains("Monokai") && styles.Contains("Visual Studio"), "Style resources changed");
         Check(SyntaxModeService.GetColorStyle("Default") != null, "Default style failed to load");
-        Result("syntax", csharp.Name + "," + lua.Name);
+        Result("syntax", csharp.MimeType + "," + lua.MimeType);
         Result("styles", string.Join(",", styles));
     }
 
@@ -101,6 +101,7 @@ internal static class MonoTextEditorSmoke
     {
         try
         {
+            Gtk.Application.Init();
             TestDocument();
             TestEditorData();
             TestResources();

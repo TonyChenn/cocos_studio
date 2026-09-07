@@ -5,7 +5,7 @@
 已将前期源码恢复按模块提交，并删除八份已替换的旧 DLL：Mono.Debugging、MonoDevelop.Debugger、SourceEditor2、
 DesignerSupport、Projects.Formats.MSBuild，以及 CocoStudio.SourceEditor、LuaBinding、WindowsPlatform。
 `dlls` 从 24 个减至 16 个；未删除仍被使用的库。以下旧批次的“保留/回退”描述仅记录历史状态。
-随后完成 Refactoring 同批恢复和删除，当前进一步减至 15 个，累计删除九份已替换旧库。
+随后完成 Refactoring 和 Mono.TextEditor 的同批恢复、验证与删除，当前进一步减至 14 个，累计删除十份已替换旧库。
 当前取消 `UseRestoredMonoDevelop=false` 构建；恢复完整历史版本应使用 Git。
 旧库对照测试统一从固定提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d` 提取并校验 SHA-256，
 测试缓存不受版本控制，也不能参与正式构建；历史缺失时可显式提供同样受校验的基准目录。
@@ -448,3 +448,28 @@ SourceEditor2 和 CocoStudio.SourceEditor 直接引用该源码项目；依赖�
 - 删除后的全新 `.sln` Debug 与默认 `.slnx` Debug 构建为 0 错误、206 警告；全新 `.slnx` Release 为 0 错误、205 警告。
 
 默认 `bin/Debug` 已更新；继续保留内置模块发现和现有平台支持，不改 Lua 的已知功能缺陷。
+
+## 第二十三批：恢复 Mono.TextEditor 并删除原 DLL
+
+当前 `Mono.TextEditor.dll` 的 PE 时间戳、5.9/5.10 特征边界以及官方标签子树对照共同指向 MonoDevelop 5.9 稳定源码，
+而不是此前仅作历史参考的 5.4。源码从 5.9.5.10 提交
+`48d16bc4f12ce3938964fc7c3d72fdc6887ad4ad` 原样导入
+`third-party/MonoDevelop/Mono.TextEditor/`：161 个 C# 文件保留原注释，未复制反编译 C#；30 份语法 XML、
+8 份样式 JSON 和 `gui.stetic` 与原 DLL 的嵌入资源逐字节一致。
+
+新增的 `Mono.TextEditor.Restored.csproj` 保持程序集名、版本 `1.0.0.0`、无强名称、.NET Framework 4.8、
+C# 7.3、AnyCPU 和 unsafe 设置。8 个直接消费者已由 DLL 引用切为 ProjectReference，
+公共复制和输出哈希检查也纳入 Mono.TextEditor。`tests/Test-MonoTextEditorSource.ps1` 已静态验证 201 个来源文件、
+项目设置、资源、引用切换、旧复制排除和 SourceEditor2 三个定制入口。
+
+独立工作副本的 `CocosStudio.slnx` Debug/x86 和 Release/x86 冷构建均通过，分别为 0 错误、212/211 个警告；
+九份源码产物和 Mono.Debugging NuGet 产物与最终输出哈希一致。Mono.TextEditor 的 5,411 项语义表面、
+4 个序列化类型、39 项资源、12 个原生模块和 62 个 P/Invoke 无未解释差异，1,170 处成员引用均解析到候选。
+
+新旧文本编辑、撤销重做、搜索替换、折叠和语法资源行为一致；编辑器、Lua、DesignerSupport、Refactoring、
+断点持久化、47 项模块注册、MSBuild 桥接及 Gtk/Cairo 两种加载模式回归通过。目标框架及 Xwt、Mono.Posix、
+Mono.Cairo 引用身份的预期迁移已在审计中固定，不使用新增绑定重定向掩盖。
+
+用户已完成完整编辑器的打开/保存、补全弹窗、实际断点、属性面板、长文件滚动和 Stetic 设计器交互验收。
+随后在独立工作副本先删除旧 DLL，再清空候选输出与中间目录；Debug/x86 和 Release/x86 重新冷构建及关键回归通过。
+`dlls/Mono.TextEditor.dll` 已删除，正式构建只使用恢复源码；固定 Git 历史仍为新旧对照测试提供受哈希校验的基准。

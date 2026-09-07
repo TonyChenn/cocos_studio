@@ -64,9 +64,7 @@
     <Reference Include="Mono.Cairo" />
     <Reference Include="Mono.Cairo" />
     <PackageReference Include="Mono.Posix-4.5" Version="4.5.0" />
-    <Reference Include="Mono.TextEditor">
-      <HintPath>..\..\..\dlls\Mono.TextEditor.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\..\..\third-party\MonoDevelop\Mono.TextEditor\Mono.TextEditor.Restored.csproj" />
     <Reference Include="MonoDevelop.Ide">
       <HintPath>..\..\..\dlls\MonoDevelop.Ide.dll</HintPath>
     </Reference>

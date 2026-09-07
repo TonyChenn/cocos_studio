@@ -19,7 +19,9 @@ function Get-AllTypes($type) {
 }
 
 function Test-CompilerGenerated($item) {
-    $item.Name -match '[<>]' -or @($item.CustomAttributes | Where-Object AttributeType -match 'CompilerGeneratedAttribute$').Count -gt 0
+    if ($item.Name -match '[<>]' -or $item.FullName -like '<PrivateImplementationDetails>*') { return $true }
+    $item -is [Mono.Cecil.TypeDefinition] -and
+        @($item.CustomAttributes | Where-Object AttributeType -match 'CompilerGeneratedAttribute$').Count -gt 0
 }
 
 function Format-AttributeValue($value) {
@@ -45,15 +47,21 @@ function Get-Surface($assembly) {
     foreach ($top in $assembly.MainModule.Types) {
         foreach ($type in (Get-AllTypes $top)) {
             if ($type.FullName -eq '<Module>' -or (Test-CompilerGenerated $type)) { continue }
+            $typeAttributes = $type.Attributes
+            # Roslyn adds BeforeFieldInit to fieldless interfaces; the legacy Mono compiler did not.
+            if ($type.IsInterface -and !$type.HasFields -and !@($type.Methods | Where-Object Name -eq '.cctor').Count) {
+                $typeAttributes = $typeAttributes -band (-bnot [Mono.Cecil.TypeAttributes]::BeforeFieldInit)
+            }
             $generic = @($type.GenericParameters | ForEach-Object { Get-GenericParameterKey $_ }) -join ';'
             $interfaces = @($type.Interfaces | ForEach-Object InterfaceType | ForEach-Object FullName | Sort-Object) -join ';'
-            "TYPE $($type.FullName) ATTR=$($type.Attributes) BASE=$($type.BaseType) GENERIC=$generic INTERFACES=$interfaces"
+            "TYPE $($type.FullName) ATTR=$typeAttributes BASE=$($type.BaseType) GENERIC=$generic INTERFACES=$interfaces"
             foreach ($method in $type.Methods | Where-Object { !$_.IsPrivate -and !(Test-CompilerGenerated $_) }) {
                 $methodGeneric = @($method.GenericParameters | ForEach-Object { Get-GenericParameterKey $_ }) -join ';'
                 "METHOD $($method.FullName) ATTR=$($method.Attributes) GENERIC=$methodGeneric"
             }
             foreach ($field in $type.Fields | Where-Object { !$_.IsPrivate -and !(Test-CompilerGenerated $_) }) {
-                "FIELD $($field.FullName) ATTR=$($field.Attributes)"
+                $fieldName = $field.FullName -replace '<Device>e__FixedBuffer0?', '<fixed-buffer>'
+                "FIELD $fieldName ATTR=$($field.Attributes)"
             }
             foreach ($property in $type.Properties | Where-Object {
                 ($_.GetMethod -and !$_.GetMethod.IsPrivate) -or ($_.SetMethod -and !$_.SetMethod.IsPrivate)
@@ -73,7 +81,7 @@ function Get-ResourceRecords($assembly, $sha) {
 }
 
 function Get-SerializableLayout($types) {
-    @($types | Where-Object IsSerializable | ForEach-Object {
+    @($types | Where-Object { $_.IsSerializable -and !(Test-CompilerGenerated $_) } | ForEach-Object {
         "TYPE $($_.FullName) ATTR=$($_.Attributes)"
         $_.Fields | Where-Object { !$_.IsStatic } | ForEach-Object { "FIELD $($_.FullName) ATTR=$($_.Attributes)" }
     } | Sort-Object)
@@ -88,7 +96,7 @@ function Get-PInvokes($types) {
 function Get-AssemblyRecord($path, $label, $sha) {
     $assembly = [Mono.Cecil.AssemblyDefinition]::ReadAssembly($path)
     $types = @($assembly.MainModule.Types | ForEach-Object { Get-AllTypes $_ } | Where-Object FullName -ne '<Module>')
-    $ignoredAttributes = 'System.Diagnostics.DebuggableAttribute','System.Runtime.CompilerServices.CompilationRelaxationsAttribute','System.Runtime.CompilerServices.RuntimeCompatibilityAttribute'
+    $ignoredAttributes = 'System.Diagnostics.DebuggableAttribute','System.Runtime.CompilerServices.CompilationRelaxationsAttribute','System.Runtime.CompilerServices.RuntimeCompatibilityAttribute','System.Runtime.Versioning.TargetFrameworkAttribute'
     $attributes = @($assembly.CustomAttributes | Where-Object { $_.AttributeType.FullName -notin $ignoredAttributes } | ForEach-Object { Get-AttributeKey $_ } | Sort-Object)
     $targetFramework = @($assembly.CustomAttributes | Where-Object AttributeType -match 'TargetFrameworkAttribute$' | ForEach-Object { [string]$_.ConstructorArguments[0].Value })
     [ordered]@{
@@ -120,7 +128,8 @@ try {
     $directProjects = @(Get-ChildItem $root -Directory | Where-Object Name -notin 'bin','obj','.git','.vs','.codegraph' |
         Get-ChildItem -Recurse -File -Filter *.csproj | Where-Object FullName -notmatch '[\\/](bin|obj)[\\/]' | Where-Object {
             [xml]$xml = Get-Content -Raw -Encoding UTF8 -LiteralPath $_.FullName
-            @($xml.Project.ItemGroup.Reference | Where-Object { ($_.Include -split ',')[0] -eq 'Mono.TextEditor' }).Count -gt 0
+            @($xml.Project.ItemGroup.Reference | Where-Object { ($_.Include -split ',')[0] -eq 'Mono.TextEditor' }).Count -gt 0 -or
+            @($xml.Project.ItemGroup.ProjectReference | Where-Object { $_.Include -match '(^|[\\/])Mono\.TextEditor\.Restored\.csproj$' }).Count -gt 0
         } | ForEach-Object { $_.FullName.Substring($root.Length + 1) } | Sort-Object)
     $assemblyConsumers = @(Get-ChildItem $output -File | Where-Object Extension -in '.dll','.exe' | ForEach-Object {
         try { $consumer = [Mono.Cecil.AssemblyDefinition]::ReadAssembly($_.FullName) } catch [BadImageFormatException] { return }
@@ -136,6 +145,7 @@ try {
         Baseline = $oldRecord
         Candidate = $null
         Differences = @()
+        AllowedDifferences = @()
         DirectProjects = $directProjects
         DirectProjectsEvidence = 'current source tree'
         AssemblyConsumers = $assemblyConsumers
@@ -147,11 +157,37 @@ try {
         if (!(Test-Path -LiteralPath $candidateFile -PathType Leaf)) { throw "Candidate Mono.TextEditor.dll not found: $candidateFile" }
         $newRecord = Get-AssemblyRecord $candidateFile 'candidate source build' $sha
         $differences = [Collections.Generic.List[string]]::new()
-        foreach ($field in 'Identity','TargetFramework','Attributes','Surface','SerializableLayout','Resources','References','NativeModules','PInvokes') {
+        foreach ($field in 'Identity','Attributes','Surface','SerializableLayout','Resources','NativeModules','PInvokes') {
             Add-Differences $differences $field $oldRecord[$field] $newRecord[$field]
+        }
+        $allowed = [Collections.Generic.List[string]]::new()
+        if (@($oldRecord.TargetFramework).Count -ne 1 -or $oldRecord.TargetFramework[0] -ne '.NETFramework,Version=v4.5') {
+            $differences.Add("TargetFramework unexpected baseline: $($oldRecord.TargetFramework -join ', ')")
+        }
+        if (@($newRecord.TargetFramework).Count -ne 1 -or $newRecord.TargetFramework[0] -ne '.NETFramework,Version=v4.8') {
+            $differences.Add("TargetFramework unexpected candidate: $($newRecord.TargetFramework -join ', ')")
+        } else {
+            $allowed.Add('TargetFramework .NET Framework 4.5 -> 4.8')
+        }
+        $referenceChanges = @(Compare-Object @($oldRecord.References) @($newRecord.References) | ForEach-Object {
+            "$($_.SideIndicator) $($_.InputObject)"
+        } | Sort-Object)
+        $expectedReferenceChanges = @(
+            '=> Mono.Posix, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756',
+            '=> Xwt, Version=0.2.251.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756',
+            '<= Mono.Cairo, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756',
+            '<= Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756',
+            '<= Xwt, Version=0.1.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756'
+        ) | Sort-Object
+        $unexpectedReferenceChanges = @(Compare-Object $expectedReferenceChanges $referenceChanges)
+        if ($unexpectedReferenceChanges.Count) {
+            foreach ($change in $referenceChanges) { $differences.Add("References $change") }
+        } else {
+            $allowed.Add('References Xwt 0.1 -> 0.2.251; Mono.Posix 2 -> 4; Mono.Cairo 2 helper scope unified to existing Mono.Cairo 4')
         }
         $report.Candidate = $newRecord
         $report.Differences = @($differences)
+        $report.AllowedDifferences = @($allowed)
     }
     $directory = New-Item -ItemType Directory -Force -Path "$root/obj/MonoTextEditorAudit"
     $reportFile = Join-Path $directory.FullName 'audit.json'

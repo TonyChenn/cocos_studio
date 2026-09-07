@@ -65,6 +65,7 @@
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.DesignerSupport'))" />
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.Refactoring'))" />
       <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'MonoDevelop.Projects.Formats.MSBuild'))" />
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths->WithMetadataValue('Filename', 'Mono.TextEditor'))" />
     </ItemGroup>
   </Target>
 </Project>
