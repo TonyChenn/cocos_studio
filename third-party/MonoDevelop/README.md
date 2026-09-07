@@ -23,6 +23,8 @@ Debugger / SourceEditor2 两个目录的 178 个 C# 文件与 85 项资源，来
 另恢复 CocoStudio.LuaBinding 的 23 个 C# 文件及 8 项资源；本批不改写 Lua 业务逻辑。
 另恢复 MonoDevelop.DesignerSupport 的 85 个 C# 文件及 10 项资源，源码仅规范换行。
 另恢复 MonoDevelop.Refactoring 的 126 个 C# 文件及 8 项资源，源码仅规范换行，原 DLL 已同批删除。
+Mono.TextEditor 仍使用 `dlls/Mono.TextEditor.dll`；固定基准、依赖约束和后续源码接入规则见
+[`docs/MONO_TEXT_EDITOR_RECOVERY.md`](../../docs/MONO_TEXT_EDITOR_RECOVERY.md)，本批没有把反编译候选加入正式构建。
 
 ## 来源
 

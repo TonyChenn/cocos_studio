@@ -1,7 +1,8 @@
 # 剩余二进制依赖审计
 
-核对日期：2026-09-04。已替换的九份旧 DLL 已删除，当前 `dlls` 剩 15 个。
-输入为当前项目声明和删除旧 DLL 后的全新 Debug 构建输出；源码项目统计含主方案外项目，不等于全部项目均已构建。
+核对日期：2026-09-07。已替换的九份旧 DLL 已删除，当前 `dlls` 剩 15 个。
+项目声明已按目录迁移后的当前源码重新扫描；二进制消费者仍来自迁移前的 `bin/Debug` 完整构建快照，不构成新目录已编译的证明。
+源码项目统计含主方案外项目，不等于全部项目均已构建。
 审计同时读取程序集引用、模块注册属性、原生导入以及 IL 字符串；字符串命中只提供调查线索，不证明分支在运行时执行。
 独立新旧注册扫描仍为 47 项，当前没有足够依据直接再删除下表任意一项。
 
@@ -17,7 +18,7 @@
 | Modules.Animation | 有 Addin 注册及 32 处名称字符串候选 | 动画内置模块；需时间轴/序列化/模块加载回归，不属于在线插件安装功能 |
 | Mono.Addins.CecilReflector | Mono.Addins 的 GetReflectorForFile、OnResolveAddinAssembly 共 4 处加载字符串 | 是内置模块扫描器；Cecil 包升级必须连同扫描器及其他调用方验证 |
 | Mono.Addins.Gui | MonoDevelop.Ide 有程序集引用 | 不用安装/更新界面不代表引用已消失；先在 Ide 源码中解除依赖或恢复对应库 |
-| Mono.TextEditor | 8 个项目直接引用，9 个输出引用 | 核心文本模型/编辑控件；下一组恢复候选，需编辑、语法、布局及编码回归 |
+| Mono.TextEditor | 当前源码有 8 个项目直接引用；迁移前输出快照有 9 个消费者 | 已建立固定历史基准与专项静态审计；恢复设计见 `MONO_TEXT_EDITOR_RECOVERY.md`，本批未接入源码、未删除 DLL |
 | MonoDevelop.Core | 42 个项目直接引用，46 个输出引用 | 基础服务覆盖广，且直接引用 IKVM.Reflection；按子系统恢复和审计，不跨组强换依赖 |
 | MonoDevelop.Ide | 37 个项目直接引用，34 个输出引用 | 工作台/项目系统依赖广，并引用 NRefactory.IKVM、Mono.Addins.Gui；放在基础层之后 |
 | WindowsPlatform | 源码版 CocoStudio.WindowsPlatform 直接及二进制引用 | 仍使用旧 Code Pack 内部接口；先恢复适配代码并替换内部调用，再决定换包 |
@@ -45,6 +46,8 @@
 
 ## 重跑审计
 
-运行 `tests/Audit-VendoredDependencies.ps1 -OutputDirectory <全新构建输出>`。
+通用审计运行 `tests/Audit-VendoredDependencies.ps1 -OutputDirectory <构建输出>`；Mono.TextEditor 专项静态审计运行
+`tests/Audit-MonoTextEditor.ps1 -OutputDirectory <含 Mono.Cecil 的输出目录>`。
 完整程序集身份、SHA-256、直接项目清单、二进制消费方和字符串位置写入忽略的 `obj/VendoredDependencyAudit/dependencies.json`。
+专项结果写入忽略的 `obj/MonoTextEditorAudit/audit.json`，并明确区分当前源码路径与既有输出快照。
 审计不是完整 IDE、实际调试、动画或 macOS 的运行时验证；相关交互仍需用户验收。

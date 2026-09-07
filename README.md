@@ -34,5 +34,6 @@
 
 - [依赖替换记录](docs/DEPENDENCIES.md)
 - [剩余依赖审计](docs/DEPENDENCY_AUDIT.md)
+- [Mono.TextEditor 恢复设计](docs/MONO_TEXT_EDITOR_RECOVERY.md)
 - [下一阶段计划](docs/NEXT_PHASE_PLAN.md)
 - [外部导入说明](src/ExternalImport/README.md)
