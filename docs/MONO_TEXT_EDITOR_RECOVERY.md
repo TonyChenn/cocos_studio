@@ -49,7 +49,7 @@ Debugger、SourceEditor2、DesignerSupport、Refactoring 和 ProjectSetting 的 
 
 ## 后续验证与切换规则
 
-获得编译测试授权后，在没有旧输出可复用的独立工作副本执行 Debug/x86 与 Release/x86 的 NuGet 还原和冷构建，并同时覆盖 `.sln`、`.slnx`。候选至少需要完成：
+获得编译测试授权后，在没有旧输出可复用的独立工作副本通过 `CocosStudio.slnx` 执行 Debug/x86 与 Release/x86 的 NuGet 还原和冷构建。候选至少需要完成：
 
 1. 程序集身份、完整 API、程序集属性、资源名称与资源字节对照。
 2. 文本载入/保存、BOM、编码、换行、撤销重做、选区、块选择和光标移动。

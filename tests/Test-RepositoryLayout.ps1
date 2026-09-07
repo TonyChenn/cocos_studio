@@ -12,20 +12,14 @@ if (!$projects.Count) { throw 'No source projects found.' }
 $rootProjects = @(Get-ChildItem $root -Directory | Where-Object Name -notin 'src','third-party','obj','bin' |
     Get-ChildItem -File -Filter '*.csproj')
 if ($rootProjects.Count) { throw "Unclassified root project: $($rootProjects.FullName -join ', ')" }
-$solutions = @(Get-ChildItem $root -File -Filter '*.sln') + @(Get-ChildItem "$root/src" -Recurse -File -Filter '*.sln' |
-    Where-Object { $_.FullName.Substring($root.Length) -notmatch '[\\/](bin|obj|artifacts)[\\/]' })
-foreach ($solution in $solutions) {
-    $content = Get-Content -Raw -LiteralPath $solution.FullName
-    foreach ($match in [regex]::Matches($content, '(?m)^Project\("[^"\r\n]+"\)\s*=\s*"[^"\r\n]+",\s*"([^"\r\n]+\.csproj)"')) {
-        $path = Join-Path $solution.DirectoryName $match.Groups[1].Value
-        if (!(Test-Path -LiteralPath $path -PathType Leaf)) { throw "Broken solution project: $path" }
-    }
-}
+$legacySolutions = @(Get-ChildItem $root -Recurse -File -Filter '*.sln' |
+    Where-Object { $_.FullName.Substring($root.Length) -notmatch '[\\/](bin|obj|artifacts|\.git|\.vs|\.codegraph)[\\/]' })
+if ($legacySolutions.Count) { throw "Legacy .sln files are no longer maintained: $($legacySolutions.FullName -join ', ')" }
 [xml]$slnx = Get-Content -Raw "$root/CocosStudio.slnx"
 foreach ($entry in $slnx.SelectNodes('//Project[@Path]')) {
     if (!(Test-Path -LiteralPath (Join-Path $root $entry.Path) -PathType Leaf)) { throw "Broken slnx project: $($entry.Path)" }
 }
-"PASS solution paths: $($solutions.Count) sln files and CocosStudio.slnx"
+"PASS solution paths: no legacy .sln files; CocosStudio.slnx"
 foreach ($configuration in 'Debug','Release') {
     foreach ($project in $projects) {
         # No targets are requested: evaluation cannot build, restore or run copy rules.

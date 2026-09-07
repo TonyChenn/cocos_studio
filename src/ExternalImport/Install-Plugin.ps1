@@ -12,10 +12,10 @@ $pluginAssembly = Join-Path $artifactDirectory "CocosStudio.ExternalImport.Studi
 $protocolAssembly = Join-Path $artifactDirectory "CocosStudio.ExternalImport.Protocol.dll"
 
 if (-not (Test-Path -LiteralPath $pluginAssembly -PathType Leaf)) {
-    throw "Plugin artifact was not found: $pluginAssembly. Build CocosStudio.ExternalImport.sln first."
+    throw "Plugin artifact was not found: $pluginAssembly. Build StudioPlugin/CocosStudio.ExternalImport.StudioPlugin.csproj first."
 }
 if (-not (Test-Path -LiteralPath $protocolAssembly -PathType Leaf)) {
-    throw "Protocol artifact was not found: $protocolAssembly. Build CocosStudio.ExternalImport.sln first."
+    throw "Protocol artifact was not found: $protocolAssembly. Build StudioPlugin/CocosStudio.ExternalImport.StudioPlugin.csproj first."
 }
 
 if ([string]::IsNullOrWhiteSpace($AddinsDirectory)) {

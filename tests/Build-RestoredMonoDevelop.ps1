@@ -1,6 +1,5 @@
 param(
     [string]$MSBuild,
-    [ValidateSet('sln','slnx')][string]$SolutionFormat = 'sln',
     [ValidateSet('Debug','Release')][string]$Configuration = 'Debug',
     [switch]$DefaultOutput
 )
@@ -13,16 +12,16 @@ if (!$MSBuild) {
 if (!$MSBuild -or !(Test-Path -LiteralPath $MSBuild)) { throw 'Pass a valid Visual Studio MSBuild path using -MSBuild.' }
 $logs = New-Item -ItemType Directory -Force -Path "$root/obj/RestoredMonoDevelopBuild"
 $props = Join-Path $root 'build\RestoredMonoDevelop.Test.props'
-$solution = Join-Path $root "CocosStudio.$SolutionFormat"
+$solution = Join-Path $root 'CocosStudio.slnx'
 $output = Join-Path $root 'bin\RestoredMonoDevelopTest'
 $intermediate = Join-Path $root 'obj\RestoredMonoDevelopTest'
 $buildProperties = @("/p:DirectoryBuildPropsPath=$props")
-$logName = "$SolutionFormat-build.log"
+$logName = 'slnx-build.log'
 if ($DefaultOutput) {
     $output = Join-Path $root "bin\$Configuration"
     $intermediate = Join-Path $root 'obj'
     $buildProperties = @()
-    $logName = "default-$SolutionFormat-build.log"
+    $logName = 'default-slnx-build.log'
 }
 $runningEditor = @(Get-Process CocosStudio -ErrorAction SilentlyContinue | Where-Object {
     !$_.Path -or [string]::Equals([IO.Path]::GetDirectoryName($_.Path), $output, [StringComparison]::OrdinalIgnoreCase)

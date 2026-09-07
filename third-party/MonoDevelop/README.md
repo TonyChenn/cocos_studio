@@ -76,7 +76,7 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
 - 按用户要求，`UseRestoredMonoDevelop` 现默认启用，普通 Debug/Release 构建使用这八份恢复源码及新版 Mono.Debugging。
   `build/RestoredMonoDevelop.Test.props` 仍可用于隔离测试，将输出限定为
   `bin/RestoredMonoDevelopTest/`，中间文件限定为 `obj/RestoredMonoDevelopTest/`。
-- 主程序通过条件 ProjectReference 引用 CocoStudio.SourceEditor，后者引用 SourceEditor2，再引用 Debugger；`.sln` 和 `.slnx` 都沿此依赖构建，
+- 主程序通过条件 ProjectReference 引用 CocoStudio.SourceEditor，后者引用 SourceEditor2，再引用 Debugger；`CocosStudio.slnx` 沿此依赖构建，
   无需在方案中重复添加恢复项目。
   WindowsPlatform 也由主程序条件引用；其应用层依赖通过 ProjectReference 接入。
   MSBuild 构建桥接库同样由主程序条件引用，保留 .NET Framework 自带的旧 MSBuild 4.0 API，不是升级构建引擎。
@@ -105,8 +105,6 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
 .\tests\Test-RestoredMSBuild.ps1 -OutputDirectory .\bin\Debug
 # 以下保留独立输出测试入口：
 .\tests\Build-RestoredMonoDevelop.ps1
-# 若要检查新版方案格式：
-.\tests\Build-RestoredMonoDevelop.ps1 -SolutionFormat slnx
 .\tests\Audit-RestoredMonoDevelop.ps1
 .\tests\Test-RestoredMonoDevelop.ps1
 .\tests\Test-GtkSharp.ps1 -OutputDirectory .\bin\RestoredMonoDevelopTest
@@ -122,7 +120,8 @@ MonoDevelop 测试不使用 DEVPATH，也不添加 Mono.Debugging 绑定重定�
 
 先完成构建，再运行测试；不要同时重建和复制同一候选输出。
 
-当前验证：全新 `.sln` Debug 与默认 `.slnx` Debug 为 0 错误、206 警告，全新 `.slnx` Release 为 0 错误、205 警告；八份恢复库与各自编译产物哈希一致，
+删除旧 `.sln` 前的历史验证：全新 `.sln` Debug 与默认 `.slnx` Debug 为 0 错误、206 警告，全新 `.slnx` Release 为 0 错误、205 警告；八份恢复库与各自编译产物哈希一致。
+当前仅维护 `CocosStudio.slnx`，后续构建验证不再覆盖 `.sln`。其余历史结果为：
 Mono.Debugging 与指定 NuGet 包一致。397 处成员引用、112 项资源、定制接口、断点样本双向互读、
 模拟退出事件、上层类型加载通过。包含应用程序集的旧/新模块扫描各为 47 项，清单相同。
 Gtk# 默认加载与强制本地候选加载的基础控件/图像测试也通过。

@@ -10,7 +10,7 @@
 
 Studio 负责复制文件、登记资源、刷新资源树，并打开导入后的 CSD。
 
-全部新增代码位于 `src/ExternalImport/`，使用独立解决方案 `CocosStudio.ExternalImport.sln`。原 `CocosStudio.sln`、`Program.cs`、`CocoStudio.Core` 和现有模块源码均不需要修改。
+全部新增代码位于 `src/ExternalImport/`，通过 Client 和 StudioPlugin 两个项目入口独立构建。仓库不再维护 `.sln`；`Program.cs`、`CocoStudio.Core` 和现有模块源码均不需要修改。
 
 ## 2. 外部调用方式
 
@@ -135,17 +135,18 @@ CLI 与已运行的 Studio 使用当前 Windows 用户专属的命名管道通�
 | `COPY_FAILED` | 文件复制失败，已尝试回滚。 |
 | `REGISTER_FAILED` | 文件已复制，但资源模型登记失败，已尝试回滚。 |
 
-## 8. 独立解决方案
+## 8. 独立项目入口
 
 - `Protocol/`：命名管道 JSON 协议、请求/响应和 Studio 实例描述。
 - `Client/`：外部调用的 `CocosStudio.Import.exe`。
 - `StudioPlugin/`：Studio 内的导入服务、命名管道服务和自动启动扩展。
 - `Install-Plugin.ps1`：把已构建的插件和协议程序集复制到用户 Addins 目录。
 
-构建入口：
+构建入口（Protocol 会通过 ProjectReference 自动构建）：
 
-```text
-src\ExternalImport\CocosStudio.ExternalImport.sln
+```powershell
+msbuild .\src\ExternalImport\Client\CocosStudio.ExternalImport.csproj /restore /t:Rebuild /p:Configuration=Debug /p:Platform=AnyCPU
+msbuild .\src\ExternalImport\StudioPlugin\CocosStudio.ExternalImport.StudioPlugin.csproj /restore /t:Rebuild /p:Configuration=Debug /p:Platform=AnyCPU
 ```
 
 默认产物目录：

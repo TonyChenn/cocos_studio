@@ -10,6 +10,8 @@ DesignerSupport、Projects.Formats.MSBuild，以及 CocoStudio.SourceEditor、Lu
 旧库对照测试统一从固定提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d` 提取并校验 SHA-256，
 测试缓存不受版本控制，也不能参与正式构建；历史缺失时可显式提供同样受校验的基准目录。
 
+仓库现只维护 `CocosStudio.slnx`，所有 `.sln` 已删除。下文出现的 `.sln` 构建结果仅是删除前的历史验证记录，不再是当前构建入口。
+
 本批全新工作副本验证暴露并修复两个问题：Git 自动换行改变嵌入资源字节，现通过 `.gitattributes` 对资源禁用文本转换；
 方案外源码项目在 Release 时被 MSBuild 清除父配置，现保留父配置，构建脚本按实际 Debug/Release 校验各份产物。
 Debug 两种方案、Release/x86 重建与接口/资源审计通过；397 处引用、104 项资源、编辑器/Lua/DesignerSupport、
@@ -36,7 +38,7 @@ Debug 两种方案、Release/x86 重建与接口/资源审计通过；397 处引
 | Mono.GtkSharp（第三方 Gtk# 2.12 封装，筛选托管资产） | 2.12.0.1 |
 
 具体引用以项目文件为准；程序集版本不一定等于 NuGet 包版本。
-`CocosStudio.sln` 和 `CocosStudio.slnx` 都不再构建旧 NRefactory 源码项目，
+`CocosStudio.slnx` 不再构建旧 NRefactory 源码项目，
 避免同名输出覆盖 NuGet DLL；源码目录仍保留。
 
 ## 第八批清理
