@@ -40,9 +40,9 @@ internal static class SessionSmoke
                 throw new Exception("Incorrect library loaded");
             var session = new ProbeSession();
             int count = 0;
-            EventHandler<TargetEventArgs> handler = delegate(object sender, TargetEventArgs args)
+            EventHandler handler = delegate(object sender, EventArgs args)
             {
-                if (sender != session || args.Type != TargetEventType.TargetExited) throw new Exception("Exit event data");
+                if (sender != session) throw new Exception("Exit event sender");
                 count++;
             };
             session.TargetExited += handler;
@@ -51,7 +51,7 @@ internal static class SessionSmoke
             session.TargetExited -= handler;
             session.EmitExit();
             if (count != 1) throw new Exception("Exit event handler not removed");
-            Console.WriteLine("PASS synthetic TargetExited subscribe, dispatch, unsubscribe (no real debug process)");
+            Console.WriteLine("PASS original TargetExited subscribe, dispatch, unsubscribe (no real debug process)");
             return 0;
         }
         catch (Exception error) { Console.Error.WriteLine(error); return 1; }

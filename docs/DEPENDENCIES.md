@@ -2,10 +2,13 @@
 
 ## 当前清理状态
 
-已将前期源码恢复按模块提交，并删除八份已替换的旧 DLL：Mono.Debugging、MonoDevelop.Debugger、SourceEditor2、
-DesignerSupport、Projects.Formats.MSBuild，以及 CocoStudio.SourceEditor、LuaBinding、WindowsPlatform。
-`dlls` 从 24 个减至 16 个；未删除仍被使用的库。以下旧批次的“保留/回退”描述仅记录历史状态。
-随后完成 Refactoring 和 Mono.TextEditor 的同批恢复、验证与删除，当前进一步减至 14 个，累计删除十份已替换旧库。
+前期曾将十份库恢复为源码或 NuGet 并删除原 DLL。复核维护价值后，Mono.TextEditor、MonoDevelop.DesignerSupport、
+MonoDevelop.Refactoring 以及成组的 MonoDevelop.Debugger / Mono.Debugging 已恢复为固定 DLL；它们没有需要 Studio 维护的
+Cocos 业务定制。当前 `dlls` 共 19 个。
+
+继续维护源码的范围是 MonoDevelop.SourceEditor2、MonoDevelop.Projects.Formats.MSBuild，以及位于 `src/` 的
+CocoStudio.SourceEditor、CocoStudio.LuaBinding、CocoStudio.WindowsPlatform。以下旧批次记录保留为历史过程，
+若与本节冲突，以本节和当前项目文件为准。
 当前取消 `UseRestoredMonoDevelop=false` 构建；恢复完整历史版本应使用 Git。
 旧库对照测试统一从固定提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d` 提取并校验 SHA-256，
 测试缓存不受版本控制，也不能参与正式构建；历史缺失时可显式提供同样受校验的基准目录。
@@ -238,7 +241,9 @@ Debugger 0 错误、18 警告；SourceEditor2 0 错误、34 警告，后者引�
 本轮未替换正式 DLL、修改主方案引用、删除 DLL 或提交。Core / Ide 仍为原定制二进制。
 尚需正式源码接入、主方案独立输出验证、完整编辑器交互和真实调试回归，不能据本轮有限测试发布候选。
 
-## 第十三批：恢复源码纳入维护结构并接入主方案测试构建
+## 第十三批：恢复源码纳入维护结构并接入主方案测试构建（历史，部分已撤销）
+
+其中 Debugger / Mono.Debugging 的源码与 NuGet 切换已经撤销；SourceEditor2 的定制源码接入仍保留。
 
 已将 Debugger / SourceEditor2 的 178 个反编译 C# 文件和 85 项资源放入 `third-party/MonoDevelop/`，
 内容未改写；新增来源哈希、上游对照版本及其 111 个文件的版权/许可头注释记录。
@@ -293,7 +298,9 @@ Debugger 0 错误、18 警告；SourceEditor2 0 错误、34 警告，后者引�
 测试用临时文件、独立模块缓存和用户配置；不启动完整主程序。控件测试不替代完整界面、GTK 浏览器嵌入、
 真实调试和干净机器回归。未切换默认版本、未提交，当前候选输出仍包含工作区已有的其他修改。
 
-## 第十五批：按用户要求切换默认源码构建
+## 第十五批：按用户要求切换默认源码构建（历史，范围已收缩）
+
+当前默认混合使用定制源码与固定 DLL，不再构建 Debugger、DesignerSupport、Refactoring、Mono.TextEditor 源码，也不使用 NuGet Mono.Debugging。
 
 `Directory.Build.props` 现默认启用 `UseRestoredMonoDevelop`。普通 Debug/Release 构建会从源码生成
 Debugger / SourceEditor2 / CocoStudio.WindowsPlatform，并使用 NuGet Mono.Debugging；Core / Ide 等未恢复模块仍为原 DLL。
@@ -312,6 +319,8 @@ Release 仅检查默认属性，未编译。没有启动完整编辑器，界面
 未提交、未推送；其他工作区修改保持原样，正常重建产物包含这些已有修改。
 
 ## 第十六批：修复 Visual Studio 还原后 Gtk# 配置路径为空
+
+本批 Gtk# 配置修复仍有效；当时注入各项目的 Mono.Debugging PackageReference 已在固定 DLL 决策后移除。
 
 用户在 VS 重建时报告 `Modules.Communal.StartAutoRecover` 无法复制 `D:\build\atk-sharp.dll.config` 等文件。
 检查当时的 `obj/CocoStudio.Core/project.assets.json` 与生成的 NuGet props：
@@ -408,7 +417,7 @@ API 说明见 [Microsoft BuildItem](https://learn.microsoft.com/en-us/dotnet/api
 
 默认 `bin/Debug` 已更新。未提交、未推送；未改动其他功能修改及三个已有 .sln 删除记录。
 
-## 第二十批：恢复 MonoDevelop.DesignerSupport
+## 第二十批：恢复 MonoDevelop.DesignerSupport（历史，已撤销）
 
 恢复 85 个 C# 文件与 10 项资源至 `third-party/MonoDevelop/MonoDevelop.DesignerSupport/`，
 原 DLL SHA-256 为 `37058746AD28C9A6D0617DCBDF01BD317BF1E55548CA8B19549F2F0D6974D498`。
@@ -433,7 +442,7 @@ SourceEditor2 和 CocoStudio.SourceEditor 直接引用该源码项目；依赖�
 
 默认 `bin/Debug` 已更新。原 DLL 保留，未提交、未推送；其他已有修改与三个 .sln 删除记录保持原样。
 
-## 第二十二批：恢复 Refactoring 并同批删除原 DLL
+## 第二十二批：恢复 Refactoring 并同批删除原 DLL（历史，已撤销）
 
 恢复 `MonoDevelop.Refactoring` 的 126 个 C# 文件和 8 项资源，原始导出在忽略的 `obj/NuGetPhase22Audit/Refactoring`。
 所有源码仅规范换行，版本 `2.6.0.0`、模块属性和资源逻辑名称保持原样；未改写业务逻辑。
@@ -449,7 +458,7 @@ SourceEditor2 和 CocoStudio.SourceEditor 直接引用该源码项目；依赖�
 
 默认 `bin/Debug` 已更新；继续保留内置模块发现和现有平台支持，不改 Lua 的已知功能缺陷。
 
-## 第二十三批：恢复 Mono.TextEditor 并删除原 DLL
+## 第二十三批：恢复 Mono.TextEditor 并删除原 DLL（历史，已撤销）
 
 当前 `Mono.TextEditor.dll` 的 PE 时间戳、5.9/5.10 特征边界以及官方标签子树对照共同指向 MonoDevelop 5.9 稳定源码，
 而不是此前仅作历史参考的 5.4。源码从 5.9.5.10 提交

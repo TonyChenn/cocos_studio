@@ -8,8 +8,8 @@ $originals = Get-RestoredBaseline -BaselineDirectory $BaselineDirectory
 $root = (Resolve-Path "$PSScriptRoot/..").Path
 $baseline = (Resolve-Path $CandidateDirectory).Path
 $candidate = (Resolve-Path $CandidateDirectory).Path
-if ((Get-FileHash "$candidate/Mono.Debugging.dll").Hash -ne '54E778012E4AD8118EB38BA9788B1B937E36B1A0C6A5880275DAE6EE40AAC3F2') {
-    throw 'Output does not contain Mono.Debugging 1.0.20170212.42 from NuGet; do not audit a mixed/legacy output as a candidate.'
+if ((Get-FileHash "$candidate/Mono.Debugging.dll").Hash -ne 'ADBC06E24AF54E2D5BAE778BC55756AE14AA2DDAAF56BD2CC982401FA606BACE') {
+    throw 'Output does not contain the fixed original Mono.Debugging DLL; do not audit a mixed output as a candidate.'
 }
 Add-Type -Path "$baseline/Mono.Cecil.dll"
 $resolver = New-Object Mono.Cecil.DefaultAssemblyResolver

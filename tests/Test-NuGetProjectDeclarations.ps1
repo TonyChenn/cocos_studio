@@ -11,13 +11,10 @@ $projects = @(Get-ChildItem $root -Directory | Where-Object Name -notin 'bin','o
 $gtkCount = 0
 foreach ($project in $projects) {
     [xml]$xml = Get-Content -Raw -LiteralPath $project.FullName
-    # Legacy Visual Studio restore must see these declarations in the project itself, not only imported targets.
     $packages = @($xml.Project.ItemGroup.PackageReference | Where-Object { $_ })
     $debugging = @($packages | Where-Object Include -eq 'Mono.Debugging')
-    if ($debugging.Count -ne 1 -or $debugging[0].Version -ne '1.0.20170212.42' -or
-        $debugging[0].GeneratePathProperty -ne 'true' -or $debugging[0].ExcludeAssets -ne 'all' -or
-        $debugging[0].PrivateAssets -ne 'all' -or $debugging[0].Condition -ne "'`$(UseRestoredMonoDevelop)' == 'true'") {
-        throw "Missing/incorrect direct Mono.Debugging declaration: $($project.FullName)"
+    if ($debugging.Count) {
+        throw "Mono.Debugging must use the fixed DLL rather than a NuGet declaration: $($project.FullName)"
     }
     $gtkReferences = @($xml.Project.ItemGroup.Reference | Where-Object {
         $_.Include -match '^(atk-sharp|gdk-sharp|glib-sharp|gtk-sharp|Mono.Cairo|pango-sharp|glade-sharp|gtk-dotnet)(,|$)'
@@ -32,7 +29,7 @@ foreach ($project in $projects) {
         throw "Missing/incorrect direct Gtk#/Posix declarations: $($project.FullName)"
     }
 }
-"PASS direct package declarations: projects=$($projects.Count), Gtk#=$gtkCount"
+"PASS package declarations: projects=$($projects.Count), Gtk#=$gtkCount, Mono.Debugging NuGet=0"
 $projectFile = Join-Path $root 'src\Modules\Communal\Modules.Communal.StartAutoRecover\Modules.Communal.StartAutoRecover.csproj'
 # Exercise the transitive copy path without rebuilding project references, as in a Visual Studio build.
 $json = & $MSBuild $projectFile /t:GetCopyToOutputDirectoryItems /p:Configuration=Debug /p:Platform=x86 /p:BuildingInsideVisualStudio=true /p:BuildProjectReferences=false -getTargetResult:GetCopyToOutputDirectoryItems /nologo

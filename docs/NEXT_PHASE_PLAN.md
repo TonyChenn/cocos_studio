@@ -1,122 +1,25 @@
-# 下一阶段计划：恢复并替换 Mono.TextEditor
+# 下一阶段计划：剩余 DLL 专项审计
 
-更新日期：2026-09-07。执行基线为本地提交 `3b3e3ac`。
+## 当前边界
 
-前一阶段已经完成目录整理、历史 `bin/obj` 清理、Mono.TextEditor 固定基准和静态审计。本阶段不再重复这些工作，目标是在一个完整模块批次内恢复 Mono.TextEditor 源码、验证、切换正式引用并删除原 DLL。
+依赖整理先收敛到以下规则：
 
-执行状态：测试门禁已单独提交；源码恢复、项目引用接入、Debug/Release x86 独立冷构建、静态对照、自动回归和用户交互验收均已通过。删除旧 DLL 后又清空独立输出并重跑两种配置及关键回归，本阶段已完成。
+- `Mono.TextEditor`、`MonoDevelop.DesignerSupport`、`MonoDevelop.Refactoring` 保留原 DLL。
+- `MonoDevelop.Debugger` 与配套的 `Mono.Debugging` 保留原 DLL，不为接入 NuGet 单独恢复 Debugger 源码。
+- `MonoDevelop.SourceEditor2` 因存在 Cocos 定制继续维护源码。
+- `MonoDevelop.Projects.Formats.MSBuild` 因存在实际兼容修复继续维护源码。
+- Cocos 自身的 SourceEditor、LuaBinding、WindowsPlatform 继续位于 `src/` 并维护源码。
 
-## 目标与边界
+## 下一步
 
-- 正式源码目录：`third-party/MonoDevelop/Mono.TextEditor/`。
-- 程序集身份保持 `Mono.TextEditor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`。
-- 固定原库继续取自提交 `632862e2e3dc6485fadc3f30d4454f97a9187c2d`，SHA-256 为 `47DAA700220831CD86F0135E8CC57B920D4D8BF76AB734D781DE6BC27D0800B6`。
-- 保持 39 项嵌入资源的逻辑名称、属性和字节，不改写五个消费项目中的 Stetic 旧路径，除非后续运行证明确实需要解析它们。
-- 保持 SourceEditor2 的 Cocos 定制调用链，不覆盖 `ProcessSaveText`、`ProcessLoadText`、`PrepareToSetCaret` 和对 `CocoStudio.SourceEditor` 的友元授权。
-- 不同时恢复 MonoDevelop.Core 或 MonoDevelop.Ide，不升级 GTK、NRefactory、Xwt、Mono.Cairo、Mono.Posix，也不改模块发现和工作台结构。
-- 不混入当前资源定位修改；仓库只维护 `CocosStudio.slnx`，不重新生成 `.sln`。只做本地 Git 提交，不推送。
+1. 重新生成剩余 DLL 的直接项目引用、二进制引用、动态加载和模块注册清单。
+2. 为每个库记录“通用第三方库 / Cocos 定制库 / 资源程序集 / 平台适配层”分类，以及保留或替换依据。
+3. 通用第三方库默认保留 DLL；仅当有明确安全、构建或兼容问题时，优先寻找匹配版本的官方包，不以反编译源码作为常规替换方式。
+4. Cocos 定制库只有在确认定制差异、来源和测试边界后才恢复源码；恢复、验证和删除旧 DLL 在同一批完成。
+5. Core、Ide、Cecil/IKVM、Windows Code Pack 等高风险组合单独立项，不与普通清理混合。
 
-详细身份、依赖和行为范围见 `docs/MONO_TEXT_EDITOR_RECOVERY.md`。
+内置模块发现、现有平台支持和 Xamarin.Mac 继续保留；不因未使用在线插件安装/更新功能而删除运行时扫描器或内置模块。
 
-## 第一批：补齐新旧对照和切换门禁
+## 收尾标准
 
-这一批只增强测试基础设施，不改变正式引用，也不加入候选源码。
-
-1. 扩展 `tests/Audit-MonoTextEditor.ps1`，支持同时读取固定原库和候选程序集，并比较：
-   - 程序集名称、版本、公钥、目标框架和程序集属性；
-   - 全部类型和非私有成员签名、可见性、基类、接口及泛型约束；
-   - 友元程序集、4 个序列化类型及其字段布局；
-   - 39 项资源的名称、属性和逐项 SHA-256；
-   - 程序集引用身份、12 个原生模块名和 P/Invoke 入口点。
-2. 增加 Mono.TextEditor 独立的新旧行为测试。原库与候选库在不同进程中加载，禁止因程序集同名而复用错误版本。
-3. 无 GTK 窗口的测试先覆盖文本、行列、锚点、选区、撤销重做、搜索替换、折叠、语法模式和颜色样式；需要 GTK 的标记、布局、滚动和绘制测试沿用现有隔离环境。
-4. 把 Mono.TextEditor 加入现有消费者成员解析审计，确认 9 个既有消费者的成员引用都解析到候选输出，而不是 `dlls` 或测试基准缓存。
-5. 保留并检查负例：缺失固定历史、外部基准哈希错误、`UseRestoredMonoDevelop=false`、正式构建引用测试缓存均明确失败。
-
-建议单独提交：`测试：补充 Mono.TextEditor 新旧对照与切换门禁`。
-
-该提交可以在不编译候选源码时先完成脚本结构，但测试结果必须等候选程序集产生后才算有效。不能把静态脚本通过写成源码恢复通过。
-
-## 第二批：恢复源码并建立独立项目
-
-源码输入分为两类：
-
-- MonoDevelop 5.9.5.10 提交 `48d16bc4f12ce3938964fc7c3d72fdc6887ad4ad` 的 `main/src/core/Mono.Texteditor`，用于获取与原 DLL 年代及特征匹配的原始目录、注释和许可信息；同一子树延续至 5.9.8.0；
-- 被忽略的 `obj/MonoTextEditorAudit/original` 反编译结果，用于识别当前 DLL 的真实 API、资源和定制行为。
-
-实施规则：
-
-1. 建立逐文件来源清单，将文件标为“上游可确认”“当前 DLL 有差异”“只能由反编译恢复”或“编译器生成，不应作为源码恢复”。当前清单确认 161 个 C# 文件均直接来自上游，39 个资源与原 DLL 字节一致，没有复制反编译 C#。
-2. 优先采用能够与当前 DLL 行为对应的上游源码并保留原注释；差异文件逐项说明，禁止把整份上游目录或整份反编译输出直接覆盖进仓库。
-3. 不删除现有代码注释；补充上游许可和来源说明，不能把反编译结果标成未经修改的官方源码。
-4. 新建 `Mono.TextEditor.Restored.csproj`，使用仓库现有 .NET Framework 4.8、C# 7.3 和 AnyCPU 约定，保留 unsafe 设置、程序集版本和 `MonoDevelop.TextEditor.Tests` 友元授权。
-5. 依赖先沿用当前仓库版本；实际编译后核对解析出的程序集身份是否仍符合原库约束。任何 GTK# 2.12、NRefactory 5.0、Xwt 0.1、Mono.Cairo 2.0/4.0 或 Mono.Posix 2.0 身份变化都必须显式处理，不能只加绑定重定向。
-6. 逐项嵌入 30 份语法 XML、8 份样式 JSON 和 `gui.stetic`，逻辑名称及字节以固定原库为准。
-
-源码和项目先保留在工作区中验证，不单独提交一个长期与旧 DLL 并存的正式版本。
-
-## 第三批：接入真实项目引用
-
-候选独立审计通过后，将以下 8 个直接 DLL 引用改为 `ProjectReference`：
-
-- `src/Editor/CocoStudio.LuaBinding/CocoStudio.LuaBinding.Restored.csproj`
-- `src/Editor/CocoStudio.SourceEditor/CocoStudio.SourceEditor.Restored.csproj`
-- `src/Framework/CocoStudio.Gtk.Extend/CocoStudio.Gtk.Extend.csproj`
-- `src/Modules/Communal/Modules.Communal.Render/Modules.Communal.Render.csproj`
-- `third-party/MonoDevelop/MonoDevelop.Debugger/MonoDevelop.Debugger.Restored.csproj`
-- `third-party/MonoDevelop/MonoDevelop.DesignerSupport/MonoDevelop.DesignerSupport.Restored.csproj`
-- `third-party/MonoDevelop/MonoDevelop.Refactoring/MonoDevelop.Refactoring.Restored.csproj`
-- `third-party/MonoDevelop/MonoDevelop.SourceEditor2/MonoDevelop.SourceEditor2.Restored.csproj`
-
-同时修改公共构建和验证：
-
-- `build/RestoredMonoDevelop.targets`：排除传递进来的旧 Mono.TextEditor 副本，并继续拒绝基准缓存进入正式解析路径。
-- `Directory.Build.targets`：正式输出不再从 `dlls` 复制 Mono.TextEditor。
-- `tests/Build-RestoredMonoDevelop.ps1`：把源码中间产物与最终输出的哈希校验扩展到 Mono.TextEditor。
-- `tests/Audit-RestoredMonoDevelop.ps1` 及编辑器回归：把 Mono.TextEditor 加入 API、资源和消费者解析对照。
-- `CocosStudio.slnx` 仅在真实项目引用不足以保证构建顺序时补项目项；不能靠重新放回旧 DLL 修复顺序。
-
-Mono.TextEditor 不得反向引用上述消费者、MonoDevelop.Core 或 MonoDevelop.Ide。若出现循环，停止并重新划分引用，而不是复制接口或保留 DLL 回退。
-
-## 第四批：编译、自动测试与交互验收
-
-此批需要用户明确允许编译测试后执行。必须在不能复用旧输出的独立工作副本中验证：
-
-1. `CocosStudio.slnx` 的 Debug/x86 完整还原和冷构建。
-2. `CocosStudio.slnx` 的 Release/x86 完整还原和冷构建。
-3. 核对 `obj/Mono.TextEditor.Restored/<配置>/Mono.TextEditor.dll` 与最终输出来自同一次源码构建，且正式解析路径不含 `dlls/Mono.TextEditor.dll` 或 `obj/RestoredBaseline`。
-4. 运行完整 API/资源审计、消费者成员解析、Mono.TextEditor 独立行为测试、编辑器/Lua/DesignerSupport/断点/Refactoring 集成回归。
-5. 验证缺失历史、基准哈希损坏、旧回退开关和测试缓存污染四类负例。
-
-用户交互验收保留以下项目：打开和保存不同编码/换行文件、撤销重做、块选择、搜索替换、语法高亮和折叠、补全弹窗、断点及执行行标记、属性/工具箱面板、长文件滚动和 Stetic 设计器。自动测试不能代替这些操作。
-
-## 第五批：删除旧 DLL 并提交模块
-
-只有第四批全部通过，才删除 `dlls/Mono.TextEditor.dll`。删除后在同一个独立工作副本再次执行冷构建和关键回归，确认没有输出缓存或隐式复制掩盖缺失依赖。
-
-最终模块提交应同时包含：
-
-- Mono.TextEditor 源码、项目文件、资源和来源说明；
-- 8 个项目引用切换及公共构建修改；
-- 新旧对照、行为回归和负例测试；
-- 原 DLL 删除；
-- `README.md`、`docs/DEPENDENCIES.md`、`docs/DEPENDENCY_AUDIT.md`、`docs/MONO_TEXT_EDITOR_RECOVERY.md` 更新。
-
-建议提交：`源码：恢复 Mono.TextEditor 并删除原 DLL`。
-
-不得提交 `obj/MonoTextEditorAudit`、`obj/RestoredBaseline`、构建输出或用户当前业务修改。只本地提交，不推送。回滚依靠 Git 恢复完整提交，不维护源码/DLL 双轨正式构建。
-
-## 停止条件
-
-出现以下任一情况即停止切换，不删除原 DLL：
-
-- 当前 DLL 的差异无法从上游或可说明的恢复代码中重建；
-- 许可或来源无法满足仓库保留要求；
-- API、序列化布局、资源字节、原生入口或程序集身份存在未解释差异；
-- 任一消费者仍从旧 DLL 或测试基准解析成员；
-- `CocosStudio.slnx` 的 Debug/Release 任一冷构建失败；
-- 自动回归或用户交互验收发现编辑、补全、断点、布局等行为回退。
-
-## 完成后的后续顺序
-
-Mono.TextEditor 完整收尾后，先重新生成剩余 14 个 DLL 的直接引用、二进制引用和动态加载审计，再决定下一库。默认顺序仍为 MonoDevelop.Core 后 MonoDevelop.Ide；WindowsPlatform、Cecil/IKVM 组合和应用专用模块继续单独立项，不与编辑器核心恢复混合。
+每批执行“确认必要性 → 选择官方包或保留 DLL → 验证 → 删除确已替换的旧副本 → 更新文档 → 分模块本地提交”。没有明确维护收益的库不再源码化。

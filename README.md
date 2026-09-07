@@ -11,7 +11,7 @@
 - `src/Modules/Communal/`、`src/Modules/UI/`：内置功能模块；目录整理不改变模块发现机制。
 - `src/ExternalImport/`：外部 CSD 导入子系统，按独立项目入口构建。
 - `third-party/`：MonoDevelop 定制恢复源码与既有 NRefactory 源码。目录归类不代表未经修改的上游版本。
-- `dlls/`：尚未替换的二进制依赖；`runtime-assets/`：运行时资产。
+- `dlls/`：经审计保留的固定二进制依赖；`runtime-assets/`：运行时资产。
 - `build/`、`tests/`、`docs/`：公共构建、验证脚本与依赖文档。
 - 根目录 `bin/`、`obj/`：现有共享输出及中间文件；新生成的文件由忽略规则排除。
 
@@ -27,7 +27,6 @@
 
 ```powershell
 .\tests\Test-RepositoryLayout.ps1
-.\tests\Test-MonoTextEditorSource.ps1
 ```
 
 源码目录迁移后，首次实际构建需要重新还原包，不能把旧 `obj` 的项目路径缓存当作新布局已验证的证据。
@@ -35,6 +34,6 @@
 
 - [依赖替换记录](docs/DEPENDENCIES.md)
 - [剩余依赖审计](docs/DEPENDENCY_AUDIT.md)
-- [Mono.TextEditor 恢复设计](docs/MONO_TEXT_EDITOR_RECOVERY.md)
+- [Mono.TextEditor 审计与保留决定](docs/MONO_TEXT_EDITOR_RECOVERY.md)
 - [下一阶段计划](docs/NEXT_PHASE_PLAN.md)
 - [外部导入说明](src/ExternalImport/README.md)

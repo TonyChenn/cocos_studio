@@ -31,17 +31,14 @@ $log = Join-Path $logs.FullName $logName
 if ($Configuration -ne 'Debug') { $log = Join-Path $logs.FullName "$Configuration-$logName" }
 & $MSBuild $solution /restore /t:Rebuild /m:1 "/p:Configuration=$Configuration" /p:Platform=x86 @buildProperties /v:quiet /nologo /fl "/flp:logfile=$log;encoding=UTF-8" /clp:ErrorsOnly
 if ($LASTEXITCODE -ne 0) { throw "Build failed; see $log" }
-foreach ($name in 'Mono.TextEditor','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
+foreach ($name in 'MonoDevelop.SourceEditor2','CocoStudio.LuaBinding','CocoStudio.WindowsPlatform','CocoStudio.SourceEditor','MonoDevelop.Projects.Formats.MSBuild') {
     $sourceBuild = Join-Path $intermediate "$name.Restored\$Configuration\$name.dll"
     $outputDll = Join-Path $output "$name.dll"
     if ((Get-FileHash $sourceBuild).Hash -ne (Get-FileHash $outputDll).Hash) { throw "Source build overwritten in test output: $name" }
 }
-# NuGet writes UTF-8 without a BOM, including localized warning messages; Windows PowerShell otherwise uses ANSI.
-$assets = Get-Content -Raw -Encoding UTF8 "$intermediate/CocosStudio/project.assets.json" | ConvertFrom-Json
-$package = @($assets.packageFolders.PSObject.Properties.Name | ForEach-Object {
-    Join-Path $_ 'mono.debugging\1.0.20170212.42\lib\net40\Mono.Debugging.dll'
-} | Where-Object { Test-Path -LiteralPath $_ })
-if ($package.Count -ne 1 -or (Get-FileHash $package[0]).Hash -ne (Get-FileHash "$output/Mono.Debugging.dll").Hash) {
-    throw 'Test output does not contain the restored Mono.Debugging NuGet asset.'
+foreach ($name in 'Mono.Debugging','Mono.TextEditor','MonoDevelop.Debugger','MonoDevelop.DesignerSupport','MonoDevelop.Refactoring') {
+    $frozenDll = Join-Path $root "dlls\$name.dll"
+    $outputDll = Join-Path $output "$name.dll"
+    if ((Get-FileHash $frozenDll).Hash -ne (Get-FileHash $outputDll).Hash) { throw "Frozen DLL changed in test output: $name" }
 }
 "Built and verified $output. The editor was not launched. Log: $log"

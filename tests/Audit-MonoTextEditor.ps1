@@ -155,36 +155,14 @@ try {
     if ($candidate) {
         $candidateFile = Join-Path $candidate 'Mono.TextEditor.dll'
         if (!(Test-Path -LiteralPath $candidateFile -PathType Leaf)) { throw "Candidate Mono.TextEditor.dll not found: $candidateFile" }
-        $newRecord = Get-AssemblyRecord $candidateFile 'candidate source build' $sha
+        $newRecord = Get-AssemblyRecord $candidateFile 'candidate output' $sha
         $differences = [Collections.Generic.List[string]]::new()
         foreach ($field in 'Identity','Attributes','Surface','SerializableLayout','Resources','NativeModules','PInvokes') {
             Add-Differences $differences $field $oldRecord[$field] $newRecord[$field]
         }
         $allowed = [Collections.Generic.List[string]]::new()
-        if (@($oldRecord.TargetFramework).Count -ne 1 -or $oldRecord.TargetFramework[0] -ne '.NETFramework,Version=v4.5') {
-            $differences.Add("TargetFramework unexpected baseline: $($oldRecord.TargetFramework -join ', ')")
-        }
-        if (@($newRecord.TargetFramework).Count -ne 1 -or $newRecord.TargetFramework[0] -ne '.NETFramework,Version=v4.8') {
-            $differences.Add("TargetFramework unexpected candidate: $($newRecord.TargetFramework -join ', ')")
-        } else {
-            $allowed.Add('TargetFramework .NET Framework 4.5 -> 4.8')
-        }
-        $referenceChanges = @(Compare-Object @($oldRecord.References) @($newRecord.References) | ForEach-Object {
-            "$($_.SideIndicator) $($_.InputObject)"
-        } | Sort-Object)
-        $expectedReferenceChanges = @(
-            '=> Mono.Posix, Version=4.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756',
-            '=> Xwt, Version=0.2.251.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756',
-            '<= Mono.Cairo, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756',
-            '<= Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756',
-            '<= Xwt, Version=0.1.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756'
-        ) | Sort-Object
-        $unexpectedReferenceChanges = @(Compare-Object $expectedReferenceChanges $referenceChanges)
-        if ($unexpectedReferenceChanges.Count) {
-            foreach ($change in $referenceChanges) { $differences.Add("References $change") }
-        } else {
-            $allowed.Add('References Xwt 0.1 -> 0.2.251; Mono.Posix 2 -> 4; Mono.Cairo 2 helper scope unified to existing Mono.Cairo 4')
-        }
+        Add-Differences $differences 'TargetFramework' $oldRecord.TargetFramework $newRecord.TargetFramework
+        Add-Differences $differences 'References' $oldRecord.References $newRecord.References
         $report.Candidate = $newRecord
         $report.Differences = @($differences)
         $report.AllowedDifferences = @($allowed)

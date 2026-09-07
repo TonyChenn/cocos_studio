@@ -1,6 +1,5 @@
 # Embedded resources must retain their original bytes across clean checkouts.
 # Original resource whitespace is part of the byte-for-byte audit, not code style.
-third-party/MonoDevelop/Mono.TextEditor/** -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
 third-party/MonoDevelop/**/*.xml -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
 third-party/MonoDevelop/**/gui.stetic -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
 src/Editor/CocoStudio.LuaBinding/**/*.xml -text whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab

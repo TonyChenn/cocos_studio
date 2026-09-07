@@ -1,6 +1,6 @@
 # 剩余二进制依赖审计
 
-核对日期：2026-09-07。已替换的十份旧 DLL 已删除，当前 `dlls` 剩 14 个。
+核对日期：2026-09-07。按维护价值复核后恢复五份通用底层 DLL，当前 `dlls` 共 19 个。
 项目声明已按目录迁移后的当前源码重新扫描；二进制消费者仍来自迁移前的 `bin/Debug` 完整构建快照，不构成新目录已编译的证明。
 源码项目统计含主方案外项目，不等于全部项目均已构建。
 审计同时读取程序集引用、模块注册属性、原生导入以及 IL 字符串；字符串命中只提供调查线索，不证明分支在运行时执行。
@@ -24,6 +24,11 @@
 | ICSharpCode.NRefactory.IKVM | MonoDevelop.Ide 引用；NRefactory.AssemblyLoader.Create 有动态名称 | 必须与 IKVM.Reflection、Core/Ide 的调用方一起验证，保留强名称身份约束 |
 | IKVM.Reflection | NRefactory.IKVM 和 MonoDevelop.Core 均引用 | 当前公钥标记 ed091f233d5d52a4；既往候选身份不兼容，不能仅做版本重定向 |
 | Xamarin.Mac | 4 个项目直接引用，4 个输出引用；Xwt 有 AppKit 类型加载字符串 | 保留现有 macOS 支持；Windows 测试没有覆盖 macOS 行为，不能据此删除 |
+| Mono.TextEditor | 编辑器、SourceEditor2 等组件依赖 | 通用底层库，无 Cocos 定制，保留固定 DLL |
+| Mono.Debugging | MonoDevelop.Debugger 的配套接口库 | 与原 Debugger 成组保留；不单独升级为接口不兼容的 NuGet 版本 |
+| MonoDevelop.Debugger | 调试功能和 SourceEditor2 依赖 | 无 Cocos 定制，不为 NuGet Mono.Debugging 专门源码化 |
+| MonoDevelop.DesignerSupport | SourceEditor2 与设计器相关组件依赖 | 反编译对照未发现业务改动，保留固定 DLL |
+| MonoDevelop.Refactoring | 主程序模块注册和编辑器功能依赖 | 反编译对照未发现业务改动，保留固定 DLL |
 
 ## 动态依赖证据
 
@@ -35,7 +40,7 @@
 
 ## 分组后续任务
 
-1. **编辑器基础层**：Mono.TextEditor 已完成恢复、验证和旧 DLL 删除；下一步按依赖推进 Core、Ide。保持现有框架和平台，不在同一批升级 GTK 或重写工作台。
+1. **编辑器基础层**：Mono.TextEditor、Debugger、DesignerSupport、Refactoring 保留 DLL；SourceEditor2 保留定制源码。Core、Ide 暂不源码化，除非出现明确维护需求。
 2. **Windows 文件对话框层**：针对旧 WindowsPlatform 的 `Attach`、`IFileDialogCustomize`、`customize/nativeDialog` 等内部访问设计公开 API 适配；以真实文件/目录选择验证，未通过前不强换 Code Pack。
 3. **程序集扫描/导入层**：CecilReflector/Cecil 与 NRefactory.IKVM/IKVM 分别成组处理。重新核对届时候选包身份和 API；第八批历史包调查不是永久结论，也不表示最新包已测试。
 4. **应用专用模块与资源**：独立核对来源及生成过程；不把反编译视为恢复了原始注释、授权信息或所有运行时行为。

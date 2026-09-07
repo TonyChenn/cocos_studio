@@ -65,7 +65,7 @@ internal static class DebuggingSmoke
             Assembly debugging = LoadLocal("Mono.Debugging");
             Type storeType = debugging.GetType("Mono.Debugging.Client.BreakpointStore", true);
             int saveParameterCount = storeType.GetMethod("Save").GetParameters().Length;
-            Check(saveParameterCount == (args[0] == "new" ? 1 : 0), "Incorrect old/new API loaded");
+            Check(saveParameterCount == 0, "Incorrect fixed Mono.Debugging API loaded");
             object store = Activator.CreateInstance(storeType);
             string filename = Path.Combine(Path.GetFullPath(args[1]), "测试 & breakpoint.lua");
             string fixture = Path.Combine(args[1], args[0] + ".xml");
@@ -108,7 +108,7 @@ internal static class DebuggingSmoke
                 }
                 Check(view.GetProperty("OwnerDocument", BindingFlags.NonPublic | BindingFlags.Instance) != null, "Missing OwnerDocument");
                 Type session = debugging.GetType("Mono.Debugging.Client.DebuggerSession", true);
-                Check(session.GetEvent("TargetExited").EventHandlerType.IsGenericType, "Expected updated TargetExited event");
+                Check(session.GetEvent("TargetExited").EventHandlerType == typeof(EventHandler), "Expected original TargetExited event");
                 Console.WriteLine("PASS upper editor type loading and custom hooks");
             }
             return 0;

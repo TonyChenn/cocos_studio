@@ -46,7 +46,7 @@ try {
     & "$oldRoot/DebuggingSmoke.exe" old $fixtures.FullName | Tee-Object "$testRoot/old.log"
     if ($LASTEXITCODE -ne 0) { throw 'Old baseline failed' }
     & "$newRoot/DebuggingSmoke.exe" new $fixtures.FullName | Tee-Object "$testRoot/new.log"
-    if ($LASTEXITCODE -ne 0) { throw 'NuGet candidate failed' }
+    if ($LASTEXITCODE -ne 0) { throw 'Current hybrid candidate failed' }
     & "$oldRoot/DebuggingSmoke.exe" verify-old $fixtures.FullName | Tee-Object "$testRoot/rollback.log"
     if ($LASTEXITCODE -ne 0) { throw 'Rollback compatibility failed' }
     & $sessionExecutable | Tee-Object "$testRoot/session.log"
