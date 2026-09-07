@@ -100,13 +100,17 @@ Mono.Addins / NRefactory / Gtk# / Mono.Posix 包。139 项接口和 8 个资源�
 .\tests\Build-RestoredMonoDevelop.ps1 -DefaultOutput
 .\tests\Test-NuGetProjectDeclarations.ps1
 .\tests\Audit-RestoredMonoDevelop.ps1 -CandidateDirectory .\bin\Debug
+.\tests\Audit-MonoTextEditor.ps1 -CandidateDirectory .\bin\Debug
 .\tests\Test-RestoredMonoDevelop.ps1 -OutputDirectory .\bin\Debug
 .\tests\Test-RestoredMonoDevelopEditor.ps1 -OutputDirectory .\bin\Debug
+.\tests\Test-MonoTextEditor.ps1 -CandidateDirectory .\bin\Debug
 .\tests\Test-RestoredMSBuild.ps1 -OutputDirectory .\bin\Debug
 # 以下保留独立输出测试入口：
 .\tests\Build-RestoredMonoDevelop.ps1
 .\tests\Audit-RestoredMonoDevelop.ps1
+.\tests\Audit-MonoTextEditor.ps1 -CandidateDirectory .\bin\RestoredMonoDevelopTest
 .\tests\Test-RestoredMonoDevelop.ps1
+.\tests\Test-MonoTextEditor.ps1 -CandidateDirectory .\bin\RestoredMonoDevelopTest
 .\tests\Test-GtkSharp.ps1 -OutputDirectory .\bin\RestoredMonoDevelopTest
 .\tests\Test-RestoredMonoDevelopEditor.ps1
 .\tests\Test-RestoredMonoDevelopEditor.ps1 -Mode old

@@ -12,7 +12,9 @@
 
 固定提交、当前 HEAD 和工作区文件的 Blob 一致。`tests/RestoredBaseline.ps1` 已把该文件纳入统一基准，仍采用 Git 二进制流提取并校验 SHA-256；外部基准目录同样必须通过哈希校验。正式构建不得从 `obj/RestoredBaseline` 解析依赖。
 
-`tests/Audit-MonoTextEditor.ps1` 只做静态读取，报告写入被忽略的 `obj/MonoTextEditorAudit/audit.json`。当前结果为 421 个类型、248 个公开或受保护类型、3397 个公开或受保护成员定义、39 项嵌入资源、4 个可序列化类型、12 个原生模块名。成员统计不把属性和事件访问器重复计数。
+`tests/Audit-MonoTextEditor.ps1` 只做静态读取，报告写入被忽略的 `obj/MonoTextEditorAudit/audit.json`。未传候选目录时记录固定基准；传入候选目录后，程序集身份、非私有 API、序列化布局、资源哈希、引用身份和 P/Invoke 任一差异都会失败。固定基准为 421 个类型、39 项嵌入资源、4 个可序列化类型和 12 个原生模块名。
+
+`tests/Test-MonoTextEditor.ps1` 会在两个隔离目录分别加载固定原库和候选库，比较文本编辑、行列换算、撤销重做、选区、普通/正则搜索、折叠以及内置语法和样式资源的确定性结果。测试程序只按原库 API 编译，两个进程使用相同的其余依赖，避免同名程序集复用掩盖差异。
 
 反编译候选位于被忽略的 `obj/MonoTextEditorAudit/original`，由 ILSpy `11.0.0.9375` 以项目模式、C# 7.3 导出，共 228 个 C# 文件。反编译无法恢复原始注释、提交历史、工程条件和授权来源，因此该目录只是审计输入，不是可直接提交的源码来源。
 

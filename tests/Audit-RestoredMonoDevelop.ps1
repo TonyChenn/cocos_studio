@@ -93,7 +93,7 @@ foreach ($name in 'MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelo
     "ASSEMBLY=$name SURFACE=$($oldSurface.Count) DIFFERENCES=$($differences.Count) RESOURCES=$resources"
     $new.MainModule.AssemblyReferences | Where-Object Name -eq 'Mono.Debugging' | ForEach-Object { "REFERENCE=$($_.FullName)" }
 }
-$targets = @('MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','Mono.Debugging','MonoDevelop.Projects.Formats.MSBuild')
+$targets = @('Mono.TextEditor','MonoDevelop.Debugger','MonoDevelop.SourceEditor2','MonoDevelop.Refactoring','MonoDevelop.DesignerSupport','CocoStudio.LuaBinding','Mono.Debugging','MonoDevelop.Projects.Formats.MSBuild')
 $counts = @{}
 $paths = @{}
 foreach ($file in Get-ChildItem $baseline -File | Where-Object Extension -in '.dll','.exe') {

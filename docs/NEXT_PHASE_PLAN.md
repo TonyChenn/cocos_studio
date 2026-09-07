@@ -4,6 +4,8 @@
 
 前一阶段已经完成目录整理、历史 `bin/obj` 清理、Mono.TextEditor 固定基准和静态审计。本阶段不再重复这些工作，目标是在一个完整模块批次内恢复 Mono.TextEditor 源码、验证、切换正式引用并删除原 DLL。
 
+执行状态：第一批测试门禁已建立；第二批源码恢复待开始。测试脚本尚未针对候选程序集运行。
+
 ## 目标与边界
 
 - 正式源码目录：`third-party/MonoDevelop/Mono.TextEditor/`。
