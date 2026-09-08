@@ -6,6 +6,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
   <PropertyGroup>
+    <ProjectGuid>{C35DA2DC-CBAB-4C73-9D90-A7D35AE0A82E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AssemblyName>MonoDevelop.SourceEditor2</AssemblyName>

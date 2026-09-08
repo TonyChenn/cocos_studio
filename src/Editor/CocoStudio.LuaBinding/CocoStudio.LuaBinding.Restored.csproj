@@ -6,6 +6,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
   <PropertyGroup>
+    <ProjectGuid>{7750920F-0762-4D81-B2E3-794AF5E8DA33}</ProjectGuid>
     <OutputType>Library</OutputType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AssemblyName>CocoStudio.LuaBinding</AssemblyName>

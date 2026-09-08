@@ -6,6 +6,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
   <PropertyGroup>
+    <ProjectGuid>{5ADC59F6-FF36-4D90-BD8C-AA346B7D5272}</ProjectGuid>
     <OutputType>Library</OutputType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AssemblyName>CocoStudio.WindowsPlatform</AssemblyName>
@@ -26,8 +27,14 @@
     <Reference Include="MonoDevelop.Core"><HintPath>$(RepositoryRoot)dlls\MonoDevelop.Core.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="MonoDevelop.Ide"><HintPath>$(RepositoryRoot)dlls\MonoDevelop.Ide.dll</HintPath><Private>false</Private></Reference>
     <Reference Include="WindowsPlatform"><HintPath>$(RepositoryRoot)dlls\WindowsPlatform.dll</HintPath><Private>false</Private></Reference>
-    <ProjectReference Include="..\..\Framework\CocoStudio.Basic\CocoStudio.Basic.csproj" />
-    <ProjectReference Include="..\..\Framework\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj" />
+    <ProjectReference Include="..\..\Framework\CocoStudio.Basic\CocoStudio.Basic.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23724}</Project>
+      <Name>CocoStudio.Basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\CocoStudio.Gtk.Extend\CocoStudio.Gtk.Extend.csproj">
+      <Project>{9751112A-BBBB-4A1C-B265-F23595B23728}</Project>
+      <Name>CocoStudio.Gtk.Extend</Name>
+    </ProjectReference>
     <PackageReference Include="Xwt" Version="0.2.251" />
     <PackageReference Include="Xwt.Gtk" Version="0.2.251" />
     <PackageReference Include="Xwt.WPF" Version="0.2.251" />

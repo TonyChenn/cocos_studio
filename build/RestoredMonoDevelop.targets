@@ -13,20 +13,6 @@
     </ItemGroup>
     <Error Condition="'@(_TestBaselineReference)' != ''" Text="Production builds cannot reference test baseline assemblies: @(_TestBaselineReference)" />
   </Target>
-  <ItemGroup Condition="'$(UseRestoredMonoDevelop)' == 'true' and '$(MSBuildProjectName)' == 'CocosStudio'">
-    <ProjectReference Include="$(RepositoryRoot)src\Editor\CocoStudio.LuaBinding\CocoStudio.LuaBinding.Restored.csproj">
-      <Name>CocoStudio.LuaBinding.Restored</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)third-party\MonoDevelop\MonoDevelop.Projects.Formats.MSBuild\MonoDevelop.Projects.Formats.MSBuild.Restored.csproj">
-      <Name>MonoDevelop.Projects.Formats.MSBuild.Restored</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\Platforms\CocoStudio.WindowsPlatform\CocoStudio.WindowsPlatform.Restored.csproj">
-      <Name>CocoStudio.WindowsPlatform.Restored</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\Editor\CocoStudio.SourceEditor\CocoStudio.SourceEditor.Restored.csproj">
-      <Name>CocoStudio.SourceEditor.Restored</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Target Name="ValidateRestoredMonoDevelop" BeforeTargets="BeforeClean;PrepareForBuild;ResolveAssemblyReferences"
           Condition="'$(UseRestoredMonoDevelop)' == 'true' or '$(IsRestoredMonoDevelopProject)' == 'true'">
     <Error Condition="'$(UseRestoredMonoDevelop)' != 'true'" Text="Legacy MonoDevelop fallback has been removed. Restore a complete Git revision to roll back." />

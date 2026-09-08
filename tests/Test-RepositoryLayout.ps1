@@ -16,8 +16,19 @@ $legacySolutions = @(Get-ChildItem $root -Recurse -File -Filter '*.sln' |
     Where-Object { $_.FullName.Substring($root.Length) -notmatch '[\\/](bin|obj|artifacts|\.git|\.vs|\.codegraph)[\\/]' })
 if ($legacySolutions.Count) { throw "Legacy .sln files are no longer maintained: $($legacySolutions.FullName -join ', ')" }
 [xml]$slnx = Get-Content -Raw "$root/CocosStudio.slnx"
+$solutionProjects = @($slnx.SelectNodes('//Project[@Path]'))
 foreach ($entry in $slnx.SelectNodes('//Project[@Path]')) {
     if (!(Test-Path -LiteralPath (Join-Path $root $entry.Path) -PathType Leaf)) { throw "Broken slnx project: $($entry.Path)" }
+}
+foreach ($path in 'src/Editor/CocoStudio.SourceEditor/CocoStudio.SourceEditor.Restored.csproj',
+    'src/Editor/CocoStudio.LuaBinding/CocoStudio.LuaBinding.Restored.csproj',
+    'src/Platforms/CocoStudio.WindowsPlatform/CocoStudio.WindowsPlatform.Restored.csproj',
+    'third-party/MonoDevelop/MonoDevelop.Projects.Formats.MSBuild/MonoDevelop.Projects.Formats.MSBuild.Restored.csproj',
+    'third-party/MonoDevelop/MonoDevelop.SourceEditor2/MonoDevelop.SourceEditor2.Restored.csproj') {
+    if (@($solutionProjects | Where-Object Path -eq $path).Count -ne 1) { throw "Missing restored slnx project: $path" }
+}
+foreach ($dependency in $slnx.SelectNodes('//BuildDependency[@Project]')) {
+    if (@($solutionProjects | Where-Object Path -eq $dependency.Project).Count -ne 1) { throw "Build dependency is outside slnx: $($dependency.Project)" }
 }
 "PASS solution paths: no legacy .sln files; CocosStudio.slnx"
 foreach ($configuration in 'Debug','Release') {
@@ -52,9 +63,12 @@ foreach ($configuration in 'Debug','Release') {
         if ($project.BaseName -eq 'CocosStudio') {
             foreach ($path in 'src/Editor/CocoStudio.SourceEditor/CocoStudio.SourceEditor.Restored.csproj',
                 'src/Editor/CocoStudio.LuaBinding/CocoStudio.LuaBinding.Restored.csproj',
-                'src/Platforms/CocoStudio.WindowsPlatform/CocoStudio.WindowsPlatform.Restored.csproj') {
+                'src/Platforms/CocoStudio.WindowsPlatform/CocoStudio.WindowsPlatform.Restored.csproj',
+                'third-party/MonoDevelop/MonoDevelop.Projects.Formats.MSBuild/MonoDevelop.Projects.Formats.MSBuild.Restored.csproj') {
                 $expected = [IO.Path]::GetFullPath((Join-Path $root $path))
-                if (@($data.Items.ProjectReference | Where-Object FullPath -eq $expected).Count -ne 1) { throw "Missing application project: $path" }
+                $reference = @($data.Items.ProjectReference | Where-Object FullPath -eq $expected)
+                if ($reference.Count -ne 1) { throw "Missing application project: $path" }
+                if ($reference[0].ReferenceOutputAssembly -ne 'false') { throw "Runtime module must not be a compiler reference: $path" }
             }
         }
     }

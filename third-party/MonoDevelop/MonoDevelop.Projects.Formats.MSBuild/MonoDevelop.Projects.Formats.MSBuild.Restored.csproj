@@ -6,6 +6,7 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
   <PropertyGroup>
+    <ProjectGuid>{E378C4DE-15A9-4713-9740-0CED60A5DA65}</ProjectGuid>
     <OutputType>Library</OutputType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AssemblyName>MonoDevelop.Projects.Formats.MSBuild</AssemblyName>

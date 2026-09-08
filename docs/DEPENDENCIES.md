@@ -17,6 +17,9 @@ CocoStudio.SourceEditor、CocoStudio.LuaBinding、CocoStudio.WindowsPlatform。�
 
 本批全新工作副本验证暴露并修复两个问题：Git 自动换行改变嵌入资源字节，现通过 `.gitattributes` 对资源禁用文本转换；
 方案外源码项目在 Release 时被 MSBuild 清除父配置，现保留父配置，构建脚本按实际 Debug/Release 校验各份产物。
+后续 Visual Studio 方案构建又暴露了动态注入项目引用无法进入 `.slnx` 构建图的问题。当前 CocosStudio 已显式引用四个运行时源码项目，
+并用 `ReferenceOutputAssembly=false` 表明它们只负责构建运行时模块、不参与主程序编译；四个项目及 SourceEditor2 已加入 `.slnx`，
+方案级依赖不再依靠已有 `bin/Debug` 产物。
 Debug 两种方案、Release/x86 重建与接口/资源审计通过；397 处引用、104 项资源、编辑器/Lua/DesignerSupport、
 断点/47 项模块扫描及 MSBuild 桥接回归通过。缺少基准历史、损坏哈希和旧回退开关均明确失败。
 完整 IDE 交互和实际调试仍由用户验收，不以自动测试替代。

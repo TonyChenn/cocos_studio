@@ -77,6 +77,26 @@
       <Project>{9751112A-BBBB-4A1C-B265-F23595B23730}</Project>
       <Name>Modules.Communal.StartAutoRecover</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Editor\CocoStudio.LuaBinding\CocoStudio.LuaBinding.Restored.csproj">
+      <Project>{7750920F-0762-4D81-B2E3-794AF5E8DA33}</Project>
+      <Name>CocoStudio.LuaBinding.Restored</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Editor\CocoStudio.SourceEditor\CocoStudio.SourceEditor.Restored.csproj">
+      <Project>{291B5E09-8FBD-45F2-9F15-F7227A4B2C5E}</Project>
+      <Name>CocoStudio.SourceEditor.Restored</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Platforms\CocoStudio.WindowsPlatform\CocoStudio.WindowsPlatform.Restored.csproj">
+      <Project>{5ADC59F6-FF36-4D90-BD8C-AA346B7D5272}</Project>
+      <Name>CocoStudio.WindowsPlatform.Restored</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\third-party\MonoDevelop\MonoDevelop.Projects.Formats.MSBuild\MonoDevelop.Projects.Formats.MSBuild.Restored.csproj">
+      <Project>{E378C4DE-15A9-4713-9740-0CED60A5DA65}</Project>
+      <Name>MonoDevelop.Projects.Formats.MSBuild.Restored</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
