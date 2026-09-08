@@ -176,6 +176,7 @@
     <Compile Include="Editor\ResourceFilterAttributeExtend.cs" />
     <Compile Include="Editor\ResourceGroupEditor.cs" />
     <Compile Include="Editor\ResourceImageEditor.cs" />
+    <Compile Include="Editor\ResourceLocateButton.cs" />
     <Compile Include="Editor\RotationEditor.cs" />
     <Compile Include="Editor\Scale9DrawingArea.cs" />
     <Compile Include="Editor\Scale9Editor.cs" />
@@ -367,6 +368,14 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="PostSharp.ImplementationDetails_c065fe4d.EnhancedByPostSharp" />
+    <EmbeddedResource Include="..\..\Resources\CocoStudio.DefaultResource\Resources\CocoStudio.DefaultResource.EditorResource.resource_locator.png">
+      <Link>Resources\CocoStudio.Model.EditorResource.resource_locator.png</Link>
+      <LogicalName>CocoStudio.Model.EditorResource.resource_locator.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\Resources\CocoStudio.DefaultResource\Resources\CocoStudio.DefaultResource.EditorResource.resource_locator@2x.png">
+      <Link>Resources\CocoStudio.Model.EditorResource.resource_locator@2x.png</Link>
+      <LogicalName>CocoStudio.Model.EditorResource.resource_locator@2x.png</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CocoStudio.Model.Basic\CocoStudio.Model.Basic.csproj">

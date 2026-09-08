@@ -21,6 +21,14 @@ namespace CocoStudio.Model.Editor
 	// Token: 0x0200005A RID: 90
 	public class ImageEventBox : EventBox
 	{
+		public ResourceFile ResourceFile
+		{
+			get
+			{
+				return this.resourceFile;
+			}
+		}
+
 		// Token: 0x170000FD RID: 253
 		// (get) Token: 0x06000318 RID: 792 RVA: 0x0000C9AC File Offset: 0x0000ABAC
 		public string PropertyName

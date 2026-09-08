@@ -16,6 +16,10 @@ namespace CocoStudio.Model.Editor
 		protected override void OnInitView()
 		{
 			base.OnInitView();
+			if (ResourceLocateButton.SupportsFileEditor(PropertyItem.FirstObject, PropertyItem.Name))
+			{
+				return;
+			}
 			this.fileButton = new Button(LanguageInfo.Property_ImportFile);
 			this.fileButton.WidthRequest = 90;
 			this.fileButton.HeightRequest = 25;

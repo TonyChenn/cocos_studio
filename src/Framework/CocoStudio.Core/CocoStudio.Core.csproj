@@ -79,6 +79,7 @@
     <Compile Include="Events\AddResourcesEvent.cs" />
     <Compile Include="Events\AlignedObjectsArgs.cs" />
     <Compile Include="Events\AlignedObjectsEvent.cs" />
+    <Compile Include="Events\LocateResourceInPanelEvent.cs" />
     <Compile Include="Events\ScaleLockedChangeEvent.cs" />
     <Compile Include="Events\SelectedResourceItemsChangedArgs.cs" />
     <Compile Include="Events\SelectedResourceItemsChangedEvent.cs" />

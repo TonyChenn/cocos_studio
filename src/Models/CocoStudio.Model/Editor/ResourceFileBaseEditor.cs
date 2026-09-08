@@ -42,6 +42,7 @@ namespace CocoStudio.Model.Editor
 			this.resourceEventBox.DragMotion += this.ResourceFileImportBase_DragMotion;
 			this.resourceEventBox.DragDrop += this.resourceEventBox_DragDrop;
 			this.fileTable = new Table(1U, 3U, false);
+			bool supportsLocateButton = ResourceLocateButton.SupportsFileEditor(PropertyItem.FirstObject, PropertyItem.Name);
 			this.fileLabel = new Label();
 			this.fileLabel.Text = "";
 			this.fileLabel.MaxWidthChars = 20;
@@ -49,8 +50,18 @@ namespace CocoStudio.Model.Editor
 			this.resetLabel = new LabelLinkButton(null);
 			this.resetLabel.Label.SetFontSize(12.0);
 			this.resetLabel.Clicked += new EventHandler<ButtonReleaseEventArgs>(this.linkLabel_LeftClicked);
-			this.fileTable.Attach(this.fileLabel, 0U, 1U, 0U, 1U, AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0U, 1U);
-			this.fileTable.Attach(this.resetLabel, 1U, 2U, 0U, 1U, AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0U, 1U);
+			uint fileLabelColumn = 0U;
+			if (supportsLocateButton)
+			{
+				ResourceLocateButton locateButton = new ResourceLocateButton(delegate
+				{
+					return PropertyItem.FirstObject.GetType().GetProperty(PropertyItem.Name).GetValue(PropertyItem.FirstObject, null) as ResourceFile;
+				});
+				this.fileTable.Attach(locateButton.CreateCenteredAlignment(), 0U, 1U, 0U, 1U, AttachOptions.Fill, AttachOptions.Fill, 2U, 0U);
+				fileLabelColumn = 1U;
+			}
+			this.fileTable.Attach(this.fileLabel, fileLabelColumn, fileLabelColumn + 1U, 0U, 1U, AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0U, 1U);
+			this.fileTable.Attach(this.resetLabel, fileLabelColumn + 1U, fileLabelColumn + 2U, 0U, 1U, AttachOptions.Fill, AttachOptions.Expand | AttachOptions.Fill, 0U, 1U);
 			this.resourceEventBox.Add(this.fileTable);
 			this.fileTable.HeightRequest = 25;
 			this.resourceEventBox.ShowAll();

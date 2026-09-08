@@ -245,6 +245,7 @@ namespace Modules.Communal.ResourcePanel
 		{
 			this.synchronizingSelection = true;
 			this.iconView.UnselectAll();
+			TreePath firstSelectedPath = null;
 			if (selectedItems != null)
 			{
 				foreach (ResourceItem resourceItem in selectedItems)
@@ -253,8 +254,16 @@ namespace Modules.Communal.ResourcePanel
 					if (this.itemPaths.TryGetValue(resourceItem, out path))
 					{
 						this.iconView.SelectPath(path);
+						if (firstSelectedPath == null)
+						{
+							firstSelectedPath = path;
+						}
 					}
 				}
+			}
+			if (firstSelectedPath != null)
+			{
+				this.iconView.ScrollToPath(firstSelectedPath, 0.5f, 0.5f);
 			}
 			this.synchronizingSelection = false;
 		}

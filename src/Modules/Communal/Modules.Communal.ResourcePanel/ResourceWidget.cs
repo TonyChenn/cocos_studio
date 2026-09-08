@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using CocoStudio.ControlLib;
 using CocoStudio.Core;
+using CocoStudio.Core.Events;
+using CocoStudio.Lib.Prism;
 using CocoStudio.Projects;
 using Gdk;
 using GLib;
@@ -24,6 +26,32 @@ namespace Modules.Communal.ResourcePanel
 			this.InitiTreeView();
 			this.AddButton();
 			this.InitiStyle();
+			this.locateResourceSubscription = Services.EventsService.GetEvent<LocateResourceInPanelEvent>().Subscribe(new Action<ResourceItem>(this.LocateResource));
+		}
+
+		private void LocateResource(ResourceItem resourceItem)
+		{
+			if (resourceItem == null)
+			{
+				return;
+			}
+			if (!string.IsNullOrWhiteSpace(this.searchBox.Entry.Text))
+			{
+				this.searchBox.Entry.Text = string.Empty;
+			}
+			this.treeview.Builder.SetSelecteResources(new ResourceItem[]
+			{
+				resourceItem
+			});
+			if (this.IsGridViewActive)
+			{
+				ResourceFolder resourceFolder = resourceItem.Parent as ResourceFolder;
+				if (resourceFolder != null)
+				{
+					this.gridview.SetCurrentFolder(resourceFolder);
+					this.ReloadGridView();
+				}
+			}
 		}
 
 		// Token: 0x060001DD RID: 477 RVA: 0x0000A2BC File Offset: 0x000084BC
@@ -603,6 +631,11 @@ namespace Modules.Communal.ResourcePanel
 
 		protected override void OnDestroyed()
 		{
+			if (this.locateResourceSubscription != null)
+			{
+				this.locateResourceSubscription.Dispose();
+				this.locateResourceSubscription = null;
+			}
 			if (this.gridRefreshTimeout != 0U)
 			{
 				Source.Remove(this.gridRefreshTimeout);
@@ -715,5 +748,7 @@ namespace Modules.Communal.ResourcePanel
 		private EventBox footEvent;
 
 		private uint gridRefreshTimeout;
+
+		private SubscriptionToken locateResourceSubscription;
 	}
 }

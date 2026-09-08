@@ -35,7 +35,8 @@ namespace CocoStudio.Model.Editor
 		{
 			this.imageEventBoxList = new List<ImageEventBox>();
 			List<string> list = base.PropertyItem.Values[0] as List<string>;
-			Table table = new Table(2U, (uint)list.Count, false);
+			bool supportsLocateButton = ResourceLocateButton.SupportsGroupEditor(PropertyItem.FirstObject);
+			Table table = new Table(supportsLocateButton ? 3U : 2U, (uint)list.Count, false);
 			table.ColumnSpacing = 6U;
 			for (int i = 0; i < list.Count; i++)
 			{
@@ -48,6 +49,11 @@ namespace CocoStudio.Model.Editor
 				ImageEventBox imageEventBox = new ImageEventBox(base.PropertyItem, propertyDescriptor, null);
 				imageEventBox.SetDefaultFileMarker();
 				table.Attach(imageEventBox, (uint)i, (uint)(i + 1), 0U, 1U, AttachOptions.Fill, AttachOptions.Fill, 0U, 0U);
+				if (supportsLocateButton)
+				{
+					ResourceLocateButton locateButton = new ResourceLocateButton(imageEventBox);
+					table.Attach(locateButton.CreateCenteredAlignment(), (uint)i, (uint)(i + 1), 2U, 3U, AttachOptions.Fill, AttachOptions.Fill, 0U, 2U);
+				}
 				this.imageEventBoxList.Add(imageEventBox);
 			}
 			table.ShowAll();

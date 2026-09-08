@@ -34,6 +34,12 @@ namespace CocoStudio.Model.Editor
 			PropertyDescriptor pDescriptor = TypeDescriptor.GetProperties(PropertyItem.FirstObject.GetType()).Find(base.PropertyItem.Name, false);
 			this.imageEventBox = new ImageEventBox(base.PropertyItem, pDescriptor, null);
 			HBox hbox = new HBox();
+			if (ResourceLocateButton.SupportsImageEditor(PropertyItem.FirstObject))
+			{
+				ResourceLocateButton locateButton = new ResourceLocateButton(this.imageEventBox);
+				hbox.PackStart(locateButton.CreateCenteredAlignment(), false, false, 0U);
+				hbox.Spacing = 4;
+			}
 			hbox.PackStart(this.imageEventBox, false, false, 0U);
 			hbox.ShowAll();
 			return hbox;
