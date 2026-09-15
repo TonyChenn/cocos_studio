@@ -15,16 +15,10 @@ using Xwt.GtkBackend;
 
 namespace Modules.UI.MainTool
 {
-	// Token: 0x02000011 RID: 17
 	public class SimulatorControl : IPlayControl
 	{
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x0600005A RID: 90 RVA: 0x00003A54 File Offset: 0x00001C54
-		// (set) Token: 0x0600005B RID: 91 RVA: 0x00003A6A File Offset: 0x00001C6A
 		public static IPlayControl Instance { get; private set; } = new SimulatorControl();
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x0600005D RID: 93 RVA: 0x00003A80 File Offset: 0x00001C80
 		public bool CanPlay
 		{
 			get
@@ -52,8 +46,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x0600005E RID: 94 RVA: 0x00003B04 File Offset: 0x00001D04
 		public bool CanStop
 		{
 			get
@@ -62,12 +54,8 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x14000002 RID: 2
-		// (add) Token: 0x0600005F RID: 95 RVA: 0x00003B2C File Offset: 0x00001D2C
-		// (remove) Token: 0x06000060 RID: 96 RVA: 0x00003B68 File Offset: 0x00001D68
 		public event EventHandler<StateChangedEventArgs> StateChanged;
 
-		// Token: 0x06000061 RID: 97 RVA: 0x00003BA4 File Offset: 0x00001DA4
 		private SimulatorControl()
 		{
 			if (Platform.IsMac)
@@ -80,7 +68,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x06000062 RID: 98 RVA: 0x00003C00 File Offset: 0x00001E00
 		public bool Play()
 		{
 			Services.Workbench.ActiveDocument.IsDirty = true;
@@ -103,14 +90,12 @@ namespace Modules.UI.MainTool
 			return true;
 		}
 
-		// Token: 0x06000063 RID: 99 RVA: 0x00003CA8 File Offset: 0x00001EA8
 		public void Stop()
 		{
 			this.ReleaseCurrentProcess();
 			this.RaiseStateChangedEvent(false);
 		}
 
-		// Token: 0x06000064 RID: 100 RVA: 0x00003CBC File Offset: 0x00001EBC
 		private void ReleaseCurrentProcess()
 		{
 			if (this.currentProcess != null)
@@ -137,7 +122,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x00003D94 File Offset: 0x00001F94
 		private void RaiseStateChangedEvent(bool isPlay)
 		{
 			Timeout.Add(500U, delegate
@@ -156,7 +140,6 @@ namespace Modules.UI.MainTool
 			});
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x00003DD0 File Offset: 0x00001FD0
 		private System.Diagnostics.Process CreateSimulatorProcess(Cocos2dxReaderType type)
 		{
 			System.Diagnostics.Process process = new System.Diagnostics.Process();
@@ -177,7 +160,6 @@ namespace Modules.UI.MainTool
 			return process;
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00003E78 File Offset: 0x00002078
 		private string GetStartParam()
 		{
 			string result;
@@ -218,7 +200,6 @@ namespace Modules.UI.MainTool
 			return result;
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x00004030 File Offset: 0x00002230
 		private void SimulatorExitedHandler(object sender, EventArgs e)
 		{
 			System.Diagnostics.Process process = sender as System.Diagnostics.Process;
@@ -230,7 +211,6 @@ namespace Modules.UI.MainTool
 			this.RaiseStateChangedEvent(false);
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x00004078 File Offset: 0x00002278
 		private void OutputDataReceivedHandler(object sender, DataReceivedEventArgs e)
 		{
 			if (e.Data != null)
@@ -246,22 +226,17 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x000040D2 File Offset: 0x000022D2
 		private void ErrorDataReceivedHandler(object sender, DataReceivedEventArgs e)
 		{
 			LogConfig.OutputWithoutTip.Error(e.Data);
 		}
 
-		// Token: 0x04000028 RID: 40
 		private const string defaultPathWin = "cocos-simulator-bin\\win32\\Simulator.exe";
 
-		// Token: 0x04000029 RID: 41
 		private const string defaultPathMac = "cocos-simulator-bin/mac/Simulator.app/Contents/MacOS/Simulator";
 
-		// Token: 0x0400002A RID: 42
 		private string simulatorPath;
 
-		// Token: 0x0400002B RID: 43
 		private System.Diagnostics.Process currentProcess = null;
 	}
 }

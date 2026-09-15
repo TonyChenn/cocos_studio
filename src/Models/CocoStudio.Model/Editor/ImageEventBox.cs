@@ -18,7 +18,6 @@ using Xwt.GtkBackend;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200005A RID: 90
 	public class ImageEventBox : EventBox
 	{
 		public ResourceFile ResourceFile
@@ -29,8 +28,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x170000FD RID: 253
-		// (get) Token: 0x06000318 RID: 792 RVA: 0x0000C9AC File Offset: 0x0000ABAC
 		public string PropertyName
 		{
 			get
@@ -39,8 +36,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x170000FE RID: 254
-		// (get) Token: 0x06000319 RID: 793 RVA: 0x0000C9CC File Offset: 0x0000ABCC
 		public string DescriptorName
 		{
 			get
@@ -49,7 +44,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600031A RID: 794 RVA: 0x0000C9EC File Offset: 0x0000ABEC
 		public ImageEventBox(PropertyItem pItem, PropertyDescriptor pDescriptor, int? size = null)
 		{
 			base.DragMotion += this.ImageEventBox_DragMotion;
@@ -76,7 +70,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600031B RID: 795 RVA: 0x0000CB14 File Offset: 0x0000AD14
 		private void InitContextMenu()
 		{
 			this.contextMenu = new Gtk.Menu();
@@ -97,7 +90,6 @@ namespace CocoStudio.Model.Editor
 			this.contextMenu.Add(this.miClear);
 		}
 
-		// Token: 0x0600031C RID: 796 RVA: 0x0000CC24 File Offset: 0x0000AE24
 		private void menuItemOpen_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			if (args.Event.Button == 1U)
@@ -106,21 +98,18 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600031D RID: 797 RVA: 0x0000CC4E File Offset: 0x0000AE4E
 		private void menuItemClear_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			this.propertyDescriptor.SetValue(PropertyItem.FirstObject, null);
 			this.Refresh();
 		}
 
-		// Token: 0x0600031E RID: 798 RVA: 0x0000CC6A File Offset: 0x0000AE6A
 		private void menuItemReset_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			this.propertyDescriptor.SetValue(PropertyItem.FirstObject, ResourceFile.DefaultMarker);
 			this.Refresh();
 		}
 
-		// Token: 0x0600031F RID: 799 RVA: 0x0000CC8C File Offset: 0x0000AE8C
 		private void menuItemCopyPhyDir_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			if (this.resourceFile != null)
@@ -129,7 +118,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000320 RID: 800 RVA: 0x0000CCB8 File Offset: 0x0000AEB8
 		private void menuItemCoypName_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			if (this.resourceFile != null)
@@ -138,7 +126,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000321 RID: 801 RVA: 0x0000CCE4 File Offset: 0x0000AEE4
 		private void OpenFile()
 		{
 			try
@@ -163,7 +150,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000322 RID: 802 RVA: 0x0000CD9C File Offset: 0x0000AF9C
 		private async void SelectFile()
 		{
 			ResourceFolder parent = Services.ProjectOperations.CurrentResourceGroup.RootFolder;
@@ -206,13 +192,11 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000323 RID: 803 RVA: 0x0000CDD8 File Offset: 0x0000AFD8
 		protected override void OnDragDataGet(DragContext context, SelectionData selection_data, uint info, uint time_)
 		{
 			base.OnDragDataGet(context, selection_data, info, time_);
 		}
 
-		// Token: 0x06000324 RID: 804 RVA: 0x0000CDE8 File Offset: 0x0000AFE8
 		private void ImageEventBox_DragMotion(object o, DragMotionArgs args)
 		{
 			object dragData = args.Context.GetDragData();
@@ -233,7 +217,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000325 RID: 805 RVA: 0x0000CE6C File Offset: 0x0000B06C
 		protected override bool OnDragDrop(DragContext context, int x, int y, uint time_)
 		{
 			object dragData = context.GetDragData();
@@ -259,7 +242,6 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x06000326 RID: 806 RVA: 0x0000CF08 File Offset: 0x0000B108
 		private bool CheckResource(ResourceFile file)
 		{
 			bool result;
@@ -274,7 +256,6 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x06000327 RID: 807 RVA: 0x0000CF54 File Offset: 0x0000B154
 		private void SetValue(ResourceFile item)
 		{
 			if (item != null)
@@ -309,7 +290,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000328 RID: 808 RVA: 0x0000D108 File Offset: 0x0000B308
 		public void Refresh()
 		{
 			if (this.propertyItem != null)
@@ -362,13 +342,11 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000329 RID: 809 RVA: 0x0000D305 File Offset: 0x0000B505
 		public void SetDefaultFileMarker()
 		{
 			this.isDefaultFileMarker = this.filterAttr.DefaultFileMarker;
 		}
 
-		// Token: 0x0600032A RID: 810 RVA: 0x0000D31C File Offset: 0x0000B51C
 		private void ScaleImage(Pixbuf image)
 		{
 			double num = (double)((image.Width > image.Height) ? image.Width : image.Height);
@@ -383,7 +361,6 @@ namespace CocoStudio.Model.Editor
 			this.imageWidget.QueueDraw();
 		}
 
-		// Token: 0x0600032B RID: 811 RVA: 0x0000D3AC File Offset: 0x0000B5AC
 		protected override bool OnButtonReleaseEvent(EventButton evnt)
 		{
 			bool result;
@@ -429,47 +406,35 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x0600032C RID: 812 RVA: 0x0000D4FE File Offset: 0x0000B6FE
 		private void WidgetDestroyedEventHandler(object sender, EventArgs e)
 		{
 			this.imageWidget.Dispose();
 			this.imageWidget = null;
 		}
 
-		// Token: 0x04000173 RID: 371
 		private static TargetEntry[] target_tableWindows = new TargetEntry[]
 		{
 			DragTargetType.CocoStudioTarget
 		};
 
-		// Token: 0x04000174 RID: 372
 		protected Gtk.Image imageWidget;
 
-		// Token: 0x04000175 RID: 373
 		private ResourceFile resourceFile;
 
-		// Token: 0x04000176 RID: 374
 		private bool isDefaultFileMarker;
 
-		// Token: 0x04000177 RID: 375
 		private int scaleNum = 46;
 
-		// Token: 0x04000178 RID: 376
 		private PropertyItem propertyItem;
 
-		// Token: 0x04000179 RID: 377
 		private PropertyDescriptor propertyDescriptor;
 
-		// Token: 0x0400017A RID: 378
 		private ResourceFilterAttribute filterAttr;
 
-		// Token: 0x0400017B RID: 379
 		private Gtk.Menu contextMenu;
 
-		// Token: 0x0400017C RID: 380
 		private Gtk.MenuItem miReset;
 
-		// Token: 0x0400017D RID: 381
 		private Gtk.MenuItem miClear;
 	}
 }

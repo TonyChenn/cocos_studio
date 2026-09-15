@@ -14,20 +14,12 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x02000029 RID: 41
 	public class Cocos2dxSupplymentDialog : Dialog
 	{
-		// Token: 0x1700005F RID: 95
-		// (get) Token: 0x0600014E RID: 334 RVA: 0x0000641C File Offset: 0x0000461C
-		// (set) Token: 0x0600014F RID: 335 RVA: 0x00006424 File Offset: 0x00004624
 		public EnumProgramLanguage Language { get; private set; }
 
-		// Token: 0x17000060 RID: 96
-		// (get) Token: 0x06000150 RID: 336 RVA: 0x0000642D File Offset: 0x0000462D
-		// (set) Token: 0x06000151 RID: 337 RVA: 0x00006435 File Offset: 0x00004635
 		public string FrameworkVersion { get; private set; }
 
-		// Token: 0x06000152 RID: 338 RVA: 0x0000643E File Offset: 0x0000463E
 		public Cocos2dxSupplymentDialog(bool isIDE, EnumOperationType operationType)
 		{
 			this.Build();
@@ -38,7 +30,6 @@ namespace Modules.Communal.CocosAdapter
 			this.SetToDialogStyle(null, true, true, true);
 		}
 
-		// Token: 0x06000153 RID: 339 RVA: 0x00006470 File Offset: 0x00004670
 		private void InitEvent()
 		{
 			this.combobox_engine.Changed += this.ComboboxEngineChangedHandler;
@@ -47,7 +38,6 @@ namespace Modules.Communal.CocosAdapter
 			this.radiobutton3_js.Toggled += this.RadioButtonToggledHandler;
 		}
 
-		// Token: 0x06000154 RID: 340 RVA: 0x000064DC File Offset: 0x000046DC
 		private void InitWidgets()
 		{
 			Stream resourceStream = Resources.GetResourceStream("CocoStudio.DefaultResource.Images.MessageBoxIcon.Warning.png");
@@ -91,7 +81,6 @@ namespace Modules.Communal.CocosAdapter
 			this.RefreshPubishDirWarning();
 		}
 
-		// Token: 0x06000155 RID: 341 RVA: 0x00006640 File Offset: 0x00004840
 		private void InitStyle(EnumOperationType operationType)
 		{
 			this.buttonOk.Name = "MainButton";
@@ -117,7 +106,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x06000156 RID: 342 RVA: 0x00006774 File Offset: 0x00004974
 		private void RefreshPubishDirWarning()
 		{
 			if (Cocos2dxServices.SupplymentServices.CheckNeedResetPublishDir(this.Language))
@@ -130,7 +118,6 @@ namespace Modules.Communal.CocosAdapter
 			this.alignment_publishWarning.RemoveChild();
 		}
 
-		// Token: 0x06000157 RID: 343 RVA: 0x000067D8 File Offset: 0x000049D8
 		private void ComboboxEngineChangedHandler(object sender, EventArgs e)
 		{
 			if (this.combobox_engine.Active == -1)
@@ -157,7 +144,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x06000158 RID: 344 RVA: 0x00006861 File Offset: 0x00004A61
 		private void RadioButtonToggledHandler(object sender, EventArgs e)
 		{
 			if (this.radiobutton1_lua.Active)
@@ -175,14 +161,12 @@ namespace Modules.Communal.CocosAdapter
 			this.RefreshPubishDirWarning();
 		}
 
-		// Token: 0x06000159 RID: 345 RVA: 0x0000689C File Offset: 0x00004A9C
 		protected void DialogSizeAllocatedHandler(object o, SizeAllocatedArgs args)
 		{
 			this.label_prompt.WidthRequest = this.alignment_top.Allocation.Width;
 			this.label_publishDir.WidthRequest = this.vbox_warringText.Allocation.Width;
 		}
 
-		// Token: 0x0600015A RID: 346 RVA: 0x000068D4 File Offset: 0x00004AD4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -465,100 +449,68 @@ namespace Modules.Communal.CocosAdapter
 			base.SizeAllocated += this.DialogSizeAllocatedHandler;
 		}
 
-		// Token: 0x0400007A RID: 122
 		private bool isSupplymentIDE;
 
-		// Token: 0x0400007B RID: 123
 		private Gtk.Alignment alignment_main;
 
-		// Token: 0x0400007C RID: 124
 		private VBox vbox_main;
 
-		// Token: 0x0400007D RID: 125
 		private HBox hbox_top;
 
-		// Token: 0x0400007E RID: 126
 		private Gtk.Alignment alignment_top;
 
-		// Token: 0x0400007F RID: 127
 		private Label label_prompt;
 
-		// Token: 0x04000080 RID: 128
 		private VBox vbox_help;
 
-		// Token: 0x04000081 RID: 129
 		private Gtk.Alignment alignment_help;
 
-		// Token: 0x04000082 RID: 130
 		private Frame frame_option;
 
-		// Token: 0x04000083 RID: 131
 		private Gtk.Alignment GtkAlignment_option;
 
-		// Token: 0x04000084 RID: 132
 		private Table table_main;
 
-		// Token: 0x04000085 RID: 133
 		private HBox hbox_engine;
 
-		// Token: 0x04000086 RID: 134
 		private ComboBox combobox_engine;
 
-		// Token: 0x04000087 RID: 135
 		private Label label_framework;
 
-		// Token: 0x04000088 RID: 136
 		private Label label_language;
 
-		// Token: 0x04000089 RID: 137
 		private Table table_language;
 
-		// Token: 0x0400008A RID: 138
 		private Label label_cppDes;
 
-		// Token: 0x0400008B RID: 139
 		private Label label_jsDes;
 
-		// Token: 0x0400008C RID: 140
 		private Label label_luaDes;
 
-		// Token: 0x0400008D RID: 141
 		private RadioButton radiobutton1_lua;
 
-		// Token: 0x0400008E RID: 142
 		private RadioButton radiobutton2_cpp;
 
-		// Token: 0x0400008F RID: 143
 		private RadioButton radiobutton3_js;
 
-		// Token: 0x04000090 RID: 144
 		private Label GtkLabel_upgrade;
 
-		// Token: 0x04000091 RID: 145
 		private Gtk.Alignment alignment_publishWarning;
 
-		// Token: 0x04000092 RID: 146
 		private HBox hbox_publishDirWarning;
 
-		// Token: 0x04000093 RID: 147
 		private ImageBin imagebin_warring;
 
-		// Token: 0x04000094 RID: 148
 		private VBox vbox_warringText;
 
-		// Token: 0x04000095 RID: 149
 		private Gtk.Alignment alignment_warringTop;
 
-		// Token: 0x04000096 RID: 150
 		private Label label_publishDir;
 
-		// Token: 0x04000097 RID: 151
 		private Gtk.Alignment alignment_warringBottom;
 
-		// Token: 0x04000098 RID: 152
 		private Button buttonCancel;
 
-		// Token: 0x04000099 RID: 153
 		private Button buttonOk;
 	}
 }

@@ -5,10 +5,8 @@ using CocoStudio.Model.Visiter;
 
 namespace CocoStudio.Model.EditorController
 {
-	// Token: 0x0200004B RID: 75
 	internal static class Controller2DService
 	{
-		// Token: 0x06000298 RID: 664 RVA: 0x000083A4 File Offset: 0x000065A4
 		public static bool CheckSizeCanUse(object obj)
 		{
 			IStretchSize stretchSize = obj as IStretchSize;
@@ -45,7 +43,6 @@ namespace CocoStudio.Model.EditorController
 			return result;
 		}
 
-		// Token: 0x06000299 RID: 665 RVA: 0x00008454 File Offset: 0x00006654
 		public static bool CheckOperationModeIsValid(object obj, OperationMask? requestMode)
 		{
 			bool result;

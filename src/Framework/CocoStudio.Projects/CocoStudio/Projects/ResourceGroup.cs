@@ -9,24 +9,18 @@ using Newtonsoft.Json;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x0200008A RID: 138
 	[JsonObject(MemberSerialization.OptIn)]
 	[DataInclude(typeof(ResourceItem))]
 	public class ResourceGroup : SolutionEntityItem, IInitialize
 	{
-		// Token: 0x170000CE RID: 206
-		// (get) Token: 0x0600043A RID: 1082 RVA: 0x0000DCE9 File Offset: 0x0000BEE9
-		// (set) Token: 0x0600043B RID: 1083 RVA: 0x0000DCF1 File Offset: 0x0000BEF1
 		[ItemProperty("RootFolder")]
 		[JsonProperty(PropertyName = "RootFolder")]
 		public ResourceFolder RootFolder { get; private set; }
 
-		// Token: 0x0600043C RID: 1084 RVA: 0x0000DCFA File Offset: 0x0000BEFA
 		private ResourceGroup()
 		{
 		}
 
-		// Token: 0x0600043D RID: 1085 RVA: 0x0000DD02 File Offset: 0x0000BF02
 		public ResourceGroup(Solution parentSolution)
 		{
 			base.ParentFolder = parentSolution.RootFolder;
@@ -34,22 +28,18 @@ namespace CocoStudio.Projects
 			this.RootFolder = new ResourceFolder(parentSolution.ItemDirectory);
 		}
 
-		// Token: 0x0600043E RID: 1086 RVA: 0x0000DD30 File Offset: 0x0000BF30
 		protected override void OnSave(IProgressMonitor monitor)
 		{
 			ICocosFile rootFolder = this.RootFolder;
 			rootFolder.Save(monitor);
 		}
 
-		// Token: 0x0600043F RID: 1087 RVA: 0x0000DD4C File Offset: 0x0000BF4C
 		void IInitialize.Initialize(IProgressMonitor monitor)
 		{
 			ICocosFile rootFolder = this.RootFolder;
 			rootFolder.Initialize(monitor);
 		}
 
-		// Token: 0x170000CF RID: 207
-		// (get) Token: 0x06000440 RID: 1088 RVA: 0x0000DD67 File Offset: 0x0000BF67
 		bool IInitialize.IsAutoInitialize
 		{
 			get
@@ -58,7 +48,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000441 RID: 1089 RVA: 0x0000DD6C File Offset: 0x0000BF6C
 		public ResourceItem FindResourceItem(string filePath)
 		{
 			if (string.IsNullOrEmpty(filePath))
@@ -73,7 +62,6 @@ namespace CocoStudio.Projects
 			return this.FindResourceItem(this.RootFolder, filePath);
 		}
 
-		// Token: 0x06000442 RID: 1090 RVA: 0x0000DDE0 File Offset: 0x0000BFE0
 		public ResourceItem FindResourceItem(ResourceData resourceData)
 		{
 			if (resourceData == null)
@@ -106,7 +94,6 @@ namespace CocoStudio.Projects
 			return null;
 		}
 
-		// Token: 0x06000443 RID: 1091 RVA: 0x0000DEC8 File Offset: 0x0000C0C8
 		public ResourceItem FindResourceItem(ResourceItem parentItem, FilePath fullPath)
 		{
 			if (parentItem.FullPath.Equals(fullPath, StringComparison.OrdinalIgnoreCase))
@@ -143,20 +130,17 @@ namespace CocoStudio.Projects
 			return parentItem;
 		}
 
-		// Token: 0x06000444 RID: 1092 RVA: 0x0000DFA0 File Offset: 0x0000C1A0
 		public HashSet<ResourceData> GetUsedResources(IProgressMonitor monitor)
 		{
 			ICocosFile rootFolder = this.RootFolder;
 			return rootFolder.GetUsedResources(monitor);
 		}
 
-		// Token: 0x06000445 RID: 1093 RVA: 0x0000DFBB File Offset: 0x0000C1BB
 		public HashSet<ResourceData> GetAllResources()
 		{
 			return this.GetSolutionAllResources(this.RootFolder);
 		}
 
-		// Token: 0x06000446 RID: 1094 RVA: 0x0000DFCC File Offset: 0x0000C1CC
 		private HashSet<ResourceData> GetSolutionAllResources(ResourceItem resItem)
 		{
 			HashSet<ResourceData> hashSet = new HashSet<ResourceData>();

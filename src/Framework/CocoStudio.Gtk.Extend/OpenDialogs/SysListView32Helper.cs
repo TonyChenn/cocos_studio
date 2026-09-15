@@ -5,16 +5,13 @@ using System.Text;
 
 namespace OpenDialogs
 {
-	// Token: 0x0200004C RID: 76
 	public static class SysListView32Helper
 	{
-		// Token: 0x060001B6 RID: 438 RVA: 0x000081B0 File Offset: 0x000063B0
 		public static bool IsRowSelected(this IntPtr handle, int rowindex)
 		{
 			return NativeMethods.SendMessage(handle, 4140, rowindex, 2) == 2;
 		}
 
-		// Token: 0x060001B7 RID: 439 RVA: 0x000081D4 File Offset: 0x000063D4
 		public static List<int> GetSelectedRowsIndex(this IntPtr handle)
 		{
 			List<int> list = new List<int>();
@@ -32,13 +29,11 @@ namespace OpenDialogs
 			return list;
 		}
 
-		// Token: 0x060001B8 RID: 440 RVA: 0x00008238 File Offset: 0x00006438
 		public static int GetItemCount(this IntPtr handle)
 		{
 			return NativeMethods.SendMessage(handle, 4100, 0, 0);
 		}
 
-		// Token: 0x060001B9 RID: 441 RVA: 0x00008258 File Offset: 0x00006458
 		public static List<string> GetItemsText(this IntPtr handle, List<int> rowIndex, int column)
 		{
 			List<string> list = new List<string>();
@@ -74,7 +69,6 @@ namespace OpenDialogs
 			return list;
 		}
 
-		// Token: 0x060001BA RID: 442 RVA: 0x0000841C File Offset: 0x0000661C
 		public static List<string> GetSlectedItemsText(this IntPtr handle, int column = 0)
 		{
 			List<string> list = new List<string>();
@@ -89,86 +83,58 @@ namespace OpenDialogs
 			return list;
 		}
 
-		// Token: 0x060001BB RID: 443 RVA: 0x00008474 File Offset: 0x00006674
 		public static IntPtr GetSysListView32Handle(this IntPtr mainWindowHandle)
 		{
 			IntPtr hwndParent = NativeMethods.FindWindowEx(mainWindowHandle, IntPtr.Zero, "SHELLDLL_DefView", "");
 			return NativeMethods.FindWindowEx(hwndParent, (IntPtr)null, "SysListView32", null);
 		}
 
-		// Token: 0x040002D3 RID: 723
 		private const int LVIF_TEXT = 1;
 
-		// Token: 0x0200004D RID: 77
 		private enum PROCESS
 		{
-			// Token: 0x040002D5 RID: 725
 			PROCESS_VM_OPERATION = 8,
-			// Token: 0x040002D6 RID: 726
 			PROCESS_VM_READ = 16,
-			// Token: 0x040002D7 RID: 727
 			PROCESS_VM_WRITE = 32
 		}
 
-		// Token: 0x0200004E RID: 78
 		private enum SysListView32
 		{
-			// Token: 0x040002D9 RID: 729
 			LVM_FIRST = 4096,
-			// Token: 0x040002DA RID: 730
 			HDM_GETITEMCOUNT = 4608,
-			// Token: 0x040002DB RID: 731
 			LVM_GETHEADER = 4127,
-			// Token: 0x040002DC RID: 732
 			LVM_GETITEMSTATE = 4140,
-			// Token: 0x040002DD RID: 733
 			LVIS_SELECTED = 2,
-			// Token: 0x040002DE RID: 734
 			LVM_GETITEMCOUNT = 4100,
-			// Token: 0x040002DF RID: 735
 			LVM_GETITEMW = 4171
 		}
 
-		// Token: 0x0200004F RID: 79
 		private enum MEM
 		{
-			// Token: 0x040002E1 RID: 737
 			MEM_COMMIT = 4096,
-			// Token: 0x040002E2 RID: 738
 			MEM_RELEASE = 32768,
-			// Token: 0x040002E3 RID: 739
 			MEM_RESERVE = 8192
 		}
 
-		// Token: 0x02000050 RID: 80
 		private enum PAGE
 		{
-			// Token: 0x040002E5 RID: 741
 			PAGE_READWRITE = 4
 		}
 
-		// Token: 0x02000051 RID: 81
 		private struct LVITEM
 		{
-			// Token: 0x040002E6 RID: 742
 			public int mask;
 
-			// Token: 0x040002E7 RID: 743
 			public int iItem;
 
-			// Token: 0x040002E8 RID: 744
 			public int iSubItem;
 
-			// Token: 0x040002E9 RID: 745
 			public int state;
 
-			// Token: 0x040002EA RID: 746
 			public int stateMask;
 
-			// Token: 0x040002EB RID: 747
 			public IntPtr pszText;
 
-			// Token: 0x040002EC RID: 748
 			public int cchTextMax;
 		}
 	}

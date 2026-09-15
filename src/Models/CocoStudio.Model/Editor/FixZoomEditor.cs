@@ -15,11 +15,8 @@ using Xwt.Drawing;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000054 RID: 84
 	internal class FixZoomEditor : BaseEditor
 	{
-		// Token: 0x170000F0 RID: 240
-		// (get) Token: 0x060002D2 RID: 722 RVA: 0x00009E64 File Offset: 0x00008064
 		public override bool IsShowLabel
 		{
 			get
@@ -28,8 +25,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x170000F1 RID: 241
-		// (get) Token: 0x060002D3 RID: 723 RVA: 0x00009E78 File Offset: 0x00008078
 		public override bool CanCaching
 		{
 			get
@@ -38,8 +33,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x170000F2 RID: 242
-		// (get) Token: 0x060002D4 RID: 724 RVA: 0x00009E8C File Offset: 0x0000808C
 		public override bool SupportMultiSelect
 		{
 			get
@@ -48,7 +41,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002D5 RID: 725 RVA: 0x00009EA0 File Offset: 0x000080A0
 		protected override Widget OnCreateWidget()
 		{
 			Table table = new Table(2U, 2U, false);
@@ -211,7 +203,6 @@ namespace CocoStudio.Model.Editor
 			return hbox3;
 		}
 
-		// Token: 0x060002D6 RID: 726 RVA: 0x0000A854 File Offset: 0x00008A54
 		private void leftEntry_EntryValueChanged(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -225,7 +216,6 @@ namespace CocoStudio.Model.Editor
 			base.SetControl();
 		}
 
-		// Token: 0x060002D7 RID: 727 RVA: 0x0000A8F4 File Offset: 0x00008AF4
 		private void rightEntry_EntryValueChanged(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -239,7 +229,6 @@ namespace CocoStudio.Model.Editor
 			base.SetControl();
 		}
 
-		// Token: 0x060002D8 RID: 728 RVA: 0x0000A994 File Offset: 0x00008B94
 		private void topEntry_EntryValueChanged(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -253,7 +242,6 @@ namespace CocoStudio.Model.Editor
 			base.SetControl();
 		}
 
-		// Token: 0x060002D9 RID: 729 RVA: 0x0000AA34 File Offset: 0x00008C34
 		private void bottomEntry_EntryValueChanged(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -267,7 +255,6 @@ namespace CocoStudio.Model.Editor
 			base.SetControl();
 		}
 
-		// Token: 0x060002DA RID: 730 RVA: 0x0000AAD4 File Offset: 0x00008CD4
 		protected override void OnSetSensitive(bool isSensitive)
 		{
 			Widget widget = this.leftButton;
@@ -281,7 +268,6 @@ namespace CocoStudio.Model.Editor
 			this.align.Sensitive = isSensitive;
 		}
 
-		// Token: 0x060002DB RID: 731 RVA: 0x0000AB36 File Offset: 0x00008D36
 		private void timer_Elapsed(object sender, ElapsedEventArgs e)
 		{
 			GLib.Timeout.Add(0U, delegate
@@ -292,7 +278,6 @@ namespace CocoStudio.Model.Editor
 			});
 		}
 
-		// Token: 0x060002DC RID: 732 RVA: 0x0000AB4C File Offset: 0x00008D4C
 		private void timer1_Elapsed(object sender, ElapsedEventArgs e)
 		{
 			GLib.Timeout.Add(0U, delegate
@@ -307,7 +292,6 @@ namespace CocoStudio.Model.Editor
 			});
 		}
 
-		// Token: 0x060002DD RID: 733 RVA: 0x0000AB64 File Offset: 0x00008D64
 		private void eventBox_LeaveNotifyEvent(object o, LeaveNotifyEventArgs args)
 		{
 			if (args.Event.Detail != NotifyType.Inferior)
@@ -320,7 +304,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002DE RID: 734 RVA: 0x0000ABB0 File Offset: 0x00008DB0
 		private void eventBox_EnterNotifyEvent(object o, EnterNotifyEventArgs args)
 		{
 			if (this.eventBoxSec.Sensitive)
@@ -330,13 +313,11 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002DF RID: 735 RVA: 0x0000ABE8 File Offset: 0x00008DE8
 		private Xwt.Drawing.Image RotationImage(Xwt.Drawing.Image image, PixbufRotation rotation)
 		{
 			return Xwt.Drawing.Image.FromStream(new MemoryStream(image.GetPixbuf().RotateSimple(rotation).SaveToBuffer("png")));
 		}
 
-		// Token: 0x060002E0 RID: 736 RVA: 0x0000AC1C File Offset: 0x00008E1C
 		private void leftRend_VEventChanged(object sender, FixZoomEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -351,7 +332,6 @@ namespace CocoStudio.Model.Editor
 			this.animation.IsWidthCenter = e.Type;
 		}
 
-		// Token: 0x060002E1 RID: 737 RVA: 0x0000ACD0 File Offset: 0x00008ED0
 		private void leftRend_HEventChanged(object sender, FixZoomEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -366,7 +346,6 @@ namespace CocoStudio.Model.Editor
 			this.animation.IsHeightCenter = e.Type;
 		}
 
-		// Token: 0x060002E2 RID: 738 RVA: 0x0000AD84 File Offset: 0x00008F84
 		private void button_Clicked(object sender, EventArgs e)
 		{
 			if (!base.IsSettingControl)
@@ -442,7 +421,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002E3 RID: 739 RVA: 0x0000B094 File Offset: 0x00009294
 		protected override void OnSetControl()
 		{
 			NodeObject nodeObject = PropertyItem.FirstObject as NodeObject;
@@ -641,7 +619,6 @@ namespace CocoStudio.Model.Editor
 			this.animation.IsBottom = this.bottomButton.IsChecked;
 		}
 
-		// Token: 0x060002E4 RID: 740 RVA: 0x0000B890 File Offset: 0x00009A90
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == "IsCustomSize")
@@ -688,7 +665,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002E5 RID: 741 RVA: 0x0000BA54 File Offset: 0x00009C54
 		private void RefreshStretchView(bool showStretchView)
 		{
 			this.align.Remove(this.align.Children[0]);
@@ -706,52 +682,36 @@ namespace CocoStudio.Model.Editor
 			this.align.ShowAll();
 		}
 
-		// Token: 0x04000138 RID: 312
 		private Timer timer;
 
-		// Token: 0x04000139 RID: 313
 		private Timer timer1;
 
-		// Token: 0x0400013A RID: 314
 		private IconToggleButton topButton;
 
-		// Token: 0x0400013B RID: 315
 		private IconToggleButton bottomButton;
 
-		// Token: 0x0400013C RID: 316
 		private IconToggleButton leftButton;
 
-		// Token: 0x0400013D RID: 317
 		private IconToggleButton rightButton;
 
-		// Token: 0x0400013E RID: 318
 		private NoUndoNumEntry topEntry;
 
-		// Token: 0x0400013F RID: 319
 		private NoUndoNumEntry bottomEntry;
 
-		// Token: 0x04000140 RID: 320
 		private NoUndoNumEntry leftEntry;
 
-		// Token: 0x04000141 RID: 321
 		private NoUndoNumEntry rightEntry;
 
-		// Token: 0x04000142 RID: 322
 		private Alignment align = new Alignment(0.5f, 0.5f, 1f, 1f);
 
-		// Token: 0x04000143 RID: 323
 		private bool showStretch = true;
 
-		// Token: 0x04000144 RID: 324
 		private FixZoomRectangle animation = new FixZoomRectangle();
 
-		// Token: 0x04000145 RID: 325
 		private FixZoomEventBox leftRend = new FixZoomEventBox();
 
-		// Token: 0x04000146 RID: 326
 		private EventBox eventBoxFir = new EventBox();
 
-		// Token: 0x04000147 RID: 327
 		private EventBox eventBoxSec = new EventBox();
 	}
 }

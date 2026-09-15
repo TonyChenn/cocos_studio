@@ -8,16 +8,13 @@ using Mono.Addins;
 
 namespace CocoStudio.Model.Lua
 {
-	// Token: 0x02000006 RID: 6
 	internal class LuaObjectManager
 	{
-		// Token: 0x06000030 RID: 48 RVA: 0x000025D2 File Offset: 0x000007D2
 		static LuaObjectManager()
 		{
 			LuaObjectManager.InitializeObjectSerializer();
 		}
 
-		// Token: 0x06000031 RID: 49 RVA: 0x000025F0 File Offset: 0x000007F0
 		public static ILuaObjectSerializer GetSerializer(BaseObjectData objectData)
 		{
 			ILuaObjectSerializer luaObjectSerializer = null;
@@ -58,7 +55,6 @@ namespace CocoStudio.Model.Lua
 			return luaObjectSerializer;
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x000026DC File Offset: 0x000008DC
 		private static void InitializeObjectSerializer()
 		{
 			try
@@ -75,10 +71,8 @@ namespace CocoStudio.Model.Lua
 			}
 		}
 
-		// Token: 0x0400000D RID: 13
 		private static List<ILuaObjectSerializer> serializerList = new List<ILuaObjectSerializer>();
 
-		// Token: 0x0400000E RID: 14
 		private static Dictionary<Type, List<ILuaObjectSerializer>> serializerCache = new Dictionary<Type, List<ILuaObjectSerializer>>();
 	}
 }

@@ -16,22 +16,16 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.NewSolution
 {
-	// Token: 0x02000011 RID: 17
 	public class NewSolutionWindow : Gtk.Window
 	{
-		// Token: 0x14000002 RID: 2
-		// (add) Token: 0x06000064 RID: 100 RVA: 0x000033DC File Offset: 0x000015DC
-		// (remove) Token: 0x06000065 RID: 101 RVA: 0x00003414 File Offset: 0x00001614
 		public event EventHandler<SolutionCreatedArgs> SolutionCreated;
 
-		// Token: 0x06000066 RID: 102 RVA: 0x00003449 File Offset: 0x00001649
 		public NewSolutionWindow() : base(Gtk.WindowType.Toplevel)
 		{
 			this.Build();
 			this.Init();
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x0000345E File Offset: 0x0000165E
 		private void Init()
 		{
 			this.InitStyles();
@@ -40,7 +34,6 @@ namespace Modules.Communal.NewSolution
 			this.InitWindow();
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x00003478 File Offset: 0x00001678
 		private void InitStyles()
 		{
 			base.Title = LanguageInfo.Menu_File_NewProject;
@@ -52,7 +45,6 @@ namespace Modules.Communal.NewSolution
 			this.pageTagImage2 = new ImageView(icon2);
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x000034E4 File Offset: 0x000016E4
 		private void InitButtons()
 		{
 			if (Option.CurrentApp == EnumApp.Launcher)
@@ -76,7 +68,6 @@ namespace Modules.Communal.NewSolution
 			this.button_previous.Label = LanguageInfo.NewSolution_Previous;
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x000035E8 File Offset: 0x000017E8
 		private void InitWidget()
 		{
 			this.selectCardWidget = new SelectTemplateWidget();
@@ -88,7 +79,6 @@ namespace Modules.Communal.NewSolution
 			helpButton.URL = LanguageAdapter.GetLocalizedUrl(HelpLinkUrl.NewProject);
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x00003648 File Offset: 0x00001848
 		private void InitWindow()
 		{
 			if (Option.CurrentApp == EnumApp.Launcher)
@@ -125,7 +115,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x000037A0 File Offset: 0x000019A0
 		private void CreateCocosItem(CreateParams prms)
 		{
 			if (Services.ProjectOperations.CloseSolution())
@@ -190,7 +179,6 @@ namespace Modules.Communal.NewSolution
 			this.CloseWindow();
 		}
 
-		// Token: 0x0600006D RID: 109 RVA: 0x0000396C File Offset: 0x00001B6C
 		private void ShowCreateFailedDlg(string outputDetail)
 		{
 			LogConfig.OutputWithoutTip.Info(LanguageInfo.Dialog_New_CreateFailed, true);
@@ -203,7 +191,6 @@ namespace Modules.Communal.NewSolution
 			base.Modal = true;
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x000039C0 File Offset: 0x00001BC0
 		private void GotoSelectTemplatePage()
 		{
 			this.currentPage = 0;
@@ -236,7 +223,6 @@ namespace Modules.Communal.NewSolution
 			this.RefreshUI();
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x00003ABC File Offset: 0x00001CBC
 		private void GotoSetPropertyPage(ISolutionTemplate slnTemplate)
 		{
 			if (slnTemplate.Info.NeedFramework && Cocos2dxInfo.GetSimplifiedConsole() == null && FrameworkHelper.EnabledVersions.Count == 0)
@@ -280,7 +266,6 @@ namespace Modules.Communal.NewSolution
 			this.RefreshUI();
 		}
 
-		// Token: 0x06000070 RID: 112 RVA: 0x00003C44 File Offset: 0x00001E44
 		private void RefreshUI()
 		{
 			if (this.currentPage == 0)
@@ -295,7 +280,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000071 RID: 113 RVA: 0x00003C94 File Offset: 0x00001E94
 		private void ReleaseSetWidget()
 		{
 			if (this.curSlnSetWidget != null)
@@ -307,7 +291,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000072 RID: 114 RVA: 0x00003CE9 File Offset: 0x00001EE9
 		private void CloseWindow()
 		{
 			this.ReleaseSetWidget();
@@ -315,13 +298,11 @@ namespace Modules.Communal.NewSolution
 			this.Destroy();
 		}
 
-		// Token: 0x06000073 RID: 115 RVA: 0x00003D0E File Offset: 0x00001F0E
 		protected void OnPreviousBtnClicked(object sender, EventArgs e)
 		{
 			this.GotoSelectTemplatePage();
 		}
 
-		// Token: 0x06000074 RID: 116 RVA: 0x00003D18 File Offset: 0x00001F18
 		protected void OnNextBtnClicked(object sender, EventArgs e)
 		{
 			if (this.currentPage == 1)
@@ -347,13 +328,11 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000075 RID: 117 RVA: 0x00003D75 File Offset: 0x00001F75
 		private void HandleProjectTypeSelected(object sender, TemplateSelectedArgs e)
 		{
 			this.GotoSetPropertyPage(e.SolutionTemplate);
 		}
 
-		// Token: 0x06000076 RID: 118 RVA: 0x00003D83 File Offset: 0x00001F83
 		protected void OnKeyPressed(object o, KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Escape)
@@ -362,25 +341,21 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000077 RID: 119 RVA: 0x00003D9D File Offset: 0x00001F9D
 		private void OnButtonEnableChanged(object o, EnableChangedArgs args)
 		{
 			this.button_next.Sensitive = args.IsEnable;
 		}
 
-		// Token: 0x06000078 RID: 120 RVA: 0x00003DB0 File Offset: 0x00001FB0
 		private void OnCreateParamsSet(object o, CreateParamsSetArgs args)
 		{
 			this.CreateCocosItem(args.Params);
 		}
 
-		// Token: 0x06000079 RID: 121 RVA: 0x00003DBE File Offset: 0x00001FBE
 		private void OnTitleCloseButtonClicked(object sender, EventArgs args)
 		{
 			this.CloseWindow();
 		}
 
-		// Token: 0x0600007A RID: 122 RVA: 0x00003DC8 File Offset: 0x00001FC8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -549,100 +524,68 @@ namespace Modules.Communal.NewSolution
 			this.button_next.Clicked += this.OnNextBtnClicked;
 		}
 
-		// Token: 0x0400001E RID: 30
 		private ImageView pageTagImage1;
 
-		// Token: 0x0400001F RID: 31
 		private ImageView pageTagImage2;
 
-		// Token: 0x04000020 RID: 32
 		private SelectTemplateWidget selectCardWidget;
 
-		// Token: 0x04000021 RID: 33
 		private PropertiesWidget curSlnSetWidget;
 
-		// Token: 0x04000022 RID: 34
 		private int currentPage;
 
-		// Token: 0x04000023 RID: 35
 		private GeneralLauncherButton launcherNextBtn;
 
-		// Token: 0x04000024 RID: 36
 		private GeneralLauncherButton launcherPreviousBtn;
 
-		// Token: 0x04000026 RID: 38
 		private EventBox evtbx_windowBorder;
 
-		// Token: 0x04000027 RID: 39
 		private VBox vbox_window;
 
-		// Token: 0x04000028 RID: 40
 		private CustomTitleBar customTitleBar;
 
-		// Token: 0x04000029 RID: 41
 		private EventBox evtbx_bg;
 
-		// Token: 0x0400002A RID: 42
 		private Alignment alignment_base;
 
-		// Token: 0x0400002B RID: 43
 		private VBox vbox_main;
 
-		// Token: 0x0400002C RID: 44
 		private Alignment alignment_title;
 
-		// Token: 0x0400002D RID: 45
 		private HBox hbox_innerTitle;
 
-		// Token: 0x0400002E RID: 46
 		private Alignment alignment_titleIcon;
 
-		// Token: 0x0400002F RID: 47
 		private Gtk.Image image2;
 
-		// Token: 0x04000030 RID: 48
 		private Label label_title;
 
-		// Token: 0x04000031 RID: 49
 		private VBox vbox_help;
 
-		// Token: 0x04000032 RID: 50
 		private Alignment alignment_helpTop;
 
-		// Token: 0x04000033 RID: 51
 		private Alignment alignment_help;
 
-		// Token: 0x04000034 RID: 52
 		private Alignment alignment_helpBottom;
 
-		// Token: 0x04000035 RID: 53
 		private EventBox evtbx_contentBorder;
 
-		// Token: 0x04000036 RID: 54
 		private Alignment alignment_contentBorder;
 
-		// Token: 0x04000037 RID: 55
 		private EventBox evtbx_contentBg;
 
-		// Token: 0x04000038 RID: 56
 		private Alignment alignment_content;
 
-		// Token: 0x04000039 RID: 57
 		private Alignment alignment_bottomBtn;
 
-		// Token: 0x0400003A RID: 58
 		private HBox hbox_bottomBtn;
 
-		// Token: 0x0400003B RID: 59
 		private Alignment alignment_next;
 
-		// Token: 0x0400003C RID: 60
 		private Button button_next;
 
-		// Token: 0x0400003D RID: 61
 		private Alignment alignment_previous;
 
-		// Token: 0x0400003E RID: 62
 		private Button button_previous;
 	}
 }

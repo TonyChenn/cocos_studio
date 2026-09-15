@@ -3,10 +3,8 @@ using System.Globalization;
 
 namespace CocoStudio.Lib.Prism
 {
-	// Token: 0x02000009 RID: 9
 	public class EventSubscription<TPayload> : IEventSubscription
 	{
-		// Token: 0x0600000E RID: 14 RVA: 0x0000217C File Offset: 0x0000037C
 		public EventSubscription(IDelegateReference actionReference, IDelegateReference filterReference)
 		{
 			if (actionReference == null)
@@ -35,8 +33,6 @@ namespace CocoStudio.Lib.Prism
 			this._filterReference = filterReference;
 		}
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x0600000F RID: 15 RVA: 0x00002258 File Offset: 0x00000458
 		public Action<TPayload> Action
 		{
 			get
@@ -45,8 +41,6 @@ namespace CocoStudio.Lib.Prism
 			}
 		}
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000010 RID: 16 RVA: 0x0000227C File Offset: 0x0000047C
 		public Predicate<TPayload> Filter
 		{
 			get
@@ -55,12 +49,8 @@ namespace CocoStudio.Lib.Prism
 			}
 		}
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000011 RID: 17 RVA: 0x000022A0 File Offset: 0x000004A0
-		// (set) Token: 0x06000012 RID: 18 RVA: 0x000022B7 File Offset: 0x000004B7
 		public SubscriptionToken SubscriptionToken { get; set; }
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002328 File Offset: 0x00000528
 		public virtual Action<object[]> GetExecutionStrategy()
 		{
 			Action<TPayload> action = this.Action;
@@ -88,7 +78,6 @@ namespace CocoStudio.Lib.Prism
 			return result;
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x00002394 File Offset: 0x00000594
 		public virtual void InvokeAction(Action<TPayload> action, TPayload argument)
 		{
 			if (action == null)
@@ -98,10 +87,8 @@ namespace CocoStudio.Lib.Prism
 			action(argument);
 		}
 
-		// Token: 0x0400000C RID: 12
 		private readonly IDelegateReference _actionReference;
 
-		// Token: 0x0400000D RID: 13
 		private readonly IDelegateReference _filterReference;
 	}
 }

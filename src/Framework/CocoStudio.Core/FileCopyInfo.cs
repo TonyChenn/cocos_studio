@@ -12,35 +12,18 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Core
 {
-	// Token: 0x02000029 RID: 41
 	internal class FileCopyInfo : IComparable<FileCopyInfo>
 	{
-		// Token: 0x1700006A RID: 106
-		// (get) Token: 0x06000173 RID: 371 RVA: 0x000067B0 File Offset: 0x000049B0
-		// (set) Token: 0x06000174 RID: 372 RVA: 0x000067C7 File Offset: 0x000049C7
 		public bool IsComposite { get; private set; }
 
-		// Token: 0x1700006B RID: 107
-		// (get) Token: 0x06000175 RID: 373 RVA: 0x000067D0 File Offset: 0x000049D0
-		// (set) Token: 0x06000176 RID: 374 RVA: 0x000067E7 File Offset: 0x000049E7
 		public bool IsPretreatment { get; private set; }
 
-		// Token: 0x1700006C RID: 108
-		// (get) Token: 0x06000177 RID: 375 RVA: 0x000067F0 File Offset: 0x000049F0
-		// (set) Token: 0x06000178 RID: 376 RVA: 0x00006807 File Offset: 0x00004A07
 		public bool IsAfter { get; private set; }
 
-		// Token: 0x1700006D RID: 109
-		// (get) Token: 0x06000179 RID: 377 RVA: 0x00006810 File Offset: 0x00004A10
-		// (set) Token: 0x0600017A RID: 378 RVA: 0x00006827 File Offset: 0x00004A27
 		public bool IsProjectFile { get; private set; }
 
-		// Token: 0x1700006E RID: 110
-		// (get) Token: 0x0600017B RID: 379 RVA: 0x00006830 File Offset: 0x00004A30
-		// (set) Token: 0x0600017C RID: 380 RVA: 0x00006847 File Offset: 0x00004A47
 		public bool IsHiddenCompositeFile { get; private set; }
 
-		// Token: 0x0600017D RID: 381 RVA: 0x00006850 File Offset: 0x00004A50
 		public FileCopyInfo(FilePath parentDir, FilePath file)
 		{
 			this.SourcePath = file;
@@ -75,13 +58,11 @@ namespace CocoStudio.Core
 			this.Exists = File.Exists(this.TargetPath);
 		}
 
-		// Token: 0x0600017E RID: 382 RVA: 0x00006974 File Offset: 0x00004B74
 		public override string ToString()
 		{
 			return this.SourcePath;
 		}
 
-		// Token: 0x0600017F RID: 383 RVA: 0x00006994 File Offset: 0x00004B94
 		internal bool Copy(IProgressMonitor monitor)
 		{
 			bool result;
@@ -133,7 +114,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x06000180 RID: 384 RVA: 0x00006B04 File Offset: 0x00004D04
 		private bool CopyCompositeFiles(IProgressMonitor monitor)
 		{
 			if (this.IsComposite && this.PairResources != null)
@@ -173,7 +153,6 @@ namespace CocoStudio.Core
 			return true;
 		}
 
-		// Token: 0x06000181 RID: 385 RVA: 0x00006C94 File Offset: 0x00004E94
 		private string CheckFiles(IEnumerable<string> files)
 		{
 			StringBuilder stringBuilder = new StringBuilder();
@@ -194,7 +173,6 @@ namespace CocoStudio.Core
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x06000182 RID: 386 RVA: 0x00006D3C File Offset: 0x00004F3C
 		private static List<string> ProcessPairResources(string filePath, ICompositeResourceProcesser process)
 		{
 			List<string> result;
@@ -209,7 +187,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x06000183 RID: 387 RVA: 0x00006D64 File Offset: 0x00004F64
 		private string GetNewFileName(string file)
 		{
 			string fileName = Path.GetFileName(file);
@@ -227,7 +204,6 @@ namespace CocoStudio.Core
 			return file;
 		}
 
-		// Token: 0x06000184 RID: 388 RVA: 0x00006DCC File Offset: 0x00004FCC
 		public bool VerifyPath(IProgressMonitor monitor)
 		{
 			monitor.Step(1);
@@ -261,7 +237,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x06000185 RID: 389 RVA: 0x00006ED8 File Offset: 0x000050D8
 		private bool CheckImportDirPath(FilePath path)
 		{
 			List<string> compositeFilterTypes = CompositeProcesserManager.Instance.CompositeFilterTypes;
@@ -293,7 +268,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x06000186 RID: 390 RVA: 0x00006FC0 File Offset: 0x000051C0
 		public int CompareTo(FileCopyInfo other)
 		{
 			int result;
@@ -334,25 +308,19 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x06000187 RID: 391 RVA: 0x00007060 File Offset: 0x00005260
 		public override int GetHashCode()
 		{
 			return this.SourcePath.GetHashCode();
 		}
 
-		// Token: 0x040000DA RID: 218
 		public FilePath SourcePath;
 
-		// Token: 0x040000DB RID: 219
 		public FilePath TargetPath;
 
-		// Token: 0x040000DC RID: 220
 		public bool Exists;
 
-		// Token: 0x040000DD RID: 221
 		public EFileOperate Operate;
 
-		// Token: 0x040000DE RID: 222
 		public List<string> PairResources;
 	}
 }

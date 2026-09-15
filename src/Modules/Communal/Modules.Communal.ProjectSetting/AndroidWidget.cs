@@ -13,11 +13,9 @@ using Stetic;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x0200000D RID: 13
 	[ToolboxItem(true)]
 	public class AndroidWidget : Bin, IProjectSettingWidget
 	{
-		// Token: 0x0600004E RID: 78 RVA: 0x00004E2F File Offset: 0x0000302F
 		public AndroidWidget()
 		{
 			this.Build();
@@ -26,7 +24,6 @@ namespace Modules.Communal.ProjectSetting
 			this.InitMultiLanuage();
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x00004E5C File Offset: 0x0000305C
 		private void InitView()
 		{
 			this.packageParams = PackageServices.Instance.PackageParams;
@@ -93,7 +90,6 @@ namespace Modules.Communal.ProjectSetting
 			labelLinkButton.Show();
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x00005124 File Offset: 0x00003324
 		private void InitEvent()
 		{
 			this.button_browse.Clicked += this.button_browse_Clicked;
@@ -103,7 +99,6 @@ namespace Modules.Communal.ProjectSetting
 			this.radiobutton_privateKeystore.Clicked += this.radiobutton_privateKeystore_Clicked;
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x000051A4 File Offset: 0x000033A4
 		private void InitMultiLanuage()
 		{
 			this.label_keystore.Text = LanguageInfo.Package_Keystore;
@@ -124,7 +119,6 @@ namespace Modules.Communal.ProjectSetting
 			this.button_browse.Label = LanguageInfo.Dialog_ButtonBrowse + "...";
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x000052E3 File Offset: 0x000034E3
 		private void SetEncryptSensitive(bool isSensitive)
 		{
 			this.label_encrypyKey.Sensitive = isSensitive;
@@ -133,7 +127,6 @@ namespace Modules.Communal.ProjectSetting
 			this.entry_encrypySign.Sensitive = isSensitive;
 		}
 
-		// Token: 0x06000053 RID: 83 RVA: 0x00005318 File Offset: 0x00003518
 		private void button_browse_Clicked(object sender, EventArgs e)
 		{
 			SelectFileDialog selectFileDialog = new SelectFileDialog();
@@ -151,7 +144,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000054 RID: 84 RVA: 0x0000538C File Offset: 0x0000358C
 		private void button_new_Clicked(object sender, EventArgs e)
 		{
 			NewKeystoreDialog newKeystoreDialog = new NewKeystoreDialog();
@@ -166,26 +158,21 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000055 RID: 85 RVA: 0x00005409 File Offset: 0x00003609
 		private void checkbutton_encrypt_Clicked(object sender, EventArgs e)
 		{
 			this.SetEncryptSensitive(this.checkbutton_encrypt.Active);
 		}
 
-		// Token: 0x06000056 RID: 86 RVA: 0x0000541C File Offset: 0x0000361C
 		private void radiobutton_debugKeystore_Clicked(object sender, EventArgs e)
 		{
 			this.table_publish.Sensitive = false;
 		}
 
-		// Token: 0x06000057 RID: 87 RVA: 0x0000542A File Offset: 0x0000362A
 		private void radiobutton_privateKeystore_Clicked(object sender, EventArgs e)
 		{
 			this.table_publish.Sensitive = true;
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000058 RID: 88 RVA: 0x00005438 File Offset: 0x00003638
 		public EnumProjectSetting SettingID
 		{
 			get
@@ -194,8 +181,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x06000059 RID: 89 RVA: 0x0000543B File Offset: 0x0000363B
 		public string DisplayName
 		{
 			get
@@ -204,7 +189,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600005A RID: 90 RVA: 0x00005444 File Offset: 0x00003644
 		public void ApplySetting()
 		{
 			if (this.combobox_version.ActiveText != null)
@@ -222,7 +206,6 @@ namespace Modules.Communal.ProjectSetting
 			this.packageParams.IsDebugKeystore = this.radiobutton_debugKeystore.Active;
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x0000553C File Offset: 0x0000373C
 		public bool CanApply(out string output)
 		{
 			if (this.radiobutton_privateKeystore.Active)
@@ -276,14 +259,11 @@ namespace Modules.Communal.ProjectSetting
 			return true;
 		}
 
-		// Token: 0x0600005C RID: 92 RVA: 0x0000567E File Offset: 0x0000387E
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x0600005D RID: 93 RVA: 0x00005681 File Offset: 0x00003881
 		public List<IProjectSettingWidget> SubWidgets
 		{
 			get
@@ -292,7 +272,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600005E RID: 94 RVA: 0x00005684 File Offset: 0x00003884
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -629,118 +608,80 @@ namespace Modules.Communal.ProjectSetting
 			base.Hide();
 		}
 
-		// Token: 0x04000053 RID: 83
 		private string helpLinkUrl = "http://www.cocos2d-x.org/wiki/Cocos_compile#Attentions";
 
-		// Token: 0x04000054 RID: 84
 		private PackageParams packageParams;
 
-		// Token: 0x04000055 RID: 85
 		private VBox vbox_main;
 
-		// Token: 0x04000056 RID: 86
 		private Frame frame_publish;
 
-		// Token: 0x04000057 RID: 87
 		private Alignment GtkAlignment_publish;
 
-		// Token: 0x04000058 RID: 88
 		private VBox vbox5;
 
-		// Token: 0x04000059 RID: 89
 		private HBox hbox1;
 
-		// Token: 0x0400005A RID: 90
 		private RadioButton radiobutton_debugKeystore;
 
-		// Token: 0x0400005B RID: 91
 		private RadioButton radiobutton_privateKeystore;
 
-		// Token: 0x0400005C RID: 92
 		private Table table_publish;
 
-		// Token: 0x0400005D RID: 93
 		private Entry entry_keystorealias;
 
-		// Token: 0x0400005E RID: 94
 		private PassWordEntry entry_keystorealiaspassword;
 
-		// Token: 0x0400005F RID: 95
 		private PassWordEntry entry_keystorepassword;
 
-		// Token: 0x04000060 RID: 96
 		private HBox hbox_keystone;
 
-		// Token: 0x04000061 RID: 97
 		private Entry entry_keystone;
 
-		// Token: 0x04000062 RID: 98
 		private Button button_browse;
 
-		// Token: 0x04000063 RID: 99
 		private Button button_new;
 
-		// Token: 0x04000064 RID: 100
 		private Label label_keystore;
 
-		// Token: 0x04000065 RID: 101
 		private Label label_keystorealias;
 
-		// Token: 0x04000066 RID: 102
 		private Label label_keystorealiaspassword;
 
-		// Token: 0x04000067 RID: 103
 		private Label label_keystorepassword;
 
-		// Token: 0x04000068 RID: 104
 		private Label GtkLabel_publish;
 
-		// Token: 0x04000069 RID: 105
 		private Frame frame_publish1;
 
-		// Token: 0x0400006A RID: 106
 		private Alignment GtkAlignment_publish1;
 
-		// Token: 0x0400006B RID: 107
 		private Table table_buildOption;
 
-		// Token: 0x0400006C RID: 108
 		private CheckButton checkbutton_encrypt;
 
-		// Token: 0x0400006D RID: 109
 		private ComboBox combobox_version;
 
-		// Token: 0x0400006E RID: 110
 		private Entry entry_encrypyKey;
 
-		// Token: 0x0400006F RID: 111
 		private Entry entry_encrypySign;
 
-		// Token: 0x04000070 RID: 112
 		private Entry entry_package;
 
-		// Token: 0x04000071 RID: 113
 		private HBox hbox_prompt;
 
-		// Token: 0x04000072 RID: 114
 		private Label label_attention1;
 
-		// Token: 0x04000073 RID: 115
 		private EventBox eventbox_link1;
 
-		// Token: 0x04000074 RID: 116
 		private Label label_encrypyKey;
 
-		// Token: 0x04000075 RID: 117
 		private Label label_encrypySign;
 
-		// Token: 0x04000076 RID: 118
 		private Label label_package;
 
-		// Token: 0x04000077 RID: 119
 		private Label label_version;
 
-		// Token: 0x04000078 RID: 120
 		private Label GtkLabel_publish1;
 	}
 }

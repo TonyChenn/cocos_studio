@@ -4,10 +4,8 @@ using CocoStudio.Model.ViewModel;
 
 namespace Modules.Communal.Render.Model
 {
-	// Token: 0x02000027 RID: 39
 	internal static class GuidesHitTestHelp
 	{
-		// Token: 0x0600014D RID: 333 RVA: 0x000085D0 File Offset: 0x000067D0
 		public static GuidesObject HitTest(GuidesList list, float position)
 		{
 			GuidesHitTestHelp.guidesObjectEmpty.Position = position;
@@ -24,7 +22,6 @@ namespace Modules.Communal.Render.Model
 			return result;
 		}
 
-		// Token: 0x0600014E RID: 334 RVA: 0x00008614 File Offset: 0x00006814
 		public static DockGuidesResult GetDockGuides(GuidesList list, float position)
 		{
 			DockGuidesResult result;
@@ -55,7 +52,6 @@ namespace Modules.Communal.Render.Model
 			return result;
 		}
 
-		// Token: 0x0600014F RID: 335 RVA: 0x000086B8 File Offset: 0x000068B8
 		private static GuidesObject SearchNearestGuides(GuidesList list, float position)
 		{
 			int num = 0;
@@ -104,22 +100,16 @@ namespace Modules.Communal.Render.Model
 			return guidesObject;
 		}
 
-		// Token: 0x04000056 RID: 86
 		private const float valueBound = 3f;
 
-		// Token: 0x04000057 RID: 87
 		private const float dockBound = 10f;
 
-		// Token: 0x04000058 RID: 88
 		private static GuidesHitTestHelp.HitTestCompare hitTestCompare = new GuidesHitTestHelp.HitTestCompare();
 
-		// Token: 0x04000059 RID: 89
 		private static GuidesHitTestHelp.GuidesObjectEmpty guidesObjectEmpty = new GuidesHitTestHelp.GuidesObjectEmpty();
 
-		// Token: 0x02000028 RID: 40
 		private sealed class HitTestCompare : IComparer<GuidesObject>
 		{
-			// Token: 0x06000150 RID: 336 RVA: 0x000087D4 File Offset: 0x000069D4
 			public int Compare(GuidesObject x, GuidesObject y)
 			{
 				float num = x.Position - y.Position;
@@ -141,12 +131,8 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x02000029 RID: 41
 		private sealed class GuidesObjectEmpty : GuidesObject
 		{
-			// Token: 0x17000033 RID: 51
-			// (get) Token: 0x06000152 RID: 338 RVA: 0x00008840 File Offset: 0x00006A40
-			// (set) Token: 0x06000153 RID: 339 RVA: 0x00008857 File Offset: 0x00006A57
 			public override float Position { get; set; }
 		}
 	}

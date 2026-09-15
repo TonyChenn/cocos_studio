@@ -9,11 +9,9 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Core.ExtensionModel
 {
-	// Token: 0x02000004 RID: 4
 	[ExtensionNode(Description = "Mono中的CommandCodon与CommandItemCodon的合并形式")]
 	internal class CmdEntryCodon : InstanceExtensionNode
 	{
-		// Token: 0x0600000E RID: 14 RVA: 0x000029A0 File Offset: 0x00000BA0
 		public override object CreateInstance()
 		{
 			object result;
@@ -43,7 +41,6 @@ namespace CocoStudio.Core.ExtensionModel
 			return result;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00002A30 File Offset: 0x00000C30
 		private Command CreateCommand()
 		{
 			ActionType actionType = ActionType.Normal;
@@ -201,7 +198,6 @@ namespace CocoStudio.Core.ExtensionModel
 			return command;
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002E4C File Offset: 0x0000104C
 		internal static object ParseCommandId(ExtensionNode codon)
 		{
 			string id = codon.Id;
@@ -217,52 +213,40 @@ namespace CocoStudio.Core.ExtensionModel
 			return result;
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x00002E84 File Offset: 0x00001084
 		internal static string GetStockId(RuntimeAddin addin, string icon)
 		{
 			return icon;
 		}
 
-		// Token: 0x04000020 RID: 32
 		[NodeAttribute("label", "Label", Localizable = true)]
 		private string label;
 
-		// Token: 0x04000021 RID: 33
 		[NodeAttribute("description", "Description of the command", Localizable = true)]
 		private string description;
 
-		// Token: 0x04000022 RID: 34
 		[NodeAttribute("shortcut", "Key combination that triggers the command. Control, Alt, Meta, Super and Shift modifiers can be specified using '+' as a separator. Multi-state key bindings can be specified using a '|' between the mode and accel. For example 'Control+D' or 'Control+X|Control+S'")]
 		private string shortcut;
 
-		// Token: 0x04000023 RID: 35
 		[NodeAttribute("macShortcut", "Mac version of the shortcut. Format is that same as 'shortcut', but the 'Meta' modifier corresponds to the Command key.")]
 		private string macShortcut;
 
-		// Token: 0x04000024 RID: 36
 		[NodeAttribute("winShortcut", "Win version of the shortcut. Format is that same as 'shortcut'.")]
 		private string winShortcut;
 
-		// Token: 0x04000025 RID: 37
 		[NodeAttribute("disabledVisible", "Set to 'false' if the command has to be hidden when disabled. 'true' by default.")]
 		private bool disabledVisible = true;
 
-		// Token: 0x04000026 RID: 38
 		[NodeAttribute("type", "Type of the command. It can be: normal (the default), check, radio or array.")]
 		private string type = "normal";
 
-		// Token: 0x04000027 RID: 39
 		[NodeAttribute("handler", "Class that handles this command. This property is optional.")]
 		private string handler;
 
-		// Token: 0x04000028 RID: 40
 		[NodeAttribute("isInternal", "是否使用编辑器内部使用的命令")]
 		private bool isInternal = false;
 
-		// Token: 0x04000029 RID: 41
 		private string icon;
 
-		// Token: 0x0400002A RID: 42
 		private string widget = null;
 	}
 }

@@ -13,10 +13,8 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.Publish
 {
-	// Token: 0x02000005 RID: 5
 	internal class PublishHelper
 	{
-		// Token: 0x0600000D RID: 13 RVA: 0x00002624 File Offset: 0x00000824
 		static PublishHelper()
 		{
 			for (int i = 15; i >= 10; i--)
@@ -26,13 +24,11 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x0000266A File Offset: 0x0000086A
 		internal static bool HasSolution()
 		{
 			return Services.ProjectOperations.CurrentSelectedSolution != null;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x0000267C File Offset: 0x0000087C
 		internal static bool CanPublishToCocosCodeIDE()
 		{
 			if (Services.ProjectOperations.CurrentSelectedSolution == null)
@@ -43,19 +39,16 @@ namespace Modules.Communal.Publish
 			return cocosProperties.SolutionCodeType != EnumSolutionCodeType.Complete || cocosProperties.ProgramLanguage != EnumProgramLanguage.cpp;
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x000026B1 File Offset: 0x000008B1
 		internal static bool CanPublishToVS()
 		{
 			return Services.ProjectOperations.CurrentSelectedSolution != null && Platform.IsWindows;
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x000026C6 File Offset: 0x000008C6
 		internal static bool CanPublishToXcode()
 		{
 			return Services.ProjectOperations.CurrentSelectedSolution != null && Platform.IsMac;
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x000026DC File Offset: 0x000008DC
 		internal static void OpenProjectWithVisualStudio()
 		{
 			Solution currentSolution = Services.ProjectsService.CurrentSolution;
@@ -155,7 +148,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002978 File Offset: 0x00000B78
 		internal static void OpenProjectWithXcode()
 		{
 			Solution currentSolution = Services.ProjectsService.CurrentSolution;
@@ -202,7 +194,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x00002A64 File Offset: 0x00000C64
 		private static string GetWinProjectDir(Solution sln)
 		{
 			string directoryName = Path.GetDirectoryName(sln.ItemDirectory);
@@ -226,7 +217,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x00002AF8 File Offset: 0x00000CF8
 		private static string GetMacProjectDir(Solution sln)
 		{
 			string directoryName = Path.GetDirectoryName(sln.ItemDirectory);
@@ -250,16 +240,12 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x0400000B RID: 11
 		private const string Uri_Xcode = "https://developer.apple.com/cn/xcode/";
 
-		// Token: 0x0400000C RID: 12
 		private const string InstallDir_Xcode = "/Applications/Xcode.app";
 
-		// Token: 0x0400000D RID: 13
 		private const string Uri_VisualStudio = "http://www.visualstudio.com/";
 
-		// Token: 0x0400000E RID: 14
 		private static List<string> VsRegistKeys = new List<string>();
 	}
 }

@@ -9,10 +9,8 @@ using Stetic;
 
 namespace Modules.Communal.Publish
 {
-	// Token: 0x0200000C RID: 12
 	public class PublishProcessDialog : Dialog
 	{
-		// Token: 0x06000050 RID: 80 RVA: 0x00004FA3 File Offset: 0x000031A3
 		public PublishProcessDialog()
 		{
 			this.Build();
@@ -20,7 +18,6 @@ namespace Modules.Communal.Publish
 			this.label_desc.Text = LanguageInfo.Run_NowRunning;
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x00004FCC File Offset: 0x000031CC
 		public void StartRunning(CocosMonitor monitor)
 		{
 			bool modal = false;
@@ -40,7 +37,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x0000503C File Offset: 0x0000323C
 		private bool RefreshUI(CocosMonitor monitor)
 		{
 			if (this.hasStopped)
@@ -61,7 +57,6 @@ namespace Modules.Communal.Publish
 			return false;
 		}
 
-		// Token: 0x06000053 RID: 83 RVA: 0x00005094 File Offset: 0x00003294
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -123,22 +118,16 @@ namespace Modules.Communal.Publish
 			base.Hide();
 		}
 
-		// Token: 0x0400003F RID: 63
 		private bool hasStopped;
 
-		// Token: 0x04000040 RID: 64
 		private Alignment alignment_main;
 
-		// Token: 0x04000041 RID: 65
 		private VBox vbox_main;
 
-		// Token: 0x04000042 RID: 66
 		private Label label_desc;
 
-		// Token: 0x04000043 RID: 67
 		private ProgressBar progressbar_main;
 
-		// Token: 0x04000044 RID: 68
 		private Alignment alignment_dummyBtn;
 	}
 }

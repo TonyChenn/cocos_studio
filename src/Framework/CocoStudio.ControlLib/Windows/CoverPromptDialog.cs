@@ -10,15 +10,10 @@ using Stetic;
 
 namespace CocoStudio.ControlLib.Windows
 {
-	// Token: 0x0200000A RID: 10
 	public class CoverPromptDialog : Dialog
 	{
-		// Token: 0x14000002 RID: 2
-		// (add) Token: 0x06000036 RID: 54 RVA: 0x00003760 File Offset: 0x00001960
-		// (remove) Token: 0x06000037 RID: 55 RVA: 0x0000379C File Offset: 0x0000199C
 		public event EventHandler ConfirmClickHandler;
 
-		// Token: 0x06000038 RID: 56 RVA: 0x000037D8 File Offset: 0x000019D8
 		public CoverPromptDialog(string folderPath = "")
 		{
 			this.Build();
@@ -36,7 +31,6 @@ namespace CocoStudio.ControlLib.Windows
 			this.radiobutton_ChangeFolder.UseUnderline = false;
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x000038C8 File Offset: 0x00001AC8
 		private void ChangeBtnPosion()
 		{
 			if (!Platform.IsMac)
@@ -49,7 +43,6 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x0000391C File Offset: 0x00001B1C
 		private void Init()
 		{
 			base.AllowGrow = false;
@@ -60,14 +53,12 @@ namespace CocoStudio.ControlLib.Windows
 			this.buttonOk.GrabDefault();
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x00003979 File Offset: 0x00001B79
 		private void InitEvent()
 		{
 			this.buttonCancel.Clicked += this.button_Cancel_Click;
 			this.buttonOk.Clicked += this.button_OK_Click;
 		}
 
-		// Token: 0x0600003C RID: 60 RVA: 0x000039AC File Offset: 0x00001BAC
 		private void ChengeExportFolderName()
 		{
 			string text = string.Format("{0}_{1}", this.oldExportFolderName, this.order);
@@ -76,7 +67,6 @@ namespace CocoStudio.ControlLib.Windows
 			this.FileExistJudge(newExportFolderPath, text);
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x000039F4 File Offset: 0x00001BF4
 		private void FileExistJudge(string newExportFolderPath, string newfolderName)
 		{
 			if (Directory.Exists(newExportFolderPath))
@@ -91,7 +81,6 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00003A38 File Offset: 0x00001C38
 		private void button_OK_Click(object sender, EventArgs e)
 		{
 			if (this.ConfirmClickHandler != null)
@@ -107,14 +96,12 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x00003A8F File Offset: 0x00001C8F
 		private void button_Cancel_Click(object sender, EventArgs e)
 		{
 			this.IsCanceled = true;
 			this.Destroy();
 		}
 
-		// Token: 0x06000040 RID: 64 RVA: 0x00003AA0 File Offset: 0x00001CA0
 		public void readLanuageConfigFile()
 		{
 			this.radiobutton_CoverFolder.Label = LanguageInfo.RadioButton_CoverFolder_Content;
@@ -122,7 +109,6 @@ namespace CocoStudio.ControlLib.Windows
 			this.buttonCancel.Label = LanguageInfo.Dialog_ButtonCancel;
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x00003AD8 File Offset: 0x00001CD8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -209,40 +195,28 @@ namespace CocoStudio.ControlLib.Windows
 			base.Show();
 		}
 
-		// Token: 0x04000028 RID: 40
 		public string newExportFolderName = string.Empty;
 
-		// Token: 0x04000029 RID: 41
 		public string oldExportFolderName = string.Empty;
 
-		// Token: 0x0400002A RID: 42
 		public int order = 1;
 
-		// Token: 0x0400002B RID: 43
 		public string oldFolderPath = string.Empty;
 
-		// Token: 0x0400002C RID: 44
 		public string newFolderPath = string.Empty;
 
-		// Token: 0x0400002D RID: 45
 		public bool IsCanceled = false;
 
-		// Token: 0x0400002E RID: 46
 		private VBox vbox2;
 
-		// Token: 0x0400002F RID: 47
 		private Label label_Prompt;
 
-		// Token: 0x04000030 RID: 48
 		private RadioButton radiobutton_CoverFolder;
 
-		// Token: 0x04000031 RID: 49
 		private RadioButton radiobutton_ChangeFolder;
 
-		// Token: 0x04000032 RID: 50
 		private Button buttonCancel;
 
-		// Token: 0x04000033 RID: 51
 		private Button buttonOk;
 	}
 }

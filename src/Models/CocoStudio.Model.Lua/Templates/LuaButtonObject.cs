@@ -4,31 +4,26 @@ using CocoStudio.Model.DataModel;
 
 namespace CocoStudio.Model.Lua.Templates
 {
-	// Token: 0x02000015 RID: 21
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaButtonObject : LuaWidgetObject
 	{
-		// Token: 0x0600008A RID: 138 RVA: 0x0000484C File Offset: 0x00002A4C
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x0600008B RID: 139 RVA: 0x00004864 File Offset: 0x00002A64
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(ButtonObjectData) == objectData.GetType();
 		}
 
-		// Token: 0x0600008C RID: 140 RVA: 0x00004888 File Offset: 0x00002A88
 		protected override void OnCreateObject(BaseObjectData objectData)
 		{
 			base.Write(base.ToStringHelper.ToStringWithCulture(base.GetNameDeclaration(objectData.Name)));
 			base.Write(" = ccui.Button:create()\r\n");
 		}
 
-		// Token: 0x0600008D RID: 141 RVA: 0x000048B4 File Offset: 0x00002AB4
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			ButtonObjectData buttonObjectData = objectData as ButtonObjectData;

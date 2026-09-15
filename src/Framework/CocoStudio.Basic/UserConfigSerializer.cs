@@ -6,16 +6,13 @@ using MonoDevelop.Core.Serialization;
 
 namespace CocoStudio.Basic
 {
-	// Token: 0x0200000E RID: 14
 	internal class UserConfigSerializer
 	{
-		// Token: 0x06000083 RID: 131 RVA: 0x0000397E File Offset: 0x00001B7E
 		static UserConfigSerializer()
 		{
 			UserConfigSerializer.CollectIUserConfigType();
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x00003988 File Offset: 0x00001B88
 		private static void CollectIUserConfigType()
 		{
 			UserConfigSerializer.userConfigTypeList = new HashSet<Type>();
@@ -28,7 +25,6 @@ namespace CocoStudio.Basic
 			AddinManager.AddExtensionNodeHandler(typeof(IUserConfig), new ExtensionNodeEventHandler(UserConfigSerializer.OnUserConfigModelExtensionChange));
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x00003A2C File Offset: 0x00001C2C
 		private static void OnUserConfigModelExtensionChange(object sender, ExtensionNodeEventArgs args)
 		{
 			TypeExtensionNode typeExtensionNode = args.ExtensionNode as TypeExtensionNode;
@@ -38,7 +34,6 @@ namespace CocoStudio.Basic
 			}
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x00003A70 File Offset: 0x00001C70
 		public static UserConfigService ReadFile(FilePath filePath)
 		{
 			XmlDataSerializer serializer = UserConfigSerializer.GetSerializer(filePath);
@@ -60,7 +55,6 @@ namespace CocoStudio.Basic
 			return result;
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x00003AE4 File Offset: 0x00001CE4
 		public static void WriteFile(FilePath filePath, UserConfigService configData)
 		{
 			XmlDataSerializer serializer = UserConfigSerializer.GetSerializer(filePath);
@@ -70,7 +64,6 @@ namespace CocoStudio.Basic
 			}
 		}
 
-		// Token: 0x06000088 RID: 136 RVA: 0x00003B14 File Offset: 0x00001D14
 		private static XmlDataSerializer GetSerializer(FilePath filePath)
 		{
 			XmlDataSerializer result;
@@ -94,10 +87,8 @@ namespace CocoStudio.Basic
 			return result;
 		}
 
-		// Token: 0x04000056 RID: 86
 		private static HashSet<Type> userConfigTypeList;
 
-		// Token: 0x04000057 RID: 87
 		private static XmlDataSerializer configSerializer;
 	}
 }

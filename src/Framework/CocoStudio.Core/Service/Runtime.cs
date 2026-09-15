@@ -14,11 +14,8 @@ using MonoDevelop.Ide.Gui;
 
 namespace CocoStudio.Core.Service
 {
-	// Token: 0x02000036 RID: 54
 	public static class Runtime
 	{
-		// Token: 0x17000088 RID: 136
-		// (get) Token: 0x060001FE RID: 510 RVA: 0x0000978C File Offset: 0x0000798C
 		public static ProcessService ProcessService
 		{
 			get
@@ -27,7 +24,6 @@ namespace CocoStudio.Core.Service
 			}
 		}
 
-		// Token: 0x060001FF RID: 511 RVA: 0x000097A4 File Offset: 0x000079A4
 		public static void Initialize(string configDir, string addinsDir)
 		{
 			if (!Runtime.initialized)
@@ -43,7 +39,6 @@ namespace CocoStudio.Core.Service
 			}
 		}
 
-		// Token: 0x06000200 RID: 512 RVA: 0x0000980C File Offset: 0x00007A0C
 		private static void InitializeAddins(string configDir, string addinsDir)
 		{
 			AddinManager.AddinLoadError += Runtime.OnLoadError;
@@ -99,24 +94,20 @@ namespace CocoStudio.Core.Service
 			while (flag);
 		}
 
-		// Token: 0x06000201 RID: 513 RVA: 0x00009994 File Offset: 0x00007B94
 		private static void OnLoadError(object s, AddinErrorEventArgs args)
 		{
 			string message = "Add-in error (" + args.AddinId + "): " + args.Message;
 			LogConfig.Logger.Error(message, args.Exception);
 		}
 
-		// Token: 0x06000202 RID: 514 RVA: 0x000099D0 File Offset: 0x00007BD0
 		private static void OnLoad(object s, AddinEventArgs args)
 		{
 		}
 
-		// Token: 0x06000203 RID: 515 RVA: 0x000099D3 File Offset: 0x00007BD3
 		private static void OnUnload(object s, AddinEventArgs args)
 		{
 		}
 
-		// Token: 0x06000204 RID: 516 RVA: 0x000099D8 File Offset: 0x00007BD8
 		private static void DeleteConfigDirectory(string configDir)
 		{
 			int i = 0;
@@ -135,10 +126,8 @@ namespace CocoStudio.Core.Service
 			}
 		}
 
-		// Token: 0x04000114 RID: 276
 		private static SystemAssemblyService systemAssemblyService;
 
-		// Token: 0x04000115 RID: 277
 		private static bool initialized;
 	}
 }

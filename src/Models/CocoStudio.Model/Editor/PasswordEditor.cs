@@ -7,10 +7,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000093 RID: 147
 	internal class PasswordEditor : BaseEditor
 	{
-		// Token: 0x0600050A RID: 1290 RVA: 0x00015C2C File Offset: 0x00013E2C
 		protected override Widget OnCreateWidget()
 		{
 			this.checkBtn = new CheckButton();
@@ -38,7 +36,6 @@ namespace CocoStudio.Model.Editor
 			return hbox2;
 		}
 
-		// Token: 0x0600050B RID: 1291 RVA: 0x00015D64 File Offset: 0x00013F64
 		protected override void OnSetControl()
 		{
 			PasswordValue value = base.PropertyItem.GetValue<PasswordValue>(0);
@@ -46,7 +43,6 @@ namespace CocoStudio.Model.Editor
 			this.passwordTxtEntry.Text = (this.lastText = value.PasswordStyleText);
 		}
 
-		// Token: 0x0600050C RID: 1292 RVA: 0x00015DBC File Offset: 0x00013FBC
 		private void SetPasswordTextStyle(string textStyle)
 		{
 			if (!string.IsNullOrEmpty(textStyle))
@@ -69,7 +65,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600050D RID: 1293 RVA: 0x00015E50 File Offset: 0x00014050
 		private void EntryFocusOutHandler(object o, FocusOutEventArgs args)
 		{
 			if (string.IsNullOrEmpty(this.passwordTxtEntry.Text))
@@ -82,7 +77,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600050E RID: 1294 RVA: 0x00015E9C File Offset: 0x0001409C
 		private void EntryKeyReleaseHandler(object o, KeyReleaseEventArgs args)
 		{
 			if (KeyboardExtend.IsEnterKey(args.Event.Key))
@@ -91,7 +85,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600050F RID: 1295 RVA: 0x00015ED8 File Offset: 0x000140D8
 		private void CheckButtonToggledHandler(object sender, EventArgs e)
 		{
 			PasswordValue value = base.PropertyItem.GetValue<PasswordValue>(0);
@@ -100,13 +93,10 @@ namespace CocoStudio.Model.Editor
 			base.UpdatePropertyValue(value, null);
 		}
 
-		// Token: 0x0400024F RID: 591
 		private CheckButton checkBtn;
 
-		// Token: 0x04000250 RID: 592
 		private NoUndoEntry passwordTxtEntry;
 
-		// Token: 0x04000251 RID: 593
 		private string lastText = string.Empty;
 	}
 }

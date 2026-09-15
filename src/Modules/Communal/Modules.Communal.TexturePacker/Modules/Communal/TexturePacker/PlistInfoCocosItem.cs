@@ -22,13 +22,10 @@ using MonoDevelop.Core.Serialization;
 
 namespace Modules.Communal.TexturePacker
 {
-	// Token: 0x0200000B RID: 11
 	[Extension(typeof(IResource))]
 	[DataItem("PlistInfo")]
 	public class PlistInfoCocosItem : CocosItem
 	{
-		// Token: 0x17000020 RID: 32
-		// (get) Token: 0x0600007C RID: 124 RVA: 0x00003EC9 File Offset: 0x000020C9
 		public PlistInfoModel PlistInfoModel
 		{
 			get
@@ -37,8 +34,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000021 RID: 33
-		// (get) Token: 0x0600007D RID: 125 RVA: 0x00003EDB File Offset: 0x000020DB
 		public override bool IsAutoInitialize
 		{
 			get
@@ -47,36 +42,30 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x0600007E RID: 126 RVA: 0x00003EDE File Offset: 0x000020DE
 		private PlistInfoCocosItem()
 		{
 		}
 
-		// Token: 0x0600007F RID: 127 RVA: 0x00003EE6 File Offset: 0x000020E6
 		public PlistInfoCocosItem(FilePath file) : base(file)
 		{
 		}
 
-		// Token: 0x06000080 RID: 128 RVA: 0x00003EEF File Offset: 0x000020EF
 		public PlistInfoCocosItem(FilePath file, CocosFile cocosFile) : base(file, cocosFile)
 		{
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x00003EF9 File Offset: 0x000020F9
 		protected override void OnDelete(IProgressMonitor monitor)
 		{
 			this.UnPackItem();
 			base.OnDelete(monitor);
 		}
 
-		// Token: 0x06000082 RID: 130 RVA: 0x00003F08 File Offset: 0x00002108
 		protected override void OnRemove(IProgressMonitor monitor)
 		{
 			this.UnPackItem();
 			base.OnRemove(monitor);
 		}
 
-		// Token: 0x06000083 RID: 131 RVA: 0x00003F18 File Offset: 0x00002118
 		private void UnPackItem()
 		{
 			if (base.CocosFile == null)
@@ -93,7 +82,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x00003F98 File Offset: 0x00002198
 		protected override void OnSetLocation(FilePath newFilePath, bool isRename = true)
 		{
 			if (base.CocosFile == null)
@@ -116,7 +104,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x00004028 File Offset: 0x00002228
 		protected override void OnMove(FilePath newMovePath)
 		{
 			if (base.CocosFile == null)
@@ -139,7 +126,6 @@ namespace Modules.Communal.TexturePacker
 			base.OnMove(newMovePath);
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x000040B8 File Offset: 0x000022B8
 		protected override void OnPublish(IProgressMonitor monitor, PublishInfo info)
 		{
 			bool flag = this.PlistInfoModel != null;
@@ -188,7 +174,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x00004294 File Offset: 0x00002494
 		public string GetExportPathWithoutExtension(string exportPath, bool combineRelativePath = true)
 		{
 			string relativePath = base.RelativePath;
@@ -205,7 +190,6 @@ namespace Modules.Communal.TexturePacker
 			return Path.Combine(text, fileNameWithoutExtension);
 		}
 
-		// Token: 0x06000088 RID: 136 RVA: 0x00004348 File Offset: 0x00002548
 		public void ExportPlist(IProgressMonitor monitor, string exportPath, bool combineRelativePath = true)
 		{
 			this.maxSize = this.PlistInfoModel.RealSize;
@@ -279,7 +263,6 @@ namespace Modules.Communal.TexturePacker
 			System.GC.Collect();
 		}
 
-		// Token: 0x06000089 RID: 137 RVA: 0x000045C4 File Offset: 0x000027C4
 		private static string ConvertPlistPngToExport(PlistInfoModel model, string path)
 		{
 			switch (model.ExportType)
@@ -294,7 +277,6 @@ namespace Modules.Communal.TexturePacker
 			return path;
 		}
 
-		// Token: 0x0600008A RID: 138 RVA: 0x00004608 File Offset: 0x00002808
 		private void SaveImage(PlistInfoModel model, Pixbuf imageFile, string path)
 		{
 			path = PlistInfoCocosItem.ConvertPlistPngToExport(model, path);
@@ -311,7 +293,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x0600008B RID: 139 RVA: 0x00004650 File Offset: 0x00002850
 		private void SavePlist(PlistInfoModel model, string path)
 		{
 			List<ImageInfo> list = new List<ImageInfo>();
@@ -331,13 +312,10 @@ namespace Modules.Communal.TexturePacker
 			plistRoot.Save(path, PListFormat.Xml);
 		}
 
-		// Token: 0x04000031 RID: 49
 		public const string PlistCocosFileSuffix = ".csi";
 
-		// Token: 0x04000032 RID: 50
 		private static readonly object lockTag = new object();
 
-		// Token: 0x04000033 RID: 51
 		private SizeValue maxSize;
 	}
 }

@@ -14,10 +14,8 @@ using Stetic;
 
 namespace Modules.Communal.Publish
 {
-	// Token: 0x0200000B RID: 11
 	public class PublishPackageWindow : Gtk.Window
 	{
-		// Token: 0x0600003F RID: 63 RVA: 0x00003D01 File Offset: 0x00001F01
 		public PublishPackageWindow() : base(Gtk.WindowType.Toplevel)
 		{
 			this.Build();
@@ -26,7 +24,6 @@ namespace Modules.Communal.Publish
 			this.InitStyle();
 		}
 
-		// Token: 0x06000040 RID: 64 RVA: 0x00003D24 File Offset: 0x00001F24
 		private void InitWidget()
 		{
 			if (CocosRecentServices.Instance.IsLastPublish)
@@ -52,7 +49,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x00003DD8 File Offset: 0x00001FD8
 		private void InitPublishWidget()
 		{
 			switch (CocosRecentServices.Instance.LastPublishType)
@@ -83,7 +79,6 @@ namespace Modules.Communal.Publish
 			this.radiobutton_publsihXcode.Sensitive = PublishHelper.CanPublishToXcode();
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x00003EA0 File Offset: 0x000020A0
 		private void InitPackageWidget()
 		{
 			PackageParams packageParams = Cocos2dxServices.PackageServices.PackageParams;
@@ -101,7 +96,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x00003F54 File Offset: 0x00002154
 		private void InitEvent()
 		{
 			base.KeyPressEvent += this.HandleKeyPressed;
@@ -113,7 +107,6 @@ namespace Modules.Communal.Publish
 			this.button_packageSetting.Clicked += this.HandlePackageSettingClicked;
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x00004000 File Offset: 0x00002200
 		private void InitStyle()
 		{
 			base.Title = LanguageInfo.Menu_Project_PublishPackage;
@@ -133,7 +126,6 @@ namespace Modules.Communal.Publish
 			this.SetToDialogStyle(null, true, true, true);
 		}
 
-		// Token: 0x06000045 RID: 69 RVA: 0x00004108 File Offset: 0x00002308
 		private bool CheckValidity()
 		{
 			if (this.radiobutton_package.Active)
@@ -157,7 +149,6 @@ namespace Modules.Communal.Publish
 			return true;
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x00004188 File Offset: 0x00002388
 		private void Run()
 		{
 			if (!this.CheckValidity())
@@ -169,7 +160,6 @@ namespace Modules.Communal.Publish
 			GlobalCommand.PublishPackageLastCmd.RaiseExecute(null);
 		}
 
-		// Token: 0x06000047 RID: 71 RVA: 0x000041AC File Offset: 0x000023AC
 		private void SaveUserData()
 		{
 			if (this.radiobutton_publish.Active)
@@ -209,20 +199,17 @@ namespace Modules.Communal.Publish
 			CocosRecentServices.Instance.IsLastPublish = false;
 		}
 
-		// Token: 0x06000048 RID: 72 RVA: 0x00004294 File Offset: 0x00002494
 		private void Close()
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x06000049 RID: 73 RVA: 0x0000429C File Offset: 0x0000249C
 		private void HandleRadioButtonToggled(object sender, EventArgs e)
 		{
 			this.frame_publish.Sensitive = this.radiobutton_publish.Active;
 			this.frame_package.Sensitive = this.radiobutton_package.Active;
 		}
 
-		// Token: 0x0600004A RID: 74 RVA: 0x000042CC File Offset: 0x000024CC
 		[ConnectBefore]
 		private void HandleKeyPressed(object o, KeyPressEventArgs args)
 		{
@@ -238,31 +225,26 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x00004302 File Offset: 0x00002502
 		private void HandlePackageSettingClicked(object sender, EventArgs e)
 		{
 			GlobalCommand.ProjectSettingCmd.RaiseExecute(EnumProjectSetting.Package);
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x00004314 File Offset: 0x00002514
 		private void HandlePublishSettingClicked(object sender, EventArgs e)
 		{
 			GlobalCommand.ProjectSettingCmd.RaiseExecute(EnumProjectSetting.Publish);
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x00004326 File Offset: 0x00002526
 		private void HandleButtonCancelClicked(object sender, EventArgs e)
 		{
 			this.Close();
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x0000432E File Offset: 0x0000252E
 		private void HandleButtonOKClicked(object sender, EventArgs e)
 		{
 			this.Run();
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x00004338 File Offset: 0x00002538
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -495,88 +477,60 @@ namespace Modules.Communal.Publish
 			base.Hide();
 		}
 
-		// Token: 0x04000023 RID: 35
 		private Dictionary<CheckButton, EnumPlatform> checkBtnPlatformDictionary;
 
-		// Token: 0x04000024 RID: 36
 		private Alignment alignment_main;
 
-		// Token: 0x04000025 RID: 37
 		private VBox vbox_main;
 
-		// Token: 0x04000026 RID: 38
 		private RadioButton radiobutton_publish;
 
-		// Token: 0x04000027 RID: 39
 		private Alignment alignment_publish;
 
-		// Token: 0x04000028 RID: 40
 		private Frame frame_publish;
 
-		// Token: 0x04000029 RID: 41
 		private Alignment GtkAlignment;
 
-		// Token: 0x0400002A RID: 42
 		private HBox hbox_publish;
 
-		// Token: 0x0400002B RID: 43
 		private VBox vbox_publishMode;
 
-		// Token: 0x0400002C RID: 44
 		private RadioButton radiobutton_publishRes;
 
-		// Token: 0x0400002D RID: 45
 		private RadioButton radiobutton_publishIDE;
 
-		// Token: 0x0400002E RID: 46
 		private RadioButton radiobutton_publishVS;
 
-		// Token: 0x0400002F RID: 47
 		private RadioButton radiobutton_publsihXcode;
 
-		// Token: 0x04000030 RID: 48
 		private VBox vbox_publishSetting;
 
-		// Token: 0x04000031 RID: 49
 		private Button button_publishSetting;
 
-		// Token: 0x04000032 RID: 50
 		private Label GtkLabel_publishMode1;
 
-		// Token: 0x04000033 RID: 51
 		private RadioButton radiobutton_package;
 
-		// Token: 0x04000034 RID: 52
 		private Alignment alignment_package;
 
-		// Token: 0x04000035 RID: 53
 		private Frame frame_package;
 
-		// Token: 0x04000036 RID: 54
 		private Alignment GtkAlignment1;
 
-		// Token: 0x04000037 RID: 55
 		private HBox hbox_package;
 
-		// Token: 0x04000038 RID: 56
 		private VBox vbox_packageMode;
 
-		// Token: 0x04000039 RID: 57
 		private VBox vbox_packageSetting;
 
-		// Token: 0x0400003A RID: 58
 		private Button button_packageSetting;
 
-		// Token: 0x0400003B RID: 59
 		private Label GtkLabel_packageMode;
 
-		// Token: 0x0400003C RID: 60
 		private HBox hbox_bottomBtn;
 
-		// Token: 0x0400003D RID: 61
 		private Button buttonOK;
 
-		// Token: 0x0400003E RID: 62
 		private Button buttonCancel;
 	}
 }

@@ -7,10 +7,8 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.PropertyGrid
 {
-	// Token: 0x0200001B RID: 27
 	internal class TitleMainEventBox : EventBox
 	{
-		// Token: 0x060000B6 RID: 182 RVA: 0x00004474 File Offset: 0x00002674
 		protected override void OnSizeAllocated(Gdk.Rectangle allocation)
 		{
 			base.OnSizeAllocated(allocation);
@@ -29,7 +27,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000B7 RID: 183 RVA: 0x0000451A File Offset: 0x0000271A
 		protected override void OnSizeRequested(ref Requisition requisition)
 		{
 			base.OnSizeRequested(ref requisition);
@@ -37,7 +34,6 @@ namespace Modules.Communal.PropertyGrid
 			requisition.Height = requisition.Height + 5 + 5 + 1;
 		}
 
-		// Token: 0x060000B8 RID: 184 RVA: 0x0000454C File Offset: 0x0000274C
 		protected override bool OnExposeEvent(EventExpose evnt)
 		{
 			bool result = base.OnExposeEvent(evnt);
@@ -63,16 +59,12 @@ namespace Modules.Communal.PropertyGrid
 			return result;
 		}
 
-		// Token: 0x04000035 RID: 53
 		private const int leftPadding = 15;
 
-		// Token: 0x04000036 RID: 54
 		private const int rightPadding = 10;
 
-		// Token: 0x04000037 RID: 55
 		private const int topPadding = 5;
 
-		// Token: 0x04000038 RID: 56
 		private const int bottomPadding = 5;
 	}
 }

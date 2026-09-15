@@ -10,11 +10,8 @@ using Modules.Communal.PList.Internal;
 
 namespace Modules.Communal.PList
 {
-	// Token: 0x02000006 RID: 6
 	public class PListDict : Dictionary<string, IPListElement>, IPListElement, IXmlSerializable
 	{
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x0600002A RID: 42 RVA: 0x00002A64 File Offset: 0x00000C64
 		public string Tag
 		{
 			get
@@ -23,8 +20,6 @@ namespace Modules.Communal.PList
 			}
 		}
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x0600002B RID: 43 RVA: 0x00002A7C File Offset: 0x00000C7C
 		public byte TypeCode
 		{
 			get
@@ -33,8 +28,6 @@ namespace Modules.Communal.PList
 			}
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x0600002C RID: 44 RVA: 0x00002A90 File Offset: 0x00000C90
 		public bool IsBinaryUnique
 		{
 			get
@@ -43,7 +36,6 @@ namespace Modules.Communal.PList
 			}
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00002AA4 File Offset: 0x00000CA4
 		public void ReadBinary(PListBinaryReader reader)
 		{
 			byte[] array = new byte[reader.CurrentElementLength * (int)reader.ElementIdxSize];
@@ -68,13 +60,11 @@ namespace Modules.Communal.PList
 			}
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00002BB0 File Offset: 0x00000DB0
 		public int GetPListElementLength()
 		{
 			return base.Count;
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00002BC8 File Offset: 0x00000DC8
 		public int GetPListElementCount()
 		{
 			int num = 1;
@@ -86,7 +76,6 @@ namespace Modules.Communal.PList
 			return num;
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x00002C3C File Offset: 0x00000E3C
 		public void WriteBinary(PListBinaryWriter writer)
 		{
 			byte[] array = new byte[(int)writer.ElementIdxSize * base.Count];
@@ -111,13 +100,11 @@ namespace Modules.Communal.PList
 			writer.BaseStream.Seek(0L, SeekOrigin.End);
 		}
 
-		// Token: 0x06000031 RID: 49 RVA: 0x00002D84 File Offset: 0x00000F84
 		public XmlSchema GetSchema()
 		{
 			return null;
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x00002D98 File Offset: 0x00000F98
 		public void ReadXml(XmlReader reader)
 		{
 			bool isEmptyElement = reader.IsEmptyElement;
@@ -145,7 +132,6 @@ namespace Modules.Communal.PList
 			}
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x00002E38 File Offset: 0x00001038
 		public void WriteXml(XmlWriter writer)
 		{
 			writer.WriteStartElement(this.Tag);

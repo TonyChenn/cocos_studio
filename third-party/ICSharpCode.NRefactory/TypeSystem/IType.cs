@@ -29,14 +29,11 @@ namespace ICSharpCode.NRefactory.TypeSystem
 	/// Identical types do not necessarily use the same object reference.
 	/// </para>
 	/// </remarks>
-	// Token: 0x02000057 RID: 87
 	public interface IType : INamedElement, IEquatable<IType>
 	{
 		/// <summary>
 		/// Gets the type kind.
 		/// </summary>
-		// Token: 0x170000D0 RID: 208
-		// (get) Token: 0x0600026F RID: 623
 		TypeKind Kind { get; }
 
 		/// <summary>
@@ -47,30 +44,23 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// false, if the type is a value type.
 		/// null, if the type is not known (e.g. unconstrained generic type parameter or type not found)
 		/// </returns>
-		// Token: 0x170000D1 RID: 209
-		// (get) Token: 0x06000270 RID: 624
 		bool? IsReferenceType { get; }
 
 		/// <summary>
 		/// Gets the underlying type definition.
 		/// Can return null for types which do not have a type definition (for example arrays, pointers, type parameters).
 		/// </summary>
-		// Token: 0x06000271 RID: 625
 		ITypeDefinition GetDefinition();
 
 		/// <summary>
 		/// Gets the parent type, if this is a nested type.
 		/// Returns null for top-level types.
 		/// </summary>
-		// Token: 0x170000D2 RID: 210
-		// (get) Token: 0x06000272 RID: 626
 		IType DeclaringType { get; }
 
 		/// <summary>
 		/// Gets the number of type parameters.
 		/// </summary>
-		// Token: 0x170000D3 RID: 211
-		// (get) Token: 0x06000273 RID: 627
 		int TypeParameterCount { get; }
 
 		/// <summary>
@@ -80,22 +70,17 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		///
 		/// NOTE: The type will change to IReadOnlyList&lt;IType&gt; in future versions.
 		/// </summary>
-		// Token: 0x170000D4 RID: 212
-		// (get) Token: 0x06000274 RID: 628
 		IList<IType> TypeArguments { get; }
 
 		/// <summary>
 		/// If true the type represents an instance of a generic type.
 		/// </summary>
-		// Token: 0x170000D5 RID: 213
-		// (get) Token: 0x06000275 RID: 629
 		bool IsParameterized { get; }
 
 		/// <summary>
 		/// Calls ITypeVisitor.Visit for this type.
 		/// </summary>
 		/// <returns>The return value of the ITypeVisitor.Visit call</returns>
-		// Token: 0x06000276 RID: 630
 		IType AcceptVisitor(TypeVisitor visitor);
 
 		/// <summary>
@@ -105,15 +90,12 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <returns>A copy of this type, with all children replaced by the return value of the corresponding visitor call.
 		/// If the visitor returned the original types for all children (or if there are no children), returns <c>this</c>.
 		/// </returns>
-		// Token: 0x06000277 RID: 631
 		IType VisitChildren(TypeVisitor visitor);
 
 		/// <summary>
 		/// Gets the direct base types.
 		/// </summary>
 		/// <returns>Returns the direct base types including interfaces</returns>
-		// Token: 0x170000D6 RID: 214
-		// (get) Token: 0x06000278 RID: 632
 		IEnumerable<IType> DirectBaseTypes { get; }
 
 		/// <summary>
@@ -123,7 +105,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// If this type contains open generics, the resulting type reference will need to be looked up in an appropriate generic context.
 		/// Otherwise, the main resolve context of a compilation is sufficient.
 		/// </remarks>
-		// Token: 0x06000279 RID: 633
 		ITypeReference ToTypeReference();
 
 		/// <summary>
@@ -131,7 +112,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// of this parameterized type.
 		/// Returns TypeParameterSubstitution.Identity if the type is not parametrized.
 		/// </summary>
-		// Token: 0x0600027A RID: 634
 		TypeParameterSubstitution GetSubstitution();
 
 		/// <summary>
@@ -140,7 +120,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// and also substitutes method type parameters with the specified method type arguments.
 		/// Returns TypeParameterSubstitution.Identity if the type is not parametrized.
 		/// </summary>
-		// Token: 0x0600027B RID: 635
 		TypeParameterSubstitution GetSubstitution(IList<IType> methodTypeArguments);
 
 		/// <summary>
@@ -174,7 +153,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// Base.GetNestedTypes() = { Base`1+Nested`1[`0, unbound] }
 		/// </code>
 		/// </example>
-		// Token: 0x0600027C RID: 636
 		IEnumerable<IType> GetNestedTypes(Predicate<ITypeDefinition> filter = null, GetMemberOptions options = GetMemberOptions.None);
 
 		/// <summary>
@@ -191,7 +169,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// and thus 'leaked' to the caller in the same way the GetMembers() method does not specialize members
 		/// from an <see cref="T:ICSharpCode.NRefactory.TypeSystem.ITypeDefinition" /> and 'leaks' type parameters in member signatures.
 		/// </remarks>
-		// Token: 0x0600027D RID: 637
 		IEnumerable<IType> GetNestedTypes(IList<IType> typeArguments, Predicate<ITypeDefinition> filter = null, GetMemberOptions options = GetMemberOptions.None);
 
 		/// <summary>
@@ -208,7 +185,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// and the appropriate <see cref="T:ICSharpCode.NRefactory.TypeSystem.Implementation.SpecializedMethod" /> will be returned.
 		/// </para>
 		/// </remarks>
-		// Token: 0x0600027E RID: 638
 		IEnumerable<IMethod> GetConstructors(Predicate<IUnresolvedMethod> filter = null, GetMemberOptions options = GetMemberOptions.IgnoreInheritedMembers);
 
 		/// <summary>
@@ -236,7 +212,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// the ambiguity can be avoided.
 		/// </para>
 		/// </remarks>
-		// Token: 0x0600027F RID: 639
 		IEnumerable<IMethod> GetMethods(Predicate<IUnresolvedMethod> filter = null, GetMemberOptions options = GetMemberOptions.None);
 
 		/// <summary>
@@ -258,7 +233,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// and the other overload's remarks about ambiguous signatures apply here as well.
 		/// </para>
 		/// </remarks>
-		// Token: 0x06000280 RID: 640
 		IEnumerable<IMethod> GetMethods(IList<IType> typeArguments, Predicate<IUnresolvedMethod> filter = null, GetMemberOptions options = GetMemberOptions.None);
 
 		/// <summary>
@@ -271,7 +245,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// For properties on parameterized types, type substitution will be performed on the property signature,
 		/// and the appropriate <see cref="T:ICSharpCode.NRefactory.TypeSystem.Implementation.SpecializedProperty" /> will be returned.
 		/// </remarks>
-		// Token: 0x06000281 RID: 641
 		IEnumerable<IProperty> GetProperties(Predicate<IUnresolvedProperty> filter = null, GetMemberOptions options = GetMemberOptions.None);
 
 		/// <summary>
@@ -284,7 +257,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// For fields on parameterized types, type substitution will be performed on the field's return type,
 		/// and the appropriate <see cref="T:ICSharpCode.NRefactory.TypeSystem.Implementation.SpecializedField" /> will be returned.
 		/// </remarks>
-		// Token: 0x06000282 RID: 642
 		IEnumerable<IField> GetFields(Predicate<IUnresolvedField> filter = null, GetMemberOptions options = GetMemberOptions.None);
 
 		/// <summary>
@@ -297,7 +269,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// For fields on parameterized types, type substitution will be performed on the event's return type,
 		/// and the appropriate <see cref="T:ICSharpCode.NRefactory.TypeSystem.Implementation.SpecializedEvent" /> will be returned.
 		/// </remarks>
-		// Token: 0x06000283 RID: 643
 		IEnumerable<IEvent> GetEvents(Predicate<IUnresolvedEvent> filter = null, GetMemberOptions options = GetMemberOptions.None);
 
 		/// <summary>
@@ -317,7 +288,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <see cref="M:ICSharpCode.NRefactory.TypeSystem.IType.GetMethods(System.Predicate{ICSharpCode.NRefactory.TypeSystem.IUnresolvedMethod},ICSharpCode.NRefactory.TypeSystem.GetMemberOptions)" /> method apply here as well.
 		/// </para>
 		/// </remarks>
-		// Token: 0x06000284 RID: 644
 		IEnumerable<IMember> GetMembers(Predicate<IUnresolvedMember> filter = null, GetMemberOptions options = GetMemberOptions.None);
 
 		/// <summary>
@@ -329,7 +299,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <remarks>
 		/// Accessors are not returned by GetMembers() or GetMethods().
 		/// </remarks>
-		// Token: 0x06000285 RID: 645
 		IEnumerable<IMethod> GetAccessors(Predicate<IUnresolvedMethod> filter = null, GetMemberOptions options = GetMemberOptions.None);
 	}
 }

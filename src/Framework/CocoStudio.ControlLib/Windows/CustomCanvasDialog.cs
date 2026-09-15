@@ -9,20 +9,12 @@ using Stetic;
 
 namespace CocoStudio.ControlLib.Windows
 {
-	// Token: 0x0200000C RID: 12
 	public class CustomCanvasDialog : Dialog
 	{
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x06000053 RID: 83 RVA: 0x00004634 File Offset: 0x00002834
-		// (set) Token: 0x06000054 RID: 84 RVA: 0x0000464B File Offset: 0x0000284B
 		public int Order { get; set; }
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000055 RID: 85 RVA: 0x00004654 File Offset: 0x00002854
-		// (set) Token: 0x06000056 RID: 86 RVA: 0x0000466B File Offset: 0x0000286B
 		public bool IsOK { get; set; }
 
-		// Token: 0x06000057 RID: 87 RVA: 0x00004674 File Offset: 0x00002874
 		public CustomCanvasDialog(int defaultWidth, int defaultHeight, string name = "", int order = 0)
 		{
 			this.parentWnd = MessageService.GetDefaultModalParent();
@@ -45,7 +37,6 @@ namespace CocoStudio.ControlLib.Windows
 			base.ShowAll();
 		}
 
-		// Token: 0x06000058 RID: 88 RVA: 0x0000480C File Offset: 0x00002A0C
 		private void ChangeBtnPosion()
 		{
 			if (!Platform.IsMac)
@@ -58,7 +49,6 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x06000059 RID: 89 RVA: 0x00004860 File Offset: 0x00002A60
 		private void Init()
 		{
 			this.SetToDialogStyle(null, true, true, true);
@@ -69,7 +59,6 @@ namespace CocoStudio.ControlLib.Windows
 			this.table_main.ShowAll();
 		}
 
-		// Token: 0x0600005A RID: 90 RVA: 0x000048C7 File Offset: 0x00002AC7
 		private void CustomCanvasWindow_DeleteEvent(object o, DeleteEventArgs args)
 		{
 			this.IsOK = false;
@@ -77,14 +66,12 @@ namespace CocoStudio.ControlLib.Windows
 			this.parentWnd.Modal = this.isParentModal;
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x000048EB File Offset: 0x00002AEB
 		private void buttonCancel_Clicked(object sender, EventArgs e)
 		{
 			this.IsOK = false;
 			this.Destroy();
 		}
 
-		// Token: 0x0600005C RID: 92 RVA: 0x00004900 File Offset: 0x00002B00
 		private void buttonOk_Clicked(object sender, EventArgs e)
 		{
 			this.IsOK = true;
@@ -93,7 +80,6 @@ namespace CocoStudio.ControlLib.Windows
 			this.Destroy();
 		}
 
-		// Token: 0x0600005D RID: 93 RVA: 0x00004954 File Offset: 0x00002B54
 		public void readLanuageConfigFile()
 		{
 			base.Title = LanguageInfo.ScreeSize_Dialog_WindowTitle;
@@ -105,7 +91,6 @@ namespace CocoStudio.ControlLib.Windows
 			this.buttonCancel.Label = LanguageInfo.Dialog_ButtonCancel;
 		}
 
-		// Token: 0x0600005E RID: 94 RVA: 0x000049E4 File Offset: 0x00002BE4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -252,13 +237,10 @@ namespace CocoStudio.ControlLib.Windows
 			base.Show();
 		}
 
-		// Token: 0x0400003D RID: 61
 		public Size canvasSize = new Size(1, 1);
 
-		// Token: 0x0400003E RID: 62
 		private EntryEx spinbuttonName = new EntryEx();
 
-		// Token: 0x0400003F RID: 63
 		private EntryIntEx spinbutton_Width = new EntryIntEx
 		{
 			MinValue = 0,
@@ -268,7 +250,6 @@ namespace CocoStudio.ControlLib.Windows
 			IsInteger = true
 		};
 
-		// Token: 0x04000040 RID: 64
 		private EntryIntEx spinbuttonHeight = new EntryIntEx
 		{
 			MinValue = 0,
@@ -278,52 +259,36 @@ namespace CocoStudio.ControlLib.Windows
 			IsInteger = true
 		};
 
-		// Token: 0x04000041 RID: 65
 		private bool isParentModal;
 
-		// Token: 0x04000042 RID: 66
 		private Gtk.Window parentWnd;
 
-		// Token: 0x04000043 RID: 67
 		private Alignment alignment_main;
 
-		// Token: 0x04000044 RID: 68
 		private Table table_main;
 
-		// Token: 0x04000045 RID: 69
 		private Alignment alignment_nameEntry;
 
-		// Token: 0x04000046 RID: 70
 		private HBox hbox_height;
 
-		// Token: 0x04000047 RID: 71
 		private Alignment alignment_heightEntry;
 
-		// Token: 0x04000048 RID: 72
 		private Label labelPx2;
 
-		// Token: 0x04000049 RID: 73
 		private HBox hbox_width;
 
-		// Token: 0x0400004A RID: 74
 		private Alignment alignment_widthEntry;
 
-		// Token: 0x0400004B RID: 75
 		private Label labelPx1;
 
-		// Token: 0x0400004C RID: 76
 		private Label labelHeight;
 
-		// Token: 0x0400004D RID: 77
 		private Label labelName;
 
-		// Token: 0x0400004E RID: 78
 		private Label labelWidth;
 
-		// Token: 0x0400004F RID: 79
 		private Button buttonCancel;
 
-		// Token: 0x04000050 RID: 80
 		private Button buttonOk;
 	}
 }

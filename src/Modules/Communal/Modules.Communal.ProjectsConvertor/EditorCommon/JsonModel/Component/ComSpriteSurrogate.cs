@@ -6,18 +6,15 @@ using Mono.Addins;
 
 namespace EditorCommon.JsonModel.Component
 {
-	// Token: 0x02000017 RID: 23
 	[Extension(typeof(IJsonModel))]
 	[DataContract]
 	internal class ComSpriteSurrogate : ComRenderSurrogate
 	{
-		// Token: 0x060000AC RID: 172 RVA: 0x00004A44 File Offset: 0x00002C44
 		protected ComSpriteSurrogate()
 		{
 			this.classname = "CCSprite";
 		}
 
-		// Token: 0x060000AD RID: 173 RVA: 0x00004A58 File Offset: 0x00002C58
 		public override void SetValue(object obj)
 		{
 			base.SetValue(obj);
@@ -26,7 +23,6 @@ namespace EditorCommon.JsonModel.Component
 			spriteObjectData.IsAutoSize = true;
 		}
 
-		// Token: 0x060000AE RID: 174 RVA: 0x00004AA8 File Offset: 0x00002CA8
 		protected override object CreateModelObject()
 		{
 			return new SpriteObjectData();

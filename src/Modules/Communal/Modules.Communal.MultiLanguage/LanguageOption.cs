@@ -8,21 +8,15 @@ using CocoStudio.Basic;
 
 namespace Modules.Communal.MultiLanguage
 {
-	// Token: 0x02000005 RID: 5
 	public static class LanguageOption
 	{
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000009 RID: 9 RVA: 0x000021D8 File Offset: 0x000003D8
-		// (set) Token: 0x0600000A RID: 10 RVA: 0x000021EE File Offset: 0x000003EE
 		public static LanguageType CurrentLanguage { get; private set; }
 
-		// Token: 0x0600000B RID: 11 RVA: 0x000021F6 File Offset: 0x000003F6
 		static LanguageOption()
 		{
 			LanguageOption.defaultLanguage = LanguageOption.GetDefaultLanguage();
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x00002220 File Offset: 0x00000420
 		public static void Init()
 		{
 			LanguageType languageType = LanguageOption.defaultLanguage;
@@ -46,7 +40,6 @@ namespace Modules.Communal.MultiLanguage
 			LanguageOption.Init(languageType);
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x000022C8 File Offset: 0x000004C8
 		public static void Init(LanguageType languageType)
 		{
 			if (!LanguageOption.hasInitialized)
@@ -72,7 +65,6 @@ namespace Modules.Communal.MultiLanguage
 			}
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002380 File Offset: 0x00000580
 		public static string GetValueBykey(string key)
 		{
 			if (!LanguageOption.hasInitialized)
@@ -99,7 +91,6 @@ namespace Modules.Communal.MultiLanguage
 			return result;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x000023E4 File Offset: 0x000005E4
 		public static void SetEditorLanguage(LanguageType languageType)
 		{
 			LanguageConfig languageConfig = null;
@@ -116,7 +107,6 @@ namespace Modules.Communal.MultiLanguage
 			Option.UserConfig.Save();
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002468 File Offset: 0x00000668
 		private static LanguageType GetDefaultLanguage()
 		{
 			LanguageType result = LanguageType.English;
@@ -140,7 +130,6 @@ namespace Modules.Communal.MultiLanguage
 			return result;
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x000024D4 File Offset: 0x000006D4
 		private static LanguageType? GetLanguageFromOldConfigFile()
 		{
 			string userConfigFileByName = Option.GetUserConfigFileByName("LanguageDefaultConfig.xml");
@@ -178,7 +167,6 @@ namespace Modules.Communal.MultiLanguage
 			return result;
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x000025C8 File Offset: 0x000007C8
 		private static string GetMarkFromType(LanguageType type)
 		{
 			string result = "en-US";
@@ -197,7 +185,6 @@ namespace Modules.Communal.MultiLanguage
 			return result;
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002610 File Offset: 0x00000810
 		private static void WriteChineseXml()
 		{
 			string xmlFilePath = LanguageOption.GetXmlFilePath(LanguageType.Chinese);
@@ -231,7 +218,6 @@ namespace Modules.Communal.MultiLanguage
 			xelement.Save(xmlFilePath);
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x0000273C File Offset: 0x0000093C
 		private static void WriteLanguageXml(LanguageType type)
 		{
 			string xmlFilePath = LanguageOption.GetXmlFilePath(type);
@@ -276,7 +262,6 @@ namespace Modules.Communal.MultiLanguage
 			}
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x000028DC File Offset: 0x00000ADC
 		private static string GetXmlFilePath(LanguageType languageType)
 		{
 			string path = LanguageOption.GetMarkFromType(languageType) + ".xml";
@@ -284,7 +269,6 @@ namespace Modules.Communal.MultiLanguage
 			return Path.Combine(fullName, "LanguageResource", path);
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x0000292C File Offset: 0x00000B2C
 		private static Dictionary<string, string> CreateLanguageDictonary(string xmlFilePath)
 		{
 			Dictionary<string, string> dictionary = new Dictionary<string, string>();
@@ -326,7 +310,6 @@ namespace Modules.Communal.MultiLanguage
 			return result;
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002A7C File Offset: 0x00000C7C
 		private static XElement CreateXmlItem(string key, string value)
 		{
 			Dictionary<string, string> dictionary = new Dictionary<string, string>();
@@ -338,31 +321,22 @@ namespace Modules.Communal.MultiLanguage
 			return xelement;
 		}
 
-		// Token: 0x04000007 RID: 7
 		private const string markSimpleChinese = "zh-CN";
 
-		// Token: 0x04000008 RID: 8
 		private const string markOldSimpleChinese = "en-CHS";
 
-		// Token: 0x04000009 RID: 9
 		private const string markTraditionalChinese = "zh-TW";
 
-		// Token: 0x0400000A RID: 10
 		private const string markEnglish = "en-US";
 
-		// Token: 0x0400000B RID: 11
 		private const string languageConfigFileName = "LanguageDefaultConfig.xml";
 
-		// Token: 0x0400000C RID: 12
 		private const string folderName = "LanguageResource";
 
-		// Token: 0x0400000D RID: 13
 		private static bool hasInitialized = false;
 
-		// Token: 0x0400000E RID: 14
 		private static Type typeLanguageInfo = typeof(LanguageInfo);
 
-		// Token: 0x0400000F RID: 15
 		private static LanguageType defaultLanguage = LanguageType.English;
 	}
 }

@@ -10,12 +10,10 @@ using Stetic;
 
 namespace Modules.UI.MainTool
 {
-	// Token: 0x02000016 RID: 22
 	[ToolboxItem(true)]
 	[Extension(Path = "/CocoStudio/Ide/MainToolbar")]
 	public class MainToolUC : Bin
 	{
-		// Token: 0x06000079 RID: 121 RVA: 0x0000429F File Offset: 0x0000249F
 		public MainToolUC()
 		{
 			this.Build();
@@ -23,7 +21,6 @@ namespace Modules.UI.MainTool
 			this.InitEvent();
 		}
 
-		// Token: 0x0600007A RID: 122 RVA: 0x000042CC File Offset: 0x000024CC
 		private void InitControls()
 		{
 			this.evtbx_bg.ModifyBg(StateType.Normal, WindowStyle.WindowBgColor);
@@ -49,7 +46,6 @@ namespace Modules.UI.MainTool
 			base.ShowAll();
 		}
 
-		// Token: 0x0600007B RID: 123 RVA: 0x00004408 File Offset: 0x00002608
 		private void InitEvent()
 		{
 			Services.ProjectOperations.CurrentProjectChanged += this.CurrentProjectChangedHandler;
@@ -57,7 +53,6 @@ namespace Modules.UI.MainTool
 			Services.ProjectOperations.CurrentSelectedSolutionClosed += this.CurrentSolutionClosedHandler;
 		}
 
-		// Token: 0x0600007C RID: 124 RVA: 0x0000445C File Offset: 0x0000265C
 		private void CurrentProjectChangedHandler(object sender, ProjectsOperations.ProjectEventArgs e)
 		{
 			this.toolbarExtend.OnProjectChanged(e.Project);
@@ -67,7 +62,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x0600007D RID: 125 RVA: 0x000044CC File Offset: 0x000026CC
 		private void CurrentSolutionClosedHandler(object sender, SolutionEventArgs e)
 		{
 			foreach (IToolbarWidget toolbarWidget in this.toolbarWidgetList)
@@ -76,7 +70,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x0600007E RID: 126 RVA: 0x00004528 File Offset: 0x00002728
 		private void CurrentSolutionChangedHandler(object sender, SolutionEventArgs e)
 		{
 			foreach (IToolbarWidget toolbarWidget in this.toolbarWidgetList)
@@ -85,7 +78,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x0600007F RID: 127 RVA: 0x00004584 File Offset: 0x00002784
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -112,19 +104,14 @@ namespace Modules.UI.MainTool
 			base.Hide();
 		}
 
-		// Token: 0x04000033 RID: 51
 		private List<IToolbarWidget> toolbarWidgetList = new List<IToolbarWidget>();
 
-		// Token: 0x04000034 RID: 52
 		private ToolbarExtend toolbarExtend;
 
-		// Token: 0x04000035 RID: 53
 		private EventBox evtbx_bg;
 
-		// Token: 0x04000036 RID: 54
 		private Alignment alignment_main;
 
-		// Token: 0x04000037 RID: 55
 		private HBox hbox_main;
 	}
 }

@@ -5,10 +5,8 @@ using Modules.Communal.PList;
 
 namespace Modules.Communal.Packer.PlistReader
 {
-	// Token: 0x02000011 RID: 17
 	internal class PlistFormatCocos2d : PlistImageFormat
 	{
-		// Token: 0x0600006F RID: 111 RVA: 0x000049BC File Offset: 0x00002BBC
 		protected override List<ImageInfo> OnToImageList(PListDict plistDict)
 		{
 			List<ImageInfo> list = new List<ImageInfo>();
@@ -32,7 +30,6 @@ namespace Modules.Communal.Packer.PlistReader
 			return list;
 		}
 
-		// Token: 0x06000070 RID: 112 RVA: 0x00004B3C File Offset: 0x00002D3C
 		protected override PListRoot OnToPlist(List<ImageInfo> imageList, Size size, string imageKey)
 		{
 			PListRoot plistRoot = new PListRoot();

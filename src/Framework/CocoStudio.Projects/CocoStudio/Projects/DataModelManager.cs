@@ -5,16 +5,13 @@ using Mono.Addins;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x02000025 RID: 37
 	public class DataModelManager
 	{
-		// Token: 0x060000C9 RID: 201 RVA: 0x00004170 File Offset: 0x00002370
 		public DataModelManager()
 		{
 			this.Initialize();
 		}
 
-		// Token: 0x060000CA RID: 202 RVA: 0x00004180 File Offset: 0x00002380
 		private void Initialize()
 		{
 			try
@@ -35,13 +32,11 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060000CB RID: 203 RVA: 0x00004238 File Offset: 0x00002438
 		private void OnDataModelExtensionChange(object sender, ExtensionNodeEventArgs args)
 		{
 			this.RegisteDataModel(args.ExtensionNode as DataModelExtensionNode);
 		}
 
-		// Token: 0x060000CC RID: 204 RVA: 0x0000424C File Offset: 0x0000244C
 		private void RegisteDataModel(DataModelExtensionNode extensionNode)
 		{
 			if (extensionNode == null)
@@ -66,13 +61,11 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060000CD RID: 205 RVA: 0x000042F9 File Offset: 0x000024F9
 		public IEnumerable<Type> GetDataModelCollection()
 		{
 			return this.dataModelList;
 		}
 
-		// Token: 0x060000CE RID: 206 RVA: 0x00004304 File Offset: 0x00002504
 		public Type GetDataModelType(Type viewModelType)
 		{
 			Type result;
@@ -80,7 +73,6 @@ namespace CocoStudio.Projects
 			return result;
 		}
 
-		// Token: 0x060000CF RID: 207 RVA: 0x00004324 File Offset: 0x00002524
 		public Type GetViewModelType(Type dataModelType)
 		{
 			Type result;
@@ -88,13 +80,10 @@ namespace CocoStudio.Projects
 			return result;
 		}
 
-		// Token: 0x04000038 RID: 56
 		private HashSet<Type> dataModelList;
 
-		// Token: 0x04000039 RID: 57
 		private Dictionary<Type, Type> viewToDataCollection;
 
-		// Token: 0x0400003A RID: 58
 		private Dictionary<Type, Type> dataToViewCollection;
 	}
 }

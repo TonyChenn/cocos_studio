@@ -4,10 +4,8 @@ using System.IO;
 
 namespace ICSharpCode.NRefactory.Utils
 {
-	// Token: 0x0200011A RID: 282
 	public sealed class GraphVizEdge
 	{
-		// Token: 0x06000A0C RID: 2572 RVA: 0x0001DEEE File Offset: 0x0001CEEE
 		public GraphVizEdge(string source, string target)
 		{
 			if (source == null)
@@ -22,14 +20,12 @@ namespace ICSharpCode.NRefactory.Utils
 			this.Target = target;
 		}
 
-		// Token: 0x06000A0D RID: 2573 RVA: 0x0001DF20 File Offset: 0x0001CF20
 		public GraphVizEdge(int source, int target)
 		{
 			this.Source = source.ToString(CultureInfo.InvariantCulture);
 			this.Target = target.ToString(CultureInfo.InvariantCulture);
 		}
 
-		// Token: 0x06000A0E RID: 2574 RVA: 0x0001DF4C File Offset: 0x0001CF4C
 		public void Save(TextWriter writer)
 		{
 			writer.Write("{0} -> {1} [", this.Source, this.Target);
@@ -44,28 +40,21 @@ namespace ICSharpCode.NRefactory.Utils
 			writer.WriteLine("];");
 		}
 
-		// Token: 0x04000363 RID: 867
 		public readonly string Source;
 
-		// Token: 0x04000364 RID: 868
 		public readonly string Target;
 
 		/// <summary>edge stroke color</summary>
-		// Token: 0x04000365 RID: 869
 		public string color;
 
 		/// <summary>use edge to affect node ranking</summary>
-		// Token: 0x04000366 RID: 870
 		public bool? constraint;
 
-		// Token: 0x04000367 RID: 871
 		public string label;
 
-		// Token: 0x04000368 RID: 872
 		public string style;
 
 		/// <summary>point size of label</summary>
-		// Token: 0x04000369 RID: 873
 		public int? fontsize;
 	}
 }

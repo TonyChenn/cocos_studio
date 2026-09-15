@@ -6,16 +6,13 @@ using MonoDevelop.Ide;
 
 namespace Gtk
 {
-	// Token: 0x02000083 RID: 131
 	public class MessageBox
 	{
-		// Token: 0x060002EB RID: 747 RVA: 0x0000BD8E File Offset: 0x00009F8E
 		public static void Show(string info, MessageBoxImage image = MessageBoxImage.Other, Window parentWnd = null, string title = null)
 		{
 			MessageBox.Show(info, MessageBoxButton.Yes, image, parentWnd, EnumMainButton.Yes, title);
 		}
 
-		// Token: 0x060002EC RID: 748 RVA: 0x0000BDA0 File Offset: 0x00009FA0
 		public static MessageBoxResult Show(string info, MessageBoxButton btnType, MessageBoxImage image = MessageBoxImage.Other, Window parentWnd = null, EnumMainButton mainBtn = EnumMainButton.Yes, string title = null)
 		{
 			ButtonText btnText = null;
@@ -34,7 +31,6 @@ namespace Gtk
 			return MessageBox.Show(info, btnText, image, parentWnd, mainBtn, title);
 		}
 
-		// Token: 0x060002ED RID: 749 RVA: 0x0000BE14 File Offset: 0x0000A014
 		public static MessageBoxResult Show(string info, ButtonText btnText, MessageBoxImage image = MessageBoxImage.Other, Window parentWnd = null, EnumMainButton mainBtn = EnumMainButton.Yes, string title = null)
 		{
 			MessageBoxResult result;
@@ -96,7 +92,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x060002EE RID: 750 RVA: 0x0000BF3C File Offset: 0x0000A13C
 		private static MessageBoxResult ShowMessageBox(string info, ButtonText btnText, Window parentWnd, MessageBoxImage image, EnumMainButton mainBtn, string title)
 		{
 			bool modal = parentWnd.Modal;

@@ -7,10 +7,8 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Core.View
 {
-	// Token: 0x02000038 RID: 56
 	public static class DisplayBuilderService
 	{
-		// Token: 0x06000210 RID: 528 RVA: 0x00009CE4 File Offset: 0x00007EE4
 		internal static IEnumerable<T> GetBuilder<T>()
 		{
 			IEnumerable<T> result;
@@ -27,7 +25,6 @@ namespace CocoStudio.Core.View
 			return result;
 		}
 
-		// Token: 0x06000211 RID: 529 RVA: 0x00009FBC File Offset: 0x000081BC
 		internal static IEnumerable<IDisplayBuilder> GetDisplayBuilders(FilePath filePath, string mimeType, CocosItem ownerProject)
 		{
 			IEnumerable<IDisplayBuilder> builders = DisplayBuilderService.GetBuilder<IDisplayBuilder>();

@@ -11,18 +11,13 @@ using MonoDevelop.Core.ProgressMonitoring;
 
 namespace Modules.Communal.TexturePacker
 {
-	// Token: 0x0200000F RID: 15
 	internal class PlistInfoViewContent : ViewContent
 	{
-		// Token: 0x060000A3 RID: 163 RVA: 0x00004BB4 File Offset: 0x00002DB4
 		public PlistInfoViewContent()
 		{
 			this.widget = (this.plistInfoWidget = new PlistInfoWidget());
 		}
 
-		// Token: 0x17000025 RID: 37
-		// (get) Token: 0x060000A4 RID: 164 RVA: 0x00004BDB File Offset: 0x00002DDB
-		// (set) Token: 0x060000A5 RID: 165 RVA: 0x00004BE3 File Offset: 0x00002DE3
 		public CocosItem CocosItem
 		{
 			get
@@ -36,7 +31,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x00004C08 File Offset: 0x00002E08
 		public void Initialize(CocosItem plistInfoCocosItem)
 		{
 			this.CocosItem = plistInfoCocosItem;
@@ -45,13 +39,11 @@ namespace Modules.Communal.TexturePacker
 			this.plistInfoWidget.PlistInfoModel.ItemNameChanged += this.ModelItemNameChanged;
 		}
 
-		// Token: 0x060000A7 RID: 167 RVA: 0x00004C5E File Offset: 0x00002E5E
 		private void ModelItemNameChanged(bool isdirty)
 		{
 			this.IsDirty = true;
 		}
 
-		// Token: 0x060000A8 RID: 168 RVA: 0x00004C68 File Offset: 0x00002E68
 		protected override void OnClosed()
 		{
 			if (this.IsDirty)
@@ -71,7 +63,6 @@ namespace Modules.Communal.TexturePacker
 			this.CocosItem.UnLoad(null);
 		}
 
-		// Token: 0x060000A9 RID: 169 RVA: 0x00004D6C File Offset: 0x00002F6C
 		public override void AfterActivated()
 		{
 			this.eventAggregator = Services.EventsService;
@@ -83,7 +74,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000AA RID: 170 RVA: 0x00004DA3 File Offset: 0x00002FA3
 		protected override void OnDeactivated()
 		{
 			this.UpdatePropertyUC(false);
@@ -91,7 +81,6 @@ namespace Modules.Communal.TexturePacker
 			Services.GetService<IComToolPad>().ControlsViewFilter = this._cachedToolViewFilter;
 		}
 
-		// Token: 0x060000AB RID: 171 RVA: 0x00004DC3 File Offset: 0x00002FC3
 		public override void Reload()
 		{
 			if (!this.cocosItem.IsLoaded)
@@ -101,7 +90,6 @@ namespace Modules.Communal.TexturePacker
 			this.UpdatePropertyUC(true);
 		}
 
-		// Token: 0x060000AC RID: 172 RVA: 0x00004DF0 File Offset: 0x00002FF0
 		private void UpdatePropertyUC(bool isShow)
 		{
 			List<object> list = new List<object>();
@@ -115,7 +103,6 @@ namespace Modules.Communal.TexturePacker
 			service.IsShowTitle = true;
 		}
 
-		// Token: 0x060000AD RID: 173 RVA: 0x00004E32 File Offset: 0x00003032
 		private void CanvasZoomChangeHandle(CanvasZoomChangeEventArgs args)
 		{
 			if (this.eventAggregator != null)
@@ -124,16 +111,12 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x04000036 RID: 54
 		private PlistInfoWidget plistInfoWidget;
 
-		// Token: 0x04000037 RID: 55
 		private IEventAggregator eventAggregator;
 
-		// Token: 0x04000038 RID: 56
 		private PlistInfoCocosItem cocosItem;
 
-		// Token: 0x04000039 RID: 57
 		private IControlsViewFilter _cachedToolViewFilter;
 	}
 }

@@ -9,11 +9,8 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x02000058 RID: 88
 	public class TmxFile : CompositeResourceFile
 	{
-		// Token: 0x17000058 RID: 88
-		// (get) Token: 0x0600026E RID: 622 RVA: 0x000094EB File Offset: 0x000076EB
 		internal override string PreviewImagePath
 		{
 			get
@@ -26,22 +23,18 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x0600026F RID: 623 RVA: 0x00009502 File Offset: 0x00007702
 		private TmxFile()
 		{
 		}
 
-		// Token: 0x06000270 RID: 624 RVA: 0x0000950A File Offset: 0x0000770A
 		public TmxFile(FilePath filePath) : base(filePath)
 		{
 		}
 
-		// Token: 0x06000271 RID: 625 RVA: 0x00009513 File Offset: 0x00007713
 		public TmxFile(ResourceData resourceData) : base(resourceData)
 		{
 		}
 
-		// Token: 0x06000272 RID: 626 RVA: 0x0000951C File Offset: 0x0000771C
 		protected override void OnSetLocation(FilePath newFilePath, bool isRename)
 		{
 			if (this.imageFiles != null)
@@ -77,7 +70,6 @@ namespace CocoStudio.Projects
 			this.imageFiles = base.GetImageFiles();
 		}
 
-		// Token: 0x06000273 RID: 627 RVA: 0x00009634 File Offset: 0x00007834
 		protected override void OnMove(FilePath newMovePath)
 		{
 			if (this.imageFiles != null)
@@ -113,7 +105,6 @@ namespace CocoStudio.Projects
 			this.imageFiles = base.GetImageFiles();
 		}
 
-		// Token: 0x06000274 RID: 628 RVA: 0x0000974C File Offset: 0x0000794C
 		protected override DataError OnCheckDataError()
 		{
 			DataError dataError = base.OnCheckDataError();
@@ -129,7 +120,6 @@ namespace CocoStudio.Projects
 			return dataError;
 		}
 
-		// Token: 0x06000275 RID: 629 RVA: 0x0000978C File Offset: 0x0000798C
 		private bool CheckFilesExists(IEnumerable<string> files)
 		{
 			if (files == null)
@@ -146,7 +136,6 @@ namespace CocoStudio.Projects
 			return true;
 		}
 
-		// Token: 0x06000276 RID: 630 RVA: 0x000097E4 File Offset: 0x000079E4
 		protected override void OnRefresh()
 		{
 			if (this.imageFiles != null)
@@ -159,7 +148,6 @@ namespace CocoStudio.Projects
 			base.OnRefresh();
 		}
 
-		// Token: 0x0400009D RID: 157
 		public const string FileSuffix = ".tmx";
 	}
 }

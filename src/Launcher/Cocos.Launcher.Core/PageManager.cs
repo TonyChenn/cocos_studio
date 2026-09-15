@@ -15,11 +15,8 @@ using Modules.Communal.MultiLanguage;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x02000020 RID: 32
 	internal class PageManager
 	{
-		// Token: 0x17000024 RID: 36
-		// (get) Token: 0x06000125 RID: 293 RVA: 0x00006D01 File Offset: 0x00004F01
 		public FinishDownloadScrollWindow FinishWidget
 		{
 			get
@@ -32,8 +29,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x17000025 RID: 37
-		// (get) Token: 0x06000126 RID: 294 RVA: 0x00006D22 File Offset: 0x00004F22
 		public DoingDownloadScrollWindow DoingWidget
 		{
 			get
@@ -46,8 +41,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x17000026 RID: 38
-		// (get) Token: 0x06000127 RID: 295 RVA: 0x00006D43 File Offset: 0x00004F43
 		public static PageManager Instance
 		{
 			get
@@ -60,13 +53,11 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000128 RID: 296 RVA: 0x00006D5B File Offset: 0x00004F5B
 		public PageManager()
 		{
 			this.Initialize();
 		}
 
-		// Token: 0x06000129 RID: 297 RVA: 0x00006DAC File Offset: 0x00004FAC
 		private void Initialize()
 		{
 			List<Plugin> downloadedList = this.GetDownloadedList();
@@ -87,13 +78,11 @@ namespace Cocos.Launcher.Core
 			});
 		}
 
-		// Token: 0x0600012A RID: 298 RVA: 0x00006E18 File Offset: 0x00005018
 		public void SetTabHead(ITabHead tabHead)
 		{
 			this.TabHead = tabHead;
 		}
 
-		// Token: 0x0600012B RID: 299 RVA: 0x00006E24 File Offset: 0x00005024
 		private List<Widget> GetFinishWidgetList()
 		{
 			List<Widget> list = new List<Widget>();
@@ -108,7 +97,6 @@ namespace Cocos.Launcher.Core
 			return list;
 		}
 
-		// Token: 0x0600012C RID: 300 RVA: 0x00006E9C File Offset: 0x0000509C
 		private List<Widget> GetDoingWidgetList()
 		{
 			List<Widget> list = new List<Widget>();
@@ -123,7 +111,6 @@ namespace Cocos.Launcher.Core
 			return list;
 		}
 
-		// Token: 0x0600012D RID: 301 RVA: 0x00006F14 File Offset: 0x00005114
 		private void RemoveDownloadItem(Plugin info)
 		{
 			if (!this.AssetModelList.ContainsKey(info))
@@ -145,7 +132,6 @@ namespace Cocos.Launcher.Core
 			this.SavePluginListInfo();
 		}
 
-		// Token: 0x0600012E RID: 302 RVA: 0x00006FA8 File Offset: 0x000051A8
 		private void GetPluginInfoFromService()
 		{
 			if (CocoStudio.Core.Services.NetworkService.IsOK)
@@ -156,7 +142,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600012F RID: 303 RVA: 0x00007004 File Offset: 0x00005204
 		private void Resived(object sender, HttpSync.HttpSyncArgs e)
 		{
 			try
@@ -180,7 +165,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000130 RID: 304 RVA: 0x0000707C File Offset: 0x0000527C
 		private void UpdateFinishDownload(UserJsonInfo serviceUserInfo)
 		{
 			if (serviceUserInfo.Tools == null)
@@ -201,7 +185,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000131 RID: 305 RVA: 0x00007144 File Offset: 0x00005344
 		public void DownloadItem(string xmlUrl, int x, int y)
 		{
 			bool flag = false;
@@ -227,7 +210,6 @@ namespace Cocos.Launcher.Core
 			this.AddDownloadItem(pluginInfoFromUrl, x, y);
 		}
 
-		// Token: 0x06000132 RID: 306 RVA: 0x000071B4 File Offset: 0x000053B4
 		private void HandleItem(Plugin model, int x, int y)
 		{
 			if (!this.AssetModelList.ContainsKey(model))
@@ -260,7 +242,6 @@ namespace Cocos.Launcher.Core
 			DownloadService.Instance.SwitchPageOne(false);
 		}
 
-		// Token: 0x06000133 RID: 307 RVA: 0x000072B4 File Offset: 0x000054B4
 		private void AddDownloadItem(Plugin pluginmodel, int x, int y)
 		{
 			DownloadAnimation.Instance.StartDownloadAnimation(x, y);
@@ -274,7 +255,6 @@ namespace Cocos.Launcher.Core
 			});
 		}
 
-		// Token: 0x06000134 RID: 308 RVA: 0x0000730C File Offset: 0x0000550C
 		public bool HaveLoading()
 		{
 			foreach (AssetModel assetModel in this.AssetModelList.Values)
@@ -287,12 +267,10 @@ namespace Cocos.Launcher.Core
 			return false;
 		}
 
-		// Token: 0x06000135 RID: 309 RVA: 0x00007374 File Offset: 0x00005574
 		public void DownloadItem(string xmlUrl)
 		{
 		}
 
-		// Token: 0x06000136 RID: 310 RVA: 0x00007378 File Offset: 0x00005578
 		public bool AddDownloadItem(Plugin model, bool start = true)
 		{
 			if (this.AssetModelList.ContainsKey(model))
@@ -335,7 +313,6 @@ namespace Cocos.Launcher.Core
 			return true;
 		}
 
-		// Token: 0x06000137 RID: 311 RVA: 0x00007470 File Offset: 0x00005670
 		public void SetPluginNumber()
 		{
 			if (this.TabHead != null)
@@ -344,7 +321,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000138 RID: 312 RVA: 0x0000748C File Offset: 0x0000568C
 		private void DownloadItem_DeleteSelf(object sender, EventArgs e)
 		{
 			AssetModel assetModel = sender as AssetModel;
@@ -355,7 +331,6 @@ namespace Cocos.Launcher.Core
 			this.SetPluginNumber();
 		}
 
-		// Token: 0x06000139 RID: 313 RVA: 0x000074E8 File Offset: 0x000056E8
 		private void DownloadItem_DownloadOver(object sender, DownloadSucceedEventArgs e)
 		{
 			AssetModel model = sender as AssetModel;
@@ -370,7 +345,6 @@ namespace Cocos.Launcher.Core
 			this.SetPluginNumber();
 		}
 
-		// Token: 0x0600013A RID: 314 RVA: 0x00007530 File Offset: 0x00005730
 		private void DownloadItem_DownloadSelf(object sender, PluginDownloadEventArgs e)
 		{
 			AssetModel assetModel = sender as AssetModel;
@@ -382,7 +356,6 @@ namespace Cocos.Launcher.Core
 			this.SavePluginListInfo();
 		}
 
-		// Token: 0x0600013B RID: 315 RVA: 0x0000756C File Offset: 0x0000576C
 		private List<Plugin> GetDownloadedList()
 		{
 			List<Plugin> result = new List<Plugin>();
@@ -400,7 +373,6 @@ namespace Cocos.Launcher.Core
 			return result;
 		}
 
-		// Token: 0x0600013C RID: 316 RVA: 0x000075C8 File Offset: 0x000057C8
 		public void SavePluginListInfo()
 		{
 			try
@@ -422,7 +394,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600013D RID: 317 RVA: 0x0000767C File Offset: 0x0000587C
 		public int GetDoingDownloadNum()
 		{
 			int num = 0;
@@ -436,7 +407,6 @@ namespace Cocos.Launcher.Core
 			return num;
 		}
 
-		// Token: 0x0600013E RID: 318 RVA: 0x000076E4 File Offset: 0x000058E4
 		public Plugin GetPluginInfoFromUrl(string url, out bool have)
 		{
 			have = false;
@@ -489,19 +459,14 @@ namespace Cocos.Launcher.Core
 			return result;
 		}
 
-		// Token: 0x04000066 RID: 102
 		public Dictionary<Plugin, BaseAssetModel> AssetModelList = new Dictionary<Plugin, BaseAssetModel>();
 
-		// Token: 0x04000067 RID: 103
 		private FinishDownloadScrollWindow finishWidget;
 
-		// Token: 0x04000068 RID: 104
 		private DoingDownloadScrollWindow doingWidget;
 
-		// Token: 0x04000069 RID: 105
 		private static PageManager instance;
 
-		// Token: 0x0400006A RID: 106
 		public ITabHead TabHead;
 	}
 }

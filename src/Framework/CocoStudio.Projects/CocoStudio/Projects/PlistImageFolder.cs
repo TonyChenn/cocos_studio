@@ -13,12 +13,8 @@ using MonoDevelop.Ide;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x0200005B RID: 91
 	public class PlistImageFolder : ResourceFolder
 	{
-		// Token: 0x1700005F RID: 95
-		// (get) Token: 0x06000287 RID: 647 RVA: 0x000099F1 File Offset: 0x00007BF1
-		// (set) Token: 0x06000288 RID: 648 RVA: 0x000099FE File Offset: 0x00007BFE
 		public override string Name
 		{
 			get
@@ -31,8 +27,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000060 RID: 96
-		// (get) Token: 0x06000289 RID: 649 RVA: 0x00009A0A File Offset: 0x00007C0A
 		public override string FullPath
 		{
 			get
@@ -41,8 +35,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000061 RID: 97
-		// (get) Token: 0x0600028A RID: 650 RVA: 0x00009A17 File Offset: 0x00007C17
 		internal override string PreviewImagePath
 		{
 			get
@@ -51,19 +43,16 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x0600028B RID: 651 RVA: 0x00009A24 File Offset: 0x00007C24
 		private PlistImageFolder()
 		{
 		}
 
-		// Token: 0x0600028C RID: 652 RVA: 0x00009A37 File Offset: 0x00007C37
 		public PlistImageFolder(FilePath filePath) : base(filePath)
 		{
 			this.plistFileInfo = filePath;
 			base.BaseDirectory = this.InitPlistDir(this.plistFileInfo);
 		}
 
-		// Token: 0x0600028D RID: 653 RVA: 0x00009A6C File Offset: 0x00007C6C
 		protected override DataError OnCheckDataError()
 		{
 			if (!File.Exists(this.imageFile) || !File.Exists(this.plistFileInfo))
@@ -87,7 +76,6 @@ namespace CocoStudio.Projects
 			return null;
 		}
 
-		// Token: 0x0600028E RID: 654 RVA: 0x00009B34 File Offset: 0x00007D34
 		private string InitPlistDir(FilePath fileInfo)
 		{
 			FilePath plistDirPath = PlistImageFolder.GetPListDirPath(this.plistFileInfo);
@@ -100,7 +88,6 @@ namespace CocoStudio.Projects
 			return plistDirPath;
 		}
 
-		// Token: 0x0600028F RID: 655 RVA: 0x00009B74 File Offset: 0x00007D74
 		private PListImageReader AnalyzePlist(FilePath fileInfo)
 		{
 			PListImageReader result;
@@ -121,14 +108,12 @@ namespace CocoStudio.Projects
 			return result;
 		}
 
-		// Token: 0x06000290 RID: 656 RVA: 0x00009BF8 File Offset: 0x00007DF8
 		private static FilePath GetPListDirPath(FilePath plistFile)
 		{
 			string path = plistFile.ParentDirectory;
 			return Path.Combine(path, "." + plistFile.FileNameWithoutExtension + "_PList.Dir");
 		}
 
-		// Token: 0x06000291 RID: 657 RVA: 0x00009C34 File Offset: 0x00007E34
 		private PListImageReader GetPlistImageReader(FilePath plistInfo)
 		{
 			PListImageReader plistImageReader = this.AnalyzePlist(plistInfo);
@@ -143,7 +128,6 @@ namespace CocoStudio.Projects
 			return plistImageReader;
 		}
 
-		// Token: 0x06000292 RID: 658 RVA: 0x00009C72 File Offset: 0x00007E72
 		protected override void OnDelete(IProgressMonitor monitor)
 		{
 			CSCocosHelp.RemovePlistFileFromCache(this.plistFileInfo);
@@ -153,7 +137,6 @@ namespace CocoStudio.Projects
 			base.OnDelete(monitor);
 		}
 
-		// Token: 0x06000293 RID: 659 RVA: 0x00009CAF File Offset: 0x00007EAF
 		protected override void OnInitialize(IProgressMonitor monitor)
 		{
 			if (string.IsNullOrEmpty(this.imageFile))
@@ -164,7 +147,6 @@ namespace CocoStudio.Projects
 			base.Refresh();
 		}
 
-		// Token: 0x06000294 RID: 660 RVA: 0x00009CEC File Offset: 0x00007EEC
 		protected internal override bool IsNeedRefresh()
 		{
 			bool flag = false;
@@ -183,7 +165,6 @@ namespace CocoStudio.Projects
 			return flag;
 		}
 
-		// Token: 0x06000295 RID: 661 RVA: 0x00009D9B File Offset: 0x00007F9B
 		private void DeleteFile(FilePath filePath)
 		{
 			if (File.Exists(filePath))
@@ -192,7 +173,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000296 RID: 662 RVA: 0x00009DC0 File Offset: 0x00007FC0
 		private void SaveConfig()
 		{
 			try
@@ -217,7 +197,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000297 RID: 663 RVA: 0x00009E98 File Offset: 0x00008098
 		private void ReadConfig()
 		{
 			try
@@ -252,7 +231,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000298 RID: 664 RVA: 0x00009F98 File Offset: 0x00008198
 		protected override void OnRefresh()
 		{
 			bool flag = this.DataError == null;
@@ -277,7 +255,6 @@ namespace CocoStudio.Projects
 			this.SaveConfig();
 		}
 
-		// Token: 0x06000299 RID: 665 RVA: 0x0000A075 File Offset: 0x00008275
 		public string GetPreviewFilePath()
 		{
 			if (!(this.imageFile != null))
@@ -287,7 +264,6 @@ namespace CocoStudio.Projects
 			return this.imageFile;
 		}
 
-		// Token: 0x0600029A RID: 666 RVA: 0x0000A09C File Offset: 0x0000829C
 		private void ReloadChildren()
 		{
 			PListImageReader plistImageReader = this.GetPlistImageReader(this.plistFileInfo);
@@ -349,13 +325,11 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x0600029B RID: 667 RVA: 0x0000A30C File Offset: 0x0000850C
 		public override ResourceData GetResourceData()
 		{
 			return this.CreateResourceData(this.plistFileInfo);
 		}
 
-		// Token: 0x0600029C RID: 668 RVA: 0x0000A31C File Offset: 0x0000851C
 		protected override void OnSetLocation(FilePath newFilePath, bool isRename)
 		{
 			string text = base.BaseDirectory;
@@ -379,7 +353,6 @@ namespace CocoStudio.Projects
 			this.OnRefresh();
 		}
 
-		// Token: 0x0600029D RID: 669 RVA: 0x0000A404 File Offset: 0x00008604
 		protected override void OnMove(FilePath newMovePath)
 		{
 			string text = base.BaseDirectory;
@@ -422,7 +395,6 @@ namespace CocoStudio.Projects
 			this.OnRefresh();
 		}
 
-		// Token: 0x0600029E RID: 670 RVA: 0x0000A580 File Offset: 0x00008780
 		private void UpdateChildrenCacheImage()
 		{
 			foreach (ResourceItem image in base.Items)
@@ -431,27 +403,20 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x0400009F RID: 159
 		public const string PlistFileDirExtention = "_PList.Dir";
 
-		// Token: 0x040000A0 RID: 160
 		public const string FileSuffix = ".plist";
 
-		// Token: 0x040000A1 RID: 161
 		private object lockTag = new object();
 
-		// Token: 0x040000A2 RID: 162
 		[ResourcePathItemProperty(Name = "Image")]
 		private FilePath imageFile;
 
-		// Token: 0x040000A3 RID: 163
 		[ResourcePathItemProperty(Name = "PListFile")]
 		private FilePath plistFileInfo;
 
-		// Token: 0x040000A4 RID: 164
 		protected DateTime? lastPlistWriteTime;
 
-		// Token: 0x040000A5 RID: 165
 		protected DateTime? lastImageWriteTime;
 	}
 }

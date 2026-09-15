@@ -9,10 +9,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000097 RID: 151
 	internal class ResourceFileEditor : ResourceFileBaseEditor
 	{
-		// Token: 0x06000532 RID: 1330 RVA: 0x00016AD0 File Offset: 0x00014CD0
 		protected override void OnInitView()
 		{
 			base.OnInitView();
@@ -32,7 +30,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000533 RID: 1331 RVA: 0x00016B88 File Offset: 0x00014D88
 		private async void fileButton_Clicked(object sender, EventArgs e)
 		{
 			ResourceFolder root = Services.ProjectOperations.CurrentResourceGroup.RootFolder;
@@ -68,7 +65,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000261 RID: 609
 		private Button fileButton;
 	}
 }

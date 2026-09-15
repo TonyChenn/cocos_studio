@@ -16,12 +16,9 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x02000010 RID: 16
 	[ToolboxItem(true)]
 	public class PlatformWidget : Bin, IPreferenceWidget
 	{
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x0600004C RID: 76 RVA: 0x00003FFE File Offset: 0x000021FE
 		public EnumPreferenceSetting SettingID
 		{
 			get
@@ -30,8 +27,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x0600004D RID: 77 RVA: 0x00004001 File Offset: 0x00002201
 		public string DisplayName
 		{
 			get
@@ -40,7 +35,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00004008 File Offset: 0x00002208
 		public PlatformWidget()
 		{
 			this.Build();
@@ -50,7 +44,6 @@ namespace Modules.Communal.Preference
 			this.SetMultiLanugage();
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x00004030 File Offset: 0x00002230
 		private void InitWidgets()
 		{
 			if (string.IsNullOrEmpty(Option.UserConfig.ANTPath))
@@ -81,7 +74,6 @@ namespace Modules.Communal.Preference
 			this.button_config.Sensitive = false;
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x00004148 File Offset: 0x00002348
 		private void InitView()
 		{
 			Xwt.Drawing.Image icon = ImageIcon.GetIcon("CocoStudio.DefaultResource.Images.WarningIcon.Studio.png");
@@ -104,7 +96,6 @@ namespace Modules.Communal.Preference
 			this.RefreshUI();
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x00004200 File Offset: 0x00002400
 		private void InitEvent()
 		{
 			this.button_browseANT.Clicked += this.ButtonAntClickedHandler;
@@ -120,7 +111,6 @@ namespace Modules.Communal.Preference
 			base.SizeAllocated += this.SizeAllocatedHandler;
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x00004304 File Offset: 0x00002504
 		private void SetMultiLanugage()
 		{
 			this.GtkLabel_framework.LabelProp = string.Format(" {0} ", LanguageInfo.Installer_Framework);
@@ -138,7 +128,6 @@ namespace Modules.Communal.Preference
 			this.button_config.Label = LanguageInfo.Preference_Configure;
 		}
 
-		// Token: 0x06000053 RID: 83 RVA: 0x00004420 File Offset: 0x00002620
 		public void ApplySetting()
 		{
 			if (!string.IsNullOrEmpty(this.entry_SDK.Text))
@@ -159,20 +148,17 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x06000054 RID: 84 RVA: 0x000044C9 File Offset: 0x000026C9
 		public bool CanApply(out string output)
 		{
 			output = "";
 			return true;
 		}
 
-		// Token: 0x06000055 RID: 85 RVA: 0x000044D3 File Offset: 0x000026D3
 		Widget IPreferenceWidget.GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x06000056 RID: 86 RVA: 0x000044D8 File Offset: 0x000026D8
 		private void RefreshUI()
 		{
 			if (string.IsNullOrEmpty(this.entry_ANT.Text))
@@ -232,19 +218,16 @@ namespace Modules.Communal.Preference
 			this.eventbox_framework.Show();
 		}
 
-		// Token: 0x06000057 RID: 87 RVA: 0x00004660 File Offset: 0x00002860
 		private void SizeAllocatedHandler(object o, SizeAllocatedArgs args)
 		{
 			this.label_prompt.WidthRequest = this.vbox_storePrompt.Allocation.Width;
 		}
 
-		// Token: 0x06000058 RID: 88 RVA: 0x0000467D File Offset: 0x0000287D
 		private void ButtonConfigClickedHandler(object sender, EventArgs e)
 		{
 			Cocos2dxServices.InstallerServices.StartInstaller(true, true);
 		}
 
-		// Token: 0x06000059 RID: 89 RVA: 0x0000468C File Offset: 0x0000288C
 		private void ConfigFinishedHandler(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrEmpty(Option.UserConfig.NDKPath))
@@ -265,13 +248,11 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600005A RID: 90 RVA: 0x00004731 File Offset: 0x00002931
 		private void PathEntryChangedHandler(object sender, EventArgs e)
 		{
 			this.RefreshUI();
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x0000473C File Offset: 0x0000293C
 		private void ButtonSdkClickedHandler(object sender, EventArgs e)
 		{
 			string selectFolderPath = this.GetSelectFolderPath("SDK", this.entry_SDK.Text);
@@ -281,7 +262,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600005C RID: 92 RVA: 0x00004774 File Offset: 0x00002974
 		private void ButtonNdkClickedHandler(object sender, EventArgs e)
 		{
 			string selectFolderPath = this.GetSelectFolderPath("NDK", this.entry_NDK.Text);
@@ -291,7 +271,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600005D RID: 93 RVA: 0x000047AC File Offset: 0x000029AC
 		private void ButtonJdkClickedHandler(object sender, EventArgs e)
 		{
 			string selectFolderPath = this.GetSelectFolderPath("JDK", this.entry_JDK.Text);
@@ -301,7 +280,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600005E RID: 94 RVA: 0x000047E4 File Offset: 0x000029E4
 		private void ButtonAntClickedHandler(object sender, EventArgs e)
 		{
 			string selectFolderPath = this.GetSelectFolderPath("ANT", this.entry_ANT.Text);
@@ -311,7 +289,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600005F RID: 95 RVA: 0x0000481C File Offset: 0x00002A1C
 		private string GetSelectFolderPath(string tilteName, string initDir)
 		{
 			string result = string.Empty;
@@ -328,7 +305,6 @@ namespace Modules.Communal.Preference
 			return result;
 		}
 
-		// Token: 0x06000060 RID: 96 RVA: 0x00004894 File Offset: 0x00002A94
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -804,196 +780,132 @@ namespace Modules.Communal.Preference
 			base.Hide();
 		}
 
-		// Token: 0x04000043 RID: 67
 		private VBox vbox_main;
 
-		// Token: 0x04000044 RID: 68
 		private Frame frame_framework;
 
-		// Token: 0x04000045 RID: 69
 		private Alignment GtkAlignment_framework;
 
-		// Token: 0x04000046 RID: 70
 		private VBox vbox_framework;
 
-		// Token: 0x04000047 RID: 71
 		private HBox hbox_frameworkInfo;
 
-		// Token: 0x04000048 RID: 72
 		private VBox vbox1;
 
-		// Token: 0x04000049 RID: 73
 		private Alignment alignment1;
 
-		// Token: 0x0400004A RID: 74
 		private ImageBin imagebin_framework;
 
-		// Token: 0x0400004B RID: 75
 		private Alignment alignment2;
 
-		// Token: 0x0400004C RID: 76
 		private Label label_frameworkInfo;
 
-		// Token: 0x0400004D RID: 77
 		private EventBox eventbox_framework;
 
-		// Token: 0x0400004E RID: 78
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x0400004F RID: 79
 		private TreeView treeview_framework;
 
-		// Token: 0x04000050 RID: 80
 		private Label GtkLabel_framework;
 
-		// Token: 0x04000051 RID: 81
 		private Frame frame_androod;
 
-		// Token: 0x04000052 RID: 82
 		private Alignment GtkAlignment;
 
-		// Token: 0x04000053 RID: 83
 		private VBox vbox_android;
 
-		// Token: 0x04000054 RID: 84
 		private Table table_android;
 
-		// Token: 0x04000055 RID: 85
 		private HBox hbox_ant;
 
-		// Token: 0x04000056 RID: 86
 		private Entry entry_ANT;
 
-		// Token: 0x04000057 RID: 87
 		private Button button_browseANT;
 
-		// Token: 0x04000058 RID: 88
 		private HBox hbox_jdk;
 
-		// Token: 0x04000059 RID: 89
 		private Entry entry_JDK;
 
-		// Token: 0x0400005A RID: 90
 		private Button button_browseJDK;
 
-		// Token: 0x0400005B RID: 91
 		private HBox hbox_ndk;
 
-		// Token: 0x0400005C RID: 92
 		private Entry entry_NDK;
 
-		// Token: 0x0400005D RID: 93
 		private Button button_browseNDK;
 
-		// Token: 0x0400005E RID: 94
 		private HBox hbox_sdk;
 
-		// Token: 0x0400005F RID: 95
 		private Entry entry_SDK;
 
-		// Token: 0x04000060 RID: 96
 		private Button button_browseSDK;
 
-		// Token: 0x04000061 RID: 97
 		private Label label_ANT;
 
-		// Token: 0x04000062 RID: 98
 		private Label label_JDK;
 
-		// Token: 0x04000063 RID: 99
 		private Label label_NDK;
 
-		// Token: 0x04000064 RID: 100
 		private Label label_SDK;
 
-		// Token: 0x04000065 RID: 101
 		private VBox vbox2;
 
-		// Token: 0x04000066 RID: 102
 		private Alignment alignment3;
 
-		// Token: 0x04000067 RID: 103
 		private ImageBin imagebin_sdk;
 
-		// Token: 0x04000068 RID: 104
 		private Alignment alignment4;
 
-		// Token: 0x04000069 RID: 105
 		private VBox vbox3;
 
-		// Token: 0x0400006A RID: 106
 		private Alignment alignment5;
 
-		// Token: 0x0400006B RID: 107
 		private ImageBin imagebin_ndk;
 
-		// Token: 0x0400006C RID: 108
 		private Alignment alignment6;
 
-		// Token: 0x0400006D RID: 109
 		private VBox vbox4;
 
-		// Token: 0x0400006E RID: 110
 		private Alignment alignment7;
 
-		// Token: 0x0400006F RID: 111
 		private ImageBin imagebin_ant;
 
-		// Token: 0x04000070 RID: 112
 		private Alignment alignment8;
 
-		// Token: 0x04000071 RID: 113
 		private VBox vbox5;
 
-		// Token: 0x04000072 RID: 114
 		private Alignment alignment9;
 
-		// Token: 0x04000073 RID: 115
 		private ImageBin imagebin_jdk;
 
-		// Token: 0x04000074 RID: 116
 		private Alignment alignment10;
 
-		// Token: 0x04000075 RID: 117
 		private Label GtkLabel_android;
 
-		// Token: 0x04000076 RID: 118
 		private HBox hbox_config;
 
-		// Token: 0x04000077 RID: 119
 		private Alignment alignment_storePropmt;
 
-		// Token: 0x04000078 RID: 120
 		private VBox vbox_storePrompt;
 
-		// Token: 0x04000079 RID: 121
 		private Alignment alignment_storePromptTop;
 
-		// Token: 0x0400007A RID: 122
 		private Label label_prompt;
 
-		// Token: 0x0400007B RID: 123
 		private Alignment alignment_storePromptBottom;
 
-		// Token: 0x0400007C RID: 124
 		private Alignment alignment_configBtn;
 
-		// Token: 0x0400007D RID: 125
 		private Button button_config;
 
-		// Token: 0x0400007E RID: 126
 		private VBox vbox_netWarning;
 
-		// Token: 0x0400007F RID: 127
 		private Alignment alignment_netTop;
 
-		// Token: 0x04000080 RID: 128
 		private Alignment alignment_netWarning;
 
-		// Token: 0x04000081 RID: 129
 		private TooltipIcon tooltipicon_net;
 
-		// Token: 0x04000082 RID: 130
 		private Alignment alignment_netBottom;
 	}
 }

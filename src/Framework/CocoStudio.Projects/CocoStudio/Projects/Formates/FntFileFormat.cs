@@ -11,14 +11,11 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Projects.Formates
 {
-	// Token: 0x02000028 RID: 40
 	[Extension(typeof(IPublishProcesser))]
 	[Extension(typeof(IFileFormat))]
 	[Extension(typeof(ICompositeResourceProcesser))]
 	internal class FntFileFormat : CompositeFormat, IPublishProcesser
 	{
-		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x060000D9 RID: 217 RVA: 0x00004590 File Offset: 0x00002790
 		private static Regex PageCountMatchReg
 		{
 			get
@@ -31,13 +28,11 @@ namespace CocoStudio.Projects.Formates
 			}
 		}
 
-		// Token: 0x060000DA RID: 218 RVA: 0x000045AE File Offset: 0x000027AE
 		protected override bool OnCanWriteFile(object obj)
 		{
 			return obj is FntFile;
 		}
 
-		// Token: 0x060000DB RID: 219 RVA: 0x000045BC File Offset: 0x000027BC
 		protected override bool OnCanReadFile(FilePath file, Type expectedObjectType)
 		{
 			try
@@ -58,13 +53,11 @@ namespace CocoStudio.Projects.Formates
 			return false;
 		}
 
-		// Token: 0x060000DC RID: 220 RVA: 0x00004608 File Offset: 0x00002808
 		protected override object OnReadFile(FilePath file, Type expectedType, IProgressMonitor monitor)
 		{
 			return new FntFile(file);
 		}
 
-		// Token: 0x060000DD RID: 221 RVA: 0x00004610 File Offset: 0x00002810
 		private static bool CheckFileSuffix(FilePath filePath)
 		{
 			return FileFormat.CheckFileSuffix(filePath, new string[]
@@ -73,13 +66,11 @@ namespace CocoStudio.Projects.Formates
 			});
 		}
 
-		// Token: 0x060000DE RID: 222 RVA: 0x00004633 File Offset: 0x00002833
 		bool IPublishProcesser.CanProcess(ResourceData resourceData)
 		{
 			return resourceData.Type != EnumResourceType.PlistSubImage && FntFileFormat.CheckFileSuffix(resourceData.Path);
 		}
 
-		// Token: 0x060000DF RID: 223 RVA: 0x00004650 File Offset: 0x00002850
 		HashSet<ResourceData> IPublishProcesser.Process(ResourceData resourceData)
 		{
 			if (EnumResourceType.Default == resourceData.Type)
@@ -92,13 +83,11 @@ namespace CocoStudio.Projects.Formates
 			return CompositeResourceHelp.GetResourcesIncludeImage(resourceData, compositeResourceFile.ImageFiles.ToList<string>());
 		}
 
-		// Token: 0x060000E0 RID: 224 RVA: 0x000046AE File Offset: 0x000028AE
 		public override bool CanProcess(string filePath)
 		{
 			return base.CanReadFile(filePath, typeof(ResourceItem));
 		}
 
-		// Token: 0x060000E1 RID: 225 RVA: 0x000046C8 File Offset: 0x000028C8
 		public override List<string> GetFiles(string filePath)
 		{
 			string text;
@@ -110,7 +99,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x060000E2 RID: 226 RVA: 0x000046E4 File Offset: 0x000028E4
 		public override List<string> GetPretreatmentTypes()
 		{
 			return new List<string>
@@ -119,7 +107,6 @@ namespace CocoStudio.Projects.Formates
 			};
 		}
 
-		// Token: 0x060000E3 RID: 227 RVA: 0x00004704 File Offset: 0x00002904
 		public static List<string> ParseAndCheckFntFile(string fullPath, out string errorInfo)
 		{
 			List<string> list = null;
@@ -168,7 +155,6 @@ namespace CocoStudio.Projects.Formates
 			return list;
 		}
 
-		// Token: 0x060000E4 RID: 228 RVA: 0x000047B8 File Offset: 0x000029B8
 		private static FntFileFormat.FntType CheckFntType(FileStream fs)
 		{
 			FntFileFormat.FntType result = FntFileFormat.FntType.Unknown;
@@ -208,7 +194,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x060000E5 RID: 229 RVA: 0x00004848 File Offset: 0x00002A48
 		private static List<string> ParseTextFormatForPictureFile(FileStream fs, string filePath)
 		{
 			List<string> list = new List<string>();
@@ -249,7 +234,6 @@ namespace CocoStudio.Projects.Formates
 			return list;
 		}
 
-		// Token: 0x060000E6 RID: 230 RVA: 0x00004938 File Offset: 0x00002B38
 		private static List<string> ParseBinFormatForPictureFile(FileStream fs, string filePath)
 		{
 			List<string> list = new List<string>();
@@ -306,25 +290,17 @@ namespace CocoStudio.Projects.Formates
 			return list;
 		}
 
-		// Token: 0x0400003C RID: 60
 		private const string RegPagesCountMatch = "((?<=\\bpages=)\\d*)";
 
-		// Token: 0x0400003D RID: 61
 		private const string RegPageMatchStr = "((?<=\\bpage id={0} file=\\\")[^\\\"]*)";
 
-		// Token: 0x0400003E RID: 62
 		private static Regex pageCountMatchReg;
 
-		// Token: 0x02000029 RID: 41
 		public enum FntType
 		{
-			// Token: 0x04000040 RID: 64
 			Text,
-			// Token: 0x04000041 RID: 65
 			XML,
-			// Token: 0x04000042 RID: 66
 			Binary,
-			// Token: 0x04000043 RID: 67
 			Unknown
 		}
 	}

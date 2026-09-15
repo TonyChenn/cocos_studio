@@ -9,10 +9,8 @@ namespace ICSharpCode.NRefactory.TypeSystem
 	/// <remarks>
 	/// This comparer checks for equal short name, equal type parameter count, and equal parameter types (using ParameterListComparer).
 	/// </remarks>
-	// Token: 0x020000F6 RID: 246
 	public sealed class SignatureComparer : IEqualityComparer<IMember>
 	{
-		// Token: 0x06000920 RID: 2336 RVA: 0x00018794 File Offset: 0x00017794
 		public SignatureComparer(StringComparer nameComparer)
 		{
 			if (nameComparer == null)
@@ -22,7 +20,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			this.nameComparer = nameComparer;
 		}
 
-		// Token: 0x06000921 RID: 2337 RVA: 0x000187B4 File Offset: 0x000177B4
 		public bool Equals(IMember x, IMember y)
 		{
 			if (x == y)
@@ -44,7 +41,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return true;
 		}
 
-		// Token: 0x06000922 RID: 2338 RVA: 0x00018850 File Offset: 0x00017850
 		public int GetHashCode(IMember obj)
 		{
 			int num = (int)obj.SymbolKind * 33 + this.nameComparer.GetHashCode(obj.Name);
@@ -62,13 +58,11 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return num;
 		}
 
-		// Token: 0x040002E9 RID: 745
 		private StringComparer nameComparer;
 
 		/// <summary>
 		/// Gets a signature comparer that uses an ordinal comparison for the member name.
 		/// </summary>
-		// Token: 0x040002EA RID: 746
 		public static readonly SignatureComparer Ordinal = new SignatureComparer(StringComparer.Ordinal);
 	}
 }

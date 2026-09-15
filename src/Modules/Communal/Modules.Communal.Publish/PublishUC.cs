@@ -19,11 +19,9 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.Publish
 {
-	// Token: 0x02000006 RID: 6
 	[Extension(Type = typeof(ICommandHandle))]
 	public class PublishUC : ICommandHandle
 	{
-		// Token: 0x06000017 RID: 23 RVA: 0x00002B94 File Offset: 0x00000D94
 		void ICommandHandle.Initialize()
 		{
 			GlobalCommand.PublishPackageCmd.Execute += this.PublishPackageCmd_Execute;
@@ -36,14 +34,12 @@ namespace Modules.Communal.Publish
 			GlobalCommand.RunLastCmd.Update += this.RunLastCmd_UpdateHandler;
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x00002C54 File Offset: 0x00000E54
 		private void PublishPackageCmd_Execute(object sender, CommandRunArgs e)
 		{
 			PublishPackageWindow publishPackageWindow = new PublishPackageWindow();
 			publishPackageWindow.Show();
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x00002C6D File Offset: 0x00000E6D
 		private void PublishPackageLastCmd_Execute(object sender, CommandRunArgs e)
 		{
 			if (CocosRecentServices.Instance.IsLastPublish)
@@ -54,7 +50,6 @@ namespace Modules.Communal.Publish
 			this.PackageUsingLastSettings();
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x00002C88 File Offset: 0x00000E88
 		private void PublishPackageLastCmd_Update(object sender, CommandUpdateArgs e)
 		{
 			bool flag = PublishHelper.HasSolution();
@@ -70,7 +65,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002CD8 File Offset: 0x00000ED8
 		private void RunProjectCmd_ExecuteHandler(object sender, CommandRunArgs e)
 		{
 			EnumPlatform enumPlatform;
@@ -81,13 +75,11 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00002D01 File Offset: 0x00000F01
 		private void RunLastCmd_ExecuteHandler(object sender, CommandRunArgs e)
 		{
 			this.Run(CocosRecentServices.Instance.LastRunType);
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002D14 File Offset: 0x00000F14
 		private void RunLastCmd_UpdateHandler(object sender, CommandUpdateArgs e)
 		{
 			EnumPlatform lastRunType = CocosRecentServices.Instance.LastRunType;
@@ -109,13 +101,11 @@ namespace Modules.Communal.Publish
 			e.Info.Text = platform.GetDisplayName(EnumOperationType.Run);
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002DB0 File Offset: 0x00000FB0
 		private void HasSolution_CanExecute(object sender, CommandUpdateArgs e)
 		{
 			e.Info.Enabled = PublishHelper.HasSolution();
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00002DC4 File Offset: 0x00000FC4
 		private void PackageUsingLastSettings()
 		{
 			if (!Cocos2dxServices.SupplymentServices.Supplyment(EnumSolutionCodeType.Complete, EnumOperationType.Package))
@@ -147,7 +137,6 @@ namespace Modules.Communal.Publish
 			task.Start();
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00002E84 File Offset: 0x00001084
 		private void PackageFinishedHandler(object sender, FinishedArgs e)
 		{
 			CocosMonitor cocosMonitor = sender as CocosMonitor;
@@ -166,7 +155,6 @@ namespace Modules.Communal.Publish
 			LogConfig.OutputWithoutTip.Info(cocosMonitor.FullOutputInfo, true);
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x00002F00 File Offset: 0x00001100
 		private void PublishUsingLastSettings()
 		{
 			switch (CocosRecentServices.Instance.LastPublishType)
@@ -188,13 +176,11 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00002F4A File Offset: 0x0000114A
 		private void PublishResource()
 		{
 			PublishUC.PublishSolution();
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x00002F54 File Offset: 0x00001154
 		private void PublishToCodeIDE()
 		{
 			if (!Cocos2dxServices.SupplymentServices.Supplyment(EnumSolutionCodeType.CodeIDE, EnumOperationType.Publish))
@@ -209,7 +195,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x00002F9B File Offset: 0x0000119B
 		private void PublishToVisualStudio()
 		{
 			if (!Cocos2dxServices.SupplymentServices.Supplyment(EnumSolutionCodeType.Complete, EnumOperationType.Publish))
@@ -223,7 +208,6 @@ namespace Modules.Communal.Publish
 			PublishHelper.OpenProjectWithVisualStudio();
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x00002FB9 File Offset: 0x000011B9
 		private void PublishToXcode()
 		{
 			if (!Cocos2dxServices.SupplymentServices.Supplyment(EnumSolutionCodeType.Complete, EnumOperationType.Publish))
@@ -237,14 +221,12 @@ namespace Modules.Communal.Publish
 			PublishHelper.OpenProjectWithXcode();
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x00002FD7 File Offset: 0x000011D7
 		private static bool PublishSolution()
 		{
 			Services.Workbench.SaveAll();
 			return PublishUC.PublishSolutionSync();
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002FE8 File Offset: 0x000011E8
 		private static void PublishSolutionAsync(CocosMonitor cocosMonitor)
 		{
 			string methodName = "";
@@ -310,7 +292,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x000031D4 File Offset: 0x000013D4
 		private static bool PublishSolutionSync()
 		{
 			string methodName = "";
@@ -386,7 +367,6 @@ namespace Modules.Communal.Publish
 			return result;
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x000033E4 File Offset: 0x000015E4
 		private bool SelectRunType(out EnumPlatform runType)
 		{
 			SelectRunTypeDialog selectRunTypeDialog = new SelectRunTypeDialog();
@@ -397,7 +377,6 @@ namespace Modules.Communal.Publish
 			return num == -5;
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00003418 File Offset: 0x00001618
 		private void Run(EnumPlatform runType)
 		{
 			if (!Cocos2dxServices.SupplymentServices.Supplyment(EnumSolutionCodeType.Complete, EnumOperationType.Run))
@@ -429,7 +408,6 @@ namespace Modules.Communal.Publish
 			task.Start();
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x000034E0 File Offset: 0x000016E0
 		private void RunFinishedHandler(object sender, FinishedArgs e)
 		{
 			CocosMonitor cocosMonitor = sender as CocosMonitor;

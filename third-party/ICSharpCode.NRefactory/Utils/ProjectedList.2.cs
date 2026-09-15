@@ -4,10 +4,8 @@ using System.Collections.Generic;
 
 namespace ICSharpCode.NRefactory.Utils
 {
-	// Token: 0x02000124 RID: 292
 	public sealed class ProjectedList<TContext, TInput, TOutput> : IList<TOutput>, ICollection<TOutput>, IEnumerable<TOutput>, IEnumerable where TOutput : class
 	{
-		// Token: 0x06000A4B RID: 2635 RVA: 0x0001E968 File Offset: 0x0001D968
 		public ProjectedList(TContext context, IList<TInput> input, Func<TContext, TInput, TOutput> projection)
 		{
 			if (input == null)
@@ -24,7 +22,6 @@ namespace ICSharpCode.NRefactory.Utils
 			this.items = new TOutput[input.Count];
 		}
 
-		// Token: 0x170003EE RID: 1006
 		public TOutput this[int index]
 		{
 			get
@@ -38,7 +35,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x170003EF RID: 1007
 		TOutput IList<TOutput>.this[int index]
 		{
 			get
@@ -51,8 +47,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x170003F0 RID: 1008
-		// (get) Token: 0x06000A4F RID: 2639 RVA: 0x0001EA27 File Offset: 0x0001DA27
 		public int Count
 		{
 			get
@@ -61,8 +55,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x170003F1 RID: 1009
-		// (get) Token: 0x06000A50 RID: 2640 RVA: 0x0001EA31 File Offset: 0x0001DA31
 		bool ICollection<TOutput>.IsReadOnly
 		{
 			get
@@ -71,7 +63,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x06000A51 RID: 2641 RVA: 0x0001EA34 File Offset: 0x0001DA34
 		int IList<TOutput>.IndexOf(TOutput item)
 		{
 			EqualityComparer<TOutput> @default = EqualityComparer<TOutput>.Default;
@@ -85,31 +76,26 @@ namespace ICSharpCode.NRefactory.Utils
 			return -1;
 		}
 
-		// Token: 0x06000A52 RID: 2642 RVA: 0x0001EA6B File Offset: 0x0001DA6B
 		void IList<TOutput>.Insert(int index, TOutput item)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000A53 RID: 2643 RVA: 0x0001EA72 File Offset: 0x0001DA72
 		void IList<TOutput>.RemoveAt(int index)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000A54 RID: 2644 RVA: 0x0001EA79 File Offset: 0x0001DA79
 		void ICollection<TOutput>.Add(TOutput item)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000A55 RID: 2645 RVA: 0x0001EA80 File Offset: 0x0001DA80
 		void ICollection<TOutput>.Clear()
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000A56 RID: 2646 RVA: 0x0001EA88 File Offset: 0x0001DA88
 		bool ICollection<TOutput>.Contains(TOutput item)
 		{
 			EqualityComparer<TOutput> @default = EqualityComparer<TOutput>.Default;
@@ -123,7 +109,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return false;
 		}
 
-		// Token: 0x06000A57 RID: 2647 RVA: 0x0001EAC0 File Offset: 0x0001DAC0
 		void ICollection<TOutput>.CopyTo(TOutput[] array, int arrayIndex)
 		{
 			for (int i = 0; i < this.items.Length; i++)
@@ -132,13 +117,11 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x06000A58 RID: 2648 RVA: 0x0001EAF0 File Offset: 0x0001DAF0
 		bool ICollection<TOutput>.Remove(TOutput item)
 		{
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x06000A59 RID: 2649 RVA: 0x0001EBA4 File Offset: 0x0001DBA4
 		public IEnumerator<TOutput> GetEnumerator()
 		{
 			for (int i = 0; i < this.Count; i++)
@@ -148,22 +131,17 @@ namespace ICSharpCode.NRefactory.Utils
 			yield break;
 		}
 
-		// Token: 0x06000A5A RID: 2650 RVA: 0x0001EBC0 File Offset: 0x0001DBC0
 		IEnumerator IEnumerable.GetEnumerator()
 		{
 			return this.GetEnumerator();
 		}
 
-		// Token: 0x0400037E RID: 894
 		private readonly IList<TInput> input;
 
-		// Token: 0x0400037F RID: 895
 		private readonly TContext context;
 
-		// Token: 0x04000380 RID: 896
 		private readonly Func<TContext, TInput, TOutput> projection;
 
-		// Token: 0x04000381 RID: 897
 		private readonly TOutput[] items;
 	}
 }

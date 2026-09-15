@@ -10,22 +10,18 @@ using CocoStudio.Basic;
 
 namespace CocoStudio.UndoManager.Recorder
 {
-	// Token: 0x02000014 RID: 20
 	public class DefaultRecorder : BaseRecorder
 	{
-		// Token: 0x0600008C RID: 140 RVA: 0x0000326F File Offset: 0x0000146F
 		public DefaultRecorder(INotifyStateChanged objectItem, string taskGroupName = null) : base(objectItem, taskGroupName)
 		{
 			this.Initialize();
 		}
 
-		// Token: 0x0600008D RID: 141 RVA: 0x0000328E File Offset: 0x0000148E
 		private void Initialize()
 		{
 			this.AnalyzeObject();
 		}
 
-		// Token: 0x0600008E RID: 142 RVA: 0x00003298 File Offset: 0x00001498
 		private void AnalyzeObject()
 		{
 			bool flag = false;
@@ -56,13 +52,11 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x000033B4 File Offset: 0x000015B4
 		private bool CanIgnore()
 		{
 			return BaseRecorder.IsUndoing || !base.IsAutoRecord;
 		}
 
-		// Token: 0x06000090 RID: 144 RVA: 0x000033DC File Offset: 0x000015DC
 		private void ObjectItem_PropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			try
@@ -78,13 +72,11 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x06000091 RID: 145 RVA: 0x00003440 File Offset: 0x00001640
 		private bool ContainsProperty(string propertyName)
 		{
 			return this.oldValueList.ContainsKey(propertyName);
 		}
 
-		// Token: 0x06000092 RID: 146 RVA: 0x00003460 File Offset: 0x00001660
 		private void ObjectItem_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			try
@@ -100,7 +92,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x06000093 RID: 147 RVA: 0x000034B4 File Offset: 0x000016B4
 		private void ObjectItem_StateChanged(object sender, StateChangedEventArgs e)
 		{
 			try
@@ -116,7 +107,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x06000094 RID: 148 RVA: 0x00003518 File Offset: 0x00001718
 		private void PropertyChangedHandle(object sender, PropertyChangedEventArgs e)
 		{
 			object obj = null;
@@ -131,7 +121,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x06000095 RID: 149 RVA: 0x0000356C File Offset: 0x0000176C
 		private void CollectionChangedHandle(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			if (sender is IInsertableList)
@@ -148,7 +137,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x06000096 RID: 150 RVA: 0x000035C4 File Offset: 0x000017C4
 		private void StateChangedHandle(object sender, StateChangedEventArgs e)
 		{
 			object obj = null;
@@ -168,7 +156,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x06000097 RID: 151 RVA: 0x00003640 File Offset: 0x00001840
 		private bool IsCollectionProperty(object sender, string propertyName, out PropertyInfo property, out object newValue)
 		{
 			property = sender.GetType().GetProperty(propertyName);
@@ -176,7 +163,6 @@ namespace CocoStudio.UndoManager.Recorder
 			return newValue is INotifyCollectionChanged;
 		}
 
-		// Token: 0x06000098 RID: 152 RVA: 0x00003688 File Offset: 0x00001888
 		private void UpdateCollectionChangedRegister(string propertyName, INotifyCollectionChanged newValue)
 		{
 			object obj = this.oldValueList[propertyName];
@@ -192,7 +178,6 @@ namespace CocoStudio.UndoManager.Recorder
 			this.oldValueList[propertyName] = newValue;
 		}
 
-		// Token: 0x06000099 RID: 153 RVA: 0x00003ADC File Offset: 0x00001CDC
 		private void RegisterICollectionChanges(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			MethodInfo add = sender.GetType().GetMethod("Add");
@@ -290,7 +275,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x0600009A RID: 154 RVA: 0x00004100 File Offset: 0x00002300
 		private void RegisterIListChanges(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			PropertyInfo indexer = sender.GetType().GetProperty("Item");
@@ -428,7 +412,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x0600009B RID: 155 RVA: 0x00004350 File Offset: 0x00002550
 		private static bool IsList(object sender)
 		{
 			bool result;
@@ -461,7 +444,6 @@ namespace CocoStudio.UndoManager.Recorder
 			return result;
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x00004420 File Offset: 0x00002620
 		private static bool IsCollection(object sender)
 		{
 			Queue<Type> queue = new Queue<Type>(sender.GetType().GetInterfaces());
@@ -485,7 +467,6 @@ namespace CocoStudio.UndoManager.Recorder
 			return false;
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x000044D4 File Offset: 0x000026D4
 		protected PropertyUndoTask CreatePropertyUndoTask(StateChangedEventArgs e, PropertyInfo property, object oldValue, object newValue)
 		{
 			PropertyUndoTask result;
@@ -501,7 +482,6 @@ namespace CocoStudio.UndoManager.Recorder
 			return result;
 		}
 
-		// Token: 0x0600009E RID: 158 RVA: 0x0000453C File Offset: 0x0000273C
 		private void AddTask(UndoTask undoTask)
 		{
 			if (TaskServiceSingleton.Instance.Enable)
@@ -510,7 +490,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x0600009F RID: 159 RVA: 0x00004564 File Offset: 0x00002764
 		private bool IsValueEquals(object newValue, object oldValue)
 		{
 			bool result;
@@ -525,7 +504,6 @@ namespace CocoStudio.UndoManager.Recorder
 			return result;
 		}
 
-		// Token: 0x060000A0 RID: 160 RVA: 0x00004598 File Offset: 0x00002798
 		protected List<UndoTask> CollectChangedProperty(bool isCreateRecorder)
 		{
 			List<UndoTask> list = new List<UndoTask>();
@@ -555,7 +533,6 @@ namespace CocoStudio.UndoManager.Recorder
 			return list;
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x00004710 File Offset: 0x00002910
 		protected override void OnStart(bool isCreateRecorder)
 		{
 			this.objectItem.PropertyChanged += this.ObjectItem_PropertyChanged;
@@ -566,7 +543,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x00004788 File Offset: 0x00002988
 		protected override void OnStop(bool isUpdateOldValues = false)
 		{
 			this.objectItem.PropertyChanged -= this.ObjectItem_PropertyChanged;
@@ -576,13 +552,11 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x000047C0 File Offset: 0x000029C0
 		~DefaultRecorder()
 		{
 			this.Dispose();
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x000047F4 File Offset: 0x000029F4
 		public override void Dispose()
 		{
 			if (this.objectItem != null)
@@ -596,7 +570,6 @@ namespace CocoStudio.UndoManager.Recorder
 			base.Dispose();
 		}
 
-		// Token: 0x060000A5 RID: 165 RVA: 0x00004864 File Offset: 0x00002A64
 		public void UpdateCachedValue(string propertyName, object value)
 		{
 			if (this.ContainsProperty(propertyName))
@@ -605,7 +578,6 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x00004890 File Offset: 0x00002A90
 		public void UpdateCachedValue()
 		{
 			foreach (KeyValuePair<string, object> keyValuePair in this.oldValueList.ToList<KeyValuePair<string, object>>())
@@ -616,10 +588,8 @@ namespace CocoStudio.UndoManager.Recorder
 			}
 		}
 
-		// Token: 0x04000020 RID: 32
 		internal static readonly object[] EmptyArray = new object[0];
 
-		// Token: 0x04000021 RID: 33
 		private readonly Dictionary<string, object> oldValueList = new Dictionary<string, object>();
 	}
 }

@@ -9,12 +9,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000015 RID: 21
 	internal class SkyBoxImageEditor : BaseEditor
 	{
-		// Token: 0x17000033 RID: 51
-		// (get) Token: 0x060000B5 RID: 181 RVA: 0x00003A60 File Offset: 0x00001C60
-		// (set) Token: 0x060000B6 RID: 182 RVA: 0x00003A70 File Offset: 0x00001C70
 		private string WarningText
 		{
 			get
@@ -37,8 +33,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000034 RID: 52
-		// (get) Token: 0x060000B7 RID: 183 RVA: 0x00003AC6 File Offset: 0x00001CC6
 		public override bool IsShowLabel
 		{
 			get
@@ -47,8 +41,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000035 RID: 53
-		// (get) Token: 0x060000B8 RID: 184 RVA: 0x00003AC9 File Offset: 0x00001CC9
 		public override bool CanCaching
 		{
 			get
@@ -57,8 +49,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000036 RID: 54
-		// (get) Token: 0x060000B9 RID: 185 RVA: 0x00003ACC File Offset: 0x00001CCC
 		public override bool IsMultiLine
 		{
 			get
@@ -67,7 +57,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060000BA RID: 186 RVA: 0x00003AD0 File Offset: 0x00001CD0
 		protected override Widget OnCreateWidget()
 		{
 			this.instance = (PropertyItem.FirstObject as ISkyBox);
@@ -85,7 +74,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x060000BB RID: 187 RVA: 0x00003B5C File Offset: 0x00001D5C
 		private Widget CreateSkyBoxWidget()
 		{
 			Table table = new Table(3U, 6U, false);
@@ -141,7 +129,6 @@ namespace CocoStudio.Model.Editor
 			return table;
 		}
 
-		// Token: 0x060000BC RID: 188 RVA: 0x00003D84 File Offset: 0x00001F84
 		private Label CreateLabel(string text)
 		{
 			Label label = new Label(text);
@@ -151,7 +138,6 @@ namespace CocoStudio.Model.Editor
 			return label;
 		}
 
-		// Token: 0x060000BD RID: 189 RVA: 0x00003DBC File Offset: 0x00001FBC
 		private Widget CreateImageWidget(PropertyDescriptor descriptor, string data)
 		{
 			new Color(50, 49, 54);
@@ -169,7 +155,6 @@ namespace CocoStudio.Model.Editor
 			return eventBox;
 		}
 
-		// Token: 0x060000BE RID: 190 RVA: 0x00003E58 File Offset: 0x00002058
 		protected override void OnSetControl()
 		{
 			if (this.instance != null)
@@ -178,7 +163,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060000BF RID: 191 RVA: 0x00003E74 File Offset: 0x00002074
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 			foreach (string b in this.resourceList)
@@ -198,19 +182,14 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000053 RID: 83
 		private TooltipIcon warningIcon = new TooltipIcon();
 
-		// Token: 0x04000054 RID: 84
 		private Alignment alignmentWarning = new Alignment(0.5f, 0.5f, 1f, 1f);
 
-		// Token: 0x04000055 RID: 85
 		private List<string> resourceList;
 
-		// Token: 0x04000056 RID: 86
 		private List<ImageEventBox> imageEventBoxList;
 
-		// Token: 0x04000057 RID: 87
 		private ISkyBox instance;
 	}
 }

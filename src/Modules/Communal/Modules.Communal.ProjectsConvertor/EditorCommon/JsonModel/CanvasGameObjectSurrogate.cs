@@ -11,36 +11,22 @@ using Mono.Addins;
 
 namespace EditorCommon.JsonModel
 {
-	// Token: 0x0200000B RID: 11
 	[DataContract]
 	[Extension(typeof(IJsonModel))]
 	internal class CanvasGameObjectSurrogate : BaseGameObjectSurrogate
 	{
-		// Token: 0x17000021 RID: 33
-		// (get) Token: 0x06000076 RID: 118 RVA: 0x000043C0 File Offset: 0x000025C0
-		// (set) Token: 0x06000077 RID: 119 RVA: 0x000043C8 File Offset: 0x000025C8
 		[DataMember]
 		public Size CanvasSize { get; set; }
 
-		// Token: 0x17000022 RID: 34
-		// (get) Token: 0x06000078 RID: 120 RVA: 0x000043D1 File Offset: 0x000025D1
-		// (set) Token: 0x06000079 RID: 121 RVA: 0x000043D9 File Offset: 0x000025D9
 		[DataMember]
 		public string Version { get; set; }
 
-		// Token: 0x17000023 RID: 35
-		// (get) Token: 0x0600007A RID: 122 RVA: 0x000043E2 File Offset: 0x000025E2
-		// (set) Token: 0x0600007B RID: 123 RVA: 0x000043EA File Offset: 0x000025EA
 		[DataMember]
 		protected List<BaseComSurrogate> components { get; private set; }
 
-		// Token: 0x17000024 RID: 36
-		// (get) Token: 0x0600007D RID: 125 RVA: 0x000043FC File Offset: 0x000025FC
-		// (set) Token: 0x0600007C RID: 124 RVA: 0x000043F3 File Offset: 0x000025F3
 		[DataMember]
 		public ObservableCollection<TriggerModel> Triggers { get; set; }
 
-		// Token: 0x0600007F RID: 127 RVA: 0x0000440C File Offset: 0x0000260C
 		internal void InitGameFileData(GameFileData gameFileData)
 		{
 			AbstractNodeObjectData objectData = gameFileData.ObjectData;

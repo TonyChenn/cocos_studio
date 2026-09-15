@@ -12,15 +12,10 @@ using Stetic;
 
 namespace CocoStudio.UserStatistics
 {
-	// Token: 0x02000018 RID: 24
 	public class FeedBackDialog : Dialog
 	{
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000070 RID: 112 RVA: 0x00003C5C File Offset: 0x00001E5C
-		// (set) Token: 0x06000071 RID: 113 RVA: 0x00003C73 File Offset: 0x00001E73
 		public string FeedbackInfo { get; private set; }
 
-		// Token: 0x06000072 RID: 114 RVA: 0x00003C7C File Offset: 0x00001E7C
 		public FeedBackDialog()
 		{
 			this.Build();
@@ -60,7 +55,6 @@ namespace CocoStudio.UserStatistics
 			this.FeedbackInfo = string.Empty;
 		}
 
-		// Token: 0x06000073 RID: 115 RVA: 0x00003E24 File Offset: 0x00002024
 		private void FeedBackDialog_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			if (string.IsNullOrWhiteSpace(this.textview2.Buffer.Text))
@@ -69,7 +63,6 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x06000074 RID: 116 RVA: 0x00003E64 File Offset: 0x00002064
 		private void textview2_FocusInEvent(object o, FocusInEventArgs args)
 		{
 			if (this.textview2.Buffer.Text == LanguageInfo.MessageBox271_FeedBackInfo)
@@ -78,7 +71,6 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x06000075 RID: 117 RVA: 0x00003EAC File Offset: 0x000020AC
 		private void MutileLanguage()
 		{
 			this.textview2.Buffer.Text = LanguageInfo.MessageBox271_FeedBackInfo;
@@ -95,14 +87,12 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x06000076 RID: 118 RVA: 0x00003F64 File Offset: 0x00002164
 		private void lab_email_Clicked(object sender, ButtonReleaseEventArgs e)
 		{
 			string arg = (this.textview2.Buffer.Text == LanguageInfo.MessageBox271_FeedBackInfo) ? "" : this.textview2.Buffer.Text;
 			Process.Start(string.Format("mailto:{0}?subject={1}&body={2}", this.lab_email.LabelText, LanguageInfo.MessageBox271_FeedBackSubject, arg));
 		}
 
-		// Token: 0x06000077 RID: 119 RVA: 0x00003FC8 File Offset: 0x000021C8
 		protected void HandleButtonOKClicked(object sender, EventArgs e)
 		{
 			if (this.textview2.Buffer.Text.Length > 160)
@@ -124,7 +114,6 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x06000078 RID: 120 RVA: 0x00004068 File Offset: 0x00002268
 		private void Restart()
 		{
 			string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
@@ -142,7 +131,6 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x06000079 RID: 121 RVA: 0x000040C8 File Offset: 0x000022C8
 		protected void HandleEntryKeyReleased(object o, KeyReleaseEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.KP_Enter || args.Event.Key == Gdk.Key.ISO_Enter || args.Event.Key == Gdk.Key.Key_3270_Enter || args.Event.Key == Gdk.Key.Return)
@@ -151,7 +139,6 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x0600007A RID: 122 RVA: 0x00004134 File Offset: 0x00002334
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -289,52 +276,36 @@ namespace CocoStudio.UserStatistics
 			this.buttonOk.Clicked += this.HandleButtonOKClicked;
 		}
 
-		// Token: 0x04000074 RID: 116
 		private LabelLinkButton lab_email;
 
-		// Token: 0x04000075 RID: 117
 		private Gtk.Alignment alignment4;
 
-		// Token: 0x04000076 RID: 118
 		private VBox vbox3;
 
-		// Token: 0x04000077 RID: 119
 		private Label label6;
 
-		// Token: 0x04000078 RID: 120
 		private Label label7;
 
-		// Token: 0x04000079 RID: 121
 		private CheckButton checkbutton3;
 
-		// Token: 0x0400007A RID: 122
 		private Label label8;
 
-		// Token: 0x0400007B RID: 123
 		private Gtk.Alignment alignment5;
 
-		// Token: 0x0400007C RID: 124
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x0400007D RID: 125
 		private TextView textview2;
 
-		// Token: 0x0400007E RID: 126
 		private Label label9;
 
-		// Token: 0x0400007F RID: 127
 		private HBox hbox1;
 
-		// Token: 0x04000080 RID: 128
 		private Label label11;
 
-		// Token: 0x04000081 RID: 129
 		private Gtk.Alignment alignment_occupy;
 
-		// Token: 0x04000082 RID: 130
 		private Gtk.Alignment alignment3;
 
-		// Token: 0x04000083 RID: 131
 		private Button buttonOk;
 	}
 }

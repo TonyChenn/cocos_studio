@@ -12,18 +12,14 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x02000019 RID: 25
 	internal class ScaleTool : BoneObjectTool
 	{
-		// Token: 0x060000EE RID: 238 RVA: 0x00005D2F File Offset: 0x00003F2F
 		public ScaleTool()
 		{
 			this._controlNodeDrawPen = new CSScaleNodeDrawPen();
 			this.DefaultControlLine = this._controlNodeDrawPen.GetControlXLength();
 		}
 
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x060000EF RID: 239 RVA: 0x00005D53 File Offset: 0x00003F53
 		public override Xwt.Drawing.Image Icon
 		{
 			get
@@ -32,8 +28,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x060000F0 RID: 240 RVA: 0x00005D5F File Offset: 0x00003F5F
 		public override string Tooltip
 		{
 			get
@@ -42,8 +36,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x1700002F RID: 47
-		// (get) Token: 0x060000F1 RID: 241 RVA: 0x00005D70 File Offset: 0x00003F70
 		public override Gdk.Key ShortcutKey
 		{
 			get
@@ -52,7 +44,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060000F2 RID: 242 RVA: 0x00005D74 File Offset: 0x00003F74
 		protected override void ResetControl()
 		{
 			if (BoneControlObject.Instance.Visible)
@@ -63,7 +54,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060000F3 RID: 243 RVA: 0x00005DA8 File Offset: 0x00003FA8
 		public override void OnMouseMove(MotionNotifyEventArgs args)
 		{
 			BoneControlObject instance = BoneControlObject.Instance;
@@ -113,7 +103,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060000F4 RID: 244 RVA: 0x00005F10 File Offset: 0x00004110
 		private void SetAttachedScaleDelta(PointF deltap, CSControlNodeDrawPen.OperateState state)
 		{
 			IEnumerable<VisualObject> attachedObjects = BoneControlObject.Instance._attachedObjects;
@@ -150,13 +139,11 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060000F5 RID: 245 RVA: 0x00006044 File Offset: 0x00004244
 		protected override void OnSelectObjectsChanged(IEnumerable<VisualObject> selectedObject, IEnumerable<VisualObject> selectedParentObject)
 		{
 			base.OnSelectObjectsChanged(selectedObject, selectedParentObject, OperationMask.ScaleFlag);
 		}
 
-		// Token: 0x04000048 RID: 72
 		private float DefaultControlLine;
 	}
 }

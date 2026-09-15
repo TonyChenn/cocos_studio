@@ -7,17 +7,14 @@ using Mono.Addins;
 
 namespace CocoStudio.Model.EditorController
 {
-	// Token: 0x02000047 RID: 71
 	[Extension(typeof(IEditorController))]
 	internal class ListViewController : Base2DController
 	{
-		// Token: 0x06000290 RID: 656 RVA: 0x00007D90 File Offset: 0x00005F90
 		public ListViewController()
 		{
 			base.AddCorrespondProperty("DirectionType");
 		}
 
-		// Token: 0x06000291 RID: 657 RVA: 0x00007DA8 File Offset: 0x00005FA8
 		public override void RefreshEditor(IReadOnlyList<object> selectedObjs, string propertyName)
 		{
 			IPropertyGrid service = Services.GetService<IPropertyGrid>();

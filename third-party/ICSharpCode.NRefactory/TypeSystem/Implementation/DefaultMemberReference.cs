@@ -11,11 +11,9 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 	/// Resolving a DefaultMemberReference requires a context that provides enough information for resolving the declaring type reference
 	/// and the parameter types references.
 	/// </remarks>
-	// Token: 0x020000AB RID: 171
 	[Serializable]
 	public sealed class DefaultMemberReference : IMemberReference, ISymbolReference, ISupportsInterning
 	{
-		// Token: 0x06000599 RID: 1433 RVA: 0x0000D5DC File Offset: 0x0000C5DC
 		public DefaultMemberReference(SymbolKind symbolKind, ITypeReference typeReference, string name, int typeParameterCount = 0, IList<ITypeReference> parameterTypes = null)
 		{
 			if (typeReference == null)
@@ -37,8 +35,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			this.parameterTypes = (parameterTypes ?? EmptyList<ITypeReference>.Instance);
 		}
 
-		// Token: 0x1700022B RID: 555
-		// (get) Token: 0x0600059A RID: 1434 RVA: 0x0000D64C File Offset: 0x0000C64C
 		public ITypeReference DeclaringTypeReference
 		{
 			get
@@ -47,7 +43,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x0600059B RID: 1435 RVA: 0x0000D6E0 File Offset: 0x0000C6E0
 		public IMember Resolve(ITypeResolveContext context)
 		{
 			IType type = this.typeReference.Resolve(context);
@@ -97,38 +92,30 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return null;
 		}
 
-		// Token: 0x0600059C RID: 1436 RVA: 0x0000D85C File Offset: 0x0000C85C
 		ISymbol ISymbolReference.Resolve(ITypeResolveContext context)
 		{
 			return ((IMemberReference)this).Resolve(context);
 		}
 
-		// Token: 0x0600059D RID: 1437 RVA: 0x0000D865 File Offset: 0x0000C865
 		int ISupportsInterning.GetHashCodeForInterning()
 		{
 			return (int)this.symbolKind ^ this.typeReference.GetHashCode() ^ this.name.GetHashCode() ^ this.parameterTypes.GetHashCode();
 		}
 
-		// Token: 0x0600059E RID: 1438 RVA: 0x0000D894 File Offset: 0x0000C894
 		bool ISupportsInterning.EqualsForInterning(ISupportsInterning other)
 		{
 			DefaultMemberReference defaultMemberReference = other as DefaultMemberReference;
 			return defaultMemberReference != null && this.symbolKind == defaultMemberReference.symbolKind && this.typeReference == defaultMemberReference.typeReference && this.name == defaultMemberReference.name && this.parameterTypes == defaultMemberReference.parameterTypes;
 		}
 
-		// Token: 0x0400018C RID: 396
 		private readonly SymbolKind symbolKind;
 
-		// Token: 0x0400018D RID: 397
 		private readonly ITypeReference typeReference;
 
-		// Token: 0x0400018E RID: 398
 		private readonly string name;
 
-		// Token: 0x0400018F RID: 399
 		private readonly int typeParameterCount;
 
-		// Token: 0x04000190 RID: 400
 		private readonly IList<ITypeReference> parameterTypes;
 	}
 }

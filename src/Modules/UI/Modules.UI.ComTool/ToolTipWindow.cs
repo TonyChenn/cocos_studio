@@ -8,10 +8,8 @@ using Stetic;
 
 namespace Modules.UI.ComTool
 {
-	// Token: 0x02000009 RID: 9
 	public class ToolTipWindow : Gtk.Window
 	{
-		// Token: 0x06000017 RID: 23 RVA: 0x00002218 File Offset: 0x00000418
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -64,9 +62,6 @@ namespace Modules.UI.ComTool
 			this.labDescription.WidthRequest = 216;
 		}
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x06000018 RID: 24 RVA: 0x000024C0 File Offset: 0x000006C0
-		// (set) Token: 0x06000019 RID: 25 RVA: 0x000024D8 File Offset: 0x000006D8
 		public EnumToolTipOrientation ToolOrientation
 		{
 			get
@@ -79,7 +74,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x000024E4 File Offset: 0x000006E4
 		public ToolTipWindow() : base(Gtk.WindowType.Popup)
 		{
 			this.Build();
@@ -96,7 +90,6 @@ namespace Modules.UI.ComTool
 			this.InitStyle();
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002570 File Offset: 0x00000770
 		private void InitStyle()
 		{
 			this.labDescription.LineWrap = true;
@@ -111,7 +104,6 @@ namespace Modules.UI.ComTool
 			this.eventbox4.ModifyBg(StateType.Normal, LabelStyleSetting.ToolTipBG);
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x000025FC File Offset: 0x000007FC
 		public void InitiToolTip(ComponentItem comitem)
 		{
 			this.componentItem = comitem;
@@ -135,7 +127,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002714 File Offset: 0x00000914
 		private string GetHelpLink(string widgetType)
 		{
 			string text = string.Empty;
@@ -145,28 +136,20 @@ namespace Modules.UI.ComTool
 			return text.ToLower();
 		}
 
-		// Token: 0x04000015 RID: 21
 		private EventBox eventbox4;
 
-		// Token: 0x04000016 RID: 22
 		private Gtk.Alignment alignment1;
 
-		// Token: 0x04000017 RID: 23
 		private VBox vbox2;
 
-		// Token: 0x04000018 RID: 24
 		private Label labName;
 
-		// Token: 0x04000019 RID: 25
 		private Label labDescription;
 
-		// Token: 0x0400001A RID: 26
 		private LabelLinkButton labLink;
 
-		// Token: 0x0400001B RID: 27
 		private EnumToolTipOrientation toolOrientation;
 
-		// Token: 0x0400001C RID: 28
 		private ComponentItem componentItem;
 	}
 }

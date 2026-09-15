@@ -13,11 +13,8 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x0200006B RID: 107
 	public class ProjectsService
 	{
-		// Token: 0x17000087 RID: 135
-		// (get) Token: 0x0600033A RID: 826 RVA: 0x0000B964 File Offset: 0x00009B64
 		internal ResourceChangeService ResourceChangeService
 		{
 			get
@@ -26,39 +23,18 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000088 RID: 136
-		// (get) Token: 0x0600033B RID: 827 RVA: 0x0000B96B File Offset: 0x00009B6B
-		// (set) Token: 0x0600033C RID: 828 RVA: 0x0000B973 File Offset: 0x00009B73
 		internal FileFormatManager FormatManager { get; private set; }
 
-		// Token: 0x17000089 RID: 137
-		// (get) Token: 0x0600033D RID: 829 RVA: 0x0000B97C File Offset: 0x00009B7C
-		// (set) Token: 0x0600033E RID: 830 RVA: 0x0000B984 File Offset: 0x00009B84
 		internal CocosItemBindingManager ProjectBindingManager { get; private set; }
 
-		// Token: 0x1700008A RID: 138
-		// (get) Token: 0x0600033F RID: 831 RVA: 0x0000B98D File Offset: 0x00009B8D
-		// (set) Token: 0x06000340 RID: 832 RVA: 0x0000B995 File Offset: 0x00009B95
 		internal ProcesserManager ProcesserManager { get; private set; }
 
-		// Token: 0x1700008B RID: 139
-		// (get) Token: 0x06000341 RID: 833 RVA: 0x0000B99E File Offset: 0x00009B9E
-		// (set) Token: 0x06000342 RID: 834 RVA: 0x0000B9A6 File Offset: 0x00009BA6
 		internal PreviewImageService PreviewImageService { get; private set; }
 
-		// Token: 0x1700008C RID: 140
-		// (get) Token: 0x06000343 RID: 835 RVA: 0x0000B9AF File Offset: 0x00009BAF
-		// (set) Token: 0x06000344 RID: 836 RVA: 0x0000B9B7 File Offset: 0x00009BB7
 		public DataModelManager DataModelManager { get; private set; }
 
-		// Token: 0x1700008D RID: 141
-		// (get) Token: 0x06000345 RID: 837 RVA: 0x0000B9C0 File Offset: 0x00009BC0
-		// (set) Token: 0x06000346 RID: 838 RVA: 0x0000B9C8 File Offset: 0x00009BC8
 		public ISerializeManager SerializeManager { get; private set; }
 
-		// Token: 0x1700008E RID: 142
-		// (get) Token: 0x06000347 RID: 839 RVA: 0x0000B9D1 File Offset: 0x00009BD1
-		// (set) Token: 0x06000348 RID: 840 RVA: 0x0000B9D9 File Offset: 0x00009BD9
 		public Solution CurrentSolution
 		{
 			get
@@ -75,8 +51,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x1700008F RID: 143
-		// (get) Token: 0x06000349 RID: 841 RVA: 0x0000B9F2 File Offset: 0x00009BF2
 		public ResourceGroup CurrentResourceGroup
 		{
 			get
@@ -85,13 +59,8 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000090 RID: 144
-		// (get) Token: 0x0600034A RID: 842 RVA: 0x0000BA00 File Offset: 0x00009C00
-		// (set) Token: 0x0600034B RID: 843 RVA: 0x0000BA08 File Offset: 0x00009C08
 		public List<ResourceItem> CurrentResourceItems { get; internal set; }
 
-		// Token: 0x17000091 RID: 145
-		// (get) Token: 0x0600034C RID: 844 RVA: 0x0000BA11 File Offset: 0x00009C11
 		public IProgressMonitor DefaultMonitor
 		{
 			get
@@ -100,8 +69,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000092 RID: 146
-		// (get) Token: 0x0600034D RID: 845 RVA: 0x0000BA1A File Offset: 0x00009C1A
 		public static ProjectsService Instance
 		{
 			get
@@ -114,7 +81,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x0600034E RID: 846 RVA: 0x0000BA34 File Offset: 0x00009C34
 		private ProjectsService()
 		{
 			this.FormatManager = new FileFormatManager();
@@ -126,13 +92,11 @@ namespace CocoStudio.Projects
 			FrameworkHelper.Initialize();
 		}
 
-		// Token: 0x0600034F RID: 847 RVA: 0x0000BA8E File Offset: 0x00009C8E
 		private void OnCurrentSolutionChanged(Solution value)
 		{
 			this.PreviewImageService.Clear();
 		}
 
-		// Token: 0x06000350 RID: 848 RVA: 0x0000BA9C File Offset: 0x00009C9C
 		public Solution GetWrapperSolution(IProgressMonitor monitor, string filename)
 		{
 			Solution result;
@@ -164,7 +128,6 @@ namespace CocoStudio.Projects
 			return result;
 		}
 
-		// Token: 0x06000351 RID: 849 RVA: 0x0000BB54 File Offset: 0x00009D54
 		public ResourceItem ReadResourceItem(IProgressMonitor monitor, string itemFileName)
 		{
 			Type typeFromHandle = typeof(ResourceItem);
@@ -186,20 +149,17 @@ namespace CocoStudio.Projects
 			return resourceItem;
 		}
 
-		// Token: 0x06000352 RID: 850 RVA: 0x0000BBCC File Offset: 0x00009DCC
 		public CocosItem ReadCocosItem(IProgressMonitor monitor, string filename)
 		{
 			IFileFormat fileFormat;
 			return this.ReadFile(monitor, filename, typeof(CocosItem), out fileFormat) as CocosItem;
 		}
 
-		// Token: 0x06000353 RID: 851 RVA: 0x0000BBF4 File Offset: 0x00009DF4
 		internal Solution ReadWorkspaceItem(IProgressMonitor monitor, string filename)
 		{
 			return this.ReadSolution(monitor, filename);
 		}
 
-		// Token: 0x06000354 RID: 852 RVA: 0x0000BC00 File Offset: 0x00009E00
 		internal Solution ReadSolution(IProgressMonitor monitor, string filename)
 		{
 			SolutionUpgraderManager.Upgrade(filename);
@@ -207,7 +167,6 @@ namespace CocoStudio.Projects
 			return this.ReadFile(monitor, filename, typeof(Solution), out fileFormat) as Solution;
 		}
 
-		// Token: 0x06000355 RID: 853 RVA: 0x0000BC30 File Offset: 0x00009E30
 		public void ChangeSolutionName(IProgressMonitor monitor, FilePath newSolutionPath, string oldName, string newName)
 		{
 			Solution solution = this.ReadSolution(monitor, newSolutionPath);
@@ -235,59 +194,50 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000356 RID: 854 RVA: 0x0000BCEC File Offset: 0x00009EEC
 		private static void SetSolutionLocation(string filename, Solution solution)
 		{
 			string directoryName = Path.GetDirectoryName(filename);
 			solution.SetLocation(directoryName, Path.GetFileNameWithoutExtension(filename));
 		}
 
-		// Token: 0x06000357 RID: 855 RVA: 0x0000BD12 File Offset: 0x00009F12
 		public bool IsCocosFile(string fileName)
 		{
 			return this.FormatManager.GetFileFormats(fileName, typeof(CocosItem)).Count > 0;
 		}
 
-		// Token: 0x06000358 RID: 856 RVA: 0x0000BD34 File Offset: 0x00009F34
 		public bool IsCocosFile(ResourceData resourceData)
 		{
 			string fileName = this.ToAbsolute(resourceData);
 			return this.IsCocosFile(fileName);
 		}
 
-		// Token: 0x06000359 RID: 857 RVA: 0x0000BD50 File Offset: 0x00009F50
 		internal bool IsImageFile(string fileName)
 		{
 			return this.FormatManager.GetFileFormats(fileName, typeof(ImageFile)).Count > 0;
 		}
 
-		// Token: 0x0600035A RID: 858 RVA: 0x0000BD70 File Offset: 0x00009F70
 		internal bool IsImageFile(ResourceData resourceData)
 		{
 			string fileName = this.ToAbsolute(resourceData);
 			return this.IsImageFile(fileName);
 		}
 
-		// Token: 0x0600035B RID: 859 RVA: 0x0000BD8C File Offset: 0x00009F8C
 		public bool IsPicture(FilePath fileName)
 		{
 			string extension = fileName.Extension;
 			return extension.Equals(".png", StringComparison.OrdinalIgnoreCase) || extension.Equals(".jpg", StringComparison.OrdinalIgnoreCase);
 		}
 
-		// Token: 0x0600035C RID: 860 RVA: 0x0000BDBD File Offset: 0x00009FBD
 		public bool IsTTFFile(string fileName)
 		{
 			return this.FormatManager.GetFileFormats(fileName, typeof(TTFFile)).Count > 0;
 		}
 
-		// Token: 0x0600035D RID: 861 RVA: 0x0000BDE0 File Offset: 0x00009FE0
 		internal string ToAbsolute(ResourceData resourceData)
 		{
 			return ((FilePath)resourceData.Path).ToAbsolute(this.CurrentSolution.ItemDirectory);
 		}
 
-		// Token: 0x0600035E RID: 862 RVA: 0x0000BE10 File Offset: 0x0000A010
 		private object ReadFile(IProgressMonitor monitor, string file, Type expectedType, IFileFormat format)
 		{
 			object obj = format.ReadFile(file, expectedType, monitor);
@@ -298,7 +248,6 @@ namespace CocoStudio.Projects
 			return obj;
 		}
 
-		// Token: 0x0600035F RID: 863 RVA: 0x0000BE44 File Offset: 0x0000A044
 		private object ReadFile(IProgressMonitor monitor, string file, Type expectedType, out IFileFormat format)
 		{
 			List<FileFormat> fileFormats = this.FormatManager.GetFileFormats(file, expectedType);
@@ -310,14 +259,12 @@ namespace CocoStudio.Projects
 			return this.ReadFile(monitor, file, expectedType, format);
 		}
 
-		// Token: 0x06000360 RID: 864 RVA: 0x0000BE90 File Offset: 0x0000A090
 		public object ReadFile(IProgressMonitor monitor, string file, Type expectedType)
 		{
 			IFileFormat fileFormat;
 			return this.ReadFile(monitor, file, expectedType, out fileFormat);
 		}
 
-		// Token: 0x06000361 RID: 865 RVA: 0x0000BEA8 File Offset: 0x0000A0A8
 		public FilePath WriteFile(IProgressMonitor monitor, FilePath file, object item)
 		{
 			IFileFormat defaultFormat = this.GetDefaultFormat(item);
@@ -329,19 +276,16 @@ namespace CocoStudio.Projects
 			return null;
 		}
 
-		// Token: 0x06000362 RID: 866 RVA: 0x0000BEDB File Offset: 0x0000A0DB
 		private string GetTargetFile(string file)
 		{
 			return file;
 		}
 
-		// Token: 0x06000363 RID: 867 RVA: 0x0000BEDE File Offset: 0x0000A0DE
 		internal void Save(IProgressMonitor monitor, WorkspaceItem workspaceItem)
 		{
 			workspaceItem.OnSave(monitor);
 		}
 
-		// Token: 0x06000364 RID: 868 RVA: 0x0000BEE8 File Offset: 0x0000A0E8
 		internal void InternalWriteWorkspaceItem(IProgressMonitor monitor, FilePath file, WorkspaceItem item)
 		{
 			FilePath filePath = this.WriteFile(monitor, file, item, item.FileFormat);
@@ -353,7 +297,6 @@ namespace CocoStudio.Projects
 			throw new InvalidOperationException("FileFormat not provided for workspace item '" + item.Name + "'");
 		}
 
-		// Token: 0x06000365 RID: 869 RVA: 0x0000BF38 File Offset: 0x0000A138
 		internal CocosFile InternalReadCocosFile(IProgressMonitor monitor, string file)
 		{
 			IFileFormat fileFormat;
@@ -362,7 +305,6 @@ namespace CocoStudio.Projects
 			return cocosFile;
 		}
 
-		// Token: 0x06000366 RID: 870 RVA: 0x0000BF6C File Offset: 0x0000A16C
 		internal FilePath WriteFile(IProgressMonitor monitor, FilePath file, object item, FileFormat fileFormat)
 		{
 			fileFormat.WriteFile(file, item, monitor);
@@ -373,7 +315,6 @@ namespace CocoStudio.Projects
 			return null;
 		}
 
-		// Token: 0x06000367 RID: 871 RVA: 0x0000BF90 File Offset: 0x0000A190
 		internal FileFormat GetDefaultFormat(object obj)
 		{
 			List<FileFormat> fileFormatsForObject = this.FormatManager.GetFileFormatsForObject(obj);
@@ -384,7 +325,6 @@ namespace CocoStudio.Projects
 			return fileFormatsForObject[0];
 		}
 
-		// Token: 0x06000368 RID: 872 RVA: 0x0000BFD4 File Offset: 0x0000A1D4
 		internal void InternalWriteCocosFile(IProgressMonitor monitor, FilePath file, CocosFile item)
 		{
 			FilePath filePath = this.WriteFile(monitor, file, item, item.FileFormat);
@@ -396,7 +336,6 @@ namespace CocoStudio.Projects
 			throw new InvalidOperationException("FileFormat not provided for workspace item '" + item.Name + "'");
 		}
 
-		// Token: 0x06000369 RID: 873 RVA: 0x0000C024 File Offset: 0x0000A224
 		public CocosItem CreateCocosItem(string type, CocosItemCreateInfo info)
 		{
 			info.ContentType = type;
@@ -410,7 +349,6 @@ namespace CocoStudio.Projects
 			throw new InvalidOperationException("File type '" + type + "' not found");
 		}
 
-		// Token: 0x0600036A RID: 874 RVA: 0x0000C0A8 File Offset: 0x0000A2A8
 		public Solution CreateSolution(string directory, string name)
 		{
 			string text = Path.Combine(directory, name);
@@ -425,7 +363,6 @@ namespace CocoStudio.Projects
 			return solution;
 		}
 
-		// Token: 0x0600036B RID: 875 RVA: 0x0000C0FA File Offset: 0x0000A2FA
 		private ResourceGroup GetResourceGroup(Solution solution)
 		{
 			if (solution != null)
@@ -435,13 +372,11 @@ namespace CocoStudio.Projects
 			return null;
 		}
 
-		// Token: 0x0600036C RID: 876 RVA: 0x0000C117 File Offset: 0x0000A317
 		internal IPublishProcesser GetPublishProcesser(ResourceData resourceData)
 		{
 			return this.ProcesserManager.GetPublishProcesser(resourceData);
 		}
 
-		// Token: 0x0600036D RID: 877 RVA: 0x0000C128 File Offset: 0x0000A328
 		public FilePath GetFullPath(ResourceData resourceData)
 		{
 			if (resourceData.Type == EnumResourceType.Default)
@@ -455,7 +390,6 @@ namespace CocoStudio.Projects
 			return ((FilePath)resourceData.Path).ToAbsolute(this.CurrentSolution.ItemDirectory);
 		}
 
-		// Token: 0x0600036E RID: 878 RVA: 0x0000C18A File Offset: 0x0000A38A
 		public ICompositeResourceProcesser GetCompositeResourceProcesser(string filePath)
 		{
 			if (!Path.IsPathRooted(filePath))
@@ -465,7 +399,6 @@ namespace CocoStudio.Projects
 			return this.ProcesserManager.GetCompositeResourceProcesser(filePath);
 		}
 
-		// Token: 0x0600036F RID: 879 RVA: 0x0000C1AC File Offset: 0x0000A3AC
 		internal void NotifyResourceFileChanged(ChangedResourceCollection changedResourceCollection)
 		{
 			if (this.CurrentResourceGroup == null)
@@ -476,7 +409,6 @@ namespace CocoStudio.Projects
 			rootFolder.UpdateUsedResources(this.DefaultMonitor, changedResourceCollection);
 		}
 
-		// Token: 0x06000370 RID: 880 RVA: 0x0000C1DC File Offset: 0x0000A3DC
 		public string SerializeGameFile(PublishInfo info, GameFile gameFile)
 		{
 			IGameFileSerializer currentSerializer = this.SerializeManager.CurrentSerializer;
@@ -487,7 +419,6 @@ namespace CocoStudio.Projects
 			return currentSerializer.Serialize(info, gameFile);
 		}
 
-		// Token: 0x06000371 RID: 881 RVA: 0x0000C23C File Offset: 0x0000A43C
 		public void Publish(IProgressMonitor monitor, PublishInfo info)
 		{
 			IGameFileSerializer currentSerializer = this.SerializeManager.CurrentSerializer;
@@ -527,7 +458,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000372 RID: 882 RVA: 0x0000C328 File Offset: 0x0000A528
 		private void CheckPublishFilePath(IProgressMonitor monitor, IEnumerable<ResourceData> resourceDatas)
 		{
 			if (resourceDatas == null || resourceDatas.Count<ResourceData>() == 0)
@@ -568,7 +498,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000373 RID: 883 RVA: 0x0000C458 File Offset: 0x0000A658
 		private void ReportSerializerData(IGameFileSerializer serializer)
 		{
 			if (serializer == null)
@@ -584,7 +513,6 @@ namespace CocoStudio.Projects
 			Tracker.Add(ViewRegions.None, "Publish", "DataFormat", newValue);
 		}
 
-		// Token: 0x06000374 RID: 884 RVA: 0x0000C49C File Offset: 0x0000A69C
 		private void PublishCocosItems(ResourceFolder folder, IProgressMonitor monitor, PublishInfo info)
 		{
 			foreach (ResourceItem resourceItem in folder.Items)
@@ -605,7 +533,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000375 RID: 885 RVA: 0x0000C680 File Offset: 0x0000A880
 		public HashSet<ResourceData> ProcessResourceDatas(IProgressMonitor monitor, HashSet<ResourceData> resourceDatas)
 		{
 			ResourceDataSet source = new ResourceDataSet(resourceDatas);
@@ -674,7 +601,6 @@ namespace CocoStudio.Projects
 			return new ResourceDataSet(processedResources);
 		}
 
-		// Token: 0x06000376 RID: 886 RVA: 0x0000C6CC File Offset: 0x0000A8CC
 		private void CopyResourceData(FilePath publishDirectory, ResourceData resourceData)
 		{
 			if (resourceData.Type == EnumResourceType.Addin)
@@ -699,10 +625,8 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x040000C3 RID: 195
 		private Solution currentSolution;
 
-		// Token: 0x040000C4 RID: 196
 		private static ProjectsService instance;
 	}
 }

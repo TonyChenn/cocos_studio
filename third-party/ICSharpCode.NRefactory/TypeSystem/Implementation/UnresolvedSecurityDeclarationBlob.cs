@@ -6,11 +6,9 @@ using ICSharpCode.NRefactory.Semantics;
 
 namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 {
-	// Token: 0x02000080 RID: 128
 	[Serializable]
 	public sealed class UnresolvedSecurityDeclarationBlob
 	{
-		// Token: 0x06000408 RID: 1032 RVA: 0x00009F6C File Offset: 0x00008F6C
 		public UnresolvedSecurityDeclarationBlob(int securityAction, byte[] blob)
 		{
 			BlobReader blobReader = new BlobReader(blob, null);
@@ -33,8 +31,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			this.unresolvedAttributes.Add(defaultUnresolvedAttribute);
 		}
 
-		// Token: 0x1700018C RID: 396
-		// (get) Token: 0x06000409 RID: 1033 RVA: 0x0000A03B File Offset: 0x0000903B
 		public IList<IUnresolvedAttribute> UnresolvedAttributes
 		{
 			get
@@ -43,7 +39,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x0600040A RID: 1034 RVA: 0x0000A044 File Offset: 0x00009044
 		public IList<IAttribute> Resolve(IAssembly currentAssembly)
 		{
 			ITypeResolveContext context = new SimpleTypeResolveContext(currentAssembly);
@@ -72,7 +67,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return array;
 		}
 
-		// Token: 0x0600040B RID: 1035 RVA: 0x0000A0E0 File Offset: 0x000090E0
 		private void ReadSecurityBlob(BlobReader reader, IAttribute[] attributes, ITypeResolveContext context, ResolveResult securityActionRR)
 		{
 			for (int i = 0; i < attributes.Length; i++)
@@ -98,19 +92,14 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x0400010E RID: 270
 		private static readonly ITypeReference securityActionTypeReference = typeof(SecurityAction).ToTypeReference();
 
-		// Token: 0x0400010F RID: 271
 		private static readonly ITypeReference permissionSetAttributeTypeReference = typeof(PermissionSetAttribute).ToTypeReference();
 
-		// Token: 0x04000110 RID: 272
 		private readonly IConstantValue securityAction;
 
-		// Token: 0x04000111 RID: 273
 		private readonly byte[] blob;
 
-		// Token: 0x04000112 RID: 274
 		private readonly IList<IUnresolvedAttribute> unresolvedAttributes = new List<IUnresolvedAttribute>();
 	}
 }

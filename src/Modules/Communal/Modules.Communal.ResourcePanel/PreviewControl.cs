@@ -7,10 +7,8 @@ using Stetic;
 
 namespace Modules.Communal.ResourcePanel
 {
-	// Token: 0x02000005 RID: 5
 	public class PreviewControl : Gtk.Window
 	{
-		// Token: 0x0600001D RID: 29 RVA: 0x0000277C File Offset: 0x0000097C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -83,22 +81,12 @@ namespace Modules.Communal.ResourcePanel
 			base.Add(this.backgroundeventbox);
 		}
 
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x0600001E RID: 30 RVA: 0x00002B21 File Offset: 0x00000D21
-		// (set) Token: 0x0600001F RID: 31 RVA: 0x00002B29 File Offset: 0x00000D29
 		public bool IsShown { get; private set; }
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000020 RID: 32 RVA: 0x00002B32 File Offset: 0x00000D32
-		// (set) Token: 0x06000021 RID: 33 RVA: 0x00002B3A File Offset: 0x00000D3A
 		public int Height { get; private set; }
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x06000022 RID: 34 RVA: 0x00002B43 File Offset: 0x00000D43
-		// (set) Token: 0x06000023 RID: 35 RVA: 0x00002B4B File Offset: 0x00000D4B
 		public int Width { get; private set; }
 
-		// Token: 0x06000024 RID: 36 RVA: 0x00002B54 File Offset: 0x00000D54
 		public PreviewControl(Gdk.Window parentWindow) : base(Gtk.WindowType.Popup)
 		{
 			this.InitViewControl();
@@ -106,7 +94,6 @@ namespace Modules.Communal.ResourcePanel
 			base.ParentWindow = parentWindow;
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x00002B82 File Offset: 0x00000D82
 		protected virtual void InitStyle()
 		{
 			base.ModifyBg(StateType.Normal, PreviewControl.BGK);
@@ -115,15 +102,11 @@ namespace Modules.Communal.ResourcePanel
 			base.Resizable = false;
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x00002BAF File Offset: 0x00000DAF
 		protected virtual void InitViewControl()
 		{
 			this.Build();
 		}
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x06000027 RID: 39 RVA: 0x00002BB7 File Offset: 0x00000DB7
-		// (set) Token: 0x06000028 RID: 40 RVA: 0x00002BC0 File Offset: 0x00000DC0
 		public PreviewImageInfo ShowImagePath
 		{
 			get
@@ -185,53 +168,38 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002D14 File Offset: 0x00000F14
 		protected override bool OnLeaveNotifyEvent(EventCrossing evnt)
 		{
 			base.Hide();
 			return base.OnLeaveNotifyEvent(evnt);
 		}
 
-		// Token: 0x04000011 RID: 17
 		private EventBox backgroundeventbox;
 
-		// Token: 0x04000012 RID: 18
 		private VBox vbox2;
 
-		// Token: 0x04000013 RID: 19
 		private VBox vbox1;
 
-		// Token: 0x04000014 RID: 20
 		private VBox vbox3;
 
-		// Token: 0x04000015 RID: 21
 		private HBox hbox1;
 
-		// Token: 0x04000016 RID: 22
 		private HBox hbox2;
 
-		// Token: 0x04000017 RID: 23
 		private Gtk.Image image2;
 
-		// Token: 0x04000018 RID: 24
 		private HBox hbox3;
 
-		// Token: 0x04000019 RID: 25
 		private VBox vbox4;
 
-		// Token: 0x0400001A RID: 26
 		private Label imgsizelabel;
 
-		// Token: 0x0400001B RID: 27
 		private static readonly Color BGK = new Color(81, 81, 81);
 
-		// Token: 0x0400001C RID: 28
 		public int ShowMaxValue = 400;
 
-		// Token: 0x0400001D RID: 29
 		public new int BorderWidth = 5;
 
-		// Token: 0x0400001E RID: 30
 		private PreviewImageInfo showImagePath;
 	}
 }

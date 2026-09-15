@@ -10,11 +10,9 @@ namespace ICSharpCode.NRefactory.TypeSystem
 	/// ParameterizedTypeReference is a reference to generic class that specifies the type parameters.
 	/// Example: List&lt;string&gt;
 	/// </summary>
-	// Token: 0x020000F3 RID: 243
 	[Serializable]
 	public sealed class ParameterizedTypeReference : ITypeReference, ISupportsInterning
 	{
-		// Token: 0x06000911 RID: 2321 RVA: 0x00018410 File Offset: 0x00017410
 		public ParameterizedTypeReference(ITypeReference genericType, IEnumerable<ITypeReference> typeArguments)
 		{
 			if (genericType == null)
@@ -36,8 +34,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			}
 		}
 
-		// Token: 0x170003C5 RID: 965
-		// (get) Token: 0x06000912 RID: 2322 RVA: 0x0001848A File Offset: 0x0001748A
 		public ITypeReference GenericType
 		{
 			get
@@ -46,8 +42,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			}
 		}
 
-		// Token: 0x170003C6 RID: 966
-		// (get) Token: 0x06000913 RID: 2323 RVA: 0x00018492 File Offset: 0x00017492
 		public ReadOnlyCollection<ITypeReference> TypeArguments
 		{
 			get
@@ -56,7 +50,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			}
 		}
 
-		// Token: 0x06000914 RID: 2324 RVA: 0x000184A0 File Offset: 0x000174A0
 		public IType Resolve(ITypeResolveContext context)
 		{
 			IType type = this.genericType.Resolve(context);
@@ -85,7 +78,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return new ParameterizedType(definition, array);
 		}
 
-		// Token: 0x06000915 RID: 2325 RVA: 0x0001851C File Offset: 0x0001751C
 		public override string ToString()
 		{
 			StringBuilder stringBuilder = new StringBuilder(this.genericType.ToString());
@@ -104,7 +96,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x06000916 RID: 2326 RVA: 0x00018598 File Offset: 0x00017598
 		int ISupportsInterning.GetHashCodeForInterning()
 		{
 			int num = this.genericType.GetHashCode();
@@ -116,7 +107,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return num;
 		}
 
-		// Token: 0x06000917 RID: 2327 RVA: 0x000185DC File Offset: 0x000175DC
 		bool ISupportsInterning.EqualsForInterning(ISupportsInterning other)
 		{
 			ParameterizedTypeReference parameterizedTypeReference = other as ParameterizedTypeReference;
@@ -134,10 +124,8 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return false;
 		}
 
-		// Token: 0x040002E5 RID: 741
 		private readonly ITypeReference genericType;
 
-		// Token: 0x040002E6 RID: 742
 		private readonly ITypeReference[] typeArguments;
 	}
 }

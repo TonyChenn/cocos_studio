@@ -6,11 +6,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x02000026 RID: 38
 	public class BoneObjectPositionEditor : BaseEditor
 	{
-		// Token: 0x17000069 RID: 105
-		// (get) Token: 0x060001A3 RID: 419 RVA: 0x00008F2F File Offset: 0x0000712F
 		public override bool SupportMultiSelect
 		{
 			get
@@ -19,7 +16,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060001A4 RID: 420 RVA: 0x00008F34 File Offset: 0x00007134
 		protected override Widget OnCreateWidget()
 		{
 			this.xInnerEntry = new NoUndoNumEntry();
@@ -41,7 +37,6 @@ namespace Modules.Communal.Skeleton
 			return hbox;
 		}
 
-		// Token: 0x060001A5 RID: 421 RVA: 0x00009040 File Offset: 0x00007240
 		protected override void OnSetControl()
 		{
 			BoneObject boneObject = PropertyItem.FirstObject as BoneObject;
@@ -70,7 +65,6 @@ namespace Modules.Communal.Skeleton
 			this.yInnerEntry.Value = position.Y;
 		}
 
-		// Token: 0x060001A6 RID: 422 RVA: 0x0000911C File Offset: 0x0000731C
 		private void XEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -84,7 +78,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060001A7 RID: 423 RVA: 0x00009198 File Offset: 0x00007398
 		private void YEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -98,10 +91,8 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x04000081 RID: 129
 		private NoUndoNumEntry xInnerEntry;
 
-		// Token: 0x04000082 RID: 130
 		private NoUndoNumEntry yInnerEntry;
 	}
 }

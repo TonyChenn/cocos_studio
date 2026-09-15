@@ -10,11 +10,9 @@ using Xwt.Drawing;
 
 namespace Gtk
 {
-	// Token: 0x0200009E RID: 158
 	[ToolboxItem(true)]
 	public class AboutContentWidget : Bin
 	{
-		// Token: 0x06000368 RID: 872 RVA: 0x0000F89D File Offset: 0x0000DA9D
 		public AboutContentWidget()
 		{
 			this.Build();
@@ -22,7 +20,6 @@ namespace Gtk
 			this.InitStyle();
 		}
 
-		// Token: 0x06000369 RID: 873 RVA: 0x0000F8C0 File Offset: 0x0000DAC0
 		private void InitStyle()
 		{
 			this.label_version.Text = string.Format(LanguageInfo.Dialog_About_Version, "2.3.3.0");
@@ -49,7 +46,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600036A RID: 874 RVA: 0x0000F9F4 File Offset: 0x0000DBF4
 		private void InitButtons()
 		{
 			IDialogButton dialogButton = this.CreateButton(LanguageInfo.Dialog_About_Web);
@@ -64,7 +60,6 @@ namespace Gtk
 			this.hbox_button.ShowAll();
 		}
 
-		// Token: 0x0600036B RID: 875 RVA: 0x0000FAA4 File Offset: 0x0000DCA4
 		private IDialogButton CreateButton(string text)
 		{
 			IDialogButton dialogButton;
@@ -83,7 +78,6 @@ namespace Gtk
 			return dialogButton;
 		}
 
-		// Token: 0x0600036C RID: 876 RVA: 0x0000FAFC File Offset: 0x0000DCFC
 		private void OpenWeb(string link)
 		{
 			try
@@ -97,25 +91,21 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600036D RID: 877 RVA: 0x0000FB50 File Offset: 0x0000DD50
 		private void HandleBtnOfficialClicked(object sender, EventArgs e)
 		{
 			this.OpenWeb("http://www.cocos.com/");
 		}
 
-		// Token: 0x0600036E RID: 878 RVA: 0x0000FB5F File Offset: 0x0000DD5F
 		private void HandleBtnWeiboClicked(object sender, EventArgs e)
 		{
 			this.OpenWeb("http://weibo.com/cocos2dx");
 		}
 
-		// Token: 0x0600036F RID: 879 RVA: 0x0000FB6E File Offset: 0x0000DD6E
 		private void HandleBtnForumClicked(object sender, EventArgs e)
 		{
 			this.OpenWeb("http://www.cocoachina.com/bbs/thread.php?fid=48");
 		}
 
-		// Token: 0x06000370 RID: 880 RVA: 0x0000FB80 File Offset: 0x0000DD80
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -259,76 +249,52 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x04000401 RID: 1025
 		private const string officialLink = "http://www.cocos.com/";
 
-		// Token: 0x04000402 RID: 1026
 		private const string weiboLink = "http://weibo.com/cocos2dx";
 
-		// Token: 0x04000403 RID: 1027
 		private const string forumLink = "http://www.cocoachina.com/bbs/thread.php?fid=48";
 
-		// Token: 0x04000404 RID: 1028
 		private Alignment alignment_main;
 
-		// Token: 0x04000405 RID: 1029
 		private HBox hbox_main;
 
-		// Token: 0x04000406 RID: 1030
 		private Alignment alignment_image;
 
-		// Token: 0x04000407 RID: 1031
 		private VBox vbox_image;
 
-		// Token: 0x04000408 RID: 1032
 		private Alignment alignment_imageTop;
 
-		// Token: 0x04000409 RID: 1033
 		private HBox hbox_image;
 
-		// Token: 0x0400040A RID: 1034
 		private Alignment alignment_imageLeft;
 
-		// Token: 0x0400040B RID: 1035
 		private ImageBin imagebin_logo;
 
-		// Token: 0x0400040C RID: 1036
 		private Alignment alignment_imageRight;
 
-		// Token: 0x0400040D RID: 1037
 		private Alignment alignment_imageBottom;
 
-		// Token: 0x0400040E RID: 1038
 		private VBox vbox_right;
 
-		// Token: 0x0400040F RID: 1039
 		private Alignment alignment_text;
 
-		// Token: 0x04000410 RID: 1040
 		private VBox vbox_text;
 
-		// Token: 0x04000411 RID: 1041
 		private Label label_version;
 
-		// Token: 0x04000412 RID: 1042
 		private Label label_copyRight;
 
-		// Token: 0x04000413 RID: 1043
 		private Label label_authority;
 
-		// Token: 0x04000414 RID: 1044
 		private Alignment alignment_button;
 
-		// Token: 0x04000415 RID: 1045
 		private HBox hbox_button;
 
-		// Token: 0x04000416 RID: 1046
 		private Alignment alignment_btnOfficial;
 
-		// Token: 0x04000417 RID: 1047
 		private Alignment alignment_btnWeibo;
 
-		// Token: 0x04000418 RID: 1048
 		private Alignment alignment_btnForum;
 	}
 }

@@ -15,11 +15,9 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 	/// - this is done to ensure that open generics in the interface member reference resolve to the type parameters of the
 	/// declaring type.
 	/// </remarks>
-	// Token: 0x020000D0 RID: 208
 	[Serializable]
 	public sealed class ExplicitInterfaceImplementationMemberReference : IMemberReference, ISymbolReference
 	{
-		// Token: 0x060007AF RID: 1967 RVA: 0x00013573 File Offset: 0x00012573
 		public ExplicitInterfaceImplementationMemberReference(ITypeReference typeReference, IMemberReference interfaceMemberReference)
 		{
 			if (typeReference == null)
@@ -34,8 +32,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			this.interfaceMemberReference = interfaceMemberReference;
 		}
 
-		// Token: 0x17000339 RID: 825
-		// (get) Token: 0x060007B0 RID: 1968 RVA: 0x000135A5 File Offset: 0x000125A5
 		public ITypeReference DeclaringTypeReference
 		{
 			get
@@ -44,7 +40,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x060007B1 RID: 1969 RVA: 0x00013604 File Offset: 0x00012604
 		public IMember Resolve(ITypeResolveContext context)
 		{
 			IType type = this.typeReference.Resolve(context);
@@ -65,16 +60,13 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return source.FirstOrDefault((IMember m) => m.ImplementedInterfaceMembers.Count == 1 && interfaceMember.Equals(m.ImplementedInterfaceMembers[0]));
 		}
 
-		// Token: 0x060007B2 RID: 1970 RVA: 0x000136AE File Offset: 0x000126AE
 		ISymbol ISymbolReference.Resolve(ITypeResolveContext context)
 		{
 			return this.Resolve(context);
 		}
 
-		// Token: 0x04000236 RID: 566
 		private ITypeReference typeReference;
 
-		// Token: 0x04000237 RID: 567
 		private IMemberReference interfaceMemberReference;
 	}
 }

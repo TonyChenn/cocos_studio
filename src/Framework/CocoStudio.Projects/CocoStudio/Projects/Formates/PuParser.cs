@@ -5,10 +5,8 @@ using System.Text.RegularExpressions;
 
 namespace CocoStudio.Projects.Formates
 {
-	// Token: 0x02000019 RID: 25
 	internal class PuParser
 	{
-		// Token: 0x06000084 RID: 132 RVA: 0x00003388 File Offset: 0x00001588
 		public bool LoadPuFileAndGetAllResource(string fullpath)
 		{
 			bool result = false;
@@ -82,7 +80,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x000035DC File Offset: 0x000017DC
 		public List<string> GetMaterialFiles()
 		{
 			List<string> result = null;
@@ -93,7 +90,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x00003608 File Offset: 0x00001808
 		public List<string> GetTextureFiles()
 		{
 			List<string> result = null;
@@ -104,7 +100,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x00003634 File Offset: 0x00001834
 		public List<string> GetAllMeshFiles()
 		{
 			List<string> result = null;
@@ -115,7 +110,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x06000088 RID: 136 RVA: 0x00003660 File Offset: 0x00001860
 		private void AddContainerFile(string filename)
 		{
 			if (!string.IsNullOrEmpty(filename))
@@ -128,7 +122,6 @@ namespace CocoStudio.Projects.Formates
 			}
 		}
 
-		// Token: 0x06000089 RID: 137 RVA: 0x00003698 File Offset: 0x00001898
 		private void AddResourcesFile(string filename)
 		{
 			if (!string.IsNullOrEmpty(filename))
@@ -141,7 +134,6 @@ namespace CocoStudio.Projects.Formates
 			}
 		}
 
-		// Token: 0x0600008A RID: 138 RVA: 0x000036D0 File Offset: 0x000018D0
 		private static string FindResourcePath(string fullpath)
 		{
 			string result = "";
@@ -156,7 +148,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x0600008B RID: 139 RVA: 0x0000370C File Offset: 0x0000190C
 		private static List<string> GetResourceNames(string puContents, string regexPattern, string fieldName)
 		{
 			List<string> list = null;
@@ -175,34 +166,24 @@ namespace CocoStudio.Projects.Formates
 			return list;
 		}
 
-		// Token: 0x04000022 RID: 34
 		private const string MaterialFieldKey = "material";
 
-		// Token: 0x04000023 RID: 35
 		private const string RegexPatternMaterial = "(material.*)";
 
-		// Token: 0x04000024 RID: 36
 		private const string MeshFieldKey = "mesh_name";
 
-		// Token: 0x04000025 RID: 37
 		private const string RegexPatternMesh = "(mesh_name.*)";
 
-		// Token: 0x04000026 RID: 38
 		private const string ListFieldMaterial = "material";
 
-		// Token: 0x04000027 RID: 39
 		private const string ListFieldTexture = "texture";
 
-		// Token: 0x04000028 RID: 40
 		private const string ListField3Dmodel = "model";
 
-		// Token: 0x04000029 RID: 41
 		private readonly string _meshFolderName = "models" + Path.DirectorySeparatorChar;
 
-		// Token: 0x0400002A RID: 42
 		private string _resourcePath = "";
 
-		// Token: 0x0400002B RID: 43
 		private Dictionary<string, List<string>> _allRelatedFileList;
 	}
 }

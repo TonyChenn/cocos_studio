@@ -16,11 +16,9 @@ using Stetic;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200005F RID: 95
 	[ToolboxItem(true)]
 	public class CocosItemView : Bin
 	{
-		// Token: 0x0600034A RID: 842 RVA: 0x0000E605 File Offset: 0x0000C805
 		public CocosItemView()
 		{
 			this.Build();
@@ -29,7 +27,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x0600034B RID: 843 RVA: 0x0000E634 File Offset: 0x0000C834
 		private void Initialize()
 		{
 			this.InitDefault();
@@ -38,7 +35,6 @@ namespace Cocos.Launcher.Core
 			this.InitEvent();
 		}
 
-		// Token: 0x0600034C RID: 844 RVA: 0x0000E650 File Offset: 0x0000C850
 		private void InitDefault()
 		{
 			this.eventbox1.ModifyBg(StateType.Normal, ConstantConfig.Colors.MainLineColor);
@@ -63,7 +59,6 @@ namespace Cocos.Launcher.Core
 			this.image_recentlyProject.SetImageView(ImageIcon.GetIcon("Cocos.Launcher.Resource.LauncherResource.dir.png"));
 		}
 
-		// Token: 0x0600034D RID: 845 RVA: 0x0000E7C0 File Offset: 0x0000C9C0
 		private void InitEvent()
 		{
 			Services.RecentFileService.RecentDocumentChanged += this.Instance_RecentProjectChanged;
@@ -72,7 +67,6 @@ namespace Cocos.Launcher.Core
 			Services.MainWindow.ButtonReleaseEvent += this.MainWindow_ButtonReleaseEvent;
 		}
 
-		// Token: 0x0600034E RID: 846 RVA: 0x0000E828 File Offset: 0x0000CA28
 		private void CreateRecentCocosItemLabels()
 		{
 			int num = (this.RecentCocosItem.Count > 7) ? 7 : this.RecentCocosItem.Count;
@@ -86,7 +80,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600034F RID: 847 RVA: 0x0000E8BA File Offset: 0x0000CABA
 		private void Initlanguage()
 		{
 			this.button_openCocosItem.SetLabelText(LanguageInfo.Menu_File_OpenProject);
@@ -94,7 +87,6 @@ namespace Cocos.Launcher.Core
 			this.label_recentlyProject.Text = LanguageInfo.Launcher_OpenRecent;
 		}
 
-		// Token: 0x06000350 RID: 848 RVA: 0x0000E8EC File Offset: 0x0000CAEC
 		private void StartProcedure(string cocosItemPath)
 		{
 			string cocosStudioExePath = ConstantConfig.Paths.CocosStudioExePath;
@@ -108,13 +100,11 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000351 RID: 849 RVA: 0x0000E934 File Offset: 0x0000CB34
 		private string GetArguments(string cocosItemPath)
 		{
 			return string.Format("\"{0}\"", cocosItemPath);
 		}
 
-		// Token: 0x06000352 RID: 850 RVA: 0x0000E950 File Offset: 0x0000CB50
 		private void Instance_RecentProjectChanged(object sender, RecentDocumentChangeEventArgs args)
 		{
 			if (args.ChangeType == EnumRecentPrjChangeType.New || args.ChangeType == EnumRecentPrjChangeType.Reorder)
@@ -139,7 +129,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000353 RID: 851 RVA: 0x0000E9E8 File Offset: 0x0000CBE8
 		private void button_openProject_ButtonReleaseEvent(object sender, ButtonReleaseEventArgs args)
 		{
 			string lastBrowserLocation = Services.RecentFileService.LastBrowserLocation;
@@ -171,7 +160,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000354 RID: 852 RVA: 0x0000EAB8 File Offset: 0x0000CCB8
 		private void button_newProject_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			NewSolutionWindow newSolutionWindow = new NewSolutionWindow();
@@ -179,7 +167,6 @@ namespace Cocos.Launcher.Core
 			newSolutionWindow.Show();
 		}
 
-		// Token: 0x06000355 RID: 853 RVA: 0x0000EAE3 File Offset: 0x0000CCE3
 		private void OnNewSolutionCreated(object sender, SolutionCreatedArgs args)
 		{
 			if (File.Exists(args.DefaultScenePath))
@@ -188,7 +175,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000356 RID: 854 RVA: 0x0000EB00 File Offset: 0x0000CD00
 		private void prjLabel_OpenClicked(object sender, OpenClickedEventArgs e)
 		{
 			CocosItemModel cocosItemModel = e.Tag as CocosItemModel;
@@ -212,7 +198,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000357 RID: 855 RVA: 0x0000EB80 File Offset: 0x0000CD80
 		private void prjLabel_ButtonPressEvent(object sender, ButtonPressEventArgs args)
 		{
 			if (this.oldSelectedCocosItemView != null)
@@ -224,7 +209,6 @@ namespace Cocos.Launcher.Core
 			this.oldSelectedCocosItemView = recentlyCocosItemView;
 		}
 
-		// Token: 0x06000358 RID: 856 RVA: 0x0000EBB6 File Offset: 0x0000CDB6
 		private void MainWindow_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			if (this.oldSelectedCocosItemView != null)
@@ -234,7 +218,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000359 RID: 857 RVA: 0x0000EBD4 File Offset: 0x0000CDD4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -318,49 +301,34 @@ namespace Cocos.Launcher.Core
 			base.Hide();
 		}
 
-		// Token: 0x0400014E RID: 334
 		private ObservableCollection<CocosItemModel> RecentCocosItem;
 
-		// Token: 0x0400014F RID: 335
 		private ButtonView button_openCocosItem;
 
-		// Token: 0x04000150 RID: 336
 		private ButtonView button_newCocosItem;
 
-		// Token: 0x04000151 RID: 337
 		private RecentlyCocosItemView oldSelectedCocosItemView;
 
-		// Token: 0x04000152 RID: 338
 		private Alignment alignment_view;
 
-		// Token: 0x04000153 RID: 339
 		private VBox vbox_project;
 
-		// Token: 0x04000154 RID: 340
 		private HBox hbox3;
 
-		// Token: 0x04000155 RID: 341
 		private ImageBin image_recentlyProject;
 
-		// Token: 0x04000156 RID: 342
 		private Label label_recentlyProject;
 
-		// Token: 0x04000157 RID: 343
 		private HBox hbox_project;
 
-		// Token: 0x04000158 RID: 344
 		private Alignment alignment2;
 
-		// Token: 0x04000159 RID: 345
 		private Alignment alignment_projectList;
 
-		// Token: 0x0400015A RID: 346
 		private VBox vbox_4;
 
-		// Token: 0x0400015B RID: 347
 		private EventBox eventbox1;
 
-		// Token: 0x0400015C RID: 348
 		private VBox vbox_projectList;
 	}
 }

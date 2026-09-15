@@ -18,11 +18,9 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x0200000F RID: 15
 	[ToolboxItem(true)]
 	public class PackageWidget : Bin, IProjectSettingWidget
 	{
-		// Token: 0x0600006D RID: 109 RVA: 0x000089A6 File Offset: 0x00006BA6
 		public PackageWidget()
 		{
 			this.Build();
@@ -30,7 +28,6 @@ namespace Modules.Communal.ProjectSetting
 			this.Init();
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x000089C0 File Offset: 0x00006BC0
 		private void Init()
 		{
 			Solution currentSolution = Services.ProjectsService.CurrentSolution;
@@ -57,7 +54,6 @@ namespace Modules.Communal.ProjectSetting
 			helpButton.URL = LanguageAdapter.GetLocalizedUrl(HelpLinkUrl.FrameworkVersionUpgrade);
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x00008AC0 File Offset: 0x00006CC0
 		private void InitDisplayText()
 		{
 			this.GtkLabel_generatePath.Text = " " + LanguageInfo.Package_GeneratePath + " ";
@@ -68,7 +64,6 @@ namespace Modules.Communal.ProjectSetting
 			this.label_warning.Text = LanguageInfo.ProjSetting_ChangeVersionWarring;
 		}
 
-		// Token: 0x06000070 RID: 112 RVA: 0x00008B60 File Offset: 0x00006D60
 		private void DeleteDir(string directory)
 		{
 			if (Directory.Exists(directory))
@@ -84,8 +79,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x06000071 RID: 113 RVA: 0x00008BA8 File Offset: 0x00006DA8
 		public EnumProjectSetting SettingID
 		{
 			get
@@ -94,8 +87,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x06000072 RID: 114 RVA: 0x00008BAB File Offset: 0x00006DAB
 		public string DisplayName
 		{
 			get
@@ -104,7 +95,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000073 RID: 115 RVA: 0x00008BB4 File Offset: 0x00006DB4
 		public void ApplySetting()
 		{
 			Solution currentSolution = Services.ProjectsService.CurrentSolution;
@@ -132,7 +122,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000074 RID: 116 RVA: 0x00008CB4 File Offset: 0x00006EB4
 		public bool CanApply(out string output)
 		{
 			if (!ProjectSettingHelper.CheckPathValidity(this.entry_generatePath.Text))
@@ -151,14 +140,11 @@ namespace Modules.Communal.ProjectSetting
 			return true;
 		}
 
-		// Token: 0x06000075 RID: 117 RVA: 0x00008D1E File Offset: 0x00006F1E
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x06000076 RID: 118 RVA: 0x00008D24 File Offset: 0x00006F24
 		public List<IProjectSettingWidget> SubWidgets
 		{
 			get
@@ -180,7 +166,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000077 RID: 119 RVA: 0x00008D90 File Offset: 0x00006F90
 		protected void HandleButtonBrowseClicked(object sender, EventArgs e)
 		{
 			Solution currentSelectedSolution = Services.ProjectOperations.CurrentSelectedSolution;
@@ -218,7 +203,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000078 RID: 120 RVA: 0x00008E80 File Offset: 0x00007080
 		protected void HandleComboboxChanged(object sender, EventArgs e)
 		{
 			if (this.combobox_framework.Active != -1)
@@ -240,7 +224,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000079 RID: 121 RVA: 0x00008F08 File Offset: 0x00007108
 		protected void ButtonOpenFolderClickedHandler(object sender, EventArgs e)
 		{
 			try
@@ -265,7 +248,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600007A RID: 122 RVA: 0x00008F88 File Offset: 0x00007188
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -431,76 +413,52 @@ namespace Modules.Communal.ProjectSetting
 			this.combobox_framework.Changed += this.HandleComboboxChanged;
 		}
 
-		// Token: 0x040000AB RID: 171
 		private List<IProjectSettingWidget> subWidgets;
 
-		// Token: 0x040000AC RID: 172
 		private VBox vbox_main;
 
-		// Token: 0x040000AD RID: 173
 		private Frame frame_generatePath;
 
-		// Token: 0x040000AE RID: 174
 		private Alignment GtkAlignment_generatePath;
 
-		// Token: 0x040000AF RID: 175
 		private HBox hbox_generatePath;
 
-		// Token: 0x040000B0 RID: 176
 		private Entry entry_generatePath;
 
-		// Token: 0x040000B1 RID: 177
 		private Button button_browse;
 
-		// Token: 0x040000B2 RID: 178
 		private Button button_openFolder;
 
-		// Token: 0x040000B3 RID: 179
 		private Label GtkLabel_generatePath;
 
-		// Token: 0x040000B4 RID: 180
 		private Frame frame_framework;
 
-		// Token: 0x040000B5 RID: 181
 		private Alignment GtkAlignment_framework;
 
-		// Token: 0x040000B6 RID: 182
 		private VBox vbox_framework;
 
-		// Token: 0x040000B7 RID: 183
 		private HBox hbox_version;
 
-		// Token: 0x040000B8 RID: 184
 		private Label label_cocosFramework;
 
-		// Token: 0x040000B9 RID: 185
 		private ComboBox combobox_framework;
 
-		// Token: 0x040000BA RID: 186
 		private Label GtkLabel_framework;
 
-		// Token: 0x040000BB RID: 187
 		private Alignment alignment_warring;
 
-		// Token: 0x040000BC RID: 188
 		private HBox hbox_warring;
 
-		// Token: 0x040000BD RID: 189
 		private ImageBin imagebin_warring;
 
-		// Token: 0x040000BE RID: 190
 		private Label label_warning;
 
-		// Token: 0x040000BF RID: 191
 		private VBox vbox_help;
 
-		// Token: 0x040000C0 RID: 192
 		private Alignment alignment_helpTop;
 
-		// Token: 0x040000C1 RID: 193
 		private Alignment alignment_help;
 
-		// Token: 0x040000C2 RID: 194
 		private Alignment alignment_helpBottom;
 	}
 }

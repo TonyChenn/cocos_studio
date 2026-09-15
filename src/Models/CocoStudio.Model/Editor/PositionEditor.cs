@@ -8,10 +8,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200006D RID: 109
 	internal class PositionEditor : BaseEditor
 	{
-		// Token: 0x060003AF RID: 943 RVA: 0x00011AE4 File Offset: 0x0000FCE4
 		static PositionEditor()
 		{
 			PositionEditor.correspondProperties.Add("LayoutState");
@@ -22,9 +20,6 @@ namespace CocoStudio.Model.Editor
 			PositionEditor.correspondProperties.Add("PositionPercentYEnabled");
 		}
 
-		// Token: 0x17000115 RID: 277
-		// (get) Token: 0x060003B0 RID: 944 RVA: 0x00011B5C File Offset: 0x0000FD5C
-		// (set) Token: 0x060003B1 RID: 945 RVA: 0x00011B74 File Offset: 0x0000FD74
 		public bool ShowSwitchButton
 		{
 			get
@@ -45,9 +40,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000116 RID: 278
-		// (get) Token: 0x060003B2 RID: 946 RVA: 0x00011BAC File Offset: 0x0000FDAC
-		// (set) Token: 0x060003B3 RID: 947 RVA: 0x00011BC4 File Offset: 0x0000FDC4
 		public bool CanShowSwitchButton
 		{
 			get
@@ -61,9 +53,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000117 RID: 279
-		// (get) Token: 0x060003B4 RID: 948 RVA: 0x00011BDC File Offset: 0x0000FDDC
-		// (set) Token: 0x060003B5 RID: 949 RVA: 0x00011BFC File Offset: 0x0000FDFC
 		public bool IsXPercent
 		{
 			get
@@ -84,9 +73,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000118 RID: 280
-		// (get) Token: 0x060003B6 RID: 950 RVA: 0x00011C44 File Offset: 0x0000FE44
-		// (set) Token: 0x060003B7 RID: 951 RVA: 0x00011C64 File Offset: 0x0000FE64
 		public bool IsYPercent
 		{
 			get
@@ -107,8 +93,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000119 RID: 281
-		// (get) Token: 0x060003B8 RID: 952 RVA: 0x00011CAC File Offset: 0x0000FEAC
 		public override bool SupportMultiSelect
 		{
 			get
@@ -117,7 +101,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060003B9 RID: 953 RVA: 0x00011CC0 File Offset: 0x0000FEC0
 		protected override Widget OnCreateWidget()
 		{
 			this.xInnerEntry = new NoUndoNumEntry();
@@ -143,14 +126,12 @@ namespace CocoStudio.Model.Editor
 			return hboxProp2D;
 		}
 
-		// Token: 0x060003BA RID: 954 RVA: 0x00011E0D File Offset: 0x0001000D
 		protected override void OnReset()
 		{
 			base.OnReset();
 			this.CanShowSwitchButton = true;
 		}
 
-		// Token: 0x060003BB RID: 955 RVA: 0x00011E20 File Offset: 0x00010020
 		protected override void OnSetControl()
 		{
 			NodeObject nodeObject = PropertyItem.FirstObject as NodeObject;
@@ -223,7 +204,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060003BC RID: 956 RVA: 0x00012090 File Offset: 0x00010290
 		private void SetUnitButtonVisible(bool isVisible)
 		{
 			if (isVisible)
@@ -253,7 +233,6 @@ namespace CocoStudio.Model.Editor
 			base.SetControl();
 		}
 
-		// Token: 0x060003BD RID: 957 RVA: 0x00012180 File Offset: 0x00010380
 		private void XUnitChangedHandler(object sender, EventArgs e)
 		{
 			using (base.GetLock(true))
@@ -278,7 +257,6 @@ namespace CocoStudio.Model.Editor
 			base.SetControl();
 		}
 
-		// Token: 0x060003BE RID: 958 RVA: 0x00012244 File Offset: 0x00010444
 		private void YUnitChangedHandler(object sender, EventArgs e)
 		{
 			using (base.GetLock(true))
@@ -303,7 +281,6 @@ namespace CocoStudio.Model.Editor
 			base.SetControl();
 		}
 
-		// Token: 0x060003BF RID: 959 RVA: 0x00012308 File Offset: 0x00010508
 		private void XEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -330,7 +307,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060003C0 RID: 960 RVA: 0x000123E4 File Offset: 0x000105E4
 		private void YEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -357,7 +333,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060003C1 RID: 961 RVA: 0x000124C0 File Offset: 0x000106C0
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 			if (PositionEditor.correspondProperties.Contains(e.PropertyName))
@@ -366,31 +341,22 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x040001E2 RID: 482
 		private static List<string> correspondProperties = new List<string>();
 
-		// Token: 0x040001E3 RID: 483
 		private FullEntryShell xMainEntry;
 
-		// Token: 0x040001E4 RID: 484
 		private FullEntryShell yMainEntry;
 
-		// Token: 0x040001E5 RID: 485
 		private NoUndoNumEntry xInnerEntry;
 
-		// Token: 0x040001E6 RID: 486
 		private NoUndoNumEntry yInnerEntry;
 
-		// Token: 0x040001E7 RID: 487
 		private ChangeUnitButton xUnitBtn;
 
-		// Token: 0x040001E8 RID: 488
 		private ChangeUnitButton yUnitBtn;
 
-		// Token: 0x040001E9 RID: 489
 		private bool _showSwitchButton;
 
-		// Token: 0x040001EA RID: 490
 		private bool _canShowSwitchButton = true;
 	}
 }

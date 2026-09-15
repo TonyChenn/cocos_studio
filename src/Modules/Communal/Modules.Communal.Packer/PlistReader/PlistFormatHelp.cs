@@ -3,10 +3,8 @@ using System.Drawing;
 
 namespace Modules.Communal.Packer.PlistReader
 {
-	// Token: 0x02000015 RID: 21
 	public static class PlistFormatHelp
 	{
-		// Token: 0x0600007A RID: 122 RVA: 0x00005260 File Offset: 0x00003460
 		public static Rectangle ConvertToRect(string plistString)
 		{
 			int num = plistString.IndexOf('{');
@@ -46,7 +44,6 @@ namespace Modules.Communal.Packer.PlistReader
 			return new Rectangle(location, size);
 		}
 
-		// Token: 0x0600007B RID: 123 RVA: 0x00005388 File Offset: 0x00003588
 		public static Point ConvertToPoint(string plistString)
 		{
 			string[] array = PlistFormatHelp.SplitWithForm(plistString);
@@ -55,7 +52,6 @@ namespace Modules.Communal.Packer.PlistReader
 			return new Point(x, y);
 		}
 
-		// Token: 0x0600007C RID: 124 RVA: 0x000053BC File Offset: 0x000035BC
 		public static Size ConvertToSize(string plistString)
 		{
 			string[] array = PlistFormatHelp.SplitWithForm(plistString);
@@ -64,7 +60,6 @@ namespace Modules.Communal.Packer.PlistReader
 			return new Size(width, height);
 		}
 
-		// Token: 0x0600007D RID: 125 RVA: 0x000053F0 File Offset: 0x000035F0
 		public static PointF ConvertToPointF(string plistString)
 		{
 			string[] array = PlistFormatHelp.SplitWithForm(plistString);
@@ -73,7 +68,6 @@ namespace Modules.Communal.Packer.PlistReader
 			return new PointF(x, y);
 		}
 
-		// Token: 0x0600007E RID: 126 RVA: 0x00005424 File Offset: 0x00003624
 		private static string[] SplitWithForm(string plistString)
 		{
 			int num = plistString.IndexOf('{');
@@ -104,7 +98,6 @@ namespace Modules.Communal.Packer.PlistReader
 			return array;
 		}
 
-		// Token: 0x0600007F RID: 127 RVA: 0x00005534 File Offset: 0x00003734
 		public static string ConvertToString(Size size)
 		{
 			return string.Concat(new object[]
@@ -117,7 +110,6 @@ namespace Modules.Communal.Packer.PlistReader
 			});
 		}
 
-		// Token: 0x06000080 RID: 128 RVA: 0x0000558C File Offset: 0x0000378C
 		public static string ConvertToString(Point point)
 		{
 			return string.Concat(new object[]
@@ -130,7 +122,6 @@ namespace Modules.Communal.Packer.PlistReader
 			});
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x000055E4 File Offset: 0x000037E4
 		public static string ConvertToString(Rectangle rect)
 		{
 			return string.Concat(new string[]

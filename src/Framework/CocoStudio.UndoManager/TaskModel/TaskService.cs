@@ -5,12 +5,8 @@ using CocoStudio.Basic;
 
 namespace CocoStudio.UndoManager.TaskModel
 {
-	// Token: 0x02000024 RID: 36
 	public class TaskService : ITaskService, IInternalTaskService
 	{
-		// Token: 0x17000035 RID: 53
-		// (get) Token: 0x060000F5 RID: 245 RVA: 0x00005084 File Offset: 0x00003284
-		// (set) Token: 0x060000F6 RID: 246 RVA: 0x0000509C File Offset: 0x0000329C
 		public bool IsUndoing
 		{
 			get
@@ -23,7 +19,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x060000F7 RID: 247 RVA: 0x000050A8 File Offset: 0x000032A8
 		public TaskResult PerformTask<T>(TaskBase<T> task, T argument, object ownerKey = null)
 		{
 			TaskResult result;
@@ -67,7 +62,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x060000F8 RID: 248 RVA: 0x00005198 File Offset: 0x00003398
 		private TaskResult PerformTask<T>(TaskBase<T> task, T argument)
 		{
 			CancellableTaskServiceEventArgs cancellableTaskServiceEventArgs = new CancellableTaskServiceEventArgs(task);
@@ -90,7 +84,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x060000F9 RID: 249 RVA: 0x00005214 File Offset: 0x00003414
 		public TaskResult PerformTask<T>(UndoableTaskBase<T> task, T argument, object ownerKey = null)
 		{
 			TaskResult result;
@@ -143,7 +136,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x060000FA RID: 250 RVA: 0x00005340 File Offset: 0x00003540
 		private TaskResult PerformTask<T>(UndoableTaskBase<T> task, T argument)
 		{
 			CancellableTaskServiceEventArgs cancellableTaskServiceEventArgs = new CancellableTaskServiceEventArgs(task);
@@ -166,7 +158,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x060000FB RID: 251 RVA: 0x000053C0 File Offset: 0x000035C0
 		public bool CanUndo(object ownerKey = null)
 		{
 			bool result;
@@ -182,7 +173,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x060000FC RID: 252 RVA: 0x00005414 File Offset: 0x00003614
 		public TaskResult Undo(object ownerKey = null)
 		{
 			TaskResult result;
@@ -243,7 +233,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x060000FD RID: 253 RVA: 0x0000555C File Offset: 0x0000375C
 		private TaskResult Undo()
 		{
 			if (this.globallyRepeatableTasks.Count < 1)
@@ -271,7 +260,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x060000FE RID: 254 RVA: 0x0000560C File Offset: 0x0000380C
 		public TaskResult Undo(int undoCount, object ownerKey = null)
 		{
 			ArgumentValidator.AssertGreaterThan(undoCount, 0, "undoCount");
@@ -295,7 +283,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x060000FF RID: 255 RVA: 0x0000566C File Offset: 0x0000386C
 		private TaskResult Undo(int undoCount)
 		{
 			for (int i = 0; i < undoCount; i++)
@@ -309,7 +296,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return TaskResult.Completed;
 		}
 
-		// Token: 0x06000100 RID: 256 RVA: 0x000056A8 File Offset: 0x000038A8
 		public bool CanRedo(object ownerKey = null)
 		{
 			bool result;
@@ -325,13 +311,11 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x06000101 RID: 257 RVA: 0x000056F4 File Offset: 0x000038F4
 		private bool CanRedo()
 		{
 			return this.globallyRedoableTasks.Count > 0;
 		}
 
-		// Token: 0x06000102 RID: 258 RVA: 0x00005714 File Offset: 0x00003914
 		public TaskResult Redo(object ownerKey = null)
 		{
 			TaskResult result;
@@ -378,7 +362,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x06000103 RID: 259 RVA: 0x00005810 File Offset: 0x00003A10
 		private TaskResult Redo()
 		{
 			if (this.globallyRedoableTasks.Count < 1)
@@ -407,7 +390,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x06000104 RID: 260 RVA: 0x000058CC File Offset: 0x00003ACC
 		public TaskResult Repeat(object ownerKey = null)
 		{
 			TaskResult result;
@@ -467,7 +449,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x06000105 RID: 261 RVA: 0x00005A04 File Offset: 0x00003C04
 		private void TrimIfRequired(object ownerKey = null)
 		{
 			long num = this.taskCountMax;
@@ -519,7 +500,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x06000106 RID: 262 RVA: 0x00005B6C File Offset: 0x00003D6C
 		private TaskResult Repeat()
 		{
 			IInternalTask internalTask = this.globallyRepeatableTasks.Peek();
@@ -558,7 +538,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x06000107 RID: 263 RVA: 0x00005C38 File Offset: 0x00003E38
 		public bool CanRepeat(object ownerKey = null)
 		{
 			TaskService.TaskCollection<IInternalTask> taskCollection;
@@ -573,7 +552,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return taskCollection.Count > 0 && taskCollection.Peek().Repeatable;
 		}
 
-		// Token: 0x06000108 RID: 264 RVA: 0x00005C94 File Offset: 0x00003E94
 		public IEnumerable<ITask> GetUndoableTasks(object ownerKey = null)
 		{
 			IEnumerable<ITask> result;
@@ -593,7 +571,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x06000109 RID: 265 RVA: 0x00005CEC File Offset: 0x00003EEC
 		public IEnumerable<ITask> GetRedoableTasks(object ownerKey = null)
 		{
 			IEnumerable<ITask> result;
@@ -613,7 +590,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x0600010A RID: 266 RVA: 0x00005D74 File Offset: 0x00003F74
 		public IEnumerable<ITask> GetRepeatableTasks(object ownerKey = null)
 		{
 			IEnumerable<ITask> result;
@@ -639,7 +615,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x0600010B RID: 267 RVA: 0x00005E18 File Offset: 0x00004018
 		public void SetMaximumUndoCount(int count, object ownerKey = null)
 		{
 			ArgumentValidator.AssertGreaterThan(count, 0, "count");
@@ -653,7 +628,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x00005E5C File Offset: 0x0000405C
 		public void Clear(object ownerKey = null)
 		{
 			if (ownerKey == null)
@@ -688,9 +662,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x17000036 RID: 54
-		// (get) Token: 0x0600010D RID: 269 RVA: 0x00005F34 File Offset: 0x00004134
-		// (set) Token: 0x0600010E RID: 270 RVA: 0x00005F4C File Offset: 0x0000414C
 		public bool Enable
 		{
 			get
@@ -703,14 +674,8 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x14000008 RID: 8
-		// (add) Token: 0x0600010F RID: 271 RVA: 0x00005F58 File Offset: 0x00004158
-		// (remove) Token: 0x06000110 RID: 272 RVA: 0x00005F94 File Offset: 0x00004194
 		private event EventHandler<CancellableTaskServiceEventArgs> executing;
 
-		// Token: 0x14000009 RID: 9
-		// (add) Token: 0x06000111 RID: 273 RVA: 0x00005FD0 File Offset: 0x000041D0
-		// (remove) Token: 0x06000112 RID: 274 RVA: 0x00005FDB File Offset: 0x000041DB
 		public event EventHandler<CancellableTaskServiceEventArgs> Executing
 		{
 			add
@@ -723,7 +688,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x06000113 RID: 275 RVA: 0x00005FE8 File Offset: 0x000041E8
 		private void OnExecuting(CancellableTaskServiceEventArgs e)
 		{
 			if (this.executing != null)
@@ -732,14 +696,8 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x1400000A RID: 10
-		// (add) Token: 0x06000114 RID: 276 RVA: 0x00006014 File Offset: 0x00004214
-		// (remove) Token: 0x06000115 RID: 277 RVA: 0x00006050 File Offset: 0x00004250
 		private event EventHandler<TaskServiceEventArgs> executed;
 
-		// Token: 0x1400000B RID: 11
-		// (add) Token: 0x06000116 RID: 278 RVA: 0x0000608C File Offset: 0x0000428C
-		// (remove) Token: 0x06000117 RID: 279 RVA: 0x00006097 File Offset: 0x00004297
 		public event EventHandler<TaskServiceEventArgs> Executed
 		{
 			add
@@ -752,7 +710,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x06000118 RID: 280 RVA: 0x000060A4 File Offset: 0x000042A4
 		private void OnExecuted(TaskServiceEventArgs e)
 		{
 			if (this.executed != null)
@@ -761,14 +718,8 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x1400000C RID: 12
-		// (add) Token: 0x06000119 RID: 281 RVA: 0x000060D0 File Offset: 0x000042D0
-		// (remove) Token: 0x0600011A RID: 282 RVA: 0x0000610C File Offset: 0x0000430C
 		private event EventHandler<CancellableTaskServiceEventArgs> undoing;
 
-		// Token: 0x1400000D RID: 13
-		// (add) Token: 0x0600011B RID: 283 RVA: 0x00006148 File Offset: 0x00004348
-		// (remove) Token: 0x0600011C RID: 284 RVA: 0x00006153 File Offset: 0x00004353
 		public event EventHandler<CancellableTaskServiceEventArgs> Undoing
 		{
 			add
@@ -781,7 +732,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x0600011D RID: 285 RVA: 0x00006160 File Offset: 0x00004360
 		protected virtual void OnUndoing(CancellableTaskServiceEventArgs e)
 		{
 			this.IsUndoing = true;
@@ -791,14 +741,8 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x1400000E RID: 14
-		// (add) Token: 0x0600011E RID: 286 RVA: 0x00006194 File Offset: 0x00004394
-		// (remove) Token: 0x0600011F RID: 287 RVA: 0x000061D0 File Offset: 0x000043D0
 		private event EventHandler<TaskServiceEventArgs> undone;
 
-		// Token: 0x1400000F RID: 15
-		// (add) Token: 0x06000120 RID: 288 RVA: 0x0000620C File Offset: 0x0000440C
-		// (remove) Token: 0x06000121 RID: 289 RVA: 0x00006217 File Offset: 0x00004417
 		public event EventHandler<TaskServiceEventArgs> Undone
 		{
 			add
@@ -811,7 +755,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x06000122 RID: 290 RVA: 0x00006224 File Offset: 0x00004424
 		protected virtual void OnUndone(TaskServiceEventArgs e)
 		{
 			this.IsUndoing = false;
@@ -821,14 +764,8 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x14000010 RID: 16
-		// (add) Token: 0x06000123 RID: 291 RVA: 0x00006258 File Offset: 0x00004458
-		// (remove) Token: 0x06000124 RID: 292 RVA: 0x00006294 File Offset: 0x00004494
 		private event EventHandler<CancellableTaskServiceEventArgs> redoing;
 
-		// Token: 0x14000011 RID: 17
-		// (add) Token: 0x06000125 RID: 293 RVA: 0x000062D0 File Offset: 0x000044D0
-		// (remove) Token: 0x06000126 RID: 294 RVA: 0x000062DB File Offset: 0x000044DB
 		public event EventHandler<CancellableTaskServiceEventArgs> Redoing
 		{
 			add
@@ -841,7 +778,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x06000127 RID: 295 RVA: 0x000062E8 File Offset: 0x000044E8
 		protected virtual void OnRedoing(CancellableTaskServiceEventArgs e)
 		{
 			this.IsUndoing = true;
@@ -851,14 +787,8 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x14000012 RID: 18
-		// (add) Token: 0x06000128 RID: 296 RVA: 0x0000631C File Offset: 0x0000451C
-		// (remove) Token: 0x06000129 RID: 297 RVA: 0x00006358 File Offset: 0x00004558
 		private event EventHandler<TaskServiceEventArgs> redone;
 
-		// Token: 0x14000013 RID: 19
-		// (add) Token: 0x0600012A RID: 298 RVA: 0x00006394 File Offset: 0x00004594
-		// (remove) Token: 0x0600012B RID: 299 RVA: 0x0000639F File Offset: 0x0000459F
 		public event EventHandler<TaskServiceEventArgs> Redone
 		{
 			add
@@ -871,7 +801,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x0600012C RID: 300 RVA: 0x000063AC File Offset: 0x000045AC
 		protected virtual void OnRedone(TaskServiceEventArgs e)
 		{
 			this.IsUndoing = false;
@@ -881,14 +810,8 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x14000014 RID: 20
-		// (add) Token: 0x0600012D RID: 301 RVA: 0x000063E0 File Offset: 0x000045E0
-		// (remove) Token: 0x0600012E RID: 302 RVA: 0x0000641C File Offset: 0x0000461C
 		private event EventHandler<EventArgs> cleared;
 
-		// Token: 0x14000015 RID: 21
-		// (add) Token: 0x0600012F RID: 303 RVA: 0x00006458 File Offset: 0x00004658
-		// (remove) Token: 0x06000130 RID: 304 RVA: 0x00006463 File Offset: 0x00004663
 		public event EventHandler<EventArgs> Cleared
 		{
 			add
@@ -901,7 +824,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x06000131 RID: 305 RVA: 0x00006470 File Offset: 0x00004670
 		private void OnCleared(EventArgs e)
 		{
 			if (this.cleared != null)
@@ -910,12 +832,10 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x06000132 RID: 306 RVA: 0x0000649B File Offset: 0x0000469B
 		void IInternalTaskService.NotifyTaskRepeatableChanged(IInternalTask task)
 		{
 		}
 
-		// Token: 0x06000133 RID: 307 RVA: 0x000064A0 File Offset: 0x000046A0
 		internal int GetTaskCount(TaskService.TaskType taskType, object ownerKey = null)
 		{
 			int result;
@@ -974,51 +894,35 @@ namespace CocoStudio.UndoManager.TaskModel
 			return result;
 		}
 
-		// Token: 0x0400003D RID: 61
 		private readonly Dictionary<object, TaskService.TaskCollection<IInternalTask>> repeatableDictionary = new Dictionary<object, TaskService.TaskCollection<IInternalTask>>();
 
-		// Token: 0x0400003E RID: 62
 		private readonly Dictionary<object, TaskService.TaskCollection<IUndoableTask>> redoableDictionary = new Dictionary<object, TaskService.TaskCollection<IUndoableTask>>();
 
-		// Token: 0x0400003F RID: 63
 		private readonly Dictionary<object, TaskService.TaskCollection<IUndoableTask>> undoableDictionary = new Dictionary<object, TaskService.TaskCollection<IUndoableTask>>();
 
-		// Token: 0x04000040 RID: 64
 		private readonly TaskService.TaskCollection<IInternalTask> globallyRepeatableTasks = new TaskService.TaskCollection<IInternalTask>();
 
-		// Token: 0x04000041 RID: 65
 		private readonly TaskService.TaskCollection<IUndoableTask> globallyRedoableTasks = new TaskService.TaskCollection<IUndoableTask>();
 
-		// Token: 0x04000042 RID: 66
 		private readonly TaskService.TaskCollection<IUndoableTask> globallyUndoableTasks = new TaskService.TaskCollection<IUndoableTask>();
 
-		// Token: 0x04000043 RID: 67
 		private bool isUndoing;
 
-		// Token: 0x04000044 RID: 68
 		private Dictionary<object, int> taskCountMaximums = new Dictionary<object, int>();
 
-		// Token: 0x04000045 RID: 69
 		private long taskCountMax = long.MaxValue;
 
-		// Token: 0x04000046 RID: 70
 		private bool enable;
 
-		// Token: 0x02000025 RID: 37
 		internal enum TaskType
 		{
-			// Token: 0x04000051 RID: 81
 			Undoable,
-			// Token: 0x04000052 RID: 82
 			Redoable,
-			// Token: 0x04000053 RID: 83
 			Repeatable
 		}
 
-		// Token: 0x02000026 RID: 38
 		private class TaskCollection<T> : LinkedList<T>
 		{
-			// Token: 0x06000137 RID: 311 RVA: 0x00006614 File Offset: 0x00004814
 			public T Pop()
 			{
 				T value = base.Last.Value;
@@ -1026,7 +930,6 @@ namespace CocoStudio.UndoManager.TaskModel
 				return value;
 			}
 
-			// Token: 0x06000138 RID: 312 RVA: 0x0000663C File Offset: 0x0000483C
 			public T Peek()
 			{
 				LinkedListNode<T> last = base.Last;

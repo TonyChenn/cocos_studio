@@ -19,17 +19,10 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x02000012 RID: 18
 	internal class BindingBoneTool : BaseTool, ISkeletonTool
 	{
-		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x0600008B RID: 139 RVA: 0x00004828 File Offset: 0x00002A28
-		// (set) Token: 0x0600008C RID: 140 RVA: 0x00004830 File Offset: 0x00002A30
 		public IEnumerable<VisualObject> _selectedObjects { get; private set; }
 
-		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x0600008D RID: 141 RVA: 0x00004839 File Offset: 0x00002A39
-		// (set) Token: 0x0600008E RID: 142 RVA: 0x0000484B File Offset: 0x00002A4B
 		private bool CanBinding
 		{
 			get
@@ -48,7 +41,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x00004871 File Offset: 0x00002A71
 		public BindingBoneTool()
 		{
 			this._boneRackPen = new CSBoneRackDrawPen();
@@ -56,8 +48,6 @@ namespace Modules.Communal.Skeleton
 			this._boneRackPen.SetDrawNodePen(BoneControlObject.Instance.GetCSVisual() as CSDrawNode);
 		}
 
-		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x06000090 RID: 144 RVA: 0x000048AE File Offset: 0x00002AAE
 		public override bool HasSeparator
 		{
 			get
@@ -66,8 +56,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x06000091 RID: 145 RVA: 0x000048B1 File Offset: 0x00002AB1
 		public override Xwt.Drawing.Image Icon
 		{
 			get
@@ -76,8 +64,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x1700001E RID: 30
-		// (get) Token: 0x06000092 RID: 146 RVA: 0x000048BD File Offset: 0x00002ABD
 		public override string Tooltip
 		{
 			get
@@ -86,8 +72,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x1700001F RID: 31
-		// (get) Token: 0x06000093 RID: 147 RVA: 0x000048CE File Offset: 0x00002ACE
 		public override Gdk.Key ShortcutKey
 		{
 			get
@@ -96,7 +80,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000094 RID: 148 RVA: 0x000048D2 File Offset: 0x00002AD2
 		public override void OnKeyUp(KeyReleaseEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Escape)
@@ -106,7 +89,6 @@ namespace Modules.Communal.Skeleton
 			base.OnKeyUp(args);
 		}
 
-		// Token: 0x06000095 RID: 149 RVA: 0x000048F3 File Offset: 0x00002AF3
 		protected override void OnSelectedChanged()
 		{
 			base.OnSelectedChanged();
@@ -119,7 +101,6 @@ namespace Modules.Communal.Skeleton
 			this.SetSelectedObjects(null, null);
 		}
 
-		// Token: 0x06000096 RID: 150 RVA: 0x00004930 File Offset: 0x00002B30
 		protected void SetSelectedObjects(IEnumerable<VisualObject> selectedObject, IEnumerable<VisualObject> parentSeletedObject)
 		{
 			if (this._attactedObjects != null && this._attactedObjects.Count<VisualObject>() > 0)
@@ -150,7 +131,6 @@ namespace Modules.Communal.Skeleton
 			this.RefreshDraw();
 		}
 
-		// Token: 0x06000097 RID: 151 RVA: 0x000049F4 File Offset: 0x00002BF4
 		private void Selected_PropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			string propertyName = e.PropertyName;
@@ -161,7 +141,6 @@ namespace Modules.Communal.Skeleton
 			this.RefreshDraw();
 		}
 
-		// Token: 0x06000098 RID: 152 RVA: 0x00004A34 File Offset: 0x00002C34
 		protected virtual void RefreshDraw()
 		{
 			this._boneRackPen.ClearDraw();
@@ -185,7 +164,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000099 RID: 153 RVA: 0x00004AF0 File Offset: 0x00002CF0
 		public void OnSelectObjectsChangeEvent(SelectedVisualObjectsChangeEventArgs args)
 		{
 			if (this._boneRackPen == null)
@@ -200,7 +178,6 @@ namespace Modules.Communal.Skeleton
 			this.SetSelectedObjects(args.SelectedObject, args.SelectedParentObject);
 		}
 
-		// Token: 0x0600009A RID: 154 RVA: 0x00004B1C File Offset: 0x00002D1C
 		public void OnRefreshControlDraw()
 		{
 			if (SelectService.Instance.SelectedObjectList.Count == 0)
@@ -211,19 +188,16 @@ namespace Modules.Communal.Skeleton
 			this.DrawConnectLines();
 		}
 
-		// Token: 0x0600009B RID: 155 RVA: 0x00004B4E File Offset: 0x00002D4E
 		public void OnCanvasZoomedChangedEvent()
 		{
 			this.ReCalculatePoints();
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x00004B56 File Offset: 0x00002D56
 		private void ReCalculatePoints()
 		{
 			this.RefreshDraw();
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x00004B60 File Offset: 0x00002D60
 		public override void OnMouseDown(ButtonPressEventArgs args)
 		{
 			this.isMouseUpToOtherTool = false;
@@ -257,7 +231,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600009E RID: 158 RVA: 0x00004C28 File Offset: 0x00002E28
 		public override void OnMouseMove(MotionNotifyEventArgs args)
 		{
 			if (!this._isBinding)
@@ -310,7 +283,6 @@ namespace Modules.Communal.Skeleton
 			args.RetVal = true;
 		}
 
-		// Token: 0x0600009F RID: 159 RVA: 0x00004D69 File Offset: 0x00002F69
 		public override void OnMouseUp(ButtonReleaseEventArgs args)
 		{
 			base.OnMouseUp(args);
@@ -325,7 +297,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060000A0 RID: 160 RVA: 0x00004DA0 File Offset: 0x00002FA0
 		private bool ChangedParentBone(AbstractNodeObject node)
 		{
 			BoneObject boneObject = node as BoneObject;
@@ -341,7 +312,6 @@ namespace Modules.Communal.Skeleton
 			return false;
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x00004DE8 File Offset: 0x00002FE8
 		private void CancelBinding()
 		{
 			this._isBinding = false;
@@ -354,13 +324,11 @@ namespace Modules.Communal.Skeleton
 			this.DrawConnectLines();
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x00004E36 File Offset: 0x00003036
 		private void StartBinding()
 		{
 			this._isBinding = true;
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x00004E40 File Offset: 0x00003040
 		private void EndBinding()
 		{
 			using (CompositeTask.Run("binding nodes", null))
@@ -384,7 +352,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x00004F44 File Offset: 0x00003144
 		private void DrawConnectLines()
 		{
 			AbstractNodeObject rootNode = Services.Workbench.ActiveDocument.File.GetRootNode();
@@ -404,7 +371,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060000A5 RID: 165 RVA: 0x00004FE8 File Offset: 0x000031E8
 		protected PointF GetCenterOfNodeToDraw(VisualObject node)
 		{
 			PointF pointF = new PointF();
@@ -433,13 +399,11 @@ namespace Modules.Communal.Skeleton
 			return BoneControlObject.Instance.TransformToSelf(pointF);
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x000050A9 File Offset: 0x000032A9
 		private bool IsObjectBone(VisualObject node)
 		{
 			return null != node as BoneObject;
 		}
 
-		// Token: 0x060000A7 RID: 167 RVA: 0x000050B8 File Offset: 0x000032B8
 		public static void BindingNodeToBone(AbstractNodeObject childNode, BoneObject boneToBeParent)
 		{
 			if (childNode == boneToBeParent || boneToBeParent.IsAncestor(childNode))
@@ -461,31 +425,22 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0400002D RID: 45
 		private CSBoneRackDrawPen _boneRackPen;
 
-		// Token: 0x0400002E RID: 46
 		private CanvasObject _canvasObject;
 
-		// Token: 0x0400002F RID: 47
 		private bool _isBinding;
 
-		// Token: 0x04000030 RID: 48
 		private bool _canBinding;
 
-		// Token: 0x04000031 RID: 49
 		private BoneObject _parentBone;
 
-		// Token: 0x04000032 RID: 50
 		private PointF _lastMousePos;
 
-		// Token: 0x04000033 RID: 51
 		private IEnumerable<VisualObject> _attactedObjects;
 
-		// Token: 0x04000034 RID: 52
 		private bool isMouseUpToOtherTool;
 
-		// Token: 0x04000035 RID: 53
 		private bool selectChangedFromEndBinding;
 	}
 }

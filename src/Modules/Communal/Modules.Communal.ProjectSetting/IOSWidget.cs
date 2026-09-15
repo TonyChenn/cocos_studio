@@ -9,11 +9,9 @@ using Stetic;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x0200000C RID: 12
 	[ToolboxItem(true)]
 	public class IOSWidget : Bin, IProjectSettingWidget
 	{
-		// Token: 0x06000044 RID: 68 RVA: 0x00004875 File Offset: 0x00002A75
 		public IOSWidget()
 		{
 			this.Build();
@@ -21,7 +19,6 @@ namespace Modules.Communal.ProjectSetting
 			this.InitMultiLanuage();
 		}
 
-		// Token: 0x06000045 RID: 69 RVA: 0x00004890 File Offset: 0x00002A90
 		private void InitControl()
 		{
 			this.packageParams = PackageServices.Instance.PackageParams;
@@ -42,7 +39,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x0000495C File Offset: 0x00002B5C
 		private void InitMultiLanuage()
 		{
 			this.label_certificate.Text = LanguageInfo.Package_iOS_Certificate;
@@ -50,8 +46,6 @@ namespace Modules.Communal.ProjectSetting
 			this.GtkLabel_publish.Text = " " + LanguageInfo.Package_iOS_Publish + " ";
 		}
 
-		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x06000047 RID: 71 RVA: 0x000049A8 File Offset: 0x00002BA8
 		public EnumProjectSetting SettingID
 		{
 			get
@@ -60,8 +54,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000048 RID: 72 RVA: 0x000049AB File Offset: 0x00002BAB
 		public string DisplayName
 		{
 			get
@@ -70,7 +62,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000049 RID: 73 RVA: 0x000049B2 File Offset: 0x00002BB2
 		public void ApplySetting()
 		{
 			if (this.combobox_certificate.ActiveText != null)
@@ -80,7 +71,6 @@ namespace Modules.Communal.ProjectSetting
 			this.packageParams.iOS_Target = this.entry_tag.Text;
 		}
 
-		// Token: 0x0600004A RID: 74 RVA: 0x000049ED File Offset: 0x00002BED
 		public bool CanApply(out string output)
 		{
 			if (string.IsNullOrWhiteSpace(this.entry_tag.Text))
@@ -93,14 +83,11 @@ namespace Modules.Communal.ProjectSetting
 			return true;
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x00004A1E File Offset: 0x00002C1E
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x0600004C RID: 76 RVA: 0x00004A21 File Offset: 0x00002C21
 		public List<IProjectSettingWidget> SubWidgets
 		{
 			get
@@ -109,7 +96,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x00004A24 File Offset: 0x00002C24
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -192,37 +178,26 @@ namespace Modules.Communal.ProjectSetting
 			base.Hide();
 		}
 
-		// Token: 0x04000048 RID: 72
 		private PackageParams packageParams;
 
-		// Token: 0x04000049 RID: 73
 		private Alignment alignment_main;
 
-		// Token: 0x0400004A RID: 74
 		private VBox vbox_main;
 
-		// Token: 0x0400004B RID: 75
 		private Frame frame_publish;
 
-		// Token: 0x0400004C RID: 76
 		private Alignment GtkAlignment_publish;
 
-		// Token: 0x0400004D RID: 77
 		private Table table_publish;
 
-		// Token: 0x0400004E RID: 78
 		private ComboBox combobox_certificate;
 
-		// Token: 0x0400004F RID: 79
 		private Entry entry_tag;
 
-		// Token: 0x04000050 RID: 80
 		private Label label_certificate;
 
-		// Token: 0x04000051 RID: 81
 		private Label label_tag;
 
-		// Token: 0x04000052 RID: 82
 		private Label GtkLabel_publish;
 	}
 }

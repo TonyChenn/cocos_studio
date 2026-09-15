@@ -13,13 +13,10 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.NewSolution
 {
-	// Token: 0x02000005 RID: 5
 	[SolutionTemplate(true)]
 	[Extension(typeof(ISolutionTemplate))]
 	internal class CompleteSolutionTemplate : BaseSolutionTemplate
 	{
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000010 RID: 16 RVA: 0x000021F0 File Offset: 0x000003F0
 		public override EnumTemplateGroup Group
 		{
 			get
@@ -28,7 +25,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x000021F4 File Offset: 0x000003F4
 		public CompleteSolutionTemplate()
 		{
 			string newSolution_CocosProject = LanguageInfo.NewSolution_CocosProject;
@@ -38,7 +34,6 @@ namespace Modules.Communal.NewSolution
 			base.Info = new SolutionTypeInfo(newSolution_CocosProject, newSolution_EmptyCompleteDes, enumSolutionType, iconImage, true, true, true, false, null);
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x00002254 File Offset: 0x00000454
 		protected override bool OnCreateNewSolution(CreateParams prms, CocosMonitor monitor)
 		{
 			CreatingDialog creatingDialog = new CreatingDialog();
@@ -51,7 +46,6 @@ namespace Modules.Communal.NewSolution
 			return monitor.IsSuccessed;
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x000022B4 File Offset: 0x000004B4
 		private void CreateCocosSolution(CreateParams prms, CocosMonitor monitor)
 		{
 			Cocos2dxServices.CreateServices.CreateCocosSolution(prms, monitor);
@@ -83,7 +77,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x00002388 File Offset: 0x00000588
 		protected override string OnGetDefaultScenePath(CreateParams prms)
 		{
 			return Path.Combine(prms.Directory, prms.ProjName, "CocosStudio".ToLower(), "MainScene.csd");

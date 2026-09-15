@@ -6,15 +6,12 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200000D RID: 13
 	internal class ClipPlaneEditor : TwoNumberEditor
 	{
-		// Token: 0x06000084 RID: 132 RVA: 0x00002C3D File Offset: 0x00000E3D
 		public ClipPlaneEditor() : base(string.Format(" {0} ", LanguageInfo.Display_NearPlane), string.Format(" {0} ", LanguageInfo.Display_FarPlane))
 		{
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x00002C64 File Offset: 0x00000E64
 		protected override Widget OnCreateWidget()
 		{
 			Widget result = base.OnCreateWidget();
@@ -23,7 +20,6 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x00002CB4 File Offset: 0x00000EB4
 		protected override void OnXValueChanged(EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -47,7 +43,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x00002DB0 File Offset: 0x00000FB0
 		protected override void OnYValueChanged(EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -66,7 +61,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000088 RID: 136 RVA: 0x00002EB0 File Offset: 0x000010B0
 		protected override void OnSetControl()
 		{
 			PointF pointF = (PointF)base.PropertyItem.Values[0];

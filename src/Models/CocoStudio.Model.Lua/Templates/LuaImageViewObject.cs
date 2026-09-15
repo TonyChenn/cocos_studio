@@ -4,31 +4,26 @@ using CocoStudio.Model.DataModel;
 
 namespace CocoStudio.Model.Lua.Templates
 {
-	// Token: 0x0200001C RID: 28
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaImageViewObject : LuaWidgetObject
 	{
-		// Token: 0x060000B3 RID: 179 RVA: 0x0000594E File Offset: 0x00003B4E
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x060000B4 RID: 180 RVA: 0x00005968 File Offset: 0x00003B68
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(ImageViewObjectData) == objectData.GetType();
 		}
 
-		// Token: 0x060000B5 RID: 181 RVA: 0x0000598C File Offset: 0x00003B8C
 		protected override void OnCreateObject(BaseObjectData objectData)
 		{
 			base.Write(base.ToStringHelper.ToStringWithCulture(base.GetNameDeclaration(objectData.Name)));
 			base.Write(" = ccui.ImageView:create()\r\n");
 		}
 
-		// Token: 0x060000B6 RID: 182 RVA: 0x000059B8 File Offset: 0x00003BB8
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			ImageViewObjectData imageViewObjectData = objectData as ImageViewObjectData;

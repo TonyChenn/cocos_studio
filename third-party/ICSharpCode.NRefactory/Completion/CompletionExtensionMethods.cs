@@ -5,7 +5,6 @@ using ICSharpCode.NRefactory.TypeSystem;
 
 namespace ICSharpCode.NRefactory.Completion
 {
-	// Token: 0x02000139 RID: 313
 	public static class CompletionExtensionMethods
 	{
 		/// <summary>
@@ -17,7 +16,6 @@ namespace ICSharpCode.NRefactory.Completion
 		/// <param name="entity">
 		/// Entity.
 		/// </param>
-		// Token: 0x06000ADF RID: 2783 RVA: 0x0002075C File Offset: 0x0001F75C
 		public static EditorBrowsableState GetEditorBrowsableState(this IEntity entity)
 		{
 			if (entity == null)
@@ -42,7 +40,6 @@ namespace ICSharpCode.NRefactory.Completion
 		/// <param name="entity">
 		/// The entity.
 		/// </param>
-		// Token: 0x06000AE0 RID: 2784 RVA: 0x000207E1 File Offset: 0x0001F7E1
 		public static bool IsBrowsable(this IEntity entity)
 		{
 			return entity.GetEditorBrowsableState() != EditorBrowsableState.Never;

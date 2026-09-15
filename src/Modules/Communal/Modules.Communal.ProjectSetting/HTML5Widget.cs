@@ -9,11 +9,9 @@ using Stetic;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x02000011 RID: 17
 	[ToolboxItem(true)]
 	public class HTML5Widget : Bin, IProjectSettingWidget
 	{
-		// Token: 0x06000086 RID: 134 RVA: 0x00009D40 File Offset: 0x00007F40
 		public HTML5Widget()
 		{
 			this.Build();
@@ -21,7 +19,6 @@ namespace Modules.Communal.ProjectSetting
 			this.InitStyle();
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x00009D5C File Offset: 0x00007F5C
 		private void InitWidget()
 		{
 			PackageParams packageParams = PackageServices.Instance.PackageParams;
@@ -29,7 +26,6 @@ namespace Modules.Communal.ProjectSetting
 			this.checkbutton_advanced.Active = packageParams.EnableHTML5Advanced;
 		}
 
-		// Token: 0x06000088 RID: 136 RVA: 0x00009D98 File Offset: 0x00007F98
 		private void InitStyle()
 		{
 			this.GtkLabel_package.Text = " " + LanguageInfo.Package_PackageSetting + " ";
@@ -38,8 +34,6 @@ namespace Modules.Communal.ProjectSetting
 			this.checkbutton_advanced.TooltipText = LanguageInfo.Package_AdvancedDesc;
 		}
 
-		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x06000089 RID: 137 RVA: 0x00009DF4 File Offset: 0x00007FF4
 		public EnumProjectSetting SettingID
 		{
 			get
@@ -48,8 +42,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x0600008A RID: 138 RVA: 0x00009DF7 File Offset: 0x00007FF7
 		public string DisplayName
 		{
 			get
@@ -58,7 +50,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600008B RID: 139 RVA: 0x00009E00 File Offset: 0x00008000
 		public void ApplySetting()
 		{
 			PackageParams packageParams = PackageServices.Instance.PackageParams;
@@ -66,21 +57,17 @@ namespace Modules.Communal.ProjectSetting
 			packageParams.EnableHTML5Advanced = this.checkbutton_advanced.Active;
 		}
 
-		// Token: 0x0600008C RID: 140 RVA: 0x00009E3A File Offset: 0x0000803A
 		public bool CanApply(out string output)
 		{
 			output = "";
 			return true;
 		}
 
-		// Token: 0x0600008D RID: 141 RVA: 0x00009E44 File Offset: 0x00008044
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x0600008E RID: 142 RVA: 0x00009E47 File Offset: 0x00008047
 		public List<IProjectSettingWidget> SubWidgets
 		{
 			get
@@ -89,7 +76,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x00009E4C File Offset: 0x0000804C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -169,34 +155,24 @@ namespace Modules.Communal.ProjectSetting
 			base.Hide();
 		}
 
-		// Token: 0x040000CC RID: 204
 		private Alignment alignment_main;
 
-		// Token: 0x040000CD RID: 205
 		private VBox vbox_main;
 
-		// Token: 0x040000CE RID: 206
 		private Frame frame_package;
 
-		// Token: 0x040000CF RID: 207
 		private Alignment GtkAlignment_package;
 
-		// Token: 0x040000D0 RID: 208
 		private VBox vbox_package;
 
-		// Token: 0x040000D1 RID: 209
 		private HBox hbox_sourceMap;
 
-		// Token: 0x040000D2 RID: 210
 		private CheckButton checkbutton_sourceMap;
 
-		// Token: 0x040000D3 RID: 211
 		private HBox hbox_advanced;
 
-		// Token: 0x040000D4 RID: 212
 		private CheckButton checkbutton_advanced;
 
-		// Token: 0x040000D5 RID: 213
 		private Label GtkLabel_package;
 	}
 }

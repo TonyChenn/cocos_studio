@@ -9,10 +9,8 @@ using Stetic;
 
 namespace CocoStudio.ControlLib
 {
-	// Token: 0x02000012 RID: 18
 	public class SaveDirtyFilesDialog : Dialog
 	{
-		// Token: 0x060000C3 RID: 195 RVA: 0x00006F90 File Offset: 0x00005190
 		public SaveDirtyFilesDialog(string fileName)
 		{
 			this.Init(new List<string>
@@ -21,13 +19,11 @@ namespace CocoStudio.ControlLib
 			});
 		}
 
-		// Token: 0x060000C4 RID: 196 RVA: 0x00006FBC File Offset: 0x000051BC
 		public SaveDirtyFilesDialog(List<string> fileList = null)
 		{
 			this.Init(fileList);
 		}
 
-		// Token: 0x060000C5 RID: 197 RVA: 0x00006FD0 File Offset: 0x000051D0
 		private void Init(List<string> fileList)
 		{
 			this.Build();
@@ -42,7 +38,6 @@ namespace CocoStudio.ControlLib
 			this.buttonYes.HasFocus = true;
 		}
 
-		// Token: 0x060000C6 RID: 198 RVA: 0x00007024 File Offset: 0x00005224
 		private void InitStyles()
 		{
 			base.TransientFor = ApplicationCurrent.MainWindow;
@@ -52,7 +47,6 @@ namespace CocoStudio.ControlLib
 			this.nodeview_fileList.Name = "DarkTreeView";
 		}
 
-		// Token: 0x060000C7 RID: 199 RVA: 0x00007074 File Offset: 0x00005274
 		private void SetDisplayText()
 		{
 			base.Title = LanguageInfo.Menu_File_SaveProject;
@@ -62,7 +56,6 @@ namespace CocoStudio.ControlLib
 			this.buttonCancel.Label = LanguageInfo.Dialog_ButtonCancel;
 		}
 
-		// Token: 0x060000C8 RID: 200 RVA: 0x000070D4 File Offset: 0x000052D4
 		public void SetText(string title, string info, string btnYes, string btnNo, string btnCancel = null)
 		{
 			base.Title = title;
@@ -79,7 +72,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x060000C9 RID: 201 RVA: 0x00007144 File Offset: 0x00005344
 		private void ChangeButtonPositon()
 		{
 			if (Platform.IsWindows)
@@ -92,7 +84,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x060000CA RID: 202 RVA: 0x000071A0 File Offset: 0x000053A0
 		private void SetNodeViewContent(List<string> fileList)
 		{
 			NodeStore nodeStore = new NodeStore(typeof(SaveDirtyFilesDialog.FileNameNode));
@@ -111,7 +102,6 @@ namespace CocoStudio.ControlLib
 			this.nodeview_fileList.NodeStore = nodeStore;
 		}
 
-		// Token: 0x060000CB RID: 203 RVA: 0x00007258 File Offset: 0x00005458
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -207,46 +197,32 @@ namespace CocoStudio.ControlLib
 			base.Hide();
 		}
 
-		// Token: 0x04000078 RID: 120
 		private Alignment alignment_title;
 
-		// Token: 0x04000079 RID: 121
 		private Label label_title;
 
-		// Token: 0x0400007A RID: 122
 		private Alignment alignment_list;
 
-		// Token: 0x0400007B RID: 123
 		private EventBox evtbx_bg;
 
-		// Token: 0x0400007C RID: 124
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x0400007D RID: 125
 		private NodeView nodeview_fileList;
 
-		// Token: 0x0400007E RID: 126
 		private Button buttonNo;
 
-		// Token: 0x0400007F RID: 127
 		private Button buttonCancel;
 
-		// Token: 0x04000080 RID: 128
 		private Button buttonYes;
 
-		// Token: 0x02000013 RID: 19
 		[TreeNode(ListOnly = true)]
 		private class FileNameNode : TreeNode
 		{
-			// Token: 0x060000CC RID: 204 RVA: 0x000076FD File Offset: 0x000058FD
 			public FileNameNode(string filename)
 			{
 				this.FileName = filename;
 			}
 
-			// Token: 0x1700001D RID: 29
-			// (get) Token: 0x060000CD RID: 205 RVA: 0x00007710 File Offset: 0x00005910
-			// (set) Token: 0x060000CE RID: 206 RVA: 0x00007727 File Offset: 0x00005927
 			[TreeNodeValue(Column = 0)]
 			public string FileName { get; private set; }
 		}

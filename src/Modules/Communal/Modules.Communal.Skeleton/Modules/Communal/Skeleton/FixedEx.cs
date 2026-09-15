@@ -14,27 +14,20 @@ using Modules.Communal.Render.Model;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x02000020 RID: 32
 	public class FixedEx : Fixed
 	{
-		// Token: 0x1700004E RID: 78
-		// (get) Token: 0x06000148 RID: 328 RVA: 0x00007247 File Offset: 0x00005447
-		// (set) Token: 0x06000149 RID: 329 RVA: 0x0000724F File Offset: 0x0000544F
 		public bool IsBinding { get; set; }
 
-		// Token: 0x0600014A RID: 330 RVA: 0x00007258 File Offset: 0x00005458
 		private void FixedDraw_ExposeEvent(object o, ExposeEventArgs args)
 		{
 			this.DrawLine();
 		}
 
-		// Token: 0x0600014B RID: 331 RVA: 0x00007260 File Offset: 0x00005460
 		public void DrawLine()
 		{
 			this.DrawContent(this.rootNodeContent);
 		}
 
-		// Token: 0x0600014C RID: 332 RVA: 0x00007270 File Offset: 0x00005470
 		private void DrawContent(NodeContent content)
 		{
 			if (content == null)
@@ -64,7 +57,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600014D RID: 333 RVA: 0x00007424 File Offset: 0x00005624
 		private void VerfyLine(Context cr, int x, int y, int x1, int y1)
 		{
 			int num = (y + y1) / 2;
@@ -77,19 +69,14 @@ namespace Modules.Communal.Skeleton
 			cr.Stroke();
 		}
 
-		// Token: 0x1700004F RID: 79
-		// (get) Token: 0x0600014E RID: 334 RVA: 0x0000747E File Offset: 0x0000567E
-		// (set) Token: 0x0600014F RID: 335 RVA: 0x00007486 File Offset: 0x00005686
 		public SkeletonGraphDialog SkeletonDialog { private get; set; }
 
-		// Token: 0x06000150 RID: 336 RVA: 0x0000748F File Offset: 0x0000568F
 		private void FixedEx_Destroyed(object sender, EventArgs e)
 		{
 			this.DisposeRootNode(null);
 			this.DisposeContentNode(null);
 		}
 
-		// Token: 0x06000151 RID: 337 RVA: 0x000074A0 File Offset: 0x000056A0
 		private void DisposeRootNode(AbstractNodeObject node = null)
 		{
 			if (node == null)
@@ -108,7 +95,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000152 RID: 338 RVA: 0x00007578 File Offset: 0x00005778
 		private void DisposeContentNode(NodeContent content = null)
 		{
 			if (content == null)
@@ -126,13 +112,11 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000153 RID: 339 RVA: 0x000075FC File Offset: 0x000057FC
 		internal void SetOrderListView(BoneOrderList listview)
 		{
 			this._orderListView = listview;
 		}
 
-		// Token: 0x06000154 RID: 340 RVA: 0x0000764C File Offset: 0x0000584C
 		private void Children_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			if (e.Action == NotifyCollectionChangedAction.Remove)
@@ -191,7 +175,6 @@ namespace Modules.Communal.Skeleton
 			base.QueueDraw();
 		}
 
-		// Token: 0x06000155 RID: 341 RVA: 0x0000790C File Offset: 0x00005B0C
 		private void RefreshDialog()
 		{
 			if (this.SkeletonDialog != null)
@@ -203,7 +186,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000156 RID: 342 RVA: 0x0000796C File Offset: 0x00005B6C
 		private void RemoveContent(NodeContent content)
 		{
 			foreach (NodeContent content2 in content.ChildNodes)
@@ -214,8 +196,6 @@ namespace Modules.Communal.Skeleton
 			base.Remove(content);
 		}
 
-		// Token: 0x17000050 RID: 80
-		// (get) Token: 0x06000157 RID: 343 RVA: 0x000079D4 File Offset: 0x00005BD4
 		public NodeContent RootNodeContent
 		{
 			get
@@ -224,9 +204,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000051 RID: 81
-		// (get) Token: 0x06000158 RID: 344 RVA: 0x000079DC File Offset: 0x00005BDC
-		// (set) Token: 0x06000159 RID: 345 RVA: 0x000079E4 File Offset: 0x00005BE4
 		public ChoiceType CurrentType
 		{
 			get
@@ -239,9 +216,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000052 RID: 82
-		// (get) Token: 0x0600015A RID: 346 RVA: 0x000079ED File Offset: 0x00005BED
-		// (set) Token: 0x0600015B RID: 347 RVA: 0x000079F5 File Offset: 0x00005BF5
 		public double CurrentScale
 		{
 			get
@@ -258,7 +232,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600015C RID: 348 RVA: 0x00007A10 File Offset: 0x00005C10
 		public FixedEx()
 		{
 			base.ModifyBg(StateType.Normal, new Gdk.Color(63, 63, 63));
@@ -267,7 +240,6 @@ namespace Modules.Communal.Skeleton
 			base.Destroyed += this.FixedEx_Destroyed;
 		}
 
-		// Token: 0x0600015D RID: 349 RVA: 0x00007A97 File Offset: 0x00005C97
 		private void FixedEx_MotionNotifyEvent(object o, MotionNotifyEventArgs args)
 		{
 			if (this.IsBinding)
@@ -276,7 +248,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600015E RID: 350 RVA: 0x00007AB0 File Offset: 0x00005CB0
 		public void InitData()
 		{
 			if (this.rootSkeleton != null)
@@ -325,7 +296,6 @@ namespace Modules.Communal.Skeleton
 			base.QueueDraw();
 		}
 
-		// Token: 0x0600015F RID: 351 RVA: 0x00007C68 File Offset: 0x00005E68
 		private void InitControl()
 		{
 			this.rootNodeContent.NodePoint = new Gdk.Point(0, 0);
@@ -333,7 +303,6 @@ namespace Modules.Communal.Skeleton
 			base.ShowAll();
 		}
 
-		// Token: 0x06000160 RID: 352 RVA: 0x00007CC8 File Offset: 0x00005EC8
 		private void RecursionContent(NodeContent content, int x = 0, int y = 10, int startPosition = 0)
 		{
 			content.WidthRequest = (int)(80.0 * this.currentScale);
@@ -360,7 +329,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000161 RID: 353 RVA: 0x00007E10 File Offset: 0x00006010
 		private void GetNodeContent(NodeContent parent, AbstractNodeObject obj, int tier = 0)
 		{
 			if (obj == null)
@@ -418,7 +386,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000162 RID: 354 RVA: 0x00007FD0 File Offset: 0x000061D0
 		public NodeContent GetEndContent(NodeContent content, double x, double y)
 		{
 			NodeContent nodeContent = null;
@@ -437,7 +404,6 @@ namespace Modules.Communal.Skeleton
 			return nodeContent;
 		}
 
-		// Token: 0x06000163 RID: 355 RVA: 0x0000808C File Offset: 0x0000628C
 		public void Unbinding()
 		{
 			UnBindingBoneTool.UnBindingSelectedNodes();
@@ -448,64 +414,44 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x04000061 RID: 97
 		private const int contentWidth = 80;
 
-		// Token: 0x04000062 RID: 98
 		private const int contentHeight = 20;
 
-		// Token: 0x04000063 RID: 99
 		private const int contentXOffset = 20;
 
-		// Token: 0x04000064 RID: 100
 		private const int countentYOffset = 75;
 
-		// Token: 0x04000065 RID: 101
 		private const int startY = 10;
 
-		// Token: 0x04000066 RID: 102
 		private static readonly int xOffer = 40;
 
-		// Token: 0x04000067 RID: 103
 		private static readonly int yOffer = 15;
 
-		// Token: 0x04000068 RID: 104
 		private static readonly Gdk.Color bgColor = new Gdk.Color(33, 33, 35);
 
-		// Token: 0x04000069 RID: 105
 		private readonly int foldLineNum = 4;
 
-		// Token: 0x0400006A RID: 106
 		public int startDrawX;
 
-		// Token: 0x0400006B RID: 107
 		public int startDrawY;
 
-		// Token: 0x0400006C RID: 108
 		public int endDrawX;
 
-		// Token: 0x0400006D RID: 109
 		public int endDrawY;
 
-		// Token: 0x0400006E RID: 110
 		private BoneOrderList _orderListView;
 
-		// Token: 0x0400006F RID: 111
 		private NodeContent rootNodeContent;
 
-		// Token: 0x04000070 RID: 112
 		private ChoiceType currentType;
 
-		// Token: 0x04000071 RID: 113
 		private double currentScale = 1.0;
 
-		// Token: 0x04000072 RID: 114
 		public List<NodeContent> SelectList = new List<NodeContent>();
 
-		// Token: 0x04000073 RID: 115
 		private List<NodeContent> NodeList = new List<NodeContent>();
 
-		// Token: 0x04000074 RID: 116
 		private BoneObject rootSkeleton;
 	}
 }

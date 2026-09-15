@@ -9,13 +9,9 @@ using Xwt.Drawing;
 
 namespace Gtk
 {
-	// Token: 0x0200009A RID: 154
 	[ToolboxItem(true)]
 	public class CustomTitleBar : Bin
 	{
-		// Token: 0x17000093 RID: 147
-		// (get) Token: 0x0600033F RID: 831 RVA: 0x0000DB78 File Offset: 0x0000BD78
-		// (set) Token: 0x06000340 RID: 832 RVA: 0x0000DB95 File Offset: 0x0000BD95
 		public string Title
 		{
 			get
@@ -28,12 +24,8 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x14000022 RID: 34
-		// (add) Token: 0x06000341 RID: 833 RVA: 0x0000DBA8 File Offset: 0x0000BDA8
-		// (remove) Token: 0x06000342 RID: 834 RVA: 0x0000DBE4 File Offset: 0x0000BDE4
 		public event EventHandler<EventArgs> CloseClicked;
 
-		// Token: 0x06000343 RID: 835 RVA: 0x0000DC20 File Offset: 0x0000BE20
 		public CustomTitleBar()
 		{
 			this.Build();
@@ -67,20 +59,17 @@ namespace Gtk
 			imageView.Show();
 		}
 
-		// Token: 0x06000344 RID: 836 RVA: 0x0000DD97 File Offset: 0x0000BF97
 		public void SetParentWindow(Window parentWnd)
 		{
 			this.parentWindow = parentWnd;
 		}
 
-		// Token: 0x06000345 RID: 837 RVA: 0x0000DDA1 File Offset: 0x0000BFA1
 		public void DisableClose()
 		{
 			this.alignment_macCloseBtn.RemoveChild();
 			this.alignment_winCloseBtn.RemoveChild();
 		}
 
-		// Token: 0x06000346 RID: 838 RVA: 0x0000DDBC File Offset: 0x0000BFBC
 		protected void OnMousePressed(object o, ButtonPressEventArgs args)
 		{
 			this.isDragging = true;
@@ -88,13 +77,11 @@ namespace Gtk
 			this.pressedPosY = args.Event.Y;
 		}
 
-		// Token: 0x06000347 RID: 839 RVA: 0x0000DDE8 File Offset: 0x0000BFE8
 		protected void OnMouseReleased(object o, ButtonReleaseEventArgs args)
 		{
 			this.isDragging = false;
 		}
 
-		// Token: 0x06000348 RID: 840 RVA: 0x0000DDF4 File Offset: 0x0000BFF4
 		protected void OnMouseMove(object o, MotionNotifyEventArgs args)
 		{
 			if (this.isDragging)
@@ -117,7 +104,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000349 RID: 841 RVA: 0x0000DE90 File Offset: 0x0000C090
 		protected void OnFixedSizeAllocated(object o, SizeAllocatedArgs args)
 		{
 			int width = args.Allocation.Width;
@@ -128,7 +114,6 @@ namespace Gtk
 			this.alignment_bg.HeightRequest = height;
 		}
 
-		// Token: 0x0600034A RID: 842 RVA: 0x0000DEEC File Offset: 0x0000C0EC
 		private void OnCloseButtonClicked(object sender, EventArgs args)
 		{
 			if (this.CloseClicked != null)
@@ -137,7 +122,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600034B RID: 843 RVA: 0x0000DF1C File Offset: 0x0000C11C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -236,58 +220,40 @@ namespace Gtk
 			this.fixed_main.SizeAllocated += this.OnFixedSizeAllocated;
 		}
 
-		// Token: 0x040003D4 RID: 980
 		private Window parentWindow;
 
-		// Token: 0x040003D5 RID: 981
 		private bool isDragging = false;
 
-		// Token: 0x040003D6 RID: 982
 		private double pressedPosX;
 
-		// Token: 0x040003D7 RID: 983
 		private double pressedPosY;
 
-		// Token: 0x040003D9 RID: 985
 		private EventBox evtbx_base;
 
-		// Token: 0x040003DA RID: 986
 		private Fixed fixed_main;
 
-		// Token: 0x040003DB RID: 987
 		private Alignment alignment_bg;
 
-		// Token: 0x040003DC RID: 988
 		private HBox hbox_main;
 
-		// Token: 0x040003DD RID: 989
 		private VBox vbox_macCloseBtn;
 
-		// Token: 0x040003DE RID: 990
 		private Alignment alignment_macCloseTop;
 
-		// Token: 0x040003DF RID: 991
 		private Alignment alignment_macCloseBtn;
 
-		// Token: 0x040003E0 RID: 992
 		private Alignment alignment_macCloseBottom;
 
-		// Token: 0x040003E1 RID: 993
 		private HBox hbox_title;
 
-		// Token: 0x040003E2 RID: 994
 		private Alignment alignment_titleLeft;
 
-		// Token: 0x040003E3 RID: 995
 		private Label label_title;
 
-		// Token: 0x040003E4 RID: 996
 		private Alignment alignment_titleRight;
 
-		// Token: 0x040003E5 RID: 997
 		private VBox vbox_winCloseBtn;
 
-		// Token: 0x040003E6 RID: 998
 		private Alignment alignment_winCloseBtn;
 	}
 }

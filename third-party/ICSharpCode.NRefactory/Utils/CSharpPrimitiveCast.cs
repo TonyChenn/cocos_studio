@@ -5,7 +5,6 @@ namespace ICSharpCode.NRefactory.Utils
 	/// <summary>
 	/// Static helper method for converting between primitive types.
 	/// </summary>
-	// Token: 0x0200010B RID: 267
 	public static class CSharpPrimitiveCast
 	{
 		/// <summary>
@@ -17,7 +16,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// </summary>
 		/// <exception cref="T:System.OverflowException">Overflow checking is enabled and an overflow occurred.</exception>
 		/// <exception cref="T:System.InvalidCastException">The cast is invalid, e.g. casting a boolean to an integer.</exception>
-		// Token: 0x06000994 RID: 2452 RVA: 0x000199DF File Offset: 0x000189DF
 		public static object Cast(TypeCode targetType, object input, bool checkForOverflow)
 		{
 			if (input == null)
@@ -31,7 +29,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return CSharpPrimitiveCast.CSharpPrimitiveCastUnchecked(targetType, input);
 		}
 
-		// Token: 0x06000995 RID: 2453 RVA: 0x000199F8 File Offset: 0x000189F8
 		private static object CSharpPrimitiveCastChecked(TypeCode targetType, object input)
 		{
 			TypeCode typeCode = Type.GetTypeCode(input.GetType());
@@ -382,7 +379,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x06000996 RID: 2454 RVA: 0x0001A4A0 File Offset: 0x000194A0
 		private static object CSharpPrimitiveCastUnchecked(TypeCode targetType, object input)
 		{
 			TypeCode typeCode = Type.GetTypeCode(input.GetType());

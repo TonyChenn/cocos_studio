@@ -9,12 +9,8 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.TexturePacker
 {
-	// Token: 0x0200000A RID: 10
 	public class PlistInfoItemRender : DrawingArea
 	{
-		// Token: 0x1700001E RID: 30
-		// (get) Token: 0x0600006B RID: 107 RVA: 0x00003530 File Offset: 0x00001730
-		// (set) Token: 0x0600006C RID: 108 RVA: 0x00003538 File Offset: 0x00001738
 		public double Scale
 		{
 			get
@@ -36,9 +32,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700001F RID: 31
-		// (get) Token: 0x0600006D RID: 109 RVA: 0x000035A8 File Offset: 0x000017A8
-		// (set) Token: 0x0600006E RID: 110 RVA: 0x000035B0 File Offset: 0x000017B0
 		public Gdk.Color BgColor
 		{
 			get
@@ -52,7 +45,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x000035C0 File Offset: 0x000017C0
 		public PlistInfoItemRender(PlistInfoModel model)
 		{
 			this.Model = model;
@@ -62,7 +54,6 @@ namespace Modules.Communal.TexturePacker
 			base.CanFocus = true;
 		}
 
-		// Token: 0x06000070 RID: 112 RVA: 0x00003628 File Offset: 0x00001828
 		protected override bool OnExposeEvent(EventExpose evnt)
 		{
 			this.DrawBackground();
@@ -71,7 +62,6 @@ namespace Modules.Communal.TexturePacker
 			return base.OnExposeEvent(evnt);
 		}
 
-		// Token: 0x06000071 RID: 113 RVA: 0x00003644 File Offset: 0x00001844
 		private void DrawBackground()
 		{
 			using (Context context = CairoHelper.Create(base.GdkWindow))
@@ -92,7 +82,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000072 RID: 114 RVA: 0x00003758 File Offset: 0x00001958
 		private void DrawSprites()
 		{
 			List<PlistInfoItem> items = this.Model.Items;
@@ -106,7 +95,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000073 RID: 115 RVA: 0x000037B8 File Offset: 0x000019B8
 		private void DrawSelectAndMaxRect()
 		{
 			using (Context context = CairoHelper.Create(base.GdkWindow))
@@ -122,7 +110,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000074 RID: 116 RVA: 0x000038D0 File Offset: 0x00001AD0
 		private bool IsControlPressed(EventButton evnt)
 		{
 			bool result = false;
@@ -137,7 +124,6 @@ namespace Modules.Communal.TexturePacker
 			return result;
 		}
 
-		// Token: 0x06000075 RID: 117 RVA: 0x00003924 File Offset: 0x00001B24
 		internal void OnButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			base.GrabFocus();
@@ -191,7 +177,6 @@ namespace Modules.Communal.TexturePacker
 			base.QueueDraw();
 		}
 
-		// Token: 0x06000076 RID: 118 RVA: 0x00003B4C File Offset: 0x00001D4C
 		public void ShowToolTip(int x, int y)
 		{
 			if (this.motionNodifiedItemRect.Contains(x, y))
@@ -228,7 +213,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000077 RID: 119 RVA: 0x00003C28 File Offset: 0x00001E28
 		internal void OnMotionNotifyEvent(object o, MotionNotifyEventArgs args)
 		{
 			Gdk.Point point = new Gdk.Point((int)args.Event.X, (int)args.Event.Y);
@@ -271,7 +255,6 @@ namespace Modules.Communal.TexturePacker
 			this.lastPoint = point;
 		}
 
-		// Token: 0x06000078 RID: 120 RVA: 0x00003E18 File Offset: 0x00002018
 		internal void OnButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			this.selectedRect.Width = (this.selectedRect.Height = 0);
@@ -279,14 +262,12 @@ namespace Modules.Communal.TexturePacker
 			base.QueueDraw();
 		}
 
-		// Token: 0x06000079 RID: 121 RVA: 0x00003E4C File Offset: 0x0000204C
 		private Gdk.Rectangle ConvertItemRect(PlistInfoItem item)
 		{
 			Gdk.Rectangle renderRect = item.RenderRect;
 			return new Gdk.Rectangle(renderRect.X + this.Position.X, renderRect.Y + this.Position.Y, renderRect.Width, renderRect.Height);
 		}
 
-		// Token: 0x0600007A RID: 122 RVA: 0x00003E99 File Offset: 0x00002099
 		internal void OnKeyPressEvent(object o, KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.space)
@@ -295,7 +276,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x0600007B RID: 123 RVA: 0x00003EB1 File Offset: 0x000020B1
 		internal void OnKeyReleaseEvent(object o, KeyReleaseEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.space)
@@ -304,40 +284,28 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x04000025 RID: 37
 		private const double colordoubleper = 0.0039215686274;
 
-		// Token: 0x04000026 RID: 38
 		private double scale;
 
-		// Token: 0x04000027 RID: 39
 		private Gdk.Color bgColor;
 
-		// Token: 0x04000028 RID: 40
 		public Gdk.Point Position;
 
-		// Token: 0x04000029 RID: 41
 		private PlistInfoModel Model;
 
-		// Token: 0x0400002A RID: 42
 		private bool pressed;
 
-		// Token: 0x0400002B RID: 43
 		private bool clickedOnItem;
 
-		// Token: 0x0400002C RID: 44
 		private Gdk.Point pressedPoint;
 
-		// Token: 0x0400002D RID: 45
 		private Gdk.Point lastPoint;
 
-		// Token: 0x0400002E RID: 46
 		private Gdk.Rectangle selectedRect;
 
-		// Token: 0x0400002F RID: 47
 		private Gdk.Rectangle motionNodifiedItemRect = default(Gdk.Rectangle);
 
-		// Token: 0x04000030 RID: 48
 		private bool spacePressed;
 	}
 }

@@ -14,22 +14,16 @@ using Xwt.GtkBackend;
 
 namespace Modules.Communal.TexturePacker
 {
-	// Token: 0x02000014 RID: 20
 	public class PlistInfoWidget : Bin
 	{
-		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x060000C3 RID: 195 RVA: 0x00004FDC File Offset: 0x000031DC
-		// (set) Token: 0x060000C4 RID: 196 RVA: 0x00004FE4 File Offset: 0x000031E4
 		public PlistInfoModel PlistInfoModel { get; private set; }
 
-		// Token: 0x060000C5 RID: 197 RVA: 0x00004FED File Offset: 0x000031ED
 		public PlistInfoWidget()
 		{
 			this.Build();
 			Gtk.Drag.DestSet(this, DestDefaults.All, PlistInfoWidget.target_table, DragAction.Copy | DragAction.Move | DragAction.Link);
 		}
 
-		// Token: 0x060000C6 RID: 198 RVA: 0x00005009 File Offset: 0x00003209
 		public void Init(PlistInfoModel model)
 		{
 			this.PlistInfoModel = model;
@@ -37,7 +31,6 @@ namespace Modules.Communal.TexturePacker
 			this.InitEvent();
 		}
 
-		// Token: 0x060000C7 RID: 199 RVA: 0x00005020 File Offset: 0x00003220
 		private void InitRender()
 		{
 			this.pictureRender = new PlistInfoItemRender(this.PlistInfoModel);
@@ -47,7 +40,6 @@ namespace Modules.Communal.TexturePacker
 			this.eventbox.ShowAll();
 		}
 
-		// Token: 0x060000C8 RID: 200 RVA: 0x0000507C File Offset: 0x0000327C
 		private void InitEvent()
 		{
 			base.Events = EventMask.AllEventsMask;
@@ -63,7 +55,6 @@ namespace Modules.Communal.TexturePacker
 			base.DragMotion += this.PackerWidget_DragMotion;
 		}
 
-		// Token: 0x060000C9 RID: 201 RVA: 0x00005184 File Offset: 0x00003384
 		private void eventbox_ScrollEvent(object o, ScrollEventArgs args)
 		{
 			Adjustment vadjustment = this.midScrollWindow.Vadjustment;
@@ -89,13 +80,11 @@ namespace Modules.Communal.TexturePacker
 			this.pictureRender.ShowToolTip((int)num2, (int)num);
 		}
 
-		// Token: 0x060000CA RID: 202 RVA: 0x00005231 File Offset: 0x00003431
 		public void CanvasZoom(float delta)
 		{
 			this.PlistInfoModel.PictureRenderScale = this.PlistInfoModel.PictureRenderScale + (double)delta;
 		}
 
-		// Token: 0x060000CB RID: 203 RVA: 0x0000524C File Offset: 0x0000344C
 		private void OnPictureRenderReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			if (args.Event.IsContextMenuButton())
@@ -104,7 +93,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000CC RID: 204 RVA: 0x00005540 File Offset: 0x00003740
 		internal async void PackerWidget_DragReceived(object o, DragDataReceivedArgs args)
 		{
 			using (CompositeTask.Run("KeyReleaseEvent", null))
@@ -138,7 +126,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000CD RID: 205 RVA: 0x00005584 File Offset: 0x00003784
 		private IEnumerable<string> RecursiveImageFilePaths(IEnumerable<string> paths, HashSet<string> suffixs)
 		{
 			List<string> list = new List<string>();
@@ -160,7 +147,6 @@ namespace Modules.Communal.TexturePacker
 			return list;
 		}
 
-		// Token: 0x060000CE RID: 206 RVA: 0x00005610 File Offset: 0x00003810
 		internal void PackerWidget_DragDrop(object o, DragDropArgs args)
 		{
 			using (CompositeTask.Run("KeyReleaseEvent", null))
@@ -178,7 +164,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000CF RID: 207 RVA: 0x000056AC File Offset: 0x000038AC
 		private void AddItemToModelHelper(ResourceItem item)
 		{
 			if (item is ResourceFolder)
@@ -217,7 +202,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000D0 RID: 208 RVA: 0x00005794 File Offset: 0x00003994
 		private bool IsItemSupportPacker(ResourceItem item)
 		{
 			if (item is ResourceFolder)
@@ -237,7 +221,6 @@ namespace Modules.Communal.TexturePacker
 			return item is ImageFile;
 		}
 
-		// Token: 0x060000D1 RID: 209 RVA: 0x0000580C File Offset: 0x00003A0C
 		internal void DeleteItem()
 		{
 			using (CompositeTask.Run("KeyReleaseEvent", null))
@@ -253,7 +236,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000D2 RID: 210 RVA: 0x000058B8 File Offset: 0x00003AB8
 		internal void PackerWidget_DragMotion(object o, DragMotionArgs args)
 		{
 			object dragData = args.Context.GetDragData();
@@ -283,7 +265,6 @@ namespace Modules.Communal.TexturePacker
 			args.RetVal = false;
 		}
 
-		// Token: 0x060000D3 RID: 211 RVA: 0x000059B4 File Offset: 0x00003BB4
 		protected override bool OnKeyReleaseEvent(EventKey evnt)
 		{
 			if (evnt.Key == Gdk.Key.Delete || evnt.Key == Gdk.Key.BackSpace)
@@ -293,8 +274,6 @@ namespace Modules.Communal.TexturePacker
 			return base.OnKeyReleaseEvent(evnt);
 		}
 
-		// Token: 0x1700002F RID: 47
-		// (get) Token: 0x060000D4 RID: 212 RVA: 0x000059E0 File Offset: 0x00003BE0
 		private Menu ContextMenu
 		{
 			get
@@ -310,7 +289,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000D5 RID: 213 RVA: 0x00005A3A File Offset: 0x00003C3A
 		private void ShowContextMenu(EventButton evnt)
 		{
 			if (this.PlistInfoModel.SelectedItems.Count == 0)
@@ -322,7 +300,6 @@ namespace Modules.Communal.TexturePacker
 			this.ContextMenu.ShowAll();
 		}
 
-		// Token: 0x060000D6 RID: 214 RVA: 0x00005A78 File Offset: 0x00003C78
 		[CommandHandler(CmdEnum.DeleteCmd)]
 		[CommandHandler(CmdEnum.DeleteCmd2)]
 		private void Delete_Execute()
@@ -330,7 +307,6 @@ namespace Modules.Communal.TexturePacker
 			this.DeleteItem();
 		}
 
-		// Token: 0x060000D7 RID: 215 RVA: 0x00005A80 File Offset: 0x00003C80
 		[CommandUpdateHandler(CmdEnum.DeleteCmd)]
 		[CommandUpdateHandler(CmdEnum.DeleteCmd2)]
 		private void Delete_CanExecute(CommandInfo info)
@@ -343,7 +319,6 @@ namespace Modules.Communal.TexturePacker
 			info.Enabled = true;
 		}
 
-		// Token: 0x060000D8 RID: 216 RVA: 0x00005AA4 File Offset: 0x00003CA4
 		public static int GetBinaryNum(int num)
 		{
 			int i;
@@ -353,9 +328,6 @@ namespace Modules.Communal.TexturePacker
 			return i;
 		}
 
-		// Token: 0x17000030 RID: 48
-		// (get) Token: 0x060000D9 RID: 217 RVA: 0x00005ABF File Offset: 0x00003CBF
-		// (set) Token: 0x060000DA RID: 218 RVA: 0x00005AD4 File Offset: 0x00003CD4
 		public float Zoom
 		{
 			get
@@ -368,7 +340,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x060000DB RID: 219 RVA: 0x00005B04 File Offset: 0x00003D04
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -412,35 +383,26 @@ namespace Modules.Communal.TexturePacker
 			base.Show();
 		}
 
-		// Token: 0x0400003B RID: 59
 		private PlistInfoItemRender pictureRender;
 
-		// Token: 0x0400003C RID: 60
 		private static TargetEntry[] target_table = new TargetEntry[]
 		{
 			DragTargetType.FileDropTarget,
 			DragTargetType.CocoStudioTarget
 		};
 
-		// Token: 0x0400003D RID: 61
 		private MenuItem deleteItemMenu;
 
-		// Token: 0x0400003E RID: 62
 		private Menu contextMenu;
 
-		// Token: 0x0400003F RID: 63
 		private VBox dialog1_VBox;
 
-		// Token: 0x04000040 RID: 64
 		private HBox hbox1;
 
-		// Token: 0x04000041 RID: 65
 		private VBox vbox6;
 
-		// Token: 0x04000042 RID: 66
 		private ScrolledWindow midScrollWindow;
 
-		// Token: 0x04000043 RID: 67
 		private EventBox eventbox;
 	}
 }

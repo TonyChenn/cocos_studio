@@ -4,31 +4,26 @@ using CocoStudio.Model.DataModel;
 
 namespace CocoStudio.Model.Lua.Templates
 {
-	// Token: 0x02000027 RID: 39
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaSliderObject : LuaWidgetObject
 	{
-		// Token: 0x060000EC RID: 236 RVA: 0x00006E1F File Offset: 0x0000501F
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x060000ED RID: 237 RVA: 0x00006E38 File Offset: 0x00005038
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(SliderObjectData) == objectData.GetType();
 		}
 
-		// Token: 0x060000EE RID: 238 RVA: 0x00006E5C File Offset: 0x0000505C
 		protected override void OnCreateObject(BaseObjectData objectData)
 		{
 			base.Write(base.ToStringHelper.ToStringWithCulture(base.GetNameDeclaration(objectData.Name)));
 			base.Write(" = ccui.Slider:create()\r\n");
 		}
 
-		// Token: 0x060000EF RID: 239 RVA: 0x00006E88 File Offset: 0x00005088
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			SliderObjectData sliderObjectData = objectData as SliderObjectData;

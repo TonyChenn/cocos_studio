@@ -9,10 +9,8 @@ using Modules.Communal.StartAutoRecover;
 
 namespace CocoStudio.UI
 {
-	// Token: 0x02000002 RID: 2
 	internal class Program
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x0000208C File Offset: 0x0000028C
 		[STAThread]
 		private static void Main(string[] args)
 		{

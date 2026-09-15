@@ -8,16 +8,13 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x02000050 RID: 80
 	public class PreviewImageService
 	{
-		// Token: 0x06000235 RID: 565 RVA: 0x00008D01 File Offset: 0x00006F01
 		internal PreviewImageService()
 		{
 			PreviewImageService.previewImageDic = new Dictionary<ResourceItem, PreviewImageInfo>();
 		}
 
-		// Token: 0x06000236 RID: 566 RVA: 0x00008D14 File Offset: 0x00006F14
 		public PreviewImageInfo GetImage(ResourceItem image)
 		{
 			if (!File.Exists(image.PreviewImagePath))
@@ -42,7 +39,6 @@ namespace CocoStudio.Projects
 			return null;
 		}
 
-		// Token: 0x06000237 RID: 567 RVA: 0x00008D90 File Offset: 0x00006F90
 		internal void UpdateCachedImage(ResourceItem image)
 		{
 			if (!PreviewImageService.previewImageDic.ContainsKey(image))
@@ -52,7 +48,6 @@ namespace CocoStudio.Projects
 			this.UpdateImage(image);
 		}
 
-		// Token: 0x06000238 RID: 568 RVA: 0x00008DA8 File Offset: 0x00006FA8
 		private void UpdateImage(ResourceItem image)
 		{
 			FilePath fileName = image.PreviewImagePath;
@@ -93,7 +88,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000239 RID: 569 RVA: 0x00008ED0 File Offset: 0x000070D0
 		private SizeF GetRelativeSize(int width, int height)
 		{
 			int num = (width > height) ? width : height;
@@ -106,7 +100,6 @@ namespace CocoStudio.Projects
 			return new SizeF((float)width, (float)height);
 		}
 
-		// Token: 0x0600023A RID: 570 RVA: 0x00008F10 File Offset: 0x00007110
 		internal void Clear()
 		{
 			try
@@ -128,16 +121,12 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x04000091 RID: 145
 		private const float MaxSize = 200f;
 
-		// Token: 0x04000092 RID: 146
 		public const int MaxCount = 30;
 
-		// Token: 0x04000093 RID: 147
 		private static Queue<ResourceItem> previewImageQueue = new Queue<ResourceItem>();
 
-		// Token: 0x04000094 RID: 148
 		private static Dictionary<ResourceItem, PreviewImageInfo> previewImageDic = new Dictionary<ResourceItem, PreviewImageInfo>();
 	}
 }

@@ -6,11 +6,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200009F RID: 159
 	public class SliderEditor : BaseEditor
 	{
-		// Token: 0x1700016D RID: 365
-		// (get) Token: 0x06000563 RID: 1379 RVA: 0x00017DEC File Offset: 0x00015FEC
 		public override bool SupportMultiSelect
 		{
 			get
@@ -19,7 +16,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000564 RID: 1380 RVA: 0x00017DFF File Offset: 0x00015FFF
 		public SliderEditor()
 		{
 			this.showAsFloat = false;
@@ -28,7 +24,6 @@ namespace CocoStudio.Model.Editor
 			this.isScrollRound = false;
 		}
 
-		// Token: 0x06000565 RID: 1381 RVA: 0x00017E3C File Offset: 0x0001603C
 		public SliderEditor(bool isFloat, bool toPercent, bool isRound, string labelText)
 		{
 			this.showAsFloat = isFloat;
@@ -37,7 +32,6 @@ namespace CocoStudio.Model.Editor
 			this.isScrollRound = isRound;
 		}
 
-		// Token: 0x06000566 RID: 1382 RVA: 0x00017E7C File Offset: 0x0001607C
 		protected override Widget OnCreateWidget()
 		{
 			this.hscale = new SliderEditor.HScaleEx(0.0, 100.0, 1.0);
@@ -94,7 +88,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x06000567 RID: 1383 RVA: 0x000181B4 File Offset: 0x000163B4
 		protected override void OnSetControl()
 		{
 			if (!base.CheckIsSameValue())
@@ -111,7 +104,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000568 RID: 1384 RVA: 0x00018244 File Offset: 0x00016444
 		private void EntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			if (!this.isChangedByHScale)
@@ -121,7 +113,6 @@ namespace CocoStudio.Model.Editor
 			this.SetPropertyValueByHScale();
 		}
 
-		// Token: 0x06000569 RID: 1385 RVA: 0x00018280 File Offset: 0x00016480
 		private void HScaleChangeValueHandler(object o, EventArgs args)
 		{
 			this.isChangedByHScale = true;
@@ -130,7 +121,6 @@ namespace CocoStudio.Model.Editor
 			this.SetPropertyValueByHScale();
 		}
 
-		// Token: 0x0600056A RID: 1386 RVA: 0x000182B8 File Offset: 0x000164B8
 		private void SetPropertyValueByHScale()
 		{
 			float num = (float)Math.Round(this.hscale.Adjustment.Value * (double)this.scaleRate, 2);
@@ -144,52 +134,37 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000285 RID: 645
 		private bool adaptToPercent;
 
-		// Token: 0x04000286 RID: 646
 		private bool showAsFloat;
 
-		// Token: 0x04000287 RID: 647
 		private string entryLabelText;
 
-		// Token: 0x04000288 RID: 648
 		private bool isScrollRound;
 
-		// Token: 0x04000289 RID: 649
 		private float scaleRate = 1f;
 
-		// Token: 0x0400028A RID: 650
 		private bool isChangedByHScale = false;
 
-		// Token: 0x0400028B RID: 651
 		private SliderEditor.HScaleEx hscale;
 
-		// Token: 0x0400028C RID: 652
 		private NoUndoNumEntry entry;
 
-		// Token: 0x020000A0 RID: 160
 		private class HScaleEx : HScale
 		{
-			// Token: 0x1700016E RID: 366
-			// (get) Token: 0x0600056B RID: 1387 RVA: 0x00018318 File Offset: 0x00016518
-			// (set) Token: 0x0600056C RID: 1388 RVA: 0x0001832F File Offset: 0x0001652F
 			public double ScrollStepValue { get; set; }
 
-			// Token: 0x0600056D RID: 1389 RVA: 0x00018338 File Offset: 0x00016538
 			public HScaleEx(double min, double max, double step) : base(min, max, step)
 			{
 				this.ScrollStepValue = step;
 			}
 
-			// Token: 0x0600056E RID: 1390 RVA: 0x00018355 File Offset: 0x00016555
 			protected override void OnFocusGrabbed()
 			{
 				base.CanFocus = this.isPress;
 				base.OnFocusGrabbed();
 			}
 
-			// Token: 0x0600056F RID: 1391 RVA: 0x0001836C File Offset: 0x0001656C
 			protected override bool OnScrollEvent(EventScroll evnt)
 			{
 				bool result;
@@ -212,21 +187,18 @@ namespace CocoStudio.Model.Editor
 				return result;
 			}
 
-			// Token: 0x06000570 RID: 1392 RVA: 0x000183D4 File Offset: 0x000165D4
 			protected override bool OnButtonPressEvent(EventButton evnt)
 			{
 				this.isPress = true;
 				return base.OnButtonPressEvent(evnt);
 			}
 
-			// Token: 0x06000571 RID: 1393 RVA: 0x000183F4 File Offset: 0x000165F4
 			protected override bool OnFocusOutEvent(EventFocus evnt)
 			{
 				this.isPress = false;
 				return base.OnFocusOutEvent(evnt);
 			}
 
-			// Token: 0x0400028D RID: 653
 			private bool isPress = false;
 		}
 	}

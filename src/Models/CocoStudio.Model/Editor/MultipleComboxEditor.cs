@@ -10,10 +10,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000062 RID: 98
 	internal class MultipleComboxEditor : BaseEditor
 	{
-		// Token: 0x06000348 RID: 840 RVA: 0x0000DDCC File Offset: 0x0000BFCC
 		private void Init()
 		{
 			this.list.Clear();
@@ -25,7 +23,6 @@ namespace CocoStudio.Model.Editor
 			this.checkItem(currentData);
 		}
 
-		// Token: 0x06000349 RID: 841 RVA: 0x0000DE4C File Offset: 0x0000C04C
 		private void checkItem(int currentData)
 		{
 			this.list.Clear();
@@ -54,7 +51,6 @@ namespace CocoStudio.Model.Editor
 			this.list["None"] = (!flag && flag2);
 		}
 
-		// Token: 0x0600034A RID: 842 RVA: 0x0000DF5C File Offset: 0x0000C15C
 		protected override Widget OnCreateWidget()
 		{
 			this.entry = new Entry();
@@ -70,7 +66,6 @@ namespace CocoStudio.Model.Editor
 			return this.widget;
 		}
 
-		// Token: 0x0600034B RID: 843 RVA: 0x0000DFEC File Offset: 0x0000C1EC
 		private void MenuButtonClickedHandler(object sender, EventArgs e)
 		{
 			this.isSelect = false;
@@ -99,7 +94,6 @@ namespace CocoStudio.Model.Editor
 			menu.Popup(null, null, func, 0U, 0U);
 		}
 
-		// Token: 0x0600034C RID: 844 RVA: 0x0000E0E8 File Offset: 0x0000C2E8
 		[ConnectBefore]
 		private void menu_KeyPressEvent(object o, KeyPressEventArgs args)
 		{
@@ -109,13 +103,11 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600034D RID: 845 RVA: 0x0000E116 File Offset: 0x0000C316
 		private void item1_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			this.isSelect = true;
 		}
 
-		// Token: 0x0600034E RID: 846 RVA: 0x0000E120 File Offset: 0x0000C320
 		private void menu_SelectionDone(object o, EventArgs args)
 		{
 			if (this.isSelect)
@@ -124,7 +116,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600034F RID: 847 RVA: 0x0000E154 File Offset: 0x0000C354
 		private void SetState(string name)
 		{
 			AbstractNodeObject abstractNodeObject = PropertyItem.FirstObject as AbstractNodeObject;
@@ -237,7 +228,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000350 RID: 848 RVA: 0x0000E634 File Offset: 0x0000C834
 		private int RetStr(string str)
 		{
 			for (int i = 0; i < this.source.Length; i++)
@@ -250,7 +240,6 @@ namespace CocoStudio.Model.Editor
 			return 0;
 		}
 
-		// Token: 0x06000351 RID: 849 RVA: 0x0000E67C File Offset: 0x0000C87C
 		protected override void OnSetControl()
 		{
 			if (PropertyItem.Objects.Count > 1)
@@ -290,22 +279,16 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000195 RID: 405
 		private EventBox widget = new EventBox();
 
-		// Token: 0x04000196 RID: 406
 		private Entry entry;
 
-		// Token: 0x04000197 RID: 407
 		private string[] source;
 
-		// Token: 0x04000198 RID: 408
 		private int[] val;
 
-		// Token: 0x04000199 RID: 409
 		private bool isSelect = false;
 
-		// Token: 0x0400019A RID: 410
 		private Dictionary<string, bool> list = new Dictionary<string, bool>();
 	}
 }

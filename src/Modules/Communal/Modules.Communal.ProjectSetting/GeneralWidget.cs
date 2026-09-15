@@ -9,18 +9,15 @@ using Stetic;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x02000010 RID: 16
 	[ToolboxItem(true)]
 	public class GeneralWidget : Bin, IProjectSettingWidget
 	{
-		// Token: 0x0600007B RID: 123 RVA: 0x000098AA File Offset: 0x00007AAA
 		public GeneralWidget()
 		{
 			this.Build();
 			this.Init();
 		}
 
-		// Token: 0x0600007C RID: 124 RVA: 0x000098C0 File Offset: 0x00007AC0
 		private void Init()
 		{
 			this.isOldNameStandardized = Services.ProjectsService.CurrentSolution.Config.IsNameStandardized;
@@ -32,8 +29,6 @@ namespace Modules.Communal.ProjectSetting
 			this.label_warring.Text = LanguageInfo.ProjSetting_NameingDesc;
 		}
 
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x0600007D RID: 125 RVA: 0x0000995F File Offset: 0x00007B5F
 		public EnumProjectSetting SettingID
 		{
 			get
@@ -42,8 +37,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x0600007E RID: 126 RVA: 0x00009962 File Offset: 0x00007B62
 		public string DisplayName
 		{
 			get
@@ -52,27 +45,22 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600007F RID: 127 RVA: 0x00009969 File Offset: 0x00007B69
 		public void ApplySetting()
 		{
 			Services.ProjectsService.CurrentSolution.Config.IsNameStandardized = this.checkbutton_nameFormat.Active;
 		}
 
-		// Token: 0x06000080 RID: 128 RVA: 0x0000998A File Offset: 0x00007B8A
 		public bool CanApply(out string output)
 		{
 			output = "";
 			return true;
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x00009994 File Offset: 0x00007B94
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x06000082 RID: 130 RVA: 0x00009997 File Offset: 0x00007B97
 		public List<IProjectSettingWidget> SubWidgets
 		{
 			get
@@ -81,7 +69,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000083 RID: 131 RVA: 0x0000999C File Offset: 0x00007B9C
 		private void CheckButtonToggledHandler(object sender, EventArgs e)
 		{
 			if (!this.isOldNameStandardized && this.checkbutton_nameFormat.Active)
@@ -95,13 +82,11 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x000099F3 File Offset: 0x00007BF3
 		protected void VboxSizeAllocatedHandler(object o, SizeAllocatedArgs args)
 		{
 			this.label_warring.WidthRequest = args.Allocation.Width;
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x00009A0C File Offset: 0x00007C0C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -166,31 +151,22 @@ namespace Modules.Communal.ProjectSetting
 			this.vbox_name.SizeAllocated += this.VboxSizeAllocatedHandler;
 		}
 
-		// Token: 0x040000C3 RID: 195
 		private bool isOldNameStandardized;
 
-		// Token: 0x040000C4 RID: 196
 		private VBox vbox_main;
 
-		// Token: 0x040000C5 RID: 197
 		private Frame frame_name;
 
-		// Token: 0x040000C6 RID: 198
 		private Alignment GtkAlignment_name;
 
-		// Token: 0x040000C7 RID: 199
 		private VBox vbox_name;
 
-		// Token: 0x040000C8 RID: 200
 		private CheckButton checkbutton_nameFormat;
 
-		// Token: 0x040000C9 RID: 201
 		private Alignment alignment_warring;
 
-		// Token: 0x040000CA RID: 202
 		private Label label_warring;
 
-		// Token: 0x040000CB RID: 203
 		private Label GtkLabel_name;
 	}
 }

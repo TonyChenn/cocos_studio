@@ -5,24 +5,20 @@ using CocoStudio.Model.DataModel;
 
 namespace CocoStudio.Model.Lua.Templates
 {
-	// Token: 0x0200000B RID: 11
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaArmatureNodeObject : LuaNodeObject
 	{
-		// Token: 0x06000058 RID: 88 RVA: 0x000038D3 File Offset: 0x00001AD3
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x06000059 RID: 89 RVA: 0x000038EC File Offset: 0x00001AEC
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(ArmatureNodeObjectData) == objectData.GetType();
 		}
 
-		// Token: 0x0600005A RID: 90 RVA: 0x00003910 File Offset: 0x00001B10
 		public override void CreateObject(BaseObjectData objectData)
 		{
 			base.Write("local ");
@@ -30,7 +26,6 @@ namespace CocoStudio.Model.Lua.Templates
 			base.Write(" = ccs.Armature:create()\r\n");
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x00003940 File Offset: 0x00001B40
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			ArmatureNodeObjectData armatureNodeObjectData = objectData as ArmatureNodeObjectData;

@@ -10,11 +10,8 @@ using Newtonsoft.Json;
 
 namespace Modules.Communal.CocosCodeIDE
 {
-	// Token: 0x02000003 RID: 3
 	public abstract class CocosCodeIDEService
 	{
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000008 RID: 8 RVA: 0x00002811 File Offset: 0x00000A11
 		public static CocosCodeIDEService Instance
 		{
 			get
@@ -34,13 +31,11 @@ namespace Modules.Communal.CocosCodeIDE
 			}
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x00002843 File Offset: 0x00000A43
 		public bool IsCocosCodeIDEInstalled()
 		{
 			return !string.IsNullOrEmpty(this.GetCocosCodeIDEExePath());
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002858 File Offset: 0x00000A58
 		public void DownloadCocosCodeIDE()
 		{
 			try
@@ -55,7 +50,6 @@ namespace Modules.Communal.CocosCodeIDE
 			}
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x000028B0 File Offset: 0x00000AB0
 		public string OpenCocosItemWithCocosCodeIDE(string projectDir, bool showFailedDialog = false)
 		{
 			string result = string.Empty;
@@ -97,13 +91,11 @@ namespace Modules.Communal.CocosCodeIDE
 			return result;
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x0000296C File Offset: 0x00000B6C
 		public string GetExePath()
 		{
 			return this.GetCocosCodeIDEExePath();
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x00002974 File Offset: 0x00000B74
 		private int GetCodeIDEPort(string projectDir, ConfigJson config)
 		{
 			int result = -1;
@@ -128,7 +120,6 @@ namespace Modules.Communal.CocosCodeIDE
 			return result;
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x000029FC File Offset: 0x00000BFC
 		private ConfigJson GetConfigFile(string cocosCodeIDEDirectory)
 		{
 			string path = Path.Combine(cocosCodeIDEDirectory, "state.ini");
@@ -145,7 +136,6 @@ namespace Modules.Communal.CocosCodeIDE
 			return result;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00002A4C File Offset: 0x00000C4C
 		private void OpenIDEWithSocket(FilePath projectDir, string host, int port)
 		{
 			Socket socket = null;
@@ -179,19 +169,14 @@ namespace Modules.Communal.CocosCodeIDE
 			}
 		}
 
-		// Token: 0x06000010 RID: 16
 		protected abstract void OpenIDEWithCmd(FilePath projectDir);
 
-		// Token: 0x06000011 RID: 17
 		protected abstract string GetCocosCodeIDEDirectoryPath();
 
-		// Token: 0x06000012 RID: 18
 		protected abstract string GetCocosCodeIDEExePath();
 
-		// Token: 0x0400000D RID: 13
 		private const string Uri_CocosCodeIDE = "http://www.cocos2d-x.org/products/codeide";
 
-		// Token: 0x0400000E RID: 14
 		private static CocosCodeIDEService _IDEService;
 	}
 }

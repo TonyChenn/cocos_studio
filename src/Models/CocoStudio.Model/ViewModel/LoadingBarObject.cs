@@ -10,36 +10,30 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.ViewModel
 {
-	// Token: 0x02000112 RID: 274
 	[ControlGroup("ComToolPad", 1)]
 	[EngineClassName("LoadingBar")]
 	[ModelExtension(true, 6)]
 	[DisplayName("Display_Component_UILoadingBar")]
 	public class LoadingBarObject : WidgetObject, IResetSize
 	{
-		// Token: 0x06000A14 RID: 2580 RVA: 0x00028588 File Offset: 0x00026788
 		private CSLoadingBar GetInnerWidget()
 		{
 			return (CSLoadingBar)this.innerNode;
 		}
 
-		// Token: 0x06000A15 RID: 2581 RVA: 0x000285A5 File Offset: 0x000267A5
 		public LoadingBarObject()
 		{
 		}
 
-		// Token: 0x06000A16 RID: 2582 RVA: 0x000285DA File Offset: 0x000267DA
 		public LoadingBarObject(ScriptFileData fileData) : base(fileData)
 		{
 		}
 
-		// Token: 0x06000A17 RID: 2583 RVA: 0x00028610 File Offset: 0x00026810
 		protected override void CreateCSObject()
 		{
 			this.innerNode = new CSLoadingBar();
 		}
 
-		// Token: 0x06000A18 RID: 2584 RVA: 0x00028620 File Offset: 0x00026820
 		protected override void InitData(bool useScript)
 		{
 			base.InitData(useScript);
@@ -50,9 +44,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002E7 RID: 743
-		// (get) Token: 0x06000A19 RID: 2585 RVA: 0x00028650 File Offset: 0x00026850
-		// (set) Token: 0x06000A1A RID: 2586 RVA: 0x00028698 File Offset: 0x00026898
 		[DisplayName("Display_ImageResources")]
 		[PropertyOrder(73)]
 		[Editor(typeof(ResourceImageEditor), typeof(ResourceImageEditor))]
@@ -84,9 +75,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002E8 RID: 744
-		// (get) Token: 0x06000A1B RID: 2587 RVA: 0x00028714 File Offset: 0x00026914
-		// (set) Token: 0x06000A1C RID: 2588 RVA: 0x00028734 File Offset: 0x00026934
 		[UndoProperty]
 		[Editor(typeof(SliderEditor), typeof(SliderEditor))]
 		[ValueRange(0, 100, 1f, 10f)]
@@ -115,9 +103,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002E9 RID: 745
-		// (get) Token: 0x06000A1D RID: 2589 RVA: 0x000287B0 File Offset: 0x000269B0
-		// (set) Token: 0x06000A1E RID: 2590 RVA: 0x000287D0 File Offset: 0x000269D0
 		[UndoProperty]
 		[Category("Group_Feature")]
 		[DisplayName("Display_ProgressType")]
@@ -136,9 +121,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002EA RID: 746
-		// (get) Token: 0x06000A1F RID: 2591 RVA: 0x00028828 File Offset: 0x00026A28
-		// (set) Token: 0x06000A20 RID: 2592 RVA: 0x00028840 File Offset: 0x00026A40
 		[Category("Display_Sudoku")]
 		[UndoProperty]
 		[LayoutRefresh]
@@ -159,9 +141,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002EB RID: 747
-		// (get) Token: 0x06000A21 RID: 2593 RVA: 0x000288A0 File Offset: 0x00026AA0
-		// (set) Token: 0x06000A22 RID: 2594 RVA: 0x000288C0 File Offset: 0x00026AC0
 		[UndoProperty]
 		public virtual int LeftEage
 		{
@@ -177,9 +156,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002EC RID: 748
-		// (get) Token: 0x06000A23 RID: 2595 RVA: 0x00028924 File Offset: 0x00026B24
-		// (set) Token: 0x06000A24 RID: 2596 RVA: 0x00028944 File Offset: 0x00026B44
 		[UndoProperty]
 		public virtual int RightEage
 		{
@@ -195,9 +171,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002ED RID: 749
-		// (get) Token: 0x06000A25 RID: 2597 RVA: 0x000289A8 File Offset: 0x00026BA8
-		// (set) Token: 0x06000A26 RID: 2598 RVA: 0x000289C8 File Offset: 0x00026BC8
 		[UndoProperty]
 		public virtual int TopEage
 		{
@@ -213,9 +186,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002EE RID: 750
-		// (get) Token: 0x06000A27 RID: 2599 RVA: 0x00028A2C File Offset: 0x00026C2C
-		// (set) Token: 0x06000A28 RID: 2600 RVA: 0x00028A4C File Offset: 0x00026C4C
 		[UndoProperty]
 		public virtual int BottomEage
 		{
@@ -231,8 +201,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002EF RID: 751
-		// (get) Token: 0x06000A29 RID: 2601 RVA: 0x00028AB0 File Offset: 0x00026CB0
 		public SizeF ResourceSize
 		{
 			get
@@ -241,9 +209,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002F0 RID: 752
-		// (get) Token: 0x06000A2A RID: 2602 RVA: 0x00028AD0 File Offset: 0x00026CD0
-		// (set) Token: 0x06000A2B RID: 2603 RVA: 0x00028AED File Offset: 0x00026CED
 		public virtual int Scale9OriginX
 		{
 			get
@@ -255,9 +220,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002F1 RID: 753
-		// (get) Token: 0x06000A2C RID: 2604 RVA: 0x00028AF0 File Offset: 0x00026CF0
-		// (set) Token: 0x06000A2D RID: 2605 RVA: 0x00028B0D File Offset: 0x00026D0D
 		public virtual int Scale9OriginY
 		{
 			get
@@ -269,9 +231,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002F2 RID: 754
-		// (get) Token: 0x06000A2E RID: 2606 RVA: 0x00028B10 File Offset: 0x00026D10
-		// (set) Token: 0x06000A2F RID: 2607 RVA: 0x00028B2D File Offset: 0x00026D2D
 		public virtual int Scale9Width
 		{
 			get
@@ -283,9 +242,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002F3 RID: 755
-		// (get) Token: 0x06000A30 RID: 2608 RVA: 0x00028B30 File Offset: 0x00026D30
-		// (set) Token: 0x06000A31 RID: 2609 RVA: 0x00028B4D File Offset: 0x00026D4D
 		public virtual int Scale9Height
 		{
 			get
@@ -297,7 +253,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000A32 RID: 2610 RVA: 0x00028B50 File Offset: 0x00026D50
 		protected override void SetValue(object cObject)
 		{
 			base.SetValue(cObject);
@@ -316,28 +271,21 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000A33 RID: 2611 RVA: 0x00028BF0 File Offset: 0x00026DF0
 		protected internal override bool IsCanChangeSize()
 		{
 			return true;
 		}
 
-		// Token: 0x0400045A RID: 1114
 		private ResourceFile file = null;
 
-		// Token: 0x0400045B RID: 1115
 		private bool _scale9Enabled = false;
 
-		// Token: 0x0400045C RID: 1116
 		private int _left = 0;
 
-		// Token: 0x0400045D RID: 1117
 		private int _right = 0;
 
-		// Token: 0x0400045E RID: 1118
 		private int _top = 0;
 
-		// Token: 0x0400045F RID: 1119
 		private int _bottom = 0;
 	}
 }

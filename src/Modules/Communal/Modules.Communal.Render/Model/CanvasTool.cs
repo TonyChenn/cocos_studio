@@ -15,11 +15,8 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.Render.Model
 {
-	// Token: 0x02000019 RID: 25
 	public class CanvasTool : BaseTool, IOperateModule, IInputEventHandler, IMouseEventHandler, IKeyEventHandler, IActivateControl
 	{
-		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x060000DE RID: 222 RVA: 0x000067BC File Offset: 0x000049BC
 		public override Xwt.Drawing.Image Icon
 		{
 			get
@@ -28,8 +25,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x060000DF RID: 223 RVA: 0x000067D8 File Offset: 0x000049D8
 		public override string Tooltip
 		{
 			get
@@ -38,8 +33,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x060000E0 RID: 224 RVA: 0x000067FC File Offset: 0x000049FC
 		public override Gdk.Key ShortcutKey
 		{
 			get
@@ -48,7 +41,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000E1 RID: 225 RVA: 0x00006810 File Offset: 0x00004A10
 		public override void Initialize()
 		{
 			if (!CanvasTool.isInitialized)
@@ -58,7 +50,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000E2 RID: 226 RVA: 0x00006844 File Offset: 0x00004A44
 		protected override void OnSelectedChanged()
 		{
 			base.OnSelectedChanged();
@@ -68,7 +59,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000E3 RID: 227 RVA: 0x00006874 File Offset: 0x00004A74
 		public override void OnMouseEnter(EnterNotifyEventArgs args)
 		{
 			if (base.IsSelected || KeyboardExtend.IsKeyDown(Gdk.Key.space))
@@ -78,7 +68,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000E4 RID: 228 RVA: 0x000068B8 File Offset: 0x00004AB8
 		public override void OnMouseDown(ButtonPressEventArgs args)
 		{
 			if (base.IsSelected || KeyboardExtend.IsKeyDown(Gdk.Key.space) || args.Event.GetMouseButton() == MouseButton.Middle)
@@ -90,7 +79,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000E5 RID: 229 RVA: 0x00006924 File Offset: 0x00004B24
 		public override void OnMouseMove(MotionNotifyEventArgs args)
 		{
 			if (base.IsSelected || KeyboardExtend.IsKeyDown(Gdk.Key.space) || args.Event.GetMouseButton() != MouseButton.None)
@@ -101,7 +89,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000E6 RID: 230 RVA: 0x00006984 File Offset: 0x00004B84
 		public override void OnMouseUp(ButtonReleaseEventArgs args)
 		{
 			if (base.IsSelected || KeyboardExtend.IsKeyDown(Gdk.Key.space))
@@ -117,7 +104,6 @@ namespace Modules.Communal.Render.Model
 			args.RetVal = true;
 		}
 
-		// Token: 0x060000E7 RID: 231 RVA: 0x000069EC File Offset: 0x00004BEC
 		public override void OnMouseWheel(ScrollEventArgs args)
 		{
 			if (Option.UserConfig.IsUseMouseWheel || KeyboardExtend.IsKeyDown(Gdk.Key.Alt_L) || KeyboardExtend.IsKeyDown(Gdk.Key.Alt_R))
@@ -136,7 +122,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000E8 RID: 232 RVA: 0x00006AA8 File Offset: 0x00004CA8
 		public override void OnMouseGestures(MouseGesturesEventArgs args)
 		{
 			PointF mousePoint = GameWindow.Current.ConvertControlToScene(args.GetPoint());
@@ -146,7 +131,6 @@ namespace Modules.Communal.Render.Model
 			args.Retval = true;
 		}
 
-		// Token: 0x060000E9 RID: 233 RVA: 0x00006AF0 File Offset: 0x00004CF0
 		public override void OnKeyDown(KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.space && args.Event.State == ModifierType.None)
@@ -156,7 +140,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000EA RID: 234 RVA: 0x00006B40 File Offset: 0x00004D40
 		public override void OnKeyUp(KeyReleaseEventArgs args)
 		{
 			if (!base.IsSelected && args.Event.Key == Gdk.Key.space && args.Event.State == ModifierType.None)
@@ -166,7 +149,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000EB RID: 235 RVA: 0x00006B98 File Offset: 0x00004D98
 		private void ZoomCanvasObject(CanvasZoomChangeEventArgs args)
 		{
 			CanvasObject canvasObject = CanvasTool.canvasObject;
@@ -191,7 +173,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000EC RID: 236 RVA: 0x00006CBC File Offset: 0x00004EBC
 		private void MoveCanvasObject(ScrollEventArgs e)
 		{
 			PointF pageScrollPixelDeltas = this.GetPageScrollPixelDeltas(e);
@@ -204,7 +185,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000ED RID: 237 RVA: 0x00006D48 File Offset: 0x00004F48
 		private PointF GetPageScrollPixelDeltas(ScrollEventArgs e)
 		{
 			GameWindow gameWindow = GameWindow.Current;
@@ -214,7 +194,6 @@ namespace Modules.Communal.Render.Model
 			return new PointF((float)num, (float)num2);
 		}
 
-		// Token: 0x060000EE RID: 238 RVA: 0x00006D88 File Offset: 0x00004F88
 		private void RaiseCanvasZoomChanged(CanvasZoomChangeEventArgs args)
 		{
 			IEventAggregator eventsService = Services.EventsService;
@@ -223,7 +202,6 @@ namespace Modules.Communal.Render.Model
 			eventsService.GetEvent<CanvasZoomChangeEvent>().Subscribe(new Action<CanvasZoomChangeEventArgs>(this.ZoomCanvasObject));
 		}
 
-		// Token: 0x060000EF RID: 239 RVA: 0x00006DDC File Offset: 0x00004FDC
 		internal void ZoomCanvasObject(ScaleValue newScale)
 		{
 			float zoomDelta = newScale.ScaleX - CanvasTool.canvasObject.Scale.ScaleX;
@@ -232,30 +210,24 @@ namespace Modules.Communal.Render.Model
 			this.RaiseCanvasZoomChanged(args);
 		}
 
-		// Token: 0x060000F0 RID: 240 RVA: 0x00006E18 File Offset: 0x00005018
 		public void Initialize(IGLView glView)
 		{
 		}
 
-		// Token: 0x060000F1 RID: 241 RVA: 0x00006E1B File Offset: 0x0000501B
 		public void Activated(CocosItem cocosItem)
 		{
 			Services.EventsService.GetEvent<CanvasZoomChangeEvent>().Subscribe(new Action<CanvasZoomChangeEventArgs>(this.ZoomCanvasObject));
 		}
 
-		// Token: 0x060000F2 RID: 242 RVA: 0x00006E3A File Offset: 0x0000503A
 		public void Deactivated()
 		{
 			Services.EventsService.GetEvent<CanvasZoomChangeEvent>().Unsubscribe(new Action<CanvasZoomChangeEventArgs>(this.ZoomCanvasObject));
 		}
 
-		// Token: 0x0400002B RID: 43
 		private const Gdk.Key controlKey = Gdk.Key.space;
 
-		// Token: 0x0400002C RID: 44
 		private static bool isInitialized;
 
-		// Token: 0x0400002D RID: 45
 		private static CanvasObject canvasObject;
 	}
 }

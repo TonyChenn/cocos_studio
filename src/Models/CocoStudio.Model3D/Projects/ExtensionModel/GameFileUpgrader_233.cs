@@ -9,12 +9,9 @@ using Mono.Addins;
 
 namespace CocoStudio.Projects.ExtensionModel
 {
-	// Token: 0x0200001A RID: 26
 	[Extension(Type = typeof(IFileUpgrader))]
 	internal class GameFileUpgrader_233 : GameFileUpgrader
 	{
-		// Token: 0x17000038 RID: 56
-		// (get) Token: 0x060000D7 RID: 215 RVA: 0x000044FC File Offset: 0x000026FC
 		public override Version Version
 		{
 			get
@@ -23,7 +20,6 @@ namespace CocoStudio.Projects.ExtensionModel
 			}
 		}
 
-		// Token: 0x060000D8 RID: 216 RVA: 0x00004504 File Offset: 0x00002704
 		public override bool Upgrade(string filePath)
 		{
 			bool result;
@@ -39,7 +35,6 @@ namespace CocoStudio.Projects.ExtensionModel
 			return result;
 		}
 
-		// Token: 0x060000D9 RID: 217 RVA: 0x00004544 File Offset: 0x00002744
 		private bool OnUpgrade(string filePath)
 		{
 			bool flag = false;
@@ -66,7 +61,6 @@ namespace CocoStudio.Projects.ExtensionModel
 			return flag;
 		}
 
-		// Token: 0x060000DA RID: 218 RVA: 0x000045FA File Offset: 0x000027FA
 		protected override bool OnUpgrade(GameFileData projectData)
 		{
 			if (this.is3DGameFile)
@@ -81,7 +75,6 @@ namespace CocoStudio.Projects.ExtensionModel
 			return true;
 		}
 
-		// Token: 0x060000DB RID: 219 RVA: 0x00004628 File Offset: 0x00002828
 		private void ConvertProjectNode(AbstractNodeObjectData rootnode)
 		{
 			FileNodeObjectData fileNodeObjectData = rootnode as FileNodeObjectData;
@@ -103,7 +96,6 @@ namespace CocoStudio.Projects.ExtensionModel
 			}
 		}
 
-		// Token: 0x060000DC RID: 220 RVA: 0x000046C0 File Offset: 0x000028C0
 		private void Convert3DNode(AbstractNodeObjectData rootnode)
 		{
 			Node3DObjectData node3DObjectData = rootnode as Node3DObjectData;
@@ -120,13 +112,10 @@ namespace CocoStudio.Projects.ExtensionModel
 			}
 		}
 
-		// Token: 0x04000060 RID: 96
 		private static readonly Version version = new Version("2.3.3");
 
-		// Token: 0x04000061 RID: 97
 		private static readonly string rootNodeName = "GameProjectFile";
 
-		// Token: 0x04000062 RID: 98
 		private bool is3DGameFile;
 	}
 }

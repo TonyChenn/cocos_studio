@@ -10,27 +10,14 @@ using Gtk;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x0200001E RID: 30
 	public class NodeContent : EventBox
 	{
-		// Token: 0x17000042 RID: 66
-		// (get) Token: 0x06000120 RID: 288 RVA: 0x0000677C File Offset: 0x0000497C
-		// (set) Token: 0x06000121 RID: 289 RVA: 0x00006784 File Offset: 0x00004984
 		public NodeContent ParentNode { get; set; }
 
-		// Token: 0x17000043 RID: 67
-		// (get) Token: 0x06000122 RID: 290 RVA: 0x0000678D File Offset: 0x0000498D
-		// (set) Token: 0x06000123 RID: 291 RVA: 0x00006795 File Offset: 0x00004995
 		public List<NodeContent> ChildNodes { get; set; }
 
-		// Token: 0x17000044 RID: 68
-		// (get) Token: 0x06000124 RID: 292 RVA: 0x0000679E File Offset: 0x0000499E
-		// (set) Token: 0x06000125 RID: 293 RVA: 0x000067A6 File Offset: 0x000049A6
 		public Point NodePoint { get; set; }
 
-		// Token: 0x17000045 RID: 69
-		// (get) Token: 0x06000126 RID: 294 RVA: 0x000067AF File Offset: 0x000049AF
-		// (set) Token: 0x06000127 RID: 295 RVA: 0x000067B7 File Offset: 0x000049B7
 		public AbstractNodeObject CurrentObject
 		{
 			get
@@ -48,9 +35,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000046 RID: 70
-		// (get) Token: 0x06000128 RID: 296 RVA: 0x000067F4 File Offset: 0x000049F4
-		// (set) Token: 0x06000129 RID: 297 RVA: 0x000068BB File Offset: 0x00004ABB
 		public int? TreeDegree
 		{
 			get
@@ -74,9 +58,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000047 RID: 71
-		// (get) Token: 0x0600012A RID: 298 RVA: 0x000068C9 File Offset: 0x00004AC9
-		// (set) Token: 0x0600012B RID: 299 RVA: 0x000068D1 File Offset: 0x00004AD1
 		public double Scale
 		{
 			get
@@ -93,8 +74,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000048 RID: 72
-		// (get) Token: 0x0600012C RID: 300 RVA: 0x000068FE File Offset: 0x00004AFE
 		public string LabelText
 		{
 			get
@@ -103,19 +82,10 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000049 RID: 73
-		// (get) Token: 0x0600012D RID: 301 RVA: 0x0000690B File Offset: 0x00004B0B
-		// (set) Token: 0x0600012E RID: 302 RVA: 0x00006913 File Offset: 0x00004B13
 		public int ZOrder { get; set; }
 
-		// Token: 0x1700004A RID: 74
-		// (get) Token: 0x0600012F RID: 303 RVA: 0x0000691C File Offset: 0x00004B1C
-		// (set) Token: 0x06000130 RID: 304 RVA: 0x00006924 File Offset: 0x00004B24
 		public bool IsHasParent { get; set; }
 
-		// Token: 0x1700004B RID: 75
-		// (get) Token: 0x06000131 RID: 305 RVA: 0x0000692D File Offset: 0x00004B2D
-		// (set) Token: 0x06000132 RID: 306 RVA: 0x00006935 File Offset: 0x00004B35
 		public bool IsChoice
 		{
 			get
@@ -128,8 +98,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x1700004C RID: 76
-		// (get) Token: 0x06000133 RID: 307 RVA: 0x0000693E File Offset: 0x00004B3E
 		private FixedEx ParentContain
 		{
 			get
@@ -138,12 +106,8 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x1700004D RID: 77
-		// (get) Token: 0x06000134 RID: 308 RVA: 0x0000694B File Offset: 0x00004B4B
-		// (set) Token: 0x06000135 RID: 309 RVA: 0x00006953 File Offset: 0x00004B53
 		public int StartPosition { get; set; }
 
-		// Token: 0x06000136 RID: 310 RVA: 0x0000695C File Offset: 0x00004B5C
 		public NodeContent(string contentStr = "default")
 		{
 			base.Add(this.label);
@@ -159,21 +123,18 @@ namespace Modules.Communal.Skeleton
 			base.TooltipText = contentStr;
 		}
 
-		// Token: 0x06000137 RID: 311 RVA: 0x00006A3F File Offset: 0x00004C3F
 		protected override bool OnEnterNotifyEvent(EventCrossing evnt)
 		{
 			this.SetEntryBgColor();
 			return base.OnEnterNotifyEvent(evnt);
 		}
 
-		// Token: 0x06000138 RID: 312 RVA: 0x00006A4E File Offset: 0x00004C4E
 		protected override bool OnLeaveNotifyEvent(EventCrossing evnt)
 		{
 			this.SetLeaveBgColor();
 			return base.OnLeaveNotifyEvent(evnt);
 		}
 
-		// Token: 0x06000139 RID: 313 RVA: 0x00006A64 File Offset: 0x00004C64
 		private void currentObject_PropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == "IsSelected")
@@ -199,13 +160,11 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600013A RID: 314 RVA: 0x00006AEE File Offset: 0x00004CEE
 		public void DisposeContent()
 		{
 			this.currentObject.PropertyChanged -= this.currentObject_PropertyChanged;
 		}
 
-		// Token: 0x0600013B RID: 315 RVA: 0x00006B08 File Offset: 0x00004D08
 		private void SetChildContentPosition(NodeContent content, int x, int y)
 		{
 			foreach (NodeContent nodeContent in content.ChildNodes)
@@ -221,7 +180,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600013C RID: 316 RVA: 0x00006BAC File Offset: 0x00004DAC
 		private void NodeContent_MotionNotifyEvent(object o, MotionNotifyEventArgs args)
 		{
 			NodeContent nodeContent = o as NodeContent;
@@ -259,7 +217,6 @@ namespace Modules.Communal.Skeleton
 			this.ParentContain.endDrawY = nodeContent.NodePoint.Y + (int)args.Event.Y;
 		}
 
-		// Token: 0x0600013D RID: 317 RVA: 0x00006DA8 File Offset: 0x00004FA8
 		private void NodeContent_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			this.isPressLeft = false;
@@ -282,7 +239,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600013E RID: 318 RVA: 0x00006E8C File Offset: 0x0000508C
 		private void NodeContent_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			NodeContent control = o as NodeContent;
@@ -340,7 +296,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600013F RID: 319 RVA: 0x0000712C File Offset: 0x0000532C
 		private AbstractNodeObject GetParent(AbstractNodeObject obj)
 		{
 			if (obj.Parent != null)
@@ -354,21 +309,18 @@ namespace Modules.Communal.Skeleton
 			return null;
 		}
 
-		// Token: 0x06000140 RID: 320 RVA: 0x00007182 File Offset: 0x00005382
 		public virtual void ResetBgColor()
 		{
 			this.isChoice = false;
 			base.ModifyBg(StateType.Normal, NodeContent.bgColor);
 		}
 
-		// Token: 0x06000141 RID: 321 RVA: 0x00007197 File Offset: 0x00005397
 		public void SetChoiceBgColor()
 		{
 			this.isChoice = true;
 			base.ModifyBg(StateType.Normal, NodeContent.choiceColor);
 		}
 
-		// Token: 0x06000142 RID: 322 RVA: 0x000071AC File Offset: 0x000053AC
 		public virtual void SetEntryBgColor()
 		{
 			if (this.isChoice)
@@ -378,7 +330,6 @@ namespace Modules.Communal.Skeleton
 			base.ModifyBg(StateType.Normal, NodeContent.movColor);
 		}
 
-		// Token: 0x06000143 RID: 323 RVA: 0x000071C3 File Offset: 0x000053C3
 		public virtual void SetLeaveBgColor()
 		{
 			if (this.isChoice)
@@ -389,49 +340,34 @@ namespace Modules.Communal.Skeleton
 			this.ResetBgColor();
 		}
 
-		// Token: 0x0400004B RID: 75
 		private Label label = new Label();
 
-		// Token: 0x0400004C RID: 76
 		private static Color bgColor = new Color(70, 180, byte.MaxValue);
 
-		// Token: 0x0400004D RID: 77
 		private static Color normalFgColor = new Color(0, 0, 0);
 
-		// Token: 0x0400004E RID: 78
 		private static Color choiceColor = new Color(byte.MaxValue, byte.MaxValue, byte.MaxValue);
 
-		// Token: 0x0400004F RID: 79
 		private static Color movColor = new Color(174, 221, 253);
 
-		// Token: 0x04000050 RID: 80
 		private int lbHeight = 120;
 
-		// Token: 0x04000051 RID: 81
 		private int lbWidth = 20;
 
-		// Token: 0x04000052 RID: 82
 		private AbstractNodeObject currentObject;
 
-		// Token: 0x04000053 RID: 83
 		private int? treeDegree = null;
 
-		// Token: 0x04000054 RID: 84
 		private double scale = 1.0;
 
-		// Token: 0x04000055 RID: 85
 		protected bool isChoice;
 
-		// Token: 0x04000056 RID: 86
 		private NodeContent moveContent;
 
-		// Token: 0x04000057 RID: 87
 		private double pointx;
 
-		// Token: 0x04000058 RID: 88
 		private double pointy;
 
-		// Token: 0x04000059 RID: 89
 		private bool isPressLeft;
 	}
 }

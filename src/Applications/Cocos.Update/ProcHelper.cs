@@ -3,10 +3,8 @@ using System.Diagnostics;
 
 namespace Cocos.Update
 {
-	// Token: 0x02000004 RID: 4
 	public static class ProcHelper
 	{
-		// Token: 0x0600000B RID: 11 RVA: 0x000021BC File Offset: 0x000003BC
 		public static void KillProc(string strProcName)
 		{
 			try
@@ -32,13 +30,10 @@ namespace Cocos.Update
 			}
 		}
 
-		// Token: 0x04000003 RID: 3
 		public const string UpdaterName = "Editor.AutoUpdate";
 
-		// Token: 0x04000004 RID: 4
 		public const string UpdaterVshostName = "Editor.AutoUpdate.vshost";
 
-		// Token: 0x04000005 RID: 5
 		public const string EditorName = "CocosStudio";
 	}
 }

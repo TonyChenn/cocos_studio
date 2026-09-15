@@ -6,10 +6,8 @@ using Gtk;
 
 namespace Cocos.Update
 {
-	// Token: 0x02000006 RID: 6
 	public class Updater
 	{
-		// Token: 0x0600000E RID: 14 RVA: 0x000022C8 File Offset: 0x000004C8
 		public Updater(string studioInstallArgs, string macRuntimeArgs)
 		{
 			if (studioInstallArgs.Equals("#SKIP#"))
@@ -28,7 +26,6 @@ namespace Cocos.Update
 			this.RuntimeInstallFilePath = macRuntimeArgs;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x0000231C File Offset: 0x0000051C
 		public void StartUpdate()
 		{
 			try
@@ -53,7 +50,6 @@ namespace Cocos.Update
 			}
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002398 File Offset: 0x00000598
 		private void RunUpdateOnMac()
 		{
 			if (!string.IsNullOrEmpty(this.RuntimeInstallFilePath) && File.Exists(this.RuntimeInstallFilePath))
@@ -74,7 +70,6 @@ namespace Cocos.Update
 			}
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x00002460 File Offset: 0x00000660
 		private void RestartEidtorOnMac()
 		{
 			DebugHelper.WriteLogInfo("Mac下安装完毕，尝试重启Cocos Studio");
@@ -88,7 +83,6 @@ namespace Cocos.Update
 			Application.Quit();
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x000024A8 File Offset: 0x000006A8
 		private void RunUpdateOnWindows(object sender, DoWorkEventArgs e)
 		{
 			if (!string.IsNullOrEmpty(this.StudioInstallFilePath))
@@ -104,13 +98,11 @@ namespace Cocos.Update
 			this.QuitCurrentApplication();
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002503 File Offset: 0x00000703
 		private void HandleWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
 			this.QuitCurrentApplication();
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x0000250C File Offset: 0x0000070C
 		public void QuitCurrentApplication()
 		{
 			ProcHelper.KillProc("Editor.AutoUpdate");
@@ -119,19 +111,14 @@ namespace Cocos.Update
 			ProcHelper.KillProc(name);
 		}
 
-		// Token: 0x04000006 RID: 6
 		private const string ToolName = "CocosStudioUpdate";
 
-		// Token: 0x04000007 RID: 7
 		private const string macAppPath = "/Applications/cocos/Cocos.app/Contents/MacOS/Cocos";
 
-		// Token: 0x04000008 RID: 8
 		private const string skipTag = "#SKIP#";
 
-		// Token: 0x04000009 RID: 9
 		private string StudioInstallFilePath;
 
-		// Token: 0x0400000A RID: 10
 		private string RuntimeInstallFilePath;
 	}
 }

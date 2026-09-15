@@ -8,10 +8,8 @@ using CocoStudio.Model.Visiter;
 
 namespace Modules.UI.RenderContextMenu
 {
-	// Token: 0x0200001F RID: 31
 	internal class ObjectRectangelHelper
 	{
-		// Token: 0x060000EA RID: 234 RVA: 0x00005D9C File Offset: 0x00003F9C
 		public static PointF GetObjectListCenter(IReadOnlyList<VisualObject> ObjectList)
 		{
 			ObjectRectangelHelper.CreateObjectRectangleFromVisualObject(ObjectList);
@@ -19,19 +17,16 @@ namespace Modules.UI.RenderContextMenu
 			return new PointF((ObjectRectangelHelper.LeftX + ObjectRectangelHelper.RightX) * 0.5f + pointF.X, (ObjectRectangelHelper.TopY + ObjectRectangelHelper.BottomY) * 0.5f + pointF.Y);
 		}
 
-		// Token: 0x060000EB RID: 235 RVA: 0x00005E10 File Offset: 0x00004010
 		public static bool CheckObjectAlign(AlignType alignType, IReadOnlyList<VisualObject> ObjectList)
 		{
 			return ObjectRectangelHelper.RefrshObjectAlign(alignType, ObjectList, true);
 		}
 
-		// Token: 0x060000EC RID: 236 RVA: 0x00005E2C File Offset: 0x0000402C
 		public static bool AlignObject(AlignType alignType, IReadOnlyList<VisualObject> ObjectList)
 		{
 			return ObjectRectangelHelper.RefrshObjectAlign(alignType, ObjectList, false);
 		}
 
-		// Token: 0x060000ED RID: 237 RVA: 0x00005E48 File Offset: 0x00004048
 		private static bool RefrshObjectAlign(AlignType alignType, IReadOnlyList<VisualObject> ObjectList, bool isCheck)
 		{
 			bool result;
@@ -67,7 +62,6 @@ namespace Modules.UI.RenderContextMenu
 			return result;
 		}
 
-		// Token: 0x060000EE RID: 238 RVA: 0x00005EFC File Offset: 0x000040FC
 		private static bool AlignEquidStance(AlignType alignType, List<ObjectRectangle> ObjectRectList, bool isCheck)
 		{
 			bool result = false;
@@ -110,7 +104,6 @@ namespace Modules.UI.RenderContextMenu
 			return result;
 		}
 
-		// Token: 0x060000EF RID: 239 RVA: 0x00006074 File Offset: 0x00004274
 		private static bool AlignEage(AlignType alignType, List<ObjectRectangle> ObjectRectList, bool isCheck)
 		{
 			bool result = false;
@@ -179,7 +172,6 @@ namespace Modules.UI.RenderContextMenu
 			return result;
 		}
 
-		// Token: 0x060000F0 RID: 240 RVA: 0x0000639C File Offset: 0x0000459C
 		private static bool AlignHorizontalOrVerical(AlignType alignType, List<ObjectRectangle> ObjectRectList, bool isCheck)
 		{
 			bool result = false;
@@ -212,7 +204,6 @@ namespace Modules.UI.RenderContextMenu
 			return result;
 		}
 
-		// Token: 0x060000F1 RID: 241 RVA: 0x00006520 File Offset: 0x00004720
 		private static void MoveObject(ObjectRectangle vObjectRect, float offsetX, float offsetY, bool isCheck)
 		{
 			if (!isCheck)
@@ -226,7 +217,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000F2 RID: 242 RVA: 0x000065A8 File Offset: 0x000047A8
 		private static List<ObjectRectangle> CreateObjectRectangleFromVisualObject(IReadOnlyList<VisualObject> ObjectList)
 		{
 			ObjectRectangelHelper.LeftX = 10000f;
@@ -257,28 +247,20 @@ namespace Modules.UI.RenderContextMenu
 			return list;
 		}
 
-		// Token: 0x04000068 RID: 104
 		private static float LeftX = 10000f;
 
-		// Token: 0x04000069 RID: 105
 		private static float RightX = -10000f;
 
-		// Token: 0x0400006A RID: 106
 		private static float TopY = -10000f;
 
-		// Token: 0x0400006B RID: 107
 		private static float BottomY = 10000f;
 
-		// Token: 0x0400006C RID: 108
 		private static float TotalObjectWidth = 0f;
 
-		// Token: 0x0400006D RID: 109
 		private static float TotalObjectHeight = 0f;
 
-		// Token: 0x0400006E RID: 110
 		private static float IntervalObjectWidth = 0f;
 
-		// Token: 0x0400006F RID: 111
 		private static float IntervalObjectHeight = 0f;
 	}
 }

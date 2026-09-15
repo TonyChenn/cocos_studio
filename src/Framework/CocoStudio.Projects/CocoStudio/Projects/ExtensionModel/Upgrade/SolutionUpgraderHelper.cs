@@ -6,10 +6,8 @@ using Newtonsoft.Json.Linq;
 
 namespace CocoStudio.Projects.ExtensionModel.Upgrade
 {
-	// Token: 0x02000008 RID: 8
 	public static class SolutionUpgraderHelper
 	{
-		// Token: 0x0600001C RID: 28 RVA: 0x00002520 File Offset: 0x00000720
 		public static void UpdateConfigJson(string path, bool isLandscape)
 		{
 			try
@@ -45,10 +43,8 @@ namespace CocoStudio.Projects.ExtensionModel.Upgrade
 			}
 		}
 
-		// Token: 0x04000009 RID: 9
 		private const string ConfigFilename = "config.json";
 
-		// Token: 0x0400000A RID: 10
 		private const string DefaultConfig = "{ 'init_cfg':{ 'isLandscape': false, 'width': 640, 'height': 960 } }";
 	}
 }

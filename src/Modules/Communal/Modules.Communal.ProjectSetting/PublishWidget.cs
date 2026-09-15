@@ -16,11 +16,9 @@ using Stetic;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x0200000A RID: 10
 	[ToolboxItem(true)]
 	public class PublishWidget : Bin, IProjectSettingWidget
 	{
-		// Token: 0x06000026 RID: 38 RVA: 0x00002E0F File Offset: 0x0000100F
 		public PublishWidget()
 		{
 			this.Build();
@@ -29,14 +27,12 @@ namespace Modules.Communal.ProjectSetting
 			this.InitStatus();
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002E45 File Offset: 0x00001045
 		private void InitWidgets()
 		{
 			this.InitSerailzerWidget();
 			this.InitWarningWidget();
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00002E54 File Offset: 0x00001054
 		private void InitSerailzerWidget()
 		{
 			this.radiobutton_custom.Active = true;
@@ -65,7 +61,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002F74 File Offset: 0x00001174
 		private void InitWarningWidget()
 		{
 			this.warningIcon = new TooltipIcon();
@@ -77,7 +72,6 @@ namespace Modules.Communal.ProjectSetting
 			helpButton.URL = LanguageAdapter.GetLocalizedUrl(HelpLinkUrl.PublishDataFormat);
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002FD0 File Offset: 0x000011D0
 		private void SetMultiLanguage()
 		{
 			this.GtkLabel_publishContent.Text = " " + LanguageInfo.ProjSetting_PublishContent + " ";
@@ -96,7 +90,6 @@ namespace Modules.Communal.ProjectSetting
 			this.button_openFolder.TooltipText = LanguageInfo.Command_OpenDirectory;
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00003100 File Offset: 0x00001300
 		private void InitStatus()
 		{
 			if (this.addinSerializers.Count > 0)
@@ -168,8 +161,6 @@ namespace Modules.Communal.ProjectSetting
 			this.entry_publishPath.Text = config.PublishDirectory;
 		}
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x0600002C RID: 44 RVA: 0x00003350 File Offset: 0x00001550
 		public EnumProjectSetting SettingID
 		{
 			get
@@ -178,8 +169,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x0600002D RID: 45 RVA: 0x00003353 File Offset: 0x00001553
 		public string DisplayName
 		{
 			get
@@ -188,7 +177,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x0000335C File Offset: 0x0000155C
 		public void ApplySetting()
 		{
 			Solution currentSolution = Services.ProjectsService.CurrentSolution;
@@ -228,7 +216,6 @@ namespace Modules.Communal.ProjectSetting
 			currentSolution.SetPublishDirectory();
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x0000345C File Offset: 0x0000165C
 		public bool CanApply(out string output)
 		{
 			if (!ProjectSettingHelper.CheckPathValidity(this.entry_publishPath.Text))
@@ -242,14 +229,11 @@ namespace Modules.Communal.ProjectSetting
 			return true;
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x00003498 File Offset: 0x00001698
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x06000031 RID: 49 RVA: 0x0000349B File Offset: 0x0000169B
 		public List<IProjectSettingWidget> SubWidgets
 		{
 			get
@@ -258,7 +242,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x0000349E File Offset: 0x0000169E
 		private void OnRadioBtnCustomToggled(object sender, EventArgs e)
 		{
 			if (this.radiobutton_custom.Active)
@@ -270,7 +253,6 @@ namespace Modules.Communal.ProjectSetting
 			this.combobox_custom.Sensitive = false;
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x000034D4 File Offset: 0x000016D4
 		protected void HandlePublishPathBrowseClick(object sender, EventArgs e)
 		{
 			Solution currentSelectedSolution = Services.ProjectOperations.CurrentSelectedSolution;
@@ -308,7 +290,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x000035C4 File Offset: 0x000017C4
 		protected void HandleSerializerSelected(object sender, EventArgs args)
 		{
 			SerializerWidget serializerWidget = sender as SerializerWidget;
@@ -323,7 +304,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x0000360C File Offset: 0x0000180C
 		protected void ButtonOpenFolderClickedHandler(object sender, EventArgs e)
 		{
 			try
@@ -348,7 +328,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x0000368C File Offset: 0x0000188C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -585,115 +564,78 @@ namespace Modules.Communal.ProjectSetting
 			this.radiobutton_custom.Toggled += this.OnRadioBtnCustomToggled;
 		}
 
-		// Token: 0x0400001A RID: 26
 		private List<IGameFileSerializer> addinSerializers = new List<IGameFileSerializer>();
 
-		// Token: 0x0400001B RID: 27
 		private List<SerializerWidget> baseSerializerWidgets = new List<SerializerWidget>();
 
-		// Token: 0x0400001C RID: 28
 		private IGameFileSerializer originSerializer;
 
-		// Token: 0x0400001D RID: 29
 		private ISerializeManager manager;
 
-		// Token: 0x0400001E RID: 30
 		private TooltipIcon warningIcon;
 
-		// Token: 0x0400001F RID: 31
 		private bool hasLuaRenameAgreed;
 
-		// Token: 0x04000020 RID: 32
 		private VBox vbox_main;
 
-		// Token: 0x04000021 RID: 33
 		private Frame frame_publishContent;
 
-		// Token: 0x04000022 RID: 34
 		private Alignment GtkAlignment_publishContent;
 
-		// Token: 0x04000023 RID: 35
 		private VBox vbox2;
 
-		// Token: 0x04000024 RID: 36
 		private RadioButton radiobutton_publishAll;
 
-		// Token: 0x04000025 RID: 37
 		private RadioButton radiobutton_publishUsed;
 
-		// Token: 0x04000026 RID: 38
 		private RadioButton radiobutton_projFileOnly;
 
-		// Token: 0x04000027 RID: 39
 		private Label GtkLabel_publishContent;
 
-		// Token: 0x04000028 RID: 40
 		private Frame frame_publishPath;
 
-		// Token: 0x04000029 RID: 41
 		private Alignment GtkAlignment_publishPath;
 
-		// Token: 0x0400002A RID: 42
 		private HBox hbox_publishPath;
 
-		// Token: 0x0400002B RID: 43
 		private Entry entry_publishPath;
 
-		// Token: 0x0400002C RID: 44
 		private Button button_browse;
 
-		// Token: 0x0400002D RID: 45
 		private Button button_openFolder;
 
-		// Token: 0x0400002E RID: 46
 		private Label GtkLabel_publishPath;
 
-		// Token: 0x0400002F RID: 47
 		private Frame frame_dataFormat;
 
-		// Token: 0x04000030 RID: 48
 		private Alignment GtkAlignment_dataFormat;
 
-		// Token: 0x04000031 RID: 49
 		private HBox hbox_dataFormat;
 
-		// Token: 0x04000032 RID: 50
 		private Alignment alignment_dataFormat;
 
-		// Token: 0x04000033 RID: 51
 		private VBox vbox_dataFormat;
 
-		// Token: 0x04000034 RID: 52
 		private VBox vbox_baseSerializer;
 
-		// Token: 0x04000035 RID: 53
 		private HBox hbox_custom;
 
-		// Token: 0x04000036 RID: 54
 		private RadioButton radiobutton_custom;
 
-		// Token: 0x04000037 RID: 55
 		private ComboBox combobox_custom;
 
-		// Token: 0x04000038 RID: 56
 		private HBox hbox_customDes;
 
-		// Token: 0x04000039 RID: 57
 		private Alignment alignment_custom;
 
-		// Token: 0x0400003A RID: 58
 		private Label label_custom;
 
-		// Token: 0x0400003B RID: 59
 		private VBox vbox_helpLink;
 
-		// Token: 0x0400003C RID: 60
 		private Alignment alignment_labelLink;
 
-		// Token: 0x0400003D RID: 61
 		private Alignment alignment_warring;
 
-		// Token: 0x0400003E RID: 62
 		private Label GtkLabel_dataFormat;
 	}
 }

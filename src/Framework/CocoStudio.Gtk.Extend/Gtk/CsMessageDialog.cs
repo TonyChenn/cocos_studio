@@ -11,12 +11,8 @@ using Xwt.Drawing;
 
 namespace Gtk
 {
-	// Token: 0x0200009B RID: 155
 	public class CsMessageDialog : Dialog
 	{
-		// Token: 0x17000094 RID: 148
-		// (get) Token: 0x0600034C RID: 844 RVA: 0x0000E500 File Offset: 0x0000C700
-		// (set) Token: 0x0600034D RID: 845 RVA: 0x0000E51D File Offset: 0x0000C71D
 		public string Info
 		{
 			get
@@ -29,13 +25,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600034E RID: 846 RVA: 0x0000E52D File Offset: 0x0000C72D
 		public CsMessageDialog()
 		{
 			throw new Exception("请使用消息框的有参构造");
 		}
 
-		// Token: 0x0600034F RID: 847 RVA: 0x0000E541 File Offset: 0x0000C741
 		public CsMessageDialog(string info, ButtonText btnText, Window parentWnd, MessageBoxImage image, EnumMainButton mainBtn, string title)
 		{
 			this.Build();
@@ -45,7 +39,6 @@ namespace Gtk
 			this.InitStyle(parentWnd, title);
 		}
 
-		// Token: 0x06000350 RID: 848 RVA: 0x0000E578 File Offset: 0x0000C778
 		private void InitStyle(Window parentWnd, string title)
 		{
 			this.label_text.SetFontSize(12.0);
@@ -96,7 +89,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000351 RID: 849 RVA: 0x0000E714 File Offset: 0x0000C914
 		private void InitImage(MessageBoxImage imageType)
 		{
 			string text;
@@ -127,7 +119,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000352 RID: 850 RVA: 0x0000E7B8 File Offset: 0x0000C9B8
 		private void InitButton(ButtonText btnText, EnumMainButton mainBtn)
 		{
 			this.btnsType = btnText.ButtonType;
@@ -229,7 +220,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000353 RID: 851 RVA: 0x0000EAE0 File Offset: 0x0000CCE0
 		private IDialogButton CreateButtonInstance(string text, EnumMainButton type)
 		{
 			IDialogButton dialogButton;
@@ -247,7 +237,6 @@ namespace Gtk
 			return dialogButton;
 		}
 
-		// Token: 0x06000354 RID: 852 RVA: 0x0000EB34 File Offset: 0x0000CD34
 		private void SetToMainButtonStyle(Widget widgetButton)
 		{
 			if (Option.CurrentApp == EnumApp.Launcher)
@@ -263,7 +252,6 @@ namespace Gtk
 			widgetButton.HasFocus = true;
 		}
 
-		// Token: 0x06000355 RID: 853 RVA: 0x0000EB84 File Offset: 0x0000CD84
 		protected void OnButtonClicked(object sender, EventArgs e)
 		{
 			IDialogButton dialogButton = sender as IDialogButton;
@@ -271,7 +259,6 @@ namespace Gtk
 			base.Respond(buttonType);
 		}
 
-		// Token: 0x06000356 RID: 854 RVA: 0x0000EBA8 File Offset: 0x0000CDA8
 		private void OnCustumTitleClose(object sender, EventArgs args)
 		{
 			if (this.btnsType == MessageBoxButton.YesNo)
@@ -284,13 +271,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000357 RID: 855 RVA: 0x0000EBDE File Offset: 0x0000CDDE
 		private void HandleDialogSizeAllocated(object o, SizeAllocatedArgs args)
 		{
 			base.VBox.BorderWidth = 1U;
 		}
 
-		// Token: 0x06000358 RID: 856 RVA: 0x0000EBF0 File Offset: 0x0000CDF0
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -443,64 +428,44 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x040003E7 RID: 999
 		private MessageBoxButton btnsType;
 
-		// Token: 0x040003E8 RID: 1000
 		private EnumMainButton mainButton;
 
-		// Token: 0x040003E9 RID: 1001
 		private VBox vbox_window;
 
-		// Token: 0x040003EA RID: 1002
 		private Alignment alignment_title;
 
-		// Token: 0x040003EB RID: 1003
 		private EventBox evtbx_bg;
 
-		// Token: 0x040003EC RID: 1004
 		private Alignment alignment_main;
 
-		// Token: 0x040003ED RID: 1005
 		private VBox vbox_main;
 
-		// Token: 0x040003EE RID: 1006
 		private HBox hbox_main;
 
-		// Token: 0x040003EF RID: 1007
 		private VBox vbox_image;
 
-		// Token: 0x040003F0 RID: 1008
 		private Alignment alignment_image;
 
-		// Token: 0x040003F1 RID: 1009
 		private ImageBin imageBin;
 
-		// Token: 0x040003F2 RID: 1010
 		private VBox vbox_text;
 
-		// Token: 0x040003F3 RID: 1011
 		private Alignment alignment_text;
 
-		// Token: 0x040003F4 RID: 1012
 		private Label label_text;
 
-		// Token: 0x040003F5 RID: 1013
 		private Alignment alignment_bottom;
 
-		// Token: 0x040003F6 RID: 1014
 		private HBox hbox_bottom;
 
-		// Token: 0x040003F7 RID: 1015
 		private Alignment alignment_btn1;
 
-		// Token: 0x040003F8 RID: 1016
 		private Alignment alignment_btn2;
 
-		// Token: 0x040003F9 RID: 1017
 		private Alignment alignment_btn3;
 
-		// Token: 0x040003FA RID: 1018
 		private Alignment alignment_occupy;
 	}
 }

@@ -10,22 +10,16 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.NewSolution
 {
-	// Token: 0x0200001D RID: 29
 	[ToolboxItem(true)]
 	public class SolutionTypeContent : Bin, IRadioItemContent
 	{
-		// Token: 0x1700002C RID: 44
-		// (get) Token: 0x060000DD RID: 221 RVA: 0x00007BCC File Offset: 0x00005DCC
-		// (set) Token: 0x060000DE RID: 222 RVA: 0x00007BD4 File Offset: 0x00005DD4
 		public SolutionTypeInfo Info { get; private set; }
 
-		// Token: 0x060000DF RID: 223 RVA: 0x00007BDD File Offset: 0x00005DDD
 		public SolutionTypeContent()
 		{
 			throw new Exception();
 		}
 
-		// Token: 0x060000E0 RID: 224 RVA: 0x00007BEC File Offset: 0x00005DEC
 		public SolutionTypeContent(SolutionTypeInfo info)
 		{
 			this.Build();
@@ -47,18 +41,15 @@ namespace Modules.Communal.NewSolution
 			imageView.Show();
 		}
 
-		// Token: 0x060000E1 RID: 225 RVA: 0x00007C74 File Offset: 0x00005E74
 		public Widget GetGtkWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x060000E2 RID: 226 RVA: 0x00007C77 File Offset: 0x00005E77
 		public void RefreshUI(bool isSelect, ButtonState currentState)
 		{
 		}
 
-		// Token: 0x060000E3 RID: 227 RVA: 0x00007C7C File Offset: 0x00005E7C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -150,46 +141,32 @@ namespace Modules.Communal.NewSolution
 			base.Hide();
 		}
 
-		// Token: 0x040000A6 RID: 166
 		private VBox vbox_main;
 
-		// Token: 0x040000A7 RID: 167
 		private Gtk.Alignment alignment_image;
 
-		// Token: 0x040000A8 RID: 168
 		private VBox vbox_image;
 
-		// Token: 0x040000A9 RID: 169
 		private Gtk.Alignment alignment_imageTop;
 
-		// Token: 0x040000AA RID: 170
 		private HBox hbox_image;
 
-		// Token: 0x040000AB RID: 171
 		private Gtk.Alignment alignment_imageLeft;
 
-		// Token: 0x040000AC RID: 172
 		private Gtk.Alignment alignment_imgBorder;
 
-		// Token: 0x040000AD RID: 173
 		private Gtk.Alignment alignment_imageRight;
 
-		// Token: 0x040000AE RID: 174
 		private Gtk.Alignment alignment_imageBottom;
 
-		// Token: 0x040000AF RID: 175
 		private HBox hbox_title;
 
-		// Token: 0x040000B0 RID: 176
 		private Gtk.Alignment alignment_left;
 
-		// Token: 0x040000B1 RID: 177
 		private Gtk.Alignment alignment_title;
 
-		// Token: 0x040000B2 RID: 178
 		private Label label_title;
 
-		// Token: 0x040000B3 RID: 179
 		private Gtk.Alignment alignment_right;
 	}
 }

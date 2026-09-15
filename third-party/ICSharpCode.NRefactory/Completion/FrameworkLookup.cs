@@ -12,7 +12,6 @@ namespace ICSharpCode.NRefactory.Completion
 	/// <summary>
 	/// The framework lookup provides a fast lookup where an unknow type or extension method may be defined in.
 	/// </summary>
-	// Token: 0x02000141 RID: 321
 	public sealed class FrameworkLookup
 	{
 		/// <summary>
@@ -20,7 +19,6 @@ namespace ICSharpCode.NRefactory.Completion
 		/// </summary>
 		/// <returns>The extension method lookups.</returns>
 		/// <param name="resolveResult">The resolve result.</param>
-		// Token: 0x06000B02 RID: 2818 RVA: 0x00021420 File Offset: 0x00020420
 		public IEnumerable<FrameworkLookup.AssemblyLookup> GetExtensionMethodLookups(UnknownMemberResolveResult resolveResult)
 		{
 			return this.GetLookup(resolveResult.MemberName, this.extLookupTable, 15 + this.assemblyListTable.Length * 4 + this.typeLookupTable.Length * 8);
@@ -33,7 +31,6 @@ namespace ICSharpCode.NRefactory.Completion
 		/// <param name="resolveResult">The resolve result.</param>
 		/// <param name="typeParameterCount">Type parameter count.</param>
 		/// <param name="isInsideAttributeType">If set to <c>true</c> this resolve result may be inside an attribute.</param>
-		// Token: 0x06000B03 RID: 2819 RVA: 0x0002144C File Offset: 0x0002044C
 		public IEnumerable<FrameworkLookup.AssemblyLookup> GetLookups(UnknownIdentifierResolveResult resolveResult, int typeParameterCount, bool isInsideAttributeType)
 		{
 			string identifier = isInsideAttributeType ? (resolveResult.Identifier + "Attribute") : resolveResult.Identifier;
@@ -49,7 +46,6 @@ namespace ICSharpCode.NRefactory.Completion
 		/// <param name="fullMemberName"></param>
 		/// <param name="typeParameterCount">Type parameter count.</param>
 		/// <param name="isInsideAttributeType">If set to <c>true</c> this resolve result may be inside an attribute.</param>
-		// Token: 0x06000B04 RID: 2820 RVA: 0x000216F4 File Offset: 0x000206F4
 		public IEnumerable<FrameworkLookup.AssemblyLookup> GetLookups(UnknownMemberResolveResult resolveResult, string fullMemberName, int typeParameterCount, bool isInsideAttributeType)
 		{
 			string name = isInsideAttributeType ? (resolveResult.MemberName + "Attribute") : resolveResult.MemberName;
@@ -69,7 +65,6 @@ namespace ICSharpCode.NRefactory.Completion
 		/// This method returns a new framework builder to build a new framework lookup data file.
 		/// </summary>
 		/// <param name="fileName">The file name of the data file.</param>
-		// Token: 0x06000B05 RID: 2821 RVA: 0x0002172E File Offset: 0x0002072E
 		public static FrameworkLookup.FrameworkBuilder Create(string fileName)
 		{
 			return new FrameworkLookup.FrameworkBuilder(fileName);
@@ -79,7 +74,6 @@ namespace ICSharpCode.NRefactory.Completion
 		/// Loads a framework lookup object from a file. May return null, if the file wasn't found or has a version mismatch.
 		/// </summary>
 		/// <param name="fileName">File name.</param>
-		// Token: 0x06000B06 RID: 2822 RVA: 0x00021738 File Offset: 0x00020738
 		public static FrameworkLookup Load(string fileName)
 		{
 			try
@@ -130,12 +124,10 @@ namespace ICSharpCode.NRefactory.Completion
 			return frameworkLookup;
 		}
 
-		// Token: 0x06000B07 RID: 2823 RVA: 0x00021894 File Offset: 0x00020894
 		private FrameworkLookup()
 		{
 		}
 
-		// Token: 0x06000B08 RID: 2824 RVA: 0x00021C70 File Offset: 0x00020C70
 		private IEnumerable<FrameworkLookup.AssemblyLookup> GetLookup(string identifier, int[] lookupTable, int tableOffset)
 		{
 			if (lookupTable != null)
@@ -196,7 +188,6 @@ namespace ICSharpCode.NRefactory.Completion
 		/// Use this method instead of the normal <c>string.GetHashCode</c> if the hash code
 		/// is persisted to disk.
 		/// </summary>
-		// Token: 0x06000B09 RID: 2825 RVA: 0x00021CA4 File Offset: 0x00020CA4
 		private static int GetStableHashCode(string text)
 		{
 			int num = 0;
@@ -207,7 +198,6 @@ namespace ICSharpCode.NRefactory.Completion
 			return num;
 		}
 
-		// Token: 0x06000B0A RID: 2826 RVA: 0x00021CD7 File Offset: 0x00020CD7
 		private static string GetIdentifier(string identifier, int tc)
 		{
 			if (tc == 0)
@@ -217,39 +207,29 @@ namespace ICSharpCode.NRefactory.Completion
 			return identifier + "`" + tc;
 		}
 
-		// Token: 0x040003D0 RID: 976
 		private const int headerSize = 15;
 
-		// Token: 0x040003D1 RID: 977
 		public static readonly Version CurrentVersion = new Version(2, 0, 1);
 
-		// Token: 0x040003D2 RID: 978
 		public static readonly FrameworkLookup Empty = new FrameworkLookup();
 
-		// Token: 0x040003D3 RID: 979
 		private string fileName;
 
-		// Token: 0x040003D4 RID: 980
 		private int[] assemblyListTable;
 
-		// Token: 0x040003D5 RID: 981
 		private int[] typeLookupTable;
 
-		// Token: 0x040003D6 RID: 982
 		private int[] extLookupTable;
 
 		/// <summary>
 		/// The assembly lookup determines where a type might be defined.
 		/// It contains the assembly &amp; the namespace.
 		/// </summary>
-		// Token: 0x02000142 RID: 322
 		public struct AssemblyLookup
 		{
 			/// <summary>
 			/// The namespace the requested type is in.
 			/// </summary>
-			// Token: 0x17000422 RID: 1058
-			// (get) Token: 0x06000B0C RID: 2828 RVA: 0x00021D08 File Offset: 0x00020D08
 			public string Namespace
 			{
 				get
@@ -261,8 +241,6 @@ namespace ICSharpCode.NRefactory.Completion
 			/// <summary>
 			/// Gets the full name af the assembly.
 			/// </summary>
-			// Token: 0x17000423 RID: 1059
-			// (get) Token: 0x06000B0D RID: 2829 RVA: 0x00021D10 File Offset: 0x00020D10
 			public string FullName
 			{
 				get
@@ -274,8 +252,6 @@ namespace ICSharpCode.NRefactory.Completion
 			/// <summary>
 			/// Gets the package the assembly is in.
 			/// </summary>
-			// Token: 0x17000424 RID: 1060
-			// (get) Token: 0x06000B0E RID: 2830 RVA: 0x00021D18 File Offset: 0x00020D18
 			public string Package
 			{
 				get
@@ -290,7 +266,6 @@ namespace ICSharpCode.NRefactory.Completion
 			/// <param name="package">The package name.</param>
 			/// <param name="fullName">The full name of the assembly.</param>
 			/// <param name="nspace">The namespace the type is in.</param>
-			// Token: 0x06000B0F RID: 2831 RVA: 0x00021D20 File Offset: 0x00020D20
 			internal AssemblyLookup(string package, string fullName, string nspace)
 			{
 				if (nspace == null)
@@ -306,13 +281,11 @@ namespace ICSharpCode.NRefactory.Completion
 				this.nspace = nspace;
 			}
 
-			// Token: 0x06000B10 RID: 2832 RVA: 0x00021D53 File Offset: 0x00020D53
 			public override string ToString()
 			{
 				return string.Format("[AssemblyLookup: Namespace={0}, FullName={1}, Package={2}]", this.Namespace, this.FullName, this.Package);
 			}
 
-			// Token: 0x06000B11 RID: 2833 RVA: 0x00021D74 File Offset: 0x00020D74
 			public override bool Equals(object obj)
 			{
 				if (obj == null)
@@ -327,32 +300,25 @@ namespace ICSharpCode.NRefactory.Completion
 				return this.Namespace == assemblyLookup.Namespace && this.FullName == assemblyLookup.FullName && this.Package == assemblyLookup.Package;
 			}
 
-			// Token: 0x06000B12 RID: 2834 RVA: 0x00021DE4 File Offset: 0x00020DE4
 			public override int GetHashCode()
 			{
 				return ((this.Namespace != null) ? this.Namespace.GetHashCode() : 0) ^ ((this.FullName != null) ? this.FullName.GetHashCode() : 0) ^ ((this.Package != null) ? this.Package.GetHashCode() : 0);
 			}
 
-			// Token: 0x040003D7 RID: 983
 			private readonly string nspace;
 
-			// Token: 0x040003D8 RID: 984
 			private readonly string fullName;
 
-			// Token: 0x040003D9 RID: 985
 			private readonly string package;
 		}
 
-		// Token: 0x02000143 RID: 323
 		public class FrameworkBuilder : IDisposable
 		{
-			// Token: 0x06000B13 RID: 2835 RVA: 0x00021E38 File Offset: 0x00020E38
 			internal FrameworkBuilder(string fileName)
 			{
 				this.fileName = fileName;
 			}
 
-			// Token: 0x06000B14 RID: 2836 RVA: 0x00021EB8 File Offset: 0x00020EB8
 			private static int[] WriteTable(MemoryStream stream, Dictionary<int, List<ushort>> table, out List<KeyValuePair<int, List<ushort>>> list)
 			{
 				list = new List<KeyValuePair<int, List<ushort>>>(table);
@@ -373,7 +339,6 @@ namespace ICSharpCode.NRefactory.Completion
 				return array;
 			}
 
-			// Token: 0x06000B15 RID: 2837 RVA: 0x00021FA4 File Offset: 0x00020FA4
 			void IDisposable.Dispose()
 			{
 				MemoryStream memoryStream = new MemoryStream();
@@ -427,7 +392,6 @@ namespace ICSharpCode.NRefactory.Completion
 				}
 			}
 
-			// Token: 0x06000B16 RID: 2838 RVA: 0x0002223C File Offset: 0x0002123C
 			private ushort GetLookup(string packageName, string assemblyName, string ns)
 			{
 				FrameworkLookup.FrameworkBuilder.FrameworkLookupId key = new FrameworkLookup.FrameworkBuilder.FrameworkLookupId
@@ -452,7 +416,6 @@ namespace ICSharpCode.NRefactory.Completion
 				return (ushort)num;
 			}
 
-			// Token: 0x06000B17 RID: 2839 RVA: 0x000222F0 File Offset: 0x000212F0
 			private bool AddToTable(string packageName, string assemblyName, Dictionary<int, List<ushort>> table, Dictionary<int, string> checkTable, string id, string ns)
 			{
 				int stableHashCode = FrameworkLookup.GetStableHashCode(id);
@@ -489,7 +452,6 @@ namespace ICSharpCode.NRefactory.Completion
 			/// <param name="packageName">The package the assembly of the type is defined (can be null).</param>
 			/// <param name="fullAssemblyName">The full assembly name the type is defined (needs to be != null).</param>
 			/// <param name="type">The type definition  (needs to be != null).</param>
-			// Token: 0x06000B18 RID: 2840 RVA: 0x00022394 File Offset: 0x00021394
 			public void AddLookup(string packageName, string fullAssemblyName, IUnresolvedTypeDefinition type)
 			{
 				if (fullAssemblyName == null)
@@ -514,37 +476,26 @@ namespace ICSharpCode.NRefactory.Completion
 				}
 			}
 
-			// Token: 0x040003DA RID: 986
 			private readonly string fileName;
 
-			// Token: 0x040003DB RID: 987
 			private Dictionary<int, List<ushort>> typeLookup = new Dictionary<int, List<ushort>>();
 
-			// Token: 0x040003DC RID: 988
 			private Dictionary<int, List<ushort>> extensionMethodLookup = new Dictionary<int, List<ushort>>();
 
-			// Token: 0x040003DD RID: 989
 			private List<FrameworkLookup.AssemblyLookup> assemblyLookups = new List<FrameworkLookup.AssemblyLookup>();
 
-			// Token: 0x040003DE RID: 990
 			private Dictionary<int, string> methodCheck = new Dictionary<int, string>();
 
-			// Token: 0x040003DF RID: 991
 			private Dictionary<int, string> typeCheck = new Dictionary<int, string>();
 
-			// Token: 0x040003E0 RID: 992
 			private Dictionary<FrameworkLookup.FrameworkBuilder.FrameworkLookupId, ushort> frameworkLookupTable = new Dictionary<FrameworkLookup.FrameworkBuilder.FrameworkLookupId, ushort>();
 
-			// Token: 0x02000144 RID: 324
 			private struct FrameworkLookupId
 			{
-				// Token: 0x040003E2 RID: 994
 				public string PackageName;
 
-				// Token: 0x040003E3 RID: 995
 				public string AssemblyName;
 
-				// Token: 0x040003E4 RID: 996
 				public string NameSpace;
 			}
 		}

@@ -5,10 +5,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200008D RID: 141
 	internal class LengthLimitEditor : BaseEditor
 	{
-		// Token: 0x060004DF RID: 1247 RVA: 0x00015220 File Offset: 0x00013420
 		protected override Widget OnCreateWidget()
 		{
 			HBox hbox = new HBox();
@@ -32,7 +30,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x060004E0 RID: 1248 RVA: 0x00015310 File Offset: 0x00013510
 		protected override void OnSetControl()
 		{
 			AstrictLengthValue value = base.PropertyItem.GetValue<AstrictLengthValue>(0);
@@ -41,7 +38,6 @@ namespace CocoStudio.Model.Editor
 			this.lengthEntry.Value = (float)value.MaxLengthText;
 		}
 
-		// Token: 0x060004E1 RID: 1249 RVA: 0x00015364 File Offset: 0x00013564
 		private void EntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			AstrictLengthValue value = base.PropertyItem.GetValue<AstrictLengthValue>(0);
@@ -49,7 +45,6 @@ namespace CocoStudio.Model.Editor
 			base.UpdatePropertyValue(value, null);
 		}
 
-		// Token: 0x060004E2 RID: 1250 RVA: 0x00015398 File Offset: 0x00013598
 		private void CheckBoxToggledHandler(object sender, EventArgs e)
 		{
 			AstrictLengthValue value = base.PropertyItem.GetValue<AstrictLengthValue>(0);
@@ -58,10 +53,8 @@ namespace CocoStudio.Model.Editor
 			base.UpdatePropertyValue(value, null);
 		}
 
-		// Token: 0x04000241 RID: 577
 		private CheckButton enableLimitCheckBox;
 
-		// Token: 0x04000242 RID: 578
 		private NoUndoNumEntry lengthEntry;
 	}
 }

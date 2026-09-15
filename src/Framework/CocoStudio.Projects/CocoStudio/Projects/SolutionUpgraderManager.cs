@@ -8,16 +8,13 @@ using Mono.Addins;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x02000026 RID: 38
 	internal class SolutionUpgraderManager
 	{
-		// Token: 0x060000D0 RID: 208 RVA: 0x00004341 File Offset: 0x00002541
 		static SolutionUpgraderManager()
 		{
 			SolutionUpgraderManager.LoadSolutionUpgraders();
 		}
 
-		// Token: 0x060000D1 RID: 209 RVA: 0x00004348 File Offset: 0x00002548
 		private static void LoadSolutionUpgraders()
 		{
 			try
@@ -36,7 +33,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060000D2 RID: 210 RVA: 0x000043C0 File Offset: 0x000025C0
 		public static bool Upgrade(string filePath)
 		{
 			bool result = false;
@@ -65,7 +61,6 @@ namespace CocoStudio.Projects
 			return result;
 		}
 
-		// Token: 0x060000D3 RID: 211 RVA: 0x000044A4 File Offset: 0x000026A4
 		public static bool Upgrade(Solution solution)
 		{
 			bool result = false;
@@ -79,7 +74,6 @@ namespace CocoStudio.Projects
 			return result;
 		}
 
-		// Token: 0x0400003B RID: 59
 		private static List<ISolutionUpgrader> solutionUpgraderList;
 	}
 }

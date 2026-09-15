@@ -10,11 +10,8 @@ using Modules.Communal.Preference;
 
 namespace Modules.UI.MainTool
 {
-	// Token: 0x02000004 RID: 4
 	internal class CanvasWidget : BaseToolbarWidget
 	{
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x0600000A RID: 10 RVA: 0x00002064 File Offset: 0x00000264
 		public override Widget GtkWidget
 		{
 			get
@@ -23,8 +20,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x0600000B RID: 11 RVA: 0x0000207C File Offset: 0x0000027C
 		public ResolutionConfig CurrentResolution
 		{
 			get
@@ -43,7 +38,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x000020F4 File Offset: 0x000002F4
 		public CanvasWidget()
 		{
 			this.ViewModel = new CanvasViewModel(Services.EventsService, this);
@@ -52,7 +46,6 @@ namespace Modules.UI.MainTool
 			this.RefreshCanvasComboBox();
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x00002148 File Offset: 0x00000348
 		private void InitWidget()
 		{
 			this.mainHBox = new HBox();
@@ -73,7 +66,6 @@ namespace Modules.UI.MainTool
 			this.mainHBox.ShowAll();
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002244 File Offset: 0x00000444
 		private void InitEvent()
 		{
 			this.mainComboBox.Changed += this.CanvasComboBoxChangedHandler;
@@ -81,7 +73,6 @@ namespace Modules.UI.MainTool
 			Option.UserConfig.PropertyChanged += this.UserConfigPropertyChangedHandler;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x0000229C File Offset: 0x0000049C
 		public void SelectResolution(ResolutionConfig newResolution)
 		{
 			this.mainComboBox.Changed -= this.CanvasComboBoxChangedHandler;
@@ -124,7 +115,6 @@ namespace Modules.UI.MainTool
 			this.mainComboBox.Changed += this.CanvasComboBoxChangedHandler;
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002444 File Offset: 0x00000644
 		private void RefreshCanvasComboBox()
 		{
 			this.mainComboBox.Changed -= this.CanvasComboBoxChangedHandler;
@@ -164,7 +154,6 @@ namespace Modules.UI.MainTool
 			this.mainComboBox.Changed += this.CanvasComboBoxChangedHandler;
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x000025A0 File Offset: 0x000007A0
 		private void ReverseScreen()
 		{
 			ResolutionConfig currentResolution = this.CurrentResolution;
@@ -180,7 +169,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x00002634 File Offset: 0x00000834
 		private void RefreshCanvasButtons()
 		{
 			if (this.CurrentResolution != null)
@@ -198,25 +186,21 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x000026BC File Offset: 0x000008BC
 		public override void OnProjectChanged(ProjectsOperations.ProjectEventArgs args)
 		{
 			this.ViewModel.OnProjectChanged(args);
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x000026CC File Offset: 0x000008CC
 		public override void OnSolutionClosed(SolutionEventArgs args)
 		{
 			this.ViewModel.OnSolutionClosed(args);
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x000026DC File Offset: 0x000008DC
 		public override void OnSolutionChanged(SolutionEventArgs args)
 		{
 			this.ViewModel.OnSolutionChanged(args);
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x000026EC File Offset: 0x000008EC
 		private void CanvasComboBoxChangedHandler(object sender, EventArgs e)
 		{
 			if (this.mainComboBox.ActiveText != null)
@@ -248,34 +232,26 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x000027B8 File Offset: 0x000009B8
 		private void HorizonButtonCheckedChangeHandler(object o, EventArgs args)
 		{
 			this.ReverseScreen();
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x000027C2 File Offset: 0x000009C2
 		private void UserConfigPropertyChangedHandler(object sender, PropertyChangedEventArgs e)
 		{
 			this.RefreshCanvasComboBox();
 		}
 
-		// Token: 0x04000001 RID: 1
 		private HBox mainHBox;
 
-		// Token: 0x04000002 RID: 2
 		private ComboBox mainComboBox;
 
-		// Token: 0x04000003 RID: 3
 		private IconRadioButton buttonHorizon;
 
-		// Token: 0x04000004 RID: 4
 		private IconRadioButton buttonVertical;
 
-		// Token: 0x04000005 RID: 5
 		private CanvasViewModel ViewModel;
 
-		// Token: 0x04000006 RID: 6
 		private ResolutionConfig preResolution = Option.UserConfig.ResolutionList[0];
 	}
 }

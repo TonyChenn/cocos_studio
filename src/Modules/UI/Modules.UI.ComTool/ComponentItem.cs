@@ -14,11 +14,9 @@ using Xwt.Drawing;
 
 namespace Modules.UI.ComTool
 {
-	// Token: 0x0200000E RID: 14
 	[ToolboxItem(true)]
 	public class ComponentItem : Bin
 	{
-		// Token: 0x06000037 RID: 55 RVA: 0x00002CA4 File Offset: 0x00000EA4
 		public ComponentItem()
 		{
 			this.Build();
@@ -37,7 +35,6 @@ namespace Modules.UI.ComTool
 			this.vbox_labels.Remove(this.label_secondLine);
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00002DA0 File Offset: 0x00000FA0
 		private void BuildImage()
 		{
 			if (this.imgDetail == null)
@@ -50,7 +47,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00002E04 File Offset: 0x00001004
 		private void HandleMotionNotifyEvent(object o, MotionNotifyEventArgs args)
 		{
 			if (this.UIControlToolItem != null)
@@ -60,7 +56,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x00002E8C File Offset: 0x0000108C
 		private void ShowTooltip()
 		{
 			if (this.tooltipWin == null)
@@ -85,7 +80,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x00002EFC File Offset: 0x000010FC
 		private void PositioningToolTip()
 		{
 			int num;
@@ -122,7 +116,6 @@ namespace Modules.UI.ComTool
 			this.toolY = num2;
 		}
 
-		// Token: 0x0600003C RID: 60 RVA: 0x0000304C File Offset: 0x0000124C
 		private void HandleLeaveNotifyEvent(object o, LeaveNotifyEventArgs args)
 		{
 			if (args.Event.Detail != NotifyType.Inferior)
@@ -134,7 +127,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x00003098 File Offset: 0x00001298
 		private bool IsSelected(double mouseX, double mouseY)
 		{
 			if (base.GdkWindow != null)
@@ -157,7 +149,6 @@ namespace Modules.UI.ComTool
 			return false;
 		}
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00003192 File Offset: 0x00001392
 		[ConnectBefore]
 		private void HandleEnterNotifyEvent(object o, EnterNotifyEventArgs args)
 		{
@@ -165,12 +156,8 @@ namespace Modules.UI.ComTool
 			this.SelectedMode();
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x0600003F RID: 63 RVA: 0x000031A4 File Offset: 0x000013A4
-		// (set) Token: 0x06000040 RID: 64 RVA: 0x000031BB File Offset: 0x000013BB
 		public ControlToolItem UIControlToolItem { get; set; }
 
-		// Token: 0x06000041 RID: 65 RVA: 0x000031C4 File Offset: 0x000013C4
 		public void InitiCom(ControlToolItem com)
 		{
 			this.imgIcon.SetImageView(com.BitImage);
@@ -195,7 +182,6 @@ namespace Modules.UI.ComTool
 			this.UIControlToolItem = com;
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x00003294 File Offset: 0x00001494
 		public void SelectedMode()
 		{
 			this.evtbx_bg.ModifyBg(StateType.Normal, this.SelectedColor);
@@ -207,7 +193,6 @@ namespace Modules.UI.ComTool
 			base.Show();
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x000032EC File Offset: 0x000014EC
 		public void UnSelectedMode()
 		{
 			this.evtbx_bg.ModifyBg(StateType.Normal, this.UnSelectedColor);
@@ -224,7 +209,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x0000337C File Offset: 0x0000157C
 		protected override void OnDragBegin(DragContext context)
 		{
 			if (this.uiToolDragData != null)
@@ -236,7 +220,6 @@ namespace Modules.UI.ComTool
 			base.OnDragBegin(context);
 		}
 
-		// Token: 0x06000045 RID: 69 RVA: 0x000033D8 File Offset: 0x000015D8
 		private void AddFeatureInfo()
 		{
 			string text = this.uiToolDragData.ModelMedaData.Type.Name;
@@ -248,14 +231,12 @@ namespace Modules.UI.ComTool
 			Tracker.Add(ViewRegions.ResourcePanel, "New" + text, "", "");
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x00003458 File Offset: 0x00001658
 		protected override bool OnDragFailed(DragContext drag_context, DragResult drag_result)
 		{
 			ComponentItem.isDragSucceed = false;
 			return base.OnDragFailed(drag_context, drag_result);
 		}
 
-		// Token: 0x06000047 RID: 71 RVA: 0x00003478 File Offset: 0x00001678
 		protected override void OnDragEnd(DragContext context)
 		{
 			if (ComponentItem.isDragSucceed)
@@ -266,7 +247,6 @@ namespace Modules.UI.ComTool
 			base.OnDragEnd(context);
 		}
 
-		// Token: 0x06000048 RID: 72 RVA: 0x000034A8 File Offset: 0x000016A8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -364,76 +344,53 @@ namespace Modules.UI.ComTool
 			base.Hide();
 		}
 
-		// Token: 0x04000026 RID: 38
 		private Gdk.Color SelectedColor = new Gdk.Color(50, 50, 54);
 
-		// Token: 0x04000027 RID: 39
 		private Gdk.Color UnSelectedColor = WindowStyle.WindowPanelColor;
 
-		// Token: 0x04000028 RID: 40
 		public static int ComSize = 70;
 
-		// Token: 0x04000029 RID: 41
 		public static Point TooltipOffset = new Point(10, 15);
 
-		// Token: 0x0400002A RID: 42
 		private static bool isDragSucceed = true;
 
-		// Token: 0x0400002B RID: 43
 		private ImageBin imgDetail;
 
-		// Token: 0x0400002C RID: 44
 		private static TargetEntry[] source_table = new TargetEntry[]
 		{
 			DragTargetType.CocoStudioTarget
 		};
 
-		// Token: 0x0400002D RID: 45
 		private ControlToolItem uiToolDragData;
 
-		// Token: 0x0400002E RID: 46
 		private int toolX;
 
-		// Token: 0x0400002F RID: 47
 		private int toolY;
 
-		// Token: 0x04000030 RID: 48
 		private ToolTipWindow tooltipWin;
 
-		// Token: 0x04000031 RID: 49
 		private EventBox evtbx_bg;
 
-		// Token: 0x04000032 RID: 50
 		private VBox vbox_main;
 
-		// Token: 0x04000033 RID: 51
 		private HBox hbox_top;
 
-		// Token: 0x04000034 RID: 52
 		private Alignment alignment_mainIcon;
 
-		// Token: 0x04000035 RID: 53
 		private ImageBin imgIcon;
 
-		// Token: 0x04000036 RID: 54
 		private VBox vbox_info;
 
-		// Token: 0x04000037 RID: 55
 		private EventBox evtbx_Detail;
 
-		// Token: 0x04000038 RID: 56
 		private VBox vbox_topOccupy;
 
-		// Token: 0x04000039 RID: 57
 		private VBox vbox_labels;
 
-		// Token: 0x0400003A RID: 58
 		private Label labComName;
 
-		// Token: 0x0400003B RID: 59
 		private Label label_secondLine;
 
-		// Token: 0x0400003C RID: 60
 		private VBox vbox_bottomOccupy;
 	}
 }

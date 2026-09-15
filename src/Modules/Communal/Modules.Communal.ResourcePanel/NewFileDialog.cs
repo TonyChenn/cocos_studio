@@ -15,30 +15,16 @@ using Stetic;
 
 namespace Modules.Communal.ResourcePanel
 {
-	// Token: 0x02000033 RID: 51
 	public class NewFileDialog : Dialog
 	{
-		// Token: 0x17000040 RID: 64
-		// (get) Token: 0x060001F3 RID: 499 RVA: 0x0000AE5C File Offset: 0x0000905C
-		// (set) Token: 0x060001F4 RID: 500 RVA: 0x0000AE64 File Offset: 0x00009064
 		public string FileName { get; private set; }
 
-		// Token: 0x17000041 RID: 65
-		// (get) Token: 0x060001F5 RID: 501 RVA: 0x0000AE6D File Offset: 0x0000906D
-		// (set) Token: 0x060001F6 RID: 502 RVA: 0x0000AE75 File Offset: 0x00009075
 		public string FileType { get; private set; }
 
-		// Token: 0x17000042 RID: 66
-		// (get) Token: 0x060001F7 RID: 503 RVA: 0x0000AE7E File Offset: 0x0000907E
-		// (set) Token: 0x060001F8 RID: 504 RVA: 0x0000AE86 File Offset: 0x00009086
 		public float Width { get; private set; }
 
-		// Token: 0x17000043 RID: 67
-		// (get) Token: 0x060001F9 RID: 505 RVA: 0x0000AE8F File Offset: 0x0000908F
-		// (set) Token: 0x060001FA RID: 506 RVA: 0x0000AE97 File Offset: 0x00009097
 		public float Height { get; private set; }
 
-		// Token: 0x060001FB RID: 507 RVA: 0x0000AEA0 File Offset: 0x000090A0
 		public NewFileDialog(Gtk.Window parentWindow, string parentFolder, Size size)
 		{
 			this.Build();
@@ -52,7 +38,6 @@ namespace Modules.Communal.ResourcePanel
 			this.SetToDialogStyle(parentWindow, true, true, true);
 		}
 
-		// Token: 0x060001FC RID: 508 RVA: 0x0000AEFC File Offset: 0x000090FC
 		private void InitWidgets()
 		{
 			this.button_OK.Name = "MainButton";
@@ -77,7 +62,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001FD RID: 509 RVA: 0x0000AFDC File Offset: 0x000091DC
 		private void InitEvent()
 		{
 			base.KeyPressEvent += this.KeyPressEventHandler;
@@ -89,7 +73,6 @@ namespace Modules.Communal.ResourcePanel
 			this.entry_FileName.Changed += this.FileNameEntryChangedHandler;
 		}
 
-		// Token: 0x060001FE RID: 510 RVA: 0x0000B088 File Offset: 0x00009288
 		private void InitFileTypeWidgets()
 		{
 			this.itemGroup = new FileTypeItemGroup();
@@ -104,7 +87,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001FF RID: 511 RVA: 0x0000B128 File Offset: 0x00009328
 		private void InitLanguages()
 		{
 			base.Title = LanguageInfo.NewFile_Title;
@@ -120,7 +102,6 @@ namespace Modules.Communal.ResourcePanel
 			this.lab_FileDescribeContent.LabelProp = LanguageInfo.NewFile_SceneDes;
 		}
 
-		// Token: 0x06000200 RID: 512 RVA: 0x0000B1F0 File Offset: 0x000093F0
 		private string GetNewFileName(string fileName, string parentDir, string extension)
 		{
 			string text = System.IO.Path.Combine(parentDir, fileName + extension);
@@ -135,7 +116,6 @@ namespace Modules.Communal.ResourcePanel
 			return System.IO.Path.GetFileNameWithoutExtension(text);
 		}
 
-		// Token: 0x06000201 RID: 513 RVA: 0x0000B250 File Offset: 0x00009450
 		private bool IsExistChild(ResourceFolder folder, string filePath)
 		{
 			if (folder == null || folder.Items == null)
@@ -152,7 +132,6 @@ namespace Modules.Communal.ResourcePanel
 			return false;
 		}
 
-		// Token: 0x06000202 RID: 514 RVA: 0x0000B2B8 File Offset: 0x000094B8
 		private void ChangeSelectFileType(IProjectFileCreator view)
 		{
 			if (!this.hasNameChanged)
@@ -172,7 +151,6 @@ namespace Modules.Communal.ResourcePanel
 			this.RefreshWidthHeightWidget(view.MaxSize, view.MaxSize, view.CanEditSize);
 		}
 
-		// Token: 0x06000203 RID: 515 RVA: 0x0000B368 File Offset: 0x00009568
 		private void RefreshWidthHeightWidget(int w, int h, bool editable)
 		{
 			this.label_px1.Sensitive = editable;
@@ -197,7 +175,6 @@ namespace Modules.Communal.ResourcePanel
 			this.entry_height.Text = string.Empty;
 		}
 
-		// Token: 0x06000204 RID: 516 RVA: 0x0000B40C File Offset: 0x0000960C
 		private bool CheckValidity(string extension)
 		{
 			if (string.IsNullOrWhiteSpace(this.entry_FileName.Text))
@@ -241,7 +218,6 @@ namespace Modules.Communal.ResourcePanel
 			return this.CheckIsWidthHeightValid(this.entry_width, true) && this.CheckIsWidthHeightValid(this.entry_height, false);
 		}
 
-		// Token: 0x06000205 RID: 517 RVA: 0x0000B598 File Offset: 0x00009798
 		private bool CheckIsWidthHeightValid(Entry entry, bool isWidth)
 		{
 			if (this.itemGroup.SelectedItem.FileView.FileType != NodeType.Layer)
@@ -264,7 +240,6 @@ namespace Modules.Communal.ResourcePanel
 			return flag;
 		}
 
-		// Token: 0x06000206 RID: 518 RVA: 0x0000B624 File Offset: 0x00009824
 		private void RefreshOKButton()
 		{
 			if (string.IsNullOrWhiteSpace(this.entry_FileName.Text))
@@ -285,19 +260,16 @@ namespace Modules.Communal.ResourcePanel
 			this.button_OK.Sensitive = true;
 		}
 
-		// Token: 0x06000207 RID: 519 RVA: 0x0000B6B2 File Offset: 0x000098B2
 		private void FileNameEntryChangedHandler(object sender, EventArgs e)
 		{
 			this.hasNameChanged = true;
 		}
 
-		// Token: 0x06000208 RID: 520 RVA: 0x0000B6BB File Offset: 0x000098BB
 		private void HandleEntryChanged(object sender, EventArgs e)
 		{
 			this.RefreshOKButton();
 		}
 
-		// Token: 0x06000209 RID: 521 RVA: 0x0000B6C4 File Offset: 0x000098C4
 		private void HandleButtonOKClicked(object sender, EventArgs e)
 		{
 			IProjectFileCreator fileView = this.itemGroup.SelectedItem.FileView;
@@ -319,19 +291,16 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600020A RID: 522 RVA: 0x0000B762 File Offset: 0x00009962
 		private void HandleButtonCancelClicked(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.Cancel);
 		}
 
-		// Token: 0x0600020B RID: 523 RVA: 0x0000B76C File Offset: 0x0000996C
 		private void HandleFileTypeItemChanged(object sender, FileTypeItemChangedArgs e)
 		{
 			this.ChangeSelectFileType(e.Item.FileView);
 		}
 
-		// Token: 0x0600020C RID: 524 RVA: 0x0000B77F File Offset: 0x0000997F
 		[ConnectBefore]
 		private void KeyPressEventHandler(object o, KeyPressEventArgs args)
 		{
@@ -341,7 +310,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600020D RID: 525 RVA: 0x0000B7B5 File Offset: 0x000099B5
 		private void IconDoubleClickedHandler(object sender, EventArgs e)
 		{
 			if (this.button_OK.Sensitive)
@@ -350,13 +318,11 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600020E RID: 526 RVA: 0x0000B7D0 File Offset: 0x000099D0
 		protected void DialogSizeAllocatedHandler(object o, SizeAllocatedArgs args)
 		{
 			this.lab_FileDescribeContent.WidthRequest = this.entry_FileName.Allocation.Width;
 		}
 
-		// Token: 0x0600020F RID: 527 RVA: 0x0000B7F0 File Offset: 0x000099F0
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -591,97 +557,66 @@ namespace Modules.Communal.ResourcePanel
 			base.SizeAllocated += this.DialogSizeAllocatedHandler;
 		}
 
-		// Token: 0x040000AF RID: 175
 		private const int minSize = 1;
 
-		// Token: 0x040000B0 RID: 176
 		private const int maxSize = 4096;
 
-		// Token: 0x040000B1 RID: 177
 		private string parentDir;
 
-		// Token: 0x040000B2 RID: 178
 		private int defaultFileWidth;
 
-		// Token: 0x040000B3 RID: 179
 		private int defaultFileHeight;
 
-		// Token: 0x040000B4 RID: 180
 		private FileTypeItemGroup itemGroup;
 
-		// Token: 0x040000B5 RID: 181
 		private bool hasNameChanged;
 
-		// Token: 0x040000B6 RID: 182
 		private ResourceFolder parentFolder;
 
-		// Token: 0x040000B7 RID: 183
 		private Alignment alignment_main;
 
-		// Token: 0x040000B8 RID: 184
 		private Table tab_Root;
 
-		// Token: 0x040000B9 RID: 185
 		private Entry entry_FileName;
 
-		// Token: 0x040000BA RID: 186
 		private HBox hbox_FileType;
 
-		// Token: 0x040000BB RID: 187
 		private Label lab_FileDescribe;
 
-		// Token: 0x040000BC RID: 188
 		private Label lab_FileDescribeContent;
 
-		// Token: 0x040000BD RID: 189
 		private Label lab_FileName;
 
-		// Token: 0x040000BE RID: 190
 		private Label lab_FileSize;
 
-		// Token: 0x040000BF RID: 191
 		private Label lab_FileType;
 
-		// Token: 0x040000C0 RID: 192
 		private Table table_widthHeight;
 
-		// Token: 0x040000C1 RID: 193
 		private Alignment alignment_widthPx;
 
-		// Token: 0x040000C2 RID: 194
 		private Label label_px1;
 
-		// Token: 0x040000C3 RID: 195
 		private EventBox evtbx_height;
 
-		// Token: 0x040000C4 RID: 196
 		private Entry entry_height;
 
-		// Token: 0x040000C5 RID: 197
 		private EventBox evtbx_width;
 
-		// Token: 0x040000C6 RID: 198
 		private Entry entry_width;
 
-		// Token: 0x040000C7 RID: 199
 		private Label label_height;
 
-		// Token: 0x040000C8 RID: 200
 		private Label label_px2;
 
-		// Token: 0x040000C9 RID: 201
 		private Label label_width;
 
-		// Token: 0x040000CA RID: 202
 		private EventBox evtbx_bottomSeperator;
 
-		// Token: 0x040000CB RID: 203
 		private HBox hbox_bottomBtn;
 
-		// Token: 0x040000CC RID: 204
 		private Button button_cancel;
 
-		// Token: 0x040000CD RID: 205
 		private Button button_OK;
 	}
 }

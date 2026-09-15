@@ -10,25 +10,14 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.Render.Model
 {
-	// Token: 0x0200002F RID: 47
 	public class RulerView : DrawingArea
 	{
-		// Token: 0x17000043 RID: 67
-		// (get) Token: 0x060001DE RID: 478 RVA: 0x0000AD68 File Offset: 0x00008F68
-		// (set) Token: 0x060001DF RID: 479 RVA: 0x0000AD7F File Offset: 0x00008F7F
 		public double Zoom { get; set; }
 
-		// Token: 0x17000044 RID: 68
-		// (get) Token: 0x060001E0 RID: 480 RVA: 0x0000AD88 File Offset: 0x00008F88
-		// (set) Token: 0x060001E1 RID: 481 RVA: 0x0000AD9F File Offset: 0x00008F9F
 		public double ZeroValue { get; set; }
 
-		// Token: 0x17000045 RID: 69
-		// (get) Token: 0x060001E2 RID: 482 RVA: 0x0000ADA8 File Offset: 0x00008FA8
-		// (set) Token: 0x060001E3 RID: 483 RVA: 0x0000ADBF File Offset: 0x00008FBF
 		public Orientation RulerOrientation { get; set; }
 
-		// Token: 0x060001E4 RID: 484 RVA: 0x0000ADC8 File Offset: 0x00008FC8
 		public RulerView()
 		{
 			this.ZeroValue = 200.0;
@@ -42,13 +31,11 @@ namespace Modules.Communal.Render.Model
 			base.KeyReleaseEvent += this.RulerView_KeyReleaseEvent;
 		}
 
-		// Token: 0x060001E5 RID: 485 RVA: 0x0000AE7F File Offset: 0x0000907F
 		public void Initialize()
 		{
 			GameWindow.Current.GetCanvasObject().PropertyChanged += this.CanvasPropertyChangedHandle;
 		}
 
-		// Token: 0x060001E6 RID: 486 RVA: 0x0000AEA0 File Offset: 0x000090A0
 		protected override bool OnExposeEvent(EventExpose evnt)
 		{
 			using (Context context = CairoHelper.Create(base.GdkWindow))
@@ -66,7 +53,6 @@ namespace Modules.Communal.Render.Model
 			return base.OnExposeEvent(evnt);
 		}
 
-		// Token: 0x060001E7 RID: 487 RVA: 0x0000AF58 File Offset: 0x00009158
 		private void RenderBackground(Gdk.Rectangle area)
 		{
 			System.Drawing.Color color_Background = RulerConsts.Color_Background;
@@ -75,7 +61,6 @@ namespace Modules.Communal.Render.Model
 			this.context.Fill();
 		}
 
-		// Token: 0x060001E8 RID: 488 RVA: 0x0000AFF0 File Offset: 0x000091F0
 		private void RenderBottomLine(Gdk.Rectangle area)
 		{
 			this.context.SetColor(RulerConsts.Color_Line);
@@ -97,7 +82,6 @@ namespace Modules.Communal.Render.Model
 			this.context.Stroke();
 		}
 
-		// Token: 0x060001E9 RID: 489 RVA: 0x0000B0B8 File Offset: 0x000092B8
 		private void RenderLine(Gdk.Rectangle area)
 		{
 			this.context.SetFontSize(10.0);
@@ -119,7 +103,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060001EA RID: 490 RVA: 0x0000B1DC File Offset: 0x000093DC
 		private void DrawThinLine(double dUnit)
 		{
 			if (this.Zoom >= 0.09 && this.Zoom < 0.16)
@@ -164,7 +147,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060001EB RID: 491 RVA: 0x0000B438 File Offset: 0x00009638
 		private void DrawContent(double dUnit, int forCount, int centerLineCount, int longLineCount)
 		{
 			double num = dUnit * (double)this.forPixelUnit;
@@ -200,7 +182,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060001EC RID: 492 RVA: 0x0000B548 File Offset: 0x00009748
 		private void DrawText(double point_x, int text)
 		{
 			this.context.SetColor(RulerConsts.Color_Text);
@@ -220,7 +201,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060001ED RID: 493 RVA: 0x0000B634 File Offset: 0x00009834
 		private void DrawLine(double x, double h)
 		{
 			this.context.SetColor(RulerConsts.Color_Line);
@@ -237,7 +217,6 @@ namespace Modules.Communal.Render.Model
 			this.context.Stroke();
 		}
 
-		// Token: 0x060001EE RID: 494 RVA: 0x0000B6EC File Offset: 0x000098EC
 		private void DragNewLine(MotionNotifyEventArgs args)
 		{
 			if (!this.hasCreateNewLine)
@@ -248,7 +227,6 @@ namespace Modules.Communal.Render.Model
 			GuidesService.Instance.OnMouseMove(args);
 		}
 
-		// Token: 0x060001EF RID: 495 RVA: 0x0000B724 File Offset: 0x00009924
 		private void AddGuides(MotionNotifyEventArgs args)
 		{
 			CocoStudio.Model.PointF pointF = this.GetToCanvasPosition(args);
@@ -267,7 +245,6 @@ namespace Modules.Communal.Render.Model
 			GuidesService.Instance.DragNewGuides(guidesObject);
 		}
 
-		// Token: 0x060001F0 RID: 496 RVA: 0x0000B7A8 File Offset: 0x000099A8
 		private CocoStudio.Model.PointF GetToCanvasPosition(MotionNotifyEventArgs args)
 		{
 			CocoStudio.Model.PointF pointF = this.ConvertMovePosition(args.Event.X, args.Event.Y);
@@ -275,7 +252,6 @@ namespace Modules.Communal.Render.Model
 			return GameWindow.Current.GetCanvasObject().TransformToSelf(pointF);
 		}
 
-		// Token: 0x060001F1 RID: 497 RVA: 0x0000B7F8 File Offset: 0x000099F8
 		private CocoStudio.Model.PointF ConvertMovePosition(double x, double y)
 		{
 			CocoStudio.Model.PointF pointF = new CocoStudio.Model.PointF((float)x, (float)y);
@@ -291,7 +267,6 @@ namespace Modules.Communal.Render.Model
 			return pointF;
 		}
 
-		// Token: 0x060001F2 RID: 498 RVA: 0x0000B864 File Offset: 0x00009A64
 		private void CanvasPropertyChangedHandle(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			CanvasObject canvas = sender as CanvasObject;
@@ -301,7 +276,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060001F3 RID: 499 RVA: 0x0000B8B0 File Offset: 0x00009AB0
 		private void QueueDrawRuler(CanvasObject canvas)
 		{
 			CocoStudio.Model.PointF position = canvas.Position;
@@ -317,7 +291,6 @@ namespace Modules.Communal.Render.Model
 			base.QueueDraw();
 		}
 
-		// Token: 0x060001F4 RID: 500 RVA: 0x0000B928 File Offset: 0x00009B28
 		private void RulerView_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			if (args.Event.GetMouseButton() == MouseButton.Left)
@@ -328,7 +301,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060001F5 RID: 501 RVA: 0x0000B978 File Offset: 0x00009B78
 		private void RulerView_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			base.GdkWindow.Cursor = null;
@@ -339,7 +311,6 @@ namespace Modules.Communal.Render.Model
 			GuidesService.Instance.DragFinished(isDeleted);
 		}
 
-		// Token: 0x060001F6 RID: 502 RVA: 0x0000BA08 File Offset: 0x00009C08
 		private void RulerView_MotionNotifyEvent(object o, MotionNotifyEventArgs args)
 		{
 			if (KeyboardExtend.IsMousePressed(args.Event.State))
@@ -355,7 +326,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060001F7 RID: 503 RVA: 0x0000BA84 File Offset: 0x00009C84
 		private void SetCursor()
 		{
 			if (this.RulerOrientation == Orientation.Horizontal)
@@ -368,37 +338,28 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060001F8 RID: 504 RVA: 0x0000BAC6 File Offset: 0x00009CC6
 		private void RulerView_KeyPressEvent(object o, KeyPressEventArgs args)
 		{
 			GuidesService.Instance.OnKeyDown(args);
 		}
 
-		// Token: 0x060001F9 RID: 505 RVA: 0x0000BAD5 File Offset: 0x00009CD5
 		private void RulerView_KeyReleaseEvent(object o, KeyReleaseEventArgs args)
 		{
 			GuidesService.Instance.OnKeyUp(args);
 		}
 
-		// Token: 0x04000084 RID: 132
 		private double rulerLength;
 
-		// Token: 0x04000085 RID: 133
 		private int forPixelUnit;
 
-		// Token: 0x04000086 RID: 134
 		private Context context;
 
-		// Token: 0x04000087 RID: 135
 		private bool isLeftZero = false;
 
-		// Token: 0x04000088 RID: 136
 		private double mousePress_x;
 
-		// Token: 0x04000089 RID: 137
 		private double mousePress_y;
 
-		// Token: 0x0400008A RID: 138
 		private bool hasCreateNewLine = false;
 	}
 }

@@ -5,10 +5,8 @@ using CocoStudio.Projects;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000061 RID: 97
 	internal static class ResourceFilterAttributeExtend
 	{
-		// Token: 0x06000347 RID: 839 RVA: 0x0000DD44 File Offset: 0x0000BF44
 		public static bool CheckResource(this ResourceFilterAttribute attribute, ResourceFile resourceFile)
 		{
 			bool result;

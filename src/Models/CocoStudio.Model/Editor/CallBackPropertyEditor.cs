@@ -11,10 +11,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000050 RID: 80
 	internal class CallBackPropertyEditor : BaseEditor
 	{
-		// Token: 0x060002AC RID: 684 RVA: 0x00009044 File Offset: 0x00007244
 		protected override Widget OnCreateWidget()
 		{
 			this.combox = new ComboBox();
@@ -39,7 +37,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x060002AD RID: 685 RVA: 0x00009150 File Offset: 0x00007350
 		private void entry_KeyReleaseEvent(object o, KeyReleaseEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Return && this.entry.IsFocus)
@@ -48,13 +45,11 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002AE RID: 686 RVA: 0x0000918F File Offset: 0x0000738F
 		private void entry_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			this.SetData();
 		}
 
-		// Token: 0x060002AF RID: 687 RVA: 0x0000919C File Offset: 0x0000739C
 		private void SetData()
 		{
 			this.entry.Text = this.entry.Text.Trim(new char[]
@@ -65,7 +60,6 @@ namespace CocoStudio.Model.Editor
 			base.ReportUserData("CallBack");
 		}
 
-		// Token: 0x060002B0 RID: 688 RVA: 0x000091F8 File Offset: 0x000073F8
 		private void combox_Changed(object sender, EventArgs e)
 		{
 			this.entryShell.Sensitive = (this.combox.Active > 0);
@@ -73,7 +67,6 @@ namespace CocoStudio.Model.Editor
 			base.ReportUserData("CallBack");
 		}
 
-		// Token: 0x060002B1 RID: 689 RVA: 0x00009248 File Offset: 0x00007448
 		protected override void OnSetControl()
 		{
 			EnumCallBack enumCallBack = (EnumCallBack)base.PropertyItem.Values[0];
@@ -87,7 +80,6 @@ namespace CocoStudio.Model.Editor
 			this.entryShell.Sensitive = (this.combox.Active > 0);
 		}
 
-		// Token: 0x060002B2 RID: 690 RVA: 0x000092E8 File Offset: 0x000074E8
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == base.PropertyItem.Name || e.PropertyName == "CallBackName")
@@ -96,7 +88,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002B3 RID: 691 RVA: 0x00009330 File Offset: 0x00007530
 		public void InitComboBox()
 		{
 			ListStore listStore = new ListStore(new Type[]
@@ -125,16 +116,12 @@ namespace CocoStudio.Model.Editor
 			this.combox.AddAttribute(cell, "text", 0);
 		}
 
-		// Token: 0x04000125 RID: 293
 		private ComboBox combox;
 
-		// Token: 0x04000126 RID: 294
 		private EntryShell entryShell;
 
-		// Token: 0x04000127 RID: 295
 		private EntryCallBackEx entry;
 
-		// Token: 0x04000128 RID: 296
 		private PropertyInfo callBackProperty;
 	}
 }

@@ -19,7 +19,6 @@ namespace ICSharpCode.NRefactory.Documentation
 	/// The .xml file is only opened when necessary, the file handle is not kept open all the time.
 	/// If the .xml file is changed, the index will automatically be recreated.
 	/// </remarks>
-	// Token: 0x0200002D RID: 45
 	[Serializable]
 	public class XmlDocumentationProvider : IDocumentationProvider, IDeserializationCallback
 	{
@@ -29,7 +28,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// <param name="fileName">Name of the .xml file.</param>
 		/// <exception cref="T:System.IO.IOException">Error reading from XML file (or from redirected file)</exception>
 		/// <exception cref="T:System.Xml.XmlException">Invalid XML file</exception>
-		// Token: 0x06000172 RID: 370 RVA: 0x000050F8 File Offset: 0x000040F8
 		public XmlDocumentationProvider(string fileName)
 		{
 			if (fileName == null)
@@ -74,7 +72,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			}
 		}
 
-		// Token: 0x06000173 RID: 371 RVA: 0x00005254 File Offset: 0x00004254
 		private static string GetRedirectionTarget(string xmlFileName, string target)
 		{
 			string text = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
@@ -89,7 +86,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return XmlDocumentationProvider.LookupLocalizedXmlDoc(text3);
 		}
 
-		// Token: 0x06000174 RID: 372 RVA: 0x000052B0 File Offset: 0x000042B0
 		private static string AppendDirectorySeparator(string dir)
 		{
 			if (dir.EndsWith("\\", StringComparison.Ordinal) || dir.EndsWith("/", StringComparison.Ordinal))
@@ -103,7 +99,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// Given the assembly file name, looks up the XML documentation file name.
 		/// Returns null if no XML documentation file is found.
 		/// </summary>
-		// Token: 0x06000175 RID: 373 RVA: 0x000052E0 File Offset: 0x000042E0
 		public static string LookupLocalizedXmlDoc(string fileName)
 		{
 			string text = Path.ChangeExtension(fileName, ".xml");
@@ -128,7 +123,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return null;
 		}
 
-		// Token: 0x06000176 RID: 374 RVA: 0x0000534C File Offset: 0x0000434C
 		private static string GetLocalizedName(string fileName, string language)
 		{
 			string path = Path.GetDirectoryName(fileName);
@@ -136,7 +130,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return Path.Combine(path, Path.GetFileName(fileName));
 		}
 
-		// Token: 0x06000177 RID: 375 RVA: 0x00005378 File Offset: 0x00004378
 		private void ReadXmlDoc(XmlTextReader reader)
 		{
 			using (FileStream fileStream = new FileStream(this.fileName, FileMode.Open, FileAccess.Read, FileShare.Read | FileShare.Delete))
@@ -156,7 +149,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			}
 		}
 
-		// Token: 0x06000178 RID: 376 RVA: 0x00005404 File Offset: 0x00004404
 		private static void ReadMembersSection(XmlTextReader reader, XmlDocumentationProvider.LinePositionMapper linePosMapper, List<XmlDocumentationProvider.IndexEntry> indexList)
 		{
 			while (reader.Read())
@@ -188,7 +180,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// even when the .NET string.GetHashCode implementation changes
 		/// (e.g. due to .NET 4.5 hash randomization)
 		/// </summary>
-		// Token: 0x06000179 RID: 377 RVA: 0x00005494 File Offset: 0x00004494
 		private static int GetHashCode(string key)
 		{
 			int num = 0;
@@ -202,7 +193,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// <summary>
 		/// Get the documentation for the member with the specified documentation key.
 		/// </summary>
-		// Token: 0x0600017A RID: 378 RVA: 0x000054C7 File Offset: 0x000044C7
 		public string GetDocumentation(string key)
 		{
 			if (key == null)
@@ -212,7 +202,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return this.GetDocumentation(key, true);
 		}
 
-		// Token: 0x0600017B RID: 379 RVA: 0x000054E0 File Offset: 0x000044E0
 		private string GetDocumentation(string key, bool allowReload)
 		{
 			int hashCode = XmlDocumentationProvider.GetHashCode(key);
@@ -258,7 +247,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return result;
 		}
 
-		// Token: 0x0600017C RID: 380 RVA: 0x000055F8 File Offset: 0x000045F8
 		private string ReloadAndGetDocumentation(string key)
 		{
 			try
@@ -287,7 +275,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		}
 
 		/// <inheritdoc />
-		// Token: 0x0600017D RID: 381 RVA: 0x000056B0 File Offset: 0x000046B0
 		public DocumentationComment GetDocumentation(IEntity entity)
 		{
 			string documentation = this.GetDocumentation(entity.GetIdString());
@@ -298,7 +285,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return null;
 		}
 
-		// Token: 0x0600017E RID: 382 RVA: 0x000056E0 File Offset: 0x000046E0
 		private string LoadDocumentation(string key, int positionInFile)
 		{
 			string result;
@@ -326,26 +312,20 @@ namespace ICSharpCode.NRefactory.Documentation
 			return result;
 		}
 
-		// Token: 0x0600017F RID: 383 RVA: 0x00005780 File Offset: 0x00004780
 		public virtual void OnDeserialization(object sender)
 		{
 			this.cache = new XmlDocumentationProvider.XmlDocumentationCache(50);
 		}
 
-		// Token: 0x0400004C RID: 76
 		[NonSerialized]
 		private XmlDocumentationProvider.XmlDocumentationCache cache = new XmlDocumentationProvider.XmlDocumentationCache(50);
 
-		// Token: 0x0400004D RID: 77
 		private readonly string fileName;
 
-		// Token: 0x0400004E RID: 78
 		private volatile XmlDocumentationProvider.IndexEntry[] index;
 
-		// Token: 0x0200002E RID: 46
 		private sealed class XmlDocumentationCache
 		{
-			// Token: 0x06000180 RID: 384 RVA: 0x0000578F File Offset: 0x0000478F
 			public XmlDocumentationCache(int size = 50)
 			{
 				if (size <= 0)
@@ -355,7 +335,6 @@ namespace ICSharpCode.NRefactory.Documentation
 				this.entries = new KeyValuePair<string, string>[size];
 			}
 
-			// Token: 0x06000181 RID: 385 RVA: 0x000057C0 File Offset: 0x000047C0
 			internal bool TryGet(string key, out string value)
 			{
 				foreach (KeyValuePair<string, string> keyValuePair in this.entries)
@@ -370,7 +349,6 @@ namespace ICSharpCode.NRefactory.Documentation
 				return false;
 			}
 
-			// Token: 0x06000182 RID: 386 RVA: 0x00005814 File Offset: 0x00004814
 			internal void Add(string key, string value)
 			{
 				this.entries[this.pos++] = new KeyValuePair<string, string>(key, value);
@@ -380,25 +358,20 @@ namespace ICSharpCode.NRefactory.Documentation
 				}
 			}
 
-			// Token: 0x0400004F RID: 79
 			private readonly KeyValuePair<string, string>[] entries;
 
-			// Token: 0x04000050 RID: 80
 			private int pos;
 		}
 
-		// Token: 0x0200002F RID: 47
 		[Serializable]
 		private struct IndexEntry : IComparable<XmlDocumentationProvider.IndexEntry>
 		{
-			// Token: 0x06000183 RID: 387 RVA: 0x00005860 File Offset: 0x00004860
 			internal IndexEntry(int hashCode, int positionInFile)
 			{
 				this.HashCode = hashCode;
 				this.PositionInFile = positionInFile;
 			}
 
-			// Token: 0x06000184 RID: 388 RVA: 0x00005870 File Offset: 0x00004870
 			public int CompareTo(XmlDocumentationProvider.IndexEntry other)
 			{
 				return this.HashCode.CompareTo(other.HashCode);
@@ -407,26 +380,21 @@ namespace ICSharpCode.NRefactory.Documentation
 			/// <summary>
 			/// Hash code of the documentation tag
 			/// </summary>
-			// Token: 0x04000051 RID: 81
 			internal readonly int HashCode;
 
 			/// <summary>
 			/// Position in the .xml file where the documentation starts
 			/// </summary>
-			// Token: 0x04000052 RID: 82
 			internal readonly int PositionInFile;
 		}
 
-		// Token: 0x02000030 RID: 48
 		private sealed class LinePositionMapper
 		{
-			// Token: 0x06000185 RID: 389 RVA: 0x00005892 File Offset: 0x00004892
 			public LinePositionMapper(FileStream fs)
 			{
 				this.fs = fs;
 			}
 
-			// Token: 0x06000186 RID: 390 RVA: 0x000058A8 File Offset: 0x000048A8
 			public int GetPositionForLine(int line)
 			{
 				while (line > this.currentLine)
@@ -444,10 +412,8 @@ namespace ICSharpCode.NRefactory.Documentation
 				return checked((int)this.fs.Position);
 			}
 
-			// Token: 0x04000053 RID: 83
 			private readonly FileStream fs;
 
-			// Token: 0x04000054 RID: 84
 			private int currentLine = 1;
 		}
 	}

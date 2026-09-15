@@ -23,32 +23,16 @@ using MonoDevelop.Ide;
 
 namespace Modules.Communal.TexturePacker
 {
-	// Token: 0x02000017 RID: 23
 	public class PlistInfoModel : BaseObject, IDisposable
 	{
-		// Token: 0x17000031 RID: 49
-		// (get) Token: 0x060000DE RID: 222 RVA: 0x00005D29 File Offset: 0x00003F29
-		// (set) Token: 0x060000DD RID: 221 RVA: 0x00005D20 File Offset: 0x00003F20
 		internal PlistInfoCocosItem CocosItem { get; set; }
 
-		// Token: 0x17000032 RID: 50
-		// (get) Token: 0x060000DF RID: 223 RVA: 0x00005D31 File Offset: 0x00003F31
-		// (set) Token: 0x060000E0 RID: 224 RVA: 0x00005D39 File Offset: 0x00003F39
 		internal PlistInfoItemRender Render { get; set; }
 
-		// Token: 0x17000033 RID: 51
-		// (get) Token: 0x060000E1 RID: 225 RVA: 0x00005D42 File Offset: 0x00003F42
-		// (set) Token: 0x060000E2 RID: 226 RVA: 0x00005D4A File Offset: 0x00003F4A
 		public List<PlistInfoItem> Items { get; private set; }
 
-		// Token: 0x17000034 RID: 52
-		// (get) Token: 0x060000E3 RID: 227 RVA: 0x00005D53 File Offset: 0x00003F53
-		// (set) Token: 0x060000E4 RID: 228 RVA: 0x00005D5B File Offset: 0x00003F5B
 		public ObservableCollection<PlistInfoItem> SelectedItems { get; private set; }
 
-		// Token: 0x17000035 RID: 53
-		// (get) Token: 0x060000E5 RID: 229 RVA: 0x00005D64 File Offset: 0x00003F64
-		// (set) Token: 0x060000E6 RID: 230 RVA: 0x00005D6C File Offset: 0x00003F6C
 		[UndoProperty]
 		public IEnumerable<ImageFile> ImageFiles
 		{
@@ -61,8 +45,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000036 RID: 54
-		// (get) Token: 0x060000E7 RID: 231 RVA: 0x00005D6E File Offset: 0x00003F6E
 		public List<ImageFile> UnpackedItems
 		{
 			get
@@ -71,9 +53,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000037 RID: 55
-		// (get) Token: 0x060000E8 RID: 232 RVA: 0x00005D76 File Offset: 0x00003F76
-		// (set) Token: 0x060000E9 RID: 233 RVA: 0x00005D7E File Offset: 0x00003F7E
 		public double PictureRenderScale
 		{
 			get
@@ -90,9 +69,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000038 RID: 56
-		// (get) Token: 0x060000EA RID: 234 RVA: 0x00005D9B File Offset: 0x00003F9B
-		// (set) Token: 0x060000EB RID: 235 RVA: 0x00005DA3 File Offset: 0x00003FA3
 		public SizeValue SizeRequest
 		{
 			get
@@ -105,9 +81,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000039 RID: 57
-		// (get) Token: 0x060000EC RID: 236 RVA: 0x00005DAC File Offset: 0x00003FAC
-		// (set) Token: 0x060000ED RID: 237 RVA: 0x00005DB4 File Offset: 0x00003FB4
 		[Category("Group_Routine")]
 		[UndoProperty]
 		[DisplayName("Display_Name")]
@@ -126,9 +99,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700003A RID: 58
-		// (get) Token: 0x060000EE RID: 238 RVA: 0x00005E3C File Offset: 0x0000403C
-		// (set) Token: 0x060000EF RID: 239 RVA: 0x00005E44 File Offset: 0x00004044
 		[PropertyOrder(-1)]
 		[Editor(typeof(SizeLabelEditor), typeof(SizeLabelEditor))]
 		[DisplayName("UI_ControlLayout_txtSize")]
@@ -146,9 +116,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700003B RID: 59
-		// (get) Token: 0x060000F0 RID: 240 RVA: 0x00005E92 File Offset: 0x00004092
-		// (set) Token: 0x060000F1 RID: 241 RVA: 0x00005E9C File Offset: 0x0000409C
 		[Editor(typeof(ExportButtonEditor), typeof(ExportButtonEditor))]
 		[DisplayName("")]
 		[Category("Group_Routine")]
@@ -190,9 +157,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700003C RID: 60
-		// (get) Token: 0x060000F2 RID: 242 RVA: 0x00005F81 File Offset: 0x00004181
-		// (set) Token: 0x060000F3 RID: 243 RVA: 0x00005F8C File Offset: 0x0000418C
 		[DisplayName("Display_ExportType")]
 		[UndoProperty]
 		[DefaultValue(ExportType.Png)]
@@ -211,9 +175,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700003D RID: 61
-		// (get) Token: 0x060000F4 RID: 244 RVA: 0x00005FDA File Offset: 0x000041DA
-		// (set) Token: 0x060000F5 RID: 245 RVA: 0x00005FE4 File Offset: 0x000041E4
 		public SortAlgorithm SortAlgorithm
 		{
 			get
@@ -228,9 +189,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700003E RID: 62
-		// (get) Token: 0x060000F6 RID: 246 RVA: 0x00006039 File Offset: 0x00004239
-		// (set) Token: 0x060000F7 RID: 247 RVA: 0x00006044 File Offset: 0x00004244
 		[UndoProperty]
 		[PropertyOrder(3)]
 		[DisplayName("Display_MaxSize")]
@@ -251,9 +209,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700003F RID: 63
-		// (get) Token: 0x060000F8 RID: 248 RVA: 0x00006099 File Offset: 0x00004299
-		// (set) Token: 0x060000F9 RID: 249 RVA: 0x000060A4 File Offset: 0x000042A4
 		public float ContentScale
 		{
 			get
@@ -268,9 +223,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000040 RID: 64
-		// (get) Token: 0x060000FA RID: 250 RVA: 0x000060F9 File Offset: 0x000042F9
-		// (set) Token: 0x060000FB RID: 251 RVA: 0x00006104 File Offset: 0x00004304
 		[ValueRange(0, 200, 1f, 10f)]
 		[PropertyOrder(5)]
 		[UndoProperty]
@@ -291,9 +243,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000041 RID: 65
-		// (get) Token: 0x060000FC RID: 252 RVA: 0x00006159 File Offset: 0x00004359
-		// (set) Token: 0x060000FD RID: 253 RVA: 0x00006164 File Offset: 0x00004364
 		[UndoProperty]
 		[PropertyOrder(6)]
 		[DisplayName("Display_AllowRotation")]
@@ -312,9 +261,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000042 RID: 66
-		// (get) Token: 0x060000FE RID: 254 RVA: 0x000061B9 File Offset: 0x000043B9
-		// (set) Token: 0x060000FF RID: 255 RVA: 0x000061C4 File Offset: 0x000043C4
 		[PropertyOrder(1)]
 		[UndoProperty]
 		[DisplayName("Display_AllowAnySize")]
@@ -333,9 +279,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000043 RID: 67
-		// (get) Token: 0x06000100 RID: 256 RVA: 0x00006219 File Offset: 0x00004419
-		// (set) Token: 0x06000101 RID: 257 RVA: 0x00006224 File Offset: 0x00004424
 		[UndoProperty]
 		[Category("Group_Routine")]
 		[PropertyOrder(2)]
@@ -354,7 +297,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000102 RID: 258 RVA: 0x0000627C File Offset: 0x0000447C
 		public PlistInfoModel(bool isBindingRecorder = true)
 		{
 			this.Init();
@@ -364,7 +306,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000103 RID: 259 RVA: 0x00006308 File Offset: 0x00004508
 		public PlistInfoModel(PlistInfoData data) : this(false)
 		{
 			this.AllowAnySize = data.AllowAnySize;
@@ -385,7 +326,6 @@ namespace Modules.Communal.TexturePacker
 			base.BindingRecorder(null);
 		}
 
-		// Token: 0x06000104 RID: 260 RVA: 0x00006404 File Offset: 0x00004604
 		private void Init()
 		{
 			this.Items = new List<PlistInfoItem>();
@@ -396,7 +336,6 @@ namespace Modules.Communal.TexturePacker
 			this.inited = true;
 		}
 
-		// Token: 0x06000105 RID: 261 RVA: 0x00006460 File Offset: 0x00004660
 		private void ImageFiles_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
 			if (e.NewItems != null)
@@ -417,7 +356,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000106 RID: 262 RVA: 0x00006524 File Offset: 0x00004724
 		private void OnAddItem(ImageFile item)
 		{
 			item.Deleted += this.item_Deleted;
@@ -431,12 +369,8 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x06000107 RID: 263 RVA: 0x00006588 File Offset: 0x00004788
-		// (remove) Token: 0x06000108 RID: 264 RVA: 0x000065C0 File Offset: 0x000047C0
 		public event Action<bool> ItemNameChanged;
 
-		// Token: 0x06000109 RID: 265 RVA: 0x000065F8 File Offset: 0x000047F8
 		private void OnItem_NameChanged(object sender, EventArgs e)
 		{
 			if (this.ItemNameChanged != null)
@@ -458,7 +392,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x0600010A RID: 266 RVA: 0x00006694 File Offset: 0x00004894
 		public void AddItem(ImageFile item)
 		{
 			if (this.ImageFiles.Contains(item))
@@ -468,13 +401,11 @@ namespace Modules.Communal.TexturePacker
 			this.imageFiles.Add(item);
 		}
 
-		// Token: 0x0600010B RID: 267 RVA: 0x000066B1 File Offset: 0x000048B1
 		public void RemoveItem(ImageFile item)
 		{
 			this.imageFiles.Remove(item);
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x000066C0 File Offset: 0x000048C0
 		private void OnRemoveItem(ImageFile item)
 		{
 			item.UnPackFrom(this.CocosItem);
@@ -500,7 +431,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x0600010D RID: 269 RVA: 0x00006780 File Offset: 0x00004980
 		public void item_Deleted(object sender, EventArgs e)
 		{
 			ImageFile item = sender as ImageFile;
@@ -508,7 +438,6 @@ namespace Modules.Communal.TexturePacker
 			this.Refresh(true);
 		}
 
-		// Token: 0x0600010E RID: 270 RVA: 0x000067A4 File Offset: 0x000049A4
 		public void Refresh(bool imageFilesChanged = true)
 		{
 			if (!this.inited)
@@ -523,7 +452,6 @@ namespace Modules.Communal.TexturePacker
 			this.RefreshRender();
 		}
 
-		// Token: 0x0600010F RID: 271 RVA: 0x00006804 File Offset: 0x00004A04
 		public void RefreshRender()
 		{
 			if (this.Render == null)
@@ -535,7 +463,6 @@ namespace Modules.Communal.TexturePacker
 			this.Render.QueueDraw();
 		}
 
-		// Token: 0x06000110 RID: 272 RVA: 0x00006874 File Offset: 0x00004A74
 		public void CalculateItemPosition()
 		{
 			int num = this.PicturePadding * 2;
@@ -599,14 +526,12 @@ namespace Modules.Communal.TexturePacker
 			this.SizeRequest = new SizeValue(width, height);
 		}
 
-		// Token: 0x06000111 RID: 273 RVA: 0x00006B3C File Offset: 0x00004D3C
 		private bool CheckoutIsEmpty()
 		{
 			int num = this.ImageFiles.Count<ImageFile>() - this.UnpackedItems.Count;
 			return num <= 0;
 		}
 
-		// Token: 0x06000112 RID: 274 RVA: 0x00006B68 File Offset: 0x00004D68
 		public void Dispose()
 		{
 			for (int i = this.imageFiles.Count - 1; i >= 0; i--)
@@ -626,46 +551,32 @@ namespace Modules.Communal.TexturePacker
 			this.unpackedItems.Clear();
 		}
 
-		// Token: 0x0400004A RID: 74
 		private ObservableCollection<ImageFile> imageFiles = new ObservableCollection<ImageFile>();
 
-		// Token: 0x0400004B RID: 75
 		private List<ImageFile> unpackedItems = new List<ImageFile>();
 
-		// Token: 0x0400004C RID: 76
 		private double picturerenderscale = 1.0;
 
-		// Token: 0x0400004D RID: 77
 		private SizeValue sizeRequest = new SizeValue();
 
-		// Token: 0x0400004E RID: 78
 		private bool inited;
 
-		// Token: 0x0400004F RID: 79
 		private SizeValue realSize = new SizeValue(32, 32);
 
-		// Token: 0x04000050 RID: 80
 		private ExportType exportType;
 
-		// Token: 0x04000051 RID: 81
 		private SortAlgorithm sortAlgorithm;
 
-		// Token: 0x04000052 RID: 82
 		private SizeValue maxSize = new SizeValue(1024, 1024);
 
-		// Token: 0x04000053 RID: 83
 		private float contentScale = 1f;
 
-		// Token: 0x04000054 RID: 84
 		private int picturePadding;
 
-		// Token: 0x04000055 RID: 85
 		private bool allowRotation = true;
 
-		// Token: 0x04000056 RID: 86
 		private bool allowAnySize;
 
-		// Token: 0x04000057 RID: 87
 		private bool allowTrim;
 	}
 }

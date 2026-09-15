@@ -4,10 +4,8 @@ using CocoStudio.Basic;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x02000020 RID: 32
 	internal class StepX86 : CreateStep
 	{
-		// Token: 0x060000FC RID: 252 RVA: 0x00005A90 File Offset: 0x00003C90
 		protected override bool OnRun(CreateParams prms)
 		{
 			base.SendOutputInfo("Optimize x86 compiler");
@@ -75,7 +73,6 @@ namespace Modules.Communal.CocosAdapter
 			return true;
 		}
 
-		// Token: 0x060000FD RID: 253 RVA: 0x00005C57 File Offset: 0x00003E57
 		protected override bool OnCanCreate(CreateParams prms)
 		{
 			return prms.EngineInfo != null && prms.UseX86;

@@ -13,25 +13,20 @@ using Newtonsoft.Json.Converters;
 
 namespace CocoStudio.Model.ExtensionModel
 {
-	// Token: 0x0200007F RID: 127
 	[Extension(typeof(IGameFileSerializer))]
 	[SerializerExtension(true)]
 	internal class JsonSerializer : BaseCocosFileSerializer
 	{
-		// Token: 0x06000476 RID: 1142 RVA: 0x000137E0 File Offset: 0x000119E0
 		protected override string OnGetID()
 		{
 			return "Serializer_Json";
 		}
 
-		// Token: 0x06000477 RID: 1143 RVA: 0x000137F8 File Offset: 0x000119F8
 		protected override string OnGetLabel()
 		{
 			return LanguageInfo.ProjSetting_jsonFile;
 		}
 
-		// Token: 0x17000145 RID: 325
-		// (get) Token: 0x06000478 RID: 1144 RVA: 0x00013810 File Offset: 0x00011A10
 		public override string Description
 		{
 			get
@@ -40,8 +35,6 @@ namespace CocoStudio.Model.ExtensionModel
 			}
 		}
 
-		// Token: 0x17000146 RID: 326
-		// (get) Token: 0x06000479 RID: 1145 RVA: 0x00013828 File Offset: 0x00011A28
 		protected override int DisplayIndex
 		{
 			get
@@ -50,13 +43,11 @@ namespace CocoStudio.Model.ExtensionModel
 			}
 		}
 
-		// Token: 0x0600047A RID: 1146 RVA: 0x0001383B File Offset: 0x00011A3B
 		public JsonSerializer()
 		{
 			this.InitSerializeSetting();
 		}
 
-		// Token: 0x0600047B RID: 1147 RVA: 0x00013850 File Offset: 0x00011A50
 		private void InitSerializeSetting()
 		{
 			this.setting = new JsonSerializerSettings();
@@ -72,7 +63,6 @@ namespace CocoStudio.Model.ExtensionModel
 			this.setting.Converters.Add(item2);
 		}
 
-		// Token: 0x0600047C RID: 1148 RVA: 0x000138E8 File Offset: 0x00011AE8
 		protected override string OnSerialize(PublishInfo info, GameFile gameFile)
 		{
 			string result;
@@ -100,7 +90,6 @@ namespace CocoStudio.Model.ExtensionModel
 			return result;
 		}
 
-		// Token: 0x0600047D RID: 1149 RVA: 0x000139AC File Offset: 0x00011BAC
 		private GameFileData SetUsedResources(GameFile gameFile)
 		{
 			GameFileData result;
@@ -154,7 +143,6 @@ namespace CocoStudio.Model.ExtensionModel
 			return result;
 		}
 
-		// Token: 0x0600047E RID: 1150 RVA: 0x00013BC0 File Offset: 0x00011DC0
 		private string GetRelativePath(string baseDir, string resourcePath)
 		{
 			Solution currentSolution = Services.ProjectsService.CurrentSolution;
@@ -166,10 +154,8 @@ namespace CocoStudio.Model.ExtensionModel
 			return Option.ConvertToMacPath(filePath);
 		}
 
-		// Token: 0x04000223 RID: 547
 		public const string JsonFileExtension = ".json";
 
-		// Token: 0x04000224 RID: 548
 		private JsonSerializerSettings setting;
 	}
 }

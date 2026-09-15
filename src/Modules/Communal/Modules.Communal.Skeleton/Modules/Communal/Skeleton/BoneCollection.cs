@@ -5,16 +5,13 @@ using CocoStudio.UndoManager.Recorder;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x02000023 RID: 35
 	public class BoneCollection : NodeCollection
 	{
-		// Token: 0x0600016C RID: 364 RVA: 0x0000816F File Offset: 0x0000636F
 		public BoneCollection(BoneObject parentObject) : base(parentObject)
 		{
 			this.parentBone = parentObject;
 		}
 
-		// Token: 0x0600016D RID: 365 RVA: 0x00008198 File Offset: 0x00006398
 		protected override void InsertItem(int index, AbstractNodeObject item)
 		{
 			if (item == null)
@@ -54,7 +51,6 @@ namespace Modules.Communal.Skeleton
 			item.ApplyCachedWorldMatrix();
 		}
 
-		// Token: 0x0600016E RID: 366 RVA: 0x00008250 File Offset: 0x00006450
 		protected override void RemoveItem(int index)
 		{
 			AbstractNodeObject abstractNodeObject = base.Items[index];
@@ -70,8 +66,6 @@ namespace Modules.Communal.Skeleton
 			this.skins.Remove(item);
 		}
 
-		// Token: 0x17000053 RID: 83
-		// (get) Token: 0x0600016F RID: 367 RVA: 0x000082A3 File Offset: 0x000064A3
 		internal IReadOnlyList<BoneObject> Bones
 		{
 			get
@@ -80,8 +74,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000054 RID: 84
-		// (get) Token: 0x06000170 RID: 368 RVA: 0x000082AB File Offset: 0x000064AB
 		internal IReadOnlyList<NodeObject> Skins
 		{
 			get
@@ -90,13 +82,10 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0400007B RID: 123
 		private BoneObject parentBone;
 
-		// Token: 0x0400007C RID: 124
 		private List<BoneObject> bones = new List<BoneObject>();
 
-		// Token: 0x0400007D RID: 125
 		private List<NodeObject> skins = new List<NodeObject>(1);
 	}
 }

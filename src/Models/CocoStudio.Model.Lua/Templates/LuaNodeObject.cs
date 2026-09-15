@@ -6,18 +6,15 @@ using CocoStudio.Model.DataModel;
 
 namespace CocoStudio.Model.Lua.Templates
 {
-	// Token: 0x0200000A RID: 10
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaNodeObject : LuaVisualObject
 	{
-		// Token: 0x0600004A RID: 74 RVA: 0x00002A71 File Offset: 0x00000C71
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x00002A8C File Offset: 0x00000C8C
 		public bool WriteObject(AbstractNodeObjectData objectData)
 		{
 			ILuaObjectSerializer serializer = LuaObjectManager.GetSerializer(objectData);
@@ -34,7 +31,6 @@ namespace CocoStudio.Model.Lua.Templates
 			return false;
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x00002AF4 File Offset: 0x00000CF4
 		public void WriteChildren(AbstractNodeObjectData parent)
 		{
 			if (parent == null || parent.Children == null)
@@ -60,13 +56,11 @@ namespace CocoStudio.Model.Lua.Templates
 			}
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x00002B7C File Offset: 0x00000D7C
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(NodeObjectData) == objectData.GetType();
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00002B94 File Offset: 0x00000D94
 		public override void CreateObject(BaseObjectData objectData)
 		{
 			AbstractNodeObjectData abstractNodeObjectData = objectData as AbstractNodeObjectData;
@@ -85,7 +79,6 @@ namespace CocoStudio.Model.Lua.Templates
 			base.Write("=localLuaFile.CreateCustomNode()\r\n");
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x00002C4C File Offset: 0x00000E4C
 		protected virtual void OnCreateObject(BaseObjectData objectData)
 		{
 			AbstractNodeObjectData abstractNodeObjectData = objectData as AbstractNodeObjectData;
@@ -93,7 +86,6 @@ namespace CocoStudio.Model.Lua.Templates
 			base.Write("=cc.Node:create()\r\n");
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x00002C88 File Offset: 0x00000E88
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			base.InitializeObject(objectData);
@@ -102,7 +94,6 @@ namespace CocoStudio.Model.Lua.Templates
 			this.InitializeLayout(objectData);
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x00002CA6 File Offset: 0x00000EA6
 		private ScaleValue getAnchorPointDefaultValue(NodeObjectData objectData)
 		{
 			if (objectData is PanelObjectData)
@@ -116,7 +107,6 @@ namespace CocoStudio.Model.Lua.Templates
 			return LuaNodeObject.anchorPointLeftDown;
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x00002CD4 File Offset: 0x00000ED4
 		private void InitializeNode(BaseObjectData objectData)
 		{
 			NodeObjectData nodeObjectData = objectData as NodeObjectData;
@@ -197,7 +187,6 @@ namespace CocoStudio.Model.Lua.Templates
 			}
 		}
 
-		// Token: 0x06000053 RID: 83 RVA: 0x00003108 File Offset: 0x00001308
 		protected virtual void InitializeLayout(BaseObjectData objectData)
 		{
 			NodeObjectData nodeObjectData = objectData as NodeObjectData;
@@ -306,7 +295,6 @@ namespace CocoStudio.Model.Lua.Templates
 			}
 		}
 
-		// Token: 0x06000054 RID: 84 RVA: 0x00003590 File Offset: 0x00001790
 		protected void InitializeCallback(BaseObjectData objectData)
 		{
 			AbstractNodeObjectData abstractNodeObjectData = objectData as AbstractNodeObjectData;
@@ -371,7 +359,6 @@ namespace CocoStudio.Model.Lua.Templates
 			base.Write("end\r\n");
 		}
 
-		// Token: 0x06000055 RID: 85 RVA: 0x00003858 File Offset: 0x00001A58
 		public override void AddChild(BaseObjectData parent, BaseObjectData child)
 		{
 			base.Write(base.ToStringHelper.ToStringWithCulture(base.GetNameString(parent.Name)));
@@ -380,10 +367,8 @@ namespace CocoStudio.Model.Lua.Templates
 			base.Write(")\r\n");
 		}
 
-		// Token: 0x04000014 RID: 20
 		private static readonly ScaleValue anchorPointMiddle = ScaleValue.Half;
 
-		// Token: 0x04000015 RID: 21
 		private static readonly ScaleValue anchorPointLeftDown = ScaleValue.Empty;
 	}
 }

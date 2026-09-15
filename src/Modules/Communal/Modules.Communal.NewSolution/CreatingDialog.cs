@@ -12,10 +12,8 @@ using Stetic;
 
 namespace Modules.Communal.NewSolution
 {
-	// Token: 0x02000022 RID: 34
 	public class CreatingDialog : Dialog
 	{
-		// Token: 0x06000104 RID: 260 RVA: 0x00008494 File Offset: 0x00006694
 		public CreatingDialog()
 		{
 			this.Build();
@@ -51,7 +49,6 @@ namespace Modules.Communal.NewSolution
 			this.label_title.Text = LanguageInfo.NewSolution_NowCreating;
 		}
 
-		// Token: 0x06000105 RID: 261 RVA: 0x00008598 File Offset: 0x00006798
 		public void StartRunning(CocosMonitor monitor)
 		{
 			GLib.Timeout.Add(20U, () => this.RefreshUI(monitor));
@@ -59,7 +56,6 @@ namespace Modules.Communal.NewSolution
 			this.CloseWindow();
 		}
 
-		// Token: 0x06000106 RID: 262 RVA: 0x000085DC File Offset: 0x000067DC
 		private bool RefreshUI(CocosMonitor monitor)
 		{
 			if (!monitor.HasStarted)
@@ -80,7 +76,6 @@ namespace Modules.Communal.NewSolution
 			return false;
 		}
 
-		// Token: 0x06000107 RID: 263 RVA: 0x0000862F File Offset: 0x0000682F
 		public void CloseWindow()
 		{
 			this.isDestroyed = true;
@@ -88,7 +83,6 @@ namespace Modules.Communal.NewSolution
 			this.Destroy();
 		}
 
-		// Token: 0x06000108 RID: 264 RVA: 0x00008650 File Offset: 0x00006850
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -165,37 +159,26 @@ namespace Modules.Communal.NewSolution
 			base.Hide();
 		}
 
-		// Token: 0x040000C6 RID: 198
 		private Gtk.Window parentWnd;
 
-		// Token: 0x040000C7 RID: 199
 		private bool isParentWndModal;
 
-		// Token: 0x040000C8 RID: 200
 		private bool isDestroyed;
 
-		// Token: 0x040000C9 RID: 201
 		private Alignment alignment_base;
 
-		// Token: 0x040000CA RID: 202
 		private VBox vbox_window;
 
-		// Token: 0x040000CB RID: 203
 		private EventBox evtbx_main;
 
-		// Token: 0x040000CC RID: 204
 		private VBox vbox_main;
 
-		// Token: 0x040000CD RID: 205
 		private Alignment alignment_title;
 
-		// Token: 0x040000CE RID: 206
 		private Label label_title;
 
-		// Token: 0x040000CF RID: 207
 		private ProgressBar progressbar_main;
 
-		// Token: 0x040000D0 RID: 208
 		private Alignment alignment_dummyBtn;
 	}
 }

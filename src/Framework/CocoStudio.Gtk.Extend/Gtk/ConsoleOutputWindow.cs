@@ -8,10 +8,8 @@ using Stetic;
 
 namespace Gtk
 {
-	// Token: 0x020000A3 RID: 163
 	public class ConsoleOutputWindow : Window
 	{
-		// Token: 0x06000391 RID: 913 RVA: 0x00012208 File Offset: 0x00010408
 		public ConsoleOutputWindow() : base(WindowType.Toplevel)
 		{
 			this.Build();
@@ -19,7 +17,6 @@ namespace Gtk
 			base.Destroyed += this.DestroyedHandler;
 		}
 
-		// Token: 0x06000392 RID: 914 RVA: 0x00012274 File Offset: 0x00010474
 		private void CloseWindow()
 		{
 			Timeout.Add(0U, delegate
@@ -52,7 +49,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000393 RID: 915 RVA: 0x0001234C File Offset: 0x0001054C
 		public void StartRunning(CocosMonitor monitor, System.Diagnostics.Process proc)
 		{
 			if (monitor != null && proc != null)
@@ -79,13 +75,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000394 RID: 916 RVA: 0x0001240F File Offset: 0x0001060F
 		private void FinishedHandler(object sender, FinishedArgs e)
 		{
 			this.CloseWindow();
 		}
 
-		// Token: 0x06000395 RID: 917 RVA: 0x0001241C File Offset: 0x0001061C
 		private void DestroyedHandler(object sender, EventArgs e)
 		{
 			if (this.monitor != null && this.monitor.IsProcessing)
@@ -94,7 +88,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000396 RID: 918 RVA: 0x000124F8 File Offset: 0x000106F8
 		private void OutputDataReceivedHandler(object sender, DataReceivedEventArgs e)
 		{
 			Timeout.Add(0U, delegate
@@ -106,7 +99,6 @@ namespace Gtk
 			});
 		}
 
-		// Token: 0x06000397 RID: 919 RVA: 0x00012530 File Offset: 0x00010730
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -134,22 +126,16 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x04000444 RID: 1092
 		private CocosMonitor monitor;
 
-		// Token: 0x04000445 RID: 1093
 		private System.Diagnostics.Process process;
 
-		// Token: 0x04000446 RID: 1094
 		private bool hasDestroyed = false;
 
-		// Token: 0x04000447 RID: 1095
 		private EventBox eventbox_background;
 
-		// Token: 0x04000448 RID: 1096
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x04000449 RID: 1097
 		private TextView textview_output;
 	}
 }

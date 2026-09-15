@@ -16,16 +16,10 @@ using Xwt.GtkBackend;
 
 namespace CocoStudio.Core.View
 {
-	// Token: 0x02000056 RID: 86
 	public class Workbench
 	{
-		// Token: 0x14000014 RID: 20
-		// (add) Token: 0x06000353 RID: 851 RVA: 0x0000ED28 File Offset: 0x0000CF28
-		// (remove) Token: 0x06000354 RID: 852 RVA: 0x0000ED64 File Offset: 0x0000CF64
 		public event EventHandler ActiveDocumentChanged;
 
-		// Token: 0x170000D3 RID: 211
-		// (get) Token: 0x06000355 RID: 853 RVA: 0x0000EDA0 File Offset: 0x0000CFA0
 		public IEnumerable<DocumentExtend> Documents
 		{
 			get
@@ -34,8 +28,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x170000D4 RID: 212
-		// (get) Token: 0x06000356 RID: 854 RVA: 0x0000EDB8 File Offset: 0x0000CFB8
 		public PadCollection Pads
 		{
 			get
@@ -52,8 +44,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x170000D5 RID: 213
-		// (get) Token: 0x06000357 RID: 855 RVA: 0x0000EE40 File Offset: 0x0000D040
 		public DocumentExtend ActiveDocument
 		{
 			get
@@ -71,8 +61,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x170000D6 RID: 214
-		// (get) Token: 0x06000358 RID: 856 RVA: 0x0000EE7C File Offset: 0x0000D07C
 		public ProgressMonitorManager ProgressMonitors
 		{
 			get
@@ -81,8 +69,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x170000D7 RID: 215
-		// (get) Token: 0x06000359 RID: 857 RVA: 0x0000EE94 File Offset: 0x0000D094
 		public MainWindow RootWindow
 		{
 			get
@@ -91,7 +77,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x0600035B RID: 859 RVA: 0x0000EED0 File Offset: 0x0000D0D0
 		internal void Initialize(IProgressMonitor monitor)
 		{
 			Services.Workbench = this;
@@ -101,7 +86,6 @@ namespace CocoStudio.Core.View
 			this.mainWindow.ActiveWorkbenchWindowChanged += this.OnDocumentChanged;
 		}
 
-		// Token: 0x0600035C RID: 860 RVA: 0x0000EF24 File Offset: 0x0000D124
 		private void OnDocumentChanged(object sender, EventArgs e)
 		{
 			using (TaskServiceLock.Lock())
@@ -119,7 +103,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x0600035D RID: 861 RVA: 0x0000EFB0 File Offset: 0x0000D1B0
 		internal void DocumentReloaded(DocumentExtend document)
 		{
 			if (this.ActiveDocument == document)
@@ -134,7 +117,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x0600035E RID: 862 RVA: 0x0000F014 File Offset: 0x0000D214
 		internal void Show(string title)
 		{
 			this.RootWindow.Title = title;
@@ -150,7 +132,6 @@ namespace CocoStudio.Core.View
 			this.monitors.Initialize();
 		}
 
-		// Token: 0x0600035F RID: 863 RVA: 0x0000F090 File Offset: 0x0000D290
 		public void SaveAll()
 		{
 			List<DocumentExtend> list = this.Documents.ToList<DocumentExtend>();
@@ -168,7 +149,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x06000360 RID: 864 RVA: 0x0000F14C File Offset: 0x0000D34C
 		public bool CloseAll(bool dontCloseCurrent = false)
 		{
 			DocumentExtend documentExtend;
@@ -232,13 +212,11 @@ namespace CocoStudio.Core.View
 			return true;
 		}
 
-		// Token: 0x06000361 RID: 865 RVA: 0x0000F3AC File Offset: 0x0000D5AC
 		public DocumentExtend OpenDocument(ResourceFile file)
 		{
 			return this.OpenDocument(file.FileName, file, true);
 		}
 
-		// Token: 0x06000362 RID: 866 RVA: 0x0000F408 File Offset: 0x0000D608
 		public DocumentExtend OpenDocument(FilePath file, ResourceFile project, bool bringToFront = true)
 		{
 			DocumentExtend result;
@@ -312,7 +290,6 @@ namespace CocoStudio.Core.View
 			return result;
 		}
 
-		// Token: 0x06000363 RID: 867 RVA: 0x0000F664 File Offset: 0x0000D864
 		public DocumentExtend NewDocument(ResourceFolder parentFolder, CocosItemCreateInfo createInfo)
 		{
 			CocosItem cocosItem = Services.ProjectOperations.AddNewFile(parentFolder, createInfo);
@@ -328,7 +305,6 @@ namespace CocoStudio.Core.View
 			return result;
 		}
 
-		// Token: 0x06000364 RID: 868 RVA: 0x0000F698 File Offset: 0x0000D898
 		internal void RecoderDocuments(int oldPlacement, int newPlacement)
 		{
 			if (this.documents != null)
@@ -339,7 +315,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x06000365 RID: 869 RVA: 0x0000F700 File Offset: 0x0000D900
 		private void RealOpenFile(IProgressMonitor monitor, FileOpenInfo openFileInfo)
 		{
 			FilePath fileName = openFileInfo.FileName;
@@ -391,7 +366,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x06000366 RID: 870 RVA: 0x0000F86C File Offset: 0x0000DA6C
 		internal DocumentExtend WrapDocument(IDocumentWindow window)
 		{
 			DocumentExtend result;
@@ -420,7 +394,6 @@ namespace CocoStudio.Core.View
 			return result;
 		}
 
-		// Token: 0x06000367 RID: 871 RVA: 0x0000F8F0 File Offset: 0x0000DAF0
 		private void OnWindowClosed(object sender, WorkbenchWindowEventArgs args)
 		{
 			IDocumentWindow documentWindow = (IDocumentWindow)sender;
@@ -432,7 +405,6 @@ namespace CocoStudio.Core.View
 			documentExtend.DisposeDocument();
 		}
 
-		// Token: 0x06000368 RID: 872 RVA: 0x0000F950 File Offset: 0x0000DB50
 		private void OnWindowClosing(object sender, WorkbenchWindowEventArgs args)
 		{
 			IDocumentWindow documentWindow = (IDocumentWindow)sender;
@@ -486,7 +458,6 @@ namespace CocoStudio.Core.View
 			this.OnDocumentClosing(this.FindDocument(documentWindow));
 		}
 
-		// Token: 0x06000369 RID: 873 RVA: 0x0000FAE8 File Offset: 0x0000DCE8
 		private static CocosItem GetProjectContainingFile(FilePath fileName)
 		{
 			CocosItem cocosItem = null;
@@ -513,7 +484,6 @@ namespace CocoStudio.Core.View
 			return cocosItem;
 		}
 
-		// Token: 0x0600036A RID: 874 RVA: 0x0000FBA4 File Offset: 0x0000DDA4
 		private void OnDocumentOpened(DocumentEventArgs documentEventArgs)
 		{
 			EventHandler<DocumentEventArgs> documentOpened = this.DocumentOpened;
@@ -523,7 +493,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x0600036B RID: 875 RVA: 0x0000FBCC File Offset: 0x0000DDCC
 		private void OnDocumentClosed(DocumentExtend doc)
 		{
 			try
@@ -542,7 +511,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x0600036C RID: 876 RVA: 0x0000FC2C File Offset: 0x0000DE2C
 		private void OnDocumentClosing(DocumentExtend doc)
 		{
 			try
@@ -560,7 +528,6 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x0600036D RID: 877 RVA: 0x0000FCA4 File Offset: 0x0000DEA4
 		private Pad WrapPad(PadCodon padContent)
 		{
 			if (this.pads == null)
@@ -582,7 +549,6 @@ namespace CocoStudio.Core.View
 			return pad;
 		}
 
-		// Token: 0x0600036E RID: 878 RVA: 0x0000FD78 File Offset: 0x0000DF78
 		internal DocumentExtend FindDocument(IDocumentWindow window)
 		{
 			foreach (DocumentExtend documentExtend in this.Documents)
@@ -595,31 +561,18 @@ namespace CocoStudio.Core.View
 			return null;
 		}
 
-		// Token: 0x14000015 RID: 21
-		// (add) Token: 0x0600036F RID: 879 RVA: 0x0000FDE4 File Offset: 0x0000DFE4
-		// (remove) Token: 0x06000370 RID: 880 RVA: 0x0000FE20 File Offset: 0x0000E020
 		public event EventHandler<DocumentEventArgs> DocumentOpened;
 
-		// Token: 0x14000016 RID: 22
-		// (add) Token: 0x06000371 RID: 881 RVA: 0x0000FE5C File Offset: 0x0000E05C
-		// (remove) Token: 0x06000372 RID: 882 RVA: 0x0000FE98 File Offset: 0x0000E098
 		public event EventHandler<DocumentEventArgs> DocumentClosed;
 
-		// Token: 0x14000017 RID: 23
-		// (add) Token: 0x06000373 RID: 883 RVA: 0x0000FED4 File Offset: 0x0000E0D4
-		// (remove) Token: 0x06000374 RID: 884 RVA: 0x0000FF10 File Offset: 0x0000E110
 		public event EventHandler<DocumentEventArgs> DocumentClosing;
 
-		// Token: 0x04000172 RID: 370
 		private readonly ProgressMonitorManager monitors = new ProgressMonitorManager();
 
-		// Token: 0x04000173 RID: 371
 		private readonly List<DocumentExtend> documents = new List<DocumentExtend>();
 
-		// Token: 0x04000174 RID: 372
 		private MainWindow mainWindow;
 
-		// Token: 0x04000175 RID: 373
 		private PadCollection pads;
 	}
 }

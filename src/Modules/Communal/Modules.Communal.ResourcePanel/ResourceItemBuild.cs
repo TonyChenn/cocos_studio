@@ -9,12 +9,9 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.ResourcePanel
 {
-	// Token: 0x0200000F RID: 15
 	[ResourcePanelExtension(typeof(ResourceItemBuild))]
 	public class ResourceItemBuild : NodeBuilder
 	{
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x0600006F RID: 111 RVA: 0x0000326B File Offset: 0x0000146B
 		public override Type NodeDataType
 		{
 			get
@@ -23,7 +20,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000070 RID: 112 RVA: 0x00003278 File Offset: 0x00001478
 		protected override IconInfo GetIcon(object dataObject)
 		{
 			return new IconInfo
@@ -32,7 +28,6 @@ namespace Modules.Communal.ResourcePanel
 			};
 		}
 
-		// Token: 0x06000071 RID: 113 RVA: 0x00003298 File Offset: 0x00001498
 		protected override void OnBuildNode(ITreeBuild treeBuilder, object dataObject, NodeInfo nodeInfo)
 		{
 			base.OnBuildNode(treeBuilder, dataObject, nodeInfo);
@@ -40,7 +35,6 @@ namespace Modules.Communal.ResourcePanel
 			nodeInfo.Name = resourceItem.Name;
 		}
 
-		// Token: 0x06000072 RID: 114 RVA: 0x000032C4 File Offset: 0x000014C4
 		protected override void OnBuildNodeBefore(ITreeBuild treeBuilder, object dataObject, NodeInfo nodeInfo)
 		{
 			ResourceItem resourceItem = dataObject as ResourceItem;
@@ -52,7 +46,6 @@ namespace Modules.Communal.ResourcePanel
 			base.OnBuildNodeBefore(treeBuilder, dataObject, nodeInfo);
 		}
 
-		// Token: 0x06000073 RID: 115 RVA: 0x000032FC File Offset: 0x000014FC
 		protected override void OnBuildNodeAfter(ITreeBuild treeBuilder, object dataObject, NodeInfo nodeInfo)
 		{
 			ResourceItem resourceItem = dataObject as ResourceItem;
@@ -72,7 +65,6 @@ namespace Modules.Communal.ResourcePanel
 			base.OnBuildNodeAfter(treeBuilder, dataObject, nodeInfo);
 		}
 
-		// Token: 0x06000074 RID: 116 RVA: 0x0000337C File Offset: 0x0000157C
 		protected override void OnDelete(ITreeBuild treeBuilder, object dataObject, IProgressMonitor monitor)
 		{
 			ResourceItem resourceItem = dataObject as ResourceItem;
@@ -96,7 +88,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000075 RID: 117 RVA: 0x000033F0 File Offset: 0x000015F0
 		protected override void OnRemove(ITreeBuild treeBuilder, object dataObject, IProgressMonitor monitor)
 		{
 			ResourceItem resourceItem = dataObject as ResourceItem;
@@ -115,7 +106,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000076 RID: 118 RVA: 0x00003444 File Offset: 0x00001644
 		public override string CanMove(object moveSource, object moveTarget, TreeViewDropPosition pos)
 		{
 			if (moveTarget == null)
@@ -172,7 +162,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x06000077 RID: 119 RVA: 0x00003564 File Offset: 0x00001764
 		private bool IsChild(string fileName, ResourceFolder folder)
 		{
 			foreach (ResourceItem resourceItem in folder.Items)
@@ -185,7 +174,6 @@ namespace Modules.Communal.ResourcePanel
 			return false;
 		}
 
-		// Token: 0x0400002E RID: 46
 		private static readonly Xwt.Drawing.Image expandIcon = ImageIcon.GetIcon(StaticVariable.GetResourceID("file.png"));
 	}
 }

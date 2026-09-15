@@ -14,11 +14,9 @@ namespace ICSharpCode.NRefactory.TypeSystem
 	/// A full type name represented as reflection name has the syntax:
 	/// <c>NamespaceName '.' TopLevelTypeName ['`'#] { '+' NestedTypeName ['`'#] }</c>
 	/// </remarks>
-	// Token: 0x02000088 RID: 136
 	[Serializable]
 	public struct FullTypeName : IEquatable<FullTypeName>
 	{
-		// Token: 0x06000468 RID: 1128 RVA: 0x0000B945 File Offset: 0x0000A945
 		private FullTypeName(TopLevelTypeName topLevelTypeName, FullTypeName.NestedTypeName[] nestedTypes)
 		{
 			this.topLevelType = topLevelTypeName;
@@ -33,7 +31,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// so you can simply write:
 		/// <c>FullTypeName f = new TopLevelTypeName(...);</c>
 		/// </remarks>
-		// Token: 0x06000469 RID: 1129 RVA: 0x0000B955 File Offset: 0x0000A955
 		public FullTypeName(TopLevelTypeName topLevelTypeName)
 		{
 			this.topLevelType = topLevelTypeName;
@@ -50,7 +47,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// Expected syntax: <c>NamespaceName '.' TopLevelTypeName ['`'#] { '+' NestedTypeName ['`'#] }</c>
 		/// where # are type parameter counts
 		/// </remarks>
-		// Token: 0x0600046A RID: 1130 RVA: 0x0000B968 File Offset: 0x0000A968
 		public FullTypeName(string reflectionName)
 		{
 			int num = reflectionName.IndexOf('+');
@@ -77,8 +73,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Gets the top-level type name.
 		/// </summary>
-		// Token: 0x17000190 RID: 400
-		// (get) Token: 0x0600046B RID: 1131 RVA: 0x0000BA05 File Offset: 0x0000AA05
 		public TopLevelTypeName TopLevelTypeName
 		{
 			get
@@ -90,8 +84,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Gets whether this is a nested type.
 		/// </summary>
-		// Token: 0x17000191 RID: 401
-		// (get) Token: 0x0600046C RID: 1132 RVA: 0x0000BA0D File Offset: 0x0000AA0D
 		public bool IsNested
 		{
 			get
@@ -103,8 +95,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Gets the nesting level.
 		/// </summary>
-		// Token: 0x17000192 RID: 402
-		// (get) Token: 0x0600046D RID: 1133 RVA: 0x0000BA1B File Offset: 0x0000AA1B
 		public int NestingLevel
 		{
 			get
@@ -121,8 +111,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// Gets the name of the type.
 		/// For nested types, this is the name of the innermost type.
 		/// </summary>
-		// Token: 0x17000193 RID: 403
-		// (get) Token: 0x0600046E RID: 1134 RVA: 0x0000BA30 File Offset: 0x0000AA30
 		public string Name
 		{
 			get
@@ -135,8 +123,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			}
 		}
 
-		// Token: 0x17000194 RID: 404
-		// (get) Token: 0x0600046F RID: 1135 RVA: 0x0000BA74 File Offset: 0x0000AA74
 		public string ReflectionName
 		{
 			get
@@ -163,8 +149,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Gets the total type parameter count.
 		/// </summary>
-		// Token: 0x17000195 RID: 405
-		// (get) Token: 0x06000470 RID: 1136 RVA: 0x0000BB14 File Offset: 0x0000AB14
 		public int TypeParameterCount
 		{
 			get
@@ -184,7 +168,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Gets the name of the nested type at the given level.
 		/// </summary>
-		// Token: 0x06000471 RID: 1137 RVA: 0x0000BB6A File Offset: 0x0000AB6A
 		public string GetNestedTypeName(int nestingLevel)
 		{
 			if (this.nestedTypes == null)
@@ -197,7 +180,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Gets the number of additional type parameters of the nested type at the given level.
 		/// </summary>
-		// Token: 0x06000472 RID: 1138 RVA: 0x0000BB90 File Offset: 0x0000AB90
 		public int GetNestedTypeAdditionalTypeParameterCount(int nestingLevel)
 		{
 			if (this.nestedTypes == null)
@@ -212,7 +194,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// </summary>
 		/// <exception cref="T:System.InvalidOperationException">This is a top-level type name.</exception>
 		/// <example><c>new FullTypeName("NS.A+B+C").GetDeclaringType()</c> will return <c>new FullTypeName("NS.A+B")</c></example>
-		// Token: 0x06000473 RID: 1139 RVA: 0x0000BBB8 File Offset: 0x0000ABB8
 		public FullTypeName GetDeclaringType()
 		{
 			if (this.nestedTypes == null)
@@ -232,7 +213,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// Creates a nested type name.
 		/// </summary>
 		/// <example><c>new FullTypeName("NS.A+B").NestedType("C", 1)</c> will return <c>new FullTypeName("NS.A+B+C`1")</c></example>
-		// Token: 0x06000474 RID: 1140 RVA: 0x0000BC1C File Offset: 0x0000AC1C
 		public FullTypeName NestedType(string name, int additionalTypeParameterCount)
 		{
 			if (name == null)
@@ -253,59 +233,48 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return new FullTypeName(this.topLevelType, array);
 		}
 
-		// Token: 0x06000475 RID: 1141 RVA: 0x0000BCA3 File Offset: 0x0000ACA3
 		public static implicit operator FullTypeName(TopLevelTypeName topLevelTypeName)
 		{
 			return new FullTypeName(topLevelTypeName);
 		}
 
-		// Token: 0x06000476 RID: 1142 RVA: 0x0000BCAB File Offset: 0x0000ACAB
 		public override string ToString()
 		{
 			return this.ReflectionName;
 		}
 
-		// Token: 0x06000477 RID: 1143 RVA: 0x0000BCB3 File Offset: 0x0000ACB3
 		public override bool Equals(object obj)
 		{
 			return obj is FullTypeName && this.Equals((FullTypeName)obj);
 		}
 
-		// Token: 0x06000478 RID: 1144 RVA: 0x0000BCCB File Offset: 0x0000ACCB
 		public bool Equals(FullTypeName other)
 		{
 			return FullTypeNameComparer.Ordinal.Equals(this, other);
 		}
 
-		// Token: 0x06000479 RID: 1145 RVA: 0x0000BCDE File Offset: 0x0000ACDE
 		public override int GetHashCode()
 		{
 			return FullTypeNameComparer.Ordinal.GetHashCode(this);
 		}
 
-		// Token: 0x0600047A RID: 1146 RVA: 0x0000BCF0 File Offset: 0x0000ACF0
 		public static bool operator ==(FullTypeName left, FullTypeName right)
 		{
 			return left.Equals(right);
 		}
 
-		// Token: 0x0600047B RID: 1147 RVA: 0x0000BCFA File Offset: 0x0000ACFA
 		public static bool operator !=(FullTypeName left, FullTypeName right)
 		{
 			return !left.Equals(right);
 		}
 
-		// Token: 0x04000139 RID: 313
 		private readonly TopLevelTypeName topLevelType;
 
-		// Token: 0x0400013A RID: 314
 		private readonly FullTypeName.NestedTypeName[] nestedTypes;
 
-		// Token: 0x02000089 RID: 137
 		[Serializable]
 		private struct NestedTypeName
 		{
-			// Token: 0x0600047C RID: 1148 RVA: 0x0000BD07 File Offset: 0x0000AD07
 			public NestedTypeName(string name, int additionalTypeParameterCount)
 			{
 				if (name == null)
@@ -316,10 +285,8 @@ namespace ICSharpCode.NRefactory.TypeSystem
 				this.AdditionalTypeParameterCount = additionalTypeParameterCount;
 			}
 
-			// Token: 0x0400013B RID: 315
 			public readonly string Name;
 
-			// Token: 0x0400013C RID: 316
 			public readonly int AdditionalTypeParameterCount;
 		}
 	}

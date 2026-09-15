@@ -7,10 +7,8 @@ using log4net.Config;
 
 namespace CocoStudio.Basic
 {
-	// Token: 0x02000006 RID: 6
 	internal class Log4Wrap
 	{
-		// Token: 0x0600000A RID: 10 RVA: 0x000020A0 File Offset: 0x000002A0
 		private static void Init(string configFolder)
 		{
 			try
@@ -50,8 +48,6 @@ namespace CocoStudio.Basic
 			}
 		}
 
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x0600000B RID: 11 RVA: 0x00002248 File Offset: 0x00000448
 		public static ILog Logger
 		{
 			get
@@ -60,14 +56,11 @@ namespace CocoStudio.Basic
 			}
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x0000225F File Offset: 0x0000045F
 		internal static void SetLocation(string configFolder)
 		{
 			Log4Wrap.Init(configFolder);
 		}
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x0600000D RID: 13 RVA: 0x0000226C File Offset: 0x0000046C
 		public static string ConfigPath
 		{
 			get
@@ -76,7 +69,6 @@ namespace CocoStudio.Basic
 			}
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002284 File Offset: 0x00000484
 		private static void CreateDefaultConfigFile(string filename)
 		{
 			string value = string.Empty;
@@ -94,28 +86,20 @@ namespace CocoStudio.Basic
 			}
 		}
 
-		// Token: 0x04000010 RID: 16
 		private const string LOG_FOLDER = "logs";
 
-		// Token: 0x04000011 RID: 17
 		private const string LOG_CONFIG_FOLDER = "log4net_config";
 
-		// Token: 0x04000012 RID: 18
 		private const string LOGGER_NAME = "CKLog";
 
-		// Token: 0x04000013 RID: 19
 		private const string MaxSizeRollBackups = "10";
 
-		// Token: 0x04000014 RID: 20
 		private const string MaxFileSize = "500KB";
 
-		// Token: 0x04000015 RID: 21
 		private static ILog logger = null;
 
-		// Token: 0x04000016 RID: 22
 		private static string configPath = string.Empty;
 
-		// Token: 0x04000017 RID: 23
 		private static string logfilename = string.Empty;
 	}
 }

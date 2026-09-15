@@ -11,13 +11,9 @@ using Stetic;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x02000011 RID: 17
 	[ToolboxItem(true)]
 	public class HotkeyWidget : Bin, IPreferenceWidget
 	{
-		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x06000061 RID: 97 RVA: 0x00006310 File Offset: 0x00004510
-		// (set) Token: 0x06000062 RID: 98 RVA: 0x0000632B File Offset: 0x0000452B
 		private string CurrentBinding
 		{
 			get
@@ -38,9 +34,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x06000063 RID: 99 RVA: 0x00006363 File Offset: 0x00004563
-		// (set) Token: 0x06000064 RID: 100 RVA: 0x00006370 File Offset: 0x00004570
 		private string WarringInfo
 		{
 			get
@@ -67,7 +60,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x000063FA File Offset: 0x000045FA
 		public HotkeyWidget()
 		{
 			this.Build();
@@ -76,7 +68,6 @@ namespace Modules.Communal.Preference
 			this.InitStyle();
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x0000641C File Offset: 0x0000461C
 		private void InitTreeView()
 		{
 			TreeViewColumn treeViewColumn = new TreeViewColumn("命令", new CellRendererText(), new object[]
@@ -171,7 +162,6 @@ namespace Modules.Communal.Preference
 			this.treeview_hotkey.Model = treeStore;
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00006754 File Offset: 0x00004954
 		private void InitEvent()
 		{
 			this.button_reset.CanFocus = false;
@@ -185,7 +175,6 @@ namespace Modules.Communal.Preference
 			this.treeview_hotkey.Selection.Changed += this.HandleTreeViewSelectionChanged;
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x0000680C File Offset: 0x00004A0C
 		private void InitStyle()
 		{
 			this.evtbx_treeViewBorder.ModifyBg(StateType.Normal, WindowStyle.LineDarkColor);
@@ -195,7 +184,6 @@ namespace Modules.Communal.Preference
 			this.WarringInfo = null;
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x00006860 File Offset: 0x00004A60
 		private bool CheckIsHotkeyExist(string accel, out HotkeyWidget.EdittingCmd existKeyCmd)
 		{
 			if (string.IsNullOrEmpty(accel))
@@ -215,7 +203,6 @@ namespace Modules.Communal.Preference
 			return false;
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x000068F0 File Offset: 0x00004AF0
 		private void SetKeybinding(EventKey eventKey)
 		{
 			Gdk.Key key = eventKey.Key;
@@ -249,7 +236,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x000069AC File Offset: 0x00004BAC
 		private void ApplyCurrentKey()
 		{
 			TreeIter treeIter;
@@ -275,15 +261,12 @@ namespace Modules.Communal.Preference
 			this.Clear();
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x00006AA4 File Offset: 0x00004CA4
 		private void Clear()
 		{
 			this.WarringInfo = string.Empty;
 			this.existKeyCmd = null;
 		}
 
-		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x0600006D RID: 109 RVA: 0x00006AB8 File Offset: 0x00004CB8
 		public EnumPreferenceSetting SettingID
 		{
 			get
@@ -292,8 +275,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x0600006E RID: 110 RVA: 0x00006ABB File Offset: 0x00004CBB
 		public string DisplayName
 		{
 			get
@@ -302,7 +283,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x00006AC4 File Offset: 0x00004CC4
 		public void ApplySetting()
 		{
 			List<Tuple<CommandProxy, string>> list = new List<Tuple<CommandProxy, string>>();
@@ -313,27 +293,23 @@ namespace Modules.Communal.Preference
 			HotkeyManager.ChangeHotkeys(list);
 		}
 
-		// Token: 0x06000070 RID: 112 RVA: 0x00006B38 File Offset: 0x00004D38
 		public bool CanApply(out string output)
 		{
 			output = "";
 			return true;
 		}
 
-		// Token: 0x06000071 RID: 113 RVA: 0x00006B42 File Offset: 0x00004D42
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x06000072 RID: 114 RVA: 0x00006B45 File Offset: 0x00004D45
 		private void HandleEditingStarted(object o, EditingStartedArgs args)
 		{
 			this.currentEntry = (args.Editable as Entry);
 			this.currentEntry.KeyPressEvent += this.HandleKeyEntryPressed;
 		}
 
-		// Token: 0x06000073 RID: 115 RVA: 0x00006B6F File Offset: 0x00004D6F
 		private void HandleEditingCanceled(object sender, EventArgs e)
 		{
 			if (this.currentEntry != null)
@@ -343,7 +319,6 @@ namespace Modules.Communal.Preference
 			this.currentEntry = null;
 		}
 
-		// Token: 0x06000074 RID: 116 RVA: 0x00006B97 File Offset: 0x00004D97
 		private void HandleEditingEdited(object o, EditedArgs args)
 		{
 			this.ApplyCurrentKey();
@@ -354,7 +329,6 @@ namespace Modules.Communal.Preference
 			this.currentEntry = null;
 		}
 
-		// Token: 0x06000075 RID: 117 RVA: 0x00006C08 File Offset: 0x00004E08
 		private void HandleTreeViewSelectionChanged(object sender, EventArgs e)
 		{
 			TreeIter curIter;
@@ -378,7 +352,6 @@ namespace Modules.Communal.Preference
 			this.Clear();
 		}
 
-		// Token: 0x06000076 RID: 118 RVA: 0x00006CA0 File Offset: 0x00004EA0
 		[ConnectBefore]
 		private void HandleKeyEntryPressed(object o, KeyPressEventArgs args)
 		{
@@ -391,7 +364,6 @@ namespace Modules.Communal.Preference
 			this.SetKeybinding(args.Event);
 		}
 
-		// Token: 0x06000077 RID: 119 RVA: 0x00006D0A File Offset: 0x00004F0A
 		private void HandleRemoveButtonClicked(object sender, EventArgs e)
 		{
 			if (this.currentCmd == null)
@@ -402,7 +374,6 @@ namespace Modules.Communal.Preference
 			this.Clear();
 		}
 
-		// Token: 0x06000078 RID: 120 RVA: 0x00006D22 File Offset: 0x00004F22
 		private void HandleResetButtonClicked(object sender, EventArgs e)
 		{
 			if (this.currentCmd == null)
@@ -412,7 +383,6 @@ namespace Modules.Communal.Preference
 			this.CurrentBinding = this.currentCmd.accelKey;
 		}
 
-		// Token: 0x06000079 RID: 121 RVA: 0x00006D40 File Offset: 0x00004F40
 		private void HandleDefaultButtonClicked(object sender, EventArgs e)
 		{
 			if (this.currentCmd == null)
@@ -438,7 +408,6 @@ namespace Modules.Communal.Preference
 			this.Clear();
 		}
 
-		// Token: 0x0600007A RID: 122 RVA: 0x00006DB8 File Offset: 0x00004FB8
 		private void HandleResetAllButtonClicked(object sender, EventArgs e)
 		{
 			foreach (TreeIter treeIter in this.treeCmdDictionary.Keys)
@@ -461,7 +430,6 @@ namespace Modules.Communal.Preference
 			this.Clear();
 		}
 
-		// Token: 0x0600007B RID: 123 RVA: 0x00006E60 File Offset: 0x00005060
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -602,92 +570,64 @@ namespace Modules.Communal.Preference
 			base.Hide();
 		}
 
-		// Token: 0x04000083 RID: 131
 		private Dictionary<TreeIter, HotkeyWidget.EdittingCmd> treeCmdDictionary;
 
-		// Token: 0x04000084 RID: 132
 		private HotkeyWidget.EdittingCmd currentCmd;
 
-		// Token: 0x04000085 RID: 133
 		private HotkeyWidget.EdittingCmd existKeyCmd;
 
-		// Token: 0x04000086 RID: 134
 		private TreeViewColumn hotkeyColumn;
 
-		// Token: 0x04000087 RID: 135
 		private CellRendererText hotkeyRenderer;
 
-		// Token: 0x04000088 RID: 136
 		private string realBinding;
 
-		// Token: 0x04000089 RID: 137
 		private Entry currentEntry;
 
-		// Token: 0x0400008A RID: 138
 		private VBox vbox_main;
 
-		// Token: 0x0400008B RID: 139
 		private HBox hbox_main;
 
-		// Token: 0x0400008C RID: 140
 		private EventBox evtbx_treeViewBorder;
 
-		// Token: 0x0400008D RID: 141
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x0400008E RID: 142
 		private TreeView treeview_hotkey;
 
-		// Token: 0x0400008F RID: 143
 		private VBox vbox_right;
 
-		// Token: 0x04000090 RID: 144
 		private Button button_accept;
 
-		// Token: 0x04000091 RID: 145
 		private Button button_reset;
 
-		// Token: 0x04000092 RID: 146
 		private Button button_default;
 
-		// Token: 0x04000093 RID: 147
 		private Button button_remove;
 
-		// Token: 0x04000094 RID: 148
 		private Button button_resetAll;
 
-		// Token: 0x04000095 RID: 149
 		private EventBox evtbx_infoBorder;
 
-		// Token: 0x04000096 RID: 150
 		private EventBox evtbx_info;
 
-		// Token: 0x04000097 RID: 151
 		private VBox vbox_bottom;
 
-		// Token: 0x04000098 RID: 152
 		private HBox hbox_warring;
 
-		// Token: 0x04000099 RID: 153
 		private ImageBin imagebin_warring;
 
-		// Token: 0x0400009A RID: 154
 		private Label label_warring;
 
-		// Token: 0x02000012 RID: 18
 		private class EdittingCmd
 		{
-			// Token: 0x0600007C RID: 124 RVA: 0x0000756E File Offset: 0x0000576E
 			public EdittingCmd(CommandProxy cmdProxy, string key)
 			{
 				this.cmd = cmdProxy;
 				this.accelKey = key;
 			}
 
-			// Token: 0x0400009B RID: 155
 			public CommandProxy cmd;
 
-			// Token: 0x0400009C RID: 156
 			public string accelKey;
 		}
 	}

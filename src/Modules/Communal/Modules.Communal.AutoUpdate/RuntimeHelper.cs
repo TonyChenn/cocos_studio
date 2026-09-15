@@ -6,11 +6,8 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.AutoUpdate
 {
-	// Token: 0x02000008 RID: 8
 	internal class RuntimeHelper
 	{
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x0600003B RID: 59 RVA: 0x00002F2C File Offset: 0x0000112C
 		public static Version RuntimeVersion
 		{
 			get

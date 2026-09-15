@@ -12,18 +12,14 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.MutualEditor
 {
-	// Token: 0x0200000F RID: 15
 	public class StartInfoService
 	{
-		// Token: 0x06000031 RID: 49 RVA: 0x00002B88 File Offset: 0x00000D88
 		protected StartInfoService()
 		{
 			MutualCore.Init();
 			this.argsProjFilePath = (this.argsSlnFilePath = string.Empty);
 		}
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000032 RID: 50 RVA: 0x00002BD0 File Offset: 0x00000DD0
 		public static StartInfoService Instance
 		{
 			get
@@ -36,7 +32,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x00002C2C File Offset: 0x00000E2C
 		private void OpenSolution(string slnFilePath)
 		{
 			string text = this.PreCheckFilePathLegal(slnFilePath);
@@ -74,7 +69,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00002D3C File Offset: 0x00000F3C
 		private string PreCheckFilePathLegal(string prjSlnPath)
 		{
 			string result = string.Empty;
@@ -89,7 +83,6 @@ namespace Modules.Communal.MutualEditor
 			return result;
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x00002D8C File Offset: 0x00000F8C
 		public void OpenArgsProjSln()
 		{
 			string text = string.Empty;
@@ -117,7 +110,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x00002E30 File Offset: 0x00001030
 		public bool PreCheckArgs(string[] args)
 		{
 			bool result;
@@ -178,14 +170,12 @@ namespace Modules.Communal.MutualEditor
 			return result;
 		}
 
-		// Token: 0x06000037 RID: 55 RVA: 0x00002F9C File Offset: 0x0000119C
 		public bool PreCheckLauncher()
 		{
 			string filePath = "";
 			return SolutionLockHandler.Instance.IsFileLocked(filePath);
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00002FC4 File Offset: 0x000011C4
 		public void HandleOpenSolution(string solutionFilePath)
 		{
 			solutionFilePath = Path.Combine(new string[]
@@ -213,7 +203,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00003070 File Offset: 0x00001270
 		private void HandleLatestOpenSolution()
 		{
 			try
@@ -237,7 +226,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x000030F8 File Offset: 0x000012F8
 		public void HandleMacStartOpen(string projOrSlnPath)
 		{
 			if (Platform.IsMac)
@@ -306,14 +294,12 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x000032CC File Offset: 0x000014CC
 		private bool IsRuningCocosStudio()
 		{
 			System.Diagnostics.Process[] processesByName = System.Diagnostics.Process.GetProcessesByName("CocosStudio");
 			return processesByName != null && processesByName.Length > 0;
 		}
 
-		// Token: 0x0600003C RID: 60 RVA: 0x000032F8 File Offset: 0x000014F8
 		private string GetCCSFilePath(string csdFilePath)
 		{
 			string directoryName = Path.GetDirectoryName(csdFilePath);
@@ -321,7 +307,6 @@ namespace Modules.Communal.MutualEditor
 			return this.DirRecursion(panrentDirInfo);
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x00003320 File Offset: 0x00001520
 		private string DirRecursion(DirectoryInfo panrentDirInfo)
 		{
 			string result = string.Empty;
@@ -342,13 +327,10 @@ namespace Modules.Communal.MutualEditor
 			return result;
 		}
 
-		// Token: 0x0400001D RID: 29
 		private string argsProjFilePath = string.Empty;
 
-		// Token: 0x0400001E RID: 30
 		private string argsSlnFilePath = string.Empty;
 
-		// Token: 0x0400001F RID: 31
 		private static StartInfoService startInfoService = null;
 	}
 }

@@ -4,10 +4,8 @@ using Gtk;
 
 namespace Stetic
 {
-	// Token: 0x0200000C RID: 12
 	internal class IconLoader
 	{
-		// Token: 0x06000045 RID: 69 RVA: 0x00002B94 File Offset: 0x00000D94
 		public static Pixbuf LoadIcon(Widget widget, string name, IconSize size)
 		{
 			Pixbuf pixbuf = widget.RenderIcon(name, size, null);

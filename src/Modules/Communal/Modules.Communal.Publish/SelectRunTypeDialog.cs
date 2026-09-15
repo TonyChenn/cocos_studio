@@ -12,10 +12,8 @@ using Stetic;
 
 namespace Modules.Communal.Publish
 {
-	// Token: 0x02000004 RID: 4
 	public class SelectRunTypeDialog : Dialog
 	{
-		// Token: 0x06000006 RID: 6 RVA: 0x00002080 File Offset: 0x00000280
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -89,12 +87,8 @@ namespace Modules.Communal.Publish
 			base.Hide();
 		}
 
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000007 RID: 7 RVA: 0x000023D3 File Offset: 0x000005D3
-		// (set) Token: 0x06000008 RID: 8 RVA: 0x000023DB File Offset: 0x000005DB
 		public EnumPlatform RunType { get; private set; }
 
-		// Token: 0x06000009 RID: 9 RVA: 0x000023E4 File Offset: 0x000005E4
 		public SelectRunTypeDialog()
 		{
 			this.Build();
@@ -103,7 +97,6 @@ namespace Modules.Communal.Publish
 			this.SetToDialogStyle(null, true, true, true);
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002408 File Offset: 0x00000608
 		private void InitWidget()
 		{
 			this.radioBtnRunTypeDictionary = new Dictionary<RadioButton, EnumPlatform>();
@@ -144,7 +137,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x00002548 File Offset: 0x00000748
 		private void InitStyle()
 		{
 			this.buttonOk.Name = "MainButton";
@@ -162,7 +154,6 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x000025F0 File Offset: 0x000007F0
 		private void RadioButtonToggledHandler(object sender, EventArgs e)
 		{
 			RadioButton radioButton = sender as RadioButton;
@@ -172,28 +163,20 @@ namespace Modules.Communal.Publish
 			}
 		}
 
-		// Token: 0x04000002 RID: 2
 		private Alignment alignment_main;
 
-		// Token: 0x04000003 RID: 3
 		private Frame frame_type;
 
-		// Token: 0x04000004 RID: 4
 		private Alignment GtkAlignment_type;
 
-		// Token: 0x04000005 RID: 5
 		private VBox vbox_type;
 
-		// Token: 0x04000006 RID: 6
 		private Label GtkLabel_selectType;
 
-		// Token: 0x04000007 RID: 7
 		private Button buttonCancel;
 
-		// Token: 0x04000008 RID: 8
 		private Button buttonOk;
 
-		// Token: 0x04000009 RID: 9
 		private Dictionary<RadioButton, EnumPlatform> radioBtnRunTypeDictionary;
 	}
 }

@@ -11,10 +11,8 @@ namespace ICSharpCode.NRefactory.Utils
 	/// Implements a complete parser for valid strings as well as
 	/// error reporting and best-effort parsing for invalid strings.
 	/// </remarks>		
-	// Token: 0x02000131 RID: 305
 	public class CompositeFormatStringParser
 	{
-		// Token: 0x06000A97 RID: 2711 RVA: 0x0001FBA5 File Offset: 0x0001EBA5
 		public CompositeFormatStringParser()
 		{
 			this.errors = new List<IFormatStringError>();
@@ -26,7 +24,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// <param name="format">
 		/// The format string.
 		/// </param>
-		// Token: 0x06000A98 RID: 2712 RVA: 0x0001FBB8 File Offset: 0x0001EBB8
 		public FormatStringParseResult Parse(string format)
 		{
 			if (format == null)
@@ -98,7 +95,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return formatStringParseResult;
 		}
 
-		// Token: 0x06000A99 RID: 2713 RVA: 0x0001FDCC File Offset: 0x0001EDCC
 		private int ParseIndex(string format, ref int i)
 		{
 			int num;
@@ -122,7 +118,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return num2.GetValueOrDefault();
 		}
 
-		// Token: 0x06000A9A RID: 2714 RVA: 0x0001FE40 File Offset: 0x0001EE40
 		private int? ParseAlignment(string format, ref int i, int length)
 		{
 			if (i < length && format[i] == ',')
@@ -151,7 +146,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return null;
 		}
 
-		// Token: 0x06000A9B RID: 2715 RVA: 0x0001FF04 File Offset: 0x0001EF04
 		private string ParseSubFormatString(string format, ref int i, int length)
 		{
 			if (i < length && format[i] == ':')
@@ -165,7 +159,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return null;
 		}
 
-		// Token: 0x06000A9C RID: 2716 RVA: 0x0001FF50 File Offset: 0x0001EF50
 		private void CheckForMissingEndBrace(string format, int i, int length)
 		{
 			if (i == length)
@@ -183,7 +176,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x06000A9D RID: 2717 RVA: 0x0001FF94 File Offset: 0x0001EF94
 		private void GetText(string format, ref int index, string delimiters = "", bool allowEscape = false)
 		{
 			while (index < format.Length)
@@ -204,7 +196,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x06000A9E RID: 2718 RVA: 0x00020010 File Offset: 0x0001F010
 		private int? GetNumber(string format, ref int index)
 		{
 			if (format.Length == 0)
@@ -232,7 +223,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return new int?(flag ? num : (-num));
 		}
 
-		// Token: 0x06000A9F RID: 2719 RVA: 0x000200A4 File Offset: 0x0001F0A4
 		private int? GetAndCheckNumber(string format, string delimiters, ref int index, int numberFieldStart, out int parsedCharacters)
 		{
 			int num = index;
@@ -264,19 +254,16 @@ namespace ICSharpCode.NRefactory.Utils
 			return number;
 		}
 
-		// Token: 0x06000AA0 RID: 2720 RVA: 0x0002016C File Offset: 0x0001F16C
 		public static string UnEscape(string unEscaped)
 		{
 			return unEscaped.Replace("{{", "{").Replace("}}", "}");
 		}
 
-		// Token: 0x06000AA1 RID: 2721 RVA: 0x0002018D File Offset: 0x0001F18D
 		private void AddError(IFormatStringError error)
 		{
 			this.errors.Add(error);
 		}
 
-		// Token: 0x06000AA2 RID: 2722 RVA: 0x0002019C File Offset: 0x0001F19C
 		private void AddMissingEndBraceError(int start, int end, string message, string originalText)
 		{
 			if (this.hasMissingEndBrace)
@@ -294,7 +281,6 @@ namespace ICSharpCode.NRefactory.Utils
 			this.hasMissingEndBrace = true;
 		}
 
-		// Token: 0x06000AA3 RID: 2723 RVA: 0x000201F0 File Offset: 0x0001F1F0
 		private void AddInvalidNumberFormatError(int i, string number, string replacementText)
 		{
 			this.AddError(new DefaultFormatStringError
@@ -307,29 +293,24 @@ namespace ICSharpCode.NRefactory.Utils
 			});
 		}
 
-		// Token: 0x06000AA4 RID: 2724 RVA: 0x0002023E File Offset: 0x0001F23E
 		private IList<IFormatStringError> GetErrors()
 		{
 			return this.errors;
 		}
 
-		// Token: 0x06000AA5 RID: 2725 RVA: 0x00020246 File Offset: 0x0001F246
 		private void SetErrors(IList<IFormatStringError> errors)
 		{
 			this.errors = errors;
 		}
 
-		// Token: 0x06000AA6 RID: 2726 RVA: 0x0002024F File Offset: 0x0001F24F
 		private void ClearErrors()
 		{
 			this.hasMissingEndBrace = false;
 			this.errors = new List<IFormatStringError>();
 		}
 
-		// Token: 0x04000397 RID: 919
 		private IList<IFormatStringError> errors;
 
-		// Token: 0x04000398 RID: 920
 		private bool hasMissingEndBrace;
 	}
 }

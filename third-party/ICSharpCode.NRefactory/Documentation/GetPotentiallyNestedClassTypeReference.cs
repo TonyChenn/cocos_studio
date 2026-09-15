@@ -12,18 +12,15 @@ namespace ICSharpCode.NRefactory.Documentation
 	/// all possibilities.
 	/// The type parameter count only applies to the innermost type, all outer types must be non-generic.
 	/// </summary>
-	// Token: 0x02000009 RID: 9
 	[Serializable]
 	internal class GetPotentiallyNestedClassTypeReference : ITypeReference
 	{
-		// Token: 0x06000021 RID: 33 RVA: 0x00002B2E File Offset: 0x00001B2E
 		public GetPotentiallyNestedClassTypeReference(string typeName, int typeParameterCount)
 		{
 			this.typeName = typeName;
 			this.typeParameterCount = typeParameterCount;
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00002B94 File Offset: 0x00001B94
 		public IType Resolve(ITypeResolveContext context)
 		{
 			string[] parts = this.typeName.Split(new char[]
@@ -66,10 +63,8 @@ namespace ICSharpCode.NRefactory.Documentation
 			return new UnknownType(this.typeName.Substring(0, num2), this.typeName.Substring(num2 + 1), this.typeParameterCount);
 		}
 
-		// Token: 0x04000010 RID: 16
 		private readonly string typeName;
 
-		// Token: 0x04000011 RID: 17
 		private readonly int typeParameterCount;
 	}
 }

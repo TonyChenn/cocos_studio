@@ -8,12 +8,9 @@ using Mono.Addins;
 
 namespace CocoStudio.Model.DataModel
 {
-	// Token: 0x02000019 RID: 25
 	[Extension(Type = typeof(IFileUpgrader))]
 	internal class CocosFileUpgrader_232 : GameFileUpgrader
 	{
-		// Token: 0x17000037 RID: 55
-		// (get) Token: 0x060000CD RID: 205 RVA: 0x000041BA File Offset: 0x000023BA
 		public override Version Version
 		{
 			get
@@ -22,7 +19,6 @@ namespace CocoStudio.Model.DataModel
 			}
 		}
 
-		// Token: 0x060000CE RID: 206 RVA: 0x000041C4 File Offset: 0x000023C4
 		public override bool Upgrade(string filePath)
 		{
 			try
@@ -44,7 +40,6 @@ namespace CocoStudio.Model.DataModel
 			return false;
 		}
 
-		// Token: 0x060000CF RID: 207 RVA: 0x0000425C File Offset: 0x0000245C
 		protected override bool OnUpgrade(GameFileData gameFileData)
 		{
 			AbstractNodeObjectData objectData = gameFileData.ObjectData;
@@ -56,7 +51,6 @@ namespace CocoStudio.Model.DataModel
 			return true;
 		}
 
-		// Token: 0x060000D0 RID: 208 RVA: 0x00004283 File Offset: 0x00002483
 		protected AbstractNodeObjectData ConvertRootObject(AbstractNodeObjectData nodeData)
 		{
 			if (this.is3DGameFile)
@@ -67,7 +61,6 @@ namespace CocoStudio.Model.DataModel
 			return nodeData;
 		}
 
-		// Token: 0x060000D1 RID: 209 RVA: 0x000042A0 File Offset: 0x000024A0
 		private AbstractNodeObjectData ConvertRootObject3D(AbstractNodeObjectData nodeData)
 		{
 			AbstractNodeObjectData result = nodeData;
@@ -78,7 +71,6 @@ namespace CocoStudio.Model.DataModel
 			return result;
 		}
 
-		// Token: 0x060000D2 RID: 210 RVA: 0x000042C0 File Offset: 0x000024C0
 		private void ConvertRootObject2D(AbstractNodeObjectData abstractData)
 		{
 			NodeObjectData nodeObjectData = abstractData as NodeObjectData;
@@ -102,7 +94,6 @@ namespace CocoStudio.Model.DataModel
 			}
 		}
 
-		// Token: 0x060000D3 RID: 211 RVA: 0x00004344 File Offset: 0x00002544
 		private void UpgradeSceneCamera(string filePath)
 		{
 			using (FileStream fileStream = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite))
@@ -127,7 +118,6 @@ namespace CocoStudio.Model.DataModel
 			}
 		}
 
-		// Token: 0x060000D4 RID: 212 RVA: 0x000044AC File Offset: 0x000026AC
 		private void UpgradeUdfFile(string filePath, CameraData data)
 		{
 			string filePath2 = filePath + ".udf";
@@ -143,10 +133,8 @@ namespace CocoStudio.Model.DataModel
 			}.Save();
 		}
 
-		// Token: 0x0400005E RID: 94
 		private bool is3DGameFile;
 
-		// Token: 0x0400005F RID: 95
 		private static readonly Version version = new Version("2.3.2.0");
 	}
 }

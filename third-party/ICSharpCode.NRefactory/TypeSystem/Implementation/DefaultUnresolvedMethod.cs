@@ -8,11 +8,9 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 	/// <summary>
 	/// Default implementation of <see cref="T:ICSharpCode.NRefactory.TypeSystem.IUnresolvedMethod" /> interface.
 	/// </summary>
-	// Token: 0x020000C3 RID: 195
 	[Serializable]
 	public class DefaultUnresolvedMethod : AbstractUnresolvedMember, IUnresolvedMethod, IUnresolvedParameterizedMember, IUnresolvedMember, IUnresolvedEntity, INamedElement, IHasAccessibility, IMemberReference, ISymbolReference
 	{
-		// Token: 0x060006CE RID: 1742 RVA: 0x00011D83 File Offset: 0x00010D83
 		protected override void FreezeInternal()
 		{
 			this.returnTypeAttributes = FreezableHelper.FreezeListAndElements<IUnresolvedAttribute>(this.returnTypeAttributes);
@@ -21,7 +19,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			base.FreezeInternal();
 		}
 
-		// Token: 0x060006CF RID: 1743 RVA: 0x00011DC0 File Offset: 0x00010DC0
 		public override object Clone()
 		{
 			DefaultUnresolvedMethod defaultUnresolvedMethod = (DefaultUnresolvedMethod)base.Clone();
@@ -40,7 +37,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return defaultUnresolvedMethod;
 		}
 
-		// Token: 0x060006D0 RID: 1744 RVA: 0x00011E28 File Offset: 0x00010E28
 		public override void ApplyInterningProvider(InterningProvider provider)
 		{
 			base.ApplyInterningProvider(provider);
@@ -52,13 +48,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x060006D1 RID: 1745 RVA: 0x00011E75 File Offset: 0x00010E75
 		public DefaultUnresolvedMethod()
 		{
 			base.SymbolKind = SymbolKind.Method;
 		}
 
-		// Token: 0x060006D2 RID: 1746 RVA: 0x00011E84 File Offset: 0x00010E84
 		public DefaultUnresolvedMethod(IUnresolvedTypeDefinition declaringType, string name)
 		{
 			base.SymbolKind = SymbolKind.Method;
@@ -70,8 +64,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002C3 RID: 707
-		// (get) Token: 0x060006D3 RID: 1747 RVA: 0x00011EB0 File Offset: 0x00010EB0
 		public IList<IUnresolvedAttribute> ReturnTypeAttributes
 		{
 			get
@@ -84,8 +76,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002C4 RID: 708
-		// (get) Token: 0x060006D4 RID: 1748 RVA: 0x00011ECB File Offset: 0x00010ECB
 		public IList<IUnresolvedTypeParameter> TypeParameters
 		{
 			get
@@ -98,9 +88,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002C5 RID: 709
-		// (get) Token: 0x060006D5 RID: 1749 RVA: 0x00011EE6 File Offset: 0x00010EE6
-		// (set) Token: 0x060006D6 RID: 1750 RVA: 0x00011EF8 File Offset: 0x00010EF8
 		public bool IsExtensionMethod
 		{
 			get
@@ -114,8 +101,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002C6 RID: 710
-		// (get) Token: 0x060006D7 RID: 1751 RVA: 0x00011F11 File Offset: 0x00010F11
 		public bool IsConstructor
 		{
 			get
@@ -124,8 +109,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002C7 RID: 711
-		// (get) Token: 0x060006D8 RID: 1752 RVA: 0x00011F1C File Offset: 0x00010F1C
 		public bool IsDestructor
 		{
 			get
@@ -134,8 +117,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002C8 RID: 712
-		// (get) Token: 0x060006D9 RID: 1753 RVA: 0x00011F28 File Offset: 0x00010F28
 		public bool IsOperator
 		{
 			get
@@ -144,9 +125,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002C9 RID: 713
-		// (get) Token: 0x060006DA RID: 1754 RVA: 0x00011F33 File Offset: 0x00010F33
-		// (set) Token: 0x060006DB RID: 1755 RVA: 0x00011F45 File Offset: 0x00010F45
 		public bool IsPartial
 		{
 			get
@@ -160,9 +138,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002CA RID: 714
-		// (get) Token: 0x060006DC RID: 1756 RVA: 0x00011F5E File Offset: 0x00010F5E
-		// (set) Token: 0x060006DD RID: 1757 RVA: 0x00011F70 File Offset: 0x00010F70
 		public bool IsAsync
 		{
 			get
@@ -176,9 +151,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002CB RID: 715
-		// (get) Token: 0x060006DE RID: 1758 RVA: 0x00011F89 File Offset: 0x00010F89
-		// (set) Token: 0x060006DF RID: 1759 RVA: 0x00011F9B File Offset: 0x00010F9B
 		public bool HasBody
 		{
 			get
@@ -192,9 +164,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002CC RID: 716
-		// (get) Token: 0x060006E0 RID: 1760 RVA: 0x00011FB4 File Offset: 0x00010FB4
-		// (set) Token: 0x060006E1 RID: 1761 RVA: 0x00011FC9 File Offset: 0x00010FC9
 		[Obsolete]
 		public bool IsPartialMethodDeclaration
 		{
@@ -217,9 +186,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002CD RID: 717
-		// (get) Token: 0x060006E2 RID: 1762 RVA: 0x00011FF7 File Offset: 0x00010FF7
-		// (set) Token: 0x060006E3 RID: 1763 RVA: 0x00012009 File Offset: 0x00011009
 		[Obsolete]
 		public bool IsPartialMethodImplementation
 		{
@@ -242,8 +208,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002CE RID: 718
-		// (get) Token: 0x060006E4 RID: 1764 RVA: 0x00012037 File Offset: 0x00011037
 		public IList<IUnresolvedParameter> Parameters
 		{
 			get
@@ -256,9 +220,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x170002CF RID: 719
-		// (get) Token: 0x060006E5 RID: 1765 RVA: 0x00012052 File Offset: 0x00011052
-		// (set) Token: 0x060006E6 RID: 1766 RVA: 0x0001205A File Offset: 0x0001105A
 		public IUnresolvedMember AccessorOwner
 		{
 			get
@@ -272,7 +233,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x060006E7 RID: 1767 RVA: 0x0001206C File Offset: 0x0001106C
 		public override string ToString()
 		{
 			StringBuilder stringBuilder = new StringBuilder("[");
@@ -292,13 +252,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x060006E8 RID: 1768 RVA: 0x00012121 File Offset: 0x00011121
 		public override IMember CreateResolved(ITypeResolveContext context)
 		{
 			return new DefaultResolvedMethod(this, context);
 		}
 
-		// Token: 0x060006E9 RID: 1769 RVA: 0x0001213C File Offset: 0x0001113C
 		public override IMember Resolve(ITypeResolveContext context)
 		{
 			if (this.accessorOwner != null)
@@ -347,13 +305,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			select p.Type).ToList<ITypeReference>());
 		}
 
-		// Token: 0x060006EA RID: 1770 RVA: 0x000122E2 File Offset: 0x000112E2
 		IMethod IUnresolvedMethod.Resolve(ITypeResolveContext context)
 		{
 			return (IMethod)this.Resolve(context);
 		}
 
-		// Token: 0x060006EB RID: 1771 RVA: 0x000122F0 File Offset: 0x000112F0
 		public static DefaultUnresolvedMethod CreateDefaultConstructor(IUnresolvedTypeDefinition typeDefinition)
 		{
 			if (typeDefinition == null)
@@ -380,8 +336,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 		/// <returns>
 		/// A public instance constructor with IsSynthetic=true and no declaring type.
 		/// </returns>
-		// Token: 0x170002D0 RID: 720
-		// (get) Token: 0x060006EC RID: 1772 RVA: 0x0001237B File Offset: 0x0001137B
 		public static IUnresolvedMethod DummyConstructor
 		{
 			get
@@ -390,7 +344,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x060006ED RID: 1773 RVA: 0x00012384 File Offset: 0x00011384
 		private static IUnresolvedMethod CreateDummyConstructor()
 		{
 			DefaultUnresolvedMethod defaultUnresolvedMethod = new DefaultUnresolvedMethod
@@ -405,19 +358,14 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return defaultUnresolvedMethod;
 		}
 
-		// Token: 0x04000202 RID: 514
 		private IList<IUnresolvedAttribute> returnTypeAttributes;
 
-		// Token: 0x04000203 RID: 515
 		private IList<IUnresolvedTypeParameter> typeParameters;
 
-		// Token: 0x04000204 RID: 516
 		private IList<IUnresolvedParameter> parameters;
 
-		// Token: 0x04000205 RID: 517
 		private IUnresolvedMember accessorOwner;
 
-		// Token: 0x04000206 RID: 518
 		private static readonly IUnresolvedMethod dummyConstructor = DefaultUnresolvedMethod.CreateDummyConstructor();
 	}
 }

@@ -4,17 +4,14 @@ using CocoStudio.Projects;
 
 namespace CocoStudio.Model.DataModel
 {
-	// Token: 0x0200001B RID: 27
 	[DataModelExtension(typeof(GameNodeObject))]
 	public class GameNodeObjectData : AbstractNodeObjectData
 	{
-		// Token: 0x06000121 RID: 289 RVA: 0x00004D3E File Offset: 0x00002F3E
 		public GameNodeObjectData()
 		{
 			this.ctype = "SingleNodeObjectData";
 		}
 
-		// Token: 0x06000122 RID: 290 RVA: 0x00004D58 File Offset: 0x00002F58
 		public GameNodeObjectData(AbstractNodeObjectData sNode)
 		{
 			this.ctype = "SingleNodeObjectData";

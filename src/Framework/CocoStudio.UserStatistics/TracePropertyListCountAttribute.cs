@@ -6,7 +6,6 @@ using PostSharp.Extensibility;
 
 namespace CocoStudio.UserStatistics
 {
-	// Token: 0x02000005 RID: 5
 	[HasInheritedAttribute(new long[]
 	{
 
@@ -14,12 +13,10 @@ namespace CocoStudio.UserStatistics
 	[Serializable]
 	public class TracePropertyListCountAttribute : TracePropertyCallAttribute
 	{
-		// Token: 0x06000006 RID: 6 RVA: 0x00002157 File Offset: 0x00000357
 		public TracePropertyListCountAttribute(ViewRegions region, string feature) : base(region, feature)
 		{
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002164 File Offset: 0x00000364
 		[HasInheritedAttribute(new long[]
 		{
 			2905153543183646119L

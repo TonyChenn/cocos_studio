@@ -4,10 +4,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000065 RID: 101
 	public class PointFEditor : BaseEditor
 	{
-		// Token: 0x0600035E RID: 862 RVA: 0x0000EB5C File Offset: 0x0000CD5C
 		protected override Widget OnCreateWidget()
 		{
 			this.xInnerEntry = new NoUndoNumEntry();
@@ -33,7 +31,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x0600035F RID: 863 RVA: 0x0000ECBC File Offset: 0x0000CEBC
 		protected override void OnSetControl()
 		{
 			PointF pointF = base.PropertyItem.Values[0] as PointF;
@@ -41,7 +38,6 @@ namespace CocoStudio.Model.Editor
 			this.yInnerEntry.Value = pointF.Y;
 		}
 
-		// Token: 0x06000360 RID: 864 RVA: 0x0000ED08 File Offset: 0x0000CF08
 		private void XEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -55,7 +51,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000361 RID: 865 RVA: 0x0000ED98 File Offset: 0x0000CF98
 		private void YEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -69,10 +64,8 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x040001A0 RID: 416
 		private NoUndoNumEntry xInnerEntry;
 
-		// Token: 0x040001A1 RID: 417
 		private NoUndoNumEntry yInnerEntry;
 	}
 }

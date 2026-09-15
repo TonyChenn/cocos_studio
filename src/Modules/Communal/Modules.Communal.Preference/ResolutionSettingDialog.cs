@@ -10,11 +10,8 @@ using Stetic;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x02000014 RID: 20
 	public class ResolutionSettingDialog : Dialog
 	{
-		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x06000099 RID: 153 RVA: 0x00008BF3 File Offset: 0x00006DF3
 		public string ResolutionName
 		{
 			get
@@ -23,8 +20,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x0600009A RID: 154 RVA: 0x00008C00 File Offset: 0x00006E00
 		public int Width
 		{
 			get
@@ -38,8 +33,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x0600009B RID: 155 RVA: 0x00008C28 File Offset: 0x00006E28
 		public int Height
 		{
 			get
@@ -53,7 +46,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x00008C50 File Offset: 0x00006E50
 		public ResolutionSettingDialog(int width, int height, string name = null)
 		{
 			this.Build();
@@ -63,7 +55,6 @@ namespace Modules.Communal.Preference
 			this.entry_name.Text = name;
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x00008CA0 File Offset: 0x00006EA0
 		private void Init()
 		{
 			this.label_name.Text = LanguageInfo.Display_Name;
@@ -87,7 +78,6 @@ namespace Modules.Communal.Preference
 			this.SetToDialogStyle(this.parentWnd, true, true, true);
 		}
 
-		// Token: 0x0600009E RID: 158 RVA: 0x00008DA6 File Offset: 0x00006FA6
 		private void Apply()
 		{
 			if (this.CanApply())
@@ -98,7 +88,6 @@ namespace Modules.Communal.Preference
 			this.entry_name.GrabFocus();
 		}
 
-		// Token: 0x0600009F RID: 159 RVA: 0x00008DE0 File Offset: 0x00006FE0
 		private bool CanApply()
 		{
 			bool flag = false;
@@ -135,25 +124,21 @@ namespace Modules.Communal.Preference
 			return true;
 		}
 
-		// Token: 0x060000A0 RID: 160 RVA: 0x00008EBA File Offset: 0x000070BA
 		protected void HandleButtonOKClicked(object sender, EventArgs e)
 		{
 			this.Apply();
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x00008EC2 File Offset: 0x000070C2
 		protected void HandleButtonCancelClicked(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.Cancel);
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x00008ECC File Offset: 0x000070CC
 		protected void HandleDialogDestroyed(object sender, EventArgs e)
 		{
 			this.parentWnd.Modal = this.isParentModal;
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x00008EDF File Offset: 0x000070DF
 		[ConnectBefore]
 		protected void HandleKeyPressEvent(object o, KeyPressEventArgs args)
 		{
@@ -163,7 +148,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x00008EFC File Offset: 0x000070FC
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -327,58 +311,40 @@ namespace Modules.Communal.Preference
 			this.buttonOk.Clicked += this.HandleButtonOKClicked;
 		}
 
-		// Token: 0x040000B9 RID: 185
 		private const int minValue = 1;
 
-		// Token: 0x040000BA RID: 186
 		private const int maxValue = 100000;
 
-		// Token: 0x040000BB RID: 187
 		private bool isParentModal;
 
-		// Token: 0x040000BC RID: 188
 		private Gtk.Window parentWnd;
 
-		// Token: 0x040000BD RID: 189
 		private Table table_main;
 
-		// Token: 0x040000BE RID: 190
 		private Entry entry_name;
 
-		// Token: 0x040000BF RID: 191
 		private HBox hbox_height;
 
-		// Token: 0x040000C0 RID: 192
 		private Entry entry_height;
 
-		// Token: 0x040000C1 RID: 193
 		private Label label_px2;
 
-		// Token: 0x040000C2 RID: 194
 		private HBox hbox_width;
 
-		// Token: 0x040000C3 RID: 195
 		private Entry entry_width;
 
-		// Token: 0x040000C4 RID: 196
 		private Label label_px1;
 
-		// Token: 0x040000C5 RID: 197
 		private Label label_height;
 
-		// Token: 0x040000C6 RID: 198
 		private Label label_name;
 
-		// Token: 0x040000C7 RID: 199
 		private Label label_width;
 
-		// Token: 0x040000C8 RID: 200
 		private HBox hbox_bottomButton;
 
-		// Token: 0x040000C9 RID: 201
 		private Button buttonCancel;
 
-		// Token: 0x040000CA RID: 202
 		private Button buttonOk;
 	}
 }

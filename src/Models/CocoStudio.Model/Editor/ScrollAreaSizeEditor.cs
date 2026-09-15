@@ -6,10 +6,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200009D RID: 157
 	internal class ScrollAreaSizeEditor : BaseEditor
 	{
-		// Token: 0x06000554 RID: 1364 RVA: 0x000176A8 File Offset: 0x000158A8
 		protected override Widget OnCreateWidget()
 		{
 			this.xInnerEntry = new NoUndoNumEntry();
@@ -31,7 +29,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x06000555 RID: 1365 RVA: 0x00017790 File Offset: 0x00015990
 		protected override void OnSetControl()
 		{
 			SizeValue sizeValue = (SizeValue)base.PropertyItem.Values[0];
@@ -63,7 +60,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000556 RID: 1366 RVA: 0x00017894 File Offset: 0x00015A94
 		private void XEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -82,7 +78,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000557 RID: 1367 RVA: 0x00017960 File Offset: 0x00015B60
 		private void YEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -101,10 +96,8 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0400027D RID: 637
 		private NoUndoNumEntry xInnerEntry;
 
-		// Token: 0x0400027E RID: 638
 		private NoUndoNumEntry yInnerEntry;
 	}
 }

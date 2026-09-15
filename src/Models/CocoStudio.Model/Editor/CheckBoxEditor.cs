@@ -6,16 +6,13 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200008E RID: 142
 	internal class CheckBoxEditor : BaseEditor
 	{
-		// Token: 0x060004E4 RID: 1252 RVA: 0x000153ED File Offset: 0x000135ED
 		private void choice_Clicked(object sender, EventArgs e)
 		{
 			base.UpdatePropertyValue(this.choice.Active, null);
 		}
 
-		// Token: 0x060004E5 RID: 1253 RVA: 0x00015408 File Offset: 0x00013608
 		protected override Widget OnCreateWidget()
 		{
 			this.choice = new RadioButton(LanguageInfo.Display_NormalState);
@@ -41,7 +38,6 @@ namespace CocoStudio.Model.Editor
 			return vbox;
 		}
 
-		// Token: 0x060004E6 RID: 1254 RVA: 0x00015538 File Offset: 0x00013738
 		protected override void OnSetControl()
 		{
 			object obj = base.PropertyItem.Values[0];
@@ -57,10 +53,8 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000243 RID: 579
 		private RadioButton choice;
 
-		// Token: 0x04000244 RID: 580
 		private RadioButton unChoice;
 	}
 }

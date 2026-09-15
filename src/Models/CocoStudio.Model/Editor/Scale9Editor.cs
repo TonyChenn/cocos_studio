@@ -6,11 +6,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000068 RID: 104
 	internal class Scale9Editor : BaseEditor
 	{
-		// Token: 0x17000100 RID: 256
-		// (get) Token: 0x0600036E RID: 878 RVA: 0x0000F524 File Offset: 0x0000D724
 		public override bool CanCaching
 		{
 			get
@@ -19,8 +16,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000101 RID: 257
-		// (get) Token: 0x0600036F RID: 879 RVA: 0x0000F538 File Offset: 0x0000D738
 		public override bool IsMultiLine
 		{
 			get
@@ -29,7 +24,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000370 RID: 880 RVA: 0x0000F54C File Offset: 0x0000D74C
 		protected override Widget OnCreateWidget()
 		{
 			this.table = new Table(3U, 3U, false);
@@ -83,7 +77,6 @@ namespace CocoStudio.Model.Editor
 			return this.table;
 		}
 
-		// Token: 0x06000371 RID: 881 RVA: 0x0000F940 File Offset: 0x0000DB40
 		private void Scale9_EventChanged(object sender, Scale9EventArgs e)
 		{
 			using (base.GetLock(true))
@@ -110,7 +103,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000372 RID: 882 RVA: 0x0000FAEC File Offset: 0x0000DCEC
 		private void Entry_EntryValueChanged(object sender, EntryIntEventArgs e)
 		{
 			if (this.Scale9Object != null)
@@ -163,7 +155,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000373 RID: 883 RVA: 0x0000FFB8 File Offset: 0x0000E1B8
 		private void checkButton_Clicked(object sender, EventArgs e)
 		{
 			using (base.GetLock(true))
@@ -177,7 +168,6 @@ namespace CocoStudio.Model.Editor
 			base.ReportUserData("9Slice");
 		}
 
-		// Token: 0x06000374 RID: 884 RVA: 0x0001009C File Offset: 0x0000E29C
 		private void SetScale9MaxValue()
 		{
 			if (this.Scale9Object != null && this.Scale9Object.ResourceSize != null)
@@ -188,7 +178,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000375 RID: 885 RVA: 0x00010130 File Offset: 0x0000E330
 		private void RefreshScale(bool forceRefresh = false)
 		{
 			if (forceRefresh)
@@ -204,7 +193,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000376 RID: 886 RVA: 0x0001018C File Offset: 0x0000E38C
 		private void RefreshScaleData(bool forceRefresh = false)
 		{
 			int num = (int)(this.Scale9Object.ResourceSize.Width * 0.33f);
@@ -232,7 +220,6 @@ namespace CocoStudio.Model.Editor
 			this.SetSacleDrawingArea();
 		}
 
-		// Token: 0x06000377 RID: 887 RVA: 0x000102B4 File Offset: 0x0000E4B4
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == "FileData" || e.PropertyName == "NormalFileData")
@@ -246,7 +233,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000378 RID: 888 RVA: 0x00010370 File Offset: 0x0000E570
 		protected override void OnSetControl()
 		{
 			if (this.Scale9Object != null)
@@ -260,7 +246,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000379 RID: 889 RVA: 0x00010414 File Offset: 0x0000E614
 		private void SetSacleDrawingArea()
 		{
 			if (this.Scale9Object.ResourceSize.Height == 0f)
@@ -299,52 +284,36 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x040001AF RID: 431
 		private const float scale9DrawArea = 100f;
 
-		// Token: 0x040001B0 RID: 432
 		private const float maxDrawArea = 102f;
 
-		// Token: 0x040001B1 RID: 433
 		private const float minDrawArea = 2f;
 
-		// Token: 0x040001B2 RID: 434
 		private Table table;
 
-		// Token: 0x040001B3 RID: 435
 		private CheckButtonEx checkButton;
 
-		// Token: 0x040001B4 RID: 436
 		private NoUndoNumEntry topEntry;
 
-		// Token: 0x040001B5 RID: 437
 		private NoUndoNumEntry bottomEntry;
 
-		// Token: 0x040001B6 RID: 438
 		private NoUndoNumEntry leftEntry;
 
-		// Token: 0x040001B7 RID: 439
 		private NoUndoNumEntry rightEntry;
 
-		// Token: 0x040001B8 RID: 440
 		private Scale9EventBox scale9;
 
-		// Token: 0x040001B9 RID: 441
 		private IScale9 Scale9Object = null;
 
-		// Token: 0x040001BA RID: 442
 		private Table bottomTable;
 
-		// Token: 0x040001BB RID: 443
 		private Table rightTable;
 
-		// Token: 0x040001BC RID: 444
 		private Table topTable;
 
-		// Token: 0x040001BD RID: 445
 		private Alignment alignNotice;
 
-		// Token: 0x040001BE RID: 446
 		private TooltipIcon noticeIcon;
 	}
 }

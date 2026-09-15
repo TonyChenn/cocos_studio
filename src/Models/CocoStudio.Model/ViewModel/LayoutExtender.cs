@@ -6,12 +6,8 @@ using CocoStudio.UndoManager.Recorder;
 
 namespace CocoStudio.Model.ViewModel
 {
-	// Token: 0x0200012C RID: 300
 	public class LayoutExtender : BaseExtender
 	{
-		// Token: 0x17000335 RID: 821
-		// (get) Token: 0x06000B1D RID: 2845 RVA: 0x0002BC14 File Offset: 0x00029E14
-		// (set) Token: 0x06000B1E RID: 2846 RVA: 0x0002BC2B File Offset: 0x00029E2B
 		public static bool LayoutEnabled
 		{
 			get
@@ -25,7 +21,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B1F RID: 2847 RVA: 0x0002BC3B File Offset: 0x00029E3B
 		public LayoutExtender(AbstractNodeObject bindingObject)
 		{
 			this.objectInstance = bindingObject;
@@ -33,7 +28,6 @@ namespace CocoStudio.Model.ViewModel
 			this.propertyNames = this.CollectLayoutProperty();
 		}
 
-		// Token: 0x06000B20 RID: 2848 RVA: 0x0002BC78 File Offset: 0x00029E78
 		internal override void OnObjectPropertyChanged(PropertyInfo propertyInfo)
 		{
 			if (this.propertyNames.Contains(propertyInfo.Name))
@@ -42,7 +36,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B21 RID: 2849 RVA: 0x0002BCA8 File Offset: 0x00029EA8
 		protected void OnObjectParentChanged(object sender, EventArgs e)
 		{
 			if (this.isFirstAdded)
@@ -55,7 +48,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B22 RID: 2850 RVA: 0x0002BCD8 File Offset: 0x00029ED8
 		private HashSet<string> CollectLayoutProperty()
 		{
 			HashSet<string> hashSet = new HashSet<string>();
@@ -75,7 +67,6 @@ namespace CocoStudio.Model.ViewModel
 			return hashSet;
 		}
 
-		// Token: 0x06000B23 RID: 2851 RVA: 0x0002BD7C File Offset: 0x00029F7C
 		public static void RefreshLayout(VisualObject vObject)
 		{
 			AbstractNodeObject abstractNodeObject = vObject as AbstractNodeObject;
@@ -90,7 +81,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B24 RID: 2852 RVA: 0x0002BDC8 File Offset: 0x00029FC8
 		private void RefreshProperty()
 		{
 			if (LayoutExtender.LayoutEnabled)
@@ -112,7 +102,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B25 RID: 2853 RVA: 0x0002BE28 File Offset: 0x0002A028
 		private static void RefreshBouding(AbstractNodeObject abstractObject)
 		{
 			CSNode2D csnode2D = abstractObject.GetCSVisual() as CSNode2D;
@@ -144,7 +133,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B26 RID: 2854 RVA: 0x0002BF88 File Offset: 0x0002A188
 		private void InitLayoutProperty()
 		{
 			CSNode2D csnode2D = this.objectInstance.GetCSVisual() as CSNode2D;
@@ -157,7 +145,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B27 RID: 2855 RVA: 0x0002BFD4 File Offset: 0x0002A1D4
 		public override void Dispose()
 		{
 			if (this.objectInstance != null)
@@ -168,16 +155,12 @@ namespace CocoStudio.Model.ViewModel
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x040004A5 RID: 1189
 		private static bool _layoutEnabled = false;
 
-		// Token: 0x040004A6 RID: 1190
 		private AbstractNodeObject objectInstance;
 
-		// Token: 0x040004A7 RID: 1191
 		private readonly HashSet<string> propertyNames;
 
-		// Token: 0x040004A8 RID: 1192
 		private bool isFirstAdded = true;
 	}
 }

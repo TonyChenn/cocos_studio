@@ -9,12 +9,9 @@ using Mono.Addins;
 
 namespace CocoStudio.Model3D.ViewModel
 {
-	// Token: 0x02000028 RID: 40
 	[Extension(typeof(BaseProjectFileTemplate))]
 	internal class Scene3DCocosFileTemplate : BaseProjectFileTemplate
 	{
-		// Token: 0x1700006B RID: 107
-		// (get) Token: 0x06000197 RID: 407 RVA: 0x0000644B File Offset: 0x0000464B
 		public override string LabelName
 		{
 			get
@@ -23,8 +20,6 @@ namespace CocoStudio.Model3D.ViewModel
 			}
 		}
 
-		// Token: 0x1700006C RID: 108
-		// (get) Token: 0x06000198 RID: 408 RVA: 0x00006452 File Offset: 0x00004652
 		public override NodeType FileType
 		{
 			get
@@ -33,8 +28,6 @@ namespace CocoStudio.Model3D.ViewModel
 			}
 		}
 
-		// Token: 0x1700006D RID: 109
-		// (get) Token: 0x06000199 RID: 409 RVA: 0x00006455 File Offset: 0x00004655
 		public override int Order
 		{
 			get
@@ -43,8 +36,6 @@ namespace CocoStudio.Model3D.ViewModel
 			}
 		}
 
-		// Token: 0x1700006E RID: 110
-		// (get) Token: 0x0600019A RID: 410 RVA: 0x00006458 File Offset: 0x00004658
 		public override string Description
 		{
 			get
@@ -53,19 +44,16 @@ namespace CocoStudio.Model3D.ViewModel
 			}
 		}
 
-		// Token: 0x0600019B RID: 411 RVA: 0x0000645F File Offset: 0x0000465F
 		protected override string OnGetIconResource()
 		{
 			return "CocoStudio.DefaultResource.Images.ProjectFile.sence3d.png";
 		}
 
-		// Token: 0x0600019C RID: 412 RVA: 0x00006466 File Offset: 0x00004666
 		protected override void OnChangeView(CanvasObject canvas, CocosItem item)
 		{
 			canvas.SetCenterLineVisible(false);
 		}
 
-		// Token: 0x0600019D RID: 413 RVA: 0x0000646F File Offset: 0x0000466F
 		protected override void OnInitGameProejctData(GameFileData gameFileData)
 		{
 			gameFileData.ObjectData = new GameNode3DObjectData();
@@ -77,7 +65,6 @@ namespace CocoStudio.Model3D.ViewModel
 			this.CreateDefaultLight(gameFileData);
 		}
 
-		// Token: 0x0600019E RID: 414 RVA: 0x000064A8 File Offset: 0x000046A8
 		private void CreateDefaultCamera(GameFileData gameFileData)
 		{
 			UserCameraObjectData userCameraObjectData = new UserCameraObjectData();
@@ -90,7 +77,6 @@ namespace CocoStudio.Model3D.ViewModel
 			userCameraObjectData.Name = "UserCamera_0";
 		}
 
-		// Token: 0x0600019F RID: 415 RVA: 0x0000650C File Offset: 0x0000470C
 		private void CreateDefaultLight(GameFileData gameFileData)
 		{
 			Light3DObjectData light3DObjectData = new Light3DObjectData();

@@ -8,12 +8,8 @@ using Gtk;
 
 namespace Modules.Communal.PropertyGrid
 {
-	// Token: 0x0200001E RID: 30
 	public class PropertyGridUC : EventBox, IPropertyGrid, IService
 	{
-		// Token: 0x1700003B RID: 59
-		// (get) Token: 0x060000C8 RID: 200 RVA: 0x00004980 File Offset: 0x00002B80
-		// (set) Token: 0x060000C9 RID: 201 RVA: 0x00004998 File Offset: 0x00002B98
 		public IReadOnlyList<object> SelectedObjects
 		{
 			get
@@ -41,12 +37,8 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x1700003C RID: 60
-		// (get) Token: 0x060000CA RID: 202 RVA: 0x00004A50 File Offset: 0x00002C50
-		// (set) Token: 0x060000CB RID: 203 RVA: 0x00004A67 File Offset: 0x00002C67
 		public bool IsShowTitle { get; set; }
 
-		// Token: 0x060000CC RID: 204 RVA: 0x00004A70 File Offset: 0x00002C70
 		public PropertyGridUC()
 		{
 			base.WidthRequest = 360;
@@ -58,7 +50,6 @@ namespace Modules.Communal.PropertyGrid
 			this.plistMainWidget = this.InitPlistWidget();
 		}
 
-		// Token: 0x060000CD RID: 205 RVA: 0x00004AFC File Offset: 0x00002CFC
 		private Widget InitNormalWidget()
 		{
 			VBox vbox = new VBox();
@@ -80,7 +71,6 @@ namespace Modules.Communal.PropertyGrid
 			return vbox;
 		}
 
-		// Token: 0x060000CE RID: 206 RVA: 0x00004BAC File Offset: 0x00002DAC
 		private Widget InitPlistWidget()
 		{
 			this.plistPropVbox = new VBox();
@@ -99,13 +89,11 @@ namespace Modules.Communal.PropertyGrid
 			return scrolledWindow;
 		}
 
-		// Token: 0x060000CF RID: 207 RVA: 0x00004C5C File Offset: 0x00002E5C
 		public List<IPropertyEditor> GetEditors()
 		{
 			return this.propertyEditors.Values.ToList<IPropertyEditor>();
 		}
 
-		// Token: 0x060000D0 RID: 208 RVA: 0x00004C80 File Offset: 0x00002E80
 		public IPropertyEditor GetEditor(string propertyName)
 		{
 			IPropertyEditor result;
@@ -124,7 +112,6 @@ namespace Modules.Communal.PropertyGrid
 			return result;
 		}
 
-		// Token: 0x060000D1 RID: 209 RVA: 0x00004CC8 File Offset: 0x00002EC8
 		public void ForceRefresh()
 		{
 			foreach (IPropertyEditor propertyEditor in this.propertyEditors.Values)
@@ -134,7 +121,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000D2 RID: 210 RVA: 0x00004D5C File Offset: 0x00002F5C
 		private void ShowSelectedObjects(IReadOnlyList<object> selectObjs)
 		{
 			this.Reset(selectObjs);
@@ -195,7 +181,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000D3 RID: 211 RVA: 0x0000502C File Offset: 0x0000322C
 		private void Reset(IReadOnlyList<object> selectObjs)
 		{
 			if (selectObjs.Count == 0)
@@ -218,7 +203,6 @@ namespace Modules.Communal.PropertyGrid
 			this.propertyEditors.Clear();
 		}
 
-		// Token: 0x060000D4 RID: 212 RVA: 0x00005124 File Offset: 0x00003324
 		private PropertyGroup GetGroup(string groupName)
 		{
 			PropertyGroup propertyGroup;
@@ -245,7 +229,6 @@ namespace Modules.Communal.PropertyGrid
 			return result;
 		}
 
-		// Token: 0x060000D5 RID: 213 RVA: 0x000051F0 File Offset: 0x000033F0
 		private void ChangeMainWidget(Widget newMainWidget)
 		{
 			Widget child = base.Child;
@@ -263,7 +246,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000D6 RID: 214 RVA: 0x0000523C File Offset: 0x0000343C
 		private void RegisterPropertyChangeEvent(IReadOnlyList<object> objs)
 		{
 			INotifyPropertyChanged notifyPropertyChanged;
@@ -279,7 +261,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000D7 RID: 215 RVA: 0x0000528C File Offset: 0x0000348C
 		private void UnregisterPropertyChangeEvent(IReadOnlyList<object> objs)
 		{
 			INotifyPropertyChanged notifyPropertyChanged;
@@ -295,7 +276,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000D8 RID: 216 RVA: 0x000052DC File Offset: 0x000034DC
 		private void GetKeyObjects(IReadOnlyList<object> selectedObjs, out INotifyPropertyChanged obj1, out INotifyPropertyChanged obj2)
 		{
 			obj1 = null;
@@ -314,7 +294,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000D9 RID: 217 RVA: 0x00005350 File Offset: 0x00003550
 		private void PropertyChangedHandler(object sender, PropertyChangedEventArgs e)
 		{
 			foreach (IPropertyEditor propertyEditor in this.propertyEditors.Values)
@@ -334,7 +313,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000DA RID: 218 RVA: 0x000054AC File Offset: 0x000036AC
 		private void GroupExpandChangedHandler(object sender, ExpandEvent e)
 		{
 			if (e.Expand)
@@ -347,7 +325,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000DB RID: 219 RVA: 0x0000550C File Offset: 0x0000370C
 		protected override bool OnButtonPressEvent(EventButton evnt)
 		{
 			base.CanFocus = true;
@@ -357,31 +334,22 @@ namespace Modules.Communal.PropertyGrid
 			return base.OnButtonPressEvent(evnt);
 		}
 
-		// Token: 0x04000040 RID: 64
 		private Widget normalMainWidget;
 
-		// Token: 0x04000041 RID: 65
 		private TitleWidget titleWidget;
 
-		// Token: 0x04000042 RID: 66
 		private VBox propGroupVbox;
 
-		// Token: 0x04000043 RID: 67
 		private Widget plistMainWidget;
 
-		// Token: 0x04000044 RID: 68
 		private VBox plistPropVbox;
 
-		// Token: 0x04000045 RID: 69
 		private Dictionary<string, IPropertyEditor> propertyEditors = new Dictionary<string, IPropertyEditor>();
 
-		// Token: 0x04000046 RID: 70
 		private Dictionary<string, PropertyGroup> propertyGroups = new Dictionary<string, PropertyGroup>();
 
-		// Token: 0x04000047 RID: 71
 		private List<string> shrinkGroupList = new List<string>();
 
-		// Token: 0x04000048 RID: 72
 		private IReadOnlyList<object> _selectedObjects;
 	}
 }

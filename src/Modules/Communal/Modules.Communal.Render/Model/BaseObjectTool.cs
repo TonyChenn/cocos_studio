@@ -8,10 +8,8 @@ using Gtk;
 
 namespace Modules.Communal.Render.Model
 {
-	// Token: 0x02000010 RID: 16
 	public abstract class BaseObjectTool : BaseTool
 	{
-		// Token: 0x060000A1 RID: 161 RVA: 0x00005C58 File Offset: 0x00003E58
 		public override void OnMouseDown(ButtonPressEventArgs args)
 		{
 			this.clickPoint = args.Event.GetPoint();
@@ -30,7 +28,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x00005D34 File Offset: 0x00003F34
 		public override void OnMouseUp(ButtonReleaseEventArgs args)
 		{
 			if (this.controlNode != null)
@@ -50,7 +47,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x00005DE0 File Offset: 0x00003FE0
 		public override void OnMouseMove(MotionNotifyEventArgs args)
 		{
 			if (this.controlNode != null)
@@ -64,7 +60,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x00005E3C File Offset: 0x0000403C
 		public override void OnKeyDown(KeyPressEventArgs args)
 		{
 			if (this.controlNode != null)
@@ -76,7 +71,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000A5 RID: 165 RVA: 0x00005E80 File Offset: 0x00004080
 		public override void OnKeyUp(KeyReleaseEventArgs args)
 		{
 			if (this.controlNode != null)
@@ -88,7 +82,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x00005EC4 File Offset: 0x000040C4
 		public override void Load()
 		{
 			if (this.controlNode != null)
@@ -97,7 +90,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000A7 RID: 167 RVA: 0x00005EF4 File Offset: 0x000040F4
 		public override void UnLoad()
 		{
 			if (this.controlNode != null)
@@ -106,7 +98,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x060000A8 RID: 168 RVA: 0x00005F24 File Offset: 0x00004124
 		protected virtual bool HitTest(PointF widgetPoint)
 		{
 			bool result;
@@ -123,10 +114,8 @@ namespace Modules.Communal.Render.Model
 			return result;
 		}
 
-		// Token: 0x0400001E RID: 30
 		protected VisualObject controlNode;
 
-		// Token: 0x0400001F RID: 31
 		protected PointF clickPoint = PointF.Empty;
 	}
 }

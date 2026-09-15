@@ -16,17 +16,14 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.ProjectsConvertor
 {
-	// Token: 0x02000043 RID: 67
 	[Extension(Type = typeof(ICommandHandle))]
 	public class WinProjectConvertor : ICommandHandle
 	{
-		// Token: 0x06000401 RID: 1025 RVA: 0x0000A772 File Offset: 0x00008972
 		public void Initialize()
 		{
 			GlobalCommand.ImportProjectCmd.Execute += new EventHandler<CommandRunArgs>(this.ImportProjectCmd_Execute);
 		}
 
-		// Token: 0x06000402 RID: 1026 RVA: 0x0000A78C File Offset: 0x0000898C
 		private void ImportProjectCmd_Execute(object sender, EventArgs e)
 		{
 			string lastBrowserLocation = Services.RecentFileService.LastBrowserLocation;
@@ -43,7 +40,6 @@ namespace Modules.Communal.ProjectsConvertor
 			this.ConvertProject(fileName, this.resourcesDir);
 		}
 
-		// Token: 0x06000403 RID: 1027 RVA: 0x0000A814 File Offset: 0x00008A14
 		protected void PreDealPath(string filepath)
 		{
 			string text = Path.GetExtension(filepath);
@@ -65,7 +61,6 @@ namespace Modules.Communal.ProjectsConvertor
 			this.projectName = Path.GetFileNameWithoutExtension(fileNameWithoutExtension);
 		}
 
-		// Token: 0x06000404 RID: 1028 RVA: 0x0000AD1C File Offset: 0x00008F1C
 		private async void ConvertProject(string filepath, string resPath)
 		{
 			if (!Directory.Exists(resPath))
@@ -142,13 +137,11 @@ namespace Modules.Communal.ProjectsConvertor
 			this.EndConvert();
 		}
 
-		// Token: 0x06000405 RID: 1029 RVA: 0x0000AD66 File Offset: 0x00008F66
 		private void CreateCSDFromJson(IProgressMonitor monitor)
 		{
 			this.ProjectFilesOp(monitor);
 		}
 
-		// Token: 0x06000406 RID: 1030 RVA: 0x0000AD70 File Offset: 0x00008F70
 		private void ProjectFilesOp(IProgressMonitor monitor)
 		{
 			List<ResourceItem> list = new List<ResourceItem>();
@@ -175,7 +168,6 @@ namespace Modules.Communal.ProjectsConvertor
 			Services.EventsService.GetEvent<AddResourcesEvent>().Publish(payload);
 		}
 
-		// Token: 0x06000407 RID: 1031 RVA: 0x0000AE58 File Offset: 0x00009058
 		private void EndConvert()
 		{
 			Services.ProjectsService.CurrentSolution.Save(Services.ProgressMonitors.GetProgressMonitor());
@@ -183,28 +175,20 @@ namespace Modules.Communal.ProjectsConvertor
 			LogConfig.Output.Info(messageBox214_ProjectVer1Imported, true);
 		}
 
-		// Token: 0x040001D7 RID: 471
 		private const string AnimationProjType = "animation";
 
-		// Token: 0x040001D8 RID: 472
 		private const string UIProjType = "ui";
 
-		// Token: 0x040001D9 RID: 473
 		private const string SceneProjType = "scene";
 
-		// Token: 0x040001DA RID: 474
 		private JsonProjType currProjType;
 
-		// Token: 0x040001DB RID: 475
 		private string solutionPath = string.Empty;
 
-		// Token: 0x040001DC RID: 476
 		private string resourcesDir = string.Empty;
 
-		// Token: 0x040001DD RID: 477
 		private string projectName = string.Empty;
 
-		// Token: 0x040001DE RID: 478
 		private List<string> jsonFiles = new List<string>();
 	}
 }

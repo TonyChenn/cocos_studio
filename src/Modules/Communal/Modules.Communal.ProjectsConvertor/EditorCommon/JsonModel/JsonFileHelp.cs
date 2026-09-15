@@ -16,29 +16,22 @@ using Newtonsoft.Json.Linq;
 
 namespace EditorCommon.JsonModel
 {
-	// Token: 0x02000030 RID: 48
 	public class JsonFileHelp
 	{
-		// Token: 0x17000160 RID: 352
-		// (get) Token: 0x06000354 RID: 852 RVA: 0x000086E9 File Offset: 0x000068E9
-		// (set) Token: 0x06000355 RID: 853 RVA: 0x000086F0 File Offset: 0x000068F0
 		internal static IProgressMonitor Monitor { get; set; }
 
-		// Token: 0x06000356 RID: 854 RVA: 0x000086F8 File Offset: 0x000068F8
 		private static string FormateJson(string unFormateJsonString)
 		{
 			object value = JsonConvert.DeserializeObject(unFormateJsonString);
 			return JsonConvert.SerializeObject(value, Formatting.Indented);
 		}
 
-		// Token: 0x06000357 RID: 855 RVA: 0x00008714 File Offset: 0x00006914
 		public static string UnFormateJson(string formateJsonString)
 		{
 			object value = JsonConvert.DeserializeObject(formateJsonString);
 			return JsonConvert.SerializeObject(value, Formatting.None);
 		}
 
-		// Token: 0x06000358 RID: 856 RVA: 0x00008730 File Offset: 0x00006930
 		private static Stream ReadFormateJson(string filePath)
 		{
 			string formateJsonString = File.ReadAllText(filePath);
@@ -47,7 +40,6 @@ namespace EditorCommon.JsonModel
 			return new MemoryStream(bytes);
 		}
 
-		// Token: 0x06000359 RID: 857 RVA: 0x00008760 File Offset: 0x00006960
 		private static JsonSerializerSettings GetJsonSerializerSettings(bool isFormating = false, bool isTypeNameNone = false)
 		{
 			JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings();
@@ -65,7 +57,6 @@ namespace EditorCommon.JsonModel
 			return jsonSerializerSettings;
 		}
 
-		// Token: 0x0600035A RID: 858 RVA: 0x0000879D File Offset: 0x0000699D
 		public static void SetOldToNewRelativeResDir(string oldjsonabspath, string oldresDir = "")
 		{
 			if (!string.IsNullOrEmpty(oldresDir))
@@ -76,27 +67,23 @@ namespace EditorCommon.JsonModel
 			JsonFileHelp.uiAniRelasResDir = Option.ConvertToMacPath(JsonFileHelp.uiAniRelasResDir);
 		}
 
-		// Token: 0x0600035B RID: 859 RVA: 0x000087CC File Offset: 0x000069CC
 		public static void SetOldResDir(string oldresDir)
 		{
 			JsonFileHelp.oldresDirs = oldresDir;
 		}
 
-		// Token: 0x0600035C RID: 860 RVA: 0x000087D4 File Offset: 0x000069D4
 		public static string GetResRelativePath(string absPath)
 		{
 			string filePath = FileService.AbsoluteToRelativePath(Services.ProjectOperations.CurrentResourceGroup.RootFolder.FullPath, absPath);
 			return Option.ConvertToMacPath(filePath);
 		}
 
-		// Token: 0x0600035D RID: 861 RVA: 0x00008804 File Offset: 0x00006A04
 		public static string GetResAbsPath(string relativePath)
 		{
 			string directoryName = Path.GetDirectoryName(JsonFileHelp.uiAndAniJson);
 			return Path.Combine(directoryName, relativePath);
 		}
 
-		// Token: 0x0600035E RID: 862 RVA: 0x00008828 File Offset: 0x00006A28
 		public static void ReportWarning(string message)
 		{
 			if (JsonFileHelp.Monitor != null)
@@ -105,7 +92,6 @@ namespace EditorCommon.JsonModel
 			}
 		}
 
-		// Token: 0x0600035F RID: 863 RVA: 0x00008858 File Offset: 0x00006A58
 		public static void ImportCanvas(string filePath, GameFileData gameFileData)
 		{
 			if (!File.Exists(filePath))
@@ -127,7 +113,6 @@ namespace EditorCommon.JsonModel
 			canvasGameObjectSurrogate.InitGameFileData(gameFileData);
 		}
 
-		// Token: 0x06000360 RID: 864 RVA: 0x000088C0 File Offset: 0x00006AC0
 		private static void setCanvasSize(CanvasGameObjectSurrogate canvas, string filePath)
 		{
 			string json = File.ReadAllText(filePath);
@@ -149,7 +134,6 @@ namespace EditorCommon.JsonModel
 			}
 		}
 
-		// Token: 0x06000361 RID: 865 RVA: 0x00008944 File Offset: 0x00006B44
 		private static string SceneVersionConvertToNewJsonData(string jsonData)
 		{
 			string text = jsonData.Replace("__type", "$type");
@@ -164,7 +148,6 @@ namespace EditorCommon.JsonModel
 			return text.Replace("ComSpriteSurrogate:#EditorCommon.JsonModel.Component", "EditorCommon.JsonModel.Component.ComSpriteSurrogate, Modules.Communal.ProjectsConvertor");
 		}
 
-		// Token: 0x06000362 RID: 866 RVA: 0x00008A00 File Offset: 0x00006C00
 		public static bool ImportUIFromFile(string filePath, GameFileData gameFileData)
 		{
 			if (!File.Exists(filePath))
@@ -211,22 +194,16 @@ namespace EditorCommon.JsonModel
 			return true;
 		}
 
-		// Token: 0x04000186 RID: 390
 		public static PlistConfigFileHelper plistfilehelper = new PlistConfigFileHelper();
 
-		// Token: 0x04000187 RID: 391
 		public static string uiAndAniJson = string.Empty;
 
-		// Token: 0x04000188 RID: 392
 		public static bool isBasedProject = true;
 
-		// Token: 0x04000189 RID: 393
 		private static string uiAniRelasResDir = string.Empty;
 
-		// Token: 0x0400018A RID: 394
 		private static string oldresDirs = string.Empty;
 
-		// Token: 0x0400018B RID: 395
 		private static string output = string.Empty;
 	}
 }

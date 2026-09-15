@@ -11,10 +11,8 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.PropertyGrid
 {
-	// Token: 0x02000022 RID: 34
 	internal class TitleWidget : TitleMainEventBox
 	{
-		// Token: 0x060000F0 RID: 240 RVA: 0x0000629C File Offset: 0x0000449C
 		public TitleWidget()
 		{
 			Widget child = this.CreateLeftWidget();
@@ -31,7 +29,6 @@ namespace Modules.Communal.PropertyGrid
 			base.ShowAll();
 		}
 
-		// Token: 0x060000F1 RID: 241 RVA: 0x00006318 File Offset: 0x00004518
 		private Widget CreateLeftWidget()
 		{
 			this.iconImageView = new ImageView();
@@ -48,7 +45,6 @@ namespace Modules.Communal.PropertyGrid
 			return vbox2;
 		}
 
-		// Token: 0x060000F2 RID: 242 RVA: 0x000063A4 File Offset: 0x000045A4
 		private Widget CreateRightWidget()
 		{
 			this.rightTable = new Table(2U, 2U, false);
@@ -65,7 +61,6 @@ namespace Modules.Communal.PropertyGrid
 			return this.rightTable;
 		}
 
-		// Token: 0x060000F3 RID: 243 RVA: 0x00006480 File Offset: 0x00004680
 		public void Clear()
 		{
 			if (this.lastEditorWidget != null && this.rightTable.Children.Contains(this.lastEditorWidget))
@@ -75,7 +70,6 @@ namespace Modules.Communal.PropertyGrid
 			this.lastEditorWidget = null;
 		}
 
-		// Token: 0x060000F4 RID: 244 RVA: 0x000064D0 File Offset: 0x000046D0
 		public void ShowTitle(IReadOnlyList<object> selectObjs, Widget nameEditorWidget)
 		{
 			this.iconImageView.Image = this.GetIconImage(selectObjs);
@@ -87,7 +81,6 @@ namespace Modules.Communal.PropertyGrid
 			base.Show();
 		}
 
-		// Token: 0x060000F5 RID: 245 RVA: 0x0000653C File Offset: 0x0000473C
 		private Xwt.Drawing.Image GetIconImage(IReadOnlyList<object> selectObjs)
 		{
 			string text = "Multi";
@@ -100,7 +93,6 @@ namespace Modules.Communal.PropertyGrid
 			return ImageIcon.GetCustomControlIcon(resourceID);
 		}
 
-		// Token: 0x060000F6 RID: 246 RVA: 0x000065A0 File Offset: 0x000047A0
 		private void SetDisplayNameWidget(IReadOnlyList<object> selectObjs)
 		{
 			string displayName = this.GetDisplayName(selectObjs);
@@ -109,7 +101,6 @@ namespace Modules.Communal.PropertyGrid
 			this.nameSndLineLabel.Hide();
 		}
 
-		// Token: 0x060000F7 RID: 247 RVA: 0x000065E0 File Offset: 0x000047E0
 		private string GetDisplayName(IReadOnlyList<object> selectObjs)
 		{
 			string result;
@@ -151,7 +142,6 @@ namespace Modules.Communal.PropertyGrid
 			return result;
 		}
 
-		// Token: 0x060000F8 RID: 248 RVA: 0x00006710 File Offset: 0x00004910
 		private string GetTypeName(IReadOnlyList<object> selectObjs)
 		{
 			string result;
@@ -180,22 +170,16 @@ namespace Modules.Communal.PropertyGrid
 			return result;
 		}
 
-		// Token: 0x0400005F RID: 95
 		private ImageView iconImageView;
 
-		// Token: 0x04000060 RID: 96
 		private Label nameFstLineLabel;
 
-		// Token: 0x04000061 RID: 97
 		private Label nameSndLineLabel;
 
-		// Token: 0x04000062 RID: 98
 		private Table rightTable;
 
-		// Token: 0x04000063 RID: 99
 		private Label engineTypeLabel;
 
-		// Token: 0x04000064 RID: 100
 		private Widget lastEditorWidget;
 	}
 }

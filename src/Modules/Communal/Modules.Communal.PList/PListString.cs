@@ -5,11 +5,8 @@ using Modules.Communal.PList.Internal;
 
 namespace Modules.Communal.PList
 {
-	// Token: 0x02000013 RID: 19
 	public class PListString : PListElement<string>
 	{
-		// Token: 0x1700002C RID: 44
-		// (get) Token: 0x060000A9 RID: 169 RVA: 0x00003DFC File Offset: 0x00001FFC
 		public override string Tag
 		{
 			get
@@ -18,8 +15,6 @@ namespace Modules.Communal.PList
 			}
 		}
 
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x060000AA RID: 170 RVA: 0x00003E24 File Offset: 0x00002024
 		public override byte TypeCode
 		{
 			get
@@ -28,20 +23,15 @@ namespace Modules.Communal.PList
 			}
 		}
 
-		// Token: 0x060000AB RID: 171 RVA: 0x00003E44 File Offset: 0x00002044
 		public PListString()
 		{
 		}
 
-		// Token: 0x060000AC RID: 172 RVA: 0x00003E4F File Offset: 0x0000204F
 		public PListString(string value)
 		{
 			this.Value = value;
 		}
 
-		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x060000AD RID: 173 RVA: 0x00003E64 File Offset: 0x00002064
-		// (set) Token: 0x060000AE RID: 174 RVA: 0x00003E7C File Offset: 0x0000207C
 		public override string Value
 		{
 			get
@@ -54,19 +44,16 @@ namespace Modules.Communal.PList
 			}
 		}
 
-		// Token: 0x060000AF RID: 175 RVA: 0x00003E86 File Offset: 0x00002086
 		protected override void Parse(string value)
 		{
 			this.Value = value;
 		}
 
-		// Token: 0x060000B0 RID: 176 RVA: 0x00003E94 File Offset: 0x00002094
 		protected override string ToXmlString()
 		{
 			return this.Value;
 		}
 
-		// Token: 0x060000B1 RID: 177 RVA: 0x00003EAC File Offset: 0x000020AC
 		public override void ReadBinary(PListBinaryReader reader)
 		{
 			byte[] array = new byte[reader.CurrentElementLength * ((reader.CurrentElementTypeCode == 5) ? 1 : 2)];
@@ -78,13 +65,11 @@ namespace Modules.Communal.PList
 			this.Value = encoding.GetString(array);
 		}
 
-		// Token: 0x060000B2 RID: 178 RVA: 0x00003F1C File Offset: 0x0000211C
 		public override int GetPListElementLength()
 		{
 			return this.Value.Length;
 		}
 
-		// Token: 0x060000B3 RID: 179 RVA: 0x00003F3C File Offset: 0x0000213C
 		public override void WriteBinary(PListBinaryWriter writer)
 		{
 			Encoding encoding = this.m_IsUTF16 ? Encoding.BigEndianUnicode : Encoding.UTF8;
@@ -92,7 +77,6 @@ namespace Modules.Communal.PList
 			writer.BaseStream.Write(bytes, 0, bytes.Length);
 		}
 
-		// Token: 0x04000016 RID: 22
 		private static byte[] s_UTF8Bytes = new byte[]
 		{
 			0,
@@ -353,13 +337,10 @@ namespace Modules.Communal.PList
 			byte.MaxValue
 		};
 
-		// Token: 0x04000017 RID: 23
 		private static HashSet<char> s_UTF8Chars = new HashSet<char>(Encoding.UTF8.GetChars(PListString.s_UTF8Bytes));
 
-		// Token: 0x04000018 RID: 24
 		private string m_Value;
 
-		// Token: 0x04000019 RID: 25
 		private bool m_IsUTF16;
 	}
 }

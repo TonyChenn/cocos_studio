@@ -14,10 +14,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000066 RID: 102
 	internal class ResourceFileBaseEditor : BaseEditor
 	{
-		// Token: 0x06000363 RID: 867 RVA: 0x0000EE30 File Offset: 0x0000D030
 		protected override Widget OnCreateWidget()
 		{
 			this.filterAttr = (base.PropertyItem.Attributes[typeof(ResourceFilterAttribute)] as ResourceFilterAttribute);
@@ -33,7 +31,6 @@ namespace CocoStudio.Model.Editor
 			return this.resourceEventBox;
 		}
 
-		// Token: 0x06000364 RID: 868 RVA: 0x0000EEF4 File Offset: 0x0000D0F4
 		protected virtual void OnInitView()
 		{
 			this.resourceEventBox = new EventBox();
@@ -67,13 +64,11 @@ namespace CocoStudio.Model.Editor
 			this.resourceEventBox.ShowAll();
 		}
 
-		// Token: 0x06000365 RID: 869 RVA: 0x0000F052 File Offset: 0x0000D252
 		protected override void OnSetControl()
 		{
 			this.ScenceSetValue();
 		}
 
-		// Token: 0x06000366 RID: 870 RVA: 0x0000F05C File Offset: 0x0000D25C
 		private void ScenceSetValue()
 		{
 			ResourceFile resourceFile = PropertyItem.FirstObject.GetType().GetProperty(this._displayName).GetValue(PropertyItem.FirstObject, null) as ResourceFile;
@@ -91,7 +86,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000367 RID: 871 RVA: 0x0000F120 File Offset: 0x0000D320
 		private void resourceEventBox_DragDrop(object o, DragDropArgs args)
 		{
 			object dragData = args.Context.GetDragData();
@@ -106,7 +100,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000368 RID: 872 RVA: 0x0000F180 File Offset: 0x0000D380
 		private void ResourceFileImportBase_DragMotion(object o, DragMotionArgs args)
 		{
 			object dragData = args.Context.GetDragData();
@@ -127,7 +120,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000369 RID: 873 RVA: 0x0000F204 File Offset: 0x0000D404
 		private void linkLabel_LeftClicked(object sender, EventArgs e)
 		{
 			List<PropertyDescriptor> propertyDescriptors = PropertyManager.Instance.GetPropertyDescriptors(PropertyItem.FirstObject.GetType());
@@ -150,7 +142,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600036A RID: 874 RVA: 0x0000F2F8 File Offset: 0x0000D4F8
 		private bool CheckResource(ResourceFile file)
 		{
 			bool result;
@@ -172,7 +163,6 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x0600036B RID: 875 RVA: 0x0000F37C File Offset: 0x0000D57C
 		protected void SetValue(ResourceFile file)
 		{
 			if (file != null)
@@ -205,7 +195,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600036C RID: 876 RVA: 0x0000F448 File Offset: 0x0000D648
 		private string CheckNest(ResourceFile value)
 		{
 			CocosItem cocosItem = value as CocosItem;
@@ -241,28 +230,21 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x040001A2 RID: 418
 		protected Table fileTable;
 
-		// Token: 0x040001A3 RID: 419
 		private EventBox resourceEventBox;
 
-		// Token: 0x040001A4 RID: 420
 		private Label fileLabel;
 
-		// Token: 0x040001A5 RID: 421
 		private LabelLinkButton resetLabel;
 
-		// Token: 0x040001A6 RID: 422
 		private TargetEntry[] target_tableWindows = new TargetEntry[]
 		{
 			DragTargetType.CocoStudioTarget
 		};
 
-		// Token: 0x040001A7 RID: 423
 		private string _displayName = "";
 
-		// Token: 0x040001A8 RID: 424
 		protected ResourceFilterAttribute filterAttr;
 	}
 }

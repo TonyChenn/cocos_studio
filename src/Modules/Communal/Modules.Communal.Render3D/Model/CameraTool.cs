@@ -14,11 +14,8 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.Render3D.Model
 {
-	// Token: 0x02000005 RID: 5
 	internal class CameraTool : BaseTool, IOperateModule, IInputEventHandler, IMouseEventHandler, IKeyEventHandler, IActivateControl, IDocumentEventHandler
 	{
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x0600000A RID: 10 RVA: 0x0000229B File Offset: 0x0000049B
 		public override Xwt.Drawing.Image Icon
 		{
 			get
@@ -27,8 +24,6 @@ namespace Modules.Communal.Render3D.Model
 			}
 		}
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x0600000B RID: 11 RVA: 0x000022A7 File Offset: 0x000004A7
 		public override string Tooltip
 		{
 			get
@@ -37,8 +32,6 @@ namespace Modules.Communal.Render3D.Model
 			}
 		}
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x0600000C RID: 12 RVA: 0x000022B8 File Offset: 0x000004B8
 		public override Gdk.Key ShortcutKey
 		{
 			get
@@ -47,20 +40,17 @@ namespace Modules.Communal.Render3D.Model
 			}
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x000022BC File Offset: 0x000004BC
 		public override void Initialize()
 		{
 			this.camera = GameWindow.Current.GetSceneObject().GetCamera();
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x000022D3 File Offset: 0x000004D3
 		protected override void OnSelectedChanged()
 		{
 			base.OnSelectedChanged();
 			this.RefreshCursor();
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x000022E4 File Offset: 0x000004E4
 		private CameraData LoadCameraData(CocosItem cocosItem)
 		{
 			IUserData userData = null;
@@ -72,7 +62,6 @@ namespace Modules.Communal.Render3D.Model
 			return userData as CameraData;
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002330 File Offset: 0x00000530
 		private void SaveCameraData(CocosItem cocosItem)
 		{
 			if (cocosItem == null)
@@ -84,14 +73,12 @@ namespace Modules.Communal.Render3D.Model
 			cocosItem.SaveUserData();
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x00002367 File Offset: 0x00000567
 		public override void OnMouseWheel(ScrollEventArgs args)
 		{
 			this.camera.OnMouseWheel(args.Event.Direction, args.Event.Time);
 			args.RetVal = true;
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x00002398 File Offset: 0x00000598
 		public override void OnMouseDown(ButtonPressEventArgs args)
 		{
 			this.mousePoint = args.Event.GetPoint();
@@ -110,7 +97,6 @@ namespace Modules.Communal.Render3D.Model
 			}
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002440 File Offset: 0x00000640
 		public override void OnMouseMove(MotionNotifyEventArgs args)
 		{
 			this.mousePoint = args.Event.GetPoint();
@@ -127,7 +113,6 @@ namespace Modules.Communal.Render3D.Model
 			}
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x000024D0 File Offset: 0x000006D0
 		public override void OnMouseUp(ButtonReleaseEventArgs args)
 		{
 			this.mousePoint = args.Event.GetPoint();
@@ -140,7 +125,6 @@ namespace Modules.Communal.Render3D.Model
 			}
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x00002538 File Offset: 0x00000738
 		public override void OnKeyDown(KeyPressEventArgs args)
 		{
 			Gdk.Key key = args.Event.Key;
@@ -168,14 +152,12 @@ namespace Modules.Communal.Render3D.Model
 			}
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x000025E8 File Offset: 0x000007E8
 		public override void OnKeyUp(KeyReleaseEventArgs args)
 		{
 			CSSceneCamera.MoveFlag gameraMoveFlag = this.GetGameraMoveFlag(args.Event.Key);
 			this.camera.RemoveMoveFlag(gameraMoveFlag);
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002614 File Offset: 0x00000814
 		private CSSceneCamera.MoveFlag GetGameraMoveFlag(Gdk.Key key)
 		{
 			CSSceneCamera.MoveFlag result = CSSceneCamera.MoveFlag.None;
@@ -269,13 +251,11 @@ namespace Modules.Communal.Render3D.Model
 			return result;
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x000026D8 File Offset: 0x000008D8
 		public void Initialize(IGLView glView)
 		{
 			this.Initialize();
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x000026E0 File Offset: 0x000008E0
 		public void OnDocumentChanged(CocosItem cocosItem)
 		{
 			this.SaveCameraData(this.currentDocument);
@@ -285,53 +265,44 @@ namespace Modules.Communal.Render3D.Model
 			this.currentDocument = cocosItem;
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x00002720 File Offset: 0x00000920
 		public void OnDocumentSaved(CocosItem cocosItem)
 		{
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002722 File Offset: 0x00000922
 		public void OnDocumentBeforeSave(CocosItem cocosItem)
 		{
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00002724 File Offset: 0x00000924
 		public void OnDocumentClosed(CocosItem cocosItem)
 		{
 			this.SaveCameraData(cocosItem);
 			this.currentDocument = null;
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002734 File Offset: 0x00000934
 		public void Activated(CocosItem cocosItem)
 		{
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002736 File Offset: 0x00000936
 		public void Deactivated()
 		{
 			this.camera.SetCurrentProject(null);
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00002744 File Offset: 0x00000944
 		public override PointF ConvertCoordinate(PointF point)
 		{
 			return point;
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00002748 File Offset: 0x00000948
 		private bool CheckPointInScene(PointF scenePoint)
 		{
 			return scenePoint.X >= 2f && scenePoint.X - 2f <= (float)GameWindow.Current.Width && scenePoint.Y >= 2f && scenePoint.Y - 2f <= (float)GameWindow.Current.Height;
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x000027A4 File Offset: 0x000009A4
 		private bool CheckPointInHitRect(PointF scenePoint)
 		{
 			return scenePoint.X > (float)(GameWindow.Current.Width - 115) && scenePoint.Y < 115f;
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x000027CC File Offset: 0x000009CC
 		private void RefreshCursor()
 		{
 			if (!base.IsSelected)
@@ -347,22 +318,16 @@ namespace Modules.Communal.Render3D.Model
 			BaseTool.SetCursor(this.defaultCursor);
 		}
 
-		// Token: 0x04000005 RID: 5
 		private const int validSpace = 2;
 
-		// Token: 0x04000006 RID: 6
 		private const int rectWidth = 115;
 
-		// Token: 0x04000007 RID: 7
 		private CameraObject camera;
 
-		// Token: 0x04000008 RID: 8
 		private PointF mousePoint = PointF.Empty;
 
-		// Token: 0x04000009 RID: 9
 		private Cursor defaultCursor = Cursors.Hand;
 
-		// Token: 0x0400000A RID: 10
 		private CocosItem currentDocument;
 	}
 }

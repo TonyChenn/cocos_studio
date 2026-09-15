@@ -10,11 +10,9 @@ using Mono.Addins;
 
 namespace CocoStudio.Model
 {
-	// Token: 0x0200001F RID: 31
 	[Extension(Type = typeof(IDragOperation))]
 	public class DragOperation3D : DragOperation
 	{
-		// Token: 0x060000FA RID: 250 RVA: 0x00004F9C File Offset: 0x0000319C
 		protected override string CanDragDropArgs(DragDropArgs e)
 		{
 			ResourceInfoDragData resourceInfoDragData = e.Context.GetDragData() as ResourceInfoDragData;
@@ -34,7 +32,6 @@ namespace CocoStudio.Model
 			return null;
 		}
 
-		// Token: 0x060000FB RID: 251 RVA: 0x00005040 File Offset: 0x00003240
 		protected override AbstractNodeObject CreateObjectFromFile(ResourceItem resourceFile)
 		{
 			AbstractNodeObject abstractNodeObject = null;
@@ -53,7 +50,6 @@ namespace CocoStudio.Model
 			return abstractNodeObject;
 		}
 
-		// Token: 0x060000FC RID: 252 RVA: 0x000050A4 File Offset: 0x000032A4
 		protected override void AddChildToTarget(AbstractNodeObject childNode, PointF coord, AbstractNodeObject target)
 		{
 			if (childNode == null || target == null)
@@ -69,7 +65,6 @@ namespace CocoStudio.Model
 			}
 		}
 
-		// Token: 0x060000FD RID: 253 RVA: 0x000050F1 File Offset: 0x000032F1
 		public override bool CanHandle(CocosItem item)
 		{
 			return item.Is3DFile();

@@ -10,14 +10,11 @@ using Newtonsoft.Json.Linq;
 
 namespace CocoStudio.UserStatistics
 {
-	// Token: 0x02000010 RID: 16
 	internal class UserStatisticsMonitor
 	{
-		// Token: 0x0600003D RID: 61
 		[DllImport("zlib1.dll", CallingConvention = CallingConvention.Cdecl)]
 		private static extern int compress(byte[] dest, ref ulong destLen, byte[] source, ulong sourceLen);
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00002C10 File Offset: 0x00000E10
 		public void Start()
 		{
 			this.SessionID = new Random().Next().ToString();
@@ -27,12 +24,10 @@ namespace CocoStudio.UserStatistics
 			this.GenDeviceInfo();
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x00002C6B File Offset: 0x00000E6B
 		public void Stop()
 		{
 		}
 
-		// Token: 0x06000040 RID: 64 RVA: 0x00002C70 File Offset: 0x00000E70
 		public void TrackSession(string actionName, string editorType, string isFromLaunch, string timeSpend = null, bool isAsync = true)
 		{
 			JObject jobject = new JObject();
@@ -50,7 +45,6 @@ namespace CocoStudio.UserStatistics
 			this.SendDataHandling(eventInfo, isAsync);
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x00002D18 File Offset: 0x00000F18
 		public void TrackException(Exception ex, string feedbackInfo)
 		{
 			JObject jobject = new JObject();
@@ -67,7 +61,6 @@ namespace CocoStudio.UserStatistics
 			this.SendDataHandling(eventInfo, false);
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x00002DD4 File Offset: 0x00000FD4
 		public void TrackFeature(string editorType, FeatureInfo feature, bool isAsync = true)
 		{
 			JObject jobject = new JObject();
@@ -82,7 +75,6 @@ namespace CocoStudio.UserStatistics
 			this.SendDataHandling(eventInfo, isAsync);
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x00002E98 File Offset: 0x00001098
 		private void SendDataHandling(JObject eventInfo, bool isAsync)
 		{
 			try
@@ -106,19 +98,16 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x00002EFC File Offset: 0x000010FC
 		private void PostStatisticsAsync(JObject eventInfo)
 		{
 			this.Send(eventInfo, true);
 		}
 
-		// Token: 0x06000045 RID: 69 RVA: 0x00002F08 File Offset: 0x00001108
 		private void PostStatistics(JObject eventInfo)
 		{
 			this.Send(eventInfo, false);
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x00002F14 File Offset: 0x00001114
 		private void Send(JObject eventInfo, bool isAsync)
 		{
 			if (this.networkOK)
@@ -179,7 +168,6 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x06000047 RID: 71 RVA: 0x000030E4 File Offset: 0x000012E4
 		private void ResponseCallback(IAsyncResult asyncResult)
 		{
 			try
@@ -198,7 +186,6 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x06000048 RID: 72 RVA: 0x0000316C File Offset: 0x0000136C
 		private void GenDeviceInfo()
 		{
 			this.deviceInfo = new JObject();
@@ -219,13 +206,11 @@ namespace CocoStudio.UserStatistics
 			this.deviceInfo.Add("18", "398332332");
 		}
 
-		// Token: 0x06000049 RID: 73 RVA: 0x0000336C File Offset: 0x0000156C
 		private long GetTimeStamp()
 		{
 			return Convert.ToInt64((DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0)).TotalSeconds);
 		}
 
-		// Token: 0x0600004A RID: 74 RVA: 0x000033A8 File Offset: 0x000015A8
 		public string Hash(string source)
 		{
 			string result;
@@ -237,7 +222,6 @@ namespace CocoStudio.UserStatistics
 			return result;
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x000033FC File Offset: 0x000015FC
 		public void TrackUninstall(string uninstallreason)
 		{
 			JObject reason = this.GetReason(uninstallreason);
@@ -245,7 +229,6 @@ namespace CocoStudio.UserStatistics
 			this.Send(eventInfo, false);
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x00003428 File Offset: 0x00001628
 		private JObject GetEventInfo(string eventName)
 		{
 			long timeStamp = this.GetTimeStamp();
@@ -270,7 +253,6 @@ namespace CocoStudio.UserStatistics
 			};
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x0000349C File Offset: 0x0000169C
 		private JObject GetReason(string reason)
 		{
 			JObject jobject = new JObject();
@@ -304,7 +286,6 @@ namespace CocoStudio.UserStatistics
 			return result;
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00003564 File Offset: 0x00001764
 		private void CheckNetwork()
 		{
 			this.networkChecked = true;
@@ -327,46 +308,32 @@ namespace CocoStudio.UserStatistics
 			}
 		}
 
-		// Token: 0x04000057 RID: 87
 		private const string StatisticUrl = "http://cs.ucenter.appget.cn/csas";
 
-		// Token: 0x04000058 RID: 88
 		private const string AppID = "398332332";
 
-		// Token: 0x04000059 RID: 89
 		public const string EVENT_BUG = "Bug";
 
-		// Token: 0x0400005A RID: 90
 		public const string EVENT_FEATURE_USE = "FeatureUse";
 
-		// Token: 0x0400005B RID: 91
 		public const string EVENT_INSTALL = "Install";
 
-		// Token: 0x0400005C RID: 92
 		public const string EVENT_SESSION = "Session";
 
-		// Token: 0x0400005D RID: 93
 		public Version Version;
 
-		// Token: 0x0400005E RID: 94
 		private JObject deviceInfo;
 
-		// Token: 0x0400005F RID: 95
 		private string SessionID;
 
-		// Token: 0x04000060 RID: 96
 		private bool networkChecked;
 
-		// Token: 0x04000061 RID: 97
 		private bool networkOK;
 
-		// Token: 0x04000062 RID: 98
 		private LocalInfo localInfo;
 
-		// Token: 0x04000063 RID: 99
 		private long sessionStart;
 
-		// Token: 0x04000064 RID: 100
 		private string installID;
 	}
 }

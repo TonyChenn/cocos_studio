@@ -26,11 +26,8 @@ using Xwt.Drawing;
 
 namespace CocoStudio.Core
 {
-	// Token: 0x0200004D RID: 77
 	public class MainWindow : WorkbenchWindow, IWorkbench, IWindowClosed
 	{
-		// Token: 0x170000B4 RID: 180
-		// (get) Token: 0x060002AE RID: 686 RVA: 0x0000BA70 File Offset: 0x00009C70
 		public IList<string> LayoutList
 		{
 			get
@@ -39,18 +36,10 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x1400000F RID: 15
-		// (add) Token: 0x060002AF RID: 687 RVA: 0x0000BA88 File Offset: 0x00009C88
-		// (remove) Token: 0x060002B0 RID: 688 RVA: 0x0000BAC4 File Offset: 0x00009CC4
 		public event EventHandler ActiveWorkbenchWindowChanged;
 
-		// Token: 0x14000010 RID: 16
-		// (add) Token: 0x060002B1 RID: 689 RVA: 0x0000BB00 File Offset: 0x00009D00
-		// (remove) Token: 0x060002B2 RID: 690 RVA: 0x0000BB3C File Offset: 0x00009D3C
 		public event EventHandler<EventArgs> InitializeCompleted;
 
-		// Token: 0x170000B5 RID: 181
-		// (get) Token: 0x060002B3 RID: 691 RVA: 0x0000BB78 File Offset: 0x00009D78
 		public List<PadCodon> PadContentCollection
 		{
 			get
@@ -59,8 +48,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x170000B6 RID: 182
-		// (get) Token: 0x060002B4 RID: 692 RVA: 0x0000BB90 File Offset: 0x00009D90
 		public List<IViewContent> InternalViewContentCollection
 		{
 			get
@@ -69,12 +56,8 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x14000011 RID: 17
-		// (add) Token: 0x060002B5 RID: 693 RVA: 0x0000BBB4 File Offset: 0x00009DB4
-		// (remove) Token: 0x060002B6 RID: 694 RVA: 0x0000BBF0 File Offset: 0x00009DF0
 		public event EventHandler LayoutReset;
 
-		// Token: 0x060002B7 RID: 695 RVA: 0x0000BC2C File Offset: 0x00009E2C
 		public MainWindow(string title)
 		{
 			base.Title = title;
@@ -94,8 +77,6 @@ namespace CocoStudio.Core
 			this.SetAppIcons();
 		}
 
-		// Token: 0x170000B7 RID: 183
-		// (get) Token: 0x060002B8 RID: 696 RVA: 0x0000BD38 File Offset: 0x00009F38
 		public IDocumentWindow ActiveWorkbenchWindow
 		{
 			get
@@ -113,8 +94,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x170000B8 RID: 184
-		// (get) Token: 0x060002B9 RID: 697 RVA: 0x0000BD9C File Offset: 0x00009F9C
 		IWorkbenchWindow IWorkbench.ActiveWorkbenchWindow
 		{
 			get
@@ -123,8 +102,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x170000B9 RID: 185
-		// (get) Token: 0x060002BA RID: 698 RVA: 0x0000BDB0 File Offset: 0x00009FB0
 		public DockFrame DockFrame
 		{
 			get
@@ -133,8 +110,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x170000BA RID: 186
-		// (get) Token: 0x060002BB RID: 699 RVA: 0x0000BDC8 File Offset: 0x00009FC8
 		public DockNotebook DockNotebook
 		{
 			get
@@ -143,9 +118,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x170000BB RID: 187
-		// (get) Token: 0x060002BC RID: 700 RVA: 0x0000BDE0 File Offset: 0x00009FE0
-		// (set) Token: 0x060002BD RID: 701 RVA: 0x0000BDF8 File Offset: 0x00009FF8
 		public bool FullScreen
 		{
 			get
@@ -158,9 +130,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x170000BC RID: 188
-		// (get) Token: 0x060002BE RID: 702 RVA: 0x0000BE04 File Offset: 0x0000A004
-		// (set) Token: 0x060002BF RID: 703 RVA: 0x0000BE8C File Offset: 0x0000A08C
 		public string CurrentLayout
 		{
 			get
@@ -196,19 +165,16 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002C0 RID: 704 RVA: 0x0000BED3 File Offset: 0x0000A0D3
 		private void SetAppIcons()
 		{
 		}
 
-		// Token: 0x060002C1 RID: 705 RVA: 0x0000BED6 File Offset: 0x0000A0D6
 		protected void OnHiding(object o, DeleteEventArgs e)
 		{
 			e.RetVal = true;
 			base.Visible = false;
 		}
 
-		// Token: 0x060002C2 RID: 706 RVA: 0x0000BEF0 File Offset: 0x0000A0F0
 		protected void OnClosing(object o, DeleteEventArgs e)
 		{
 			if (this.Closing != null)
@@ -231,7 +197,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002C3 RID: 707 RVA: 0x0000BF68 File Offset: 0x0000A168
 		public bool Quit()
 		{
 			if (this.Closing != null)
@@ -256,7 +221,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x060002C4 RID: 708 RVA: 0x0000BFCC File Offset: 0x0000A1CC
 		protected void OnClosed(EventArgs e)
 		{
 			foreach (string text in this.dock.Layouts)
@@ -291,7 +255,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002C5 RID: 709 RVA: 0x0000C10C File Offset: 0x0000A30C
 		public bool Close()
 		{
 			bool flag = false;
@@ -323,20 +286,17 @@ namespace CocoStudio.Core
 			return true;
 		}
 
-		// Token: 0x060002C6 RID: 710 RVA: 0x0000C214 File Offset: 0x0000A414
 		public void LockActiveWindowChangeEvent()
 		{
 			this.activeWindowChangeLock++;
 		}
 
-		// Token: 0x060002C7 RID: 711 RVA: 0x0000C225 File Offset: 0x0000A425
 		public void UnlockActiveWindowChangeEvent()
 		{
 			this.activeWindowChangeLock--;
 			this.OnActiveWindowChanged(null, null);
 		}
 
-		// Token: 0x060002C8 RID: 712 RVA: 0x0000C240 File Offset: 0x0000A440
 		internal void OnActiveWindowChanged(object sender, EventArgs e)
 		{
 			if (this.activeWindowChangeLock <= 0)
@@ -372,7 +332,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002C9 RID: 713 RVA: 0x0000C35C File Offset: 0x0000A55C
 		public void Initialize()
 		{
 			Services.Initialize();
@@ -387,7 +346,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002CA RID: 714 RVA: 0x0000C3C3 File Offset: 0x0000A5C3
 		private void InitializeLayout()
 		{
 			this.CreateComponents();
@@ -396,7 +354,6 @@ namespace CocoStudio.Core
 			this.initializing = false;
 		}
 
-		// Token: 0x060002CB RID: 715 RVA: 0x0000C3F4 File Offset: 0x0000A5F4
 		private void InitializeLayout(string name, bool forceRefresh = false)
 		{
 			if (!this.LayoutList.Contains(name))
@@ -436,7 +393,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002CC RID: 716 RVA: 0x0000C5F0 File Offset: 0x0000A7F0
 		private void CreateComponents()
 		{
 			this.fullViewVBox = new VBox(false, 0);
@@ -526,13 +482,11 @@ namespace CocoStudio.Core
 			this.InitializeLayout("DefaultLayout", true);
 		}
 
-		// Token: 0x060002CD RID: 717 RVA: 0x0000CA78 File Offset: 0x0000AC78
 		private void DockTabControlVisibleChanged(object sender, EventArgs e)
 		{
 			this.FocusActiveDocumentWindow();
 		}
 
-		// Token: 0x060002CE RID: 718 RVA: 0x0000CA84 File Offset: 0x0000AC84
 		private void FocusActiveDocumentWindow()
 		{
 			if (this.documentDockItem.ContentVisible)
@@ -558,14 +512,12 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002CF RID: 719 RVA: 0x0000CB21 File Offset: 0x0000AD21
 		private void CreateMenuBar()
 		{
 			this.topMenu = MainWindowPartFactory.CreateMainMenu();
 			Services.CommandService.SetMultiRootWindow(this);
 		}
 
-		// Token: 0x060002D0 RID: 720 RVA: 0x0000CB3C File Offset: 0x0000AD3C
 		private void InstallMenuBar()
 		{
 			if (Platform.IsWindows)
@@ -579,7 +531,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002D1 RID: 721 RVA: 0x0000CBB0 File Offset: 0x0000ADB0
 		private void UninstallMenuBar()
 		{
 			if (this.topMenu != null)
@@ -590,7 +541,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002D2 RID: 722 RVA: 0x0000CBF8 File Offset: 0x0000ADF8
 		private void OnExtensionChanged(object s, ExtensionNodeEventArgs args)
 		{
 			if (!this.initializing)
@@ -606,12 +556,10 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002D3 RID: 723 RVA: 0x0000CC45 File Offset: 0x0000AE45
 		private void OnLayoutsExtensionChanged(object s, ExtensionNodeEventArgs args)
 		{
 		}
 
-		// Token: 0x060002D4 RID: 724 RVA: 0x0000CC48 File Offset: 0x0000AE48
 		public void CloseContent(IViewContentExtend content)
 		{
 			if (this.viewContentCollection.Contains(content))
@@ -620,7 +568,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002D5 RID: 725 RVA: 0x0000CC78 File Offset: 0x0000AE78
 		public void CloseAllViews()
 		{
 			try
@@ -643,7 +590,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002D6 RID: 726 RVA: 0x0000CD1C File Offset: 0x0000AF1C
 		public virtual void ShowView(IViewContentExtend content, bool bringToFront)
 		{
 			if (this.viewContentCollection.Contains(content))
@@ -672,7 +618,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002D7 RID: 727 RVA: 0x0000CDC4 File Offset: 0x0000AFC4
 		private void SelectView(IViewContent content)
 		{
 			if (content is ViewContent)
@@ -681,7 +626,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002D8 RID: 728 RVA: 0x0000CDF4 File Offset: 0x0000AFF4
 		private void ShowPadNode(ExtensionNode node)
 		{
 			if (node is PadCodon)
@@ -699,7 +643,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002D9 RID: 729 RVA: 0x0000CEA0 File Offset: 0x0000B0A0
 		private void RemovePadNode(ExtensionNode node)
 		{
 			if (node is PadCodon)
@@ -716,25 +659,21 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002DA RID: 730 RVA: 0x0000CF38 File Offset: 0x0000B138
 		public void ShowPad(PadCodon content)
 		{
 			this.AddPad(content, true);
 		}
 
-		// Token: 0x060002DB RID: 731 RVA: 0x0000CF44 File Offset: 0x0000B144
 		public void AddPad(PadCodon content)
 		{
 			this.AddPad(content, false);
 		}
 
-		// Token: 0x060002DC RID: 732 RVA: 0x0000CF50 File Offset: 0x0000B150
 		private void RegisterPad(PadCodon content)
 		{
 			this.padContentCollection.Add(content);
 		}
 
-		// Token: 0x060002DD RID: 733 RVA: 0x0000CF60 File Offset: 0x0000B160
 		private void AddPad(PadCodon content, bool show)
 		{
 			DockItem dockItem = this.GetDockItem(content);
@@ -762,7 +701,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002DE RID: 734 RVA: 0x0000CFE0 File Offset: 0x0000B1E0
 		public void RemovePad(PadCodon codon)
 		{
 			if (codon.HasId)
@@ -788,13 +726,11 @@ namespace CocoStudio.Core
 			this.padWindows.Remove(codon);
 		}
 
-		// Token: 0x060002DF RID: 735 RVA: 0x0000D084 File Offset: 0x0000B284
 		public void BringToFront(PadCodon content)
 		{
 			this.BringToFront(content, false);
 		}
 
-		// Token: 0x060002E0 RID: 736 RVA: 0x0000D090 File Offset: 0x0000B290
 		public virtual void BringToFront(PadCodon content, bool giveFocus)
 		{
 			if (!this.IsVisible(content))
@@ -804,7 +740,6 @@ namespace CocoStudio.Core
 			this.ActivatePad(content, giveFocus);
 		}
 
-		// Token: 0x060002E1 RID: 737 RVA: 0x0000D0BA File Offset: 0x0000B2BA
 		public void ResetDefaultLayout()
 		{
 			this.CurrentLayout = "DefaultLayout";
@@ -813,7 +748,6 @@ namespace CocoStudio.Core
 			this.FocusActiveDocumentWindow();
 		}
 
-		// Token: 0x060002E2 RID: 738 RVA: 0x0000D0F0 File Offset: 0x0000B2F0
 		private void LoadLayoutFromFile(string filePath)
 		{
 			try
@@ -836,13 +770,11 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002E3 RID: 739 RVA: 0x0000D1A0 File Offset: 0x0000B3A0
 		private void HandleCurrentSelectedSolutionChanged(object sender, SolutionEventArgs e)
 		{
 			this.SetDefaultTitle();
 		}
 
-		// Token: 0x060002E4 RID: 740 RVA: 0x0000D1AC File Offset: 0x0000B3AC
 		private void SetWorkbenchTitle()
 		{
 			try
@@ -894,7 +826,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002E5 RID: 741 RVA: 0x0000D2E8 File Offset: 0x0000B4E8
 		private void SetDefaultTitle()
 		{
 			if (Services.ProjectOperations.CurrentSelectedSolution != null)
@@ -907,7 +838,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002E6 RID: 742 RVA: 0x0000D33C File Offset: 0x0000B53C
 		public Properties GetStoredMemento(IViewContent content)
 		{
 			if (content != null && content.ContentName != null)
@@ -930,14 +860,12 @@ namespace CocoStudio.Core
 			return null;
 		}
 
-		// Token: 0x060002E7 RID: 743 RVA: 0x0000D40D File Offset: 0x0000B60D
 		internal void ShowPopup(DockNotebook notebook, int tabIndex, EventButton evt)
 		{
 			this.tabControl.CurrentTabIndex = tabIndex;
 			Services.CommandService.ShowContextMenu(this.tabControl, evt, FileTabCommand.TabPopupMenu, null);
 		}
 
-		// Token: 0x060002E8 RID: 744 RVA: 0x0000D438 File Offset: 0x0000B638
 		internal void OnTabsReordered(Widget widget, int oldPlacement, int newPlacement)
 		{
 			if (this.viewContentCollection != null)
@@ -949,8 +877,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x170000BD RID: 189
-		// (get) Token: 0x060002E9 RID: 745 RVA: 0x0000D490 File Offset: 0x0000B690
 		private bool IsInFullViewMode
 		{
 			get
@@ -959,7 +885,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002EA RID: 746 RVA: 0x0000D4B8 File Offset: 0x0000B6B8
 		private void DestroyFullViewLayouts(string oldLayout)
 		{
 			if (oldLayout != null && oldLayout.EndsWith("[FullViewMode]"))
@@ -973,7 +898,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002EB RID: 747 RVA: 0x0000D518 File Offset: 0x0000B718
 		public void ToggleFullViewMode()
 		{
 			if (this.IsInFullViewMode)
@@ -1004,7 +928,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002EC RID: 748 RVA: 0x0000D6A4 File Offset: 0x0000B8A4
 		public void SetFullViewMode(bool IsFull)
 		{
 			if (IsFull)
@@ -1035,7 +958,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002ED RID: 749 RVA: 0x0000D82C File Offset: 0x0000BA2C
 		private bool SelectLastActiveWindow(IDocumentWindow cur)
 		{
 			bool result;
@@ -1065,7 +987,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x060002EE RID: 750 RVA: 0x0000D8C8 File Offset: 0x0000BAC8
 		private void CloseWindowEvent(object sender, WorkbenchWindowEventArgs e)
 		{
 			DocumentWindow documentWindow = (DocumentWindow)sender;
@@ -1081,13 +1002,11 @@ namespace CocoStudio.Core
 			this.lastActiveWindows.Remove(documentWindow);
 		}
 
-		// Token: 0x060002EF RID: 751 RVA: 0x0000D933 File Offset: 0x0000BB33
 		internal void CloseClicked(object o, TabEventArgs e)
 		{
 			this.CloseView(((DocumentWindow)e.Tab.Content).ContentExtend);
 		}
 
-		// Token: 0x060002F0 RID: 752 RVA: 0x0000D954 File Offset: 0x0000BB54
 		internal void CloseView(IViewContentExtend viewContent)
 		{
 			if (this.viewContentCollection.Contains(viewContent))
@@ -1099,7 +1018,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002F1 RID: 753 RVA: 0x0000D994 File Offset: 0x0000BB94
 		public void RemoveTab(DockNotebook tabControl, int pageNum, bool animate)
 		{
 			try
@@ -1117,14 +1035,12 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002F2 RID: 754 RVA: 0x0000D9F0 File Offset: 0x0000BBF0
 		internal void ReorderTab(int oldPlacement, int newPlacement)
 		{
 			DockNotebookTab tab = this.tabControl.GetTab(oldPlacement);
 			DockNotebookTab tab2 = this.tabControl.GetTab(newPlacement);
 		}
 
-		// Token: 0x060002F3 RID: 755 RVA: 0x0000DA18 File Offset: 0x0000BC18
 		public IPadWindow GetPadWindow(PadCodon content)
 		{
 			IPadWindow result;
@@ -1132,21 +1048,18 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x060002F4 RID: 756 RVA: 0x0000DA3C File Offset: 0x0000BC3C
 		public bool IsVisible(PadCodon padContent)
 		{
 			DockItem dockItem = this.GetDockItem(padContent);
 			return dockItem != null && dockItem.Visible;
 		}
 
-		// Token: 0x060002F5 RID: 757 RVA: 0x0000DA68 File Offset: 0x0000BC68
 		public bool IsContentVisible(PadCodon padContent)
 		{
 			DockItem dockItem = this.GetDockItem(padContent);
 			return dockItem != null && dockItem.ContentVisible;
 		}
 
-		// Token: 0x060002F6 RID: 758 RVA: 0x0000DA94 File Offset: 0x0000BC94
 		public void HidePad(PadCodon padContent)
 		{
 			DockItem dockItem = this.GetDockItem(padContent);
@@ -1156,7 +1069,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002F7 RID: 759 RVA: 0x0000DABC File Offset: 0x0000BCBC
 		public void ActivatePad(PadCodon padContent, bool giveFocus)
 		{
 			DockItem dockItem = this.GetDockItem(padContent);
@@ -1166,14 +1078,12 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002F8 RID: 760 RVA: 0x0000DAE4 File Offset: 0x0000BCE4
 		public bool IsSticky(PadCodon padContent)
 		{
 			DockItem dockItem = this.GetDockItem(padContent);
 			return dockItem != null && (dockItem.Behavior & DockItemBehavior.Sticky) != DockItemBehavior.Normal;
 		}
 
-		// Token: 0x060002F9 RID: 761 RVA: 0x0000DB14 File Offset: 0x0000BD14
 		public void SetSticky(PadCodon padContent, bool sticky)
 		{
 			DockItem dockItem = this.GetDockItem(padContent);
@@ -1190,7 +1100,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002FA RID: 762 RVA: 0x0000DB60 File Offset: 0x0000BD60
 		internal DockItem GetDockItem(PadCodon content)
 		{
 			DockItem result;
@@ -1206,7 +1115,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x060002FB RID: 763 RVA: 0x0000DBA0 File Offset: 0x0000BDA0
 		private void CreatePadContent(bool force, PadCodon padCodon, PadWindow window, DockItem item)
 		{
 			if (force || item.Content == null)
@@ -1229,7 +1137,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002FC RID: 764 RVA: 0x0000DC28 File Offset: 0x0000BE28
 		private string ToDockLocation(string loc)
 		{
 			string text = "";
@@ -1257,7 +1164,6 @@ namespace CocoStudio.Core
 			return text;
 		}
 
-		// Token: 0x060002FD RID: 765 RVA: 0x0000DD80 File Offset: 0x0000BF80
 		private void AddPad(PadCodon padCodon, string placement, DockItemStatus defaultStatus)
 		{
 			PadWindow window = new PadWindow(this, padCodon);
@@ -1312,7 +1218,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060002FE RID: 766 RVA: 0x0000DF4C File Offset: 0x0000C14C
 		private void UpdatePad(object source, EventArgs args)
 		{
 			IPadWindow padWindow = (IPadWindow)source;
@@ -1341,95 +1246,62 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x14000012 RID: 18
-		// (add) Token: 0x060002FF RID: 767 RVA: 0x0000E034 File Offset: 0x0000C234
-		// (remove) Token: 0x06000300 RID: 768 RVA: 0x0000E070 File Offset: 0x0000C270
 		public event EventHandler<CancelEventArgs> Closing;
 
-		// Token: 0x14000013 RID: 19
-		// (add) Token: 0x06000301 RID: 769 RVA: 0x0000E0AC File Offset: 0x0000C2AC
-		// (remove) Token: 0x06000302 RID: 770 RVA: 0x0000E0E8 File Offset: 0x0000C2E8
 		public event EventHandler<EventArgs> Closed;
 
-		// Token: 0x04000145 RID: 325
 		public const string DefaultLayoutID = "DefaultLayout";
 
-		// Token: 0x04000146 RID: 326
 		public const string CustomLayoutID = "CustomLayout";
 
-		// Token: 0x04000147 RID: 327
 		private const string fullViewModeTag = "[FullViewMode]";
 
-		// Token: 0x04000148 RID: 328
 		private const int MinimumWidth = 1000;
 
-		// Token: 0x04000149 RID: 329
 		private const int MinimumHeight = 600;
 
-		// Token: 0x0400014A RID: 330
 		private static string layoutFilePath = Option.GetUserConfigFileByName("Layouts.config");
 
-		// Token: 0x0400014B RID: 331
 		public readonly int MainThreadId;
 
-		// Token: 0x0400014C RID: 332
 		private List<string> _LayoutList = new List<string>();
 
-		// Token: 0x0400014D RID: 333
 		private List<PadCodon> padContentCollection = new List<PadCodon>();
 
-		// Token: 0x0400014E RID: 334
 		private List<IViewContentExtend> viewContentCollection = new List<IViewContentExtend>();
 
-		// Token: 0x0400014F RID: 335
 		private Dictionary<PadCodon, IPadWindow> padWindows = new Dictionary<PadCodon, IPadWindow>();
 
-		// Token: 0x04000150 RID: 336
 		private Dictionary<IPadWindow, PadCodon> padCodons = new Dictionary<IPadWindow, PadCodon>();
 
-		// Token: 0x04000151 RID: 337
 		private IDocumentWindow lastActive;
 
-		// Token: 0x04000152 RID: 338
 		private LinkedList<IDocumentWindow> lastActiveWindows = new LinkedList<IDocumentWindow>();
 
-		// Token: 0x04000153 RID: 339
 		private bool closeAll;
 
-		// Token: 0x04000154 RID: 340
 		private Rectangle normalBounds = new Rectangle(0, 0, 1000, 600);
 
-		// Token: 0x04000155 RID: 341
 		private Gtk.Container rootWidget;
 
-		// Token: 0x04000156 RID: 342
 		private DockToolbarFrame toolbarFrame;
 
-		// Token: 0x04000157 RID: 343
 		private DockFrame dock;
 
-		// Token: 0x04000158 RID: 344
 		private DockNotebook tabControl;
 
-		// Token: 0x04000159 RID: 345
 		private Widget topMenu;
 
-		// Token: 0x0400015A RID: 346
 		private VBox fullViewVBox;
 
-		// Token: 0x0400015B RID: 347
 		private DockItem documentDockItem;
 
-		// Token: 0x0400015C RID: 348
 		private Widget toolbar;
 
-		// Token: 0x0400015D RID: 349
 		private Widget bottomBar;
 
-		// Token: 0x0400015E RID: 350
 		private bool initializing;
 
-		// Token: 0x04000162 RID: 354
 		private int activeWindowChangeLock = 0;
 	}
 }

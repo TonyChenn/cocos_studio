@@ -9,18 +9,14 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 	/// <summary>
 	/// Implementation of <see cref="T:ICSharpCode.NRefactory.TypeSystem.IMember" /> that resolves an unresolved member.
 	/// </summary>
-	// Token: 0x0200005F RID: 95
 	public abstract class AbstractResolvedMember : AbstractResolvedEntity, IMember, IEntity, ISymbol, ICompilationProvider, INamedElement, IHasAccessibility
 	{
-		// Token: 0x060002F2 RID: 754 RVA: 0x000077EE File Offset: 0x000067EE
 		protected AbstractResolvedMember(IUnresolvedMember unresolved, ITypeResolveContext parentContext) : base(unresolved, parentContext)
 		{
 			this.unresolved = unresolved;
 			this.context = parentContext.WithCurrentMember(this);
 		}
 
-		// Token: 0x1700011B RID: 283
-		// (get) Token: 0x060002F3 RID: 755 RVA: 0x0000780C File Offset: 0x0000680C
 		IMember IMember.MemberDefinition
 		{
 			get
@@ -29,8 +25,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x1700011C RID: 284
-		// (get) Token: 0x060002F4 RID: 756 RVA: 0x00007810 File Offset: 0x00006810
 		public IType ReturnType
 		{
 			get
@@ -44,8 +38,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x1700011D RID: 285
-		// (get) Token: 0x060002F5 RID: 757 RVA: 0x0000784A File Offset: 0x0000684A
 		public IUnresolvedMember UnresolvedMember
 		{
 			get
@@ -54,8 +46,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x1700011E RID: 286
-		// (get) Token: 0x060002F6 RID: 758 RVA: 0x00007854 File Offset: 0x00006854
 		public IList<IMember> ImplementedInterfaceMembers
 		{
 			get
@@ -69,7 +59,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x060002F7 RID: 759 RVA: 0x00007908 File Offset: 0x00006908
 		private IList<IMember> FindImplementedInterfaceMembers()
 		{
 			if (this.unresolved.IsExplicitInterfaceImplementation)
@@ -102,8 +91,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			select item).ToArray<IMember>();
 		}
 
-		// Token: 0x1700011F RID: 287
-		// (get) Token: 0x060002F8 RID: 760 RVA: 0x00007A40 File Offset: 0x00006A40
 		public override DocumentationComment Documentation
 		{
 			get
@@ -121,8 +108,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000120 RID: 288
-		// (get) Token: 0x060002F9 RID: 761 RVA: 0x00007A7A File Offset: 0x00006A7A
 		public bool IsExplicitInterfaceImplementation
 		{
 			get
@@ -131,8 +116,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000121 RID: 289
-		// (get) Token: 0x060002FA RID: 762 RVA: 0x00007A87 File Offset: 0x00006A87
 		public bool IsVirtual
 		{
 			get
@@ -141,8 +124,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000122 RID: 290
-		// (get) Token: 0x060002FB RID: 763 RVA: 0x00007A94 File Offset: 0x00006A94
 		public bool IsOverride
 		{
 			get
@@ -151,8 +132,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000123 RID: 291
-		// (get) Token: 0x060002FC RID: 764 RVA: 0x00007AA1 File Offset: 0x00006AA1
 		public bool IsOverridable
 		{
 			get
@@ -161,8 +140,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000124 RID: 292
-		// (get) Token: 0x060002FD RID: 765 RVA: 0x00007AAE File Offset: 0x00006AAE
 		public TypeParameterSubstitution Substitution
 		{
 			get
@@ -171,16 +148,13 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x060002FE RID: 766
 		public abstract IMember Specialize(TypeParameterSubstitution substitution);
 
-		// Token: 0x060002FF RID: 767 RVA: 0x00007AB5 File Offset: 0x00006AB5
 		IMemberReference IMember.ToReference()
 		{
 			return (IMemberReference)this.ToReference();
 		}
 
-		// Token: 0x06000300 RID: 768 RVA: 0x00007AC4 File Offset: 0x00006AC4
 		public override ISymbolReference ToReference()
 		{
 			ITypeReference typeReference = this.DeclaringType.ToTypeReference();
@@ -191,13 +165,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return new DefaultMemberReference(base.SymbolKind, typeReference, base.Name, 0, null);
 		}
 
-		// Token: 0x06000301 RID: 769 RVA: 0x00007B1F File Offset: 0x00006B1F
 		public virtual IMemberReference ToMemberReference()
 		{
 			return (IMemberReference)this.ToReference();
 		}
 
-		// Token: 0x06000302 RID: 770 RVA: 0x00007B2C File Offset: 0x00006B2C
 		internal IMethod GetAccessor(ref IMethod accessorField, IUnresolvedMethod unresolvedAccessor)
 		{
 			if (unresolvedAccessor == null)
@@ -212,22 +184,17 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return LazyInit.GetOrSet<IMethod>(ref accessorField, this.CreateResolvedAccessor(unresolvedAccessor));
 		}
 
-		// Token: 0x06000303 RID: 771 RVA: 0x00007B57 File Offset: 0x00006B57
 		protected virtual IMethod CreateResolvedAccessor(IUnresolvedMethod unresolvedAccessor)
 		{
 			return (IMethod)unresolvedAccessor.CreateResolved(this.context);
 		}
 
-		// Token: 0x040000C3 RID: 195
 		protected new readonly IUnresolvedMember unresolved;
 
-		// Token: 0x040000C4 RID: 196
 		protected readonly ITypeResolveContext context;
 
-		// Token: 0x040000C5 RID: 197
 		private volatile IType returnType;
 
-		// Token: 0x040000C6 RID: 198
 		private IList<IMember> implementedInterfaceMembers;
 	}
 }

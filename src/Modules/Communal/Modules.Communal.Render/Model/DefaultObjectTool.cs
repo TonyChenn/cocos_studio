@@ -13,11 +13,8 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.Render.Model
 {
-	// Token: 0x02000025 RID: 37
 	internal class DefaultObjectTool : BaseObjectTool
 	{
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x06000137 RID: 311 RVA: 0x00008068 File Offset: 0x00006268
 		public override Xwt.Drawing.Image Icon
 		{
 			get
@@ -26,8 +23,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x1700002E RID: 46
-		// (get) Token: 0x06000138 RID: 312 RVA: 0x00008084 File Offset: 0x00006284
 		public override string Tooltip
 		{
 			get
@@ -36,8 +31,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x1700002F RID: 47
-		// (get) Token: 0x06000139 RID: 313 RVA: 0x000080A8 File Offset: 0x000062A8
 		public override Gdk.Key ShortcutKey
 		{
 			get
@@ -46,7 +39,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600013A RID: 314 RVA: 0x000080BC File Offset: 0x000062BC
 		protected override void OnSelectedChanged()
 		{
 			base.OnSelectedChanged();
@@ -56,7 +48,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600013B RID: 315 RVA: 0x000080EC File Offset: 0x000062EC
 		public override void OnMouseMove(MotionNotifyEventArgs args)
 		{
 			base.OnMouseMove(args);
@@ -69,7 +60,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600013C RID: 316 RVA: 0x00008138 File Offset: 0x00006338
 		public override void OnMouseDoubleClick(ButtonPressEventArgs args)
 		{
 			if (SelectService.Instance.SelectedParentObjectList.Count<VisualObject>() == 1)
@@ -82,7 +72,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600013D RID: 317 RVA: 0x000081C0 File Offset: 0x000063C0
 		protected override bool HitTest(PointF widgetPoint)
 		{
 			PointF pointF = this.ConvertCoordinate(widgetPoint);
@@ -101,7 +90,6 @@ namespace Modules.Communal.Render.Model
 			return result;
 		}
 
-		// Token: 0x0600013E RID: 318 RVA: 0x00008218 File Offset: 0x00006418
 		private void ChangeCursor(HitTestResult result, PointF scenePoint)
 		{
 			switch (result.OperationType)
@@ -136,7 +124,6 @@ namespace Modules.Communal.Render.Model
 			BaseTool.SetCursor(Cursors.Arrow);
 		}
 
-		// Token: 0x0600013F RID: 319 RVA: 0x00008350 File Offset: 0x00006550
 		private Pixbuf RotatePixbuf(float rotate, Pixbuf pixbuf)
 		{
 			ImageSurface imageSurface = new ImageSurface(Format.Argb32, pixbuf.Width, pixbuf.Height);
@@ -153,7 +140,6 @@ namespace Modules.Communal.Render.Model
 			return result;
 		}
 
-		// Token: 0x06000140 RID: 320 RVA: 0x00008438 File Offset: 0x00006638
 		public override void Initialize()
 		{
 			this.rotateRightPixbuf = ImageIcon.GetPixbuf("CocoStudio.DefaultResource.CursorImage.RotateRight.png");
@@ -163,7 +149,6 @@ namespace Modules.Communal.Render.Model
 			this.controlNode.Visible = false;
 		}
 
-		// Token: 0x06000141 RID: 321 RVA: 0x00008498 File Offset: 0x00006698
 		public override void Load()
 		{
 			base.Load();
@@ -171,7 +156,6 @@ namespace Modules.Communal.Render.Model
 			@event.Subscribe(new Action<SelectedVisualObjectsChangeEventArgs>(this.OnSelectObjectsChangeEvent));
 		}
 
-		// Token: 0x06000142 RID: 322 RVA: 0x000084CC File Offset: 0x000066CC
 		public override void UnLoad()
 		{
 			base.UnLoad();
@@ -179,20 +163,16 @@ namespace Modules.Communal.Render.Model
 			@event.Unsubscribe(new Action<SelectedVisualObjectsChangeEventArgs>(this.OnSelectObjectsChangeEvent));
 		}
 
-		// Token: 0x06000143 RID: 323 RVA: 0x00008500 File Offset: 0x00006700
 		private void OnSelectObjectsChangeEvent(SelectedVisualObjectsChangeEventArgs args)
 		{
 			ControlNode controlNode = this.controlNode as ControlNode;
 			controlNode.SelectedObjectsChanged(args.SelectedObject, args.SelectedParentObject);
 		}
 
-		// Token: 0x04000050 RID: 80
 		private Pixbuf stretchHorizonPixbuf = null;
 
-		// Token: 0x04000051 RID: 81
 		private Pixbuf rotateRightPixbuf = null;
 
-		// Token: 0x04000052 RID: 82
 		private Pixbuf stretchSizeHorizonPixbuf = null;
 	}
 }

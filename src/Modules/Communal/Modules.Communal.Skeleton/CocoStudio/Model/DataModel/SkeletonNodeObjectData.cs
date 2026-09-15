@@ -4,11 +4,9 @@ using CocoStudio.Projects;
 
 namespace CocoStudio.Model.DataModel
 {
-	// Token: 0x02000025 RID: 37
 	[DataModelExtension(typeof(SkeletonObject))]
 	public class SkeletonNodeObjectData : BoneNodeObjectData
 	{
-		// Token: 0x060001A1 RID: 417 RVA: 0x00008E11 File Offset: 0x00007011
 		public SkeletonNodeObjectData()
 		{
 			this.ctype = "SkeletonNodeObjectData";
@@ -16,7 +14,6 @@ namespace CocoStudio.Model.DataModel
 			base.Length = 20f;
 		}
 
-		// Token: 0x060001A2 RID: 418 RVA: 0x00008E44 File Offset: 0x00007044
 		public SkeletonNodeObjectData(AbstractNodeObjectData sNode)
 		{
 			base.CanEdit = sNode.CanEdit;

@@ -9,15 +9,10 @@ using Stetic;
 
 namespace Modules.Communal.AutoUpdate
 {
-	// Token: 0x02000013 RID: 19
 	public class RemindDialog : Dialog
 	{
-		// Token: 0x17000030 RID: 48
-		// (get) Token: 0x0600009E RID: 158 RVA: 0x00004D43 File Offset: 0x00002F43
-		// (set) Token: 0x0600009F RID: 159 RVA: 0x00004D4B File Offset: 0x00002F4B
 		internal EnumRemindType RemindType { get; private set; }
 
-		// Token: 0x060000A0 RID: 160 RVA: 0x00004D54 File Offset: 0x00002F54
 		public RemindDialog(Gtk.Window parentWnd)
 		{
 			this.Build();
@@ -29,7 +24,6 @@ namespace Modules.Communal.AutoUpdate
 			this.parentWindow.Modal = false;
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x00004DA4 File Offset: 0x00002FA4
 		private void InitDisplayText()
 		{
 			base.Title = LanguageInfo.AutoUpdate_Remind;
@@ -50,7 +44,6 @@ namespace Modules.Communal.AutoUpdate
 			}
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x00004E7C File Offset: 0x0000307C
 		protected void HandleButtonOKClicked(object sender, EventArgs e)
 		{
 			if (this.radiobutton_always.Active)
@@ -68,7 +61,6 @@ namespace Modules.Communal.AutoUpdate
 			this.parentWindow.Modal = this.parentWndModal;
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x00004EDC File Offset: 0x000030DC
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -178,40 +170,28 @@ namespace Modules.Communal.AutoUpdate
 			this.buttonOk.Clicked += this.HandleButtonOKClicked;
 		}
 
-		// Token: 0x04000054 RID: 84
 		private bool parentWndModal;
 
-		// Token: 0x04000055 RID: 85
 		private Gtk.Window parentWindow;
 
-		// Token: 0x04000056 RID: 86
 		private Alignment alignment_main;
 
-		// Token: 0x04000057 RID: 87
 		private Frame frame_main;
 
-		// Token: 0x04000058 RID: 88
 		private Alignment GtkAlignment_frame;
 
-		// Token: 0x04000059 RID: 89
 		private VBox vbox_frame;
 
-		// Token: 0x0400005A RID: 90
 		private RadioButton radiobutton_always;
 
-		// Token: 0x0400005B RID: 91
 		private RadioButton radiobutton_later;
 
-		// Token: 0x0400005C RID: 92
 		private RadioButton radiobutton_skip;
 
-		// Token: 0x0400005D RID: 93
 		private Label GtkLabel_remind;
 
-		// Token: 0x0400005E RID: 94
 		private Button buttonCancel;
 
-		// Token: 0x0400005F RID: 95
 		private Button buttonOk;
 	}
 }

@@ -3,10 +3,8 @@ using System.Threading;
 
 namespace Cocos.Update
 {
-	// Token: 0x02000005 RID: 5
 	internal class MainClass
 	{
-		// Token: 0x0600000C RID: 12 RVA: 0x00002250 File Offset: 0x00000450
 		public static void Main(string[] args)
 		{
 			if (args.Length == 0)

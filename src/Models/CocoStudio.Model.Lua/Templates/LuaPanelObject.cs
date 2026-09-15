@@ -4,31 +4,26 @@ using CocoStudio.Model.DataModel;
 
 namespace CocoStudio.Model.Lua.Templates
 {
-	// Token: 0x0200001E RID: 30
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaPanelObject : LuaWidgetObject
 	{
-		// Token: 0x060000BD RID: 189 RVA: 0x00005D94 File Offset: 0x00003F94
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x060000BE RID: 190 RVA: 0x00005DAC File Offset: 0x00003FAC
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(PanelObjectData) == objectData.GetType();
 		}
 
-		// Token: 0x060000BF RID: 191 RVA: 0x00005DD0 File Offset: 0x00003FD0
 		protected override void OnCreateObject(BaseObjectData objectData)
 		{
 			base.Write(base.ToStringHelper.ToStringWithCulture(base.GetNameDeclaration(objectData.Name)));
 			base.Write(" = ccui.Layout:create()\r\n");
 		}
 
-		// Token: 0x060000C0 RID: 192 RVA: 0x00005DFC File Offset: 0x00003FFC
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			PanelObjectData panelObjectData = objectData as PanelObjectData;

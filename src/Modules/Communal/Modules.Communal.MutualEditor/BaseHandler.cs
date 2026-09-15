@@ -3,12 +3,8 @@ using CocoStudio.Core;
 
 namespace Modules.Communal.MutualEditor
 {
-	// Token: 0x02000003 RID: 3
 	internal abstract class BaseHandler : IUDPHandler, IDisposable
 	{
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x06000002 RID: 2 RVA: 0x00002050 File Offset: 0x00000250
-		// (remove) Token: 0x06000003 RID: 3 RVA: 0x0000207C File Offset: 0x0000027C
 		protected event EventHandler<MessageArgs> Recived
 		{
 			add
@@ -27,7 +23,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x000020A8 File Offset: 0x000002A8
 		public BaseHandler()
 		{
 			if (!this.hasInit)
@@ -38,7 +33,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x00002110 File Offset: 0x00000310
 		private void HandleInitializeComplete(EventArgs args)
 		{
 			if (!this.hasBindEvent)
@@ -48,7 +42,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x00002144 File Offset: 0x00000344
 		public void SendMessage(string data, Action action = Action.Show)
 		{
 			if (this.socket != null)
@@ -75,7 +68,6 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002220 File Offset: 0x00000420
 		public void Dispose()
 		{
 			if (this.socket != null)
@@ -92,30 +84,24 @@ namespace Modules.Communal.MutualEditor
 			}
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002286 File Offset: 0x00000486
 		private void HandleMessageRecived(object sender, MessageArgs args)
 		{
 			this.OnHandleMessageRecived(sender, args);
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x00002292 File Offset: 0x00000492
 		protected virtual void OnHandleMessageRecived(object sender, MessageArgs args)
 		{
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002298 File Offset: 0x00000498
 		protected virtual int GetStartPort()
 		{
 			return 9000;
 		}
 
-		// Token: 0x04000001 RID: 1
 		private bool hasInit = false;
 
-		// Token: 0x04000002 RID: 2
 		private bool hasBindEvent = false;
 
-		// Token: 0x04000003 RID: 3
 		protected UDPSocket socket = null;
 	}
 }

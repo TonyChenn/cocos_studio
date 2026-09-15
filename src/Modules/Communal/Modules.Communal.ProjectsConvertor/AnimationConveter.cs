@@ -14,10 +14,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Modules.Communal.ProjectsConvertor
 {
-	// Token: 0x02000002 RID: 2
 	public class AnimationConveter
 	{
-		// Token: 0x06000002 RID: 2 RVA: 0x00002084 File Offset: 0x00000284
 		private void Initialize()
 		{
 			this.rootData = new SkeletonNodeObjectData();
@@ -27,7 +25,6 @@ namespace Modules.Communal.ProjectsConvertor
 			this.totalFrameCount = 0;
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x000020BC File Offset: 0x000002BC
 		public void ConvertJson(GameFileData gameFileData, string filePath)
 		{
 			this.Initialize();
@@ -93,7 +90,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x000022E8 File Offset: 0x000004E8
 		private void ConvertArmatureData(JArray armatureDataArray)
 		{
 			if (armatureDataArray == null)
@@ -105,7 +101,6 @@ namespace Modules.Communal.ProjectsConvertor
 			this.ConvertBoneData(boneDataArray);
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x00002338 File Offset: 0x00000538
 		private void ConvertBoneData(JArray boneDataArray)
 		{
 			if (boneDataArray == null)
@@ -212,7 +207,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x00002848 File Offset: 0x00000A48
 		private void ConvertAnimationData(JArray animationData)
 		{
 			if (animationData == null)
@@ -223,7 +217,6 @@ namespace Modules.Communal.ProjectsConvertor
 			this.ConvertMovData(movData);
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002878 File Offset: 0x00000A78
 		private void ConvertMovData(JArray movData)
 		{
 			if (movData == null)
@@ -257,7 +250,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002994 File Offset: 0x00000B94
 		private void ConvertMovBoneData(JArray movBoneData)
 		{
 			int i = 0;
@@ -281,7 +273,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x00002A2C File Offset: 0x00000C2C
 		private void setAnimationClipFrameSpan(JArray movBoneData)
 		{
 			int i = 0;
@@ -349,7 +340,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002B81 File Offset: 0x00000D81
 		private EasingValue ConvertTweenData(int oldTweenType, List<float> oldCustomTween)
 		{
 			if (oldTweenType == 22)
@@ -363,7 +353,6 @@ namespace Modules.Communal.ProjectsConvertor
 			return new EasingValue((TweenType)oldTweenType, oldCustomTween);
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x00002BA0 File Offset: 0x00000DA0
 		private void InitAndSetFrameData(int i, int frameCount, AbstractNodeObjectData display, string type, int frameIndex, object copiedValue, bool isTween, EasingValue tween)
 		{
 			if (i == 0 && this.animationstart != frameIndex)
@@ -378,7 +367,6 @@ namespace Modules.Communal.ProjectsConvertor
 			this.SetFrameData(frameIndex, display, type, copiedValue, isTween, tween);
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x00002BEC File Offset: 0x00000DEC
 		private void ConvertFrameData(BoneNodeObjectData bone, JArray frameData)
 		{
 			int i = 0;
@@ -484,13 +472,11 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x00003074 File Offset: 0x00001274
 		private bool IsHasFrame(TimelineData timeLine)
 		{
 			return timeLine.Frames != null && 0 < timeLine.Frames.Count<FrameData>();
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00003090 File Offset: 0x00001290
 		private void ConvertTextureData(JArray textureData)
 		{
 			if (textureData == null)
@@ -535,7 +521,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00003228 File Offset: 0x00001428
 		private void StopAnimation(int animationstopindex)
 		{
 			foreach (NodeObjectData node in this.textureList)
@@ -550,7 +535,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x0000335C File Offset: 0x0000155C
 		private void MakeSureWhiteOpFrame(TimelineData timeLine, int frameIndex)
 		{
 			ColorData colorData = new ColorData(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue);
@@ -571,19 +555,16 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x000033E5 File Offset: 0x000015E5
 		private TimelineData GetNodeTimeline(AbstractNodeObjectData node, string property)
 		{
 			return AnimationConveter.GetNodeTimeline(this.timelineData, property, node.ActionTag);
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x000033F9 File Offset: 0x000015F9
 		private void SetFrameData(int frameIndex, AbstractNodeObjectData node, string property, object frameDataValue, bool isTween = false, EasingValue tween = null)
 		{
 			AnimationConveter.SetFrameData(this.timelineData, frameIndex, node.ActionTag, property, frameDataValue, isTween, tween);
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00003414 File Offset: 0x00001614
 		public static void SetFrameData(TimelineActionData actdata, int frameIndex, int actionTag, string property, object frameDataValue, bool isTween = true, EasingValue tween = null)
 		{
 			if (frameDataValue == null)
@@ -662,7 +643,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x00003660 File Offset: 0x00001860
 		public static FrameData GetLastFrame(TimelineData timeline)
 		{
 			FrameData result = null;
@@ -673,7 +653,6 @@ namespace Modules.Communal.ProjectsConvertor
 			return result;
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x00003694 File Offset: 0x00001894
 		public static TimelineData GetNodeTimeline(TimelineActionData actData, string property, int actionTag)
 		{
 			TimelineData timelineData = null;
@@ -695,7 +674,6 @@ namespace Modules.Communal.ProjectsConvertor
 			return timelineData;
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x00003724 File Offset: 0x00001924
 		private static bool IsTimeLineHasFrameAt(TimelineData timeline, int frameIndex, Type frameValueType)
 		{
 			bool result = false;
@@ -714,7 +692,6 @@ namespace Modules.Communal.ProjectsConvertor
 			return result;
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x0000378C File Offset: 0x0000198C
 		public static void ClearRepeatFrames(TimelineActionData actionData)
 		{
 			foreach (TimelineData timelineData in actionData.Timelines)
@@ -723,7 +700,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x000037E0 File Offset: 0x000019E0
 		public static void ClearRepeatFrames(TimelineData timelineData)
 		{
 			if (timelineData.Frames != null)
@@ -767,7 +743,6 @@ namespace Modules.Communal.ProjectsConvertor
 			}
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x00003984 File Offset: 0x00001B84
 		public static FrameData GetTimelineFrame(TimelineData timeline, int frameIndex, Type frameValueType)
 		{
 			if (timeline.Frames == null)
@@ -793,73 +768,53 @@ namespace Modules.Communal.ProjectsConvertor
 			return frameData2;
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x00003A48 File Offset: 0x00001C48
 		private void SignAsBone(NodeObjectData node)
 		{
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00003A4A File Offset: 0x00001C4A
 		private bool IsBone(AbstractNodeObjectData node)
 		{
 			return node is BoneNodeObjectData;
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00003A55 File Offset: 0x00001C55
 		private void InitNodeProp(AbstractNodeObjectData node)
 		{
 			node.ActionTag = node.GetHashCode();
 			node.Children = new List<AbstractNodeObjectData>();
 		}
 
-		// Token: 0x04000001 RID: 1
 		private static Type boolframedataType = typeof(BoolFrameData);
 
-		// Token: 0x04000002 RID: 2
 		private static Type intframedataType = typeof(IntFrameData);
 
-		// Token: 0x04000003 RID: 3
 		private static Type pointframedataType = typeof(PointFrameData);
 
-		// Token: 0x04000004 RID: 4
 		private static Type colorframedataType = typeof(ColorFrameData);
 
-		// Token: 0x04000005 RID: 5
 		private static Type stringframedataType = typeof(StringFrameData);
 
-		// Token: 0x04000006 RID: 6
 		private static Type blendfuncframeDataType = typeof(BlendFuncFrameData);
 
-		// Token: 0x04000007 RID: 7
 		private string absjsondir = "";
 
-		// Token: 0x04000008 RID: 8
 		private GameFileData gameFileData;
 
-		// Token: 0x04000009 RID: 9
 		private SkeletonNodeObjectData rootData;
 
-		// Token: 0x0400000A RID: 10
 		private TimelineActionData timelineData;
 
-		// Token: 0x0400000B RID: 11
 		private Dictionary<string, BoneNodeObjectData> boneMap = new Dictionary<string, BoneNodeObjectData>();
 
-		// Token: 0x0400000C RID: 12
 		private List<NodeObjectData> textureList = new List<NodeObjectData>();
 
-		// Token: 0x0400000D RID: 13
 		private Dictionary<string, Tuple<CocoStudio.Model.SizeF, ScaleValue, ResourceItemData>> textureFileMap = new Dictionary<string, Tuple<CocoStudio.Model.SizeF, ScaleValue, ResourceItemData>>();
 
-		// Token: 0x0400000E RID: 14
 		private int totalFrameCount;
 
-		// Token: 0x0400000F RID: 15
 		private int animationstart;
 
-		// Token: 0x04000010 RID: 16
 		private int minRealFrameIndex;
 
-		// Token: 0x04000011 RID: 17
 		private int maxRealFrameIndex;
 	}
 }

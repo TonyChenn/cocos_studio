@@ -12,14 +12,10 @@ using MonoDevelop.Ide;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x0200005E RID: 94
 	[DataInclude(typeof(CocosFile))]
 	[DataItem("Project")]
 	public class CocosItem : ResourceFile, ICocosFile, IInitialize, ICocosItem, IPublish, ICustomDataItem
 	{
-		// Token: 0x17000064 RID: 100
-		// (get) Token: 0x060002A4 RID: 676 RVA: 0x0000A5D8 File Offset: 0x000087D8
-		// (set) Token: 0x060002A5 RID: 677 RVA: 0x0000A606 File Offset: 0x00008806
 		[ItemProperty("Type")]
 		public string ContentType
 		{
@@ -37,8 +33,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000065 RID: 101
-		// (get) Token: 0x060002A6 RID: 678 RVA: 0x0000A60F File Offset: 0x0000880F
 		public CodeFileCollection SourceFiles
 		{
 			get
@@ -51,8 +45,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000066 RID: 102
-		// (get) Token: 0x060002A7 RID: 679 RVA: 0x0000A62B File Offset: 0x0000882B
 		public CocosFile CocosFile
 		{
 			get
@@ -65,8 +57,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000067 RID: 103
-		// (get) Token: 0x060002A8 RID: 680 RVA: 0x0000A64C File Offset: 0x0000884C
 		public UserData UserData
 		{
 			get
@@ -84,8 +74,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000068 RID: 104
-		// (get) Token: 0x060002A9 RID: 681 RVA: 0x0000A693 File Offset: 0x00008893
 		public virtual bool IsAutoInitialize
 		{
 			get
@@ -94,22 +82,16 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000069 RID: 105
-		// (get) Token: 0x060002AA RID: 682 RVA: 0x0000A696 File Offset: 0x00008896
-		// (set) Token: 0x060002AB RID: 683 RVA: 0x0000A69E File Offset: 0x0000889E
 		public bool IsInitialized { get; private set; }
 
-		// Token: 0x060002AC RID: 684 RVA: 0x0000A6A7 File Offset: 0x000088A7
 		protected CocosItem()
 		{
 		}
 
-		// Token: 0x060002AD RID: 685 RVA: 0x0000A6AF File Offset: 0x000088AF
 		public CocosItem(FilePath file) : base(file)
 		{
 		}
 
-		// Token: 0x060002AE RID: 686 RVA: 0x0000A6B8 File Offset: 0x000088B8
 		public CocosItem(FilePath file, CocosFile cocosFile) : this(file)
 		{
 			this.cocosFile = cocosFile;
@@ -117,7 +99,6 @@ namespace CocoStudio.Projects
 			this.contentType = cocosFile.Type;
 		}
 
-		// Token: 0x060002AF RID: 687 RVA: 0x0000A6E0 File Offset: 0x000088E0
 		protected bool CheckInitialize(IProgressMonitor monitor)
 		{
 			if (this.cocosFile == null)
@@ -127,8 +108,6 @@ namespace CocoStudio.Projects
 			return this.cocosFile != null;
 		}
 
-		// Token: 0x1700006A RID: 106
-		// (get) Token: 0x060002B0 RID: 688 RVA: 0x0000A6FD File Offset: 0x000088FD
 		public bool IsLoaded
 		{
 			get
@@ -137,7 +116,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002B1 RID: 689 RVA: 0x0000A714 File Offset: 0x00008914
 		public void ReloadReferencedItem(IProgressMonitor monitor)
 		{
 			if (this.cocosFile != null)
@@ -146,13 +124,11 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002B2 RID: 690 RVA: 0x0000A72A File Offset: 0x0000892A
 		public bool HasReferencedItem(CocosItem item)
 		{
 			return this == item || (this.cocosFile != null && this.cocosFile.HasReferencedItem(item));
 		}
 
-		// Token: 0x060002B3 RID: 691 RVA: 0x0000A748 File Offset: 0x00008948
 		public void Load(IProgressMonitor monitor)
 		{
 			this.CheckInitialize(monitor);
@@ -172,7 +148,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002B4 RID: 692 RVA: 0x0000A7A8 File Offset: 0x000089A8
 		public bool UpdateUsedResources(IProgressMonitor monitor, ChangedResourceCollection changedResourceCollection)
 		{
 			if (!this.CheckInitialize(monitor))
@@ -191,7 +166,6 @@ namespace CocoStudio.Projects
 			return false;
 		}
 
-		// Token: 0x060002B5 RID: 693 RVA: 0x0000A7E2 File Offset: 0x000089E2
 		public void Save(IProgressMonitor monitor)
 		{
 			if (!this.CheckInitialize(monitor))
@@ -203,7 +177,6 @@ namespace CocoStudio.Projects
 			this.RefreshFileInfo();
 		}
 
-		// Token: 0x060002B6 RID: 694 RVA: 0x0000A806 File Offset: 0x00008A06
 		private void RefreshFileInfo()
 		{
 			this.lastWriteTime = ResourceItem.GetLastWriteTime(this.FullPath);
@@ -211,7 +184,6 @@ namespace CocoStudio.Projects
 			this.dataError = null;
 		}
 
-		// Token: 0x060002B7 RID: 695 RVA: 0x0000A838 File Offset: 0x00008A38
 		public void Initialize(IProgressMonitor monitor)
 		{
 			if (!File.Exists(this.FileName))
@@ -244,7 +216,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002B8 RID: 696 RVA: 0x0000A908 File Offset: 0x00008B08
 		public void UnLoad(IProgressMonitor monitor)
 		{
 			if (this.cocosFile != null)
@@ -253,7 +224,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002B9 RID: 697 RVA: 0x0000A91E File Offset: 0x00008B1E
 		public void Reload(IProgressMonitor monitor)
 		{
 			this.IsInitialized = false;
@@ -261,20 +231,17 @@ namespace CocoStudio.Projects
 			this.Load(monitor);
 		}
 
-		// Token: 0x060002BA RID: 698 RVA: 0x0000A935 File Offset: 0x00008B35
 		private static CocosFile ReadFile(IProgressMonitor monitor, string filePath)
 		{
 			FileUpgraderManager.Upgrade(filePath);
 			return ProjectsService.Instance.InternalReadCocosFile(monitor, filePath);
 		}
 
-		// Token: 0x060002BB RID: 699 RVA: 0x0000A94A File Offset: 0x00008B4A
 		public HashSet<ResourceData> GetUsedResources(IProgressMonitor monitor)
 		{
 			return this.GetUsedResources(monitor, false);
 		}
 
-		// Token: 0x060002BC RID: 700 RVA: 0x0000A954 File Offset: 0x00008B54
 		protected override DataError OnCheckDataError()
 		{
 			this.dataError = base.OnCheckDataError();
@@ -295,7 +262,6 @@ namespace CocoStudio.Projects
 			return this.dataError;
 		}
 
-		// Token: 0x060002BD RID: 701 RVA: 0x0000A9E4 File Offset: 0x00008BE4
 		public HashSet<ResourceData> GetUsedResources(IProgressMonitor monitor, bool isSearchReferenceProjects)
 		{
 			this.CheckInitialize(monitor);
@@ -316,7 +282,6 @@ namespace CocoStudio.Projects
 			return hashSet;
 		}
 
-		// Token: 0x060002BE RID: 702 RVA: 0x0000AA2C File Offset: 0x00008C2C
 		private static void ScanFile(IProgressMonitor monitor, CocosItem referencedItem, HashSet<ResourceData> resourceItems, HashSet<CocosItem> searchedItem)
 		{
 			HashSet<ResourceData> usedResources = referencedItem.CocosFile.GetUsedResources(monitor);
@@ -341,7 +306,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002BF RID: 703 RVA: 0x0000AB18 File Offset: 0x00008D18
 		protected override void OnRefresh()
 		{
 			if (this.IsLoaded)
@@ -360,14 +324,12 @@ namespace CocoStudio.Projects
 			base.OnRefresh();
 		}
 
-		// Token: 0x060002C0 RID: 704 RVA: 0x0000AB7E File Offset: 0x00008D7E
 		protected override void OnDelete(IProgressMonitor monitor)
 		{
 			this.DeleteUserData();
 			base.OnDelete(monitor);
 		}
 
-		// Token: 0x060002C1 RID: 705 RVA: 0x0000AB90 File Offset: 0x00008D90
 		public void Publish(IProgressMonitor monitor, PublishInfo info)
 		{
 			try
@@ -381,7 +343,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002C2 RID: 706 RVA: 0x0000ABDC File Offset: 0x00008DDC
 		protected virtual void OnPublish(IProgressMonitor monitor, PublishInfo info)
 		{
 			if (this.CheckInitialize(monitor))
@@ -402,7 +363,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002C3 RID: 707 RVA: 0x0000AC4C File Offset: 0x00008E4C
 		protected bool CheckDestinationDirectory(IProgressMonitor monitor, PublishInfo info)
 		{
 			FilePath filePath = this.FileName.ToRelative(ProjectsService.Instance.CurrentSolution.ItemDirectory).ToAbsolute(info.PublishDirectory);
@@ -425,7 +385,6 @@ namespace CocoStudio.Projects
 			return true;
 		}
 
-		// Token: 0x060002C4 RID: 708 RVA: 0x0000ACE8 File Offset: 0x00008EE8
 		protected override void OnSetLocation(FilePath newFilePath, bool isRename = true)
 		{
 			this.RenameUserData(newFilePath);
@@ -436,7 +395,6 @@ namespace CocoStudio.Projects
 			base.OnSetLocation(newFilePath, isRename);
 		}
 
-		// Token: 0x060002C5 RID: 709 RVA: 0x0000AD17 File Offset: 0x00008F17
 		protected override void OnMove(FilePath newMovePath)
 		{
 			this.MoveUserData(newMovePath);
@@ -447,7 +405,6 @@ namespace CocoStudio.Projects
 			base.OnMove(newMovePath);
 		}
 
-		// Token: 0x060002C6 RID: 710 RVA: 0x0000AD45 File Offset: 0x00008F45
 		public void SaveUserData()
 		{
 			if (this.UserData.Properties.Count > 0)
@@ -456,7 +413,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002C7 RID: 711 RVA: 0x0000AD68 File Offset: 0x00008F68
 		private void RenameUserData(FilePath newFilePath)
 		{
 			string filePath = this.UserData.FilePath;
@@ -468,7 +424,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002C8 RID: 712 RVA: 0x0000ADB0 File Offset: 0x00008FB0
 		private void MoveUserData(FilePath newMovePath)
 		{
 			string filePath = this.UserData.FilePath;
@@ -480,7 +435,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002C9 RID: 713 RVA: 0x0000ADF8 File Offset: 0x00008FF8
 		private void DeleteUserData()
 		{
 			try
@@ -497,7 +451,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x060002CA RID: 714 RVA: 0x0000AE50 File Offset: 0x00009050
 		public DataCollection Serialize(ITypeSerializer handler)
 		{
 			DataCollection dataCollection = handler.Serialize(this);
@@ -519,7 +472,6 @@ namespace CocoStudio.Projects
 			return dataCollection;
 		}
 
-		// Token: 0x060002CB RID: 715 RVA: 0x0000AEF0 File Offset: 0x000090F0
 		public void Deserialize(ITypeSerializer handler, DataCollection data)
 		{
 			string baseFile = handler.SerializationContext.BaseFile;
@@ -554,22 +506,16 @@ namespace CocoStudio.Projects
 			handler.SerializationContext.BaseFile = baseFile;
 		}
 
-		// Token: 0x040000A6 RID: 166
 		public const string tempAppendFileName = "TempAppendFileName.Project";
 
-		// Token: 0x040000A7 RID: 167
 		public const string FileSuffix = ".csd";
 
-		// Token: 0x040000A8 RID: 168
 		private string contentType;
 
-		// Token: 0x040000A9 RID: 169
 		private CodeFileCollection sourceFiles;
 
-		// Token: 0x040000AA RID: 170
 		private CocosFile cocosFile;
 
-		// Token: 0x040000AB RID: 171
 		private UserData _userData;
 	}
 }

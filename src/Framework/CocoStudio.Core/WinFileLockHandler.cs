@@ -3,10 +3,8 @@ using System.IO;
 
 namespace CocoStudio.Core
 {
-	// Token: 0x02000027 RID: 39
 	internal class WinFileLockHandler : FileLockHandler
 	{
-		// Token: 0x0600016D RID: 365 RVA: 0x00006638 File Offset: 0x00004838
 		protected override bool OnLockFile(string filePath)
 		{
 			try
@@ -20,7 +18,6 @@ namespace CocoStudio.Core
 			return true;
 		}
 
-		// Token: 0x0600016E RID: 366 RVA: 0x00006680 File Offset: 0x00004880
 		protected override bool OnIsFileLocked(string filePath)
 		{
 			bool result = false;
@@ -43,7 +40,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x0600016F RID: 367 RVA: 0x00006704 File Offset: 0x00004904
 		protected override void OnReleaseLock()
 		{
 			using (this.lockwritehandle)
@@ -57,7 +53,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x040000D9 RID: 217
 		private FileStream lockwritehandle = null;
 	}
 }

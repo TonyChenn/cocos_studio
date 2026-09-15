@@ -5,10 +5,8 @@ using Modules.Communal.PList;
 
 namespace Modules.Communal.Packer.PlistReader
 {
-	// Token: 0x02000016 RID: 22
 	internal class PlistFormatZwoptex : PlistImageFormat
 	{
-		// Token: 0x06000083 RID: 131 RVA: 0x00005644 File Offset: 0x00003844
 		protected override List<ImageInfo> OnToImageList(PListDict plistDict)
 		{
 			List<ImageInfo> list = new List<ImageInfo>();
@@ -36,7 +34,6 @@ namespace Modules.Communal.Packer.PlistReader
 			return list;
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x000057A8 File Offset: 0x000039A8
 		protected override PListRoot OnToPlist(List<ImageInfo> imageList, Size size, string imageKey)
 		{
 			throw new NotImplementedException();

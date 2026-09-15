@@ -6,11 +6,8 @@ using Gtk;
 
 namespace Cocos.Launcher.Core.View
 {
-	// Token: 0x02000049 RID: 73
 	internal class TabGroup : ITabGroup
 	{
-		// Token: 0x17000089 RID: 137
-		// (get) Token: 0x0600026D RID: 621 RVA: 0x00009FCF File Offset: 0x000081CF
 		public Widget Content
 		{
 			get
@@ -19,8 +16,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x1700008A RID: 138
-		// (get) Token: 0x0600026E RID: 622 RVA: 0x00009FD7 File Offset: 0x000081D7
 		public TabPage LastSelectedTabPage
 		{
 			get
@@ -29,12 +24,8 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x1400000E RID: 14
-		// (add) Token: 0x0600026F RID: 623 RVA: 0x00009FE0 File Offset: 0x000081E0
-		// (remove) Token: 0x06000270 RID: 624 RVA: 0x0000A018 File Offset: 0x00008218
 		public event EventHandler<EventArgs> SelectedTabChanged;
 
-		// Token: 0x06000271 RID: 625 RVA: 0x0000A04D File Offset: 0x0000824D
 		public TabGroup(ITabMain tabMain)
 		{
 			this.tabMain = tabMain;
@@ -42,7 +33,6 @@ namespace Cocos.Launcher.Core.View
 			this.Initialize();
 		}
 
-		// Token: 0x06000272 RID: 626 RVA: 0x0000A070 File Offset: 0x00008270
 		private void Initialize()
 		{
 			this.tabPageList = new List<TabPage>();
@@ -53,7 +43,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x06000273 RID: 627 RVA: 0x0000A0CC File Offset: 0x000082CC
 		public void SwitchTab(SwitchTabInfo switchTabInfo)
 		{
 			if (this.tabPageList.Count > switchTabInfo.Order)
@@ -63,7 +52,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x06000274 RID: 628 RVA: 0x0000A106 File Offset: 0x00008306
 		private void SwitchTab(TabPage tabPage, SwitchTabInfo switchTabInfo)
 		{
 			this.SwitchTabHead(tabPage);
@@ -75,7 +63,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x06000275 RID: 629 RVA: 0x0000A134 File Offset: 0x00008334
 		private void SwitchTabContent(TabPage tabPage, SwitchTabInfo switchTabInfo)
 		{
 			if (this.lastSelectedTabPage != null && this.lastSelectedTabPage.TabContent != null)
@@ -90,7 +77,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x06000276 RID: 630 RVA: 0x0000A1A0 File Offset: 0x000083A0
 		private void SwitchTabHead(TabPage tabPage)
 		{
 			ITabHead oldTabHead = null;
@@ -101,7 +87,6 @@ namespace Cocos.Launcher.Core.View
 			this.tabGroupView.SwitchTab(oldTabHead, tabPage.TabHead);
 		}
 
-		// Token: 0x06000277 RID: 631 RVA: 0x0000A1D8 File Offset: 0x000083D8
 		public void AddTab(ITabContent tabContent)
 		{
 			ITabHead tabHead = this.tabGroupView.AddTab(tabContent);
@@ -111,23 +96,18 @@ namespace Cocos.Launcher.Core.View
 			this.tabPageList.Add(item);
 		}
 
-		// Token: 0x06000278 RID: 632 RVA: 0x0000A238 File Offset: 0x00008438
 		private void TabHead_SelectedChanged(object sender, SelectedChangingEventArgs e)
 		{
 			TabPage tabPage = this.tabPageList.FirstOrDefault((TabPage a) => a.TabHead == sender);
 			this.SwitchTab(tabPage, new SwitchTabInfo());
 		}
 
-		// Token: 0x040000EE RID: 238
 		private TabGroupView tabGroupView;
 
-		// Token: 0x040000F0 RID: 240
 		private TabPage lastSelectedTabPage;
 
-		// Token: 0x040000F1 RID: 241
 		private ITabMain tabMain;
 
-		// Token: 0x040000F2 RID: 242
 		private List<TabPage> tabPageList;
 	}
 }

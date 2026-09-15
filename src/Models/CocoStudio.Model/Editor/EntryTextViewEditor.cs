@@ -5,11 +5,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000053 RID: 83
 	internal class EntryTextViewEditor : BaseEditor
 	{
-		// Token: 0x170000EF RID: 239
-		// (get) Token: 0x060002CC RID: 716 RVA: 0x00009C90 File Offset: 0x00007E90
 		public override bool IsMultiLine
 		{
 			get
@@ -18,7 +15,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002CD RID: 717 RVA: 0x00009CA4 File Offset: 0x00007EA4
 		protected override Widget OnCreateWidget()
 		{
 			this.textView = new TextView();
@@ -37,7 +33,6 @@ namespace CocoStudio.Model.Editor
 			return eventBox;
 		}
 
-		// Token: 0x060002CE RID: 718 RVA: 0x00009D68 File Offset: 0x00007F68
 		protected override void OnSetControl()
 		{
 			if (base.PropertyItem != null)
@@ -50,7 +45,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002CF RID: 719 RVA: 0x00009DBC File Offset: 0x00007FBC
 		private void textView_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			if (!this.isKeyPress)
@@ -59,7 +53,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002D0 RID: 720 RVA: 0x00009DF4 File Offset: 0x00007FF4
 		private void textView_KeyReleaseEvent(object o, KeyReleaseEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Return && this.textView.IsFocus)
@@ -70,10 +63,8 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000136 RID: 310
 		private TextView textView;
 
-		// Token: 0x04000137 RID: 311
 		private bool isKeyPress = false;
 	}
 }

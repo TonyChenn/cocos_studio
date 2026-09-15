@@ -4,11 +4,8 @@ using Gtk;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200006A RID: 106
 	public class Scale9EventBox : EventBox
 	{
-		// Token: 0x1700010D RID: 269
-		// (get) Token: 0x06000394 RID: 916 RVA: 0x00011218 File Offset: 0x0000F418
 		public Scale9DrawingArea DrawingArea
 		{
 			get
@@ -17,7 +14,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000395 RID: 917 RVA: 0x00011230 File Offset: 0x0000F430
 		public Scale9EventBox()
 		{
 			this.widget = new Scale9DrawingArea();
@@ -29,7 +25,6 @@ namespace CocoStudio.Model.Editor
 			base.LeaveNotifyEvent += this.LeaveNotifyHandler;
 		}
 
-		// Token: 0x06000396 RID: 918 RVA: 0x000112B0 File Offset: 0x0000F4B0
 		private CurrentRange GetCurrentRange(double x, double y)
 		{
 			CurrentRange result;
@@ -56,13 +51,11 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x06000397 RID: 919 RVA: 0x0001133C File Offset: 0x0000F53C
 		private bool IsChosen(double range, double value)
 		{
 			return Math.Abs(value - range) < 4.0;
 		}
 
-		// Token: 0x06000398 RID: 920 RVA: 0x00011370 File Offset: 0x0000F570
 		protected override bool OnButtonPressEvent(EventButton evnt)
 		{
 			bool result;
@@ -81,7 +74,6 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x06000399 RID: 921 RVA: 0x000113D0 File Offset: 0x0000F5D0
 		protected override bool OnMotionNotifyEvent(EventMotion evnt)
 		{
 			if (this.mousePress)
@@ -182,7 +174,6 @@ namespace CocoStudio.Model.Editor
 			return base.OnMotionNotifyEvent(evnt);
 		}
 
-		// Token: 0x0600039A RID: 922 RVA: 0x00011734 File Offset: 0x0000F934
 		protected override bool OnButtonReleaseEvent(EventButton evnt)
 		{
 			this.mousePress = false;
@@ -191,28 +182,21 @@ namespace CocoStudio.Model.Editor
 			return base.OnButtonReleaseEvent(evnt);
 		}
 
-		// Token: 0x0600039B RID: 923 RVA: 0x00011768 File Offset: 0x0000F968
 		private void LeaveNotifyHandler(object o, LeaveNotifyEventArgs args)
 		{
 			base.GdkWindow.Cursor = null;
 		}
 
-		// Token: 0x040001D4 RID: 468
 		private const int minValue = 2;
 
-		// Token: 0x040001D5 RID: 469
 		private const int maxValue = 102;
 
-		// Token: 0x040001D6 RID: 470
 		private Scale9DrawingArea widget;
 
-		// Token: 0x040001D7 RID: 471
 		private CurrentRange currentChoiceRange = CurrentRange.None;
 
-		// Token: 0x040001D8 RID: 472
 		private bool mousePress = false;
 
-		// Token: 0x040001D9 RID: 473
 		public EventHandler<Scale9EventArgs> Scale9EventChanged;
 	}
 }

@@ -16,10 +16,8 @@ using MonoDevelop.Ide.Codons;
 
 namespace CocoStudio.Core.Commands
 {
-	// Token: 0x02000017 RID: 23
 	public static class GlobalCommandHandle
 	{
-		// Token: 0x06000111 RID: 273 RVA: 0x00004F3E File Offset: 0x0000313E
 		public static void InitService()
 		{
 			GlobalCommandHandle.taskService = TaskServiceSingleton.Instance;
@@ -27,7 +25,6 @@ namespace CocoStudio.Core.Commands
 			GlobalCommandHandle.InitCmdHandleExtension();
 		}
 
-		// Token: 0x06000112 RID: 274 RVA: 0x00004F58 File Offset: 0x00003158
 		private static void InitCmdHandleExtension()
 		{
 			try
@@ -47,7 +44,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000113 RID: 275 RVA: 0x00004FCC File Offset: 0x000031CC
 		private static void InitCmdBinding()
 		{
 			GlobalCommand.NewFileCmd.Update += GlobalCommandHandle.HasSolution_CanExecute;
@@ -91,7 +87,6 @@ namespace CocoStudio.Core.Commands
 			GlobalCommand.OpenDirCmd.Update += GlobalCommandHandle.HasDocument_CanExecute;
 		}
 
-		// Token: 0x06000114 RID: 276 RVA: 0x00005344 File Offset: 0x00003544
 		private static void HasSolution_CanExecute(object sender, CommandUpdateArgs e)
 		{
 			GlobalCommandHandle.PropertyPad_ReleaseFocus_BeforSaveCmd();
@@ -105,7 +100,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000115 RID: 277 RVA: 0x00005388 File Offset: 0x00003588
 		private static void HasDocument_CanExecute(object sender, CommandUpdateArgs args)
 		{
 			GlobalCommandHandle.PropertyPad_ReleaseFocus_BeforSaveCmd();
@@ -123,7 +117,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000116 RID: 278 RVA: 0x000053F8 File Offset: 0x000035F8
 		private static void PropertyPad_ReleaseFocus_BeforSaveCmd()
 		{
 			Widget widget = Services.Workbench.Pads.PropertyPad.CurrentWidget();
@@ -136,7 +129,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000117 RID: 279 RVA: 0x00005448 File Offset: 0x00003648
 		private static void RecentFileCmd_Execute(object sender, CommandRunArgs args)
 		{
 			CocosItemModel cocosItemModel = args.DataItem as CocosItemModel;
@@ -154,7 +146,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000118 RID: 280 RVA: 0x000054BC File Offset: 0x000036BC
 		private static void RecentFileCmd_Update(object sender, CommandArrayUpdateArgs args)
 		{
 			ObservableCollection<CocosItemModel> observableCollection = new ObservableCollection<CocosItemModel>(Services.RecentFileService.CocosItemRecordList);
@@ -165,14 +156,12 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000119 RID: 281 RVA: 0x00005548 File Offset: 0x00003748
 		private static void CloseCmd_Execute(object sender, CommandRunArgs e)
 		{
 			DocumentExtend activeDocument = Services.Workbench.ActiveDocument;
 			activeDocument.Close();
 		}
 
-		// Token: 0x0600011A RID: 282 RVA: 0x00005568 File Offset: 0x00003768
 		private static void CloseCmd_CanExecute(object sender, CommandUpdateArgs args)
 		{
 			if (Services.ProjectOperations.CurrentSelectedSolution != null)
@@ -188,19 +177,16 @@ namespace CocoStudio.Core.Commands
 			args.Info.Enabled = false;
 		}
 
-		// Token: 0x0600011B RID: 283 RVA: 0x000055F7 File Offset: 0x000037F7
 		private static void CloseProjectCmd_Execute(object sender, CommandRunArgs e)
 		{
 			Services.ProjectOperations.CloseSolution();
 		}
 
-		// Token: 0x0600011C RID: 284 RVA: 0x00005605 File Offset: 0x00003805
 		private static void SaveCmd_Execute(object sender, CommandRunArgs e)
 		{
 			Services.Workbench.ActiveDocument.Save();
 		}
 
-		// Token: 0x0600011D RID: 285 RVA: 0x00005618 File Offset: 0x00003818
 		private static void SaveCmd_CanExecute(object sender, CommandUpdateArgs args)
 		{
 			GlobalCommandHandle.PropertyPad_ReleaseFocus_BeforSaveCmd();
@@ -220,14 +206,12 @@ namespace CocoStudio.Core.Commands
 			args.Info.Enabled = false;
 		}
 
-		// Token: 0x0600011E RID: 286 RVA: 0x000056C8 File Offset: 0x000038C8
 		private static void SaveAllCmd_Execute(object sender, CommandRunArgs e)
 		{
 			IProgressMonitor consoleProgressMonitor = Services.ProgressMonitors.GetConsoleProgressMonitor(false, true);
 			Services.Workspace.Save(consoleProgressMonitor);
 		}
 
-		// Token: 0x0600011F RID: 287 RVA: 0x000056F0 File Offset: 0x000038F0
 		private static void SaveAsCmd_Execute(object sender, CommandRunArgs e)
 		{
 			Services.Workbench.SaveAll();
@@ -283,43 +267,36 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000120 RID: 288 RVA: 0x00005914 File Offset: 0x00003B14
 		private static void QuitCmd_Execute(object sender, CommandRunArgs e)
 		{
 			Services.MainWindow.Quit();
 		}
 
-		// Token: 0x06000121 RID: 289 RVA: 0x00005922 File Offset: 0x00003B22
 		private static void UndoCmd_Execute(object sender, CommandRunArgs e)
 		{
 			GlobalCommandHandle.taskService.Undo(Services.Workbench.ActiveDocument);
 		}
 
-		// Token: 0x06000122 RID: 290 RVA: 0x0000593A File Offset: 0x00003B3A
 		private static void UndoCmd_CanExecute(object sender, CommandUpdateArgs e)
 		{
 			e.Info.Enabled = GlobalCommandHandle.taskService.CanUndo(Services.Workbench.ActiveDocument);
 		}
 
-		// Token: 0x06000123 RID: 291 RVA: 0x0000595D File Offset: 0x00003B5D
 		private static void RedoCmd_Execute(object sender, CommandRunArgs e)
 		{
 			GlobalCommandHandle.taskService.Redo(Services.Workbench.ActiveDocument);
 		}
 
-		// Token: 0x06000124 RID: 292 RVA: 0x00005975 File Offset: 0x00003B75
 		private static void RedoCmd_CanExecute(object sender, CommandUpdateArgs e)
 		{
 			e.Info.Enabled = GlobalCommandHandle.taskService.CanRedo(Services.Workbench.ActiveDocument);
 		}
 
-		// Token: 0x06000125 RID: 293 RVA: 0x00005998 File Offset: 0x00003B98
 		private static void ResetLayoutCmd_Execute(object sender, CommandRunArgs e)
 		{
 			Services.MainWindow.ResetDefaultLayout();
 		}
 
-		// Token: 0x06000126 RID: 294 RVA: 0x000059A8 File Offset: 0x00003BA8
 		private static void PadCmd_Execute(object sender, CommandRunArgs args)
 		{
 			Pad pad = args.DataItem as Pad;
@@ -336,7 +313,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000127 RID: 295 RVA: 0x00005A0C File Offset: 0x00003C0C
 		private static void PadCmd_Update(object sender, CommandArrayUpdateArgs args)
 		{
 			PadCollection pads = Services.Workbench.Pads;
@@ -351,7 +327,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000128 RID: 296 RVA: 0x00005AA0 File Offset: 0x00003CA0
 		private static void StartLauncherCmd_Execute(object sender, CommandRunArgs e)
 		{
 			string fileName = string.Empty;
@@ -375,7 +350,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000129 RID: 297 RVA: 0x00005B44 File Offset: 0x00003D44
 		private static void HelpCmd_Execute(object sender, CommandRunArgs e)
 		{
 			string urlFormat = "http://cocostudio.org/help/2.0/{0}";
@@ -391,35 +365,30 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x0600012A RID: 298 RVA: 0x00005BA0 File Offset: 0x00003DA0
 		private static void SetChineseCmd_Execute(object sender, CommandRunArgs e)
 		{
 			LanguageOption.SetEditorLanguage(LanguageType.Chinese);
 			GlobalCommandHandle.ShowMessageBox("语言设置成功，重启编辑器后生效", "提示", "确定");
 		}
 
-		// Token: 0x0600012B RID: 299 RVA: 0x00005BBF File Offset: 0x00003DBF
 		private static void SetEnglishCmd_Execute(object sender, CommandRunArgs e)
 		{
 			LanguageOption.SetEditorLanguage(LanguageType.English);
 			GlobalCommandHandle.ShowMessageBox("You have changed your language preferences. Restart Cocos Studio to apply the language changes.", "Info", "OK");
 		}
 
-		// Token: 0x0600012C RID: 300 RVA: 0x00005BDE File Offset: 0x00003DDE
 		private static void SetTraditionalChineseCmd_Execute(object sender, CommandRunArgs e)
 		{
 			LanguageOption.SetEditorLanguage(LanguageType.Traditional);
 			GlobalCommandHandle.ShowMessageBox("語言設置成功，重啟編輯器後生效", "提示", "確定");
 		}
 
-		// Token: 0x0600012D RID: 301 RVA: 0x00005C00 File Offset: 0x00003E00
 		private static void ShowMessageBox(string info, string title, string buttonString)
 		{
 			ButtonText btnText = new ButtonText(buttonString, false);
 			MessageBox.Show(info, btnText, MessageBoxImage.Info, null, EnumMainButton.Yes, title);
 		}
 
-		// Token: 0x0600012E RID: 302 RVA: 0x00005C24 File Offset: 0x00003E24
 		private static void SetEnglishCmd_Update(object sender, CommandUpdateArgs e)
 		{
 			if (LanguageOption.CurrentLanguage == LanguageType.English)
@@ -432,7 +401,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x0600012F RID: 303 RVA: 0x00005C60 File Offset: 0x00003E60
 		private static void SetChineseCmd_Update(object sender, CommandUpdateArgs e)
 		{
 			if (LanguageOption.CurrentLanguage == LanguageType.Chinese)
@@ -445,7 +413,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000130 RID: 304 RVA: 0x00005C9C File Offset: 0x00003E9C
 		private static void SetTraditionalChineseCmd_Update(object sender, CommandUpdateArgs e)
 		{
 			if (LanguageOption.CurrentLanguage == LanguageType.Traditional)
@@ -458,7 +425,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000131 RID: 305 RVA: 0x00005CD8 File Offset: 0x00003ED8
 		private static void AboutCmd_Execute(object sender, CommandRunArgs e)
 		{
 			CustomTitleWindow customTitleWindow = new CustomTitleWindow();
@@ -466,19 +432,16 @@ namespace CocoStudio.Core.Commands
 			customTitleWindow.Show();
 		}
 
-		// Token: 0x06000132 RID: 306 RVA: 0x00005D04 File Offset: 0x00003F04
 		private static void CloseAllCmd_Execute(object sender, CommandRunArgs e)
 		{
 			Services.Workbench.CloseAll(false);
 		}
 
-		// Token: 0x06000133 RID: 307 RVA: 0x00005D13 File Offset: 0x00003F13
 		private static void CloseOtherCmd_Execute(object sender, CommandRunArgs e)
 		{
 			Services.Workbench.CloseAll(true);
 		}
 
-		// Token: 0x06000134 RID: 308 RVA: 0x00005D24 File Offset: 0x00003F24
 		private static void OpenDirCmd_Execute(object sender, CommandRunArgs e)
 		{
 			try
@@ -499,7 +462,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x040000CF RID: 207
 		private static IUndoManager taskService;
 	}
 }

@@ -6,10 +6,8 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 	/// <summary>
 	/// Helper class for the GetAllBaseTypes() implementation.
 	/// </summary>
-	// Token: 0x020000A7 RID: 167
 	internal sealed class BaseTypeCollector : List<IType>
 	{
-		// Token: 0x06000585 RID: 1413 RVA: 0x0000D1D0 File Offset: 0x0000C1D0
 		public void CollectBaseTypes(IType type)
 		{
 			IType type2 = type.GetDefinition() ?? type;
@@ -32,14 +30,12 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			this.activeTypes.Pop();
 		}
 
-		// Token: 0x04000180 RID: 384
 		private readonly Stack<IType> activeTypes = new Stack<IType>();
 
 		/// <summary>
 		/// If this option is enabled, the list will not contain interfaces when retrieving the base types
 		/// of a class.
 		/// </summary>
-		// Token: 0x04000181 RID: 385
 		internal bool SkipImplementedInterfaces;
 	}
 }

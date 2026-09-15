@@ -12,11 +12,8 @@ using Xwt.GtkBackend;
 
 namespace Gtk
 {
-	// Token: 0x02000063 RID: 99
 	public class ImageIcon
 	{
-		// Token: 0x1700005B RID: 91
-		// (get) Token: 0x06000219 RID: 537 RVA: 0x0000963C File Offset: 0x0000783C
 		public static double ScaleFactor
 		{
 			get
@@ -25,13 +22,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600021A RID: 538 RVA: 0x00009658 File Offset: 0x00007858
 		static ImageIcon()
 		{
 			ImageIcon.iconFactory.AddDefault();
 		}
 
-		// Token: 0x0600021B RID: 539 RVA: 0x0000967C File Offset: 0x0000787C
 		public static Xwt.Drawing.Image GetIcon(string resourceID)
 		{
 			Xwt.Drawing.Image image = null;
@@ -61,7 +56,6 @@ namespace Gtk
 			return image;
 		}
 
-		// Token: 0x0600021C RID: 540 RVA: 0x0000971C File Offset: 0x0000791C
 		public static Xwt.Drawing.Image GetCustomControlIcon(string resourceID)
 		{
 			Xwt.Drawing.Image icon = ImageIcon.GetIcon(resourceID);
@@ -72,7 +66,6 @@ namespace Gtk
 			return icon;
 		}
 
-		// Token: 0x0600021D RID: 541 RVA: 0x00009750 File Offset: 0x00007950
 		public static Xwt.Drawing.Image GetIconFromFile(string filePath)
 		{
 			string extension = Path.GetExtension(filePath);
@@ -116,7 +109,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x0600021E RID: 542 RVA: 0x00009864 File Offset: 0x00007A64
 		public static Pixbuf GetPixbuf(string resourceID)
 		{
 			Assembly callingAssembly = Assembly.GetCallingAssembly();
@@ -130,7 +122,6 @@ namespace Gtk
 			return iconSet.RenderIcon(Widget.DefaultStyle, TextDirection.Ltr, StateType.Normal, IconSize.Button, null, null, ImageIcon.ScaleFactor);
 		}
 
-		// Token: 0x0600021F RID: 543 RVA: 0x000098C4 File Offset: 0x00007AC4
 		private static void LoadIcon(IconSet iconSet, string resourceID, Assembly callingAssembly)
 		{
 			Pixbuf pixbuf = ImageIcon.LoadResource(resourceID, callingAssembly);
@@ -153,7 +144,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000220 RID: 544 RVA: 0x0000994A File Offset: 0x00007B4A
 		private static void ConfigIconSource(Pixbuf pixbuf, IconSource iconSource)
 		{
 			iconSource.Pixbuf = pixbuf;
@@ -161,14 +151,12 @@ namespace Gtk
 			iconSource.SizeWildcarded = false;
 		}
 
-		// Token: 0x06000221 RID: 545 RVA: 0x00009968 File Offset: 0x00007B68
 		private static Pixbuf LoadResource2x(string resourceID, Assembly callingAssembly)
 		{
 			string resource2xID = ImageIcon.GetResource2xID(resourceID);
 			return ImageIcon.LoadResource(resource2xID, callingAssembly);
 		}
 
-		// Token: 0x06000222 RID: 546 RVA: 0x00009988 File Offset: 0x00007B88
 		private static Pixbuf LoadResource(string resourceID, Assembly callingAssembly)
 		{
 			Stream stream;
@@ -196,7 +184,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x06000223 RID: 547 RVA: 0x00009A28 File Offset: 0x00007C28
 		private static string GetResource2xID(string resourceID)
 		{
 			string text = Path.GetFileNameWithoutExtension(resourceID) + "@2x" + Path.GetExtension(resourceID);
@@ -207,7 +194,6 @@ namespace Gtk
 			return text;
 		}
 
-		// Token: 0x06000224 RID: 548 RVA: 0x00009A70 File Offset: 0x00007C70
 		private static bool TrySearchResourceStream(string resourceID, Assembly callingAssembly, out Stream stream, out Assembly resultAssmbly)
 		{
 			stream = callingAssembly.GetManifestResourceStream(resourceID);
@@ -243,22 +229,17 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x06000225 RID: 549 RVA: 0x00009AF0 File Offset: 0x00007CF0
 		private static Stream GetResourceStreamInAssembly(string resourceID, Assembly assembly)
 		{
 			return assembly.GetManifestResourceStream(resourceID);
 		}
 
-		// Token: 0x0400030C RID: 780
 		private const string hightDPIResourceName = "@2x";
 
-		// Token: 0x0400030D RID: 781
 		private const IconSize defaultIconSize = IconSize.Button;
 
-		// Token: 0x0400030E RID: 782
 		private static IconFactory iconFactory = new IconFactory();
 
-		// Token: 0x0400030F RID: 783
 		private static Dictionary<string, Xwt.Drawing.Image> icons = new Dictionary<string, Xwt.Drawing.Image>();
 	}
 }

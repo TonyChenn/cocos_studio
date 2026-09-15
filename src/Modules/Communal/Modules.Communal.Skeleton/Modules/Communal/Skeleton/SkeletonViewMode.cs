@@ -14,17 +14,14 @@ using Mono.Addins;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x02000029 RID: 41
 	[Extension(typeof(IViewMode))]
 	public class SkeletonViewMode : DefaultViewMode
 	{
-		// Token: 0x060001D5 RID: 469 RVA: 0x0000969C File Offset: 0x0000789C
 		public override bool CanHandle(CocosItem cocosItem)
 		{
 			return cocosItem.ContentType == NodeType.Skeleton.ToString();
 		}
 
-		// Token: 0x060001D6 RID: 470 RVA: 0x000096B4 File Offset: 0x000078B4
 		protected override void OnInitialize(IGLView glView)
 		{
 			List<BaseTool> list = new List<BaseTool>();
@@ -67,7 +64,6 @@ namespace Modules.Communal.Skeleton
 			this.contextMenu = BaseViewMode.LoadContextMenu(NodeType.Skeleton.ToString());
 		}
 
-		// Token: 0x060001D7 RID: 471 RVA: 0x00009848 File Offset: 0x00007A48
 		public override Widget GetToolbar()
 		{
 			if (this.toolbar == null)
@@ -77,7 +73,6 @@ namespace Modules.Communal.Skeleton
 			return this.toolbar;
 		}
 
-		// Token: 0x060001D8 RID: 472 RVA: 0x0000986C File Offset: 0x00007A6C
 		public override void OnDocumentChanged(CocosItem cocosItem)
 		{
 			base.OnDocumentChanged(cocosItem);
@@ -88,14 +83,12 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060001D9 RID: 473 RVA: 0x00009895 File Offset: 0x00007A95
 		public override void Activated(CocosItem cocosItem)
 		{
 			base.Activated(cocosItem);
 			Services.GetService<IComToolPad>().ControlsViewFilter = this._controlToolViewFilter;
 		}
 
-		// Token: 0x04000087 RID: 135
 		private SkeletonControlsViewFilter _controlToolViewFilter = new SkeletonControlsViewFilter();
 	}
 }

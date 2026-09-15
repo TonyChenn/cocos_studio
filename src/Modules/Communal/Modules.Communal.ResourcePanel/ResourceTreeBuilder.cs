@@ -23,10 +23,8 @@ using Xwt.GtkBackend;
 
 namespace Modules.Communal.ResourcePanel
 {
-	// Token: 0x02000029 RID: 41
 	public class ResourceTreeBuilder : ITreeBuild
 	{
-		// Token: 0x0600010E RID: 270 RVA: 0x0000502C File Offset: 0x0000322C
 		private void InitiaCommand()
 		{
 			GlobalCommand.ImportFileCmd.Execute += this.ImportResourceFileCmd_Execute;
@@ -35,7 +33,6 @@ namespace Modules.Communal.ResourcePanel
 			ResourceMenu.InitMenu();
 		}
 
-		// Token: 0x0600010F RID: 271 RVA: 0x00005060 File Offset: 0x00003260
 		private void NewFileCmd_Execute(object sender, CommandRunArgs args)
 		{
 			TreeIter iter;
@@ -86,7 +83,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000110 RID: 272 RVA: 0x000051F4 File Offset: 0x000033F4
 		private void ImportResourceFileCmd_Execute(object sender, CommandRunArgs args)
 		{
 			string[] fileNames = FileChooserDialogModel.GetOpenFilePath(null, LanguageInfo.Menu_File_ImportFile, true, Services.RecentFileService.LastImportLocation, true).FileNames;
@@ -120,7 +116,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000111 RID: 273 RVA: 0x000053A4 File Offset: 0x000035A4
 		internal async void ImportResources(string[] selectPath, ResourceFolder folder)
 		{
 			List<ResourceItem> importItems = await Services.ProjectOperations.ImportResourcesAsync(folder, selectPath, null);
@@ -130,7 +125,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000112 RID: 274 RVA: 0x000053F0 File Offset: 0x000035F0
 		public void OpenInResourceManageHanlder()
 		{
 			string text = Services.ProjectOperations.CurrentResourceGroup.RootFolder.FullPath;
@@ -156,7 +150,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000113 RID: 275 RVA: 0x000054D0 File Offset: 0x000036D0
 		public void NewFolderHanlder()
 		{
 			TreeIter iter;
@@ -201,7 +194,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000114 RID: 276 RVA: 0x000055FC File Offset: 0x000037FC
 		public void DeleteResourceHandler()
 		{
 			using (TaskServiceLock.Lock())
@@ -304,7 +296,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000115 RID: 277 RVA: 0x00005928 File Offset: 0x00003B28
 		private bool DeleteCheck(IEnumerable<TreePath> deletePaths, out string hintInfo)
 		{
 			new List<TreePath>();
@@ -342,7 +333,6 @@ namespace Modules.Communal.ResourcePanel
 			return result;
 		}
 
-		// Token: 0x06000116 RID: 278 RVA: 0x00005A68 File Offset: 0x00003C68
 		internal ResourceFolder GetFolderBySelected(out TreeIter iter)
 		{
 			TreeIter treeIter;
@@ -375,7 +365,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x06000117 RID: 279 RVA: 0x00005B30 File Offset: 0x00003D30
 		private void InitEvent()
 		{
 			this.OnlyDragDropOut();
@@ -392,14 +381,12 @@ namespace Modules.Communal.ResourcePanel
 			this.tree.Parent.DragDataReceived += this.Parent_DragDataReceived;
 		}
 
-		// Token: 0x06000118 RID: 280 RVA: 0x00005C4E File Offset: 0x00003E4E
 		[ConnectBefore]
 		private void tree_DragEnd(object o, DragEndArgs args)
 		{
 			this.lastHoreItem = null;
 		}
 
-		// Token: 0x06000119 RID: 281 RVA: 0x00005D78 File Offset: 0x00003F78
 		[ConnectBefore]
 		private async void Parent_DragDataReceived(object o, DragDataReceivedArgs args)
 		{
@@ -451,7 +438,6 @@ namespace Modules.Communal.ResourcePanel
 			return parentFolder ?? rootFolder;
 		}
 
-		// Token: 0x0600011A RID: 282 RVA: 0x00005DBC File Offset: 0x00003FBC
 		private void ImportResources(AddResourcesArgs obj)
 		{
 			if (obj.AddItems == null)
@@ -492,7 +478,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600011B RID: 283 RVA: 0x00005EF8 File Offset: 0x000040F8
 		public int ResourceComparison(ResourceItem x, ResourceItem y)
 		{
 			if (x == y)
@@ -523,7 +508,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600011C RID: 284 RVA: 0x00005F46 File Offset: 0x00004146
 		private void ProjectOperations_CurrentSelectedSolutionChanged(object sender, SolutionEventArgs e)
 		{
 			if (e.Solution != null)
@@ -532,19 +516,16 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600011D RID: 285 RVA: 0x00005F62 File Offset: 0x00004162
 		public void AllDrag()
 		{
 			Gtk.Drag.SourceSet(this.tree, ModifierType.Button1Mask, ResourceTreeBuilder.target_tableWindows, DragAction.Copy | DragAction.Move | DragAction.Link);
 		}
 
-		// Token: 0x0600011E RID: 286 RVA: 0x00005F7B File Offset: 0x0000417B
 		public void AllDrop()
 		{
 			this.tree.EnableModelDragDest(ResourceTreeBuilder.target_tableWindows, DragAction.Copy | DragAction.Move | DragAction.Link);
 		}
 
-		// Token: 0x0600011F RID: 287 RVA: 0x00005F90 File Offset: 0x00004190
 		public void OnlyDragDropOut()
 		{
 			TreePath[] selectedRows = this.tree.Selection.GetSelectedRows();
@@ -563,7 +544,6 @@ namespace Modules.Communal.ResourcePanel
 			this.AllDrag();
 		}
 
-		// Token: 0x06000120 RID: 288 RVA: 0x00006000 File Offset: 0x00004200
 		private void tree_DragBegin(object o, DragBeginArgs args)
 		{
 			args.RetVal = false;
@@ -590,7 +570,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000121 RID: 289 RVA: 0x00006054 File Offset: 0x00004254
 		[ConnectBefore]
 		private void tree_DragMotion(object o, DragMotionArgs args)
 		{
@@ -618,7 +597,6 @@ namespace Modules.Communal.ResourcePanel
 			this.lastHoreItem = hoverdItem;
 		}
 
-		// Token: 0x06000122 RID: 290 RVA: 0x00006104 File Offset: 0x00004304
 		private ResourceItem GetHoverdItem(TreeIter iter, TreeViewDropPosition pos)
 		{
 			ResourceItem resourceItem = this.GetDateItemByIter(iter) as ResourceItem;
@@ -636,7 +614,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000123 RID: 291 RVA: 0x00006148 File Offset: 0x00004348
 		private void tree_DragDrop(object o, DragDropArgs args)
 		{
 			ResourceInfoDragData resourceInfoDragData = args.Context.GetDragData() as ResourceInfoDragData;
@@ -682,7 +659,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000124 RID: 292 RVA: 0x00006290 File Offset: 0x00004490
 		private ResourceItem GetTarget(TreeIter iter, TreeViewDropPosition pos)
 		{
 			ResourceItem resourceItem = this.GetDateItemByIter(iter) as ResourceItem;
@@ -704,7 +680,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000125 RID: 293 RVA: 0x000062E8 File Offset: 0x000044E8
 		private void MoveToTargetFolder(IList<ResourceItem> moveResoruces, ResourceFolder targetFolder)
 		{
 			this.pad.Tree.FreezeChildNotify();
@@ -743,7 +718,6 @@ namespace Modules.Communal.ResourcePanel
 			this.pad.Tree.ThawChildNotify();
 		}
 
-		// Token: 0x06000126 RID: 294 RVA: 0x00006488 File Offset: 0x00004688
 		internal List<ResourceItem> FilterChildren(IList<ResourceItem> resoruces)
 		{
 			IEnumerable<ResourceItem> enumerable = from n in resoruces
@@ -777,13 +751,11 @@ namespace Modules.Communal.ResourcePanel
 			return resoruces.ToList<ResourceItem>();
 		}
 
-		// Token: 0x06000127 RID: 295 RVA: 0x00006584 File Offset: 0x00004784
 		private bool CheckChildPath(FilePath parent, FilePath childer)
 		{
 			return !(parent == childer) && childer.IsChildPathOf(parent);
 		}
 
-		// Token: 0x06000128 RID: 296 RVA: 0x000065A0 File Offset: 0x000047A0
 		private bool FinderChilder(ResourceFolder folder, ResourceItem childer)
 		{
 			if (folder.Items.Contains(childer))
@@ -804,7 +776,6 @@ namespace Modules.Communal.ResourcePanel
 			return false;
 		}
 
-		// Token: 0x06000129 RID: 297 RVA: 0x00006618 File Offset: 0x00004818
 		private void tree_OnMouseDoubleClick(object sender, WidgetEventArgs e)
 		{
 			TreePath[] selectedRows = this.tree.Selection.GetSelectedRows();
@@ -826,7 +797,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600012A RID: 298 RVA: 0x000066C4 File Offset: 0x000048C4
 		[ConnectBefore]
 		private void tree_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
@@ -840,7 +810,6 @@ namespace Modules.Communal.ResourcePanel
 			widget.HasFocus = false;
 		}
 
-		// Token: 0x0600012B RID: 299 RVA: 0x00006710 File Offset: 0x00004910
 		[ConnectBefore]
 		private void tree_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
@@ -885,7 +854,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600012C RID: 300 RVA: 0x00006744 File Offset: 0x00004944
 		[ConnectBefore]
 		private void OnSelectionChanged(object sender, EventArgs e)
 		{
@@ -908,7 +876,6 @@ namespace Modules.Communal.ResourcePanel
 			Services.ProjectsService.CurrentResourceItems = currentSelectes;
 		}
 
-		// Token: 0x0600012D RID: 301 RVA: 0x000067CC File Offset: 0x000049CC
 		private IList<ResourceItem> GetDragContext()
 		{
 			TreePath[] selectedRows = this.tree.Selection.GetSelectedRows();
@@ -930,7 +897,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x0600012E RID: 302 RVA: 0x00006848 File Offset: 0x00004A48
 		private bool CanDrag()
 		{
 			TreePath[] selectedRows = this.tree.Selection.GetSelectedRows();
@@ -958,9 +924,6 @@ namespace Modules.Communal.ResourcePanel
 			return true;
 		}
 
-		// Token: 0x1700002A RID: 42
-		// (get) Token: 0x0600012F RID: 303 RVA: 0x000068EA File Offset: 0x00004AEA
-		// (set) Token: 0x06000130 RID: 304 RVA: 0x000068F2 File Offset: 0x00004AF2
 		public TreeIter CurrentIter
 		{
 			get
@@ -973,8 +936,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x1700002B RID: 43
-		// (get) Token: 0x06000131 RID: 305 RVA: 0x000068FB File Offset: 0x00004AFB
 		public object DataItem
 		{
 			get
@@ -983,9 +944,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x1700002C RID: 44
-		// (get) Token: 0x06000132 RID: 306 RVA: 0x00006903 File Offset: 0x00004B03
-		// (set) Token: 0x06000133 RID: 307 RVA: 0x00006924 File Offset: 0x00004B24
 		public bool Expanded
 		{
 			get
@@ -1013,12 +971,10 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000134 RID: 308 RVA: 0x000069B3 File Offset: 0x00004BB3
 		public ResourceTreeBuilder(ResourceTreeView pad) : this(pad, TreeIter.Zero)
 		{
 		}
 
-		// Token: 0x06000135 RID: 309 RVA: 0x000069C4 File Offset: 0x00004BC4
 		public ResourceTreeBuilder(ResourceTreeView pad, TreeIter iter)
 		{
 			this.pad = pad;
@@ -1029,7 +985,6 @@ namespace Modules.Communal.ResourcePanel
 			this.MoveToIter(iter, false);
 		}
 
-		// Token: 0x06000136 RID: 310 RVA: 0x00006A18 File Offset: 0x00004C18
 		public void UpdateAll()
 		{
 			if (Services.ProjectOperations.CurrentResourceGroup == null)
@@ -1044,7 +999,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000137 RID: 311 RVA: 0x00006A9C File Offset: 0x00004C9C
 		public void Update()
 		{
 			NodeInfo nodeInfoByIter = this.GetNodeInfoByIter(this.currentIter);
@@ -1055,19 +1009,16 @@ namespace Modules.Communal.ResourcePanel
 			this.UpdateNode(nodeInfoByIter.BuilderChain, nodeInfoByIter.DataItem);
 		}
 
-		// Token: 0x06000138 RID: 312 RVA: 0x00006ACC File Offset: 0x00004CCC
 		public void UpdateChildren()
 		{
 			this.FillNode(null);
 		}
 
-		// Token: 0x06000139 RID: 313 RVA: 0x00006AD8 File Offset: 0x00004CD8
 		internal NodeInfo GetNodeInfoByIter(TreeIter iter)
 		{
 			return this.tree.CurrentModel.GetValue(iter, 0) as NodeInfo;
 		}
 
-		// Token: 0x0600013A RID: 314 RVA: 0x00006B00 File Offset: 0x00004D00
 		internal object GetDateItemByIter(TreeIter iter)
 		{
 			NodeInfo nodeInfoByIter = this.GetNodeInfoByIter(iter);
@@ -1078,7 +1029,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x0600013B RID: 315 RVA: 0x00006B20 File Offset: 0x00004D20
 		internal NodeBuilder[] GetBuilderByIter(TreeIter iter)
 		{
 			NodeInfo nodeInfoByIter = this.GetNodeInfoByIter(iter);
@@ -1089,7 +1039,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x0600013C RID: 316 RVA: 0x00006B40 File Offset: 0x00004D40
 		public void Clear()
 		{
 			object[] array = new object[this.nodeHash.Count];
@@ -1105,7 +1054,6 @@ namespace Modules.Communal.ResourcePanel
 			this.dataItem = null;
 		}
 
-		// Token: 0x0600013D RID: 317 RVA: 0x00006BBC File Offset: 0x00004DBC
 		public void Remove()
 		{
 			if (this.store.IterIsValid(this.currentIter))
@@ -1125,14 +1073,12 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600013E RID: 318 RVA: 0x00006C5A File Offset: 0x00004E5A
 		public void Remove(object dataObject)
 		{
 			this.MoveToObject(dataObject);
 			this.Remove();
 		}
 
-		// Token: 0x0600013F RID: 319 RVA: 0x00006C6C File Offset: 0x00004E6C
 		private void RemoveChildren(TreeIter it)
 		{
 			TreeIter treeIter;
@@ -1148,13 +1094,11 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000140 RID: 320 RVA: 0x00006CB5 File Offset: 0x00004EB5
 		public void AddChild(object dataObject)
 		{
 			this.AddChild(dataObject, false);
 		}
 
-		// Token: 0x06000141 RID: 321 RVA: 0x00006CC0 File Offset: 0x00004EC0
 		public void AddChild(object parent, object dataObject, bool moveToChild)
 		{
 			if (parent == null || (parent is ResourceFolder && (ResourceFolder)parent == Services.ProjectOperations.CurrentResourceGroup.RootFolder))
@@ -1166,7 +1110,6 @@ namespace Modules.Communal.ResourcePanel
 			this.AddChildToTreeIter(dataObject, iter, moveToChild);
 		}
 
-		// Token: 0x06000142 RID: 322 RVA: 0x00006D10 File Offset: 0x00004F10
 		public void AddChildToTreeIter(object dataObject, TreeIter iter, bool moveToChild = false)
 		{
 			if (dataObject == null)
@@ -1211,14 +1154,12 @@ namespace Modules.Communal.ResourcePanel
 			this.Update(dataObject);
 		}
 
-		// Token: 0x06000143 RID: 323 RVA: 0x00006E13 File Offset: 0x00005013
 		public void AddChildToRoot(object dataObject)
 		{
 			this.currentIter = TreeIter.Zero;
 			this.AddChild(dataObject, false);
 		}
 
-		// Token: 0x06000144 RID: 324 RVA: 0x00006E28 File Offset: 0x00005028
 		public void AddChildren(IEnumerable dataObjects)
 		{
 			this.pad.Tree.FreezeChildNotify();
@@ -1229,7 +1170,6 @@ namespace Modules.Communal.ResourcePanel
 			this.pad.Tree.ThawChildNotify();
 		}
 
-		// Token: 0x06000145 RID: 325 RVA: 0x00006E98 File Offset: 0x00005098
 		public void AddChild(object dataObject, bool moveToChild)
 		{
 			if (dataObject == null)
@@ -1271,7 +1211,6 @@ namespace Modules.Communal.ResourcePanel
 			this.MoveToIter(iter, false);
 		}
 
-		// Token: 0x06000146 RID: 326 RVA: 0x00006F98 File Offset: 0x00005198
 		internal bool GetFirstNode(object dataObject, out TreeIter iter)
 		{
 			if (dataObject == Services.ProjectsService.CurrentResourceGroup.RootFolder)
@@ -1295,7 +1234,6 @@ namespace Modules.Communal.ResourcePanel
 			return true;
 		}
 
-		// Token: 0x06000147 RID: 327 RVA: 0x00007014 File Offset: 0x00005214
 		private void BuildNode(TreeIter it, NodeBuilder[] chain, object dataObject)
 		{
 			TreeIter it2 = this.currentIter;
@@ -1305,7 +1243,6 @@ namespace Modules.Communal.ResourcePanel
 			this.InitIter(it2, this.dataItem);
 		}
 
-		// Token: 0x06000148 RID: 328 RVA: 0x00007050 File Offset: 0x00005250
 		public void Update(object objecData)
 		{
 			if (objecData is ResourceFolder && objecData == Services.ProjectOperations.CurrentResourceGroup.RootFolder)
@@ -1318,7 +1255,6 @@ namespace Modules.Communal.ResourcePanel
 			this.UpdateNode(nodeInfo.BuilderChain, objecData);
 		}
 
-		// Token: 0x06000149 RID: 329 RVA: 0x000070B0 File Offset: 0x000052B0
 		internal void UpdateNodeAndChild(ResourceItem node)
 		{
 			this.Update(node);
@@ -1332,7 +1268,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600014A RID: 330 RVA: 0x00007110 File Offset: 0x00005310
 		private void UpdateNode(NodeBuilder[] chain, object dataObject)
 		{
 			TreeIter treeIter;
@@ -1347,7 +1282,6 @@ namespace Modules.Communal.ResourcePanel
 			this.SetNodeInfo(treeIter, nodeInfo);
 		}
 
-		// Token: 0x0600014B RID: 331 RVA: 0x00007162 File Offset: 0x00005362
 		private void SetNodeInfo(TreeIter it, NodeInfo nodeInfo)
 		{
 			this.store.SetValue(it, 0, nodeInfo);
@@ -1358,7 +1292,6 @@ namespace Modules.Communal.ResourcePanel
 			this.pad.Tree.QueueDraw();
 		}
 
-		// Token: 0x0600014C RID: 332 RVA: 0x000071A0 File Offset: 0x000053A0
 		private void GetNodeInfo(ResourceTreeView pad, ITreeBuild tb, NodeBuilder[] chain, object dataObject, NodeInfo nodeInfo)
 		{
 			foreach (NodeBuilder nodeBuilder in chain)
@@ -1375,7 +1308,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600014D RID: 333 RVA: 0x000071FC File Offset: 0x000053FC
 		internal void RegisterNode(TreeIter it, object dataObject, NodeBuilder[] chain, bool fireAddedEvent)
 		{
 			object obj;
@@ -1414,7 +1346,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600014E RID: 334 RVA: 0x000072E4 File Offset: 0x000054E4
 		internal void UnregisterNode(object dataObject, TreeIter iter, NodeBuilder[] chain, bool fireRemovedEvent)
 		{
 			object obj;
@@ -1458,7 +1389,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x0600014F RID: 335 RVA: 0x000073F4 File Offset: 0x000055F4
 		private void NotifyNodeRemoved(object dataObject, NodeBuilder[] chain)
 		{
 			if (chain == null)
@@ -1479,7 +1409,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000150 RID: 336 RVA: 0x00007460 File Offset: 0x00005660
 		private object GetStoreValue(int column)
 		{
 			if (this.store.IterIsValid(this.currentIter))
@@ -1489,7 +1418,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x06000151 RID: 337 RVA: 0x00007490 File Offset: 0x00005690
 		internal void MoveToIter(TreeIter iter, bool isSelected = false)
 		{
 			this.currentIter = iter;
@@ -1509,7 +1437,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000152 RID: 338 RVA: 0x00007508 File Offset: 0x00005708
 		public bool MoveToObject(object dataObject)
 		{
 			TreeIter iter;
@@ -1521,14 +1448,12 @@ namespace Modules.Communal.ResourcePanel
 			return true;
 		}
 
-		// Token: 0x06000153 RID: 339 RVA: 0x0000752B File Offset: 0x0000572B
 		private void InitIter(TreeIter it, object dataObject)
 		{
 			this.currentIter = it;
 			this.dataItem = dataObject;
 		}
 
-		// Token: 0x06000154 RID: 340 RVA: 0x0000753C File Offset: 0x0000573C
 		public void FillNode(object fillObject)
 		{
 			if (this.nodeHash.ContainsKey(fillObject))
@@ -1552,7 +1477,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000155 RID: 341 RVA: 0x000075D4 File Offset: 0x000057D4
 		private void CreateChildren(NodeBuilder[] chain, object dataObject)
 		{
 			TreeIter iter = this.currentIter;
@@ -1570,7 +1494,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000156 RID: 342 RVA: 0x0000762C File Offset: 0x0000582C
 		private void ExpandToObject(object dataObjct, bool isSelected = true)
 		{
 			TreeIter iter;
@@ -1586,7 +1509,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x06000157 RID: 343 RVA: 0x00007688 File Offset: 0x00005888
 		public object GetFristSelecteValue(int colum, out TreeIter curiter)
 		{
 			TreePath[] selectedRows = this.tree.Selection.GetSelectedRows();
@@ -1602,7 +1524,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x06000158 RID: 344 RVA: 0x000076F8 File Offset: 0x000058F8
 		public object GetFristSelecteValue(int colum)
 		{
 			TreePath[] selectedRows = this.tree.Selection.GetSelectedRows();
@@ -1615,12 +1536,8 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x06000159 RID: 345 RVA: 0x00007753 File Offset: 0x00005953
-		// (set) Token: 0x0600015A RID: 346 RVA: 0x0000775B File Offset: 0x0000595B
 		public ExtendTreeView tree { get; set; }
 
-		// Token: 0x0600015B RID: 347 RVA: 0x00007764 File Offset: 0x00005964
 		public List<ResourceItem> GetCurrentSelectes()
 		{
 			TreePath[] selectedRows = this.tree.Selection.GetSelectedRows();
@@ -1647,7 +1564,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x0600015C RID: 348 RVA: 0x000077F8 File Offset: 0x000059F8
 		public void SetSelecteResources(IEnumerable<ResourceItem> seletes)
 		{
 			if (seletes == null)
@@ -1698,36 +1614,28 @@ namespace Modules.Communal.ResourcePanel
 			this.tree.SetSelectes(list);
 		}
 
-		// Token: 0x04000053 RID: 83
 		private static TargetEntry[] target_tableMac = new TargetEntry[]
 		{
 			DragTargetType.FileDropTarget,
 			DragTargetType.CocoStudioTarget
 		};
 
-		// Token: 0x04000054 RID: 84
 		private static TargetEntry[] target_tableWindows = new TargetEntry[]
 		{
 			DragTargetType.FileDropTarget,
 			DragTargetType.CocoStudioTarget
 		};
 
-		// Token: 0x04000055 RID: 85
 		private ResourceItem lastHoreItem;
 
-		// Token: 0x04000056 RID: 86
 		private ResourceTreeView pad;
 
-		// Token: 0x04000057 RID: 87
 		private TreeStore store;
 
-		// Token: 0x04000058 RID: 88
 		private NodeHashtable nodeHash = new NodeHashtable();
 
-		// Token: 0x04000059 RID: 89
 		private TreeIter currentIter;
 
-		// Token: 0x0400005A RID: 90
 		private object dataItem;
 	}
 }

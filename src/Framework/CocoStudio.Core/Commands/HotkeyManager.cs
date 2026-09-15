@@ -8,11 +8,8 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Core.Commands
 {
-	// Token: 0x02000003 RID: 3
 	public class HotkeyManager
 	{
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public static IReadOnlyList<CommandProxy> EditableCommands
 		{
 			get
@@ -21,18 +18,13 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x06000002 RID: 2 RVA: 0x00002068 File Offset: 0x00000268
-		// (remove) Token: 0x06000003 RID: 3 RVA: 0x000020A4 File Offset: 0x000002A4
 		public static event EventHandler<EventArgs> HotkeyChanged;
 
-		// Token: 0x06000004 RID: 4 RVA: 0x000020E0 File Offset: 0x000002E0
 		static HotkeyManager()
 		{
 			HotkeyManager.Init();
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x000022A0 File Offset: 0x000004A0
 		internal static void Init()
 		{
 			if (!HotkeyManager.hasInitialized)
@@ -69,7 +61,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x00002400 File Offset: 0x00000600
 		private static CommandProxy GetCommandByID(string id)
 		{
 			foreach (CommandProxy commandProxy in HotkeyManager.editableCmds)
@@ -82,7 +73,6 @@ namespace CocoStudio.Core.Commands
 			return null;
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002470 File Offset: 0x00000670
 		public static bool CheckIsKeyValid(Key key, ModifierType modifier, bool isLocalCmd, out string output)
 		{
 			foreach (Key key2 in HotkeyManager.illegalKeyList)
@@ -122,7 +112,6 @@ namespace CocoStudio.Core.Commands
 			return true;
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002604 File Offset: 0x00000804
 		public static KeyBinding GetDefaultKeyBinding(CommandProxy cmd)
 		{
 			KeyBinding result;
@@ -130,7 +119,6 @@ namespace CocoStudio.Core.Commands
 			return result;
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x00002628 File Offset: 0x00000828
 		public static void ChangeHotkeys(List<Tuple<CommandProxy, string>> newKeyBindings)
 		{
 			foreach (Tuple<CommandProxy, string> tuple in newKeyBindings)
@@ -143,7 +131,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x000026A8 File Offset: 0x000008A8
 		private static void Load()
 		{
 			try
@@ -175,7 +162,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x000027E4 File Offset: 0x000009E4
 		private static void Save()
 		{
 			try
@@ -203,7 +189,6 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x00002910 File Offset: 0x00000B10
 		private static void ResetAllToDefault()
 		{
 			foreach (CommandProxy commandProxy in HotkeyManager.defaultKeyBindings.Keys)
@@ -221,28 +206,20 @@ namespace CocoStudio.Core.Commands
 			}
 		}
 
-		// Token: 0x04000013 RID: 19
 		private const string node_keyBindingList = "KeyBindingList";
 
-		// Token: 0x04000014 RID: 20
 		private const string node_keyBinding = "KeyBinding";
 
-		// Token: 0x04000015 RID: 21
 		private const string attribute_type = "Type";
 
-		// Token: 0x04000016 RID: 22
 		private const string attribute_commandID = "CommandID";
 
-		// Token: 0x04000017 RID: 23
 		private const string attribute_hotkey = "Hotkey";
 
-		// Token: 0x04000018 RID: 24
 		private const string value_custom = "Custom";
 
-		// Token: 0x04000019 RID: 25
 		private static bool hasInitialized = false;
 
-		// Token: 0x0400001A RID: 26
 		private static List<Key> illegalKeyList = new List<Key>
 		{
 			Key.Escape,
@@ -258,10 +235,8 @@ namespace CocoStudio.Core.Commands
 			Key.Right
 		};
 
-		// Token: 0x0400001B RID: 27
 		private static List<Tuple<Key, ModifierType>> illegalKeyComboList;
 
-		// Token: 0x0400001C RID: 28
 		private static List<Key> singleKeyList = new List<Key>
 		{
 			Key.F1,
@@ -288,10 +263,8 @@ namespace CocoStudio.Core.Commands
 			Key.Next
 		};
 
-		// Token: 0x0400001D RID: 29
 		private static Dictionary<CommandProxy, KeyBinding> defaultKeyBindings;
 
-		// Token: 0x0400001E RID: 30
 		private static List<CommandProxy> editableCmds;
 	}
 }

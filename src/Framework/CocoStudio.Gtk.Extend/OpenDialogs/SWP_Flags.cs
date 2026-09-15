@@ -2,29 +2,18 @@
 
 namespace OpenDialogs
 {
-	// Token: 0x02000033 RID: 51
 	[Flags]
 	public enum SWP_Flags
 	{
-		// Token: 0x040000EE RID: 238
 		SWP_NOSIZE = 1,
-		// Token: 0x040000EF RID: 239
 		SWP_NOMOVE = 2,
-		// Token: 0x040000F0 RID: 240
 		SWP_NOZORDER = 4,
-		// Token: 0x040000F1 RID: 241
 		SWP_NOACTIVATE = 16,
-		// Token: 0x040000F2 RID: 242
 		SWP_FRAMECHANGED = 32,
-		// Token: 0x040000F3 RID: 243
 		SWP_SHOWWINDOW = 64,
-		// Token: 0x040000F4 RID: 244
 		SWP_HIDEWINDOW = 128,
-		// Token: 0x040000F5 RID: 245
 		SWP_NOOWNERZORDER = 512,
-		// Token: 0x040000F6 RID: 246
 		SWP_DRAWFRAME = 32,
-		// Token: 0x040000F7 RID: 247
 		SWP_NOREPOSITION = 512
 	}
 }

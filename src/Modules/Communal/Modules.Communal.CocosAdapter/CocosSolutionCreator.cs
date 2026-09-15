@@ -9,15 +9,12 @@ using Modules.Communal.MultiLanguage;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x02000022 RID: 34
 	public class CocosSolutionCreator
 	{
-		// Token: 0x06000111 RID: 273 RVA: 0x00005D9A File Offset: 0x00003F9A
 		internal CocosSolutionCreator()
 		{
 		}
 
-		// Token: 0x06000112 RID: 274 RVA: 0x00005DA4 File Offset: 0x00003FA4
 		public void CreateCocosSolution(CreateParams prms, CocosMonitor monitor)
 		{
 			monitor.Start();
@@ -57,7 +54,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x06000113 RID: 275 RVA: 0x00005E98 File Offset: 0x00004098
 		public void SaveStatus(CreateParams prms, Solution sln = null)
 		{
 			if (sln == null)
@@ -109,7 +105,6 @@ namespace Modules.Communal.CocosAdapter
 			Services.ProjectsService.CurrentSolution = null;
 		}
 
-		// Token: 0x06000114 RID: 276 RVA: 0x00005FDC File Offset: 0x000041DC
 		private Solution GetSolutionByPath(string directory, string name)
 		{
 			string filename = Path.Combine(directory, name, name + ".ccs");

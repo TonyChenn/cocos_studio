@@ -6,11 +6,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000051 RID: 81
 	internal class BlendFuncEditor : BaseEditor
 	{
-		// Token: 0x170000EB RID: 235
-		// (get) Token: 0x060002B5 RID: 693 RVA: 0x00009430 File Offset: 0x00007630
 		public override bool IsShowLabel
 		{
 			get
@@ -19,8 +16,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x170000EC RID: 236
-		// (get) Token: 0x060002B6 RID: 694 RVA: 0x00009444 File Offset: 0x00007644
 		public override bool SupportMultiSelect
 		{
 			get
@@ -29,8 +24,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x170000ED RID: 237
-		// (get) Token: 0x060002B7 RID: 695 RVA: 0x00009458 File Offset: 0x00007658
 		public override bool IsMultiLine
 		{
 			get
@@ -39,7 +32,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002B8 RID: 696 RVA: 0x0000946C File Offset: 0x0000766C
 		protected override void OnSetSensitive(bool isSensitive)
 		{
 			Widget widget = this.srcEditor;
@@ -51,7 +43,6 @@ namespace CocoStudio.Model.Editor
 			this.warningIcon.Visible = !isSensitive;
 		}
 
-		// Token: 0x060002B9 RID: 697 RVA: 0x000094C4 File Offset: 0x000076C4
 		protected override Widget OnCreateWidget()
 		{
 			this.table = new Table(2U, 2U, false);
@@ -98,7 +89,6 @@ namespace CocoStudio.Model.Editor
 			return this.table;
 		}
 
-		// Token: 0x060002BA RID: 698 RVA: 0x00009760 File Offset: 0x00007960
 		private void dst_Changed(object sender, EventArgs e)
 		{
 			string activeText = this.dstEditor.ActiveText;
@@ -110,7 +100,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002BB RID: 699 RVA: 0x000097CC File Offset: 0x000079CC
 		private void src_Changed(object sender, EventArgs e)
 		{
 			string activeText = this.srcEditor.ActiveText;
@@ -122,7 +111,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002BC RID: 700 RVA: 0x00009837 File Offset: 0x00007A37
 		private void additive_Clicked(object sender, EventArgs e)
 		{
 			this.propertyValue = BlendFuncValue.ADDITIVE;
@@ -133,7 +121,6 @@ namespace CocoStudio.Model.Editor
 			this.activeWithoutDataChange = false;
 		}
 
-		// Token: 0x060002BD RID: 701 RVA: 0x00009874 File Offset: 0x00007A74
 		private void normal_Clicked(object sender, EventArgs e)
 		{
 			this.propertyValue = BlendFuncValue.ALPHA_PREMULTIPLIED;
@@ -144,7 +131,6 @@ namespace CocoStudio.Model.Editor
 			this.activeWithoutDataChange = false;
 		}
 
-		// Token: 0x060002BE RID: 702 RVA: 0x000098B4 File Offset: 0x00007AB4
 		protected override void OnSetControl()
 		{
 			object obj = base.PropertyItem.Values[0];
@@ -152,7 +138,6 @@ namespace CocoStudio.Model.Editor
 			this.EnumChangedEditors();
 		}
 
-		// Token: 0x060002BF RID: 703 RVA: 0x000098E8 File Offset: 0x00007AE8
 		private void InitEnumEditor(EnumEditorComboBox enumeditor, Type blendtype)
 		{
 			ListStore listStore = new ListStore(new Type[]
@@ -174,14 +159,12 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002C0 RID: 704 RVA: 0x00009978 File Offset: 0x00007B78
 		private void EnumChangedEditors()
 		{
 			this.EnumChangedEditor(this.srcEditor, typeof(BlendSrc), this.propertyValue.BlendSrc.ToString());
 			this.EnumChangedEditor(this.dstEditor, typeof(BlendDst), this.propertyValue.BlendDst.ToString());
 		}
 
-		// Token: 0x060002C1 RID: 705 RVA: 0x000099E0 File Offset: 0x00007BE0
 		private void EnumChangedEditor(EnumEditorComboBox enumeditor, Type blendtype, string srcname)
 		{
 			string[] names = Enum.GetNames(blendtype);
@@ -196,35 +179,26 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002C2 RID: 706 RVA: 0x00009A29 File Offset: 0x00007C29
 		private void InitEnumEditors()
 		{
 			this.InitEnumEditor(this.srcEditor, typeof(BlendSrc));
 			this.InitEnumEditor(this.dstEditor, typeof(BlendDst));
 		}
 
-		// Token: 0x04000129 RID: 297
 		private Table table;
 
-		// Token: 0x0400012A RID: 298
 		private EnumEditorComboBox srcEditor;
 
-		// Token: 0x0400012B RID: 299
 		private EnumEditorComboBox dstEditor;
 
-		// Token: 0x0400012C RID: 300
 		private Button btnNormal;
 
-		// Token: 0x0400012D RID: 301
 		private Button btnAdditive;
 
-		// Token: 0x0400012E RID: 302
 		private BlendFuncValue propertyValue;
 
-		// Token: 0x0400012F RID: 303
 		private TooltipIcon warningIcon;
 
-		// Token: 0x04000130 RID: 304
 		private bool activeWithoutDataChange = false;
 	}
 }

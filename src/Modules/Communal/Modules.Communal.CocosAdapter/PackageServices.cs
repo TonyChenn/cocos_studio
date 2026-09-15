@@ -15,12 +15,8 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x0200001A RID: 26
 	public class PackageServices
 	{
-		// Token: 0x17000036 RID: 54
-		// (get) Token: 0x060000BE RID: 190 RVA: 0x00004912 File Offset: 0x00002B12
-		// (set) Token: 0x060000BF RID: 191 RVA: 0x0000492C File Offset: 0x00002B2C
 		public PackageParams PackageParams
 		{
 			get
@@ -37,8 +33,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x17000037 RID: 55
-		// (get) Token: 0x060000C0 RID: 192 RVA: 0x00004935 File Offset: 0x00002B35
 		public static PackageServices Instance
 		{
 			get
@@ -51,19 +45,16 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x060000C1 RID: 193 RVA: 0x0000494D File Offset: 0x00002B4D
 		static PackageServices()
 		{
 			Services.ProjectOperations.CurrentSelectedSolutionChanged += PackageServices.SolutionChangedHandler;
 		}
 
-		// Token: 0x060000C2 RID: 194 RVA: 0x0000496F File Offset: 0x00002B6F
 		private static void SolutionChangedHandler(object sender, SolutionEventArgs e)
 		{
 			PackageServices.Instance.PackageParams = null;
 		}
 
-		// Token: 0x060000C3 RID: 195 RVA: 0x0000497C File Offset: 0x00002B7C
 		internal void InitPackageParams()
 		{
 			UserData userData = Services.ProjectOperations.CurrentSelectedSolution.UserData;
@@ -91,7 +82,6 @@ namespace Modules.Communal.CocosAdapter
 			this.InitAntPropAndManifest();
 		}
 
-		// Token: 0x060000C4 RID: 196 RVA: 0x00004A08 File Offset: 0x00002C08
 		private void InitFrameworkVersion()
 		{
 			if (!string.IsNullOrWhiteSpace(this.PackageParams.FrameworkVersion))
@@ -112,7 +102,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x060000C5 RID: 197 RVA: 0x00004A7C File Offset: 0x00002C7C
 		private void InitPackageName()
 		{
 			if (!string.IsNullOrWhiteSpace(this.PackageParams.Android_PackageName))
@@ -128,7 +117,6 @@ namespace Modules.Communal.CocosAdapter
 			this.PackageParams.Android_PackageName = "org.cocos." + text;
 		}
 
-		// Token: 0x060000C6 RID: 198 RVA: 0x00004B10 File Offset: 0x00002D10
 		private void InitAndroidVersion()
 		{
 			if (!string.IsNullOrWhiteSpace(this.PackageParams.AndroidVersion))
@@ -144,7 +132,6 @@ namespace Modules.Communal.CocosAdapter
 			this.PackageParams.AndroidVersion = androidVersion;
 		}
 
-		// Token: 0x060000C7 RID: 199 RVA: 0x00004B5C File Offset: 0x00002D5C
 		private void InitiOSTarget()
 		{
 			if (!string.IsNullOrWhiteSpace(this.PackageParams.iOS_Target))
@@ -162,7 +149,6 @@ namespace Modules.Communal.CocosAdapter
 			this.PackageParams.iOS_Target = currentSolution.Name + " iOS";
 		}
 
-		// Token: 0x060000C8 RID: 200 RVA: 0x00004BEC File Offset: 0x00002DEC
 		private void InitiOSBundleID()
 		{
 			if (!string.IsNullOrWhiteSpace(this.PackageParams.iOS_BundleID))
@@ -178,7 +164,6 @@ namespace Modules.Communal.CocosAdapter
 			this.PackageParams.iOS_BundleID = iOS_BundleID;
 		}
 
-		// Token: 0x060000C9 RID: 201 RVA: 0x00004C38 File Offset: 0x00002E38
 		private void InitAntPropAndManifest()
 		{
 			Solution currentSolution = Services.ProjectsService.CurrentSolution;
@@ -219,7 +204,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x060000CA RID: 202 RVA: 0x00004D68 File Offset: 0x00002F68
 		public List<string> GetAndroidVersions()
 		{
 			string sdkpath = Option.UserConfig.SDKPath;
@@ -240,7 +224,6 @@ namespace Modules.Communal.CocosAdapter
 			return list;
 		}
 
-		// Token: 0x060000CB RID: 203 RVA: 0x00004DD8 File Offset: 0x00002FD8
 		public List<string> GetiOSBundleIDlist()
 		{
 			List<string> list = new List<string>();
@@ -272,7 +255,6 @@ namespace Modules.Communal.CocosAdapter
 			return list;
 		}
 
-		// Token: 0x060000CC RID: 204 RVA: 0x00004E9C File Offset: 0x0000309C
 		public static string GetANTPath()
 		{
 			string text = string.Empty;
@@ -296,7 +278,6 @@ namespace Modules.Communal.CocosAdapter
 			return string.Empty;
 		}
 
-		// Token: 0x060000CD RID: 205 RVA: 0x00004EF8 File Offset: 0x000030F8
 		public static string GetJDKPath()
 		{
 			string text = string.Empty;
@@ -348,7 +329,6 @@ namespace Modules.Communal.CocosAdapter
 			return string.Empty;
 		}
 
-		// Token: 0x060000CE RID: 206 RVA: 0x00004FDC File Offset: 0x000031DC
 		public bool CheckPackageNameValidity(string packageName, out string output)
 		{
 			if (string.IsNullOrWhiteSpace(packageName))
@@ -407,7 +387,6 @@ namespace Modules.Communal.CocosAdapter
 			return true;
 		}
 
-		// Token: 0x060000CF RID: 207 RVA: 0x000050D0 File Offset: 0x000032D0
 		public bool CheckPackageSetting(bool checkAndroid, bool checkiOS, bool checkHTML5)
 		{
 			PackageParams packageParams = PackageServices.Instance.PackageParams;
@@ -423,7 +402,6 @@ namespace Modules.Communal.CocosAdapter
 			return !checkAndroid || this.CheckAndroidPackageSetting();
 		}
 
-		// Token: 0x060000D0 RID: 208 RVA: 0x00005130 File Offset: 0x00003330
 		private bool CheckAndroidPackageSetting()
 		{
 			if (string.IsNullOrWhiteSpace(Option.UserConfig.SDKPath) || string.IsNullOrWhiteSpace(Option.UserConfig.NDKPath) || string.IsNullOrWhiteSpace(Option.UserConfig.ANTPath) || string.IsNullOrWhiteSpace(Option.UserConfig.JDKPath))
@@ -447,19 +425,14 @@ namespace Modules.Communal.CocosAdapter
 			return true;
 		}
 
-		// Token: 0x04000034 RID: 52
 		private const string defaultName = "CocosProject";
 
-		// Token: 0x04000035 RID: 53
 		private const string defaultAntDirWin = "tools\\ant\\bin";
 
-		// Token: 0x04000036 RID: 54
 		private const string defaultAntDirMac = "/Applications/Cocos/tools/ant/bin";
 
-		// Token: 0x04000037 RID: 55
 		private PackageParams packageParams;
 
-		// Token: 0x04000038 RID: 56
 		private static PackageServices instance = new PackageServices();
 	}
 }

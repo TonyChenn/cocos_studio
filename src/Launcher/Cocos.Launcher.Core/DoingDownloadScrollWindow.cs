@@ -6,16 +6,13 @@ using Modules.Communal.MultiLanguage;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x02000027 RID: 39
 	public class DoingDownloadScrollWindow : ScrolledWindow
 	{
-		// Token: 0x06000164 RID: 356 RVA: 0x00007EB8 File Offset: 0x000060B8
 		public DoingDownloadScrollWindow(List<Widget> downloadList)
 		{
 			this.Initialize(downloadList);
 		}
 
-		// Token: 0x06000165 RID: 357 RVA: 0x00007EC7 File Offset: 0x000060C7
 		private void Initialize(List<Widget> downloadList)
 		{
 			this.InitWidget();
@@ -23,7 +20,6 @@ namespace Cocos.Launcher.Core
 			this.InitValue(downloadList);
 		}
 
-		// Token: 0x06000166 RID: 358 RVA: 0x00007EDC File Offset: 0x000060DC
 		private void InitWidget()
 		{
 			base.Name = "GtkScrolledWindow";
@@ -52,7 +48,6 @@ namespace Cocos.Launcher.Core
 			this.hbox_hint.PackStart(this.infoLink, false, false, 0U);
 		}
 
-		// Token: 0x06000167 RID: 359 RVA: 0x00008008 File Offset: 0x00006208
 		private void InitEvent()
 		{
 			this.infoLink.LinkClicked += this.infoLink_LinkClicked;
@@ -60,7 +55,6 @@ namespace Cocos.Launcher.Core
 			this.vbox_all.Added += this.vbox_all_Added;
 		}
 
-		// Token: 0x06000168 RID: 360 RVA: 0x0000805C File Offset: 0x0000625C
 		private void InitValue(List<Widget> downloadList)
 		{
 			foreach (Widget widget in downloadList)
@@ -76,7 +70,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000169 RID: 361 RVA: 0x000080EC File Offset: 0x000062EC
 		public void UpdateHint()
 		{
 			int pluginNumber;
@@ -92,7 +85,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x0600016A RID: 362 RVA: 0x00008125 File Offset: 0x00006325
 		private void SetPluginNumber(int num)
 		{
 			if (this.tabLink != null)
@@ -101,7 +93,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600016B RID: 363 RVA: 0x00008155 File Offset: 0x00006355
 		public void SetTab(LinkView tab, ITabHead tabH = null)
 		{
 			this.tabLink = tab;
@@ -109,7 +100,6 @@ namespace Cocos.Launcher.Core
 			this.UpdateHint();
 		}
 
-		// Token: 0x0600016C RID: 364 RVA: 0x0000816C File Offset: 0x0000636C
 		public void AddItem(Widget widget)
 		{
 			this.vbox_all.Add(widget);
@@ -119,7 +109,6 @@ namespace Cocos.Launcher.Core
 			boxChild.Fill = false;
 		}
 
-		// Token: 0x0600016D RID: 365 RVA: 0x000081B8 File Offset: 0x000063B8
 		private void widget_Destroyed(object sender, EventArgs e)
 		{
 			Widget widget = sender as Widget;
@@ -128,7 +117,6 @@ namespace Cocos.Launcher.Core
 			widget.Dispose();
 		}
 
-		// Token: 0x0600016E RID: 366 RVA: 0x000081EC File Offset: 0x000063EC
 		public void RemoveDoingDownloadItem(Widget widget)
 		{
 			try
@@ -140,7 +128,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600016F RID: 367 RVA: 0x0000821C File Offset: 0x0000641C
 		private void vbox_all_Added(object o, AddedArgs args)
 		{
 			if (this.vbox_all.Children.Length > 0 && this.hbox_hint.Parent != null)
@@ -150,7 +137,6 @@ namespace Cocos.Launcher.Core
 			this.UpdateHint();
 		}
 
-		// Token: 0x06000170 RID: 368 RVA: 0x00008252 File Offset: 0x00006452
 		private void vbox_all_Removed(object o, RemovedArgs args)
 		{
 			if (this.vbox_all.Children.Length == 0 && this.hbox_hint.Parent == null)
@@ -160,25 +146,19 @@ namespace Cocos.Launcher.Core
 			this.UpdateHint();
 		}
 
-		// Token: 0x06000171 RID: 369 RVA: 0x0000828A File Offset: 0x0000648A
 		private void infoLink_LinkClicked(object sender, LinkClickedEventArgs e)
 		{
 			Services.TabGroupService.SwitchTab(new SwitchTabInfo(2));
 		}
 
-		// Token: 0x0400006E RID: 110
 		private LinkView tabLink;
 
-		// Token: 0x0400006F RID: 111
 		private VBox vbox_all;
 
-		// Token: 0x04000070 RID: 112
 		private HBox hbox_hint;
 
-		// Token: 0x04000071 RID: 113
 		private LinkView infoLink;
 
-		// Token: 0x04000072 RID: 114
 		private ITabHead tabHead;
 	}
 }

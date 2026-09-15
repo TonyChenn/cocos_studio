@@ -2,10 +2,8 @@
 
 namespace CocoStudio.Model.DataModel
 {
-	// Token: 0x02000037 RID: 55
 	public class FrameDataEqualHelper
 	{
-		// Token: 0x0600023A RID: 570 RVA: 0x00006D74 File Offset: 0x00004F74
 		public static bool FrameDataEquals(FrameData f1, FrameData f2)
 		{
 			BoolFrameData boolFrameData = f1 as BoolFrameData;

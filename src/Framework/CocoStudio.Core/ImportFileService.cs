@@ -15,11 +15,8 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Core
 {
-	// Token: 0x0200002A RID: 42
 	internal static class ImportFileService
 	{
-		// Token: 0x1700006F RID: 111
-		// (get) Token: 0x06000188 RID: 392 RVA: 0x00007084 File Offset: 0x00005284
 		private static ResourceFolder RootFolder
 		{
 			get
@@ -28,7 +25,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x06000189 RID: 393 RVA: 0x000074CC File Offset: 0x000056CC
 		internal static async Task<List<ResourceItem>> MainProcess(ResourceFolder parentDic, IEnumerable<string> paths, IProgressMonitor monitor)
 		{
 			CSCocosHelp.StopAllEffects();
@@ -52,7 +48,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x0600018A RID: 394 RVA: 0x000075C0 File Offset: 0x000057C0
 		internal static Task<int> GetPathsFileSystemCount(IEnumerable<string> files)
 		{
 			return Task.Run<int>(delegate()
@@ -73,7 +68,6 @@ namespace CocoStudio.Core
 			});
 		}
 
-		// Token: 0x0600018B RID: 395 RVA: 0x000075F0 File Offset: 0x000057F0
 		internal static int GetDirFileCount(string dirPath)
 		{
 			int num = 0;
@@ -103,7 +97,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x0600018C RID: 396 RVA: 0x00007810 File Offset: 0x00005A10
 		private static Task<SortedSet<FileCopyInfo>> GetCopyFilesAsync(FilePath parentDir, IEnumerable<string> paths, IProgressMonitor monitor)
 		{
 			return Task.Run<SortedSet<FileCopyInfo>>(delegate()
@@ -147,7 +140,6 @@ namespace CocoStudio.Core
 			});
 		}
 
-		// Token: 0x0600018D RID: 397 RVA: 0x00007A0C File Offset: 0x00005C0C
 		private static Task<List<FileCopyInfo>> CopyFilesAsync(IEnumerable<FileCopyInfo> files, IProgressMonitor monitor)
 		{
 			List<string> filterList = new List<string>();
@@ -218,7 +210,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x0600018E RID: 398 RVA: 0x00007BB4 File Offset: 0x00005DB4
 		private static Task<List<ResourceItem>> CreateResourceItemsAsync(ResourceFolder root, IEnumerable<FileCopyInfo> files, IProgressMonitor monitor)
 		{
 			return Task.Run<List<ResourceItem>>(delegate()
@@ -247,7 +238,6 @@ namespace CocoStudio.Core
 			});
 		}
 
-		// Token: 0x0600018F RID: 399 RVA: 0x00007BF4 File Offset: 0x00005DF4
 		private static ResourceItem CreateItem(ResourceFolder root, FilePath fullPath, IProgressMonitor monitor, Dictionary<string, ResourceItem> outResources)
 		{
 			if (outResources == null)
@@ -283,7 +273,6 @@ namespace CocoStudio.Core
 			return resourceItem;
 		}
 
-		// Token: 0x06000190 RID: 400 RVA: 0x00007CEC File Offset: 0x00005EEC
 		private static ResourceItem CreateResourceItemByPath(IProgressMonitor monitor, ResourceFolder parent, string itemFileName)
 		{
 			ResourceItem resourceItem = Services.ProjectsService.ReadResourceItem(monitor, itemFileName);
@@ -295,13 +284,11 @@ namespace CocoStudio.Core
 			return resourceItem;
 		}
 
-		// Token: 0x06000191 RID: 401 RVA: 0x00007D44 File Offset: 0x00005F44
 		private static T FindResourceItem<T>(ResourceItem parent, string fullPath) where T : ResourceItem
 		{
 			return Services.ProjectOperations.CurrentResourceGroup.FindResourceItem(parent, fullPath) as T;
 		}
 
-		// Token: 0x06000192 RID: 402 RVA: 0x00007DA4 File Offset: 0x00005FA4
 		internal static ResourceItem AddResourceItem(ResourceFolder parentResourceItem, FilePath itemFileName, IProgressMonitor monitor, out ResourceItem importRoot)
 		{
 			Stack<string> stack = ImportFileService.CreateParentStack(itemFileName, parentResourceItem.BaseDirectory);
@@ -351,7 +338,6 @@ namespace CocoStudio.Core
 			return resourceItem;
 		}
 
-		// Token: 0x06000193 RID: 403 RVA: 0x00007F08 File Offset: 0x00006108
 		private static Stack<string> CreateParentStack(FilePath importPath, FilePath parent)
 		{
 			Stack<string> stack = new Stack<string>();
@@ -363,7 +349,6 @@ namespace CocoStudio.Core
 			return stack;
 		}
 
-		// Token: 0x06000194 RID: 404 RVA: 0x00007F4C File Offset: 0x0000614C
 		private static void SetFileOperate(IEnumerable<FileCopyInfo> files, ConcurrentQueue<FileCopyInfo> copyQueue)
 		{
 			if (files != null && files.Count<FileCopyInfo>() != 0)
@@ -391,7 +376,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x06000195 RID: 405 RVA: 0x00008044 File Offset: 0x00006244
 		private static SortedSet<FileCopyInfo> GetCopyFileByDir(FilePath parentDir, FilePath dir, IProgressMonitor monitor)
 		{
 			SortedSet<FileCopyInfo> sortedSet = new SortedSet<FileCopyInfo>();
@@ -436,7 +420,6 @@ namespace CocoStudio.Core
 			return sortedSet;
 		}
 
-		// Token: 0x06000196 RID: 406 RVA: 0x000081BC File Offset: 0x000063BC
 		public static void AddRange<T>(this SortedSet<T> set, IEnumerable<T> list)
 		{
 			if (list != null)
@@ -448,7 +431,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x06000197 RID: 407 RVA: 0x00008220 File Offset: 0x00006420
 		public static bool IsValidPath(this FilePath path)
 		{
 			bool flag = FileService.IsValidPath(path);

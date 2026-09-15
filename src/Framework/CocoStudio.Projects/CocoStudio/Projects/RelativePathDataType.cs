@@ -5,10 +5,8 @@ using MonoDevelop.Core.Serialization;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x02000077 RID: 119
 	public class RelativePathDataType : PrimitiveDataType
 	{
-		// Token: 0x06000394 RID: 916 RVA: 0x0000CC45 File Offset: 0x0000AE45
 		public RelativePathDataType(Type type) : base(type)
 		{
 			if (type != typeof(string) && type != typeof(FilePath))
@@ -17,7 +15,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000395 RID: 917 RVA: 0x0000CC80 File Offset: 0x0000AE80
 		protected override DataNode OnSerialize(SerializationContext serCtx, object mapData, object value)
 		{
 			FilePath filePath = (value is string) ? new FilePath((string)value) : ((FilePath)value);
@@ -33,7 +30,6 @@ namespace CocoStudio.Projects
 			return new DataValue(base.Name, text);
 		}
 
-		// Token: 0x06000396 RID: 918 RVA: 0x0000CCE8 File Offset: 0x0000AEE8
 		protected override object OnDeserialize(SerializationContext serCtx, object mapData, DataNode data)
 		{
 			string text = ((DataValue)data).Value;

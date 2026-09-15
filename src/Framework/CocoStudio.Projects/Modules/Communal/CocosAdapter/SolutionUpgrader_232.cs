@@ -8,12 +8,9 @@ using Mono.Addins;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x0200000B RID: 11
 	[Extension(Type = typeof(ISolutionUpgrader))]
 	internal class SolutionUpgrader_232 : SolutionUpgrader
 	{
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000024 RID: 36 RVA: 0x000026B2 File Offset: 0x000008B2
 		public override Version Version
 		{
 			get
@@ -22,7 +19,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x000026BC File Offset: 0x000008BC
 		protected override bool OnUpgrade(Solution sln)
 		{
 			bool result = false;
@@ -38,7 +34,6 @@ namespace Modules.Communal.CocosAdapter
 			return result;
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x000026F8 File Offset: 0x000008F8
 		private bool CheckUpgradeItem(ResourceFolder root)
 		{
 			bool flag = false;
@@ -78,7 +73,6 @@ namespace Modules.Communal.CocosAdapter
 			return flag;
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002850 File Offset: 0x00000A50
 		private bool IsContainType(List<FileFormat> list, Type type)
 		{
 			bool result = false;
@@ -93,7 +87,6 @@ namespace Modules.Communal.CocosAdapter
 			return result;
 		}
 
-		// Token: 0x0400000B RID: 11
 		private static readonly Version version = new Version("2.3.1.0");
 	}
 }

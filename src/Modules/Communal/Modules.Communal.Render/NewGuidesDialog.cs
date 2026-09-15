@@ -10,10 +10,8 @@ using Stetic;
 
 namespace Modules.Communal.Render
 {
-	// Token: 0x02000021 RID: 33
 	public class NewGuidesDialog : Dialog
 	{
-		// Token: 0x06000110 RID: 272 RVA: 0x00007004 File Offset: 0x00005204
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -149,7 +147,6 @@ namespace Modules.Communal.Render
 			base.Hide();
 		}
 
-		// Token: 0x06000111 RID: 273 RVA: 0x0000772C File Offset: 0x0000592C
 		public NewGuidesDialog()
 		{
 			this.Build();
@@ -157,7 +154,6 @@ namespace Modules.Communal.Render
 			base.ShowAll();
 		}
 
-		// Token: 0x06000112 RID: 274 RVA: 0x00007798 File Offset: 0x00005998
 		private void Initialize()
 		{
 			base.SetSizeRequest(300, 210);
@@ -171,7 +167,6 @@ namespace Modules.Communal.Render
 			this.entry_pixel.ActivatesDefault = true;
 		}
 
-		// Token: 0x06000113 RID: 275 RVA: 0x00007804 File Offset: 0x00005A04
 		private void InitializeView()
 		{
 			this.radiobutton_vertical.Active = true;
@@ -188,7 +183,6 @@ namespace Modules.Communal.Render
 			}
 		}
 
-		// Token: 0x06000114 RID: 276 RVA: 0x0000789C File Offset: 0x00005A9C
 		private void InitializeLanuage()
 		{
 			base.Title = LanguageInfo.NewGuidesTitle;
@@ -201,7 +195,6 @@ namespace Modules.Communal.Render
 			this.radiobutton_vertical.Label = LanguageInfo.Radio_VerticalGuides;
 		}
 
-		// Token: 0x06000115 RID: 277 RVA: 0x00007930 File Offset: 0x00005B30
 		private void InitializeEvent()
 		{
 			this.buttonOk.Clicked += this.buttonOk_Clicked;
@@ -209,7 +202,6 @@ namespace Modules.Communal.Render
 			base.DeleteEvent += new DeleteEventHandler(this.DestoryDialog);
 		}
 
-		// Token: 0x06000116 RID: 278 RVA: 0x00007984 File Offset: 0x00005B84
 		private void AddGuides()
 		{
 			Orientation direction;
@@ -227,7 +219,6 @@ namespace Modules.Communal.Render
 			GuidesService.Instance.Sort();
 		}
 
-		// Token: 0x06000117 RID: 279 RVA: 0x000079DC File Offset: 0x00005BDC
 		private void buttonOk_Clicked(object sender, EventArgs e)
 		{
 			this.buttonOk.GrabFocus();
@@ -235,62 +226,45 @@ namespace Modules.Communal.Render
 			this.Destroy();
 		}
 
-		// Token: 0x06000118 RID: 280 RVA: 0x000079F9 File Offset: 0x00005BF9
 		private void buttonCancel_Clicked(object sender, EventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x06000119 RID: 281 RVA: 0x00007A03 File Offset: 0x00005C03
 		[ConnectBefore]
 		private void DestoryDialog(object sender, EventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x04000036 RID: 54
 		private VBox vbox2;
 
-		// Token: 0x04000037 RID: 55
 		private Gtk.Frame frame1;
 
-		// Token: 0x04000038 RID: 56
 		private Alignment GtkAlignment2;
 
-		// Token: 0x04000039 RID: 57
 		private HBox hbox1;
 
-		// Token: 0x0400003A RID: 58
 		private VBox vbox3;
 
-		// Token: 0x0400003B RID: 59
 		private RadioButton radiobutton_horizontal;
 
-		// Token: 0x0400003C RID: 60
 		private RadioButton radiobutton_vertical;
 
-		// Token: 0x0400003D RID: 61
 		private Label GtkLabel2;
 
-		// Token: 0x0400003E RID: 62
 		private HBox hbox2;
 
-		// Token: 0x0400003F RID: 63
 		private Label label_position;
 
-		// Token: 0x04000040 RID: 64
 		private Alignment alignment_pixel;
 
-		// Token: 0x04000041 RID: 65
 		private Label label_pixel;
 
-		// Token: 0x04000042 RID: 66
 		private Button buttonCancel;
 
-		// Token: 0x04000043 RID: 67
 		private Button buttonOk;
 
-		// Token: 0x04000044 RID: 68
 		private EntryIntEx entry_pixel = new EntryIntEx
 		{
 			MinValue = -10000,

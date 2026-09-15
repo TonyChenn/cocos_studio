@@ -8,16 +8,10 @@ using Mono.Addins;
 
 namespace Modules.Communal.PropertyGrid
 {
-	// Token: 0x02000018 RID: 24
 	public class PropertyManager
 	{
-		// Token: 0x17000030 RID: 48
-		// (get) Token: 0x0600009D RID: 157 RVA: 0x00003980 File Offset: 0x00001B80
-		// (set) Token: 0x0600009E RID: 158 RVA: 0x00003997 File Offset: 0x00001B97
 		public IPropertyFilter CurrentFilter { get; private set; }
 
-		// Token: 0x17000031 RID: 49
-		// (get) Token: 0x0600009F RID: 159 RVA: 0x000039A0 File Offset: 0x00001BA0
 		public IReadOnlyList<IEditorController> CurrentControllers
 		{
 			get
@@ -26,12 +20,8 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x17000032 RID: 50
-		// (get) Token: 0x060000A0 RID: 160 RVA: 0x000039B8 File Offset: 0x00001BB8
-		// (set) Token: 0x060000A1 RID: 161 RVA: 0x000039CE File Offset: 0x00001BCE
 		public static PropertyManager Instance { get; private set; }
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x000039D8 File Offset: 0x00001BD8
 		public static void Initialize()
 		{
 			if (PropertyManager.Instance == null)
@@ -40,7 +30,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x00003A00 File Offset: 0x00001C00
 		internal PropertyManager()
 		{
 			this.editorInstances = new Dictionary<Tuple<Type, string>, BaseEditor>();
@@ -76,7 +65,6 @@ namespace Modules.Communal.PropertyGrid
 			Services.Workbench.ActiveDocumentChanged += this.ActiveDocumentChangedHandler;
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x00003C18 File Offset: 0x00001E18
 		internal Dictionary<string, IPropertyEditor> GetEditorList(IReadOnlyList<object> selectObjs)
 		{
 			Dictionary<string, IPropertyEditor> dictionary = new Dictionary<string, IPropertyEditor>();
@@ -129,7 +117,6 @@ namespace Modules.Communal.PropertyGrid
 			return result;
 		}
 
-		// Token: 0x060000A5 RID: 165 RVA: 0x00003E40 File Offset: 0x00002040
 		internal List<PropertyDescriptor> GetPropertyDescriptors(Type objType)
 		{
 			TypeConverter converter = TypeDescriptor.GetConverter(objType);
@@ -157,7 +144,6 @@ namespace Modules.Communal.PropertyGrid
 			return list;
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x00003F10 File Offset: 0x00002110
 		private BaseEditor GetEditor(Type objType, PropertyItem propItem, PropertyDescriptor propDesc)
 		{
 			object[] args = null;
@@ -192,7 +178,6 @@ namespace Modules.Communal.PropertyGrid
 			return result;
 		}
 
-		// Token: 0x060000A7 RID: 167 RVA: 0x0000401C File Offset: 0x0000221C
 		private Type GetEditorType(Type objType, PropertyDescriptor propDescriptor)
 		{
 			Type result;
@@ -229,7 +214,6 @@ namespace Modules.Communal.PropertyGrid
 			return result;
 		}
 
-		// Token: 0x060000A8 RID: 168 RVA: 0x00004100 File Offset: 0x00002300
 		private void ActiveDocumentChangedHandler(object sender, EventArgs e)
 		{
 			this.CurrentFilter = null;
@@ -251,19 +235,14 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x04000024 RID: 36
 		private Dictionary<Type, Type> defaultEditors;
 
-		// Token: 0x04000025 RID: 37
 		private Dictionary<Tuple<Type, string>, BaseEditor> editorInstances;
 
-		// Token: 0x04000026 RID: 38
 		private List<IPropertyFilter> propertyFilterList;
 
-		// Token: 0x04000027 RID: 39
 		private List<IEditorController> controllerList;
 
-		// Token: 0x04000028 RID: 40
 		private List<IEditorController> _currentControllers;
 	}
 }

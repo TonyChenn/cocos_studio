@@ -10,10 +10,8 @@ using Stetic;
 
 namespace Modules.Communal.Publish
 {
-	// Token: 0x02000009 RID: 9
 	public class PublishOutputWindow : Gtk.Window
 	{
-		// Token: 0x06000033 RID: 51 RVA: 0x000035D0 File Offset: 0x000017D0
 		public PublishOutputWindow(CreateParams createPrams) : base(Gtk.WindowType.Toplevel)
 		{
 			base.TypeHint = WindowTypeHint.Dialog;
@@ -31,14 +29,12 @@ namespace Modules.Communal.Publish
 			refreshAction.BeginInvoke(null, null);
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00003651 File Offset: 0x00001851
 		private void PublishOutputWindow_DeleteEvent(object o, DeleteEventArgs args)
 		{
 			this.OnBtnCancelClicked(this, new EventArgs());
 			args.RetVal = true;
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x0000366C File Offset: 0x0000186C
 		private void SetMultiLanguageInfo()
 		{
 			base.Title = LanguageInfo.Dialog_NewProject;
@@ -49,7 +45,6 @@ namespace Modules.Communal.Publish
 			this.WriteLineToTextView("Start creating");
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x000036DF File Offset: 0x000018DF
 		private void StartCreating()
 		{
 			this.monitor = new CocosMonitor(true);
@@ -57,7 +52,6 @@ namespace Modules.Communal.Publish
 			Cocos2dxServices.CreateServices.CreateCocosSolution(this.prms, this.monitor);
 		}
 
-		// Token: 0x06000037 RID: 55 RVA: 0x0000371C File Offset: 0x0000191C
 		private void WriteLineToTextView(string newTxt)
 		{
 			GLib.Timeout.Add(0U, delegate
@@ -68,7 +62,6 @@ namespace Modules.Communal.Publish
 			});
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00003750 File Offset: 0x00001950
 		private bool RefreshControls()
 		{
 			if (this.monitor == null || !this.monitor.HasStarted)
@@ -117,13 +110,11 @@ namespace Modules.Communal.Publish
 			return false;
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x0000389C File Offset: 0x00001A9C
 		private void OnOutputUpdated(object sender, OutputEventArgs e)
 		{
 			this.WriteLineToTextView(e.OutputInfo);
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x000038AA File Offset: 0x00001AAA
 		protected void OnBtnCancelClicked(object sender, EventArgs e)
 		{
 			if (this.monitor.IsProcessing)
@@ -136,7 +127,6 @@ namespace Modules.Communal.Publish
 			bool isSuccessed = this.monitor.IsSuccessed;
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x000038E4 File Offset: 0x00001AE4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -219,37 +209,26 @@ namespace Modules.Communal.Publish
 			this.button_cancel.Clicked += this.OnBtnCancelClicked;
 		}
 
-		// Token: 0x04000016 RID: 22
 		private CreateParams prms;
 
-		// Token: 0x04000017 RID: 23
 		private CocosMonitor monitor;
 
-		// Token: 0x04000018 RID: 24
 		private VBox vbox_main;
 
-		// Token: 0x04000019 RID: 25
 		private Label label_info;
 
-		// Token: 0x0400001A RID: 26
 		private HBox hbox_top;
 
-		// Token: 0x0400001B RID: 27
 		private ProgressBar progressbar_main;
 
-		// Token: 0x0400001C RID: 28
 		private Button button_cancel;
 
-		// Token: 0x0400001D RID: 29
 		private Expander expander_output;
 
-		// Token: 0x0400001E RID: 30
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x0400001F RID: 31
 		private TextView textview_output;
 
-		// Token: 0x04000020 RID: 32
 		private Label GtkLabel_showOutput;
 	}
 }

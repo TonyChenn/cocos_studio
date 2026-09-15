@@ -6,10 +6,8 @@ using Modules.Communal.MultiLanguage;
 
 namespace CocoStudio.Model.ViewModel
 {
-	// Token: 0x02000029 RID: 41
 	public class SkyBoxManager
 	{
-		// Token: 0x060001A1 RID: 417 RVA: 0x000065BC File Offset: 0x000047BC
 		public static void CheckSkyBoxResources(ISkyBox skyBox)
 		{
 			string text = string.Empty;
@@ -88,7 +86,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0400008B RID: 139
 		private const int fullNum = 6;
 	}
 }

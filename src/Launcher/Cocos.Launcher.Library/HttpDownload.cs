@@ -8,11 +8,8 @@ using GLib;
 
 namespace Cocos.Launcher.Library
 {
-	// Token: 0x02000002 RID: 2
 	public class HttpDownload
 	{
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		private bool IsCanceled
 		{
 			get
@@ -21,19 +18,12 @@ namespace Cocos.Launcher.Library
 			}
 		}
 
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x06000002 RID: 2 RVA: 0x00002084 File Offset: 0x00000284
-		// (remove) Token: 0x06000003 RID: 3 RVA: 0x000020BC File Offset: 0x000002BC
 		public event EventHandler<ProgressChangedEventArgs> ProgressChanged = delegate(object param0, ProgressChangedEventArgs param1)
 		{
 		};
 
-		// Token: 0x14000002 RID: 2
-		// (add) Token: 0x06000004 RID: 4 RVA: 0x000020F4 File Offset: 0x000002F4
-		// (remove) Token: 0x06000005 RID: 5 RVA: 0x0000212C File Offset: 0x0000032C
 		public event EventHandler<DownloadFinishedEventArgs> DownloadFinished;
 
-		// Token: 0x06000006 RID: 6 RVA: 0x00002164 File Offset: 0x00000364
 		public HttpDownload(string networkUrl, string localPath)
 		{
 			this.networkUrl = networkUrl;
@@ -45,7 +35,6 @@ namespace Cocos.Launcher.Library
 			}
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x000021DC File Offset: 0x000003DC
 		public void StartDownloadAsync()
 		{
 			if (this.isDownloading)
@@ -65,7 +54,6 @@ namespace Cocos.Launcher.Library
 			task.Start();
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x0000222F File Offset: 0x0000042F
 		public void StartDownload()
 		{
 			if (this.isDownloading)
@@ -81,7 +69,6 @@ namespace Cocos.Launcher.Library
 			this.Download();
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x00002264 File Offset: 0x00000464
 		private void Download()
 		{
 			if (this.isDownloading)
@@ -129,7 +116,6 @@ namespace Cocos.Launcher.Library
 			this.FinishingDownload();
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x0000237C File Offset: 0x0000057C
 		private void DownloadFile(FileStream fs)
 		{
 			if (fs == null)
@@ -198,7 +184,6 @@ namespace Cocos.Launcher.Library
 			}
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x00002590 File Offset: 0x00000790
 		private void FinishingDownload()
 		{
 			this.isDownloading = false;
@@ -230,7 +215,6 @@ namespace Cocos.Launcher.Library
 			this.cancelToken = null;
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x0000265F File Offset: 0x0000085F
 		public void StopDownload()
 		{
 			if (!this.isAsync || this.cancelToken == null)
@@ -240,7 +224,6 @@ namespace Cocos.Launcher.Library
 			this.cancelToken.Cancel();
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x00002680 File Offset: 0x00000880
 		private void UpdateProgress()
 		{
 			if (this.sumLength >= this.startPos && this.sumLength != 0L)
@@ -257,7 +240,6 @@ namespace Cocos.Launcher.Library
 			}
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002708 File Offset: 0x00000908
 		private float GetLoadSpeedToFloat()
 		{
 			float num = (float)(Environment.TickCount - this.m_time);
@@ -269,7 +251,6 @@ namespace Cocos.Launcher.Library
 			return 200f / num2;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00002740 File Offset: 0x00000940
 		private long GetRemainTime(float speed)
 		{
 			float num = (float)(this.sumLength - this.startPos);
@@ -277,43 +258,30 @@ namespace Cocos.Launcher.Library
 			return (long)num2;
 		}
 
-		// Token: 0x04000001 RID: 1
 		private long startPos;
 
-		// Token: 0x04000002 RID: 2
 		private long sumLength;
 
-		// Token: 0x04000003 RID: 3
 		private string networkUrl;
 
-		// Token: 0x04000004 RID: 4
 		private string localPath;
 
-		// Token: 0x04000005 RID: 5
 		private bool isSuccessed;
 
-		// Token: 0x04000006 RID: 6
 		private bool isDownloading;
 
-		// Token: 0x04000007 RID: 7
 		private int m_time;
 
-		// Token: 0x04000008 RID: 8
 		private int timeOut = 10000;
 
-		// Token: 0x04000009 RID: 9
 		private int m_tryagain = 10;
 
-		// Token: 0x0400000A RID: 10
 		private int currentTimeOutNumber;
 
-		// Token: 0x0400000B RID: 11
 		private Exception error;
 
-		// Token: 0x0400000C RID: 12
 		private CancellationTokenSource cancelToken;
 
-		// Token: 0x0400000D RID: 13
 		private bool isAsync;
 	}
 }

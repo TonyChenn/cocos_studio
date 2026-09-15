@@ -11,16 +11,13 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.ResourcePanel
 {
-	// Token: 0x02000030 RID: 48
 	public static class StaticVariable
 	{
-		// Token: 0x060001CC RID: 460 RVA: 0x00009F0B File Offset: 0x0000810B
 		public static string GetResourceID(string iconName)
 		{
 			return "CocoStudio.DefaultResource.ResourcePanelResource." + iconName;
 		}
 
-		// Token: 0x060001CD RID: 461 RVA: 0x00009F18 File Offset: 0x00008118
 		public static ResourceFolder GetRootFolder(this Solution solution)
 		{
 			if (solution != null && solution.RootFolder.Items.Count > 0)
@@ -34,7 +31,6 @@ namespace Modules.Communal.ResourcePanel
 			return null;
 		}
 
-		// Token: 0x060001CE RID: 462 RVA: 0x00009F60 File Offset: 0x00008160
 		public static bool ExecuteCommand(string cmd)
 		{
 			try
@@ -52,7 +48,6 @@ namespace Modules.Communal.ResourcePanel
 			return true;
 		}
 
-		// Token: 0x060001CF RID: 463 RVA: 0x00009FAC File Offset: 0x000081AC
 		internal static ResourceItem CopyScene(ResourceItem parent, ResourceItem sourceFile)
 		{
 			ResourceItem result;
@@ -84,7 +79,6 @@ namespace Modules.Communal.ResourcePanel
 			return result;
 		}
 
-		// Token: 0x060001D0 RID: 464 RVA: 0x0000A088 File Offset: 0x00008288
 		internal static FilePath GetCopyNewName(ResourceItem parent, FilePath scrFile)
 		{
 			FilePath filePath = scrFile;
@@ -123,7 +117,6 @@ namespace Modules.Communal.ResourcePanel
 			return filePath;
 		}
 
-		// Token: 0x060001D1 RID: 465 RVA: 0x0000A1BC File Offset: 0x000083BC
 		private static bool IsExistChild(ResourceFolder folder, string filePath)
 		{
 			if (folder == null || folder.Items == null)
@@ -140,7 +133,6 @@ namespace Modules.Communal.ResourcePanel
 			return false;
 		}
 
-		// Token: 0x04000098 RID: 152
 		public const string ResourceIDHeader = "CocoStudio.DefaultResource.ResourcePanelResource.";
 	}
 }

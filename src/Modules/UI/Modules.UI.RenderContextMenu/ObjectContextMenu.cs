@@ -21,13 +21,9 @@ using MonoDevelop.Components.Commands;
 
 namespace Modules.UI.RenderContextMenu
 {
-	// Token: 0x0200001C RID: 28
 	[Extension(typeof(IObjectContextMenu))]
 	public class ObjectContextMenu : BaseMenu
 	{
-		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x060000AA RID: 170 RVA: 0x00004854 File Offset: 0x00002A54
-		// (set) Token: 0x060000AB RID: 171 RVA: 0x0000488A File Offset: 0x00002A8A
 		public ObjectContextMenuModel DataModel
 		{
 			get
@@ -44,13 +40,11 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000AC RID: 172 RVA: 0x00004894 File Offset: 0x00002A94
 		public ObjectContextMenu()
 		{
 			this.dataModel = new ObjectContextMenuModel(this);
 		}
 
-		// Token: 0x060000AD RID: 173 RVA: 0x000048C0 File Offset: 0x00002AC0
 		private MenuItem CreatMenuItem(string header)
 		{
 			MenuItem menuItem = new MenuItem(header);
@@ -58,7 +52,6 @@ namespace Modules.UI.RenderContextMenu
 			return menuItem;
 		}
 
-		// Token: 0x060000AE RID: 174 RVA: 0x000048E4 File Offset: 0x00002AE4
 		protected override void InitMenuItem()
 		{
 			base.InitMenuItem();
@@ -71,63 +64,54 @@ namespace Modules.UI.RenderContextMenu
 			this.InitAddWidgetMenuItem();
 		}
 
-		// Token: 0x060000AF RID: 175 RVA: 0x00004945 File Offset: 0x00002B45
 		[CommandUpdateHandler(CmdEnum.MoveDownCmd)]
 		private void MoveDownCmdCanExecute(CommandInfo info)
 		{
 			info.Enabled = this.dataModel.IsCanMoveIndex(MoveOrderType.Down);
 		}
 
-		// Token: 0x060000B0 RID: 176 RVA: 0x0000495B File Offset: 0x00002B5B
 		[CommandUpdateHandler(CmdEnum.MoveUpCmd)]
 		private void MoveUpCmdCanExecute(CommandInfo info)
 		{
 			info.Enabled = this.dataModel.IsCanMoveIndex(MoveOrderType.Up);
 		}
 
-		// Token: 0x060000B1 RID: 177 RVA: 0x00004971 File Offset: 0x00002B71
 		[CommandUpdateHandler(CmdEnum.MoveToTopCmd)]
 		private void MoveToTopCmdCanExecute(CommandInfo info)
 		{
 			info.Enabled = this.dataModel.IsCanMoveIndex(MoveOrderType.Top);
 		}
 
-		// Token: 0x060000B2 RID: 178 RVA: 0x00004987 File Offset: 0x00002B87
 		[CommandUpdateHandler(CmdEnum.MoveToBottomCmd)]
 		private void MoveToBottomCmdExecute(CommandInfo info)
 		{
 			info.Enabled = this.dataModel.IsCanMoveIndex(MoveOrderType.Bottom);
 		}
 
-		// Token: 0x060000B3 RID: 179 RVA: 0x0000499D File Offset: 0x00002B9D
 		[CommandHandler(CmdEnum.MoveDownCmd)]
 		private void MoveDownCmdExecute()
 		{
 			this.dataModel.MoveNodeOrder(MoveOrderType.Down);
 		}
 
-		// Token: 0x060000B4 RID: 180 RVA: 0x000049AD File Offset: 0x00002BAD
 		[CommandHandler(CmdEnum.MoveUpCmd)]
 		private void MoveUpCmdExecute()
 		{
 			this.dataModel.MoveNodeOrder(MoveOrderType.Up);
 		}
 
-		// Token: 0x060000B5 RID: 181 RVA: 0x000049BD File Offset: 0x00002BBD
 		[CommandHandler(CmdEnum.MoveToTopCmd)]
 		private void MoveToTopCmdExecute()
 		{
 			this.dataModel.MoveNodeOrder(MoveOrderType.Top);
 		}
 
-		// Token: 0x060000B6 RID: 182 RVA: 0x000049CD File Offset: 0x00002BCD
 		[CommandHandler(CmdEnum.MoveToBottomCmd)]
 		private void MoveToBottomExecute()
 		{
 			this.dataModel.MoveNodeOrder(MoveOrderType.Bottom);
 		}
 
-		// Token: 0x060000B7 RID: 183 RVA: 0x000049E0 File Offset: 0x00002BE0
 		private void InitMoveNodeOrderMenuItem()
 		{
 			this.menuItemNodeRanking = this.CreatMenuItem(LanguageInfo.ContextMenu_Ranking);
@@ -143,7 +127,6 @@ namespace Modules.UI.RenderContextMenu
 			this.menuItemNodeRanking.Submenu = menu;
 		}
 
-		// Token: 0x060000B8 RID: 184 RVA: 0x00004AA0 File Offset: 0x00002CA0
 		private void InitAddWidgetMenuItem()
 		{
 			this.menuItemAddWidget = this.CreatMenuItem(LanguageInfo.ContexMenu_AddSubComponent);
@@ -164,7 +147,6 @@ namespace Modules.UI.RenderContextMenu
 			this.menuItemAddWidget.ShowAll();
 		}
 
-		// Token: 0x060000B9 RID: 185 RVA: 0x00004B8C File Offset: 0x00002D8C
 		private void InitAddMenuItem()
 		{
 			this.menuItemAddObject = this.CreatMenuItem(LanguageInfo.ContexMenu_AddSubComponent);
@@ -192,7 +174,6 @@ namespace Modules.UI.RenderContextMenu
 			this.menuItemAddObject.ShowAll();
 		}
 
-		// Token: 0x060000BA RID: 186 RVA: 0x00004CAC File Offset: 0x00002EAC
 		private void InitAlignMenuItem()
 		{
 			if (base.SelectedParentObjectList.Count <= 1)
@@ -227,19 +208,16 @@ namespace Modules.UI.RenderContextMenu
 			this.menuItemAlignComponent.ShowAll();
 		}
 
-		// Token: 0x060000BB RID: 187 RVA: 0x00004E9C File Offset: 0x0000309C
 		private void RenderEngineInitCompletedEventHandled(RenderEngineLoadedEventArgs args)
 		{
 			this.eventAggregator.GetEvent<RenderEngineLoadedEvent>().Unsubscribe(new Action<RenderEngineLoadedEventArgs>(this.RenderEngineInitCompletedEventHandled));
 		}
 
-		// Token: 0x060000BC RID: 188 RVA: 0x00004EBC File Offset: 0x000030BC
 		private void menuItemAddPage_Click(object sender, EventArgs e)
 		{
 			this.AddSubObject(typeof(PanelObject));
 		}
 
-		// Token: 0x060000BD RID: 189 RVA: 0x00004ED0 File Offset: 0x000030D0
 		private void AddSubObject(Type type)
 		{
 			AbstractNodeObject rootNode = Services.ProjectOperations.CurrentSelectedProject.GetRootNode();
@@ -257,7 +235,6 @@ namespace Modules.UI.RenderContextMenu
 			this.DataModel.AddObject(abstractNodeObject, pointF);
 		}
 
-		// Token: 0x060000BE RID: 190 RVA: 0x00004F68 File Offset: 0x00003168
 		private void menuItemAddObject_Click(object sender, ButtonReleaseEventArgs e)
 		{
 			StudioMenuItem studioMenuItem = sender as StudioMenuItem;
@@ -282,7 +259,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000BF RID: 191 RVA: 0x0000501C File Offset: 0x0000321C
 		private void menuItemAlignObject_Click(object sender, EventArgs e)
 		{
 			StudioMenuItem studioMenuItem = sender as StudioMenuItem;
@@ -295,7 +271,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000C0 RID: 192 RVA: 0x00005070 File Offset: 0x00003270
 		private void UpdateCustomItemStat()
 		{
 			foreach (object obj in this)
@@ -309,7 +284,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000C1 RID: 193 RVA: 0x000050E8 File Offset: 0x000032E8
 		private void UpdateMenuItems()
 		{
 			this.RemoveCustomMenu();
@@ -354,19 +328,16 @@ namespace Modules.UI.RenderContextMenu
 			this.UpdateCustomItemStat();
 		}
 
-		// Token: 0x060000C2 RID: 194 RVA: 0x00005254 File Offset: 0x00003454
 		private void UpateNoProjectObject()
 		{
 			this.DeleteAddPageItem();
 		}
 
-		// Token: 0x060000C3 RID: 195 RVA: 0x0000525E File Offset: 0x0000345E
 		private void UpdateNullObject()
 		{
 			base.Add(this.menuItemAddObject);
 		}
 
-		// Token: 0x060000C4 RID: 196 RVA: 0x00005270 File Offset: 0x00003470
 		private void UpdateMultiObject(bool canShow = true)
 		{
 			if (!canShow)
@@ -382,13 +353,11 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000C5 RID: 197 RVA: 0x000052BD File Offset: 0x000034BD
 		private void UpdateOneObject()
 		{
 			this.UpdateComMenu();
 		}
 
-		// Token: 0x060000C6 RID: 198 RVA: 0x000052C8 File Offset: 0x000034C8
 		private void UpdateComMenu()
 		{
 			AbstractNodeObject abstractNodeObject = base.SelectedObject as AbstractNodeObject;
@@ -420,7 +389,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000C7 RID: 199 RVA: 0x00005408 File Offset: 0x00003608
 		private void AddOppositeMenu(NodeObjectMenu widgetmenu, AbstractNodeObject guiControl)
 		{
 			if (widgetmenu != null)
@@ -434,7 +402,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000C8 RID: 200 RVA: 0x0000548C File Offset: 0x0000368C
 		protected override void UpdateOperationSensitive(bool hasSelected = true)
 		{
 			bool flag = false;
@@ -448,7 +415,6 @@ namespace Modules.UI.RenderContextMenu
 			this.UpdateDeprecatedMenu();
 		}
 
-		// Token: 0x060000C9 RID: 201 RVA: 0x000054F8 File Offset: 0x000036F8
 		private void UpdateDeprecatedMenu()
 		{
 			bool flag = true;
@@ -466,7 +432,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000CA RID: 202 RVA: 0x00005574 File Offset: 0x00003774
 		private void InsertAddPageItem()
 		{
 			MenuItem widget = new MenuItem(LanguageInfo.ContexMenu_addPage);
@@ -475,7 +440,6 @@ namespace Modules.UI.RenderContextMenu
 			this.menuItemAddPage.ButtonReleaseEvent += new ButtonReleaseEventHandler(this.menuItemAddPage_Click);
 		}
 
-		// Token: 0x060000CB RID: 203 RVA: 0x000055B4 File Offset: 0x000037B4
 		private void DeleteAddPageItem()
 		{
 			if (this.menuItemAddPage != null)
@@ -484,7 +448,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000CC RID: 204 RVA: 0x000055E0 File Offset: 0x000037E0
 		private void DeleteAddSpriteItem()
 		{
 			if (this.menuItemAddSprite != null)
@@ -493,7 +456,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000CD RID: 205 RVA: 0x0000560C File Offset: 0x0000380C
 		protected override void OnScreenChanged(Screen previous_screen)
 		{
 			base.OnScreenChanged(previous_screen);
@@ -510,17 +472,14 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000CE RID: 206 RVA: 0x0000566A File Offset: 0x0000386A
 		private void SelectedOne()
 		{
 		}
 
-		// Token: 0x060000CF RID: 207 RVA: 0x0000566D File Offset: 0x0000386D
 		private void SelectedMultipe()
 		{
 		}
 
-		// Token: 0x060000D0 RID: 208 RVA: 0x00005670 File Offset: 0x00003870
 		private void RemoveCustomMenu()
 		{
 			List<MenuItem> list = new List<MenuItem>();
@@ -548,7 +507,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000D1 RID: 209 RVA: 0x0000577C File Offset: 0x0000397C
 		private void InsertItem(MenuItem item)
 		{
 			if (item != null)
@@ -557,7 +515,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000D2 RID: 210 RVA: 0x0000579C File Offset: 0x0000399C
 		private void DeleteItem(MenuItem item)
 		{
 			if (item != null)
@@ -566,7 +523,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x060000D3 RID: 211 RVA: 0x000057BC File Offset: 0x000039BC
 		public override void CanShow(ContextMenuShowingArgs args)
 		{
 			this.contextMenuArgs = args;
@@ -593,22 +549,18 @@ namespace Modules.UI.RenderContextMenu
 			base.CanShow(args);
 		}
 
-		// Token: 0x060000D4 RID: 212 RVA: 0x00005894 File Offset: 0x00003A94
 		public override void Activated(CocosItem project)
 		{
 			this.DataModel.RegisterEvent();
 			base.Activated(project);
 		}
 
-		// Token: 0x060000D5 RID: 213 RVA: 0x000058AB File Offset: 0x00003AAB
 		public override void Deactivated()
 		{
 			this.DataModel.UnregisterEvent();
 			base.Deactivated();
 		}
 
-		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x060000D6 RID: 214 RVA: 0x000058C4 File Offset: 0x00003AC4
 		public override string Type
 		{
 			get
@@ -617,67 +569,46 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x0400004C RID: 76
 		private MenuItem menuItemAddWidget;
 
-		// Token: 0x0400004D RID: 77
 		private MenuItem menuItemAddPage;
 
-		// Token: 0x0400004E RID: 78
 		private MenuItem menuItemAddObject;
 
-		// Token: 0x0400004F RID: 79
 		private MenuItem menuItemAddSprite;
 
-		// Token: 0x04000050 RID: 80
 		private MenuItem menuItemAlignComponent;
 
-		// Token: 0x04000051 RID: 81
 		private MenuItem menuItemAddTextAtlasMenu;
 
-		// Token: 0x04000052 RID: 82
 		private int textAtlasPosition;
 
-		// Token: 0x04000053 RID: 83
 		private MenuItem menuItemRenameObject;
 
-		// Token: 0x04000054 RID: 84
 		private MenuItem menuItemNodeRanking;
 
-		// Token: 0x04000055 RID: 85
 		private MenuItem moveUp;
 
-		// Token: 0x04000056 RID: 86
 		private MenuItem moveDown;
 
-		// Token: 0x04000057 RID: 87
 		private MenuItem moveTop;
 
-		// Token: 0x04000058 RID: 88
 		private MenuItem moveBottom;
 
-		// Token: 0x04000059 RID: 89
 		private IUndoManager taskService;
 
-		// Token: 0x0400005A RID: 90
 		private new IEventAggregator eventAggregator;
 
-		// Token: 0x0400005B RID: 91
 		private static Point zeroPoint = new Point(0, 0);
 
-		// Token: 0x0400005C RID: 92
 		private NodeObjectMenu currentWidget = null;
 
-		// Token: 0x0400005D RID: 93
 		private MenuManager menuManager = new MenuManager();
 
-		// Token: 0x0400005E RID: 94
 		private ContextMenuShowingArgs contextMenuArgs;
 
-		// Token: 0x0400005F RID: 95
 		private ObjectContextMenuModel dataModel;
 
-		// Token: 0x04000060 RID: 96
 		private Point clickPoint;
 	}
 }

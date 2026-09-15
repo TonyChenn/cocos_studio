@@ -7,11 +7,8 @@ using CocoStudio.Projects;
 
 namespace CocoStudio.Model.ViewModel
 {
-	// Token: 0x0200012D RID: 301
 	public class ResourceExtender : BaseExtender
 	{
-		// Token: 0x17000336 RID: 822
-		// (get) Token: 0x06000B29 RID: 2857 RVA: 0x0002C020 File Offset: 0x0002A220
 		private Dictionary<string, ResourceFile> ResourceCollection
 		{
 			get
@@ -24,8 +21,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000337 RID: 823
-		// (get) Token: 0x06000B2A RID: 2858 RVA: 0x0002C058 File Offset: 0x0002A258
 		private HashSet<string> IgnoreResourcePropertySet
 		{
 			get
@@ -38,20 +33,17 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B2B RID: 2859 RVA: 0x0002C08D File Offset: 0x0002A28D
 		protected ResourceExtender(BaseObject bindingObject)
 		{
 			this.objectInstance = bindingObject;
 		}
 
-		// Token: 0x06000B2C RID: 2860 RVA: 0x0002C09F File Offset: 0x0002A29F
 		public ResourceExtender(AbstractNodeObject bindingObject)
 		{
 			this.objectInstance = bindingObject;
 			bindingObject.ParentChanged += this.OnObjectParentChanged;
 		}
 
-		// Token: 0x06000B2D RID: 2861 RVA: 0x0002C0C4 File Offset: 0x0002A2C4
 		internal override void OnObjectPropertyChanged(PropertyInfo propertyInfo)
 		{
 			if (this.ResourceCollection != null && this.ResourceCollection.ContainsKey(propertyInfo.Name))
@@ -71,7 +63,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B2E RID: 2862 RVA: 0x0002C16C File Offset: 0x0002A36C
 		private void OnObjectParentChanged(object sender, EventArgs e)
 		{
 			if (e == null)
@@ -84,7 +75,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B2F RID: 2863 RVA: 0x0002C198 File Offset: 0x0002A398
 		protected void CollectResources()
 		{
 			PropertyInfo[] properties = this.objectInstance.GetType().GetProperties();
@@ -103,7 +93,6 @@ namespace CocoStudio.Model.ViewModel
 			this.IgnoreResourcePropertySet.TrimExcess();
 		}
 
-		// Token: 0x06000B30 RID: 2864 RVA: 0x0002C254 File Offset: 0x0002A454
 		protected void ClearResources()
 		{
 			if (this.ResourceCollection != null)
@@ -117,7 +106,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B31 RID: 2865 RVA: 0x0002C2E4 File Offset: 0x0002A4E4
 		private bool CheckIsResource(PropertyInfo propertyInfo)
 		{
 			bool result;
@@ -133,7 +121,6 @@ namespace CocoStudio.Model.ViewModel
 			return result;
 		}
 
-		// Token: 0x06000B32 RID: 2866 RVA: 0x0002C334 File Offset: 0x0002A534
 		private void SetResource(PropertyInfo info, ResourceFile file)
 		{
 			this.isSettingValue = true;
@@ -150,7 +137,6 @@ namespace CocoStudio.Model.ViewModel
 			this.isSettingValue = false;
 		}
 
-		// Token: 0x06000B33 RID: 2867 RVA: 0x0002C3A8 File Offset: 0x0002A5A8
 		private List<PropertyInfo> FindPropertyInfo(ResourceFile file)
 		{
 			List<PropertyInfo> list = new List<PropertyInfo>();
@@ -165,7 +151,6 @@ namespace CocoStudio.Model.ViewModel
 			return list;
 		}
 
-		// Token: 0x06000B34 RID: 2868 RVA: 0x0002C440 File Offset: 0x0002A640
 		private void OnResourceFileDeleted(object sender, EventArgs e)
 		{
 			this.isContentChanged = true;
@@ -179,7 +164,6 @@ namespace CocoStudio.Model.ViewModel
 			this.isContentChanged = false;
 		}
 
-		// Token: 0x06000B35 RID: 2869 RVA: 0x0002C4D0 File Offset: 0x0002A6D0
 		private void OnResourceContentChanged(object sender, EventArgs e)
 		{
 			this.isContentChanged = true;
@@ -192,7 +176,6 @@ namespace CocoStudio.Model.ViewModel
 			this.isContentChanged = false;
 		}
 
-		// Token: 0x06000B36 RID: 2870 RVA: 0x0002C548 File Offset: 0x0002A748
 		private void RegisterResourceChanged(string propertyName, ResourceFile resourceFile)
 		{
 			if (resourceFile != null && !resourceFile.IsDefault)
@@ -206,7 +189,6 @@ namespace CocoStudio.Model.ViewModel
 			this.ResourceCollection[propertyName] = resourceFile;
 		}
 
-		// Token: 0x06000B37 RID: 2871 RVA: 0x0002C5B0 File Offset: 0x0002A7B0
 		private void UnRegisterResourceChanged(string propertyName, ResourceFile resourceFile)
 		{
 			if (resourceFile != null && !resourceFile.IsDefault)
@@ -217,7 +199,6 @@ namespace CocoStudio.Model.ViewModel
 			this.ResourceCollection[propertyName] = null;
 		}
 
-		// Token: 0x06000B38 RID: 2872 RVA: 0x0002C608 File Offset: 0x0002A808
 		private void RefreshRegistedResourceChangedEvent(PropertyInfo propertyInfo, bool isCheckResource = false)
 		{
 			ResourceFile resourceFile;
@@ -245,7 +226,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000B39 RID: 2873 RVA: 0x0002C6C8 File Offset: 0x0002A8C8
 		public override void Dispose()
 		{
 			AbstractNodeObject abstractNodeObject = this.objectInstance as AbstractNodeObject;
@@ -257,19 +237,14 @@ namespace CocoStudio.Model.ViewModel
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x040004A9 RID: 1193
 		protected BaseObject objectInstance;
 
-		// Token: 0x040004AA RID: 1194
 		protected bool isSettingValue;
 
-		// Token: 0x040004AB RID: 1195
 		protected bool isContentChanged;
 
-		// Token: 0x040004AC RID: 1196
 		private Dictionary<string, ResourceFile> resourceCollection;
 
-		// Token: 0x040004AD RID: 1197
 		private HashSet<string> ignoreResourcePropertySet;
 	}
 }

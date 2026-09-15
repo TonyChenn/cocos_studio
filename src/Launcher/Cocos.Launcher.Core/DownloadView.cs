@@ -7,11 +7,9 @@ using Stetic;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200000C RID: 12
 	[ToolboxItem(true)]
 	public class DownloadView : EventBox, IDownloadView
 	{
-		// Token: 0x06000058 RID: 88 RVA: 0x000036C8 File Offset: 0x000018C8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -83,7 +81,6 @@ namespace Cocos.Launcher.Core
 			base.Hide();
 		}
 
-		// Token: 0x06000059 RID: 89 RVA: 0x00003A38 File Offset: 0x00001C38
 		public DownloadView()
 		{
 			this.Build();
@@ -92,7 +89,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x0600005A RID: 90 RVA: 0x00003A60 File Offset: 0x00001C60
 		private void InitWidget()
 		{
 			this.eventbox_underline.ModifyBg(StateType.Normal, ConstantConfig.Colors.MainLineColor);
@@ -121,7 +117,6 @@ namespace Cocos.Launcher.Core
 			this.MoveLineToLoading(this.isPageOne);
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x00003C1C File Offset: 0x00001E1C
 		private void InitEvent()
 		{
 			this.link_pageOne.LinkClicked += this.Link_LinkClicked;
@@ -129,7 +124,6 @@ namespace Cocos.Launcher.Core
 			Services.MainWindow.Closing += this.MainWindow_Closing;
 		}
 
-		// Token: 0x0600005C RID: 92 RVA: 0x00003C70 File Offset: 0x00001E70
 		private void MainWindow_Closing(object sender, CancelEventArgs e)
 		{
 			if (!DownloadService.Instance.AssetManager.HaveLoading())
@@ -149,7 +143,6 @@ namespace Cocos.Launcher.Core
 			e.Cancel = true;
 		}
 
-		// Token: 0x0600005D RID: 93 RVA: 0x00003CE4 File Offset: 0x00001EE4
 		public void SwitchPageOne(bool pageOne)
 		{
 			if (this.isPageOne == pageOne)
@@ -171,7 +164,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x0600005E RID: 94 RVA: 0x00003D58 File Offset: 0x00001F58
 		private void MoveLineToLoading(bool first)
 		{
 			Fixed.FixedChild fixedChild = (Fixed.FixedChild)this.fixed3[this.eventbox_line1];
@@ -183,7 +175,6 @@ namespace Cocos.Launcher.Core
 			fixedChild.X = 480;
 		}
 
-		// Token: 0x0600005F RID: 95 RVA: 0x00003D94 File Offset: 0x00001F94
 		public void Refresh()
 		{
 			Widget child = this.alignment_notebook.Child;
@@ -192,50 +183,36 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x06000060 RID: 96 RVA: 0x00003DCC File Offset: 0x00001FCC
 		private void Link_LinkClicked(object sender, LinkClickedEventArgs e)
 		{
 			bool pageOne = sender as LinkView == this.link_pageOne;
 			this.SwitchPageOne(pageOne);
 		}
 
-		// Token: 0x04000027 RID: 39
 		private EventBox eventbox1;
 
-		// Token: 0x04000028 RID: 40
 		private VBox vbox_all;
 
-		// Token: 0x04000029 RID: 41
 		private Alignment alignment_button;
 
-		// Token: 0x0400002A RID: 42
 		private HBox hbox_button;
 
-		// Token: 0x0400002B RID: 43
 		private Fixed fixed3;
 
-		// Token: 0x0400002C RID: 44
 		private EventBox eventbox_underline;
 
-		// Token: 0x0400002D RID: 45
 		private EventBox eventbox_line1;
 
-		// Token: 0x0400002E RID: 46
 		private Alignment alignment_notebook;
 
-		// Token: 0x0400002F RID: 47
 		private DoingDownloadScrollWindow DoingScrollWindow;
 
-		// Token: 0x04000030 RID: 48
 		private FinishDownloadScrollWindow FinishScrollWindow;
 
-		// Token: 0x04000031 RID: 49
 		private LinkView link_pageOne;
 
-		// Token: 0x04000032 RID: 50
 		private LinkView link_pageTwo;
 
-		// Token: 0x04000033 RID: 51
 		private bool isPageOne = true;
 	}
 }

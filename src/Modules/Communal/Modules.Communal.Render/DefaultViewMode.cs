@@ -17,24 +17,20 @@ using Mono.Addins;
 
 namespace Modules.Communal.Render
 {
-	// Token: 0x02000031 RID: 49
 	[Extension(typeof(IViewMode))]
 	public class DefaultViewMode : BaseViewMode
 	{
-		// Token: 0x06000206 RID: 518 RVA: 0x0000BC60 File Offset: 0x00009E60
 		public override bool CanHandle(CocosItem cocosItem)
 		{
 			return cocosItem.Is2DFile();
 		}
 
-		// Token: 0x06000207 RID: 519 RVA: 0x0000BC78 File Offset: 0x00009E78
 		public override void Initialize(IGLView glView)
 		{
 			base.Initialize(glView);
 			this.OnInitialize(glView);
 		}
 
-		// Token: 0x06000208 RID: 520 RVA: 0x0000BC8C File Offset: 0x00009E8C
 		protected virtual void OnInitialize(IGLView glView)
 		{
 			CanvasTool canvasTool = new CanvasTool();
@@ -62,7 +58,6 @@ namespace Modules.Communal.Render
 			this.contextMenu = BaseViewMode.LoadContextMenu(NodeType.Scene.ToString());
 		}
 
-		// Token: 0x06000209 RID: 521 RVA: 0x0000BDB4 File Offset: 0x00009FB4
 		public override bool CanShowContextMenu(PointF scenePoint)
 		{
 			ContextMenuShowingArgs contextMenuShowingArgs = new ContextMenuShowingArgs(SelectService.Instance.SelectedParentObjectList, scenePoint, true);
@@ -70,25 +65,21 @@ namespace Modules.Communal.Render
 			return contextMenuShowingArgs.Enable;
 		}
 
-		// Token: 0x0600020A RID: 522 RVA: 0x0000BDEC File Offset: 0x00009FEC
 		public override IObjectContextMenu GetContextMenu()
 		{
 			return this.contextMenu;
 		}
 
-		// Token: 0x0600020B RID: 523 RVA: 0x0000BE04 File Offset: 0x0000A004
 		public override void OnCanvasSizeChanged()
 		{
 			this.MoveCanvasToCenter();
 		}
 
-		// Token: 0x0600020C RID: 524 RVA: 0x0000BE0E File Offset: 0x0000A00E
 		public override void ResetView()
 		{
 			this.MoveCanvasToCenter();
 		}
 
-		// Token: 0x0600020D RID: 525 RVA: 0x0000BE18 File Offset: 0x0000A018
 		public override void Activated(CocosItem cocosItem)
 		{
 			base.Activated(cocosItem);
@@ -104,14 +95,12 @@ namespace Modules.Communal.Render
 			}
 		}
 
-		// Token: 0x0600020E RID: 526 RVA: 0x0000BE89 File Offset: 0x0000A089
 		public override void Deactivated()
 		{
 			base.Deactivated();
 			this.canvasScale = GameWindow.Current.GetCanvasObject().Scale;
 		}
 
-		// Token: 0x0600020F RID: 527 RVA: 0x0000BEA8 File Offset: 0x0000A0A8
 		private void MoveCanvasToCenter()
 		{
 			if (GameWindow.Current != null && GameWindow.Current.GetCanvasObject() != null)
@@ -126,7 +115,6 @@ namespace Modules.Communal.Render
 			}
 		}
 
-		// Token: 0x06000210 RID: 528 RVA: 0x0000BF54 File Offset: 0x0000A154
 		public override Widget GetToolbar()
 		{
 			if (this.toolbar == null)
@@ -136,16 +124,12 @@ namespace Modules.Communal.Render
 			return this.toolbar;
 		}
 
-		// Token: 0x04000092 RID: 146
 		private ScaleValue canvasScale;
 
-		// Token: 0x04000093 RID: 147
 		protected IObjectContextMenu contextMenu;
 
-		// Token: 0x04000094 RID: 148
 		protected Widget toolbar;
 
-		// Token: 0x04000095 RID: 149
 		private IControlsViewFilter _controlToolViewFilter = new Default2DContolsViewFilter();
 	}
 }

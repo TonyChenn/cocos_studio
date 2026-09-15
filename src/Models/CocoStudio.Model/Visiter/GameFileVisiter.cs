@@ -11,10 +11,8 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Model.Visiter
 {
-	// Token: 0x02000027 RID: 39
 	public static class GameFileVisiter
 	{
-		// Token: 0x060001BB RID: 443 RVA: 0x00005BC8 File Offset: 0x00003DC8
 		public static GameFile GetGameFile(this CocosItem cocosItem)
 		{
 			GameFile result;
@@ -29,7 +27,6 @@ namespace CocoStudio.Model.Visiter
 			return result;
 		}
 
-		// Token: 0x060001BC RID: 444 RVA: 0x00005BF4 File Offset: 0x00003DF4
 		public static GameFileContent GetGameContent(this CocosItem cocosItem)
 		{
 			GameFile gameFile = cocosItem.GetGameFile();
@@ -45,13 +42,11 @@ namespace CocoStudio.Model.Visiter
 			return result;
 		}
 
-		// Token: 0x060001BD RID: 445 RVA: 0x00005C28 File Offset: 0x00003E28
 		public static AbstractNodeObjectData GetRootNodeData(this CocosItem cocosItem)
 		{
 			return cocosItem.GetGameContent().Content.ObjectData;
 		}
 
-		// Token: 0x060001BE RID: 446 RVA: 0x00005C4C File Offset: 0x00003E4C
 		public static AbstractNodeObject GetRootNode(this CocosItem cocosItem)
 		{
 			GameFileContent gameContent = cocosItem.GetGameContent();
@@ -67,7 +62,6 @@ namespace CocoStudio.Model.Visiter
 			return result;
 		}
 
-		// Token: 0x060001BF RID: 447 RVA: 0x00005C78 File Offset: 0x00003E78
 		public static TimelineAction GetTimelineAction(this CocosItem cocosItem)
 		{
 			GameFileContent gameContent = cocosItem.GetGameContent();
@@ -83,31 +77,26 @@ namespace CocoStudio.Model.Visiter
 			return result;
 		}
 
-		// Token: 0x060001C0 RID: 448 RVA: 0x00005CA4 File Offset: 0x00003EA4
 		public static bool Is3DFile(this CocosItem cocosItem)
 		{
 			return cocosItem.ContentType == NodeType.Scene3D.ToString();
 		}
 
-		// Token: 0x060001C1 RID: 449 RVA: 0x00005CCC File Offset: 0x00003ECC
 		public static bool IsSkeletonFile(this CocosItem cocosItem)
 		{
 			return cocosItem.ContentType == NodeType.Skeleton.ToString();
 		}
 
-		// Token: 0x060001C2 RID: 450 RVA: 0x00005CF4 File Offset: 0x00003EF4
 		public static bool Is2DFile(this CocosItem cocosItem)
 		{
 			return cocosItem.ContentType == NodeType.Scene.ToString() || cocosItem.ContentType == NodeType.Layer.ToString() || cocosItem.ContentType == NodeType.Node.ToString();
 		}
 
-		// Token: 0x060001C3 RID: 451 RVA: 0x00005D60 File Offset: 0x00003F60
 		public static bool IsGameFile(this CocosItem cocosItem)
 		{
 			return cocosItem.GetGameFile() != null;
 		}
 
-		// Token: 0x060001C4 RID: 452 RVA: 0x00005D80 File Offset: 0x00003F80
 		public static string GetFileType(this CocosItem cocosItem)
 		{
 			GameFile gameFile = cocosItem.GetGameFile();
@@ -123,7 +112,6 @@ namespace CocoStudio.Model.Visiter
 			return result;
 		}
 
-		// Token: 0x060001C5 RID: 453 RVA: 0x00005DB0 File Offset: 0x00003FB0
 		public static int GetTypeIndex(this CocosItem cocosItem, Type objectType)
 		{
 			GameFileContent gameContent = cocosItem.GetGameContent();
@@ -148,7 +136,6 @@ namespace CocoStudio.Model.Visiter
 			return result;
 		}
 
-		// Token: 0x060001C6 RID: 454 RVA: 0x00005E28 File Offset: 0x00004028
 		public static string CreateObjectName(this CocosItem cocosItem, AbstractNodeObject node, string pasteName = "")
 		{
 			Type type = node.GetType();
@@ -166,7 +153,6 @@ namespace CocoStudio.Model.Visiter
 			return cocosItem.ObjectRename(type, names, prefix, "");
 		}
 
-		// Token: 0x060001C7 RID: 455 RVA: 0x00005E88 File Offset: 0x00004088
 		private static string ObjectRename(this CocosItem cocosItem, Type objectType, HashSet<string> names, string prefix, string renameprefix = "")
 		{
 			int typeIndex = cocosItem.GetTypeIndex(objectType);
@@ -192,7 +178,6 @@ namespace CocoStudio.Model.Visiter
 			return text;
 		}
 
-		// Token: 0x060001C8 RID: 456 RVA: 0x00005F38 File Offset: 0x00004138
 		public static void AddName(this CocosItem cocosItem, string name)
 		{
 			GameFileContent gameContent = cocosItem.GetGameContent();
@@ -202,7 +187,6 @@ namespace CocoStudio.Model.Visiter
 			}
 		}
 
-		// Token: 0x060001C9 RID: 457 RVA: 0x00005F64 File Offset: 0x00004164
 		public static void RemoveName(this CocosItem cocosItem, string name)
 		{
 			GameFileContent gameContent = cocosItem.GetGameContent();
@@ -212,7 +196,6 @@ namespace CocoStudio.Model.Visiter
 			}
 		}
 
-		// Token: 0x060001CA RID: 458 RVA: 0x00005F90 File Offset: 0x00004190
 		public static bool IsObjectNameStandardized(this CocosItem cocosItem, string objectName)
 		{
 			bool result;
@@ -241,14 +224,12 @@ namespace CocoStudio.Model.Visiter
 			return result;
 		}
 
-		// Token: 0x060001CB RID: 459 RVA: 0x00006018 File Offset: 0x00004218
 		private static bool IsObjectNameExist(this CocosItem cocosItem, string name)
 		{
 			GameFileContent gameContent = cocosItem.GetGameContent();
 			return gameContent != null && gameContent.Names.Contains(name);
 		}
 
-		// Token: 0x060001CC RID: 460 RVA: 0x0000604C File Offset: 0x0000424C
 		public static bool StandardizeSolutionObjectName()
 		{
 			bool result;
@@ -297,7 +278,6 @@ namespace CocoStudio.Model.Visiter
 			return result;
 		}
 
-		// Token: 0x060001CD RID: 461 RVA: 0x000061F4 File Offset: 0x000043F4
 		public static void StandardizeObjectName(this CocosItem cocosItem)
 		{
 			GameFileContent gameContent = cocosItem.GetGameContent();
@@ -313,7 +293,6 @@ namespace CocoStudio.Model.Visiter
 			}
 		}
 
-		// Token: 0x060001CE RID: 462 RVA: 0x0000623C File Offset: 0x0000443C
 		private static void StandardizeNodeObjectName(CocosItem cocosItem, AbstractNodeObject o, HashSet<string> names)
 		{
 			if (names.Contains(o.Name) || !RegexModel.IsValidObjectName(o.Name))

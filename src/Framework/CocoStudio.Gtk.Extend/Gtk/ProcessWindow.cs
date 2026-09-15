@@ -8,10 +8,8 @@ using Stetic;
 
 namespace Gtk
 {
-	// Token: 0x020000A1 RID: 161
 	public class ProcessWindow : Window
 	{
-		// Token: 0x06000380 RID: 896 RVA: 0x00010D68 File Offset: 0x0000EF68
 		public ProcessWindow(string title, bool canCancel, bool showOuput, bool initExpandOutput = true) : base(WindowType.Toplevel)
 		{
 			this.Build();
@@ -42,7 +40,6 @@ namespace Gtk
 			this.SetToDialogStyle(this.parentWindow, true, true, true);
 		}
 
-		// Token: 0x06000381 RID: 897 RVA: 0x00010EC0 File Offset: 0x0000F0C0
 		public void StartRunning(CocosMonitor monitor)
 		{
 			this.monitor = monitor;
@@ -54,7 +51,6 @@ namespace Gtk
 			Timeout.Add(10U, () => this.RefreshUI(monitor));
 		}
 
-		// Token: 0x06000382 RID: 898 RVA: 0x00010F30 File Offset: 0x0000F130
 		private bool RefreshUI(CocosMonitor monitor)
 		{
 			bool result;
@@ -101,7 +97,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x06000383 RID: 899 RVA: 0x00011044 File Offset: 0x0000F244
 		private void CloseWindow()
 		{
 			if (!this.hasDestroyed)
@@ -111,13 +106,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000384 RID: 900 RVA: 0x0001106C File Offset: 0x0000F26C
 		private void ButtonCancelClickedHandler(object sender, EventArgs e)
 		{
 			this.CloseWindow();
 		}
 
-		// Token: 0x06000385 RID: 901 RVA: 0x00011118 File Offset: 0x0000F318
 		private void OutputUpdatedHandler(object sender, OutputEventArgs e)
 		{
 			Timeout.Add(0U, delegate
@@ -129,7 +122,6 @@ namespace Gtk
 			});
 		}
 
-		// Token: 0x06000386 RID: 902 RVA: 0x00011150 File Offset: 0x0000F350
 		private void KeyPressedHandler(object o, KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Escape)
@@ -138,7 +130,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000387 RID: 903 RVA: 0x00011180 File Offset: 0x0000F380
 		private void DestroyedHandler(object sender, EventArgs e)
 		{
 			if (this.monitor != null)
@@ -155,7 +146,6 @@ namespace Gtk
 			this.parentWindow.Modal = this.isParentWndModal;
 		}
 
-		// Token: 0x06000388 RID: 904 RVA: 0x000111F4 File Offset: 0x0000F3F4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -257,55 +247,38 @@ namespace Gtk
 			this.button_cancel.Clicked += this.ButtonCancelClickedHandler;
 		}
 
-		// Token: 0x04000421 RID: 1057
 		private Window parentWindow;
 
-		// Token: 0x04000422 RID: 1058
 		private bool isParentWndModal;
 
-		// Token: 0x04000423 RID: 1059
 		private CocosMonitor monitor;
 
-		// Token: 0x04000424 RID: 1060
 		private bool isShowOutput;
 
-		// Token: 0x04000425 RID: 1061
 		private bool hasDestroyed = false;
 
-		// Token: 0x04000426 RID: 1062
 		private VBox vbox_main;
 
-		// Token: 0x04000427 RID: 1063
 		private Label label_topInfo;
 
-		// Token: 0x04000428 RID: 1064
 		private HBox hbox_process;
 
-		// Token: 0x04000429 RID: 1065
 		private Button button_cancel;
 
-		// Token: 0x0400042A RID: 1066
 		private VBox vbox_progressBar;
 
-		// Token: 0x0400042B RID: 1067
 		private Alignment alignment_progressTop;
 
-		// Token: 0x0400042C RID: 1068
 		private ProgressBar progressbar;
 
-		// Token: 0x0400042D RID: 1069
 		private Alignment alignment_progressBottom;
 
-		// Token: 0x0400042E RID: 1070
 		private Expander expander_output;
 
-		// Token: 0x0400042F RID: 1071
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x04000430 RID: 1072
 		private TextView textview_output;
 
-		// Token: 0x04000431 RID: 1073
 		private Label GtkLabel_showOutput;
 	}
 }

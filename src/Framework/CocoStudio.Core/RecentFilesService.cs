@@ -9,11 +9,8 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Core
 {
-	// Token: 0x02000032 RID: 50
 	public class RecentFilesService
 	{
-		// Token: 0x1700007B RID: 123
-		// (get) Token: 0x060001D2 RID: 466 RVA: 0x00008B74 File Offset: 0x00006D74
 		public IEnumerable<CocosItemModel> CocosItemRecordList
 		{
 			get
@@ -22,9 +19,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x1700007C RID: 124
-		// (get) Token: 0x060001D3 RID: 467 RVA: 0x00008B8C File Offset: 0x00006D8C
-		// (set) Token: 0x060001D4 RID: 468 RVA: 0x00008BEC File Offset: 0x00006DEC
 		public string LastBrowserLocation
 		{
 			get
@@ -61,9 +55,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x1700007D RID: 125
-		// (get) Token: 0x060001D5 RID: 469 RVA: 0x00008C28 File Offset: 0x00006E28
-		// (set) Token: 0x060001D6 RID: 470 RVA: 0x00008CC4 File Offset: 0x00006EC4
 		public string LastCreatePrjDirectory
 		{
 			get
@@ -93,9 +84,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x1700007E RID: 126
-		// (get) Token: 0x060001D7 RID: 471 RVA: 0x00008CDC File Offset: 0x00006EDC
-		// (set) Token: 0x060001D8 RID: 472 RVA: 0x00008D04 File Offset: 0x00006F04
 		public string CocosCodeIDEDir
 		{
 			get
@@ -109,9 +97,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x1700007F RID: 127
-		// (get) Token: 0x060001D9 RID: 473 RVA: 0x00008D1C File Offset: 0x00006F1C
-		// (set) Token: 0x060001DA RID: 474 RVA: 0x00008D44 File Offset: 0x00006F44
 		public string LastAvailableSolution
 		{
 			get
@@ -124,9 +109,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x17000080 RID: 128
-		// (get) Token: 0x060001DB RID: 475 RVA: 0x00008D58 File Offset: 0x00006F58
-		// (set) Token: 0x060001DC RID: 476 RVA: 0x00008D80 File Offset: 0x00006F80
 		public string LastImportLocation
 		{
 			get
@@ -139,9 +121,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x17000081 RID: 129
-		// (get) Token: 0x060001DD RID: 477 RVA: 0x00008D94 File Offset: 0x00006F94
-		// (set) Token: 0x060001DE RID: 478 RVA: 0x00008DBC File Offset: 0x00006FBC
 		public string LastExportDir
 		{
 			get
@@ -154,9 +133,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x17000082 RID: 130
-		// (get) Token: 0x060001DF RID: 479 RVA: 0x00008DD0 File Offset: 0x00006FD0
-		// (set) Token: 0x060001E0 RID: 480 RVA: 0x00008DF8 File Offset: 0x00006FF8
 		public string LastInstallDir
 		{
 			get
@@ -169,12 +145,8 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x14000008 RID: 8
-		// (add) Token: 0x060001E1 RID: 481 RVA: 0x00008E0C File Offset: 0x0000700C
-		// (remove) Token: 0x060001E2 RID: 482 RVA: 0x00008E48 File Offset: 0x00007048
 		public event EventHandler<RecentDocumentChangeEventArgs> RecentDocumentChanged;
 
-		// Token: 0x060001E4 RID: 484 RVA: 0x00008EC0 File Offset: 0x000070C0
 		public RecentFilesService()
 		{
 			this.dictionary = new Dictionary<string, object>();
@@ -191,7 +163,6 @@ namespace CocoStudio.Core
 			this.InitEvent();
 		}
 
-		// Token: 0x060001E5 RID: 485 RVA: 0x00008FC4 File Offset: 0x000071C4
 		private bool CheckAndCreateDir()
 		{
 			if (!Directory.Exists(RecentFilesService.recentConfigDir))
@@ -210,7 +181,6 @@ namespace CocoStudio.Core
 			return true;
 		}
 
-		// Token: 0x060001E6 RID: 486 RVA: 0x00009020 File Offset: 0x00007220
 		private void InitRecentProject()
 		{
 			if (File.Exists(RecentFilesService.recentProjectFilePath))
@@ -224,7 +194,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060001E7 RID: 487 RVA: 0x00009074 File Offset: 0x00007274
 		private void InitOtherRecentRecord()
 		{
 			if (File.Exists(RecentFilesService.recentConfigFilePath))
@@ -248,7 +217,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060001E8 RID: 488 RVA: 0x00009140 File Offset: 0x00007340
 		private void InitEvent()
 		{
 			if (Option.CurrentApp != EnumApp.Launcher)
@@ -261,7 +229,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060001E9 RID: 489 RVA: 0x00009190 File Offset: 0x00007390
 		private List<CocosItemModel> LoadRecentProjectFromFile(string filePath)
 		{
 			List<CocosItemModel> list = new List<CocosItemModel>();
@@ -299,7 +266,6 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x060001EA RID: 490 RVA: 0x000092A0 File Offset: 0x000074A0
 		private void SaveRecentProject(List<CocosItemModel> projList)
 		{
 			try
@@ -321,7 +287,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060001EB RID: 491 RVA: 0x00009380 File Offset: 0x00007580
 		public void SaveRecord()
 		{
 			try
@@ -339,7 +304,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060001EC RID: 492 RVA: 0x00009464 File Offset: 0x00007664
 		public void AddProject(string filePath)
 		{
 			CocosItemModel cocosItemModel = this.cocosItemRecordList.FirstOrDefault((CocosItemModel a) => a.LocalPath.Equals(filePath, StringComparison.CurrentCultureIgnoreCase));
@@ -360,7 +324,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060001ED RID: 493 RVA: 0x00009510 File Offset: 0x00007710
 		private void RefreshFirstItem(List<CocosItemModel> projList, CocosItemModel projItem)
 		{
 			if (projList != null && projItem != null)
@@ -374,7 +337,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060001EE RID: 494 RVA: 0x00009568 File Offset: 0x00007768
 		public void RemoveCocosItem(CocosItemModel item)
 		{
 			this.cocosItemRecordList.Remove(item);
@@ -388,7 +350,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x060001EF RID: 495 RVA: 0x000095C4 File Offset: 0x000077C4
 		private object GetValueByKey(string key, object defaultVal)
 		{
 			object result;
@@ -405,70 +366,50 @@ namespace CocoStudio.Core
 			return result;
 		}
 
-		// Token: 0x060001F0 RID: 496 RVA: 0x000095FC File Offset: 0x000077FC
 		private void SetValueByKey(string key, object value)
 		{
 			this.dictionary[key] = value;
 		}
 
-		// Token: 0x060001F1 RID: 497 RVA: 0x0000960D File Offset: 0x0000780D
 		private void OnApplicationQuit(object sender, EventArgs args)
 		{
 			this.SaveRecord();
 		}
 
-		// Token: 0x040000F7 RID: 247
 		private const int maxRecordCount = 10;
 
-		// Token: 0x040000F8 RID: 248
 		private const string conifgDirName = "RecentRecord";
 
-		// Token: 0x040000F9 RID: 249
 		private const string recentConfigFileName = "recent.config";
 
-		// Token: 0x040000FA RID: 250
 		private const string recentProjectFileName = "RecentProject.config";
 
-		// Token: 0x040000FB RID: 251
 		private const string DefaultFolder = "CocosProjects";
 
-		// Token: 0x040000FC RID: 252
 		private static string recentConfigDir = Option.GetUserConfigFileByName("RecentRecord");
 
-		// Token: 0x040000FD RID: 253
 		private static string recentConfigFilePath = Path.Combine(RecentFilesService.recentConfigDir, "recent.config");
 
-		// Token: 0x040000FE RID: 254
 		private static string recentProjectFilePath = Path.Combine(RecentFilesService.recentConfigDir, "RecentProject.config");
 
-		// Token: 0x040000FF RID: 255
 		private Dictionary<string, object> dictionary;
 
-		// Token: 0x04000100 RID: 256
 		private List<string> keyList;
 
-		// Token: 0x04000101 RID: 257
 		private List<CocosItemModel> cocosItemRecordList;
 
-		// Token: 0x04000102 RID: 258
 		private string lastBrowserLocationKey = "RecentLastBrowseDir";
 
-		// Token: 0x04000103 RID: 259
 		private string lastCreatePrjDirectoryKey = "RecentLastCreateDir";
 
-		// Token: 0x04000104 RID: 260
 		private string cocosCodeIDEDirKey = "RecentCocosCodeIDEDir";
 
-		// Token: 0x04000105 RID: 261
 		private string lastAvailableSolutionKey = "LastAvailableSolution";
 
-		// Token: 0x04000106 RID: 262
 		private string lastImportLocationKey = "LastImportLocationKey";
 
-		// Token: 0x04000107 RID: 263
 		private string lastExportDirKey = "LastExportDir";
 
-		// Token: 0x04000108 RID: 264
 		private string lastInstallDirKey = "LastInstallDir";
 	}
 }

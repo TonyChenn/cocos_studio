@@ -15,10 +15,8 @@ using MonoDevelop.Components;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x0200000F RID: 15
 	public class BoneOrderList : EventBox
 	{
-		// Token: 0x06000055 RID: 85 RVA: 0x00003490 File Offset: 0x00001690
 		public BoneOrderList()
 		{
 			this.boneListSw = new CompactScrolledWindow();
@@ -71,7 +69,6 @@ namespace Modules.Communal.Skeleton
 			this.RegesterEvent();
 		}
 
-		// Token: 0x06000056 RID: 86 RVA: 0x000037AC File Offset: 0x000019AC
 		private int TreeIterCompareFunc(TreeModel model, TreeIter a, TreeIter b)
 		{
 			BoneObject bone = this.GetBone(a);
@@ -79,14 +76,12 @@ namespace Modules.Communal.Skeleton
 			return bone.ZOrder.CompareTo(bone2.ZOrder);
 		}
 
-		// Token: 0x06000057 RID: 87 RVA: 0x000037DD File Offset: 0x000019DD
 		private void SetDrag()
 		{
 			this.boneList.EnableModelDragDest(BoneOrderList.target_table, DragAction.Copy | DragAction.Move | DragAction.Link);
 			Gtk.Drag.SourceSet(this.boneList, ModifierType.Button1Mask, BoneOrderList.target_table, DragAction.Copy | DragAction.Move | DragAction.Link);
 		}
 
-		// Token: 0x06000058 RID: 88 RVA: 0x00003808 File Offset: 0x00001A08
 		public void InitModel()
 		{
 			this.ClearModel();
@@ -120,7 +115,6 @@ namespace Modules.Communal.Skeleton
 			this.SetSelectedItems(list);
 		}
 
-		// Token: 0x06000059 RID: 89 RVA: 0x00003908 File Offset: 0x00001B08
 		private void ClearModel()
 		{
 			if (this._rootSkeleton != null)
@@ -135,7 +129,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600005A RID: 90 RVA: 0x00003967 File Offset: 0x00001B67
 		protected override void OnDestroyed()
 		{
 			this.isSendSelectChangedEvent = false;
@@ -144,7 +137,6 @@ namespace Modules.Communal.Skeleton
 			this.isSendSelectChangedEvent = true;
 		}
 
-		// Token: 0x0600005B RID: 91 RVA: 0x00003988 File Offset: 0x00001B88
 		private void MoveBoneNextTo(TreeIter boneIter, TreeIter preIter)
 		{
 			this.treeStore.DefaultSortFunc = ((TreeModel a, TreeIter b, TreeIter c) => 0);
@@ -185,7 +177,6 @@ namespace Modules.Communal.Skeleton
 			this.treeStore.DefaultSortFunc = new TreeIterCompareFunc(this.TreeIterCompareFunc);
 		}
 
-		// Token: 0x0600005C RID: 92 RVA: 0x00003A9C File Offset: 0x00001C9C
 		private void bottomButton_Clicked(object sender, EventArgs e)
 		{
 			int num = this.nodeHash.Count<KeyValuePair<object, TreeIter>>() - 1;
@@ -212,7 +203,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600005D RID: 93 RVA: 0x00003B6C File Offset: 0x00001D6C
 		private void topButton_Clicked(object sender, EventArgs e)
 		{
 			this.nodeHash.Count<KeyValuePair<object, TreeIter>>();
@@ -240,7 +230,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600005E RID: 94 RVA: 0x00003C44 File Offset: 0x00001E44
 		private void downButton_Clicked(object sender, EventArgs e)
 		{
 			TreeIter treeIter = TreeIter.Zero;
@@ -267,7 +256,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600005F RID: 95 RVA: 0x00003CF4 File Offset: 0x00001EF4
 		private void upButton_Clicked(object sender, EventArgs e)
 		{
 			TreeIter treeIter = TreeIter.Zero;
@@ -295,7 +283,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000060 RID: 96 RVA: 0x00003DAC File Offset: 0x00001FAC
 		private TreeIter GetNextIter(TreeIter iter)
 		{
 			TreeIter zero = TreeIter.Zero;
@@ -305,7 +292,6 @@ namespace Modules.Communal.Skeleton
 			return zero;
 		}
 
-		// Token: 0x06000061 RID: 97 RVA: 0x00003DE4 File Offset: 0x00001FE4
 		private TreeIter GetPrevIter(TreeIter iter)
 		{
 			TreeIter zero = TreeIter.Zero;
@@ -320,13 +306,11 @@ namespace Modules.Communal.Skeleton
 			return zero;
 		}
 
-		// Token: 0x06000062 RID: 98 RVA: 0x00003E35 File Offset: 0x00002035
 		private BoneObject GetBone(TreeIter iter)
 		{
 			return this.treeStore.GetValue(iter, 0) as BoneObject;
 		}
 
-		// Token: 0x06000063 RID: 99 RVA: 0x00003E4C File Offset: 0x0000204C
 		private void RegesterEvent()
 		{
 			this.boneList.DragDrop += this.boneList_DragDrop;
@@ -334,7 +318,6 @@ namespace Modules.Communal.Skeleton
 			Services.EventsService.GetEvent<SelectedVisualObjectsChangeEvent>().Subscribe(new Action<SelectedVisualObjectsChangeEventArgs>(this.SelectedChangeEventHandle));
 		}
 
-		// Token: 0x06000064 RID: 100 RVA: 0x00003EA8 File Offset: 0x000020A8
 		private void OnSelection_Changed(object sender, EventArgs e)
 		{
 			this.currentSelectedBone = this.GetCurrentSelectBone();
@@ -346,7 +329,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x00003EF4 File Offset: 0x000020F4
 		private HashSet<AbstractNodeObject> GetSelecteParent(IEnumerable<AbstractNodeObject> selectedItems)
 		{
 			HashSet<AbstractNodeObject> hashSet = new HashSet<AbstractNodeObject>();
@@ -360,7 +342,6 @@ namespace Modules.Communal.Skeleton
 			return hashSet;
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x00003F54 File Offset: 0x00002154
 		private void SelectedChangeEventHandle(SelectedVisualObjectsChangeEventArgs obj)
 		{
 			if (this.isSendSelectChangedEvent)
@@ -369,7 +350,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00003F88 File Offset: 0x00002188
 		private void SetSelectedItems(List<TreeIter> selectedITree)
 		{
 			this.isSendSelectChangedEvent = false;
@@ -394,7 +374,6 @@ namespace Modules.Communal.Skeleton
 			this.isSendSelectChangedEvent = true;
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x000040D8 File Offset: 0x000022D8
 		private void SetSelectedItems(IEnumerable<VisualObject> selectedItem)
 		{
 			this.isSendSelectChangedEvent = false;
@@ -424,7 +403,6 @@ namespace Modules.Communal.Skeleton
 			this.isSendSelectChangedEvent = true;
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x00004228 File Offset: 0x00002428
 		[ConnectBefore]
 		private void boneList_DragDrop(object o, DragDropArgs args)
 		{
@@ -451,7 +429,6 @@ namespace Modules.Communal.Skeleton
 			this.boneList.Selection.Changed += this.OnSelection_Changed;
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x00004320 File Offset: 0x00002520
 		private TreeIter GetTarget(TreeIter iter, TreeViewDropPosition pos)
 		{
 			TreeIter zero = TreeIter.Zero;
@@ -468,7 +445,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x00004358 File Offset: 0x00002558
 		private List<TreeIter> GetCurrentSelectIter()
 		{
 			TreePath[] selectedRows = this.boneList.Selection.GetSelectedRows();
@@ -488,7 +464,6 @@ namespace Modules.Communal.Skeleton
 			return list;
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x000043D8 File Offset: 0x000025D8
 		private List<BoneObject> GetCurrentSelectBone()
 		{
 			TreePath[] selectedRows = this.boneList.Selection.GetSelectedRows();
@@ -509,7 +484,6 @@ namespace Modules.Communal.Skeleton
 			return list;
 		}
 
-		// Token: 0x0600006D RID: 109 RVA: 0x0000446C File Offset: 0x0000266C
 		internal void AddBoneItem(BoneObject bone)
 		{
 			this.boneList.Selection.Changed -= this.OnSelection_Changed;
@@ -521,7 +495,6 @@ namespace Modules.Communal.Skeleton
 			this.boneList.Selection.Changed += this.OnSelection_Changed;
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x000044D8 File Offset: 0x000026D8
 		internal void RemoveBoneItem(BoneObject bone)
 		{
 			this.boneList.Selection.Changed -= this.OnSelection_Changed;
@@ -534,7 +507,6 @@ namespace Modules.Communal.Skeleton
 			this.boneList.Selection.Changed += this.OnSelection_Changed;
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x00004554 File Offset: 0x00002754
 		private void ZOrderChangedEvent(object sender, ZOrderChangeEventArgs e)
 		{
 			this.isSendSelectChangedEvent = false;
@@ -551,55 +523,39 @@ namespace Modules.Communal.Skeleton
 			this.isSendSelectChangedEvent = true;
 		}
 
-		// Token: 0x04000010 RID: 16
 		private const int BoneColumn = 0;
 
-		// Token: 0x04000011 RID: 17
 		private ContextMenuTreeView boneList;
 
-		// Token: 0x04000012 RID: 18
 		private static TargetEntry[] target_table = new TargetEntry[]
 		{
 			DragTargetType.CocoStudioTarget
 		};
 
-		// Token: 0x04000013 RID: 19
 		private Dictionary<object, TreeIter> nodeHash = new Dictionary<object, TreeIter>();
 
-		// Token: 0x04000014 RID: 20
 		private List<BoneObject> currentSelectedBone;
 
-		// Token: 0x04000015 RID: 21
 		private TreeViewColumn complete_column;
 
-		// Token: 0x04000016 RID: 22
 		private BoneCellRenderer cellItem;
 
-		// Token: 0x04000017 RID: 23
 		private ListStore treeStore;
 
-		// Token: 0x04000018 RID: 24
 		private Table treeTable;
 
-		// Token: 0x04000019 RID: 25
 		private IconButton upButton;
 
-		// Token: 0x0400001A RID: 26
 		private IconButton downButton;
 
-		// Token: 0x0400001B RID: 27
 		private IconButton topButton;
 
-		// Token: 0x0400001C RID: 28
 		private IconButton bottomButton;
 
-		// Token: 0x0400001D RID: 29
 		private bool isSendSelectChangedEvent = true;
 
-		// Token: 0x0400001E RID: 30
 		private CompactScrolledWindow boneListSw;
 
-		// Token: 0x0400001F RID: 31
 		private SkeletonObject _rootSkeleton;
 	}
 }

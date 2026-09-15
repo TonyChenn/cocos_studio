@@ -8,30 +8,16 @@ using Stetic;
 
 namespace CocoStudio.ControlLib.Windows
 {
-	// Token: 0x0200000B RID: 11
 	public class CoverEachFileDialog : Dialog
 	{
-		// Token: 0x14000003 RID: 3
-		// (add) Token: 0x06000042 RID: 66 RVA: 0x00003F08 File Offset: 0x00002108
-		// (remove) Token: 0x06000043 RID: 67 RVA: 0x00003F44 File Offset: 0x00002144
 		public event EventHandler ConfirmClickHandler;
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x06000044 RID: 68 RVA: 0x00003F80 File Offset: 0x00002180
-		// (set) Token: 0x06000045 RID: 69 RVA: 0x00003F97 File Offset: 0x00002197
 		public bool IsExportCover { get; set; }
 
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000046 RID: 70 RVA: 0x00003FA0 File Offset: 0x000021A0
-		// (set) Token: 0x06000047 RID: 71 RVA: 0x00003FB7 File Offset: 0x000021B7
 		public bool IsChangeAll { get; set; }
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000048 RID: 72 RVA: 0x00003FC0 File Offset: 0x000021C0
-		// (set) Token: 0x06000049 RID: 73 RVA: 0x00003FD7 File Offset: 0x000021D7
 		public bool IsUnCancel { get; set; }
 
-		// Token: 0x0600004A RID: 74 RVA: 0x00003FE0 File Offset: 0x000021E0
 		public CoverEachFileDialog()
 		{
 			this.Build();
@@ -45,7 +31,6 @@ namespace CocoStudio.ControlLib.Windows
 			base.DeleteEvent += this.CoverEachFileWindow_DeleteEvent;
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x00004074 File Offset: 0x00002274
 		private void ChangeBtnPosion()
 		{
 			if (!Platform.IsMac)
@@ -58,7 +43,6 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x000040C8 File Offset: 0x000022C8
 		private void Init()
 		{
 			base.AllowGrow = false;
@@ -68,7 +52,6 @@ namespace CocoStudio.ControlLib.Windows
 			this.SetToDialogStyle(null, true, true, true);
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x0000411C File Offset: 0x0000231C
 		private void CoverEachFileWindow_DeleteEvent(object o, DeleteEventArgs e)
 		{
 			if (!this.IsUnCancel)
@@ -82,7 +65,6 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00004164 File Offset: 0x00002364
 		private void buttonOk_Clicked(object sender, EventArgs e)
 		{
 			this.IsExportCover = true;
@@ -98,7 +80,6 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x000041BC File Offset: 0x000023BC
 		private void buttonCancel_Clicked(object sender, EventArgs e)
 		{
 			this.IsExportCover = false;
@@ -114,7 +95,6 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x00004214 File Offset: 0x00002414
 		public void RefreshMessage(string fileName, int allCount, string existInfo = "")
 		{
 			if (existInfo == "")
@@ -128,7 +108,6 @@ namespace CocoStudio.ControlLib.Windows
 			}
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x00004278 File Offset: 0x00002478
 		private void ReadMultiLanguageConfig()
 		{
 			base.Title = LanguageInfo.ResourceReplacementWindow;
@@ -137,7 +116,6 @@ namespace CocoStudio.ControlLib.Windows
 			this.checkbutton_All.Label = LanguageInfo.AllReplacement;
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x000042C8 File Offset: 0x000024C8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -211,19 +189,14 @@ namespace CocoStudio.ControlLib.Windows
 			base.Show();
 		}
 
-		// Token: 0x04000035 RID: 53
 		private VBox vbox2;
 
-		// Token: 0x04000036 RID: 54
 		private Label label_Message;
 
-		// Token: 0x04000037 RID: 55
 		private CheckButton checkbutton_All;
 
-		// Token: 0x04000038 RID: 56
 		private Button buttonCancel;
 
-		// Token: 0x04000039 RID: 57
 		private Button buttonOk;
 	}
 }

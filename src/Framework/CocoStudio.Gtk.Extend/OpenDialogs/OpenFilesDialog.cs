@@ -9,11 +9,8 @@ using CustomControls.Controls;
 
 namespace OpenDialogs
 {
-	// Token: 0x02000030 RID: 48
 	public class OpenFilesDialog : OpenFileDialogEx
 	{
-		// Token: 0x17000053 RID: 83
-		// (get) Token: 0x0600016F RID: 367 RVA: 0x000074B4 File Offset: 0x000056B4
 		public override string Lable_SelectTexg
 		{
 			get
@@ -22,7 +19,6 @@ namespace OpenDialogs
 			}
 		}
 
-		// Token: 0x06000170 RID: 368 RVA: 0x000074CC File Offset: 0x000056CC
 		public OpenFilesDialog()
 		{
 			this.InitializeComponent();
@@ -34,21 +30,18 @@ namespace OpenDialogs
 			base.OpenDialog.FileOk += this.OpenDialog_FileOk;
 		}
 
-		// Token: 0x06000171 RID: 369 RVA: 0x00007587 File Offset: 0x00005787
 		private void OpenDialog_FileOk(object sender, CancelEventArgs e)
 		{
 			this.OnClosingDialog();
 			this.OnSelectedNameChanged();
 		}
 
-		// Token: 0x06000172 RID: 370 RVA: 0x00007598 File Offset: 0x00005798
 		private void OpenFilesDialog_FolderNameChanged(OpenFileDialogEx sender, string filePath)
 		{
 			this.cando = true;
 			this.fileConvert.Clear();
 		}
 
-		// Token: 0x06000173 RID: 371 RVA: 0x000075F4 File Offset: 0x000057F4
 		private void OpenFilesDialog_FileNameChanged(OpenFileDialogEx sender, string filePath)
 		{
 			this.cando = true;
@@ -90,7 +83,6 @@ namespace OpenDialogs
 			}
 		}
 
-		// Token: 0x06000174 RID: 372 RVA: 0x0000777C File Offset: 0x0000597C
 		private void OpenFilesDialog_FilesSelected(OpenFileDialogEx sender, IntPtr handle)
 		{
 			if (this.cando)
@@ -197,7 +189,6 @@ namespace OpenDialogs
 			}
 		}
 
-		// Token: 0x06000175 RID: 373 RVA: 0x00007B88 File Offset: 0x00005D88
 		private string CheckFile(string selettext, string converttext, ref string floderparent)
 		{
 			string text = selettext.Split(new string[]
@@ -267,7 +258,6 @@ namespace OpenDialogs
 			return string.Empty;
 		}
 
-		// Token: 0x06000176 RID: 374 RVA: 0x00007DAC File Offset: 0x00005FAC
 		public override void OnSelectedNameChanged()
 		{
 			if (this.FilesPath.Count > 0)
@@ -282,7 +272,6 @@ namespace OpenDialogs
 			base.OnSelectedNameChanged();
 		}
 
-		// Token: 0x06000177 RID: 375 RVA: 0x00007E10 File Offset: 0x00006010
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing && this.components != null)
@@ -292,26 +281,20 @@ namespace OpenDialogs
 			base.Dispose(disposing);
 		}
 
-		// Token: 0x06000178 RID: 376 RVA: 0x00007E48 File Offset: 0x00006048
 		private void InitializeComponent()
 		{
 			this.components = new Container();
 			base.AutoScaleMode = AutoScaleMode.Font;
 		}
 
-		// Token: 0x040000D5 RID: 213
 		public string FolderParent = string.Empty;
 
-		// Token: 0x040000D6 RID: 214
 		public List<string> FilesPath = new List<string>();
 
-		// Token: 0x040000D7 RID: 215
 		private List<string> fileConvert = new List<string>();
 
-		// Token: 0x040000D8 RID: 216
 		private bool cando = false;
 
-		// Token: 0x040000D9 RID: 217
 		private IContainer components = null;
 	}
 }

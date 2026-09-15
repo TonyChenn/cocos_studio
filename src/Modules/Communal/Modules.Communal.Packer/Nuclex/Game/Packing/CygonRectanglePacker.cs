@@ -4,17 +4,14 @@ using System.Drawing;
 
 namespace Nuclex.Game.Packing
 {
-	// Token: 0x0200000B RID: 11
 	public class CygonRectanglePacker : RectanglePacker
 	{
-		// Token: 0x06000045 RID: 69 RVA: 0x00003D5D File Offset: 0x00001F5D
 		public CygonRectanglePacker(int packingAreaWidth, int packingAreaHeight) : base(packingAreaWidth, packingAreaHeight)
 		{
 			this.heightSlices = new List<Point>();
 			this.heightSlices.Add(new Point(0, 0));
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x00003D88 File Offset: 0x00001F88
 		public override bool TryPack(int rectangleWidth, int rectangleHeight, out Point placement)
 		{
 			bool result;
@@ -35,7 +32,6 @@ namespace Nuclex.Game.Packing
 			return result;
 		}
 
-		// Token: 0x06000047 RID: 71 RVA: 0x00003DF0 File Offset: 0x00001FF0
 		private bool tryFindBestPlacement(int rectangleWidth, int rectangleHeight, out Point placement)
 		{
 			int num = -1;
@@ -109,7 +105,6 @@ namespace Nuclex.Game.Packing
 			return result;
 		}
 
-		// Token: 0x06000048 RID: 72 RVA: 0x00003FF8 File Offset: 0x000021F8
 		private void integrateRectangle(int left, int width, int bottom)
 		{
 			int num = this.heightSlices.BinarySearch(new Point(left, 0), CygonRectanglePacker.SliceStartComparer.Default);
@@ -152,19 +147,15 @@ namespace Nuclex.Game.Packing
 			}
 		}
 
-		// Token: 0x0400001E RID: 30
 		private List<Point> heightSlices;
 
-		// Token: 0x0200000C RID: 12
 		private class SliceStartComparer : IComparer<Point>
 		{
-			// Token: 0x06000049 RID: 73 RVA: 0x00004140 File Offset: 0x00002340
 			public int Compare(Point left, Point right)
 			{
 				return left.X - right.X;
 			}
 
-			// Token: 0x0400001F RID: 31
 			public static CygonRectanglePacker.SliceStartComparer Default = new CygonRectanglePacker.SliceStartComparer();
 		}
 	}

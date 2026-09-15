@@ -16,11 +16,8 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x0200001D RID: 29
 	internal class UnBindingBoneTool : BaseTool
 	{
-		// Token: 0x1700003E RID: 62
-		// (get) Token: 0x06000115 RID: 277 RVA: 0x000064E1 File Offset: 0x000046E1
 		public override Xwt.Drawing.Image Icon
 		{
 			get
@@ -29,8 +26,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x1700003F RID: 63
-		// (get) Token: 0x06000116 RID: 278 RVA: 0x000064ED File Offset: 0x000046ED
 		public override string Tooltip
 		{
 			get
@@ -39,8 +34,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000040 RID: 64
-		// (get) Token: 0x06000117 RID: 279 RVA: 0x000064FE File Offset: 0x000046FE
 		public override Gdk.Key ShortcutKey
 		{
 			get
@@ -49,8 +42,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x17000041 RID: 65
-		// (get) Token: 0x06000118 RID: 280 RVA: 0x00006502 File Offset: 0x00004702
 		public override ToolType Type
 		{
 			get
@@ -59,7 +50,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x06000119 RID: 281 RVA: 0x00006508 File Offset: 0x00004708
 		public override void OnKeyDown(KeyPressEventArgs args)
 		{
 			if (args.Event.Key.ToString().ToUpperInvariant() == this.ShortcutKey.ToString())
@@ -69,14 +59,12 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600011A RID: 282 RVA: 0x00006557 File Offset: 0x00004757
 		public override void OnMouseUp(ButtonReleaseEventArgs args)
 		{
 			UnBindingBoneTool.UnBindingBones();
 			args.RetVal = true;
 		}
 
-		// Token: 0x0600011B RID: 283 RVA: 0x0000656C File Offset: 0x0000476C
 		public static void UnBindingBones()
 		{
 			string text = UnBindingBoneTool.UnBindingSelectedNodes();
@@ -86,7 +74,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x0600011C RID: 284 RVA: 0x00006594 File Offset: 0x00004794
 		public static string UnBindingSelectedNodes()
 		{
 			StringBuilder stringBuilder = new StringBuilder();
@@ -119,7 +106,6 @@ namespace Modules.Communal.Skeleton
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x0600011D RID: 285 RVA: 0x000066D4 File Offset: 0x000048D4
 		public static bool CanNodeUnBinding(AbstractNodeObject node)
 		{
 			bool result = true;
@@ -130,7 +116,6 @@ namespace Modules.Communal.Skeleton
 			return result;
 		}
 
-		// Token: 0x0600011E RID: 286 RVA: 0x00006710 File Offset: 0x00004910
 		public static bool CanNodesUnBinding(IEnumerable<VisualObject> node)
 		{
 			if (node == null || node.Count<VisualObject>() == 0)

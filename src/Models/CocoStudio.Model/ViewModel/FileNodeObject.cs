@@ -15,59 +15,47 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.ViewModel
 {
-	// Token: 0x020000F4 RID: 244
 	[DisplayName("Display_Component_Entity")]
 	[EngineClassName("Node")]
 	public class FileNodeObject : NodeObject, IPlayControl, IInnerActoinNode, IStretchSize
 	{
-		// Token: 0x1700024F RID: 591
-		// (get) Token: 0x0600086B RID: 2155 RVA: 0x000217B4 File Offset: 0x0001F9B4
-		// (set) Token: 0x0600086C RID: 2156 RVA: 0x000217CB File Offset: 0x0001F9CB
 		[ResourceIgnore]
 		public CocosItem Project { get; private set; }
 
-		// Token: 0x0600086D RID: 2157 RVA: 0x000217D4 File Offset: 0x0001F9D4
 		private CSProjectNode GetInnerObject()
 		{
 			return (CSProjectNode)this.innerNode;
 		}
 
-		// Token: 0x0600086E RID: 2158 RVA: 0x000217F4 File Offset: 0x0001F9F4
 		public FileNodeObject()
 		{
 		}
 
-		// Token: 0x0600086F RID: 2159 RVA: 0x00021858 File Offset: 0x0001FA58
 		public FileNodeObject(CocosItem project)
 		{
 			this.FileData = project;
 		}
 
-		// Token: 0x06000870 RID: 2160 RVA: 0x000218C4 File Offset: 0x0001FAC4
 		public FileNodeObject(ScriptFileData fileData) : base(fileData)
 		{
 		}
 
-		// Token: 0x06000871 RID: 2161 RVA: 0x00021927 File Offset: 0x0001FB27
 		protected override void CreateCSObject()
 		{
 			this.innerNode = new CSProjectNode();
 		}
 
-		// Token: 0x06000872 RID: 2162 RVA: 0x00021935 File Offset: 0x0001FB35
 		protected override void InitData(bool useScript)
 		{
 			base.InitData(useScript);
 			base.InitIcon("Object.png");
 		}
 
-		// Token: 0x06000873 RID: 2163 RVA: 0x0002194C File Offset: 0x0001FB4C
 		public override void InitOperation()
 		{
 			this.OperationFlag = (OperationMask)65527;
 		}
 
-		// Token: 0x06000874 RID: 2164 RVA: 0x0002195C File Offset: 0x0001FB5C
 		private void InitInnerAction()
 		{
 			if (this.innerTimelineAction == null)
@@ -100,9 +88,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000250 RID: 592
-		// (get) Token: 0x06000875 RID: 2165 RVA: 0x00021A80 File Offset: 0x0001FC80
-		// (set) Token: 0x06000876 RID: 2166 RVA: 0x00021AD0 File Offset: 0x0001FCD0
 		public bool CustomSizeEnabled
 		{
 			get
@@ -118,9 +103,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000251 RID: 593
-		// (get) Token: 0x06000877 RID: 2167 RVA: 0x00021AF4 File Offset: 0x0001FCF4
-		// (set) Token: 0x06000878 RID: 2168 RVA: 0x00021B0C File Offset: 0x0001FD0C
 		[PropertyOrder(7)]
 		[UndoProperty]
 		[Browsable(false)]
@@ -139,9 +121,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000252 RID: 594
-		// (get) Token: 0x06000879 RID: 2169 RVA: 0x00021B18 File Offset: 0x0001FD18
-		// (set) Token: 0x0600087A RID: 2170 RVA: 0x00021B30 File Offset: 0x0001FD30
 		[DisplayName("Display_File")]
 		[Editor(typeof(ResourceFileEditor), typeof(ResourceFileEditor))]
 		[Category("Group_Feature")]
@@ -193,9 +172,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000253 RID: 595
-		// (get) Token: 0x0600087B RID: 2171 RVA: 0x00021C88 File Offset: 0x0001FE88
-		// (set) Token: 0x0600087C RID: 2172 RVA: 0x00021CBC File Offset: 0x0001FEBC
 		[DisplayName("Animation_InnerAction")]
 		[UndoProperty]
 		[Browsable(true)]
@@ -227,9 +203,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000254 RID: 596
-		// (get) Token: 0x0600087E RID: 2174 RVA: 0x00021E50 File Offset: 0x00020050
-		// (set) Token: 0x0600087D RID: 2173 RVA: 0x00021D5C File Offset: 0x0001FF5C
 		[PropertyOrder(114)]
 		[Editor(typeof(PlayControlEditor), typeof(PlayControlEditor))]
 		[DisplayName("MainTool_Preview")]
@@ -268,7 +241,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600087F RID: 2175 RVA: 0x00021E68 File Offset: 0x00020068
 		protected override void SetValue(object cObject)
 		{
 			base.SetValue(cObject);
@@ -284,7 +256,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000880 RID: 2176 RVA: 0x00021EE0 File Offset: 0x000200E0
 		protected override void OnMouseDoubleClick(MouseEventArgs args)
 		{
 			if (this.Project != null)
@@ -293,7 +264,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000881 RID: 2177 RVA: 0x00021F14 File Offset: 0x00020114
 		internal override void AncestorObjectChanged(BaseObject sourceObj, NotifyCollectionChangedAction action)
 		{
 			base.AncestorObjectChanged(sourceObj, action);
@@ -333,13 +303,11 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000882 RID: 2178 RVA: 0x0002206C File Offset: 0x0002026C
 		private void Instance_SpeedChangedEvent(object sender, SpeedChangedArgs e)
 		{
 			this.InnerActionSpeed = e.Speed;
 		}
 
-		// Token: 0x06000883 RID: 2179 RVA: 0x0002207C File Offset: 0x0002027C
 		private void Instance_AnimationPlayEvent(bool playing)
 		{
 			if (this.innerTimelineAction != null)
@@ -356,7 +324,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000884 RID: 2180 RVA: 0x000220C4 File Offset: 0x000202C4
 		private void LoadProject(CocosItem project)
 		{
 			if (project != null && project.DataError == null)
@@ -400,7 +367,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000885 RID: 2181 RVA: 0x00022274 File Offset: 0x00020474
 		private void ReloadProject(bool refreshSize)
 		{
 			if (this.rootObject != null)
@@ -435,7 +401,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000886 RID: 2182 RVA: 0x000223AC File Offset: 0x000205AC
 		internal void Reload()
 		{
 			if (this.Project != null)
@@ -453,7 +418,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000887 RID: 2183 RVA: 0x00022454 File Offset: 0x00020654
 		protected override void OnBindingRecorder()
 		{
 			this.GetInnerObject().RefreshLayout();
@@ -464,7 +428,6 @@ namespace CocoStudio.Model.ViewModel
 			});
 		}
 
-		// Token: 0x06000888 RID: 2184 RVA: 0x00022490 File Offset: 0x00020690
 		public void ApplyActionValue(InnerActionValue argsActionValue = null)
 		{
 			if (this.HasData())
@@ -505,7 +468,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000889 RID: 2185 RVA: 0x000225DC File Offset: 0x000207DC
 		public void ApplyStep(InnerActionValue innerActionValue, int latestKeyIndex)
 		{
 			if (!innerActionValue.Equals(this.actionValue))
@@ -556,9 +518,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000255 RID: 597
-		// (get) Token: 0x0600088A RID: 2186 RVA: 0x0002274C File Offset: 0x0002094C
-		// (set) Token: 0x0600088B RID: 2187 RVA: 0x00022764 File Offset: 0x00020964
 		public bool IsSpeedSynchr
 		{
 			get
@@ -571,9 +530,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000256 RID: 598
-		// (get) Token: 0x0600088C RID: 2188 RVA: 0x00022770 File Offset: 0x00020970
-		// (set) Token: 0x0600088D RID: 2189 RVA: 0x00022788 File Offset: 0x00020988
 		[UndoProperty]
 		public float InnerActionSpeed
 		{
@@ -595,8 +551,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000257 RID: 599
-		// (get) Token: 0x0600088E RID: 2190 RVA: 0x000227D0 File Offset: 0x000209D0
 		public FileNodeObject Instance
 		{
 			get
@@ -605,15 +559,11 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600088F RID: 2191 RVA: 0x000227E4 File Offset: 0x000209E4
 		public bool HasData()
 		{
 			return this.innerTimelineAction != null && this.innerTimelineAction.Duration > 0;
 		}
 
-		// Token: 0x17000258 RID: 600
-		// (get) Token: 0x06000890 RID: 2192 RVA: 0x00022810 File Offset: 0x00020A10
-		// (set) Token: 0x06000891 RID: 2193 RVA: 0x00022830 File Offset: 0x00020A30
 		[UndoProperty]
 		public override bool PercentWidthEnable
 		{
@@ -636,9 +586,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000259 RID: 601
-		// (get) Token: 0x06000892 RID: 2194 RVA: 0x000228DC File Offset: 0x00020ADC
-		// (set) Token: 0x06000893 RID: 2195 RVA: 0x000228FC File Offset: 0x00020AFC
 		[UndoProperty]
 		public override bool PercentHeightEnable
 		{
@@ -662,9 +609,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x1700025A RID: 602
-		// (get) Token: 0x06000894 RID: 2196 RVA: 0x000229E0 File Offset: 0x00020BE0
-		// (set) Token: 0x06000895 RID: 2197 RVA: 0x00022A00 File Offset: 0x00020C00
 		[UndoProperty]
 		[LayoutRefresh]
 		public virtual bool StretchWidthEnable
@@ -688,9 +632,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x1700025B RID: 603
-		// (get) Token: 0x06000896 RID: 2198 RVA: 0x00022AAC File Offset: 0x00020CAC
-		// (set) Token: 0x06000897 RID: 2199 RVA: 0x00022ACC File Offset: 0x00020CCC
 		[UndoProperty]
 		[LayoutRefresh]
 		public virtual bool StretchHeightEnable
@@ -714,9 +655,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x1700025C RID: 604
-		// (get) Token: 0x06000898 RID: 2200 RVA: 0x00022B78 File Offset: 0x00020D78
-		// (set) Token: 0x06000899 RID: 2201 RVA: 0x00022B90 File Offset: 0x00020D90
 		public virtual bool CanShowStretch
 		{
 			get
@@ -729,40 +667,28 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0400032E RID: 814
 		private AbstractNodeObject rootObject;
 
-		// Token: 0x0400032F RID: 815
 		private TimelineAction innerTimelineAction = null;
 
-		// Token: 0x04000330 RID: 816
 		private DateTime? lastWriteTime = null;
 
-		// Token: 0x04000331 RID: 817
 		private SizeF projectSize = SizeF.Empty;
 
-		// Token: 0x04000332 RID: 818
 		private ResourceFile filePath = null;
 
-		// Token: 0x04000333 RID: 819
 		private InnerActionValue actionValue;
 
-		// Token: 0x04000334 RID: 820
 		private bool isPreviewPlaying;
 
-		// Token: 0x04000335 RID: 821
 		private bool iseventbinded = false;
 
-		// Token: 0x04000336 RID: 822
 		private bool isInnerLoop = true;
 
-		// Token: 0x04000337 RID: 823
 		private bool isSpeedSynchr = true;
 
-		// Token: 0x04000338 RID: 824
 		private float innerActionSpeed = 0f;
 
-		// Token: 0x04000339 RID: 825
 		private bool canStretch = true;
 	}
 }

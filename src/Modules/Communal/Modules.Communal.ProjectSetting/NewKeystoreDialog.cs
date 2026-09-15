@@ -15,12 +15,8 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x0200000E RID: 14
 	public class NewKeystoreDialog : Dialog
 	{
-		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x0600005F RID: 95 RVA: 0x000067D5 File Offset: 0x000049D5
-		// (set) Token: 0x06000060 RID: 96 RVA: 0x000067E2 File Offset: 0x000049E2
 		public bool ButtonOKSensitive
 		{
 			get
@@ -33,7 +29,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000061 RID: 97 RVA: 0x000067F0 File Offset: 0x000049F0
 		public NewKeystoreDialog()
 		{
 			this.Build();
@@ -51,7 +46,6 @@ namespace Modules.Communal.ProjectSetting
 			base.ShowAll();
 		}
 
-		// Token: 0x06000062 RID: 98 RVA: 0x00006878 File Offset: 0x00004A78
 		private void InitView()
 		{
 			this.buttonOk.Name = "MainButton";
@@ -79,7 +73,6 @@ namespace Modules.Communal.ProjectSetting
 			this.ShowErrorInfo();
 		}
 
-		// Token: 0x06000063 RID: 99 RVA: 0x000069E0 File Offset: 0x00004BE0
 		private void InitEvent()
 		{
 			this.buttonOk.Clicked += this.OnButtonOKClicked;
@@ -99,7 +92,6 @@ namespace Modules.Communal.ProjectSetting
 			base.Destroyed += this.HandleDestroyed;
 		}
 
-		// Token: 0x06000064 RID: 100 RVA: 0x00006B44 File Offset: 0x00004D44
 		private void entry_ValidDate_Changed(object sender, EventArgs e)
 		{
 			string text = this.entry_ValidDate.Text;
@@ -112,13 +104,11 @@ namespace Modules.Communal.ProjectSetting
 			this.ShowErrorInfo();
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x00006B97 File Offset: 0x00004D97
 		private void entry_Changed(object sender, EventArgs e)
 		{
 			this.ShowErrorInfo();
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x00006BA0 File Offset: 0x00004DA0
 		private void InitMultiLanuage()
 		{
 			base.Title = LanguageInfo.ProjSetting_NewKeystore;
@@ -140,7 +130,6 @@ namespace Modules.Communal.ProjectSetting
 			this.buttonCancel.Label = LanguageInfo.Dialog_ButtonCancel;
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00006CB8 File Offset: 0x00004EB8
 		private void ShowErrorInfo()
 		{
 			string text = string.Empty;
@@ -209,7 +198,6 @@ namespace Modules.Communal.ProjectSetting
 			this.ButtonOKSensitive = false;
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x00006EF0 File Offset: 0x000050F0
 		private void OnButtonOKClicked(object sender, EventArgs e)
 		{
 			FilePath filePath = new FilePath(this.entry_keystorelocation.Text);
@@ -266,25 +254,21 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x00007150 File Offset: 0x00005350
 		private void CheckLegitimacy(out string info)
 		{
 			info = string.Empty;
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x00007159 File Offset: 0x00005359
 		private void OnButtonCancelClicked(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.Cancel);
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x00007163 File Offset: 0x00005363
 		private void HandleDestroyed(object sender, EventArgs e)
 		{
 			this.parentWnd.Modal = this.parentModal;
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x00007178 File Offset: 0x00005378
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -769,154 +753,104 @@ namespace Modules.Communal.ProjectSetting
 			base.Hide();
 		}
 
-		// Token: 0x04000079 RID: 121
 		private string oldKeyValidDate = string.Empty;
 
-		// Token: 0x0400007A RID: 122
 		private Gtk.Window parentWnd;
 
-		// Token: 0x0400007B RID: 123
 		private bool parentModal;
 
-		// Token: 0x0400007C RID: 124
 		private VBox vbox4;
 
-		// Token: 0x0400007D RID: 125
 		private VBox vbox2;
 
-		// Token: 0x0400007E RID: 126
 		private EventBox eventbox1;
 
-		// Token: 0x0400007F RID: 127
 		private HBox hbox1;
 
-		// Token: 0x04000080 RID: 128
 		private VBox vbox_top;
 
-		// Token: 0x04000081 RID: 129
 		private Label label_keyCreat;
 
-		// Token: 0x04000082 RID: 130
 		private Alignment alignment_error;
 
-		// Token: 0x04000083 RID: 131
 		private HBox hbox2;
 
-		// Token: 0x04000084 RID: 132
 		private VBox vbox_imageWarring;
 
-		// Token: 0x04000085 RID: 133
 		private Alignment alignment_imageWarringTop;
 
-		// Token: 0x04000086 RID: 134
 		private ImageBin imagebin_warring;
 
-		// Token: 0x04000087 RID: 135
 		private Alignment alignment_imageWarringBottom;
 
-		// Token: 0x04000088 RID: 136
 		private Label label_error;
 
-		// Token: 0x04000089 RID: 137
 		private HSeparator hseparator1;
 
-		// Token: 0x0400008A RID: 138
 		private Table table4;
 
-		// Token: 0x0400008B RID: 139
 		private PassWordEntry entry_affirmAliasPassword;
 
-		// Token: 0x0400008C RID: 140
 		private PassWordEntry entry_affirmKeystorePassword;
 
-		// Token: 0x0400008D RID: 141
 		private Entry entry_aliasName;
 
-		// Token: 0x0400008E RID: 142
 		private PassWordEntry entry_aliasPassword;
 
-		// Token: 0x0400008F RID: 143
 		private Entry entry_city;
 
-		// Token: 0x04000090 RID: 144
 		private Entry entry_Country;
 
-		// Token: 0x04000091 RID: 145
 		private Entry entry_countyCode;
 
-		// Token: 0x04000092 RID: 146
 		private Entry entry_firstword;
 
-		// Token: 0x04000093 RID: 147
 		private Entry entry_keystorelocation;
 
-		// Token: 0x04000094 RID: 148
 		private PassWordEntry entry_keystorePassword;
 
-		// Token: 0x04000095 RID: 149
 		private Entry entry_organization;
 
-		// Token: 0x04000096 RID: 150
 		private Entry entry_unit;
 
-		// Token: 0x04000097 RID: 151
 		private Entry entry_ValidDate;
 
-		// Token: 0x04000098 RID: 152
 		private HSeparator hseparator2;
 
-		// Token: 0x04000099 RID: 153
 		private HSeparator hseparator3;
 
-		// Token: 0x0400009A RID: 154
 		private HSeparator hseparator9;
 
-		// Token: 0x0400009B RID: 155
 		private Label label_affirmAliasPassword;
 
-		// Token: 0x0400009C RID: 156
 		private Label label_affirmKeystorePassword;
 
-		// Token: 0x0400009D RID: 157
 		private Label label_aliasName;
 
-		// Token: 0x0400009E RID: 158
 		private Label label_aliasPassword;
 
-		// Token: 0x0400009F RID: 159
 		private Label label_city;
 
-		// Token: 0x040000A0 RID: 160
 		private Label label_Country;
 
-		// Token: 0x040000A1 RID: 161
 		private Label label_countyCode;
 
-		// Token: 0x040000A2 RID: 162
 		private Label label_firstword;
 
-		// Token: 0x040000A3 RID: 163
 		private Label label_KeystoreLocation;
 
-		// Token: 0x040000A4 RID: 164
 		private Label label_keystorePassword;
 
-		// Token: 0x040000A5 RID: 165
 		private Label label_organization;
 
-		// Token: 0x040000A6 RID: 166
 		private Label label_unit;
 
-		// Token: 0x040000A7 RID: 167
 		private Label label_ValidDate;
 
-		// Token: 0x040000A8 RID: 168
 		private HSeparator hseparator8;
 
-		// Token: 0x040000A9 RID: 169
 		private Button buttonCancel;
 
-		// Token: 0x040000AA RID: 170
 		private Button buttonOk;
 	}
 }

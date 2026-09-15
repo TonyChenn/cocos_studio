@@ -7,16 +7,13 @@ using CocoStudio.Model.ViewModel.HitTest;
 
 namespace Modules.Communal.Render.Model
 {
-	// Token: 0x02000004 RID: 4
 	public class HitTestMode : ICoordinateMapping
 	{
-		// Token: 0x06000037 RID: 55 RVA: 0x00004D78 File Offset: 0x00002F78
 		protected static bool IsContinueTest(BaseTestResult testResult)
 		{
 			return testResult == null || testResult.IsContinueTest;
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00004DA0 File Offset: 0x00002FA0
 		protected static int FindLastUnderParentChild(List<VisualObject> children)
 		{
 			int result;
@@ -38,7 +35,6 @@ namespace Modules.Communal.Render.Model
 			return result;
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00004DFC File Offset: 0x00002FFC
 		protected virtual void InnerGetHitVisual(VisualObject parentObject, PointF point, List<HitTestResult> list)
 		{
 			if (parentObject != null)
@@ -70,14 +66,12 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x00004EF8 File Offset: 0x000030F8
 		public virtual HitTestResult GetHitVisual(VisualObject rootObject, PointF point)
 		{
 			PointF point2 = this.ConvertCoordinate(point);
 			return this.GetAllHitVisual(rootObject, point2).FirstOrDefault<HitTestResult>();
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x00004F24 File Offset: 0x00003124
 		protected List<HitTestResult> GetAllHitVisual(VisualObject rootObject, PointF point)
 		{
 			List<HitTestResult> list = new List<HitTestResult>();
@@ -90,7 +84,6 @@ namespace Modules.Communal.Render.Model
 			return list;
 		}
 
-		// Token: 0x0600003C RID: 60 RVA: 0x00004F60 File Offset: 0x00003160
 		public static HitTestResult GetHoverVisualBetweenSelected(PointF point, IEnumerable<VisualObject> selectedObjectList)
 		{
 			foreach (VisualObject visualObject in selectedObjectList)
@@ -107,13 +100,11 @@ namespace Modules.Communal.Render.Model
 			return null;
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x00004FF8 File Offset: 0x000031F8
 		public HitTestResult GetHitVisualFirstSelected(VisualObject rootObject, PointF point, IEnumerable<VisualObject> currentSelectedObject)
 		{
 			return this.GetHitVisual(rootObject, point);
 		}
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00005014 File Offset: 0x00003214
 		private static void InnerFilterCoveredChildren(VisualObject parentObject, List<VisualObject> parentObjectList)
 		{
 			if (parentObject.IsSelected)
@@ -133,7 +124,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x000050A8 File Offset: 0x000032A8
 		public void FilterCoveredChildren(VisualObject rootObject, List<VisualObject> parentObjectList, List<VisualObject> selectedObjectList)
 		{
 			if (rootObject != null && parentObjectList != null)
@@ -164,7 +154,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x06000040 RID: 64 RVA: 0x00005178 File Offset: 0x00003378
 		public void SelectAllObjects(VisualObject rootObject, List<VisualObject> selectedObjectList, List<VisualObject> selectedParentObjectList)
 		{
 			if (rootObject == null)
@@ -191,7 +180,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x0000523C File Offset: 0x0000343C
 		private static void InnerSelectAllObject(VisualObject parentObject, List<VisualObject> selectedObjectList, List<VisualObject> selectedParentObjectList, bool ancestorCanEdit)
 		{
 			IEnumerable<VisualObject> visualChildren = parentObject.GetVisualChildren();
@@ -217,7 +205,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x000052FC File Offset: 0x000034FC
 		protected static void GetVisualInRect(VisualObject parentObject, RectF rect, HashSet<VisualObject> list)
 		{
 			if (parentObject != null)
@@ -241,7 +228,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x000053B8 File Offset: 0x000035B8
 		public virtual List<VisualObject> GetVisualInRect(VisualObject rootObject, RectF rect)
 		{
 			PointF pointF = new PointF(rect.X, rect.Y + rect.Height);
@@ -252,19 +238,16 @@ namespace Modules.Communal.Render.Model
 			return hashSet.ToList<VisualObject>();
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x00005420 File Offset: 0x00003620
 		public virtual PointF ConvertCoordinate(PointF screenPoint)
 		{
 			return GameWindow.Current.ConvertControlToScene(screenPoint);
 		}
 
-		// Token: 0x06000045 RID: 69 RVA: 0x00005440 File Offset: 0x00003640
 		protected virtual IComparer<VisualObject> GetObjectComparer()
 		{
 			return null;
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x00005454 File Offset: 0x00003654
 		protected virtual IComparer<HitTestResult> GetResultComparer()
 		{
 			return null;

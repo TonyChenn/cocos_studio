@@ -8,15 +8,10 @@ namespace ICSharpCode.NRefactory.Analysis
 	/// <summary>
 	/// The Abi comparer checks the public API of two compilation and determines the compatibility state.
 	/// </summary>
-	// Token: 0x02000004 RID: 4
 	public class AbiComparer
 	{
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000004 RID: 4 RVA: 0x000020F0 File Offset: 0x000010F0
-		// (set) Token: 0x06000005 RID: 5 RVA: 0x000020F8 File Offset: 0x000010F8
 		public bool StopOnIncompatibility { get; set; }
 
-		// Token: 0x06000006 RID: 6 RVA: 0x00002104 File Offset: 0x00001104
 		private void CheckContstraints(IType otype, ITypeParameter p1, ITypeParameter p2, ref AbiCompatibility compatibility)
 		{
 			if (p1.DirectBaseTypes.Count<IType>() != p2.DirectBaseTypes.Count<IType>() || p1.HasReferenceTypeConstraint != p2.HasReferenceTypeConstraint || p1.HasValueTypeConstraint != p2.HasValueTypeConstraint || p1.HasDefaultConstructorConstraint != p2.HasDefaultConstructorConstraint)
@@ -26,7 +21,6 @@ namespace ICSharpCode.NRefactory.Analysis
 			}
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002178 File Offset: 0x00001178
 		private void CheckContstraints(IMethod omethod, ITypeParameter p1, ITypeParameter p2, ref AbiCompatibility compatibility)
 		{
 			if (p1.DirectBaseTypes.Count<IType>() != p2.DirectBaseTypes.Count<IType>() || p1.HasReferenceTypeConstraint != p2.HasReferenceTypeConstraint || p1.HasValueTypeConstraint != p2.HasValueTypeConstraint || p1.HasDefaultConstructorConstraint != p2.HasDefaultConstructorConstraint)
@@ -36,7 +30,6 @@ namespace ICSharpCode.NRefactory.Analysis
 			}
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002284 File Offset: 0x00001284
 		private void CheckTypes(ITypeDefinition oType, ITypeDefinition nType, ref AbiCompatibility compatibility)
 		{
 			int num = 0;
@@ -105,7 +98,6 @@ namespace ICSharpCode.NRefactory.Analysis
 			}
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x0000246C File Offset: 0x0000146C
 		private void CheckNamespace(INamespace oNs, INamespace nNs, ref AbiCompatibility compatibility)
 		{
 			foreach (ITypeDefinition typeDefinition in oNs.Types)
@@ -149,7 +141,6 @@ namespace ICSharpCode.NRefactory.Analysis
 			}
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x00002594 File Offset: 0x00001594
 		private static bool ContainsPublicTypes(INamespace testNs)
 		{
 			Stack<INamespace> stack = new Stack<INamespace>();
@@ -174,7 +165,6 @@ namespace ICSharpCode.NRefactory.Analysis
 		/// </summary>
 		/// <param name="oldProject">Old project.</param>
 		/// <param name="newProject">New project.</param>
-		// Token: 0x0600000B RID: 11 RVA: 0x00002630 File Offset: 0x00001630
 		public AbiCompatibility Check(ICompilation oldProject, ICompilation newProject)
 		{
 			Stack<INamespace> stack = new Stack<INamespace>();
@@ -228,18 +218,13 @@ namespace ICSharpCode.NRefactory.Analysis
 			return abiCompatibility;
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x000027A0 File Offset: 0x000017A0
 		public virtual string TranslateString(string str)
 		{
 			return str;
 		}
 
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x0600000D RID: 13 RVA: 0x000027A4 File Offset: 0x000017A4
-		// (remove) Token: 0x0600000E RID: 14 RVA: 0x000027DC File Offset: 0x000017DC
 		public event EventHandler<AbiEventArgs> IncompatibilityFound;
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00002814 File Offset: 0x00001814
 		protected virtual void OnIncompatibilityFound(AbiEventArgs e)
 		{
 			EventHandler<AbiEventArgs> incompatibilityFound = this.IncompatibilityFound;

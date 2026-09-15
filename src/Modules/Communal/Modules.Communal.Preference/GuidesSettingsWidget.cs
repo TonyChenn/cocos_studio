@@ -12,12 +12,9 @@ using Stetic;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x02000016 RID: 22
 	[ToolboxItem(true)]
 	public class GuidesSettingsWidget : Bin, IPreferenceWidget
 	{
-		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x060000B4 RID: 180 RVA: 0x0000A244 File Offset: 0x00008444
 		public EnumPreferenceSetting SettingID
 		{
 			get
@@ -26,8 +23,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x1700001E RID: 30
-		// (get) Token: 0x060000B5 RID: 181 RVA: 0x0000A247 File Offset: 0x00008447
 		public string DisplayName
 		{
 			get
@@ -36,9 +31,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x1700001F RID: 31
-		// (get) Token: 0x060000B6 RID: 182 RVA: 0x0000A24E File Offset: 0x0000844E
-		// (set) Token: 0x060000B7 RID: 183 RVA: 0x0000A258 File Offset: 0x00008458
 		public System.Drawing.Color SelectedColor
 		{
 			get
@@ -53,14 +45,12 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x060000B8 RID: 184 RVA: 0x0000A280 File Offset: 0x00008480
 		public GuidesSettingsWidget()
 		{
 			this.Build();
 			this.Initialize();
 		}
 
-		// Token: 0x060000B9 RID: 185 RVA: 0x0000A2AB File Offset: 0x000084AB
 		private void Initialize()
 		{
 			this.InitView();
@@ -68,7 +58,6 @@ namespace Modules.Communal.Preference
 			this.InitEvent();
 		}
 
-		// Token: 0x060000BA RID: 186 RVA: 0x0000A2C0 File Offset: 0x000084C0
 		private void InitView()
 		{
 			this.combobox_color.Clear();
@@ -98,13 +87,11 @@ namespace Modules.Communal.Preference
 			this.label1.Text = LanguageInfo.MainTool_Color;
 		}
 
-		// Token: 0x060000BB RID: 187 RVA: 0x0000A410 File Offset: 0x00008610
 		private void InitEvent()
 		{
 			this.combobox_color.Changed += this.combobox_color_Changed;
 		}
 
-		// Token: 0x060000BC RID: 188 RVA: 0x0000A444 File Offset: 0x00008644
 		private void InitDefaultValue()
 		{
 			if (!string.IsNullOrEmpty(Option.UserConfig.GuidesColor))
@@ -131,7 +118,6 @@ namespace Modules.Communal.Preference
 			this.SelectedColor = this.defaultColor;
 		}
 
-		// Token: 0x060000BD RID: 189 RVA: 0x0000A4EC File Offset: 0x000086EC
 		private void combobox_color_Changed(object sender, EventArgs e)
 		{
 			TreeIter zero = TreeIter.Zero;
@@ -151,27 +137,23 @@ namespace Modules.Communal.Preference
 			this.SelectedColor = guidesColorInfo.RenderColor;
 		}
 
-		// Token: 0x060000BE RID: 190 RVA: 0x0000A570 File Offset: 0x00008770
 		public void ApplySetting()
 		{
 			Option.UserConfig.GuidesColor = this.SelectedColor.ToArgb().ToString();
 			GuidesService.Instance.LineColor = this.SelectedColor;
 		}
 
-		// Token: 0x060000BF RID: 191 RVA: 0x0000A5AD File Offset: 0x000087AD
 		public bool CanApply(out string output)
 		{
 			output = "";
 			return true;
 		}
 
-		// Token: 0x060000C0 RID: 192 RVA: 0x0000A5B7 File Offset: 0x000087B7
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x060000C1 RID: 193 RVA: 0x0000A5BC File Offset: 0x000087BC
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -261,52 +243,36 @@ namespace Modules.Communal.Preference
 			base.Hide();
 		}
 
-		// Token: 0x040000DD RID: 221
 		private ListStore liststore;
 
-		// Token: 0x040000DE RID: 222
 		private System.Drawing.Color selectedColor;
 
-		// Token: 0x040000DF RID: 223
 		private System.Drawing.Color defaultColor = System.Drawing.Color.FromArgb(74, 255, 255);
 
-		// Token: 0x040000E0 RID: 224
 		private VBox vbox2;
 
-		// Token: 0x040000E1 RID: 225
 		private Frame frame_download;
 
-		// Token: 0x040000E2 RID: 226
 		private Alignment GtkAlignment_download;
 
-		// Token: 0x040000E3 RID: 227
 		private VBox vbox_content;
 
-		// Token: 0x040000E4 RID: 228
 		private HBox hbox1;
 
-		// Token: 0x040000E5 RID: 229
 		private Label label1;
 
-		// Token: 0x040000E6 RID: 230
 		private Alignment alignment_combox;
 
-		// Token: 0x040000E7 RID: 231
 		private ComboBox combobox_color;
 
-		// Token: 0x040000E8 RID: 232
 		private Alignment alignment2;
 
-		// Token: 0x040000E9 RID: 233
 		private Alignment alignment3;
 
-		// Token: 0x040000EA RID: 234
 		private EventBox eventbox1;
 
-		// Token: 0x040000EB RID: 235
 		private Label GtkLabel_download;
 
-		// Token: 0x040000EC RID: 236
 		private Alignment alignment1;
 	}
 }

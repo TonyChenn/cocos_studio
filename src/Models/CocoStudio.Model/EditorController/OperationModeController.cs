@@ -7,17 +7,14 @@ using Mono.Addins;
 
 namespace CocoStudio.Model.EditorController
 {
-	// Token: 0x02000048 RID: 72
 	[Extension(typeof(IEditorController))]
 	internal class OperationModeController : Base2DController
 	{
-		// Token: 0x06000292 RID: 658 RVA: 0x00007F50 File Offset: 0x00006150
 		public OperationModeController()
 		{
 			base.AddCorrespondProperty("OperationFlag");
 		}
 
-		// Token: 0x06000293 RID: 659 RVA: 0x00007F68 File Offset: 0x00006168
 		public override void RefreshEditor(IReadOnlyList<object> selectedObjs, string propertyName)
 		{
 			IPropertyGrid service = Services.GetService<IPropertyGrid>();

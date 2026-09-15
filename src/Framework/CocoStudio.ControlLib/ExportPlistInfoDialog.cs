@@ -6,15 +6,10 @@ using Stetic;
 
 namespace CocoStudio.ControlLib
 {
-	// Token: 0x0200000D RID: 13
 	public class ExportPlistInfoDialog : Dialog
 	{
-		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x0600005F RID: 95 RVA: 0x0000519C File Offset: 0x0000339C
-		// (set) Token: 0x06000060 RID: 96 RVA: 0x000051B3 File Offset: 0x000033B3
 		public bool IsOk { get; set; }
 
-		// Token: 0x06000061 RID: 97 RVA: 0x000051BC File Offset: 0x000033BC
 		public ExportPlistInfoDialog(string exportPath)
 		{
 			this.Build();
@@ -22,9 +17,6 @@ namespace CocoStudio.ControlLib
 			this.Init(exportPath);
 		}
 
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000062 RID: 98 RVA: 0x000051E8 File Offset: 0x000033E8
-		// (set) Token: 0x06000063 RID: 99 RVA: 0x00005200 File Offset: 0x00003400
 		public string ExportPath
 		{
 			get
@@ -38,7 +30,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x06000064 RID: 100 RVA: 0x00005224 File Offset: 0x00003424
 		private void Init(string exportPath)
 		{
 			base.AllowGrow = false;
@@ -55,21 +46,18 @@ namespace CocoStudio.ControlLib
 			this.buttonOk.GrabDefault();
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x000052EE File Offset: 0x000034EE
 		private void buttonOk_Clicked(object sender, EventArgs e)
 		{
 			this.IsOk = true;
 			this.Destroy();
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x00005300 File Offset: 0x00003500
 		private void buttonCancel_Clicked(object sender, EventArgs e)
 		{
 			this.IsOk = false;
 			this.Destroy();
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00005314 File Offset: 0x00003514
 		private void button_Browse_Clicked(object sender, EventArgs e)
 		{
 			string folder = FileChooserDialogModel.GetBrowseDialogPath("导出路径", false, "", false).Folder;
@@ -80,7 +68,6 @@ namespace CocoStudio.ControlLib
 			this.buttonOk.GrabFocus();
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x0000535C File Offset: 0x0000355C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -162,25 +149,18 @@ namespace CocoStudio.ControlLib
 			base.Show();
 		}
 
-		// Token: 0x04000053 RID: 83
 		private string exportpath;
 
-		// Token: 0x04000054 RID: 84
 		private HBox hbox_path;
 
-		// Token: 0x04000055 RID: 85
 		private Label label_Path;
 
-		// Token: 0x04000056 RID: 86
 		private Entry entry_Path;
 
-		// Token: 0x04000057 RID: 87
 		private Button button_Browse;
 
-		// Token: 0x04000058 RID: 88
 		private Button buttonOk;
 
-		// Token: 0x04000059 RID: 89
 		private Button buttonCancel;
 	}
 }

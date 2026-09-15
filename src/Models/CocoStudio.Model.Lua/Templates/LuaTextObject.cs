@@ -5,31 +5,26 @@ using CocoStudio.Model.ViewModel;
 
 namespace CocoStudio.Model.Lua.Templates
 {
-	// Token: 0x0200002D RID: 45
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaTextObject : LuaWidgetObject
 	{
-		// Token: 0x0600010A RID: 266 RVA: 0x00007C59 File Offset: 0x00005E59
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x0600010B RID: 267 RVA: 0x00007C74 File Offset: 0x00005E74
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(TextObjectData) == objectData.GetType();
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x00007C98 File Offset: 0x00005E98
 		protected override void OnCreateObject(BaseObjectData objectData)
 		{
 			base.Write(base.ToStringHelper.ToStringWithCulture(base.GetNameDeclaration(objectData.Name)));
 			base.Write(" = ccui.Text:create()\r\n");
 		}
 
-		// Token: 0x0600010D RID: 269 RVA: 0x00007CC4 File Offset: 0x00005EC4
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			TextObjectData textObjectData = objectData as TextObjectData;

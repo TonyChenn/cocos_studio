@@ -8,11 +8,9 @@ using MonoDevelop.Core;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200005C RID: 92
 	[ToolboxItem(true)]
 	public class TitleView : EventBox
 	{
-		// Token: 0x06000329 RID: 809 RVA: 0x0000CC93 File Offset: 0x0000AE93
 		public TitleView(MainWindow mainWindow)
 		{
 			this.mainWindow = mainWindow;
@@ -21,7 +19,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x0600032A RID: 810 RVA: 0x0000CCB4 File Offset: 0x0000AEB4
 		private void InitView()
 		{
 			Label label = new Label();
@@ -102,7 +99,6 @@ namespace Cocos.Launcher.Core
 			base.Add(vbox);
 		}
 
-		// Token: 0x0600032B RID: 811 RVA: 0x0000D0B0 File Offset: 0x0000B2B0
 		private void InitEvent()
 		{
 			base.ButtonPressEvent += this.eventbox_top_ButtonPressEvent;
@@ -111,13 +107,11 @@ namespace Cocos.Launcher.Core
 			this.mainWindow.FocusOutEvent += this.mainWindow_FocusOutEvent;
 		}
 
-		// Token: 0x0600032C RID: 812 RVA: 0x0000D10A File Offset: 0x0000B30A
 		private void HandleSettingTitleBtnClilcked(object sender, ButtonReleaseEventArgs e)
 		{
 			Services.CommandService.ShowContextMenu(this.titleSettingBtn, e.Event, Services.MainWindow.MenuManager.WindowsMenu, null);
 		}
 
-		// Token: 0x0600032D RID: 813 RVA: 0x0000D132 File Offset: 0x0000B332
 		private void mainWindowToClose(object o, ButtonReleaseEventArgs args)
 		{
 			if (args.Event.Button == 1U)
@@ -126,7 +120,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600032E RID: 814 RVA: 0x0000D152 File Offset: 0x0000B352
 		private void mainWindowToIconify(object o, ButtonReleaseEventArgs args)
 		{
 			if (args.Event.Button == 1U)
@@ -135,7 +128,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600032F RID: 815 RVA: 0x0000D174 File Offset: 0x0000B374
 		private void eventbox_top_MotionNotifyEvent(object o, MotionNotifyEventArgs args)
 		{
 			if (this.isMove)
@@ -155,7 +147,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000330 RID: 816 RVA: 0x0000D1ED File Offset: 0x0000B3ED
 		private void eventbox_top_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			if (args.Event.Button == 1U)
@@ -164,13 +155,11 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000331 RID: 817 RVA: 0x0000D204 File Offset: 0x0000B404
 		private void mainWindow_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			this.isMove = false;
 		}
 
-		// Token: 0x06000332 RID: 818 RVA: 0x0000D20D File Offset: 0x0000B40D
 		private void eventbox_top_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			if (args.Event.Button == 1U)
@@ -181,34 +170,24 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x04000127 RID: 295
 		private ImageButtonView imageButtonMacMin;
 
-		// Token: 0x04000128 RID: 296
 		private ImageButtonView imageButtonMacClose;
 
-		// Token: 0x04000129 RID: 297
 		private ImageButtonView imageButtonWinMin;
 
-		// Token: 0x0400012A RID: 298
 		private ImageButtonView imageButtonWinClose;
 
-		// Token: 0x0400012B RID: 299
 		private ImageButtonView titleSettingBtn;
 
-		// Token: 0x0400012C RID: 300
 		private bool isMove;
 
-		// Token: 0x0400012D RID: 301
 		private double mousePress_x;
 
-		// Token: 0x0400012E RID: 302
 		private double mousePress_y;
 
-		// Token: 0x0400012F RID: 303
 		private MainWindow mainWindow;
 
-		// Token: 0x04000130 RID: 304
 		private bool isMaxSize;
 	}
 }

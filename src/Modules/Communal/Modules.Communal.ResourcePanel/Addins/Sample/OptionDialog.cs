@@ -12,10 +12,8 @@ using Stetic;
 
 namespace Addins.Sample
 {
-	// Token: 0x02000023 RID: 35
 	public class OptionDialog : Dialog
 	{
-		// Token: 0x060000FA RID: 250 RVA: 0x000042A8 File Offset: 0x000024A8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -193,8 +191,6 @@ namespace Addins.Sample
 			this.buttonOk.Clicked += this.HandleButtonOKClicked;
 		}
 
-		// Token: 0x17000028 RID: 40
-		// (get) Token: 0x060000FB RID: 251 RVA: 0x00004B80 File Offset: 0x00002D80
 		public bool IsRetainEdge
 		{
 			get
@@ -203,8 +199,6 @@ namespace Addins.Sample
 			}
 		}
 
-		// Token: 0x17000029 RID: 41
-		// (get) Token: 0x060000FC RID: 252 RVA: 0x00004B8D File Offset: 0x00002D8D
 		public string ExportDirectory
 		{
 			get
@@ -213,7 +207,6 @@ namespace Addins.Sample
 			}
 		}
 
-		// Token: 0x060000FD RID: 253 RVA: 0x00004B9A File Offset: 0x00002D9A
 		public OptionDialog(string fileName = "")
 		{
 			this.Build();
@@ -224,7 +217,6 @@ namespace Addins.Sample
 			this.label_plist.Text = fileName;
 		}
 
-		// Token: 0x060000FE RID: 254 RVA: 0x00004BDC File Offset: 0x00002DDC
 		private void ChangeButtonPosition()
 		{
 			if (Platform.IsWindows)
@@ -236,7 +228,6 @@ namespace Addins.Sample
 			}
 		}
 
-		// Token: 0x060000FF RID: 255 RVA: 0x00004C2C File Offset: 0x00002E2C
 		private void InitLanguage()
 		{
 			base.Title = LanguageInfo.Dialog_ExportPlist_windowTile;
@@ -250,7 +241,6 @@ namespace Addins.Sample
 			this.buttonCancel.Label = LanguageInfo.Dialog_ButtonCancel;
 		}
 
-		// Token: 0x06000100 RID: 256 RVA: 0x00004CC4 File Offset: 0x00002EC4
 		protected void HandleButtonBrowseClicked(object sender, EventArgs e)
 		{
 			if (Option.IsXP)
@@ -277,7 +267,6 @@ namespace Addins.Sample
 			}
 		}
 
-		// Token: 0x06000101 RID: 257 RVA: 0x00004D7C File Offset: 0x00002F7C
 		protected void HandleButtonOKClicked(object sender, EventArgs e)
 		{
 			string text = this.entry_path.Text;
@@ -299,55 +288,39 @@ namespace Addins.Sample
 			base.Respond(ResponseType.Ok);
 		}
 
-		// Token: 0x06000102 RID: 258 RVA: 0x00004DDF File Offset: 0x00002FDF
 		protected void HandleButtonCancelClicked(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.Cancel);
 		}
 
-		// Token: 0x04000041 RID: 65
 		private Alignment alignment_main;
 
-		// Token: 0x04000042 RID: 66
 		private Table table_main;
 
-		// Token: 0x04000043 RID: 67
 		private HBox hbox_borderOption;
 
-		// Token: 0x04000044 RID: 68
 		private RadioButton radiobutton_noEdge;
 
-		// Token: 0x04000045 RID: 69
 		private RadioButton radiobutton_edge;
 
-		// Token: 0x04000046 RID: 70
 		private HBox hbox_path;
 
-		// Token: 0x04000047 RID: 71
 		private Entry entry_path;
 
-		// Token: 0x04000048 RID: 72
 		private Button button_browse;
 
-		// Token: 0x04000049 RID: 73
 		private Label label_border;
 
-		// Token: 0x0400004A RID: 74
 		private Label label_name;
 
-		// Token: 0x0400004B RID: 75
 		private Label label_path;
 
-		// Token: 0x0400004C RID: 76
 		private Label label_plist;
 
-		// Token: 0x0400004D RID: 77
 		private HBox hbox_bottomButton;
 
-		// Token: 0x0400004E RID: 78
 		private Button buttonOk;
 
-		// Token: 0x0400004F RID: 79
 		private Button buttonCancel;
 	}
 }

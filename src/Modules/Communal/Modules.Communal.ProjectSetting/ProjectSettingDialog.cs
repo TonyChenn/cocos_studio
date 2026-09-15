@@ -10,10 +10,8 @@ using Stetic;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x02000009 RID: 9
 	public class ProjectSettingDialog : Dialog
 	{
-		// Token: 0x0600001B RID: 27 RVA: 0x000023E0 File Offset: 0x000005E0
 		public ProjectSettingDialog(EnumProjectSetting initWidget = EnumProjectSetting.Default)
 		{
 			this.Build();
@@ -33,14 +31,12 @@ namespace Modules.Communal.ProjectSetting
 			this.currentWidget.GetWidget().ShowAll();
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x000024B1 File Offset: 0x000006B1
 		private void InitWidgets()
 		{
 			this.projSettingWidgets.Add(new PublishWidget());
 			this.projSettingWidgets.Add(new PackageWidget());
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x000024D4 File Offset: 0x000006D4
 		private void InitTreeView(EnumProjectSetting initWidget)
 		{
 			TreeStore treeStore = new TreeStore(new Type[]
@@ -91,7 +87,6 @@ namespace Modules.Communal.ProjectSetting
 			this.treeview_main.Selection.SelectIter(iter);
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x000026A8 File Offset: 0x000008A8
 		private void InitEvent()
 		{
 			this.buttonOk.Clicked += this.OnButtonOKClicked;
@@ -99,7 +94,6 @@ namespace Modules.Communal.ProjectSetting
 			this.treeview_main.CursorChanged += this.OnTreeCursorChanged;
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x000026FC File Offset: 0x000008FC
 		private void ChangeBtnPosion()
 		{
 			if (Platform.IsWindows)
@@ -111,7 +105,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x0000274C File Offset: 0x0000094C
 		private void InitMultiLanuage()
 		{
 			base.Title = LanguageInfo.ProjSetting;
@@ -119,7 +112,6 @@ namespace Modules.Communal.ProjectSetting
 			this.buttonCancel.Label = LanguageInfo.Dialog_ButtonCancel;
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x0000277C File Offset: 0x0000097C
 		private void ChangeWidget(IProjectSettingWidget newWidget)
 		{
 			if (this.currentWidget != null)
@@ -131,7 +123,6 @@ namespace Modules.Communal.ProjectSetting
 			this.currentWidget = newWidget;
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x000027CC File Offset: 0x000009CC
 		private void OnButtonOKClicked(object sender, EventArgs e)
 		{
 			foreach (IProjectSettingWidget projectSettingWidget in this.widgetsDictionary.Values)
@@ -159,13 +150,11 @@ namespace Modules.Communal.ProjectSetting
 			base.Respond(ResponseType.Ok);
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x000028C4 File Offset: 0x00000AC4
 		private void OnButtonCancelClicked(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.Cancel);
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x000028D0 File Offset: 0x00000AD0
 		private void OnTreeCursorChanged(object sender, EventArgs e)
 		{
 			TreeIter key;
@@ -193,7 +182,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x00002964 File Offset: 0x00000B64
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -293,46 +281,32 @@ namespace Modules.Communal.ProjectSetting
 			base.Hide();
 		}
 
-		// Token: 0x0400000C RID: 12
 		private IProjectSettingWidget currentWidget;
 
-		// Token: 0x0400000D RID: 13
 		private TreeIter oldTreeIter;
 
-		// Token: 0x0400000E RID: 14
 		private List<IProjectSettingWidget> projSettingWidgets = new List<IProjectSettingWidget>();
 
-		// Token: 0x0400000F RID: 15
 		private Dictionary<TreeIter, IProjectSettingWidget> widgetsDictionary = new Dictionary<TreeIter, IProjectSettingWidget>();
 
-		// Token: 0x04000010 RID: 16
 		private HBox hbox_main;
 
-		// Token: 0x04000011 RID: 17
 		private EventBox evtbx_left;
 
-		// Token: 0x04000012 RID: 18
 		private Alignment alignment_left;
 
-		// Token: 0x04000013 RID: 19
 		private TreeView treeview_main;
 
-		// Token: 0x04000014 RID: 20
 		private EventBox evtbx_right;
 
-		// Token: 0x04000015 RID: 21
 		private EventBox evtbx_line;
 
-		// Token: 0x04000016 RID: 22
 		private Alignment alignment_bottomBtns;
 
-		// Token: 0x04000017 RID: 23
 		private HBox hbox_bottomBtns;
 
-		// Token: 0x04000018 RID: 24
 		private Button buttonOk;
 
-		// Token: 0x04000019 RID: 25
 		private Button buttonCancel;
 	}
 }

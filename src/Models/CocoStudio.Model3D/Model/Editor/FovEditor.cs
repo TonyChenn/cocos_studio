@@ -5,15 +5,12 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200000F RID: 15
 	internal class FovEditor : OneNumberEditor
 	{
-		// Token: 0x06000090 RID: 144 RVA: 0x00003048 File Offset: 0x00001248
 		public FovEditor() : base("")
 		{
 		}
 
-		// Token: 0x06000091 RID: 145 RVA: 0x00003058 File Offset: 0x00001258
 		protected override Widget OnCreateWidget()
 		{
 			Widget result = base.OnCreateWidget();
@@ -22,7 +19,6 @@ namespace CocoStudio.Model.Editor
 			return result;
 		}
 
-		// Token: 0x06000092 RID: 146 RVA: 0x0000309C File Offset: 0x0000129C
 		protected override void OnSetControl()
 		{
 			float value = (float)base.PropertyItem.Values[0];

@@ -6,7 +6,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 	/// Represents a reference to a type.
 	/// Must be resolved before it can be used as type.
 	/// </summary>
-	// Token: 0x02000008 RID: 8
 	public interface ITypeReference
 	{
 		/// <summary>
@@ -23,7 +22,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// In case of an error, returns an unknown type (<see cref="F:ICSharpCode.NRefactory.TypeSystem.TypeKind.Unknown" />).
 		/// Never returns null.
 		/// </returns>
-		// Token: 0x06000020 RID: 32
 		IType Resolve(ITypeResolveContext context);
 	}
 }

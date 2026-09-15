@@ -5,11 +5,9 @@ using MonoDevelop.Core.Serialization;
 
 namespace CocoStudio.Projects.Formates
 {
-	// Token: 0x02000038 RID: 56
 	[Extension(typeof(IFileFormat))]
 	internal class SolutionFormat : XmlFileFormat
 	{
-		// Token: 0x0600014B RID: 331 RVA: 0x00005F44 File Offset: 0x00004144
 		protected override bool OnCanReadFile(FilePath file, Type expectedObjectType)
 		{
 			return expectedObjectType.Equals(typeof(Solution)) && FileFormat.CheckFileSuffix(file, new string[]
@@ -18,7 +16,6 @@ namespace CocoStudio.Projects.Formates
 			});
 		}
 
-		// Token: 0x0600014C RID: 332 RVA: 0x00005F80 File Offset: 0x00004180
 		protected override XmlDataSerializer CreateSerializer(FilePath file)
 		{
 			XmlDataSerializer xmlDataSerializer = base.CreateSerializer(file);
@@ -38,7 +35,6 @@ namespace CocoStudio.Projects.Formates
 			return xmlDataSerializer;
 		}
 
-		// Token: 0x0600014D RID: 333 RVA: 0x00006048 File Offset: 0x00004248
 		protected override bool OnCanWriteFile(object obj)
 		{
 			return obj.GetType().Equals(typeof(Solution));

@@ -4,25 +4,16 @@ using System.Net;
 
 namespace Modules.Communal.PList.Internal
 {
-	// Token: 0x02000003 RID: 3
 	public class PListBinaryReader
 	{
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000008 RID: 8 RVA: 0x00002050 File Offset: 0x00000250
-		// (set) Token: 0x06000009 RID: 9 RVA: 0x00002067 File Offset: 0x00000267
 		internal Stream BaseStream { get; private set; }
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x0600000A RID: 10 RVA: 0x00002070 File Offset: 0x00000270
-		// (set) Token: 0x0600000B RID: 11 RVA: 0x00002087 File Offset: 0x00000287
 		internal byte ElementIdxSize { get; private set; }
 
-		// Token: 0x0600000C RID: 12 RVA: 0x00002090 File Offset: 0x00000290
 		internal PListBinaryReader()
 		{
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x0000209C File Offset: 0x0000029C
 		public IPListElement Read(Stream stream)
 		{
 			this.BaseStream = stream;
@@ -56,24 +47,16 @@ namespace Modules.Communal.PList.Internal
 			return this.ReadInternal(elemIdx);
 		}
 
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x0600000E RID: 14 RVA: 0x000021E8 File Offset: 0x000003E8
-		// (set) Token: 0x0600000F RID: 15 RVA: 0x000021FF File Offset: 0x000003FF
 		internal byte CurrentElementTypeCode { get; private set; }
 
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000010 RID: 16 RVA: 0x00002208 File Offset: 0x00000408
-		// (set) Token: 0x06000011 RID: 17 RVA: 0x0000221F File Offset: 0x0000041F
 		internal int CurrentElementLength { get; private set; }
 
-		// Token: 0x06000012 RID: 18 RVA: 0x00002228 File Offset: 0x00000428
 		internal IPListElement ReadInternal(int elemIdx)
 		{
 			this.BaseStream.Seek((long)this.m_Offsets[elemIdx], SeekOrigin.Begin);
 			return this.ReadInternal();
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002258 File Offset: 0x00000458
 		internal IPListElement ReadInternal()
 		{
 			byte[] array = new byte[1];
@@ -103,7 +86,6 @@ namespace Modules.Communal.PList.Internal
 			return iplistElement2;
 		}
 
-		// Token: 0x04000001 RID: 1
 		private int[] m_Offsets;
 	}
 }

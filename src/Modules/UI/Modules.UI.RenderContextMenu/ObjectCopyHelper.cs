@@ -3,10 +3,8 @@ using CocoStudio.Model.ViewModel;
 
 namespace Modules.UI.RenderContextMenu
 {
-	// Token: 0x0200001D RID: 29
 	public static class ObjectCopyHelper
 	{
-		// Token: 0x060000D8 RID: 216 RVA: 0x000058F0 File Offset: 0x00003AF0
 		public static bool GetChildGlobalIndex(AbstractNodeObject parent, AbstractNodeObject vObject, ref int index)
 		{
 			index++;

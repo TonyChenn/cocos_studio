@@ -10,11 +10,9 @@ using MonoDevelop.Core;
 
 namespace Modules.UI.Menu
 {
-	// Token: 0x02000002 RID: 2
 	[Extension(Path = "/CocoStudio/Ide/MainMenuBar")]
 	public class MenuUC : EventBox, IMainWindowPart
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public MenuUC()
 		{
 			CommandEntrySet commandEntrySet = Services.CommandService.CreateCommandEntrySet("/CocoStudio/Ide/MainMenu");

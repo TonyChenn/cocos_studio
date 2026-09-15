@@ -2,10 +2,8 @@
 
 namespace CocoStudio.UndoManager.TaskModel
 {
-	// Token: 0x0200002B RID: 43
 	public sealed class UndoableTask<T> : UndoableTaskBase<T>
 	{
-		// Token: 0x0600015E RID: 350 RVA: 0x000072A8 File Offset: 0x000054A8
 		public UndoableTask(Action<TaskEventArgs<T>> execute, Action<TaskEventArgs<T>> undo, string descriptionForUser)
 		{
 			ArgumentValidator.AssertNotNullOrEmpty(descriptionForUser, "descriptionForUser");
@@ -22,8 +20,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			};
 		}
 
-		// Token: 0x1700003E RID: 62
-		// (get) Token: 0x0600015F RID: 351 RVA: 0x00007340 File Offset: 0x00005540
 		public override string DescriptionForUser
 		{
 			get
@@ -32,9 +28,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x1700003F RID: 63
-		// (get) Token: 0x06000160 RID: 352 RVA: 0x00007358 File Offset: 0x00005558
-		// (set) Token: 0x06000161 RID: 353 RVA: 0x00007370 File Offset: 0x00005570
 		public new bool Repeatable
 		{
 			get
@@ -47,7 +40,6 @@ namespace CocoStudio.UndoManager.TaskModel
 			}
 		}
 
-		// Token: 0x04000060 RID: 96
 		private readonly string descriptionForUser;
 	}
 }

@@ -12,11 +12,8 @@ using Mono.Addins;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x02000009 RID: 9
 	public class Cocos2dxSupplymentServices
 	{
-		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x06000044 RID: 68 RVA: 0x00002BDD File Offset: 0x00000DDD
 		public string DefaultCppPublishDir
 		{
 			get
@@ -25,12 +22,8 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x14000003 RID: 3
-		// (add) Token: 0x06000045 RID: 69 RVA: 0x00002BE4 File Offset: 0x00000DE4
-		// (remove) Token: 0x06000046 RID: 70 RVA: 0x00002C1C File Offset: 0x00000E1C
 		public event EventHandler SupplymentFinished;
 
-		// Token: 0x06000047 RID: 71 RVA: 0x00002C5C File Offset: 0x00000E5C
 		internal Cocos2dxSupplymentServices()
 		{
 			List<ICocosSupplyment> list = new List<ICocosSupplyment>();
@@ -44,7 +37,6 @@ namespace Modules.Communal.CocosAdapter
 			select items;
 		}
 
-		// Token: 0x06000048 RID: 72 RVA: 0x00002CC4 File Offset: 0x00000EC4
 		public bool Supplyment(EnumSolutionCodeType dstCodeType, EnumOperationType operationType)
 		{
 			if (dstCodeType == EnumSolutionCodeType.Resource)
@@ -69,7 +61,6 @@ namespace Modules.Communal.CocosAdapter
 			return true;
 		}
 
-		// Token: 0x06000049 RID: 73 RVA: 0x00002D78 File Offset: 0x00000F78
 		private bool RunSupplyment(string frameworkVersion, EnumProgramLanguage language)
 		{
 			ICocosSupplyment supplymenter = null;
@@ -112,14 +103,12 @@ namespace Modules.Communal.CocosAdapter
 			return isSuccessed;
 		}
 
-		// Token: 0x0600004A RID: 74 RVA: 0x00002EA4 File Offset: 0x000010A4
 		private bool CheckNeedSupplyment(EnumSolutionCodeType dstCodeType)
 		{
 			EnumSolutionCodeType solutionCodeType = Cocos2dxServices.CocosProperties.SolutionCodeType;
 			return solutionCodeType < dstCodeType;
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x00002EC4 File Offset: 0x000010C4
 		internal bool CheckNeedResetPublishDir(EnumProgramLanguage language)
 		{
 			if (Services.ProjectsService.CurrentSolution == null)
@@ -143,7 +132,6 @@ namespace Modules.Communal.CocosAdapter
 			return true;
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x00002F4C File Offset: 0x0000114C
 		internal string GetDefaultPublishDir(EnumProgramLanguage language)
 		{
 			string result;
@@ -158,7 +146,6 @@ namespace Modules.Communal.CocosAdapter
 			return result;
 		}
 
-		// Token: 0x04000009 RID: 9
 		private IEnumerable<ICocosSupplyment> supplymentList;
 	}
 }

@@ -10,10 +10,8 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.AutoUpdate
 {
-	// Token: 0x02000007 RID: 7
 	internal class DownloadProcesser
 	{
-		// Token: 0x06000033 RID: 51 RVA: 0x00002838 File Offset: 0x00000A38
 		public void DownloadAsync(DownloadMonitor monitor)
 		{
 			if (monitor == null)
@@ -38,7 +36,6 @@ namespace Modules.Communal.AutoUpdate
 			task.Start();
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x000028A0 File Offset: 0x00000AA0
 		private void StartWinDownload(DownloadMonitor monitor)
 		{
 			monitor.Start();
@@ -87,7 +84,6 @@ namespace Modules.Communal.AutoUpdate
 			}
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x000029A0 File Offset: 0x00000BA0
 		private void StartMacDownload(DownloadMonitor monitor)
 		{
 			monitor.Start();
@@ -134,7 +130,6 @@ namespace Modules.Communal.AutoUpdate
 			}
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x00002AB8 File Offset: 0x00000CB8
 		private bool DownloadMacPackages(DownloadMonitor monitor, bool downloadStudio, bool downloadRuntime)
 		{
 			long num = 0L;
@@ -176,7 +171,6 @@ namespace Modules.Communal.AutoUpdate
 			return flag;
 		}
 
-		// Token: 0x06000037 RID: 55 RVA: 0x00002B6C File Offset: 0x00000D6C
 		private bool CheckFileIsDownloaded(string filePath, string fileSize)
 		{
 			if (File.Exists(filePath))
@@ -188,7 +182,6 @@ namespace Modules.Communal.AutoUpdate
 			return false;
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00002BA8 File Offset: 0x00000DA8
 		private bool DownloadFile(DownloadMonitor monitor, string localPath, string serverUrl, long startLength, long sumLength)
 		{
 			long num = 0L;
@@ -293,7 +286,6 @@ namespace Modules.Communal.AutoUpdate
 			return result;
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00002E24 File Offset: 0x00001024
 		private void InitDirectory(string dir, List<string> retainFiles)
 		{
 			if (string.IsNullOrEmpty(dir))

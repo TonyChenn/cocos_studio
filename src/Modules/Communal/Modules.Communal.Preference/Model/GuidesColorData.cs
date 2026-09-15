@@ -5,11 +5,8 @@ using Modules.Communal.MultiLanguage;
 
 namespace Modules.Communal.Preference.Model
 {
-	// Token: 0x02000008 RID: 8
 	public class GuidesColorData
 	{
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000016 RID: 22 RVA: 0x00002230 File Offset: 0x00000430
 		public static GuidesColorData Instance
 		{
 			get
@@ -22,12 +19,8 @@ namespace Modules.Communal.Preference.Model
 			}
 		}
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x06000017 RID: 23 RVA: 0x00002248 File Offset: 0x00000448
-		// (set) Token: 0x06000018 RID: 24 RVA: 0x00002250 File Offset: 0x00000450
 		public List<GuidesColorInfo> GuidesColorList { get; private set; }
 
-		// Token: 0x06000019 RID: 25 RVA: 0x0000225C File Offset: 0x0000045C
 		private GuidesColorData()
 		{
 			this.GuidesColorList = new List<GuidesColorInfo>();
@@ -65,7 +58,6 @@ namespace Modules.Communal.Preference.Model
 			this.GuidesColorList.Add(guidesColorInfo8);
 		}
 
-		// Token: 0x0400000F RID: 15
 		private static GuidesColorData instance;
 	}
 }

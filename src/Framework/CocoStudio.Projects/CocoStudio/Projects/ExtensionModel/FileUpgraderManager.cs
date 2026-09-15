@@ -7,16 +7,13 @@ using Mono.Addins;
 
 namespace CocoStudio.Projects.ExtensionModel
 {
-	// Token: 0x02000006 RID: 6
 	internal class FileUpgraderManager
 	{
-		// Token: 0x0600000C RID: 12 RVA: 0x00002110 File Offset: 0x00000310
 		static FileUpgraderManager()
 		{
 			FileUpgraderManager.LoadFileUpgraders();
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x00002118 File Offset: 0x00000318
 		private static void LoadFileUpgraders()
 		{
 			try
@@ -35,7 +32,6 @@ namespace CocoStudio.Projects.ExtensionModel
 			}
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x00002190 File Offset: 0x00000390
 		public static bool Upgrade(string filePath)
 		{
 			bool result = false;
@@ -64,7 +60,6 @@ namespace CocoStudio.Projects.ExtensionModel
 			return result;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00002274 File Offset: 0x00000474
 		public static bool Upgrade(CocosFile file)
 		{
 			bool result = false;
@@ -86,7 +81,6 @@ namespace CocoStudio.Projects.ExtensionModel
 			return result;
 		}
 
-		// Token: 0x04000004 RID: 4
 		private static List<IFileUpgrader> fileUpgraderList;
 	}
 }

@@ -6,10 +6,8 @@ using System.Text;
 
 namespace Cocos.Launcher.Library
 {
-	// Token: 0x02000006 RID: 6
 	public static class JsonHelper
 	{
-		// Token: 0x06000028 RID: 40 RVA: 0x00002B18 File Offset: 0x00000D18
 		public static T Parse<T>(string jsonString)
 		{
 			T result;
@@ -20,7 +18,6 @@ namespace Cocos.Launcher.Library
 			return result;
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002B70 File Offset: 0x00000D70
 		public static string Stringify(object jsonObject)
 		{
 			string @string;
@@ -32,7 +29,6 @@ namespace Cocos.Launcher.Library
 			return @string;
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002BC4 File Offset: 0x00000DC4
 		public static string EncryptMD5(this string str)
 		{
 			MD5CryptoServiceProvider md5CryptoServiceProvider = new MD5CryptoServiceProvider();

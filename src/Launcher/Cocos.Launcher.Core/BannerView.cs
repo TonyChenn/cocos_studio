@@ -8,24 +8,20 @@ using Modules.Communal.MultiLanguage;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200005D RID: 93
 	[ToolboxItem(true)]
 	public class BannerView : EventBox
 	{
-		// Token: 0x06000333 RID: 819 RVA: 0x0000D246 File Offset: 0x0000B446
 		public BannerView()
 		{
 			this.Initialize();
 			base.ShowAll();
 		}
 
-		// Token: 0x06000334 RID: 820 RVA: 0x0000D25A File Offset: 0x0000B45A
 		internal void InitDefault()
 		{
 			Services.TabGroupService.SelectedTabChanged += this.TabGroupService_SelectedTabChanged;
 		}
 
-		// Token: 0x06000335 RID: 821 RVA: 0x0000D274 File Offset: 0x0000B474
 		private void Initialize()
 		{
 			HBox hbox = new HBox();
@@ -66,7 +62,6 @@ namespace Cocos.Launcher.Core
 			base.ModifyBg(StateType.Normal, ConstantConfig.Colors.MainTitleColor);
 		}
 
-		// Token: 0x06000336 RID: 822 RVA: 0x0000D450 File Offset: 0x0000B650
 		private void TabGroupService_SelectedTabChanged(object sender, EventArgs e)
 		{
 			switch (Services.TabGroupService.LastSelectedTabPage.Order)
@@ -99,14 +94,12 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000337 RID: 823 RVA: 0x0000D50A File Offset: 0x0000B70A
 		private void RemoveSearchEntry()
 		{
 			this.hBox_search.Remove(this.searchEntry);
 			this.hBox_search.ShowAll();
 		}
 
-		// Token: 0x06000338 RID: 824 RVA: 0x0000D528 File Offset: 0x0000B728
 		private void AddSearchEntry()
 		{
 			this.hBox_search.PackStart(this.searchEntry, false, false, 0U);
@@ -115,10 +108,8 @@ namespace Cocos.Launcher.Core
 			this.searchEntry.GrabDefault();
 		}
 
-		// Token: 0x04000131 RID: 305
 		private SearchEntry searchEntry;
 
-		// Token: 0x04000132 RID: 306
 		private HBox hBox_search;
 	}
 }

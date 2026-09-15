@@ -11,11 +11,8 @@ using Mono.Addins;
 
 namespace Modules.Communal.CocosAdapter.Platform
 {
-	// Token: 0x02000014 RID: 20
 	public class PlatformServices
 	{
-		// Token: 0x1700002B RID: 43
-		// (get) Token: 0x06000092 RID: 146 RVA: 0x00003EB6 File Offset: 0x000020B6
 		public IReadOnlyList<IPlatform> PlatformList
 		{
 			get
@@ -24,12 +21,8 @@ namespace Modules.Communal.CocosAdapter.Platform
 			}
 		}
 
-		// Token: 0x14000005 RID: 5
-		// (add) Token: 0x06000093 RID: 147 RVA: 0x00003EC0 File Offset: 0x000020C0
-		// (remove) Token: 0x06000094 RID: 148 RVA: 0x00003EF8 File Offset: 0x000020F8
 		public event EventHandler RunTypeListChanged;
 
-		// Token: 0x06000095 RID: 149 RVA: 0x00003F30 File Offset: 0x00002130
 		internal PlatformServices()
 		{
 			this._PlatformList = new List<IPlatform>();
@@ -41,7 +34,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			this._PlatformList.Sort();
 		}
 
-		// Token: 0x06000096 RID: 150 RVA: 0x00003F80 File Offset: 0x00002180
 		public bool CheckCanPackage(PackageParams prms)
 		{
 			if (!this.CheckFramework(prms))
@@ -63,7 +55,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return num != 0;
 		}
 
-		// Token: 0x06000097 RID: 151 RVA: 0x0000401C File Offset: 0x0000221C
 		public int GetPackagePlatformCount(PackageParams prms)
 		{
 			int num = 0;
@@ -77,7 +68,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return num;
 		}
 
-		// Token: 0x06000098 RID: 152 RVA: 0x00004098 File Offset: 0x00002298
 		public void StartPackage(PackageParams prms, CocosMonitor monitor)
 		{
 			monitor.Start();
@@ -121,7 +111,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			monitor.Finish(true);
 		}
 
-		// Token: 0x06000099 RID: 153 RVA: 0x000041F4 File Offset: 0x000023F4
 		public IPlatform CheckCanRun(PackageParams prms)
 		{
 			if (!this.CheckFramework(prms))
@@ -149,7 +138,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return null;
 		}
 
-		// Token: 0x0600009A RID: 154 RVA: 0x0000429C File Offset: 0x0000249C
 		public void StartRun(IPlatform platform, PackageParams prms, CocosMonitor monitor)
 		{
 			monitor.Start();
@@ -175,7 +163,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			monitor.Finish(isSuccess);
 		}
 
-		// Token: 0x0600009B RID: 155 RVA: 0x00004318 File Offset: 0x00002518
 		private void InitEnvironment(PackageParams prms)
 		{
 			string directoryName = Path.GetDirectoryName(prms.EngineInfo.RootPath);
@@ -185,7 +172,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			Environment.SetEnvironmentVariable("ANT_ROOT", Option.UserConfig.ANTPath);
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x0000437D File Offset: 0x0000257D
 		private bool CheckFramework(PackageParams prms)
 		{
 			prms.RefreshEngineInfo();
@@ -200,7 +186,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return true;
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x000043B4 File Offset: 0x000025B4
 		private bool UpgradeFramework(CocosMonitor monitor, PackageParams prms)
 		{
 			string currentFrameworkVersion = Cocos2dxServices.CocosProperties.CurrentFrameworkVersion;
@@ -225,7 +210,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return flag;
 		}
 
-		// Token: 0x0600009E RID: 158 RVA: 0x00004467 File Offset: 0x00002667
 		internal void RaiseRunTypeListChanged()
 		{
 			if (this.RunTypeListChanged != null)
@@ -234,7 +218,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			}
 		}
 
-		// Token: 0x04000028 RID: 40
 		private List<IPlatform> _PlatformList;
 	}
 }

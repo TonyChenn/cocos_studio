@@ -10,36 +10,30 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.ViewModel
 {
-	// Token: 0x02000110 RID: 272
 	[ModelExtension(true, 50)]
 	[ControlGroup("Control_Container", 2)]
 	[EngineClassName("Layout")]
 	[DisplayName("Display_Component_UIPanel")]
 	public class PanelObject : WidgetObject, IScale9
 	{
-		// Token: 0x060009CE RID: 2510 RVA: 0x00027428 File Offset: 0x00025628
 		private CSPanel GetInnerWidget()
 		{
 			return (CSPanel)this.innerNode;
 		}
 
-		// Token: 0x060009CF RID: 2511 RVA: 0x00027445 File Offset: 0x00025645
 		public PanelObject()
 		{
 		}
 
-		// Token: 0x060009D0 RID: 2512 RVA: 0x00027488 File Offset: 0x00025688
 		public PanelObject(ScriptFileData fileData) : base(fileData)
 		{
 		}
 
-		// Token: 0x060009D1 RID: 2513 RVA: 0x000274D4 File Offset: 0x000256D4
 		protected override void CreateCSObject()
 		{
 			this.innerNode = new CSPanel();
 		}
 
-		// Token: 0x060009D2 RID: 2514 RVA: 0x000274E4 File Offset: 0x000256E4
 		protected override void InitData(bool useScript)
 		{
 			base.InitData(useScript);
@@ -57,9 +51,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002CE RID: 718
-		// (get) Token: 0x060009D3 RID: 2515 RVA: 0x000275A8 File Offset: 0x000257A8
-		// (set) Token: 0x060009D4 RID: 2516 RVA: 0x000275C8 File Offset: 0x000257C8
 		[UndoProperty]
 		[DisplayName("Display_Clip")]
 		[Category("Group_Feature")]
@@ -77,9 +68,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002CF RID: 719
-		// (get) Token: 0x060009D5 RID: 2517 RVA: 0x00027620 File Offset: 0x00025820
-		// (set) Token: 0x060009D6 RID: 2518 RVA: 0x00027680 File Offset: 0x00025880
 		[IgnoreResize]
 		[DisplayName("Display_BackgroundImage")]
 		[Editor(typeof(ResourceImageEditor), typeof(ResourceImageEditor))]
@@ -126,9 +114,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D0 RID: 720
-		// (get) Token: 0x060009D7 RID: 2519 RVA: 0x00027730 File Offset: 0x00025930
-		// (set) Token: 0x060009D8 RID: 2520 RVA: 0x00027748 File Offset: 0x00025948
 		[UndoProperty]
 		[PropertyOrder(46)]
 		[Category("Group_Feature")]
@@ -146,9 +131,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D1 RID: 721
-		// (get) Token: 0x060009D9 RID: 2521 RVA: 0x000277A0 File Offset: 0x000259A0
-		// (set) Token: 0x060009DA RID: 2522 RVA: 0x000277C0 File Offset: 0x000259C0
 		public int ComboBoxIndex
 		{
 			get
@@ -162,9 +144,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D2 RID: 722
-		// (get) Token: 0x060009DB RID: 2523 RVA: 0x00027818 File Offset: 0x00025A18
-		// (set) Token: 0x060009DC RID: 2524 RVA: 0x00027838 File Offset: 0x00025A38
 		[PropertyOrder(50)]
 		[UndoProperty]
 		[DisplayName("End_color_set")]
@@ -182,9 +161,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D3 RID: 723
-		// (get) Token: 0x060009DD RID: 2525 RVA: 0x00027890 File Offset: 0x00025A90
-		// (set) Token: 0x060009DE RID: 2526 RVA: 0x000278B0 File Offset: 0x00025AB0
 		[UndoProperty]
 		[PropertyOrder(48)]
 		[DisplayName("Start_color_set")]
@@ -202,9 +178,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D4 RID: 724
-		// (get) Token: 0x060009DF RID: 2527 RVA: 0x00027908 File Offset: 0x00025B08
-		// (set) Token: 0x060009E0 RID: 2528 RVA: 0x00027928 File Offset: 0x00025B28
 		[PropertyOrder(47)]
 		[UndoProperty]
 		[DisplayName("Single_color_set")]
@@ -222,9 +195,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D5 RID: 725
-		// (get) Token: 0x060009E1 RID: 2529 RVA: 0x00027980 File Offset: 0x00025B80
-		// (set) Token: 0x060009E2 RID: 2530 RVA: 0x00027998 File Offset: 0x00025B98
 		[DisplayName("Changed_Direction")]
 		[UndoProperty]
 		[Editor(typeof(SliderEditor), typeof(SliderEditor))]
@@ -259,14 +229,8 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D6 RID: 726
-		// (get) Token: 0x060009E3 RID: 2531 RVA: 0x00027A70 File Offset: 0x00025C70
-		// (set) Token: 0x060009E4 RID: 2532 RVA: 0x00027A87 File Offset: 0x00025C87
 		public ScaleValue ColorVector { get; set; }
 
-		// Token: 0x170002D7 RID: 727
-		// (get) Token: 0x060009E5 RID: 2533 RVA: 0x00027A90 File Offset: 0x00025C90
-		// (set) Token: 0x060009E6 RID: 2534 RVA: 0x00027AB0 File Offset: 0x00025CB0
 		[DisplayName("Background_color_transparency")]
 		[ValueRange(0, 255, 1f, 10f)]
 		[Editor(typeof(SliderEditor), typeof(SliderEditor))]
@@ -289,9 +253,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D8 RID: 728
-		// (get) Token: 0x060009E7 RID: 2535 RVA: 0x00027B1C File Offset: 0x00025D1C
-		// (set) Token: 0x060009E8 RID: 2536 RVA: 0x00027B34 File Offset: 0x00025D34
 		[DisplayName("Display_Sudoku")]
 		[PropertyOrder(37)]
 		[Category("Display_Sudoku")]
@@ -312,9 +273,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002D9 RID: 729
-		// (get) Token: 0x060009E9 RID: 2537 RVA: 0x00027B94 File Offset: 0x00025D94
-		// (set) Token: 0x060009EA RID: 2538 RVA: 0x00027BB4 File Offset: 0x00025DB4
 		[UndoProperty]
 		public virtual int LeftEage
 		{
@@ -330,9 +288,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002DA RID: 730
-		// (get) Token: 0x060009EB RID: 2539 RVA: 0x00027C18 File Offset: 0x00025E18
-		// (set) Token: 0x060009EC RID: 2540 RVA: 0x00027C38 File Offset: 0x00025E38
 		[UndoProperty]
 		public virtual int RightEage
 		{
@@ -348,9 +303,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002DB RID: 731
-		// (get) Token: 0x060009ED RID: 2541 RVA: 0x00027C9C File Offset: 0x00025E9C
-		// (set) Token: 0x060009EE RID: 2542 RVA: 0x00027CBC File Offset: 0x00025EBC
 		[UndoProperty]
 		public virtual int TopEage
 		{
@@ -366,9 +318,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002DC RID: 732
-		// (get) Token: 0x060009EF RID: 2543 RVA: 0x00027D20 File Offset: 0x00025F20
-		// (set) Token: 0x060009F0 RID: 2544 RVA: 0x00027D40 File Offset: 0x00025F40
 		[UndoProperty]
 		public virtual int BottomEage
 		{
@@ -384,8 +333,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002DD RID: 733
-		// (get) Token: 0x060009F1 RID: 2545 RVA: 0x00027DA4 File Offset: 0x00025FA4
 		public SizeF ResourceSize
 		{
 			get
@@ -403,9 +350,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002DE RID: 734
-		// (get) Token: 0x060009F2 RID: 2546 RVA: 0x00027DF0 File Offset: 0x00025FF0
-		// (set) Token: 0x060009F3 RID: 2547 RVA: 0x00027E0D File Offset: 0x0002600D
 		public virtual int Scale9OriginX
 		{
 			get
@@ -417,9 +361,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002DF RID: 735
-		// (get) Token: 0x060009F4 RID: 2548 RVA: 0x00027E10 File Offset: 0x00026010
-		// (set) Token: 0x060009F5 RID: 2549 RVA: 0x00027E2D File Offset: 0x0002602D
 		public virtual int Scale9OriginY
 		{
 			get
@@ -431,9 +372,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002E0 RID: 736
-		// (get) Token: 0x060009F6 RID: 2550 RVA: 0x00027E30 File Offset: 0x00026030
-		// (set) Token: 0x060009F7 RID: 2551 RVA: 0x00027E4D File Offset: 0x0002604D
 		public virtual int Scale9Width
 		{
 			get
@@ -445,9 +383,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x170002E1 RID: 737
-		// (get) Token: 0x060009F8 RID: 2552 RVA: 0x00027E50 File Offset: 0x00026050
-		// (set) Token: 0x060009F9 RID: 2553 RVA: 0x00027E6D File Offset: 0x0002606D
 		public virtual int Scale9Height
 		{
 			get
@@ -459,19 +394,16 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x060009FA RID: 2554 RVA: 0x00027E70 File Offset: 0x00026070
 		public override bool CanReceiveDragObject(ModelDragData objectData, bool showLog)
 		{
 			return objectData != null;
 		}
 
-		// Token: 0x060009FB RID: 2555 RVA: 0x00027E94 File Offset: 0x00026094
 		protected override bool CanContinueTest()
 		{
 			return base.CanContinueTest() && !this.ClipAble;
 		}
 
-		// Token: 0x060009FC RID: 2556 RVA: 0x00027EBC File Offset: 0x000260BC
 		protected override void SetValue(object cObject)
 		{
 			base.SetValue(cObject);
@@ -497,31 +429,23 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x060009FD RID: 2557 RVA: 0x00027FBC File Offset: 0x000261BC
 		protected internal override bool IsCanChangeSize()
 		{
 			return true;
 		}
 
-		// Token: 0x04000450 RID: 1104
 		private ResourceFile file = null;
 
-		// Token: 0x04000451 RID: 1105
 		private float _colorAngle = 0f;
 
-		// Token: 0x04000452 RID: 1106
 		private bool _scale9Enabled = false;
 
-		// Token: 0x04000453 RID: 1107
 		private int _left = 0;
 
-		// Token: 0x04000454 RID: 1108
 		private int _right = 0;
 
-		// Token: 0x04000455 RID: 1109
 		private int _top = 0;
 
-		// Token: 0x04000456 RID: 1110
 		private int _bottom = 0;
 	}
 }

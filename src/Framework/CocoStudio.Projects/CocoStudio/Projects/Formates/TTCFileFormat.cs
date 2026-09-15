@@ -6,17 +6,14 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Projects.Formates
 {
-	// Token: 0x0200001B RID: 27
 	[Extension(typeof(IFileFormat))]
 	internal class TTCFileFormat : FileFormat
 	{
-		// Token: 0x06000090 RID: 144 RVA: 0x00003811 File Offset: 0x00001A11
 		protected override bool OnCanWriteFile(object obj)
 		{
 			return obj is TTFFile;
 		}
 
-		// Token: 0x06000091 RID: 145 RVA: 0x0000381C File Offset: 0x00001A1C
 		protected override bool OnCanReadFile(FilePath filePath, Type expectedObjectType)
 		{
 			return expectedObjectType.Equals(typeof(ResourceItem)) && FileFormat.CheckFileSuffix(filePath, new string[]
@@ -25,13 +22,11 @@ namespace CocoStudio.Projects.Formates
 			});
 		}
 
-		// Token: 0x06000092 RID: 146 RVA: 0x00003858 File Offset: 0x00001A58
 		protected override object OnReadFile(FilePath file, Type expectedType, IProgressMonitor monitor)
 		{
 			return new TTFFile(file);
 		}
 
-		// Token: 0x06000093 RID: 147 RVA: 0x00003860 File Offset: 0x00001A60
 		public static bool CheckDataIsValid(FilePath fileName)
 		{
 			bool result;
@@ -59,7 +54,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x0400002C RID: 44
 		public const string Suffix = ".ttc";
 	}
 }

@@ -7,7 +7,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 	/// <summary>
 	/// Static helper methods for reflection names.
 	/// </summary>
-	// Token: 0x020000FF RID: 255
 	public static class ReflectionHelper
 	{
 		/// <summary>
@@ -18,7 +17,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// This method cannot be used with open types; all type parameters will be substituted
 		/// with <see cref="F:ICSharpCode.NRefactory.TypeSystem.SpecialType.UnknownType" />.
 		/// </remarks>
-		// Token: 0x06000956 RID: 2390 RVA: 0x00018E4F File Offset: 0x00017E4F
 		public static IType FindType(this ICompilation compilation, Type type)
 		{
 			return type.ToTypeReference().Resolve(compilation.TypeResolveContext);
@@ -35,7 +33,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// to resolve the type reference.
 		/// For closed types, the root type resolve context for the compilation is sufficient.
 		/// </remarks>
-		// Token: 0x06000957 RID: 2391 RVA: 0x00018E64 File Offset: 0x00017E64
 		public static ITypeReference ToTypeReference(this Type type)
 		{
 			if (type == null)
@@ -114,7 +111,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// Removes the ` with type parameter count from the reflection name.
 		/// </summary>
 		/// <remarks>Do not use this method with the full name of inner classes.</remarks>
-		// Token: 0x06000958 RID: 2392 RVA: 0x0001901C File Offset: 0x0001801C
 		public static string SplitTypeParameterCountFromReflectionName(string reflectionName)
 		{
 			int num = reflectionName.LastIndexOf('`');
@@ -129,7 +125,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// Removes the ` with type parameter count from the reflection name.
 		/// </summary>
 		/// <remarks>Do not use this method with the full name of inner classes.</remarks>
-		// Token: 0x06000959 RID: 2393 RVA: 0x00019040 File Offset: 0x00018040
 		public static string SplitTypeParameterCountFromReflectionName(string reflectionName, out int typeParameterCount)
 		{
 			int num = reflectionName.LastIndexOf('`');
@@ -149,7 +144,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Retrieves a built-in type using the specified type code.
 		/// </summary>
-		// Token: 0x0600095A RID: 2394 RVA: 0x0001907C File Offset: 0x0001807C
 		public static IType FindType(this ICompilation compilation, TypeCode typeCode)
 		{
 			return compilation.FindType((KnownTypeCode)typeCode);
@@ -160,7 +154,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// </summary>
 		/// <param name="typeCode">The type to be converted.</param>
 		/// <returns>Returns the type reference.</returns>
-		// Token: 0x0600095B RID: 2395 RVA: 0x00019085 File Offset: 0x00018085
 		public static ITypeReference ToTypeReference(this TypeCode typeCode)
 		{
 			return KnownTypeReference.Get((KnownTypeCode)typeCode);
@@ -169,7 +162,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Gets the type code for the specified type, or TypeCode.Empty if none of the other type codes match.
 		/// </summary>
-		// Token: 0x0600095C RID: 2396 RVA: 0x00019090 File Offset: 0x00018090
 		public static TypeCode GetTypeCode(IType type)
 		{
 			ITypeDefinition typeDefinition = type as ITypeDefinition;
@@ -202,7 +194,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// it will look in all other assemblies of the compilation.
 		/// </remarks>
 		/// <seealso cref="M:ICSharpCode.NRefactory.TypeSystem.FullTypeName.#ctor(System.String)" />
-		// Token: 0x0600095D RID: 2397 RVA: 0x000190C0 File Offset: 0x000180C0
 		public static ITypeReference ParseReflectionName(string reflectionTypeName)
 		{
 			if (reflectionTypeName == null)
@@ -218,7 +209,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return result;
 		}
 
-		// Token: 0x0600095E RID: 2398 RVA: 0x000190FC File Offset: 0x000180FC
 		private static bool IsReflectionNameSpecialCharacter(char c)
 		{
 			switch (c)
@@ -252,7 +242,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return true;
 		}
 
-		// Token: 0x0600095F RID: 2399 RVA: 0x00019150 File Offset: 0x00018150
 		private static ITypeReference ParseReflectionName(string reflectionTypeName, ref int pos)
 		{
 			if (pos == reflectionTypeName.Length)
@@ -387,7 +376,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return typeReference;
 		}
 
-		// Token: 0x06000960 RID: 2400 RVA: 0x00019458 File Offset: 0x00018458
 		private static ITypeReference CreateGetClassTypeReference(string assemblyName, string typeName, int tpc)
 		{
 			IAssemblyReference assembly;
@@ -407,7 +395,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return new GetClassTypeReference(assembly, typeName.Substring(0, num), typeName.Substring(num + 1), tpc);
 		}
 
-		// Token: 0x06000961 RID: 2401 RVA: 0x000194A8 File Offset: 0x000184A8
 		private static string SkipAheadAndReadAssemblyName(string reflectionTypeName, int pos)
 		{
 			int num = 0;
@@ -447,7 +434,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return null;
 		}
 
-		// Token: 0x06000962 RID: 2402 RVA: 0x00019548 File Offset: 0x00018548
 		private static string ReadTypeName(string reflectionTypeName, ref int pos, out int tpc)
 		{
 			int num = pos;
@@ -472,7 +458,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 			return result;
 		}
 
-		// Token: 0x06000963 RID: 2403 RVA: 0x000195C4 File Offset: 0x000185C4
 		internal static int ReadTypeParameterCount(string reflectionTypeName, ref int pos)
 		{
 			int num = pos;
@@ -496,7 +481,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// A reflection class used to represent <c>null</c>.
 		/// </summary>
-		// Token: 0x02000100 RID: 256
 		public sealed class Null
 		{
 		}
@@ -504,7 +488,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// A reflection class used to represent <c>dynamic</c>.
 		/// </summary>
-		// Token: 0x02000101 RID: 257
 		public sealed class Dynamic
 		{
 		}
@@ -512,7 +495,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// A reflection class used to represent an unbound type argument.
 		/// </summary>
-		// Token: 0x02000102 RID: 258
 		public sealed class UnboundTypeArgument
 		{
 		}

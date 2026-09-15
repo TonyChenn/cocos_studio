@@ -8,10 +8,8 @@ using Stetic;
 
 namespace Modules.Communal.CocosCodeIDE
 {
-	// Token: 0x02000002 RID: 2
 	public class CocosCodeIDEDialog : Dialog
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public CocosCodeIDEDialog()
 		{
 			this.Build();
@@ -19,7 +17,6 @@ namespace Modules.Communal.CocosCodeIDE
 			base.ShowAll();
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x0000206C File Offset: 0x0000026C
 		private void Init()
 		{
 			this.SetToDialogStyle(null, true, true, true);
@@ -44,7 +41,6 @@ namespace Modules.Communal.CocosCodeIDE
 			this.button_already = null;
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x0000216C File Offset: 0x0000036C
 		protected void OnButtonAlreadyClicked(object sender, EventArgs e)
 		{
 			this.Destroy();
@@ -53,20 +49,17 @@ namespace Modules.Communal.CocosCodeIDE
 			selectPathDialog.Destroy();
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x00002192 File Offset: 0x00000392
 		protected void OnButtonOKClicked(object sender, EventArgs e)
 		{
 			CocosCodeIDEService.Instance.DownloadCocosCodeIDE();
 			this.Destroy();
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x000021A4 File Offset: 0x000003A4
 		protected void OnButtonCancelClicked(object sender, EventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x000021AC File Offset: 0x000003AC
 		protected void OnDialogKeyPressed(object o, KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Return)
@@ -75,7 +68,6 @@ namespace Modules.Communal.CocosCodeIDE
 			}
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x000021C8 File Offset: 0x000003C8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -206,40 +198,28 @@ namespace Modules.Communal.CocosCodeIDE
 			this.buttonOk.Clicked += this.OnButtonOKClicked;
 		}
 
-		// Token: 0x04000001 RID: 1
 		private VBox vbox_main;
 
-		// Token: 0x04000002 RID: 2
 		private VBox vbox_top;
 
-		// Token: 0x04000003 RID: 3
 		private HBox hbox_main;
 
-		// Token: 0x04000004 RID: 4
 		private HBox hbox_left;
 
-		// Token: 0x04000005 RID: 5
 		private Label label_content;
 
-		// Token: 0x04000006 RID: 6
 		private HBox hbox_right;
 
-		// Token: 0x04000007 RID: 7
 		private VBox vbox_bottom;
 
-		// Token: 0x04000008 RID: 8
 		private HBox hbox2;
 
-		// Token: 0x04000009 RID: 9
 		private Button button_already;
 
-		// Token: 0x0400000A RID: 10
 		private HBox hbox1;
 
-		// Token: 0x0400000B RID: 11
 		private Button buttonOk;
 
-		// Token: 0x0400000C RID: 12
 		private Button buttonCancel;
 	}
 }

@@ -11,27 +11,18 @@ using Modules.Communal.MultiLanguage;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x02000058 RID: 88
 	[ToolboxItem(true)]
 	public class SearchHotWords : VBox
 	{
-		// Token: 0x14000013 RID: 19
-		// (add) Token: 0x060002F9 RID: 761 RVA: 0x0000BD38 File Offset: 0x00009F38
-		// (remove) Token: 0x060002FA RID: 762 RVA: 0x0000BD70 File Offset: 0x00009F70
 		public event EventHandler<EventArgs> SelectedChanged;
 
-		// Token: 0x170000A0 RID: 160
-		// (get) Token: 0x060002FB RID: 763 RVA: 0x0000BDA5 File Offset: 0x00009FA5
-		// (set) Token: 0x060002FC RID: 764 RVA: 0x0000BDAD File Offset: 0x00009FAD
 		public HotWordsBox ActivatedItem { get; set; }
 
-		// Token: 0x060002FD RID: 765 RVA: 0x0000BDB6 File Offset: 0x00009FB6
 		public SearchHotWords()
 		{
 			this.Initialize();
 		}
 
-		// Token: 0x060002FE RID: 766 RVA: 0x0000BDC4 File Offset: 0x00009FC4
 		private void Initialize()
 		{
 			if (CocoStudio.Core.Services.NetworkService.IsOK)
@@ -42,7 +33,6 @@ namespace Cocos.Launcher.Core
 			CocoStudio.Core.Services.NetworkService.NetworkChanged += this.NetworkService_NetworkChanged;
 		}
 
-		// Token: 0x060002FF RID: 767 RVA: 0x0000BDEF File Offset: 0x00009FEF
 		private void NetworkService_NetworkChanged(object sender, NetworkChangedEventArgs e)
 		{
 			if (CocoStudio.Core.Services.NetworkService.IsOK)
@@ -52,7 +42,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000300 RID: 768 RVA: 0x0000BE1C File Offset: 0x0000A01C
 		private void GetHotWords()
 		{
 			HttpSync httpSync = new HttpSync();
@@ -60,7 +49,6 @@ namespace Cocos.Launcher.Core
 			httpSync.GetSyncResponseOfString(ConstantConfig.Constant.SearchHotWordsUrl, "get", "", null);
 		}
 
-		// Token: 0x06000301 RID: 769 RVA: 0x0000BE80 File Offset: 0x0000A080
 		private void HotWordsInfoResived(object sender, HttpSync.HttpSyncArgs e)
 		{
 			try
@@ -95,7 +83,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000302 RID: 770 RVA: 0x0000BF50 File Offset: 0x0000A150
 		private void SetContent(List<string> list)
 		{
 			if (list == null || list.Count <= 0)
@@ -156,7 +143,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x06000303 RID: 771 RVA: 0x0000C0D8 File Offset: 0x0000A2D8
 		private int GetLength(string text)
 		{
 			int result = text.Length;
@@ -167,7 +153,6 @@ namespace Cocos.Launcher.Core
 			return result;
 		}
 
-		// Token: 0x06000304 RID: 772 RVA: 0x0000C107 File Offset: 0x0000A307
 		internal void Restore()
 		{
 			if (this.ActivatedItem != null)
@@ -176,13 +161,11 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000305 RID: 773 RVA: 0x0000C11C File Offset: 0x0000A31C
 		private void hotWordsBox_EnterNotifyEvent(object sender, EnterNotifyEventArgs args)
 		{
 			this.ActivatedItem = (sender as HotWordsBox);
 		}
 
-		// Token: 0x06000306 RID: 774 RVA: 0x0000C12A File Offset: 0x0000A32A
 		private void hotWordsBox_ButtonReleaseEvent(object sender, ButtonReleaseEventArgs args)
 		{
 			if (this.SelectedChanged != null)

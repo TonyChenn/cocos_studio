@@ -10,15 +10,10 @@ using OpenDialogs;
 
 namespace Gtk
 {
-	// Token: 0x0200007F RID: 127
 	public class FileChooserAdapter
 	{
-		// Token: 0x17000087 RID: 135
-		// (get) Token: 0x060002C8 RID: 712 RVA: 0x0000AE64 File Offset: 0x00009064
-		// (set) Token: 0x060002C9 RID: 713 RVA: 0x0000AE7B File Offset: 0x0000907B
 		private bool IsSelectFiles { get; set; }
 
-		// Token: 0x060002CA RID: 714 RVA: 0x0000AE84 File Offset: 0x00009084
 		public FileChooserAdapter(FileAction fileChooserAction, string title = "", bool selectMultiple = false, string initialDirectory = "")
 		{
 			this.Title = title;
@@ -27,7 +22,6 @@ namespace Gtk
 			this.InitialDirectory = initialDirectory;
 		}
 
-		// Token: 0x060002CB RID: 715 RVA: 0x0000AEAC File Offset: 0x000090AC
 		public bool Run(bool IsWin7Style = false)
 		{
 			bool result;
@@ -75,7 +69,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x060002CC RID: 716 RVA: 0x0000AEFC File Offset: 0x000090FC
 		private bool WinOpenFile(bool IsWin7Style)
 		{
 			switch (this.FileChooserAction)
@@ -92,7 +85,6 @@ namespace Gtk
 			return false;
 		}
 
-		// Token: 0x060002CD RID: 717 RVA: 0x0000AF5C File Offset: 0x0000915C
 		private bool WindowsSaveFiles()
 		{
 			SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -132,7 +124,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x060002CE RID: 718 RVA: 0x0000B080 File Offset: 0x00009280
 		private bool GtkOpenFile()
 		{
 			Window mainWindow = ApplicationCurrent.MainWindow;
@@ -175,7 +166,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x060002CF RID: 719 RVA: 0x0000B1A8 File Offset: 0x000093A8
 		private bool WinOpenFile_OpenFile()
 		{
 			OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -214,7 +204,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x060002D0 RID: 720 RVA: 0x0000B32C File Offset: 0x0000952C
 		private bool WinOpenFile_OpenFolder(bool IsWin7Style)
 		{
 			bool result;
@@ -267,7 +256,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x060002D1 RID: 721 RVA: 0x0000B46C File Offset: 0x0000966C
 		private bool MacOpenFile()
 		{
 			NSOpenPanel nsopenPanel = new NSOpenPanel();
@@ -337,7 +325,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x060002D2 RID: 722 RVA: 0x0000B6A8 File Offset: 0x000098A8
 		private bool WindowsOpenFiles()
 		{
 			OpenFilesDialog filesdialog = new OpenFilesDialog();
@@ -357,30 +344,22 @@ namespace Gtk
 			return !string.IsNullOrWhiteSpace(filesdialog.FolderParent);
 		}
 
-		// Token: 0x0400034F RID: 847
 		public static bool ISMac;
 
-		// Token: 0x04000350 RID: 848
 		public string Path;
 
-		// Token: 0x04000351 RID: 849
 		public string[] Paths;
 
-		// Token: 0x04000352 RID: 850
 		public string[] AllowedFileTypes;
 
-		// Token: 0x04000353 RID: 851
 		public bool AllowMultipleSelect;
 
 		public bool UseModernWindowsDialog;
 
-		// Token: 0x04000354 RID: 852
 		public string Title;
 
-		// Token: 0x04000355 RID: 853
 		public FileAction FileChooserAction;
 
-		// Token: 0x04000356 RID: 854
 		public string InitialDirectory;
 	}
 }

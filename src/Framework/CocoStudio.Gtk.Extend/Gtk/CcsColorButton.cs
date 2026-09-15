@@ -6,13 +6,9 @@ using Stetic;
 
 namespace Gtk
 {
-	// Token: 0x02000097 RID: 151
 	[ToolboxItem(true)]
 	public class CcsColorButton : Bin
 	{
-		// Token: 0x17000091 RID: 145
-		// (get) Token: 0x0600032F RID: 815 RVA: 0x0000D5EC File Offset: 0x0000B7EC
-		// (set) Token: 0x06000330 RID: 816 RVA: 0x0000D604 File Offset: 0x0000B804
 		public Gdk.Color CurrentColor
 		{
 			get
@@ -26,9 +22,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x17000092 RID: 146
-		// (get) Token: 0x06000331 RID: 817 RVA: 0x0000D61C File Offset: 0x0000B81C
-		// (set) Token: 0x06000332 RID: 818 RVA: 0x0000D689 File Offset: 0x0000B889
 		public System.Drawing.Color ColorValue
 		{
 			get
@@ -44,12 +37,8 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x14000021 RID: 33
-		// (add) Token: 0x06000333 RID: 819 RVA: 0x0000D6B0 File Offset: 0x0000B8B0
-		// (remove) Token: 0x06000334 RID: 820 RVA: 0x0000D6EC File Offset: 0x0000B8EC
 		public event EventHandler<ColorSetEventArgs> ColorSet;
 
-		// Token: 0x06000335 RID: 821 RVA: 0x0000D728 File Offset: 0x0000B928
 		public CcsColorButton()
 		{
 			this.Build();
@@ -57,7 +46,6 @@ namespace Gtk
 			this.SetButtonStyle(CcsColorButton.BtnState.Normal);
 		}
 
-		// Token: 0x06000336 RID: 822 RVA: 0x0000D7CC File Offset: 0x0000B9CC
 		public CcsColorButton(Gdk.Color initColor)
 		{
 			this.Build();
@@ -65,7 +53,6 @@ namespace Gtk
 			this.SetButtonStyle(CcsColorButton.BtnState.Normal);
 		}
 
-		// Token: 0x06000337 RID: 823 RVA: 0x0000D85C File Offset: 0x0000BA5C
 		private void SetButtonStyle(CcsColorButton.BtnState state)
 		{
 			switch (state)
@@ -85,14 +72,12 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000338 RID: 824 RVA: 0x0000D8F8 File Offset: 0x0000BAF8
 		protected void OnMouseEnter(object o, EnterNotifyEventArgs args)
 		{
 			this.isMouseIn = true;
 			this.SetButtonStyle(CcsColorButton.BtnState.Hover);
 		}
 
-		// Token: 0x06000339 RID: 825 RVA: 0x0000D90C File Offset: 0x0000BB0C
 		protected void OnMouseLeave(object o, LeaveNotifyEventArgs args)
 		{
 			if (args.Event.Detail != NotifyType.Inferior)
@@ -102,14 +87,12 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600033A RID: 826 RVA: 0x0000D93D File Offset: 0x0000BB3D
 		protected void OnButtonPress(object o, ButtonPressEventArgs args)
 		{
 			this.isInWhenPressed = true;
 			this.SetButtonStyle(CcsColorButton.BtnState.Pressed);
 		}
 
-		// Token: 0x0600033B RID: 827 RVA: 0x0000D950 File Offset: 0x0000BB50
 		protected void OnButtonRelease(object o, ButtonReleaseEventArgs args)
 		{
 			if (this.isMouseIn)
@@ -131,7 +114,6 @@ namespace Gtk
 			this.isInWhenPressed = false;
 		}
 
-		// Token: 0x0600033C RID: 828 RVA: 0x0000D9AC File Offset: 0x0000BBAC
 		public void ColorClick()
 		{
 			ColorPickerDialog colorPickerDialog = new ColorPickerDialog(this.CurrentColor);
@@ -146,7 +128,6 @@ namespace Gtk
 			colorPickerDialog.Destroy();
 		}
 
-		// Token: 0x0600033D RID: 829 RVA: 0x0000DA1C File Offset: 0x0000BC1C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -174,47 +155,32 @@ namespace Gtk
 			this.evtbx_border.ButtonReleaseEvent += this.OnButtonRelease;
 		}
 
-		// Token: 0x040003C3 RID: 963
 		private Gdk.Color BlackNormalBorder = new Gdk.Color(38, 38, 40);
 
-		// Token: 0x040003C4 RID: 964
 		private Gdk.Color BlackPressedBorder = new Gdk.Color(37, 37, 38);
 
-		// Token: 0x040003C5 RID: 965
 		private Gdk.Color BlueHoverBorder = new Gdk.Color(29, 75, 120);
 
-		// Token: 0x040003C6 RID: 966
 		private Gdk.Color GrayNormalBg = new Gdk.Color(75, 75, 82);
 
-		// Token: 0x040003C7 RID: 967
 		private Gdk.Color GrayPressedBg = new Gdk.Color(61, 61, 65);
 
-		// Token: 0x040003C8 RID: 968
 		public bool isMouseIn = false;
 
-		// Token: 0x040003C9 RID: 969
 		private bool isInWhenPressed = false;
 
-		// Token: 0x040003CA RID: 970
 		private Gdk.Color currentColor;
 
-		// Token: 0x040003CC RID: 972
 		private EventBox evtbx_border;
 
-		// Token: 0x040003CD RID: 973
 		private EventBox evtbx_bg;
 
-		// Token: 0x040003CE RID: 974
 		private EventBox evtbx_color;
 
-		// Token: 0x02000098 RID: 152
 		private enum BtnState
 		{
-			// Token: 0x040003D0 RID: 976
 			Normal,
-			// Token: 0x040003D1 RID: 977
 			Hover,
-			// Token: 0x040003D2 RID: 978
 			Pressed
 		}
 	}

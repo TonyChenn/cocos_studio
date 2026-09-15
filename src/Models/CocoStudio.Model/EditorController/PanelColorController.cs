@@ -7,17 +7,14 @@ using Mono.Addins;
 
 namespace CocoStudio.Model.EditorController
 {
-	// Token: 0x0200004A RID: 74
 	[Extension(typeof(IEditorController))]
 	internal class PanelColorController : Base2DController
 	{
-		// Token: 0x06000296 RID: 662 RVA: 0x000081D0 File Offset: 0x000063D0
 		public PanelColorController()
 		{
 			base.AddCorrespondProperty("ComboBoxType");
 		}
 
-		// Token: 0x06000297 RID: 663 RVA: 0x000081E8 File Offset: 0x000063E8
 		public override void RefreshEditor(IReadOnlyList<object> selectedObjs, string propertyName)
 		{
 			IPropertyGrid service = Services.GetService<IPropertyGrid>();

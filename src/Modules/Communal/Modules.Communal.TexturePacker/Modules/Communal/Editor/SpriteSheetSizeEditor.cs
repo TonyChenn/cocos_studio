@@ -7,10 +7,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace Modules.Communal.Editor
 {
-	// Token: 0x02000007 RID: 7
 	internal class SpriteSheetSizeEditor : BaseEditor
 	{
-		// Token: 0x06000016 RID: 22 RVA: 0x000022C8 File Offset: 0x000004C8
 		protected override Widget OnCreateWidget()
 		{
 			ListStore listStore = new ListStore(new Type[]
@@ -68,7 +66,6 @@ namespace Modules.Communal.Editor
 			return hbox;
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002594 File Offset: 0x00000794
 		protected override void OnSetControl()
 		{
 			SizeValue value = base.PropertyItem.GetValue<SizeValue>(0);
@@ -78,7 +75,6 @@ namespace Modules.Communal.Editor
 			this.oldHeight = value.Height;
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x00002604 File Offset: 0x00000804
 		private void SetWidth()
 		{
 			int num = this.ConvertToInt(this.comboBoxWidth.Entry.Text);
@@ -107,7 +103,6 @@ namespace Modules.Communal.Editor
 			this.oldWidth = num;
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x000026C4 File Offset: 0x000008C4
 		private void SetHeight()
 		{
 			int num = this.ConvertToInt(this.comboBoxHeight.Entry.Text);
@@ -136,7 +131,6 @@ namespace Modules.Communal.Editor
 			this.oldHeight = num;
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x00002783 File Offset: 0x00000983
 		private int ConvertToInt(string text)
 		{
 			if (string.IsNullOrEmpty(text) || !Regex.IsMatch(text, "^[0-9]+$"))
@@ -146,7 +140,6 @@ namespace Modules.Communal.Editor
 			return Convert.ToInt32(text);
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x000027A4 File Offset: 0x000009A4
 		private void ComboBoxChangedHandler(object sender, EventArgs e)
 		{
 			ComboBoxEntry comboBoxEntry = sender as ComboBoxEntry;
@@ -156,7 +149,6 @@ namespace Modules.Communal.Editor
 			}
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x000027E2 File Offset: 0x000009E2
 		private void WidthEntryChangedHandler(object sender, EventArgs e)
 		{
 			if (!this.comboBoxWidth.Entry.IsFocus)
@@ -165,7 +157,6 @@ namespace Modules.Communal.Editor
 			}
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x000027FC File Offset: 0x000009FC
 		private void HeightEntryChangedHandler(object sender, EventArgs e)
 		{
 			if (!this.comboBoxHeight.Entry.IsFocus)
@@ -174,7 +165,6 @@ namespace Modules.Communal.Editor
 			}
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002816 File Offset: 0x00000A16
 		private void WidthEntryKeyReleaseHandler(object o, KeyReleaseEventArgs args)
 		{
 			this.isKeyPress = true;
@@ -185,7 +175,6 @@ namespace Modules.Communal.Editor
 			}
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00002850 File Offset: 0x00000A50
 		private void HeightEntryKeyReleaseHandler(object o, KeyReleaseEventArgs args)
 		{
 			this.isKeyPress = true;
@@ -196,7 +185,6 @@ namespace Modules.Communal.Editor
 			}
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x0000288A File Offset: 0x00000A8A
 		private void WidthEntryFocusOutHandler(object o, FocusOutEventArgs args)
 		{
 			if (this.isKeyPress)
@@ -206,7 +194,6 @@ namespace Modules.Communal.Editor
 			this.isKeyPress = false;
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x000028A1 File Offset: 0x00000AA1
 		private void HeightEntryFocusOutHandler(object o, FocusOutEventArgs args)
 		{
 			if (this.isKeyPress)
@@ -216,28 +203,20 @@ namespace Modules.Communal.Editor
 			this.isKeyPress = false;
 		}
 
-		// Token: 0x04000005 RID: 5
 		private bool isKeyPress;
 
-		// Token: 0x04000006 RID: 6
 		private int maxValue = 1000;
 
-		// Token: 0x04000007 RID: 7
 		private int minValue;
 
-		// Token: 0x04000008 RID: 8
 		private int oldWidth;
 
-		// Token: 0x04000009 RID: 9
 		private int oldHeight;
 
-		// Token: 0x0400000A RID: 10
 		private ComboBoxEntry comboBoxWidth;
 
-		// Token: 0x0400000B RID: 11
 		private ComboBoxEntry comboBoxHeight;
 
-		// Token: 0x0400000C RID: 12
 		private int[] comboxList = new int[]
 		{
 			32,

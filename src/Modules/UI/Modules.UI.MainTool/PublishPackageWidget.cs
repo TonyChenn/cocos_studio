@@ -9,11 +9,8 @@ using Xwt.Drawing;
 
 namespace Modules.UI.MainTool
 {
-	// Token: 0x02000009 RID: 9
 	internal class PublishPackageWidget : BaseToolbarWidget
 	{
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000032 RID: 50 RVA: 0x00002F78 File Offset: 0x00001178
 		public override Widget GtkWidget
 		{
 			get
@@ -22,7 +19,6 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x00002F90 File Offset: 0x00001190
 		public PublishPackageWidget()
 		{
 			this.imgResource = ImageIcon.GetIcon("Modules.UI.MainTool.Images.PublishResource.png");
@@ -47,7 +43,6 @@ namespace Modules.UI.MainTool
 			Cocos2dxServices.SupplymentServices.SupplymentFinished += this.SupplymentFinishedHandler;
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00003100 File Offset: 0x00001300
 		private void Refresh()
 		{
 			bool flag = true;
@@ -75,13 +70,11 @@ namespace Modules.UI.MainTool
 			this.mainComboBox.AppendText(GlobalCommand.PublishPackageLastCmd.GetTooltipText(false));
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x000031E2 File Offset: 0x000013E2
 		public override void OnSolutionChanged(SolutionEventArgs args)
 		{
 			this.Refresh();
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x000031EC File Offset: 0x000013EC
 		private void ComboBoxChangedHandler(object sender, EventArgs e)
 		{
 			if (this.mainComboBox.ActiveText != null)
@@ -98,46 +91,35 @@ namespace Modules.UI.MainTool
 			}
 		}
 
-		// Token: 0x06000037 RID: 55 RVA: 0x0000325D File Offset: 0x0000145D
 		private void ButtonClickedHandler(object sender, EventArgs e)
 		{
 			GlobalCommand.PublishPackageLastCmd.RaiseExecute(null);
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x0000326C File Offset: 0x0000146C
 		private void LastPublishOpChangedHandler(object sender, EventArgs e)
 		{
 			this.Refresh();
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00003276 File Offset: 0x00001476
 		private void SupplymentFinishedHandler(object sender, EventArgs e)
 		{
 			this.Refresh();
 		}
 
-		// Token: 0x04000011 RID: 17
 		private ComboBox mainComboBox;
 
-		// Token: 0x04000012 RID: 18
 		private IconButton mainButton;
 
-		// Token: 0x04000013 RID: 19
 		private Xwt.Drawing.Image imgResource;
 
-		// Token: 0x04000014 RID: 20
 		private Xwt.Drawing.Image imgCodeIDE;
 
-		// Token: 0x04000015 RID: 21
 		private Xwt.Drawing.Image imgVisualStudio;
 
-		// Token: 0x04000016 RID: 22
 		private Xwt.Drawing.Image imgXcode;
 
-		// Token: 0x04000017 RID: 23
 		private Dictionary<EnumPublishType, Xwt.Drawing.Image> imgDictionary;
 
-		// Token: 0x04000018 RID: 24
 		private Xwt.Drawing.Image imgPackage;
 	}
 }

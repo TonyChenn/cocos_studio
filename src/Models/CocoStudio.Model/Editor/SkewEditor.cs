@@ -6,11 +6,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200009E RID: 158
 	internal class SkewEditor : BaseEditor
 	{
-		// Token: 0x1700016C RID: 364
-		// (get) Token: 0x0600055B RID: 1371 RVA: 0x00017A8C File Offset: 0x00015C8C
 		public override bool SupportMultiSelect
 		{
 			get
@@ -19,7 +16,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600055C RID: 1372 RVA: 0x00017AA0 File Offset: 0x00015CA0
 		protected override Widget OnCreateWidget()
 		{
 			this.xInnerEntry = new NoUndoNumEntry();
@@ -39,7 +35,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x0600055D RID: 1373 RVA: 0x00017B6C File Offset: 0x00015D6C
 		protected override void OnSetControl()
 		{
 			AbstractNodeObject abstractNodeObject = PropertyItem.FirstObject as AbstractNodeObject;
@@ -72,7 +67,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600055E RID: 1374 RVA: 0x00017C6C File Offset: 0x00015E6C
 		private void XEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -86,7 +80,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600055F RID: 1375 RVA: 0x00017CFC File Offset: 0x00015EFC
 		private void YEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -100,10 +93,8 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000281 RID: 641
 		private NoUndoNumEntry xInnerEntry;
 
-		// Token: 0x04000282 RID: 642
 		private NoUndoNumEntry yInnerEntry;
 	}
 }

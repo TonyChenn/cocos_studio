@@ -6,17 +6,14 @@ using Modules.Communal.MultiLanguage;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x02000037 RID: 55
 	public class NetWorkErrorView : EventBox
 	{
-		// Token: 0x060001F3 RID: 499 RVA: 0x00008FA2 File Offset: 0x000071A2
 		public NetWorkErrorView(string imagePath)
 		{
 			this.Initialize(imagePath);
 			base.ShowAll();
 		}
 
-		// Token: 0x060001F4 RID: 500 RVA: 0x00008FB8 File Offset: 0x000071B8
 		private void Initialize(string imagePath)
 		{
 			Fixed @fixed = new Fixed();
@@ -40,7 +37,6 @@ namespace Cocos.Launcher.Core
 			buttonView.ButtonReleaseEvent += this.button_ButtonReleaseEvent;
 		}
 
-		// Token: 0x060001F5 RID: 501 RVA: 0x00009089 File Offset: 0x00007289
 		private void button_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			CocoStudio.Core.Services.NetworkService.TryRequest();

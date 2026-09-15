@@ -9,11 +9,8 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x0200002C RID: 44
 	public class AskDownloadSimulatorDialog : Dialog
 	{
-		// Token: 0x17000062 RID: 98
-		// (get) Token: 0x06000168 RID: 360 RVA: 0x00008675 File Offset: 0x00006875
 		public bool IsChecked
 		{
 			get
@@ -22,7 +19,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x06000169 RID: 361 RVA: 0x00008684 File Offset: 0x00006884
 		public AskDownloadSimulatorDialog(bool isDownload)
 		{
 			this.Build();
@@ -70,19 +66,16 @@ namespace Modules.Communal.CocosAdapter
 			this.SetToDialogStyle(ApplicationCurrent.MainWindow, true, true, true);
 		}
 
-		// Token: 0x0600016A RID: 362 RVA: 0x000088AF File Offset: 0x00006AAF
 		private void ButtonYesClickedHandler(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.Yes);
 		}
 
-		// Token: 0x0600016B RID: 363 RVA: 0x000088B9 File Offset: 0x00006AB9
 		private void ButtonNoClickedHandler(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.No);
 		}
 
-		// Token: 0x0600016C RID: 364 RVA: 0x000088C4 File Offset: 0x00006AC4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -260,58 +253,40 @@ namespace Modules.Communal.CocosAdapter
 			base.Hide();
 		}
 
-		// Token: 0x040000A9 RID: 169
 		private Alignment alignment_main;
 
-		// Token: 0x040000AA RID: 170
 		private VBox vbox_main;
 
-		// Token: 0x040000AB RID: 171
 		private HBox hbox_main;
 
-		// Token: 0x040000AC RID: 172
 		private VBox vbox_image;
 
-		// Token: 0x040000AD RID: 173
 		private Alignment alignment_image;
 
-		// Token: 0x040000AE RID: 174
 		private ImageBin imageBin_question;
 
-		// Token: 0x040000AF RID: 175
 		private VBox vbox_text;
 
-		// Token: 0x040000B0 RID: 176
 		private Alignment alignment_text;
 
-		// Token: 0x040000B1 RID: 177
 		private Label label_text;
 
-		// Token: 0x040000B2 RID: 178
 		private HBox hbox_bottom;
 
-		// Token: 0x040000B3 RID: 179
 		private CheckButton checkbutton_neverShow;
 
-		// Token: 0x040000B4 RID: 180
 		private Button button_yes;
 
-		// Token: 0x040000B5 RID: 181
 		private Button button_no;
 
-		// Token: 0x040000B6 RID: 182
 		private HSeparator hseparator2;
 
-		// Token: 0x040000B7 RID: 183
 		private HBox hbox_introduce;
 
-		// Token: 0x040000B8 RID: 184
 		private ImageBin imagebin_logo;
 
-		// Token: 0x040000B9 RID: 185
 		private Label label_introduce;
 
-		// Token: 0x040000BA RID: 186
 		private Alignment alignment_dummyBtn;
 	}
 }

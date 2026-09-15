@@ -25,23 +25,18 @@ namespace ICSharpCode.NRefactory.Editor
 	/// int newOffset = anchor.Offset;
 	/// </code>
 	/// </example>
-	// Token: 0x02000011 RID: 17
 	public interface ITextAnchor
 	{
 		/// <summary>
 		/// Gets the text location of this anchor.
 		/// </summary>
 		/// <exception cref="T:System.InvalidOperationException">Thrown when trying to get the Offset from a deleted anchor.</exception>
-		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x0600005F RID: 95
 		TextLocation Location { get; }
 
 		/// <summary>
 		/// Gets the offset of the text anchor.
 		/// </summary>
 		/// <exception cref="T:System.InvalidOperationException">Thrown when trying to get the Offset from a deleted anchor.</exception>
-		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x06000060 RID: 96
 		int Offset { get; }
 
 		/// <summary>
@@ -51,9 +46,6 @@ namespace ICSharpCode.NRefactory.Editor
 		/// Does the anchor stay before the inserted text, or does it move after it?
 		/// The property <see cref="P:ICSharpCode.NRefactory.Editor.ITextAnchor.MovementType" /> will be used to determine which of these two options the anchor will choose.
 		/// The default value is <see cref="F:ICSharpCode.NRefactory.Editor.AnchorMovementType.Default" />.</remarks>
-		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x06000061 RID: 97
-		// (set) Token: 0x06000062 RID: 98
 		AnchorMovementType MovementType { get; set; }
 
 		/// <summary>
@@ -65,9 +57,6 @@ namespace ICSharpCode.NRefactory.Editor
 		/// </para>
 		/// </summary>
 		/// <remarks><inheritdoc cref="P:ICSharpCode.NRefactory.Editor.ITextAnchor.IsDeleted" /></remarks>
-		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x06000063 RID: 99
-		// (set) Token: 0x06000064 RID: 100
 		bool SurviveDeletion { get; set; }
 
 		/// <summary>
@@ -81,8 +70,6 @@ namespace ICSharpCode.NRefactory.Editor
 		/// <para>This deletion behavior might be useful when using anchors for building a bookmark feature,
 		/// but in other cases you want to still be able to use the anchor. For those cases, set <c><see cref="P:ICSharpCode.NRefactory.Editor.ITextAnchor.SurviveDeletion" /> = true</c>.</para>
 		/// </remarks>
-		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x06000065 RID: 101
 		bool IsDeleted { get; }
 
 		/// <summary>
@@ -94,25 +81,18 @@ namespace ICSharpCode.NRefactory.Editor
 		/// the Deleted event only while your code holds a reference to the TextAnchor object.
 		/// </para>
 		/// </remarks>
-		// Token: 0x14000006 RID: 6
-		// (add) Token: 0x06000066 RID: 102
-		// (remove) Token: 0x06000067 RID: 103
 		event EventHandler Deleted;
 
 		/// <summary>
 		/// Gets the line number of the anchor.
 		/// </summary>
 		/// <exception cref="T:System.InvalidOperationException">Thrown when trying to get the Offset from a deleted anchor.</exception>
-		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x06000068 RID: 104
 		int Line { get; }
 
 		/// <summary>
 		/// Gets the column number of this anchor.
 		/// </summary>
 		/// <exception cref="T:System.InvalidOperationException">Thrown when trying to get the Offset from a deleted anchor.</exception>
-		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x06000069 RID: 105
 		int Column { get; }
 	}
 }

@@ -8,10 +8,8 @@ using Modules.Communal.Render.Model;
 
 namespace Modules.Communal.Render3D.Model
 {
-	// Token: 0x02000003 RID: 3
 	internal class HitTestMode3D : HitTestMode
 	{
-		// Token: 0x06000005 RID: 5 RVA: 0x0000213C File Offset: 0x0000033C
 		public override HitTestResult GetHitVisual(VisualObject rootObject, CocoStudio.Model.PointF point)
 		{
 			List<HitTestResult> allHitVisual = base.GetAllHitVisual(rootObject, point);
@@ -55,7 +53,6 @@ namespace Modules.Communal.Render3D.Model
 			return result;
 		}
 
-		// Token: 0x04000004 RID: 4
 		private const int ColorMax = 16777215;
 	}
 }

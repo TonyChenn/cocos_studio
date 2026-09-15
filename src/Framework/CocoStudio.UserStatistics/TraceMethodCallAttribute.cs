@@ -4,11 +4,9 @@ using PostSharp.Aspects.Internals;
 
 namespace CocoStudio.UserStatistics
 {
-	// Token: 0x02000002 RID: 2
 	[Serializable]
 	public sealed class TraceMethodCallAttribute : OnMethodBoundaryAspect
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public TraceMethodCallAttribute(string functionName, string operationName = null, string labelName = null)
 		{
 			this.region = ViewRegions.None;
@@ -17,7 +15,6 @@ namespace CocoStudio.UserStatistics
 			this.LabelName = labelName;
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x00002078 File Offset: 0x00000278
 		[MethodExecutionAdviceOptimization(MethodExecutionAdviceOptimizations.IgnoreSetFlowBehavior | MethodExecutionAdviceOptimizations.IgnoreGetArguments | MethodExecutionAdviceOptimizations.IgnoreSetArguments | MethodExecutionAdviceOptimizations.IgnoreGetInstance | MethodExecutionAdviceOptimizations.IgnoreSetInstance | MethodExecutionAdviceOptimizations.IgnoreGetException | MethodExecutionAdviceOptimizations.IgnoreSetReturnValue | MethodExecutionAdviceOptimizations.IgnoreGetMethodExecutionTag | MethodExecutionAdviceOptimizations.IgnoreSetMethodExecutionTag | MethodExecutionAdviceOptimizations.IgnoreGetYieldValue | MethodExecutionAdviceOptimizations.IgnoreSetYieldValue | MethodExecutionAdviceOptimizations.IgnoreGetDeclarationIdentifier)]
 		public override void OnExit(MethodExecutionArgs args)
 		{
@@ -43,16 +40,12 @@ namespace CocoStudio.UserStatistics
 			Tracker.Add(this.region, this.featureName, methodName, newValue);
 		}
 
-		// Token: 0x04000001 RID: 1
 		private ViewRegions region;
 
-		// Token: 0x04000002 RID: 2
 		private string featureName;
 
-		// Token: 0x04000003 RID: 3
 		private string OperationName;
 
-		// Token: 0x04000004 RID: 4
 		private string LabelName;
 	}
 }

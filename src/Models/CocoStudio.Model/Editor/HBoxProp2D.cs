@@ -5,10 +5,8 @@ using Gtk;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000059 RID: 89
 	public class HBoxProp2D : HBox
 	{
-		// Token: 0x06000316 RID: 790 RVA: 0x0000C810 File Offset: 0x0000AA10
 		protected override void OnSizeAllocated(Rectangle allocation)
 		{
 			base.OnSizeAllocated(allocation);
@@ -47,10 +45,8 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000171 RID: 369
 		private const int middleSpacing = 4;
 
-		// Token: 0x04000172 RID: 370
 		private const int middleWidth = 20;
 	}
 }

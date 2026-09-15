@@ -6,18 +6,11 @@ using Xwt.Drawing;
 
 namespace Gtk
 {
-	// Token: 0x020000A7 RID: 167
 	[ToolboxItem(true)]
 	public class TrackPointImage : Bin
 	{
-		// Token: 0x17000099 RID: 153
-		// (get) Token: 0x060003AB RID: 939 RVA: 0x00012F10 File Offset: 0x00011110
-		// (set) Token: 0x060003AC RID: 940 RVA: 0x00012F27 File Offset: 0x00011127
 		public ImageView CurrentImageView { get; private set; }
 
-		// Token: 0x1700009A RID: 154
-		// (get) Token: 0x060003AD RID: 941 RVA: 0x00012F30 File Offset: 0x00011130
-		// (set) Token: 0x060003AE RID: 942 RVA: 0x00012F48 File Offset: 0x00011148
 		public TrackPointType PointType
 		{
 			get
@@ -34,14 +27,12 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x060003AF RID: 943 RVA: 0x00012F7C File Offset: 0x0001117C
 		public TrackPointImage()
 		{
 			this.Build();
 			base.SizeAllocated += this.SizeAllocatedHandler;
 		}
 
-		// Token: 0x060003B0 RID: 944 RVA: 0x00012FA8 File Offset: 0x000111A8
 		public void SetImage(Xwt.Drawing.Image image)
 		{
 			this.alignment_mainImage.RemoveChild();
@@ -60,7 +51,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x060003B1 RID: 945 RVA: 0x00013024 File Offset: 0x00011224
 		private void SetTrackPointImage(TrackPointType type)
 		{
 			if (this._PointType == TrackPointType.None)
@@ -80,7 +70,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x060003B2 RID: 946 RVA: 0x000130F0 File Offset: 0x000112F0
 		private void SizeAllocatedHandler(object o, SizeAllocatedArgs args)
 		{
 			this.alignment_mainImage.WidthRequest = this.fixed_main.Allocation.Width;
@@ -93,7 +82,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x060003B3 RID: 947 RVA: 0x00013180 File Offset: 0x00011380
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -122,16 +110,12 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x04000453 RID: 1107
 		private TrackPointType _PointType = TrackPointType.None;
 
-		// Token: 0x04000454 RID: 1108
 		private Fixed fixed_main;
 
-		// Token: 0x04000455 RID: 1109
 		private Alignment alignment_mainImage;
 
-		// Token: 0x04000456 RID: 1110
 		private Alignment alignment_point;
 	}
 }

@@ -6,11 +6,8 @@ using Mono.Addins;
 
 namespace CocoStudio.Model
 {
-	// Token: 0x020000C6 RID: 198
 	public static class ProjectFileTemplateService
 	{
-		// Token: 0x170001C7 RID: 455
-		// (get) Token: 0x06000641 RID: 1601 RVA: 0x00019974 File Offset: 0x00017B74
 		public static IReadOnlyList<BaseProjectFileTemplate> ProjectFileTemplateList
 		{
 			get
@@ -19,13 +16,11 @@ namespace CocoStudio.Model
 			}
 		}
 
-		// Token: 0x06000642 RID: 1602 RVA: 0x0001998B File Offset: 0x00017B8B
 		static ProjectFileTemplateService()
 		{
 			ProjectFileTemplateService.Initialize();
 		}
 
-		// Token: 0x06000643 RID: 1603 RVA: 0x0001999C File Offset: 0x00017B9C
 		private static void Initialize()
 		{
 			if (!ProjectFileTemplateService.hasInitialized)
@@ -41,7 +36,6 @@ namespace CocoStudio.Model
 			}
 		}
 
-		// Token: 0x06000644 RID: 1604 RVA: 0x00019A08 File Offset: 0x00017C08
 		public static IProjectFileRenderView GetRenderView(this CocosItem project)
 		{
 			IProjectFileRenderView result = null;
@@ -56,7 +50,6 @@ namespace CocoStudio.Model
 			return result;
 		}
 
-		// Token: 0x06000645 RID: 1605 RVA: 0x00019A90 File Offset: 0x00017C90
 		public static IProjectFileCreator GetProjectFileCreator(NodeType nodeType)
 		{
 			IProjectFileCreator result = null;
@@ -71,10 +64,8 @@ namespace CocoStudio.Model
 			return result;
 		}
 
-		// Token: 0x040002BE RID: 702
 		private static List<BaseProjectFileTemplate> fileViewList;
 
-		// Token: 0x040002BF RID: 703
 		private static bool hasInitialized = false;
 	}
 }

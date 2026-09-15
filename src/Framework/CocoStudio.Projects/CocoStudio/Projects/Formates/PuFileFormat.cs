@@ -9,19 +9,16 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Projects.Formates
 {
-	// Token: 0x0200002F RID: 47
 	[Extension(typeof(ICompositeResourceProcesser))]
 	[Extension(typeof(IFileFormat))]
 	[Extension(typeof(IPublishProcesser))]
 	internal class PuFileFormat : CompositeFormat, IPublishProcesser
 	{
-		// Token: 0x0600010B RID: 267 RVA: 0x000050CB File Offset: 0x000032CB
 		protected override bool OnCanWriteFile(object obj)
 		{
 			return obj is PuFile;
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x000050D8 File Offset: 0x000032D8
 		protected override bool OnCanReadFile(FilePath file, Type expectedObjectType)
 		{
 			try
@@ -42,26 +39,22 @@ namespace CocoStudio.Projects.Formates
 			return false;
 		}
 
-		// Token: 0x0600010D RID: 269 RVA: 0x0000512C File Offset: 0x0000332C
 		private bool CheckFileSuffix(string path, string FileSuffix)
 		{
 			return Path.GetExtension(path).Equals(FileSuffix, StringComparison.OrdinalIgnoreCase);
 		}
 
-		// Token: 0x0600010E RID: 270 RVA: 0x0000513B File Offset: 0x0000333B
 		protected override object OnReadFile(FilePath file, Type expectedType, IProgressMonitor monitor)
 		{
 			return new PuFile(file);
 		}
 
-		// Token: 0x0600010F RID: 271 RVA: 0x00005144 File Offset: 0x00003344
 		bool IPublishProcesser.CanProcess(ResourceData resourceData)
 		{
 			string path = resourceData.Path;
 			return this.CheckFileSuffix(path, PuFileFormat.Particle3DSuffixPu);
 		}
 
-		// Token: 0x06000110 RID: 272 RVA: 0x0000516C File Offset: 0x0000336C
 		private List<string> GetMeshRelatedFiles(string filePath)
 		{
 			CSVectorString meshResourceArray = CSCocosHelp.GetMeshResourceArray(filePath);
@@ -79,7 +72,6 @@ namespace CocoStudio.Projects.Formates
 			return list;
 		}
 
-		// Token: 0x06000111 RID: 273 RVA: 0x000051F0 File Offset: 0x000033F0
 		HashSet<ResourceData> IPublishProcesser.Process(ResourceData resourceData)
 		{
 			HashSet<ResourceData> hashSet = new HashSet<ResourceData>();
@@ -143,13 +135,11 @@ namespace CocoStudio.Projects.Formates
 			return hashSet;
 		}
 
-		// Token: 0x06000112 RID: 274 RVA: 0x000054C0 File Offset: 0x000036C0
 		public override bool CanProcess(string filePath)
 		{
 			return base.CanReadFile(filePath, typeof(ResourceItem));
 		}
 
-		// Token: 0x06000113 RID: 275 RVA: 0x000054D8 File Offset: 0x000036D8
 		public override List<string> GetFiles(string filePath)
 		{
 			List<string> list = new List<string>();
@@ -170,7 +160,6 @@ namespace CocoStudio.Projects.Formates
 			return list;
 		}
 
-		// Token: 0x06000114 RID: 276 RVA: 0x0000553C File Offset: 0x0000373C
 		public override List<string> GetPretreatmentTypes()
 		{
 			return new List<string>
@@ -179,10 +168,8 @@ namespace CocoStudio.Projects.Formates
 			};
 		}
 
-		// Token: 0x04000047 RID: 71
 		private const string DefaultResFolder = "EditorDefaultRes";
 
-		// Token: 0x04000048 RID: 72
 		private static string Particle3DSuffixPu = ".pu";
 	}
 }

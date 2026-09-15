@@ -11,15 +11,10 @@ using CocoStudio.UndoManager.Recorder;
 
 namespace CocoStudio.Model.DataModel
 {
-	// Token: 0x0200001A RID: 26
 	internal static class GameFileLoader
 	{
-		// Token: 0x1700006A RID: 106
-		// (get) Token: 0x06000113 RID: 275 RVA: 0x00003E44 File Offset: 0x00002044
-		// (set) Token: 0x06000114 RID: 276 RVA: 0x00003E5A File Offset: 0x0000205A
 		public static bool IsLoading { get; private set; }
 
-		// Token: 0x06000115 RID: 277 RVA: 0x00003E64 File Offset: 0x00002064
 		public static GameFileLoadResult LoadProject(GameFileData objectData)
 		{
 			GameFileLoadResult result;
@@ -63,7 +58,6 @@ namespace CocoStudio.Model.DataModel
 			return result;
 		}
 
-		// Token: 0x06000116 RID: 278 RVA: 0x00003FD0 File Offset: 0x000021D0
 		public static GameFileData SaveProject(AbstractNodeObject vObject, TimelineAction action)
 		{
 			GameFileData result;
@@ -93,7 +87,6 @@ namespace CocoStudio.Model.DataModel
 			return result;
 		}
 
-		// Token: 0x06000117 RID: 279 RVA: 0x00004082 File Offset: 0x00002282
 		private static void RefreshObjectsRecorder(AbstractNodeObject vObject)
 		{
 			vObject.BindingRecorder(null);
@@ -103,7 +96,6 @@ namespace CocoStudio.Model.DataModel
 			});
 		}
 
-		// Token: 0x06000118 RID: 280 RVA: 0x000040B8 File Offset: 0x000022B8
 		public static void FindProjectNodeToReload(AbstractNodeObject parentNode)
 		{
 			if (parentNode != null)
@@ -122,7 +114,6 @@ namespace CocoStudio.Model.DataModel
 			}
 		}
 
-		// Token: 0x06000119 RID: 281 RVA: 0x00004150 File Offset: 0x00002350
 		private static AbstractNodeObject ConvertObject(AbstractNodeObjectData objectData, GameFileLoadResult gResult, Dictionary<int, VisualObject> objectDictionary)
 		{
 			IDataConvert dataConvert = objectData as IDataConvert;
@@ -203,7 +194,6 @@ namespace CocoStudio.Model.DataModel
 			return result;
 		}
 
-		// Token: 0x0600011A RID: 282 RVA: 0x000043DC File Offset: 0x000025DC
 		private static AbstractNodeObjectData ConvertObjectData(AbstractNodeObject nObject)
 		{
 			Type dataModelType = Services.ProjectsService.DataModelManager.GetDataModelType(nObject.GetType());
@@ -261,7 +251,6 @@ namespace CocoStudio.Model.DataModel
 			return result;
 		}
 
-		// Token: 0x0600011B RID: 283 RVA: 0x000045F8 File Offset: 0x000027F8
 		private static TimelineAction ConvertTimelineAction(TimelineActionData timelineObjectData, VisualObject vObject, Dictionary<int, VisualObject> objectTagDictionary)
 		{
 			TimelineAction timelineAction = new TimelineAction();
@@ -307,7 +296,6 @@ namespace CocoStudio.Model.DataModel
 			return result;
 		}
 
-		// Token: 0x0600011C RID: 284 RVA: 0x000047CC File Offset: 0x000029CC
 		private static Frame ConvertTimeLineFrame(FrameData objectData, PropertyInfo propertyInfo)
 		{
 			Frame frame = FrameTypeManager.Instance.CreateFrame(propertyInfo);
@@ -345,7 +333,6 @@ namespace CocoStudio.Model.DataModel
 			return result;
 		}
 
-		// Token: 0x0600011D RID: 285 RVA: 0x00004904 File Offset: 0x00002B04
 		private static List<AnimationInfo> ConvertAnimationList(GameFileData objectData)
 		{
 			List<AnimationInfo> list = new List<AnimationInfo>();
@@ -359,7 +346,6 @@ namespace CocoStudio.Model.DataModel
 			return list;
 		}
 
-		// Token: 0x0600011E RID: 286 RVA: 0x00004998 File Offset: 0x00002B98
 		private static void ConvertAnimationListData(TimelineAction action, List<AnimationInfoData> animadatalist)
 		{
 			foreach (AnimationInfo animationInfo in action.AnimationInfoList)
@@ -374,7 +360,6 @@ namespace CocoStudio.Model.DataModel
 			}
 		}
 
-		// Token: 0x0600011F RID: 287 RVA: 0x00004A34 File Offset: 0x00002C34
 		private static void ConvertTimelineActionData(AbstractNodeObject nObject, TimelineActionData nTimelineActionData)
 		{
 			foreach (AbstractNodeObject abstractNodeObject in nObject.Children)

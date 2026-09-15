@@ -6,15 +6,10 @@ using Stetic;
 
 namespace Gtk
 {
-	// Token: 0x02000096 RID: 150
 	public class ColorPickerDialog : Dialog
 	{
-		// Token: 0x17000090 RID: 144
-		// (get) Token: 0x06000326 RID: 806 RVA: 0x0000CE6C File Offset: 0x0000B06C
-		// (set) Token: 0x06000327 RID: 807 RVA: 0x0000CE83 File Offset: 0x0000B083
 		public ColorSelection ColorPicker { get; private set; }
 
-		// Token: 0x06000328 RID: 808 RVA: 0x0000CE8C File Offset: 0x0000B08C
 		public ColorPickerDialog(Color initColor)
 		{
 			base.Modal = true;
@@ -28,7 +23,6 @@ namespace Gtk
 			this.SetToDialogStyle(null, true, true, true);
 		}
 
-		// Token: 0x06000329 RID: 809 RVA: 0x0000CF00 File Offset: 0x0000B100
 		private void InitColorSelection(Color initColor)
 		{
 			this.ColorPicker = new ColorSelection();
@@ -43,7 +37,6 @@ namespace Gtk
 			this.ColorPicker.ShowAll();
 		}
 
-		// Token: 0x0600032A RID: 810 RVA: 0x0000CF9C File Offset: 0x0000B19C
 		private void InitWidgetReference()
 		{
 			HBox hbox = this.ColorPicker.Children[0] as HBox;
@@ -80,7 +73,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600032B RID: 811 RVA: 0x0000D1B0 File Offset: 0x0000B3B0
 		private void InitButton()
 		{
 			this.buttonOk.Name = "MainButton";
@@ -95,7 +87,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600032C RID: 812 RVA: 0x0000D228 File Offset: 0x0000B428
 		private void InitMultiLanguage()
 		{
 			base.Title = LanguageInfo.Property_ColorPicker;
@@ -124,13 +115,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600032D RID: 813 RVA: 0x0000D3A2 File Offset: 0x0000B5A2
 		private void DestroyedHandler(object sender, EventArgs e)
 		{
 			this.palette.SaveColors();
 		}
 
-		// Token: 0x0600032E RID: 814 RVA: 0x0000D3B4 File Offset: 0x0000B5B4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -183,70 +172,48 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x040003AC RID: 940
 		private Label labelHue;
 
-		// Token: 0x040003AD RID: 941
 		private Label labelSaturation;
 
-		// Token: 0x040003AE RID: 942
 		private Label labelValue;
 
-		// Token: 0x040003AF RID: 943
 		private Label labelRed;
 
-		// Token: 0x040003B0 RID: 944
 		private Label labelGreen;
 
-		// Token: 0x040003B1 RID: 945
 		private Label labelBlue;
 
-		// Token: 0x040003B2 RID: 946
 		private Label labelColorName;
 
-		// Token: 0x040003B3 RID: 947
 		private Widget wColorWheel;
 
-		// Token: 0x040003B4 RID: 948
 		private Widget wPreColor;
 
-		// Token: 0x040003B5 RID: 949
 		private Widget wCurColor;
 
-		// Token: 0x040003B6 RID: 950
 		private Widget wDropper;
 
-		// Token: 0x040003B7 RID: 951
 		private SpinButton spinHue;
 
-		// Token: 0x040003B8 RID: 952
 		private SpinButton spinSaturation;
 
-		// Token: 0x040003B9 RID: 953
 		private SpinButton spinValue;
 
-		// Token: 0x040003BA RID: 954
 		private SpinButton spinRed;
 
-		// Token: 0x040003BB RID: 955
 		private SpinButton spinGreen;
 
-		// Token: 0x040003BC RID: 956
 		private SpinButton spinBlue;
 
-		// Token: 0x040003BD RID: 957
 		private Entry entryColorName;
 
-		// Token: 0x040003BE RID: 958
 		private PaletteWidget palette;
 
-		// Token: 0x040003BF RID: 959
 		private EventBox eventbox_bg;
 
-		// Token: 0x040003C0 RID: 960
 		private Button buttonCancel;
 
-		// Token: 0x040003C1 RID: 961
 		private Button buttonOk;
 	}
 }

@@ -9,13 +9,10 @@ using MonoDevelop.Core;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200001E RID: 30
 	[Extension(typeof(BaseAssetModel))]
 	[AssetOrder(2)]
 	internal class SamplesAssetModel : BaseAssetModel
 	{
-		// Token: 0x17000022 RID: 34
-		// (get) Token: 0x06000118 RID: 280 RVA: 0x00006AED File Offset: 0x00004CED
 		public override int Order
 		{
 			get
@@ -24,23 +21,19 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000119 RID: 281 RVA: 0x00006AF0 File Offset: 0x00004CF0
 		public SamplesAssetModel()
 		{
 		}
 
-		// Token: 0x0600011A RID: 282 RVA: 0x00006AF8 File Offset: 0x00004CF8
 		public SamplesAssetModel(Plugin model) : base(model)
 		{
 		}
 
-		// Token: 0x0600011B RID: 283 RVA: 0x00006B01 File Offset: 0x00004D01
 		public override bool CanHandle(Plugin info)
 		{
 			return info.OpenType == OperationType.cocos.ToString();
 		}
 
-		// Token: 0x0600011C RID: 284 RVA: 0x00006B1E File Offset: 0x00004D1E
 		public override bool InitRunMode()
 		{
 			if (!base.InitRunMode())
@@ -57,7 +50,6 @@ namespace Cocos.Launcher.Core
 			return true;
 		}
 
-		// Token: 0x0600011D RID: 285 RVA: 0x00006B48 File Offset: 0x00004D48
 		protected override IProgressMonitor OnInstall()
 		{
 			IProgressMonitor @default = CocoStudio.Core.Services.ProgressMonitors.Default;
@@ -79,7 +71,6 @@ namespace Cocos.Launcher.Core
 			return @default;
 		}
 
-		// Token: 0x0600011E RID: 286 RVA: 0x00006BC4 File Offset: 0x00004DC4
 		protected override IProgressMonitor OnOpen()
 		{
 			IProgressMonitor @default = CocoStudio.Core.Services.ProgressMonitors.Default;
@@ -99,7 +90,6 @@ namespace Cocos.Launcher.Core
 			return @default;
 		}
 
-		// Token: 0x0600011F RID: 287 RVA: 0x00006C60 File Offset: 0x00004E60
 		public override bool ExistsToFull()
 		{
 			string modelToUnZipDir = this.GetModelToUnZipDir();
@@ -111,14 +101,12 @@ namespace Cocos.Launcher.Core
 			return flag;
 		}
 
-		// Token: 0x06000120 RID: 288 RVA: 0x00006C8C File Offset: 0x00004E8C
 		private string GetModelToUnZipDir()
 		{
 			string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(base.AssetInfo.PluginFullName);
 			return Path.Combine(ConstantConfig.Paths.DownloadDemoPath, fileNameWithoutExtension);
 		}
 
-		// Token: 0x06000121 RID: 289 RVA: 0x00006CBC File Offset: 0x00004EBC
 		protected override void OnDelete()
 		{
 			if (Directory.Exists(base.AssetInfo.UnZipPath))

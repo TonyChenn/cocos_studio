@@ -10,10 +10,8 @@ using Modules.Communal.MutualEditor;
 
 namespace Cocos.Launcher.Start
 {
-	// Token: 0x02000003 RID: 3
 	internal class Program
 	{
-		// Token: 0x06000006 RID: 6 RVA: 0x000020D0 File Offset: 0x000002D0
 		[STAThread]
 		private static void Main(string[] args)
 		{
@@ -40,7 +38,6 @@ namespace Cocos.Launcher.Start
 			Application.Run();
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002148 File Offset: 0x00000348
 		private static bool PreStartCheck()
 		{
 			MutualCore.Init();

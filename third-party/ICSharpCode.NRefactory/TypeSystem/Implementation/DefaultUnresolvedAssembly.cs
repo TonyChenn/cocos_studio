@@ -12,11 +12,9 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 	/// <summary>
 	/// Default implementation for <see cref="T:ICSharpCode.NRefactory.TypeSystem.IUnresolvedAssembly" />.
 	/// </summary>
-	// Token: 0x020000B7 RID: 183
 	[Serializable]
 	public class DefaultUnresolvedAssembly : AbstractFreezable, IUnresolvedAssembly, IAssemblyReference
 	{
-		// Token: 0x0600064E RID: 1614 RVA: 0x00010894 File Offset: 0x0000F894
 		protected override void FreezeInternal()
 		{
 			base.FreezeInternal();
@@ -32,7 +30,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 		/// Creates a new unresolved assembly.
 		/// </summary>
 		/// <param name="assemblyName">Full assembly name</param>
-		// Token: 0x0600064F RID: 1615 RVA: 0x00010914 File Offset: 0x0000F914
 		public DefaultUnresolvedAssembly(string assemblyName)
 		{
 			if (assemblyName == null)
@@ -53,9 +50,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 		/// This class handles the short and the full name independently;
 		/// if you change the short name, you should also change the full name.
 		/// </remarks>
-		// Token: 0x1700028C RID: 652
-		// (get) Token: 0x06000650 RID: 1616 RVA: 0x00010996 File Offset: 0x0000F996
-		// (set) Token: 0x06000651 RID: 1617 RVA: 0x0001099E File Offset: 0x0000F99E
 		public string AssemblyName
 		{
 			get
@@ -80,9 +74,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 		/// This class handles the short and the full name independently;
 		/// if you change the full name, you should also change the short name.
 		/// </remarks>
-		// Token: 0x1700028D RID: 653
-		// (get) Token: 0x06000652 RID: 1618 RVA: 0x000109BB File Offset: 0x0000F9BB
-		// (set) Token: 0x06000653 RID: 1619 RVA: 0x000109C3 File Offset: 0x0000F9C3
 		public string FullAssemblyName
 		{
 			get
@@ -100,9 +91,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x1700028E RID: 654
-		// (get) Token: 0x06000654 RID: 1620 RVA: 0x000109E0 File Offset: 0x0000F9E0
-		// (set) Token: 0x06000655 RID: 1621 RVA: 0x000109E8 File Offset: 0x0000F9E8
 		public string Location
 		{
 			get
@@ -116,8 +104,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x1700028F RID: 655
-		// (get) Token: 0x06000656 RID: 1622 RVA: 0x000109F7 File Offset: 0x0000F9F7
 		public IList<IUnresolvedAttribute> AssemblyAttributes
 		{
 			get
@@ -126,8 +112,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000290 RID: 656
-		// (get) Token: 0x06000657 RID: 1623 RVA: 0x000109FF File Offset: 0x0000F9FF
 		IEnumerable<IUnresolvedAttribute> IUnresolvedAssembly.AssemblyAttributes
 		{
 			get
@@ -136,8 +120,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000291 RID: 657
-		// (get) Token: 0x06000658 RID: 1624 RVA: 0x00010A07 File Offset: 0x0000FA07
 		public IList<IUnresolvedAttribute> ModuleAttributes
 		{
 			get
@@ -146,8 +128,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000292 RID: 658
-		// (get) Token: 0x06000659 RID: 1625 RVA: 0x00010A0F File Offset: 0x0000FA0F
 		IEnumerable<IUnresolvedAttribute> IUnresolvedAssembly.ModuleAttributes
 		{
 			get
@@ -156,8 +136,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x17000293 RID: 659
-		// (get) Token: 0x0600065A RID: 1626 RVA: 0x00010A17 File Offset: 0x0000FA17
 		public IEnumerable<IUnresolvedTypeDefinition> TopLevelTypeDefinitions
 		{
 			get
@@ -171,7 +149,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 		/// </summary>
 		/// <remarks>DefaultUnresolvedAssembly does not support partial classes.
 		/// Adding more than one part of a type will cause an ArgumentException.</remarks>
-		// Token: 0x0600065B RID: 1627 RVA: 0x00010A24 File Offset: 0x0000FA24
 		public void AddTypeDefinition(IUnresolvedTypeDefinition typeDefinition)
 		{
 			if (typeDefinition == null)
@@ -194,7 +171,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 		/// </summary>
 		/// <param name="typeName">The name of the type.</param>
 		/// <param name="referencedType">The reference used to look up the type in the target assembly.</param>
-		// Token: 0x0600065C RID: 1628 RVA: 0x00010A84 File Offset: 0x0000FA84
 		public void AddTypeForwarder(TopLevelTypeName typeName, ITypeReference referencedType)
 		{
 			if (referencedType == null)
@@ -211,7 +187,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			this.typeForwarders[typeName] = referencedType;
 		}
 
-		// Token: 0x0600065D RID: 1629 RVA: 0x00010AEC File Offset: 0x0000FAEC
 		public IUnresolvedTypeDefinition GetTypeDefinition(string ns, string name, int typeParameterCount)
 		{
 			TopLevelTypeName key = new TopLevelTypeName(ns ?? string.Empty, name, typeParameterCount);
@@ -223,7 +198,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return null;
 		}
 
-		// Token: 0x0600065E RID: 1630 RVA: 0x00010B20 File Offset: 0x0000FB20
 		public IAssembly Resolve(ITypeResolveContext context)
 		{
 			if (context == null)
@@ -241,7 +215,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return (IAssembly)cacheManager.GetOrAddShared(this, assembly);
 		}
 
-		// Token: 0x0600065F RID: 1631 RVA: 0x00010B7C File Offset: 0x0000FB7C
 		public override string ToString()
 		{
 			return string.Concat(new string[]
@@ -254,7 +227,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			});
 		}
 
-		// Token: 0x06000660 RID: 1632 RVA: 0x00010BC5 File Offset: 0x0000FBC5
 		private Dictionary<TopLevelTypeName, IUnresolvedTypeDefinition> GetTypeDictionary(StringComparer nameComparer)
 		{
 			if (nameComparer == StringComparer.Ordinal)
@@ -264,7 +236,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			throw new NotImplementedException();
 		}
 
-		// Token: 0x06000661 RID: 1633 RVA: 0x00010BDC File Offset: 0x0000FBDC
 		private DefaultUnresolvedAssembly.UnresolvedNamespace GetUnresolvedRootNamespace(StringComparer nameComparer)
 		{
 			LazyInitializer.EnsureInitialized<List<KeyValuePair<StringComparer, DefaultUnresolvedAssembly.UnresolvedNamespace>>>(ref this.unresolvedNamespacesPerNameComparer);
@@ -291,7 +262,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return result;
 		}
 
-		// Token: 0x06000662 RID: 1634 RVA: 0x00010D04 File Offset: 0x0000FD04
 		private static DefaultUnresolvedAssembly.UnresolvedNamespace GetOrAddNamespace(Dictionary<string, DefaultUnresolvedAssembly.UnresolvedNamespace> dict, string fullName)
 		{
 			DefaultUnresolvedAssembly.UnresolvedNamespace unresolvedNamespace;
@@ -318,78 +288,58 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return unresolvedNamespace;
 		}
 
-		// Token: 0x040001D0 RID: 464
 		private string assemblyName;
 
-		// Token: 0x040001D1 RID: 465
 		private string fullAssemblyName;
 
-		// Token: 0x040001D2 RID: 466
 		private IList<IUnresolvedAttribute> assemblyAttributes;
 
-		// Token: 0x040001D3 RID: 467
 		private IList<IUnresolvedAttribute> moduleAttributes;
 
-		// Token: 0x040001D4 RID: 468
 		private Dictionary<TopLevelTypeName, IUnresolvedTypeDefinition> typeDefinitions = new Dictionary<TopLevelTypeName, IUnresolvedTypeDefinition>(TopLevelTypeNameComparer.Ordinal);
 
-		// Token: 0x040001D5 RID: 469
 		private Dictionary<TopLevelTypeName, ITypeReference> typeForwarders = new Dictionary<TopLevelTypeName, ITypeReference>(TopLevelTypeNameComparer.Ordinal);
 
-		// Token: 0x040001D6 RID: 470
 		private string location;
 
-		// Token: 0x040001D7 RID: 471
 		private static readonly ITypeReference typeForwardedToAttributeTypeRef = typeof(TypeForwardedToAttribute).ToTypeReference();
 
-		// Token: 0x040001D8 RID: 472
 		[NonSerialized]
 		private List<KeyValuePair<StringComparer, DefaultUnresolvedAssembly.UnresolvedNamespace>> unresolvedNamespacesPerNameComparer;
 
-		// Token: 0x020000B8 RID: 184
 		[Serializable]
 		private sealed class TypeOfConstantValue : IConstantValue
 		{
-			// Token: 0x06000664 RID: 1636 RVA: 0x00010D87 File Offset: 0x0000FD87
 			public TypeOfConstantValue(ITypeReference typeRef)
 			{
 				this.typeRef = typeRef;
 			}
 
-			// Token: 0x06000665 RID: 1637 RVA: 0x00010D96 File Offset: 0x0000FD96
 			public ResolveResult Resolve(ITypeResolveContext context)
 			{
 				return new TypeOfResolveResult(context.Compilation.FindType(KnownTypeCode.Type), this.typeRef.Resolve(context));
 			}
 
-			// Token: 0x040001D9 RID: 473
 			private readonly ITypeReference typeRef;
 		}
 
-		// Token: 0x020000B9 RID: 185
 		private sealed class UnresolvedNamespace
 		{
-			// Token: 0x06000666 RID: 1638 RVA: 0x00010DB6 File Offset: 0x0000FDB6
 			public UnresolvedNamespace(string fullName, string name)
 			{
 				this.FullName = fullName;
 				this.Name = name;
 			}
 
-			// Token: 0x040001DA RID: 474
 			internal readonly string FullName;
 
-			// Token: 0x040001DB RID: 475
 			internal readonly string Name;
 
-			// Token: 0x040001DC RID: 476
 			internal readonly List<DefaultUnresolvedAssembly.UnresolvedNamespace> Children = new List<DefaultUnresolvedAssembly.UnresolvedNamespace>();
 		}
 
-		// Token: 0x020000BA RID: 186
 		private sealed class DefaultResolvedAssembly : IAssembly, ICompilationProvider
 		{
-			// Token: 0x06000667 RID: 1639 RVA: 0x00010DD8 File Offset: 0x0000FDD8
 			public DefaultResolvedAssembly(ICompilation compilation, DefaultUnresolvedAssembly unresolved)
 			{
 				this.compilation = compilation;
@@ -401,8 +351,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				this.ModuleAttributes = unresolved.ModuleAttributes.CreateResolvedAttributes(this.context);
 			}
 
-			// Token: 0x17000294 RID: 660
-			// (get) Token: 0x06000668 RID: 1640 RVA: 0x00010E69 File Offset: 0x0000FE69
 			public IUnresolvedAssembly UnresolvedAssembly
 			{
 				get
@@ -411,8 +359,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				}
 			}
 
-			// Token: 0x17000295 RID: 661
-			// (get) Token: 0x06000669 RID: 1641 RVA: 0x00010E71 File Offset: 0x0000FE71
 			public bool IsMainAssembly
 			{
 				get
@@ -421,8 +367,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				}
 			}
 
-			// Token: 0x17000296 RID: 662
-			// (get) Token: 0x0600066A RID: 1642 RVA: 0x00010E81 File Offset: 0x0000FE81
 			public string AssemblyName
 			{
 				get
@@ -431,8 +375,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				}
 			}
 
-			// Token: 0x17000297 RID: 663
-			// (get) Token: 0x0600066B RID: 1643 RVA: 0x00010E8E File Offset: 0x0000FE8E
 			public string FullAssemblyName
 			{
 				get
@@ -441,18 +383,10 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				}
 			}
 
-			// Token: 0x17000298 RID: 664
-			// (get) Token: 0x0600066C RID: 1644 RVA: 0x00010E9B File Offset: 0x0000FE9B
-			// (set) Token: 0x0600066D RID: 1645 RVA: 0x00010EA3 File Offset: 0x0000FEA3
 			public IList<IAttribute> AssemblyAttributes { get; private set; }
 
-			// Token: 0x17000299 RID: 665
-			// (get) Token: 0x0600066E RID: 1646 RVA: 0x00010EAC File Offset: 0x0000FEAC
-			// (set) Token: 0x0600066F RID: 1647 RVA: 0x00010EB4 File Offset: 0x0000FEB4
 			public IList<IAttribute> ModuleAttributes { get; private set; }
 
-			// Token: 0x1700029A RID: 666
-			// (get) Token: 0x06000670 RID: 1648 RVA: 0x00010EBD File Offset: 0x0000FEBD
 			public INamespace RootNamespace
 			{
 				get
@@ -461,8 +395,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				}
 			}
 
-			// Token: 0x1700029B RID: 667
-			// (get) Token: 0x06000671 RID: 1649 RVA: 0x00010EC5 File Offset: 0x0000FEC5
 			public ICompilation Compilation
 			{
 				get
@@ -471,7 +403,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				}
 			}
 
-			// Token: 0x06000672 RID: 1650 RVA: 0x00010ED0 File Offset: 0x0000FED0
 			public bool InternalsVisibleTo(IAssembly assembly)
 			{
 				if (this == assembly)
@@ -488,7 +419,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				return false;
 			}
 
-			// Token: 0x06000673 RID: 1651 RVA: 0x00010F70 File Offset: 0x0000FF70
 			private string[] GetInternalsVisibleTo()
 			{
 				string[] array = this.internalsVisibleTo;
@@ -509,7 +439,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				return this.internalsVisibleTo;
 			}
 
-			// Token: 0x06000674 RID: 1652 RVA: 0x00011028 File Offset: 0x00010028
 			private static string GetShortName(string fullAssemblyName)
 			{
 				if (fullAssemblyName == null)
@@ -524,7 +453,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				return fullAssemblyName.Substring(0, num);
 			}
 
-			// Token: 0x06000675 RID: 1653 RVA: 0x00011054 File Offset: 0x00010054
 			public ITypeDefinition GetTypeDefinition(TopLevelTypeName topLevelTypeName)
 			{
 				IUnresolvedTypeDefinition unresolved;
@@ -546,13 +474,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				return null;
 			}
 
-			// Token: 0x06000676 RID: 1654 RVA: 0x000110E9 File Offset: 0x000100E9
 			private ITypeDefinition GetTypeDefinition(IUnresolvedTypeDefinition unresolved)
 			{
 				return this.typeDict.GetOrAdd(unresolved, (IUnresolvedTypeDefinition t) => this.CreateTypeDefinition(t));
 			}
 
-			// Token: 0x06000677 RID: 1655 RVA: 0x00011104 File Offset: 0x00010104
 			private ITypeDefinition CreateTypeDefinition(IUnresolvedTypeDefinition unresolved)
 			{
 				if (unresolved.DeclaringTypeDefinition != null)
@@ -576,8 +502,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				});
 			}
 
-			// Token: 0x1700029C RID: 668
-			// (get) Token: 0x06000678 RID: 1656 RVA: 0x000111AD File Offset: 0x000101AD
 			public IEnumerable<ITypeDefinition> TopLevelTypeDefinitions
 			{
 				get
@@ -587,37 +511,27 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 				}
 			}
 
-			// Token: 0x06000679 RID: 1657 RVA: 0x000111CB File Offset: 0x000101CB
 			public override string ToString()
 			{
 				return "[DefaultResolvedAssembly " + this.AssemblyName + "]";
 			}
 
-			// Token: 0x040001DD RID: 477
 			private readonly DefaultUnresolvedAssembly unresolvedAssembly;
 
-			// Token: 0x040001DE RID: 478
 			private readonly ICompilation compilation;
 
-			// Token: 0x040001DF RID: 479
 			private readonly ITypeResolveContext context;
 
-			// Token: 0x040001E0 RID: 480
 			private readonly Dictionary<TopLevelTypeName, IUnresolvedTypeDefinition> unresolvedTypeDict;
 
-			// Token: 0x040001E1 RID: 481
 			private readonly ConcurrentDictionary<IUnresolvedTypeDefinition, ITypeDefinition> typeDict = new ConcurrentDictionary<IUnresolvedTypeDefinition, ITypeDefinition>();
 
-			// Token: 0x040001E2 RID: 482
 			private readonly INamespace rootNamespace;
 
-			// Token: 0x040001E3 RID: 483
 			private volatile string[] internalsVisibleTo;
 
-			// Token: 0x020000BC RID: 188
 			private sealed class NS : INamespace, ISymbol, ICompilationProvider
 			{
-				// Token: 0x06000687 RID: 1671 RVA: 0x000111F4 File Offset: 0x000101F4
 				public NS(DefaultUnresolvedAssembly.DefaultResolvedAssembly assembly, DefaultUnresolvedAssembly.UnresolvedNamespace ns, INamespace parentNamespace)
 				{
 					this.assembly = assembly;
@@ -626,8 +540,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					this.childNamespaces = new ProjectedList<DefaultUnresolvedAssembly.DefaultResolvedAssembly.NS, DefaultUnresolvedAssembly.UnresolvedNamespace, DefaultUnresolvedAssembly.DefaultResolvedAssembly.NS>(this, ns.Children, (DefaultUnresolvedAssembly.DefaultResolvedAssembly.NS self, DefaultUnresolvedAssembly.UnresolvedNamespace c) => new DefaultUnresolvedAssembly.DefaultResolvedAssembly.NS(self.assembly, c, self));
 				}
 
-				// Token: 0x170002A4 RID: 676
-				// (get) Token: 0x06000688 RID: 1672 RVA: 0x0001124B File Offset: 0x0001024B
 				string INamespace.ExternAlias
 				{
 					get
@@ -636,8 +548,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x170002A5 RID: 677
-				// (get) Token: 0x06000689 RID: 1673 RVA: 0x0001124E File Offset: 0x0001024E
 				string INamespace.FullName
 				{
 					get
@@ -646,8 +556,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x170002A6 RID: 678
-				// (get) Token: 0x0600068A RID: 1674 RVA: 0x0001125B File Offset: 0x0001025B
 				SymbolKind ISymbol.SymbolKind
 				{
 					get
@@ -656,8 +564,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x170002A7 RID: 679
-				// (get) Token: 0x0600068B RID: 1675 RVA: 0x0001125F File Offset: 0x0001025F
 				public string Name
 				{
 					get
@@ -666,8 +572,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x170002A8 RID: 680
-				// (get) Token: 0x0600068C RID: 1676 RVA: 0x0001126C File Offset: 0x0001026C
 				INamespace INamespace.ParentNamespace
 				{
 					get
@@ -676,8 +580,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x170002A9 RID: 681
-				// (get) Token: 0x0600068D RID: 1677 RVA: 0x00011274 File Offset: 0x00010274
 				IEnumerable<IAssembly> INamespace.ContributingAssemblies
 				{
 					get
@@ -689,8 +591,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x170002AA RID: 682
-				// (get) Token: 0x0600068E RID: 1678 RVA: 0x00011292 File Offset: 0x00010292
 				IEnumerable<INamespace> INamespace.ChildNamespaces
 				{
 					get
@@ -699,7 +599,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x0600068F RID: 1679 RVA: 0x0001129C File Offset: 0x0001029C
 				INamespace INamespace.GetChildNamespace(string name)
 				{
 					StringComparer nameComparer = this.assembly.compilation.NameComparer;
@@ -713,8 +612,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					return null;
 				}
 
-				// Token: 0x170002AB RID: 683
-				// (get) Token: 0x06000690 RID: 1680 RVA: 0x000112FD File Offset: 0x000102FD
 				ICompilation ICompilationProvider.Compilation
 				{
 					get
@@ -723,8 +620,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x170002AC RID: 684
-				// (get) Token: 0x06000691 RID: 1681 RVA: 0x0001130C File Offset: 0x0001030C
 				IEnumerable<ITypeDefinition> INamespace.Types
 				{
 					get
@@ -746,7 +641,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					}
 				}
 
-				// Token: 0x06000692 RID: 1682 RVA: 0x000113B0 File Offset: 0x000103B0
 				ITypeDefinition INamespace.GetTypeDefinition(string name, int typeParameterCount)
 				{
 					TopLevelTypeName key = new TopLevelTypeName(this.ns.FullName, name, typeParameterCount);
@@ -758,25 +652,19 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 					return null;
 				}
 
-				// Token: 0x06000693 RID: 1683 RVA: 0x000113F4 File Offset: 0x000103F4
 				public ISymbolReference ToReference()
 				{
 					return new NamespaceReference(new DefaultAssemblyReference(this.assembly.AssemblyName), this.ns.FullName);
 				}
 
-				// Token: 0x040001E8 RID: 488
 				private readonly DefaultUnresolvedAssembly.DefaultResolvedAssembly assembly;
 
-				// Token: 0x040001E9 RID: 489
 				private readonly DefaultUnresolvedAssembly.UnresolvedNamespace ns;
 
-				// Token: 0x040001EA RID: 490
 				private readonly INamespace parentNamespace;
 
-				// Token: 0x040001EB RID: 491
 				private readonly IList<DefaultUnresolvedAssembly.DefaultResolvedAssembly.NS> childNamespaces;
 
-				// Token: 0x040001EC RID: 492
 				private IEnumerable<ITypeDefinition> types;
 			}
 		}

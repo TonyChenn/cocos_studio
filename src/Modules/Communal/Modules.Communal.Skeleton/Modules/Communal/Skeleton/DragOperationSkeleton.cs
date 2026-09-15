@@ -11,11 +11,9 @@ using Mono.Addins;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x02000002 RID: 2
 	[Extension(typeof(IDragOperation))]
 	public class DragOperationSkeleton : DragOperation
 	{
-		// Token: 0x06000002 RID: 2 RVA: 0x00002058 File Offset: 0x00000258
 		protected override string CanDragDropArgs(DragDropArgs e)
 		{
 			ResourceInfoDragData resourceInfoDragData = e.Context.GetDragData() as ResourceInfoDragData;
@@ -30,7 +28,6 @@ namespace Modules.Communal.Skeleton
 			return null;
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x000020CC File Offset: 0x000002CC
 		protected override AbstractNodeObject CreateObjectFromFile(ResourceItem resourceFile)
 		{
 			AbstractNodeObject abstractNodeObject = null;
@@ -49,7 +46,6 @@ namespace Modules.Communal.Skeleton
 			return abstractNodeObject;
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x00002134 File Offset: 0x00000334
 		protected override void AddChildToTarget(AbstractNodeObject childNode, PointF coord, AbstractNodeObject target)
 		{
 			if (childNode == null || target == null)
@@ -65,7 +61,6 @@ namespace Modules.Communal.Skeleton
 			target.Children.Add(childNode);
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x00002177 File Offset: 0x00000377
 		public override bool CanHandle(CocosItem cocosItem)
 		{
 			return cocosItem.IsSkeletonFile();

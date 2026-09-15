@@ -16,24 +16,20 @@ using MonoDevelop.Core;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200005A RID: 90
 	[ToolboxItem(true)]
 	public class SearchEntry : HBox
 	{
-		// Token: 0x0600030C RID: 780 RVA: 0x0000C229 File Offset: 0x0000A429
 		public SearchEntry()
 		{
 			this.Initialize();
 		}
 
-		// Token: 0x0600030D RID: 781 RVA: 0x0000C23E File Offset: 0x0000A43E
 		private void Initialize()
 		{
 			this.InitView();
 			this.InitEvent();
 		}
 
-		// Token: 0x0600030E RID: 782 RVA: 0x0000C24C File Offset: 0x0000A44C
 		private void InitView()
 		{
 			base.WidthRequest = 190;
@@ -66,7 +62,6 @@ namespace Cocos.Launcher.Core
 			this.ChangeCloseButtonVisible();
 		}
 
-		// Token: 0x0600030F RID: 783 RVA: 0x0000C3D0 File Offset: 0x0000A5D0
 		private void InitEvent()
 		{
 			this.searchEntry.KeyPressEvent += this.searchEntry_KeyPressEvent;
@@ -81,7 +76,6 @@ namespace Cocos.Launcher.Core
 			Services.MainWindow.FocusOutEvent += this.MainWindow_FocusOutEvent;
 		}
 
-		// Token: 0x06000310 RID: 784 RVA: 0x0000C4C7 File Offset: 0x0000A6C7
 		private void HiddenSearchPopover()
 		{
 			this.closeBox.RemoveAll();
@@ -93,7 +87,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000311 RID: 785 RVA: 0x0000C4FE File Offset: 0x0000A6FE
 		private void SetSearchEntryValue(string value)
 		{
 			this.isInputs = false;
@@ -102,7 +95,6 @@ namespace Cocos.Launcher.Core
 			this.isInputs = true;
 		}
 
-		// Token: 0x06000312 RID: 786 RVA: 0x0000C538 File Offset: 0x0000A738
 		private void ChangeCloseButtonVisible()
 		{
 			if (string.IsNullOrEmpty(this.searchEntry.Text) && this.closeBox.Children.Contains(this.closeButton))
@@ -116,14 +108,12 @@ namespace Cocos.Launcher.Core
 			this.closeBox.ShowAll();
 		}
 
-		// Token: 0x06000313 RID: 787 RVA: 0x0000C5C8 File Offset: 0x0000A7C8
 		private void SetTreeModel()
 		{
 			this.searchPopover.SetContent(this.searchKeywords);
 			this.SetAssociatedKeywords(this.searchEntry.Text);
 		}
 
-		// Token: 0x06000314 RID: 788 RVA: 0x0000C5EC File Offset: 0x0000A7EC
 		private void SetKeywordsModel(List<string> list)
 		{
 			if (list.Count < 1 && this.searchPopover.Visible)
@@ -137,7 +127,6 @@ namespace Cocos.Launcher.Core
 			this.searchKeywords.Models = list;
 		}
 
-		// Token: 0x06000315 RID: 789 RVA: 0x0000C64C File Offset: 0x0000A84C
 		private void StartSearch()
 		{
 			if (string.IsNullOrEmpty(this.searchEntry.Text) || !CocoStudio.Core.Services.NetworkService.IsOK)
@@ -150,7 +139,6 @@ namespace Cocos.Launcher.Core
 			Services.TabGroupService.LastSelectedTabPage.TabContent.Search(text);
 		}
 
-		// Token: 0x06000316 RID: 790 RVA: 0x0000C6CA File Offset: 0x0000A8CA
 		protected override void OnActivate()
 		{
 			if (this.searchEntry.HasFocus)
@@ -159,7 +147,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000317 RID: 791 RVA: 0x0000C6E0 File Offset: 0x0000A8E0
 		private void SetAssociatedKeywords(string entryText)
 		{
 			HttpSync httpSync = new HttpSync();
@@ -168,14 +155,12 @@ namespace Cocos.Launcher.Core
 			httpSync.GetSyncResponseOfString(ConstantConfig.Constant.SearchKeywordsUrl, "post", data, null);
 		}
 
-		// Token: 0x06000318 RID: 792 RVA: 0x0000C730 File Offset: 0x0000A930
 		private bool IsCheck(string text)
 		{
 			string pattern = "^[\\w\\s-+.]+$";
 			return Regex.IsMatch(text, pattern);
 		}
 
-		// Token: 0x06000319 RID: 793 RVA: 0x0000C74C File Offset: 0x0000A94C
 		private string GetFilteredSearchValue()
 		{
 			StringBuilder stringBuilder = new StringBuilder();
@@ -193,7 +178,6 @@ namespace Cocos.Launcher.Core
 			return stringBuilder.ToString().GetCocoaUrlEncode();
 		}
 
-		// Token: 0x0600031A RID: 794 RVA: 0x0000C7D4 File Offset: 0x0000A9D4
 		private void KeywordsResived(object sender, HttpSync.HttpSyncArgs e)
 		{
 			try
@@ -229,7 +213,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600031B RID: 795 RVA: 0x0000C8B4 File Offset: 0x0000AAB4
 		private void searchEntry_Changed(object sender, EventArgs e)
 		{
 			this.ChangeCloseButtonVisible();
@@ -252,7 +235,6 @@ namespace Cocos.Launcher.Core
 			this.SetTreeModel();
 		}
 
-		// Token: 0x0600031C RID: 796 RVA: 0x0000C938 File Offset: 0x0000AB38
 		private void searchEntry_FocusInEvent(object o, FocusInEventArgs args)
 		{
 			this.ChangeCloseButtonVisible();
@@ -274,13 +256,11 @@ namespace Cocos.Launcher.Core
 			this.searchPopover.ShowPopover();
 		}
 
-		// Token: 0x0600031D RID: 797 RVA: 0x0000C9AC File Offset: 0x0000ABAC
 		private void searchEntry_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			this.HiddenSearchPopover();
 		}
 
-		// Token: 0x0600031E RID: 798 RVA: 0x0000C9B4 File Offset: 0x0000ABB4
 		[ConnectBefore]
 		private void searchEntry_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
@@ -309,7 +289,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600031F RID: 799 RVA: 0x0000CA58 File Offset: 0x0000AC58
 		private void searchEntry_KeyPressEvent(object o, KeyPressEventArgs args)
 		{
 			args.RetVal = true;
@@ -331,7 +310,6 @@ namespace Cocos.Launcher.Core
 			this.isKeyDown = false;
 		}
 
-		// Token: 0x06000320 RID: 800 RVA: 0x0000CAEC File Offset: 0x0000ACEC
 		private void Selection_Changed(object sender, EventArgs e)
 		{
 			object selectedItem = this.searchKeywords.GetSelectedItem();
@@ -345,7 +323,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000321 RID: 801 RVA: 0x0000CB22 File Offset: 0x0000AD22
 		private void searchHotWords_SelectedChanged(object sender, EventArgs e)
 		{
 			if (this.searchHotWords.ActivatedItem != null)
@@ -355,50 +332,38 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000322 RID: 802 RVA: 0x0000CB4D File Offset: 0x0000AD4D
 		private void searchButton_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			this.HiddenSearchPopover();
 			this.StartSearch();
 		}
 
-		// Token: 0x06000323 RID: 803 RVA: 0x0000CB5B File Offset: 0x0000AD5B
 		private void MainWindow_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			this.HiddenSearchPopover();
 		}
 
-		// Token: 0x06000324 RID: 804 RVA: 0x0000CB63 File Offset: 0x0000AD63
 		private void closeButton_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			this.searchEntry.Text = string.Empty;
 		}
 
-		// Token: 0x0400011C RID: 284
 		private EventBox closeBox;
 
-		// Token: 0x0400011D RID: 285
 		private Entry searchEntry;
 
-		// Token: 0x0400011E RID: 286
 		private ImageButtonView searchButton;
 
-		// Token: 0x0400011F RID: 287
 		private ImageButtonView closeButton;
 
-		// Token: 0x04000120 RID: 288
 		private SearchPopover searchPopover;
 
-		// Token: 0x04000121 RID: 289
 		private SearchHotWords searchHotWords;
 
-		// Token: 0x04000122 RID: 290
 		private SearchKeywords searchKeywords;
 
-		// Token: 0x04000123 RID: 291
 		private bool isInputs = true;
 
-		// Token: 0x04000124 RID: 292
 		private bool isKeyDown;
 	}
 }

@@ -4,11 +4,8 @@ using MonoDevelop.Core;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x02000028 RID: 40
 	internal class DownloadAnimation
 	{
-		// Token: 0x1700002D RID: 45
-		// (get) Token: 0x06000172 RID: 370 RVA: 0x0000829C File Offset: 0x0000649C
 		public static DownloadAnimation Instance
 		{
 			get
@@ -21,7 +18,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000174 RID: 372 RVA: 0x000082BC File Offset: 0x000064BC
 		public void StartDownloadAnimation(int point_x, int point_y)
 		{
 			int num;
@@ -51,7 +47,6 @@ namespace Cocos.Launcher.Core
 			widgetAnimationModel.StartPositionAnimation(downloadAnimationWindow, num + 80, num2 + num5);
 		}
 
-		// Token: 0x06000175 RID: 373 RVA: 0x00008368 File Offset: 0x00006568
 		private void model_EndAnimationClick(object sender, EndAnimationClickEventArgs e)
 		{
 			WidgetAnimationModel widgetAnimationModel = sender as WidgetAnimationModel;
@@ -60,7 +55,6 @@ namespace Cocos.Launcher.Core
 			e.Window.Dispose();
 		}
 
-		// Token: 0x04000073 RID: 115
 		private static DownloadAnimation instance;
 	}
 }

@@ -6,11 +6,8 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 	/// Resolve context represents the minimal mscorlib required for evaluating constants.
 	/// This contains all known types (<see cref="T:ICSharpCode.NRefactory.TypeSystem.KnownTypeCode" />) and no other types.
 	/// </summary>
-	// Token: 0x020000D6 RID: 214
 	public sealed class MinimalCorlib : DefaultUnresolvedAssembly
 	{
-		// Token: 0x17000348 RID: 840
-		// (get) Token: 0x060007ED RID: 2029 RVA: 0x00014FC2 File Offset: 0x00013FC2
 		public static MinimalCorlib Instance
 		{
 			get
@@ -19,13 +16,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x060007EE RID: 2030 RVA: 0x00014FCE File Offset: 0x00013FCE
 		public ICompilation CreateCompilation()
 		{
 			return new SimpleCompilation(new DefaultSolutionSnapshot(), this, new IAssemblyReference[0]);
 		}
 
-		// Token: 0x060007EF RID: 2031 RVA: 0x00014FE4 File Offset: 0x00013FE4
 		private MinimalCorlib() : base("corlib")
 		{
 			DefaultUnresolvedTypeDefinition[] array = new DefaultUnresolvedTypeDefinition[46];
@@ -57,7 +52,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			base.Freeze();
 		}
 
-		// Token: 0x04000247 RID: 583
 		private static readonly Lazy<MinimalCorlib> instance = new Lazy<MinimalCorlib>(() => new MinimalCorlib());
 	}
 }

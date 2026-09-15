@@ -8,7 +8,6 @@ using System.Runtime.Serialization;
 
 namespace ICSharpCode.NRefactory.Utils
 {
-	// Token: 0x0200010E RID: 270
 	public class FastSerializer
 	{
 		/// <summary>
@@ -16,9 +15,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// The default value is null, which will cause the FastSerializer to use the
 		/// full assembly and type names.
 		/// </summary>
-		// Token: 0x170003DF RID: 991
-		// (get) Token: 0x060009AE RID: 2478 RVA: 0x0001B093 File Offset: 0x0001A093
-		// (set) Token: 0x060009AF RID: 2479 RVA: 0x0001B09B File Offset: 0x0001A09B
 		public SerializationBinder SerializationBinder { get; set; }
 
 		/// <summary>
@@ -28,12 +24,8 @@ namespace ICSharpCode.NRefactory.Utils
 		/// When deserializing, the same (or equivalent) instances must be specified, and the deserializer
 		/// will use them in place of the fixed instances.
 		/// </summary>
-		// Token: 0x170003E0 RID: 992
-		// (get) Token: 0x060009B0 RID: 2480 RVA: 0x0001B0A4 File Offset: 0x0001A0A4
-		// (set) Token: 0x060009B1 RID: 2481 RVA: 0x0001B0AC File Offset: 0x0001A0AC
 		public object[] FixedInstances { get; set; }
 
-		// Token: 0x060009B2 RID: 2482 RVA: 0x0001B0B8 File Offset: 0x0001A0B8
 		private FastSerializer.ObjectScanner GetScanner(Type type)
 		{
 			FastSerializer.ObjectScanner objectScanner;
@@ -45,7 +37,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return objectScanner;
 		}
 
-		// Token: 0x060009B3 RID: 2483 RVA: 0x0001B12C File Offset: 0x0001A12C
 		private FastSerializer.ObjectScanner CreateScanner(Type type)
 		{
 			bool isArray = type.IsArray;
@@ -143,7 +134,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// Emit 'scan instance.Field'.
 		/// Stack transition: ... =&gt; ...
 		/// </summary>
-		// Token: 0x060009B4 RID: 2484 RVA: 0x0001B470 File Offset: 0x0001A470
 		private void EmitScanField(ILGenerator il, LocalBuilder instance, FieldInfo field)
 		{
 			if (field.FieldType.IsValueType)
@@ -162,7 +152,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// <summary>
 		/// Stack transition: ..., value =&gt; ...
 		/// </summary>
-		// Token: 0x060009B5 RID: 2485 RVA: 0x0001B4E4 File Offset: 0x0001A4E4
 		private void EmitScanValueType(ILGenerator il, Type valType)
 		{
 			LocalBuilder localBuilder = il.DeclareLocal(valType);
@@ -176,7 +165,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x060009B6 RID: 2486 RVA: 0x0001B578 File Offset: 0x0001A578
 		private static List<FieldInfo> GetSerializableFields(Type type)
 		{
 			List<FieldInfo> list = new List<FieldInfo>();
@@ -192,7 +180,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return list;
 		}
 
-		// Token: 0x060009B7 RID: 2487 RVA: 0x0001B5F8 File Offset: 0x0001A5F8
 		private static bool IsReferenceOrContainsReferences(Type type)
 		{
 			if (!type.IsValueType)
@@ -213,7 +200,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return false;
 		}
 
-		// Token: 0x060009B8 RID: 2488 RVA: 0x0001B66C File Offset: 0x0001A66C
 		private FastSerializer.ObjectWriter GetWriter(Type type)
 		{
 			FastSerializer.ObjectWriter objectWriter;
@@ -225,7 +211,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return objectWriter;
 		}
 
-		// Token: 0x060009B9 RID: 2489 RVA: 0x0001B6E8 File Offset: 0x0001A6E8
 		private FastSerializer.ObjectWriter CreateWriter(Type type)
 		{
 			if (type == typeof(string))
@@ -388,7 +373,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// Emit 'write instance.Field'.
 		/// Stack transition: ... =&gt; ...
 		/// </summary>
-		// Token: 0x060009BA RID: 2490 RVA: 0x0001BBF4 File Offset: 0x0001ABF4
 		private void EmitWriteField(ILGenerator il, LocalBuilder writer, LocalBuilder instance, FieldInfo field)
 		{
 			Type fieldType = field.FieldType;
@@ -417,7 +401,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// Writes a primitive value of the specified type.
 		/// Stack transition: ..., writer, value =&gt; ...
 		/// </summary>
-		// Token: 0x060009BB RID: 2491 RVA: 0x0001BCA8 File Offset: 0x0001ACA8
 		private void WritePrimitiveValue(ILGenerator il, Type fieldType)
 		{
 			if (fieldType.IsEnum)
@@ -458,7 +441,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// <summary>
 		/// Stack transition: ..., value =&gt; ...
 		/// </summary>
-		// Token: 0x060009BC RID: 2492 RVA: 0x0001BD84 File Offset: 0x0001AD84
 		private void EmitWriteValueType(ILGenerator il, LocalBuilder writer, Type valType)
 		{
 			LocalBuilder localBuilder = il.DeclareLocal(valType);
@@ -469,13 +451,11 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x060009BD RID: 2493 RVA: 0x0001BDF0 File Offset: 0x0001ADF0
 		public void Serialize(Stream stream, object instance)
 		{
 			this.Serialize(new BinaryWriterWith7BitEncodedInts(stream), instance);
 		}
 
-		// Token: 0x060009BE RID: 2494 RVA: 0x0001BE00 File Offset: 0x0001AE00
 		public void Serialize(BinaryWriter writer, object instance)
 		{
 			FastSerializer.SerializationContext serializationContext = new FastSerializer.SerializationContext(this, writer);
@@ -487,13 +467,11 @@ namespace ICSharpCode.NRefactory.Utils
 			serializationContext.WriteObjectID(instance);
 		}
 
-		// Token: 0x060009BF RID: 2495 RVA: 0x0001BE41 File Offset: 0x0001AE41
 		public object Deserialize(Stream stream)
 		{
 			return this.Deserialize(new BinaryReaderWith7BitEncodedInts(stream));
 		}
 
-		// Token: 0x060009C0 RID: 2496 RVA: 0x0001BE50 File Offset: 0x0001AE50
 		public object Deserialize(BinaryReader reader)
 		{
 			if (reader.ReadInt32() != 1909623390)
@@ -668,7 +646,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return deserializationContext.ReadObject();
 		}
 
-		// Token: 0x060009C1 RID: 2497 RVA: 0x0001C2F0 File Offset: 0x0001B2F0
 		private FastSerializer.ObjectReader GetReader(Type type)
 		{
 			FastSerializer.ObjectReader objectReader;
@@ -680,7 +657,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return objectReader;
 		}
 
-		// Token: 0x060009C2 RID: 2498 RVA: 0x0001C398 File Offset: 0x0001B398
 		private FastSerializer.ObjectReader CreateReader(Type type)
 		{
 			if (type == typeof(string))
@@ -877,7 +853,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return (FastSerializer.ObjectReader)dynamicMethod.CreateDelegate(typeof(FastSerializer.ObjectReader));
 		}
 
-		// Token: 0x060009C3 RID: 2499 RVA: 0x0001C8D8 File Offset: 0x0001B8D8
 		private void EmitReadField(ILGenerator il, LocalBuilder reader, LocalBuilder instance, FieldInfo field)
 		{
 			Type fieldType = field.FieldType;
@@ -906,7 +881,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// Reads a primitive value of the specified type.
 		/// Stack transition: ... =&gt; ..., value
 		/// </summary>
-		// Token: 0x060009C4 RID: 2500 RVA: 0x0001C98C File Offset: 0x0001B98C
 		private void ReadPrimitiveValue(ILGenerator il, LocalBuilder reader, Type fieldType)
 		{
 			if (fieldType.IsEnum)
@@ -948,7 +922,6 @@ namespace ICSharpCode.NRefactory.Utils
 		/// <summary>
 		/// Stack transition: ..., field-ref =&gt; ...
 		/// </summary>
-		// Token: 0x060009C5 RID: 2501 RVA: 0x0001CA74 File Offset: 0x0001BA74
 		private void EmitReadValueType(ILGenerator il, LocalBuilder reader, Type valType)
 		{
 			LocalBuilder localBuilder = il.DeclareLocal(valType.MakeByRefType());
@@ -959,7 +932,6 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		}
 
-		// Token: 0x060009C6 RID: 2502 RVA: 0x0001CAE4 File Offset: 0x0001BAE4
 		private FastSerializer.CustomDeserializationAction GetCustomDeserializationAction(Type type)
 		{
 			FastSerializer.CustomDeserializationAction customDeserializationAction;
@@ -971,7 +943,6 @@ namespace ICSharpCode.NRefactory.Utils
 			return customDeserializationAction;
 		}
 
-		// Token: 0x060009C7 RID: 2503 RVA: 0x0001CB18 File Offset: 0x0001BB18
 		private static FastSerializer.CustomDeserializationAction CreateCustomDeserializationAction(Type type)
 		{
 			ConstructorInfo constructor = type.GetConstructor(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.ExactBinding, null, new Type[]
@@ -998,85 +969,67 @@ namespace ICSharpCode.NRefactory.Utils
 			return (FastSerializer.CustomDeserializationAction)dynamicMethod.CreateDelegate(typeof(FastSerializer.CustomDeserializationAction));
 		}
 
-		// Token: 0x060009C8 RID: 2504 RVA: 0x0001CC21 File Offset: 0x0001BC21
 		[Conditional("DEBUG_SERIALIZER")]
 		private static void Log(string format, params object[] args)
 		{
 		}
 
-		// Token: 0x04000319 RID: 793
 		private const int magic = 1909623390;
 
-		// Token: 0x0400031A RID: 794
 		private const byte Type_ReferenceType = 1;
 
-		// Token: 0x0400031B RID: 795
 		private const byte Type_ValueType = 2;
 
-		// Token: 0x0400031C RID: 796
 		private const byte Type_SZArray = 3;
 
-		// Token: 0x0400031D RID: 797
 		private const byte Type_ParameterizedType = 4;
 
-		// Token: 0x0400031E RID: 798
 		private static readonly MethodInfo mark = typeof(FastSerializer.SerializationContext).GetMethod("Mark", new Type[]
 		{
 			typeof(object)
 		});
 
-		// Token: 0x0400031F RID: 799
 		private static readonly FieldInfo writerField = typeof(FastSerializer.SerializationContext).GetField("writer");
 
-		// Token: 0x04000320 RID: 800
 		private Dictionary<Type, FastSerializer.ObjectScanner> scanners = new Dictionary<Type, FastSerializer.ObjectScanner>();
 
-		// Token: 0x04000321 RID: 801
 		private static readonly MethodInfo writeObjectID = typeof(FastSerializer.SerializationContext).GetMethod("WriteObjectID", new Type[]
 		{
 			typeof(object)
 		});
 
-		// Token: 0x04000322 RID: 802
 		private static readonly MethodInfo writeByte = typeof(BinaryWriter).GetMethod("Write", new Type[]
 		{
 			typeof(byte)
 		});
 
-		// Token: 0x04000323 RID: 803
 		private static readonly MethodInfo writeShort = typeof(BinaryWriter).GetMethod("Write", new Type[]
 		{
 			typeof(short)
 		});
 
-		// Token: 0x04000324 RID: 804
 		private static readonly MethodInfo writeInt = typeof(BinaryWriter).GetMethod("Write", new Type[]
 		{
 			typeof(int)
 		});
 
-		// Token: 0x04000325 RID: 805
 		private static readonly MethodInfo writeLong = typeof(BinaryWriter).GetMethod("Write", new Type[]
 		{
 			typeof(long)
 		});
 
-		// Token: 0x04000326 RID: 806
 		private static readonly MethodInfo writeFloat = typeof(BinaryWriter).GetMethod("Write", new Type[]
 		{
 			typeof(float)
 		});
 
-		// Token: 0x04000327 RID: 807
 		private static readonly MethodInfo writeDouble = typeof(BinaryWriter).GetMethod("Write", new Type[]
 		{
 			typeof(double)
 		});
 
-		// Token: 0x04000328 RID: 808
 		private OpCode callVirt = OpCodes.Callvirt;
 
-		// Token: 0x04000329 RID: 809
 		private static readonly FastSerializer.ObjectWriter serializationInfoWriter = delegate(FastSerializer.SerializationContext context, object instance)
 		{
 			BinaryWriter writer = context.writer;
@@ -1089,78 +1042,55 @@ namespace ICSharpCode.NRefactory.Utils
 			}
 		};
 
-		// Token: 0x0400032A RID: 810
 		private Dictionary<Type, FastSerializer.ObjectWriter> writers = new Dictionary<Type, FastSerializer.ObjectWriter>();
 
-		// Token: 0x0400032B RID: 811
 		private StreamingContext streamingContext = new StreamingContext(StreamingContextStates.All);
 
-		// Token: 0x0400032C RID: 812
 		private FormatterConverter formatterConverter = new FormatterConverter();
 
-		// Token: 0x0400032D RID: 813
 		private static readonly FieldInfo readerField = typeof(FastSerializer.DeserializationContext).GetField("Reader");
 
-		// Token: 0x0400032E RID: 814
 		private static readonly MethodInfo readObject = typeof(FastSerializer.DeserializationContext).GetMethod("ReadObject");
 
-		// Token: 0x0400032F RID: 815
 		private static readonly MethodInfo readByte = typeof(BinaryReader).GetMethod("ReadByte");
 
-		// Token: 0x04000330 RID: 816
 		private static readonly MethodInfo readShort = typeof(BinaryReader).GetMethod("ReadInt16");
 
-		// Token: 0x04000331 RID: 817
 		private static readonly MethodInfo readInt = typeof(BinaryReader).GetMethod("ReadInt32");
 
-		// Token: 0x04000332 RID: 818
 		private static readonly MethodInfo readLong = typeof(BinaryReader).GetMethod("ReadInt64");
 
-		// Token: 0x04000333 RID: 819
 		private static readonly MethodInfo readFloat = typeof(BinaryReader).GetMethod("ReadSingle");
 
-		// Token: 0x04000334 RID: 820
 		private static readonly MethodInfo readDouble = typeof(BinaryReader).GetMethod("ReadDouble");
 
-		// Token: 0x04000335 RID: 821
 		private Dictionary<Type, FastSerializer.ObjectReader> readers = new Dictionary<Type, FastSerializer.ObjectReader>();
 
-		// Token: 0x04000336 RID: 822
 		private Dictionary<Type, FastSerializer.CustomDeserializationAction> customDeserializationActions = new Dictionary<Type, FastSerializer.CustomDeserializationAction>();
 
-		// Token: 0x0200010F RID: 271
 		private sealed class SerializationType
 		{
-			// Token: 0x060009D9 RID: 2521 RVA: 0x0001CF71 File Offset: 0x0001BF71
 			public SerializationType(int iD, Type type)
 			{
 				this.ID = iD;
 				this.Type = type;
 			}
 
-			// Token: 0x04000347 RID: 839
 			public readonly int ID;
 
-			// Token: 0x04000348 RID: 840
 			public readonly Type Type;
 
-			// Token: 0x04000349 RID: 841
 			public FastSerializer.ObjectScanner Scanner;
 
-			// Token: 0x0400034A RID: 842
 			public FastSerializer.ObjectWriter Writer;
 
-			// Token: 0x0400034B RID: 843
 			public string TypeName;
 
-			// Token: 0x0400034C RID: 844
 			public int AssemblyNameID;
 		}
 
-		// Token: 0x02000110 RID: 272
 		private sealed class SerializationContext
 		{
-			// Token: 0x060009DA RID: 2522 RVA: 0x0001CF88 File Offset: 0x0001BF88
 			internal SerializationContext(FastSerializer fastSerializer, BinaryWriter writer)
 			{
 				this.fastSerializer = fastSerializer;
@@ -1169,7 +1099,6 @@ namespace ICSharpCode.NRefactory.Utils
 				this.objectTypes.Add(null);
 			}
 
-			// Token: 0x060009DB RID: 2523 RVA: 0x0001D014 File Offset: 0x0001C014
 			public void MarkFixedInstances(object[] fixedInstances)
 			{
 				if (fixedInstances == null)
@@ -1190,7 +1119,6 @@ namespace ICSharpCode.NRefactory.Utils
 			/// <summary>
 			/// Marks an instance for future scanning.
 			/// </summary>
-			// Token: 0x060009DC RID: 2524 RVA: 0x0001D078 File Offset: 0x0001C078
 			public void Mark(object instance)
 			{
 				if (instance == null || this.objectToID.ContainsKey(instance))
@@ -1201,7 +1129,6 @@ namespace ICSharpCode.NRefactory.Utils
 				this.instances.Add(instance);
 			}
 
-			// Token: 0x060009DD RID: 2525 RVA: 0x0001D0B0 File Offset: 0x0001C0B0
 			internal void Scan()
 			{
 				for (int i = 1 + this.fixedInstanceCount; i < this.instances.Count; i++)
@@ -1236,7 +1163,6 @@ namespace ICSharpCode.NRefactory.Utils
 				}
 			}
 
-			// Token: 0x060009DE RID: 2526 RVA: 0x0001D1C0 File Offset: 0x0001C1C0
 			private FastSerializer.SerializationType MarkType(Type type)
 			{
 				FastSerializer.SerializationType serializationType;
@@ -1291,7 +1217,6 @@ namespace ICSharpCode.NRefactory.Utils
 				return serializationType;
 			}
 
-			// Token: 0x060009DF RID: 2527 RVA: 0x0001D318 File Offset: 0x0001C318
 			internal void ScanTypes()
 			{
 				for (int i = 0; i < this.types.Count; i++)
@@ -1307,7 +1232,6 @@ namespace ICSharpCode.NRefactory.Utils
 				}
 			}
 
-			// Token: 0x060009E0 RID: 2528 RVA: 0x0001D3C0 File Offset: 0x0001C3C0
 			public void WriteObjectID(object instance)
 			{
 				int num = (instance == null) ? 0 : this.objectToID[instance];
@@ -1319,7 +1243,6 @@ namespace ICSharpCode.NRefactory.Utils
 				this.writer.Write(num);
 			}
 
-			// Token: 0x060009E1 RID: 2529 RVA: 0x0001D40C File Offset: 0x0001C40C
 			private void WriteTypeID(Type type)
 			{
 				int id = this.typeMap[type].ID;
@@ -1331,7 +1254,6 @@ namespace ICSharpCode.NRefactory.Utils
 				this.writer.Write(id);
 			}
 
-			// Token: 0x060009E2 RID: 2530 RVA: 0x0001D458 File Offset: 0x0001C458
 			internal void Write()
 			{
 				this.writer.Write(1909623390);
@@ -1441,56 +1363,37 @@ namespace ICSharpCode.NRefactory.Utils
 				}
 			}
 
-			// Token: 0x0400034D RID: 845
 			private readonly Dictionary<object, int> objectToID = new Dictionary<object, int>(ReferenceComparer.Instance);
 
-			// Token: 0x0400034E RID: 846
 			private readonly List<object> instances = new List<object>();
 
-			// Token: 0x0400034F RID: 847
 			private readonly List<FastSerializer.SerializationType> objectTypes = new List<FastSerializer.SerializationType>();
 
-			// Token: 0x04000350 RID: 848
 			private FastSerializer.SerializationType stringType;
 
-			// Token: 0x04000351 RID: 849
 			private readonly Dictionary<Type, FastSerializer.SerializationType> typeMap = new Dictionary<Type, FastSerializer.SerializationType>();
 
-			// Token: 0x04000352 RID: 850
 			private readonly List<FastSerializer.SerializationType> types = new List<FastSerializer.SerializationType>();
 
-			// Token: 0x04000353 RID: 851
 			private readonly Dictionary<string, int> assemblyNameToID = new Dictionary<string, int>();
 
-			// Token: 0x04000354 RID: 852
 			private readonly List<string> assemblyNames = new List<string>();
 
-			// Token: 0x04000355 RID: 853
 			private readonly FastSerializer fastSerializer;
 
-			// Token: 0x04000356 RID: 854
 			public readonly BinaryWriter writer;
 
-			// Token: 0x04000357 RID: 855
 			private int fixedInstanceCount;
 		}
 
-		// Token: 0x02000111 RID: 273
-		// (Invoke) Token: 0x060009E4 RID: 2532
 		private delegate void ObjectScanner(FastSerializer.SerializationContext context, object instance);
 
-		// Token: 0x02000112 RID: 274
-		// (Invoke) Token: 0x060009E8 RID: 2536
 		private delegate void ObjectWriter(FastSerializer.SerializationContext context, object instance);
 
-		// Token: 0x02000113 RID: 275
-		// (Invoke) Token: 0x060009EC RID: 2540
 		private delegate void TypeSerializer(object instance, FastSerializer.SerializationContext context);
 
-		// Token: 0x02000114 RID: 276
 		private sealed class DeserializationContext
 		{
-			// Token: 0x060009EF RID: 2543 RVA: 0x0001D8D0 File Offset: 0x0001C8D0
 			public object ReadObject()
 			{
 				if (this.Objects.Length <= 65535)
@@ -1500,7 +1403,6 @@ namespace ICSharpCode.NRefactory.Utils
 				return this.Objects[this.Reader.ReadInt32()];
 			}
 
-			// Token: 0x060009F0 RID: 2544 RVA: 0x0001D906 File Offset: 0x0001C906
 			internal int ReadTypeID()
 			{
 				if (this.Types.Length <= 65535)
@@ -1510,7 +1412,6 @@ namespace ICSharpCode.NRefactory.Utils
 				return this.Reader.ReadInt32();
 			}
 
-			// Token: 0x060009F1 RID: 2545 RVA: 0x0001D930 File Offset: 0x0001C930
 			internal void DeserializeTypeDescriptions()
 			{
 				for (int i = 0; i < this.Types.Length; i++)
@@ -1580,24 +1481,17 @@ namespace ICSharpCode.NRefactory.Utils
 				}
 			}
 
-			// Token: 0x04000358 RID: 856
 			public Type[] Types;
 
-			// Token: 0x04000359 RID: 857
 			public object[] Objects;
 
-			// Token: 0x0400035A RID: 858
 			public BinaryReader Reader;
 		}
 
-		// Token: 0x02000115 RID: 277
-		// (Invoke) Token: 0x060009F4 RID: 2548
 		private delegate void ObjectReader(FastSerializer.DeserializationContext context, object instance);
 
-		// Token: 0x02000116 RID: 278
 		private struct CustomDeserialization
 		{
-			// Token: 0x060009F7 RID: 2551 RVA: 0x0001DB5C File Offset: 0x0001CB5C
 			public CustomDeserialization(object instance, SerializationInfo serializationInfo, FastSerializer.CustomDeserializationAction action)
 			{
 				this.instance = instance;
@@ -1605,24 +1499,18 @@ namespace ICSharpCode.NRefactory.Utils
 				this.action = action;
 			}
 
-			// Token: 0x060009F8 RID: 2552 RVA: 0x0001DB73 File Offset: 0x0001CB73
 			public void Run(StreamingContext context)
 			{
 				this.action(this.instance, this.serializationInfo, context);
 			}
 
-			// Token: 0x0400035B RID: 859
 			private readonly object instance;
 
-			// Token: 0x0400035C RID: 860
 			private readonly SerializationInfo serializationInfo;
 
-			// Token: 0x0400035D RID: 861
 			private readonly FastSerializer.CustomDeserializationAction action;
 		}
 
-		// Token: 0x02000117 RID: 279
-		// (Invoke) Token: 0x060009FA RID: 2554
 		private delegate void CustomDeserializationAction(object instance, SerializationInfo info, StreamingContext context);
 	}
 }

@@ -17,10 +17,8 @@ using Modules.Communal.MultiLanguage;
 
 namespace CocoStudio.Model
 {
-	// Token: 0x020000DA RID: 218
 	public abstract class DragOperation : IDragOperation
 	{
-		// Token: 0x060006C1 RID: 1729 RVA: 0x0001AE54 File Offset: 0x00019054
 		public void DragEnter(DragMotionArgs e, VisualObject target)
 		{
 			AbstractNodeObject abstractNodeObject = target as AbstractNodeObject;
@@ -35,7 +33,6 @@ namespace CocoStudio.Model
 			}
 		}
 
-		// Token: 0x060006C2 RID: 1730 RVA: 0x0001AEB8 File Offset: 0x000190B8
 		public void DragLeave(DragMotionArgs e, VisualObject target)
 		{
 			AbstractNodeObject abstractNodeObject = target as AbstractNodeObject;
@@ -48,7 +45,6 @@ namespace CocoStudio.Model
 			}
 		}
 
-		// Token: 0x060006C3 RID: 1731 RVA: 0x0001AF00 File Offset: 0x00019100
 		public bool DragOver(DragMotionArgs e, VisualObject target)
 		{
 			AbstractNodeObject abstractNodeObject = target as AbstractNodeObject;
@@ -73,7 +69,6 @@ namespace CocoStudio.Model
 			return result;
 		}
 
-		// Token: 0x060006C4 RID: 1732 RVA: 0x0001AF7C File Offset: 0x0001917C
 		public void DragDrop(DragDropArgs e, VisualObject target)
 		{
 			AbstractNodeObject abstractNodeObject = target as AbstractNodeObject;
@@ -136,7 +131,6 @@ namespace CocoStudio.Model
 			}
 		}
 
-		// Token: 0x060006C5 RID: 1733 RVA: 0x0001B20C File Offset: 0x0001940C
 		protected virtual string CanDragDropArgs(DragDropArgs e)
 		{
 			ResourceInfoDragData resourceInfoDragData = e.Context.GetDragData() as ResourceInfoDragData;
@@ -173,7 +167,6 @@ namespace CocoStudio.Model
 			return null;
 		}
 
-		// Token: 0x060006C6 RID: 1734 RVA: 0x0001B340 File Offset: 0x00019540
 		private string Check2DProject(ResourceItem item)
 		{
 			string result;
@@ -188,7 +181,6 @@ namespace CocoStudio.Model
 			return result;
 		}
 
-		// Token: 0x060006C7 RID: 1735 RVA: 0x0001B380 File Offset: 0x00019580
 		private string Check3DProject(ResourceItem item)
 		{
 			string result;
@@ -203,24 +195,19 @@ namespace CocoStudio.Model
 			return result;
 		}
 
-		// Token: 0x060006C8 RID: 1736 RVA: 0x0001B3C0 File Offset: 0x000195C0
 		protected virtual AbstractNodeObject CreateObjectFromFile(ResourceItem resourceFile)
 		{
 			return null;
 		}
 
-		// Token: 0x060006C9 RID: 1737 RVA: 0x0001B3D3 File Offset: 0x000195D3
 		protected virtual void AddChildToTarget(AbstractNodeObject childNode, PointF coord, AbstractNodeObject target)
 		{
 		}
 
-		// Token: 0x060006CA RID: 1738
 		public abstract bool CanHandle(CocosItem project);
 
-		// Token: 0x040002DE RID: 734
 		private bool dragEnter = false;
 
-		// Token: 0x040002DF RID: 735
 		private CSVisualObject.ObjectState OldObjectState = CSVisualObject.ObjectState.Default;
 	}
 }

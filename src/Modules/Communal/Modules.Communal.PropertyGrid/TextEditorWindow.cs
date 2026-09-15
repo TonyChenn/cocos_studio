@@ -13,12 +13,8 @@ using Stetic;
 
 namespace Modules.Communal.PropertyGrid
 {
-	// Token: 0x02000021 RID: 33
 	public class TextEditorWindow : Gtk.Window
 	{
-		// Token: 0x1700003D RID: 61
-		// (get) Token: 0x060000E2 RID: 226 RVA: 0x000055D0 File Offset: 0x000037D0
-		// (set) Token: 0x060000E1 RID: 225 RVA: 0x000055AC File Offset: 0x000037AC
 		public object TriggerObject
 		{
 			get
@@ -34,7 +30,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000E3 RID: 227 RVA: 0x0000562C File Offset: 0x0000382C
 		public TextEditorWindow(object triggerobject, string textproperty = null, string color = null, string fontsize = null, bool canlinefeed = false) : base(Gtk.WindowType.Toplevel)
 		{
 			base.TypeHint = WindowTypeHint.Dialog;
@@ -50,7 +45,6 @@ namespace Modules.Communal.PropertyGrid
 			this.InitEditor();
 		}
 
-		// Token: 0x060000E4 RID: 228 RVA: 0x000056B4 File Offset: 0x000038B4
 		private void InitEditor()
 		{
 			this.buttonOk.Label = LanguageInfo.Dialog_ButtonOK;
@@ -87,7 +81,6 @@ namespace Modules.Communal.PropertyGrid
 			this.textview.AcceptsTab = false;
 		}
 
-		// Token: 0x060000E5 RID: 229 RVA: 0x0000587C File Offset: 0x00003A7C
 		private void FontSizeComboxInit()
 		{
 			if (this.fontSizeType == null)
@@ -129,7 +122,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000E6 RID: 230 RVA: 0x00005A30 File Offset: 0x00003C30
 		private void combox_Changed(object sender, EventArgs e)
 		{
 			ComboBoxEntry comboBoxEntry = sender as ComboBoxEntry;
@@ -139,7 +131,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000E7 RID: 231 RVA: 0x00005A74 File Offset: 0x00003C74
 		private void Entry_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			string text = this.combox.Entry.Text;
@@ -161,7 +152,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000E8 RID: 232 RVA: 0x00005B10 File Offset: 0x00003D10
 		private int IndexCombox(int num)
 		{
 			for (int i = 0; i < this.comboxList.Length; i++)
@@ -174,7 +164,6 @@ namespace Modules.Communal.PropertyGrid
 			return -1;
 		}
 
-		// Token: 0x060000E9 RID: 233 RVA: 0x00005B54 File Offset: 0x00003D54
 		private void InitEvent()
 		{
 			this.buttonOk.Clicked += this.OnbuttonOk_Click;
@@ -182,7 +171,6 @@ namespace Modules.Communal.PropertyGrid
 			base.KeyReleaseEvent += this.TextEditorWindow_KeyReleaseEvent;
 		}
 
-		// Token: 0x060000EA RID: 234 RVA: 0x00005BA8 File Offset: 0x00003DA8
 		private void TextEditorWindow_KeyReleaseEvent(object o, KeyReleaseEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Return && !this.canLineFeed)
@@ -196,7 +184,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000EB RID: 235 RVA: 0x00005C0C File Offset: 0x00003E0C
 		private void InitText()
 		{
 			this.textproperty = this.TriggerObject.GetType().GetProperty(this.textProperty);
@@ -225,20 +212,17 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000EC RID: 236 RVA: 0x00005D3E File Offset: 0x00003F3E
 		protected void OnbuttonOk_Click(object sender, EventArgs e)
 		{
 			this.SaveAll();
 			this.Destroy();
 		}
 
-		// Token: 0x060000ED RID: 237 RVA: 0x00005D4F File Offset: 0x00003F4F
 		protected void OnbuttonCancel_Click(object sender, EventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x060000EE RID: 238 RVA: 0x00005D5C File Offset: 0x00003F5C
 		private void SaveAll()
 		{
 			using (CompositeTask.Run("编辑文本", null))
@@ -276,7 +260,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x060000EF RID: 239 RVA: 0x00005E94 File Offset: 0x00004094
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -355,40 +338,28 @@ namespace Modules.Communal.PropertyGrid
 			base.Show();
 		}
 
-		// Token: 0x0400004B RID: 75
 		private object triggerObject;
 
-		// Token: 0x0400004C RID: 76
 		private string textProperty;
 
-		// Token: 0x0400004D RID: 77
 		private string colorType;
 
-		// Token: 0x0400004E RID: 78
 		private string fontSizeType;
 
-		// Token: 0x0400004F RID: 79
 		private ColorEx colorButtonGtk;
 
-		// Token: 0x04000050 RID: 80
 		private ComboBoxEntry combox;
 
-		// Token: 0x04000051 RID: 81
 		private Entry textEntry;
 
-		// Token: 0x04000052 RID: 82
 		private bool canLineFeed;
 
-		// Token: 0x04000053 RID: 83
 		private PropertyInfo textproperty;
 
-		// Token: 0x04000054 RID: 84
 		private PropertyInfo fontsizeproperty;
 
-		// Token: 0x04000055 RID: 85
 		private PropertyInfo colorproperty;
 
-		// Token: 0x04000056 RID: 86
 		private int[] comboxList = new int[]
 		{
 			6,
@@ -410,28 +381,20 @@ namespace Modules.Communal.PropertyGrid
 			72
 		};
 
-		// Token: 0x04000057 RID: 87
 		private int fontsize;
 
-		// Token: 0x04000058 RID: 88
 		private VBox vbox2;
 
-		// Token: 0x04000059 RID: 89
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x0400005A RID: 90
 		private TextView textview;
 
-		// Token: 0x0400005B RID: 91
 		private HBox hbox1;
 
-		// Token: 0x0400005C RID: 92
 		private SpinButton fontSizeSpinButton;
 
-		// Token: 0x0400005D RID: 93
 		private Button buttonCancel;
 
-		// Token: 0x0400005E RID: 94
 		private Button buttonOk;
 	}
 }

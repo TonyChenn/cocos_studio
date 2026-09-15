@@ -3,26 +3,17 @@ using System.Collections.Generic;
 
 namespace Modules.Communal.Packer.Model
 {
-	// Token: 0x02000005 RID: 5
 	public class MaxRectsBinPack
 	{
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000020 RID: 32 RVA: 0x00002374 File Offset: 0x00000574
-		// (set) Token: 0x06000021 RID: 33 RVA: 0x0000238B File Offset: 0x0000058B
 		public int RightEdge { get; private set; }
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000022 RID: 34 RVA: 0x00002394 File Offset: 0x00000594
-		// (set) Token: 0x06000023 RID: 35 RVA: 0x000023AB File Offset: 0x000005AB
 		public int BottomEdge { get; private set; }
 
-		// Token: 0x06000024 RID: 36 RVA: 0x000023B4 File Offset: 0x000005B4
 		public MaxRectsBinPack(int width, int height, bool rotations = true)
 		{
 			this.Init(width, height, rotations);
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x000023F0 File Offset: 0x000005F0
 		public void Init(int width, int height, bool rotations = true)
 		{
 			this.binWidth = width;
@@ -39,7 +30,6 @@ namespace Modules.Communal.Packer.Model
 			this.freeRectangles.Add(customRectangle);
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x00002474 File Offset: 0x00000674
 		public CustomRectangle Insert(int width, int height, MaxRectsBinPack.FreeRectChoiceHeuristic method)
 		{
 			CustomRectangle customRectangle = new CustomRectangle(null);
@@ -88,7 +78,6 @@ namespace Modules.Communal.Packer.Model
 			return result;
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x0000258C File Offset: 0x0000078C
 		public void Insert(List<CustomRectangle> rects, List<CustomRectangle> dst, MaxRectsBinPack.FreeRectChoiceHeuristic method)
 		{
 			dst.Clear();
@@ -123,7 +112,6 @@ namespace Modules.Communal.Packer.Model
 			}
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00002698 File Offset: 0x00000898
 		private void PlaceRect(CustomRectangle node)
 		{
 			int num = this.freeRectangles.Count;
@@ -140,7 +128,6 @@ namespace Modules.Communal.Packer.Model
 			this.usedRectangles.Add(node);
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x0000270C File Offset: 0x0000090C
 		private CustomRectangle ScoreRect(int width, int height, MaxRectsBinPack.FreeRectChoiceHeuristic method, ref int score1, ref int score2)
 		{
 			CustomRectangle customRectangle = new CustomRectangle(null);
@@ -173,7 +160,6 @@ namespace Modules.Communal.Packer.Model
 			return customRectangle;
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x000027C8 File Offset: 0x000009C8
 		public float Occupancy()
 		{
 			ulong num = 0UL;
@@ -184,7 +170,6 @@ namespace Modules.Communal.Packer.Model
 			return num / (float)(this.binWidth * this.binHeight);
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00002830 File Offset: 0x00000A30
 		private CustomRectangle FindPositionForNewNodeBottomLeft(int width, int height, ref int bestY, ref int bestX)
 		{
 			CustomRectangle customRectangle = new CustomRectangle(null);
@@ -221,7 +206,6 @@ namespace Modules.Communal.Packer.Model
 			return customRectangle;
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00002A28 File Offset: 0x00000C28
 		private CustomRectangle FindPositionForNewNodeBestShortSideFit(int width, int height, ref int bestShortSideFit, ref int bestLongSideFit)
 		{
 			CustomRectangle customRectangle = new CustomRectangle(null);
@@ -264,7 +248,6 @@ namespace Modules.Communal.Packer.Model
 			return customRectangle;
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00002C54 File Offset: 0x00000E54
 		private CustomRectangle FindPositionForNewNodeBestLongSideFit(int width, int height, ref int bestShortSideFit, ref int bestLongSideFit)
 		{
 			CustomRectangle customRectangle = new CustomRectangle(null);
@@ -307,7 +290,6 @@ namespace Modules.Communal.Packer.Model
 			return customRectangle;
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00002E7C File Offset: 0x0000107C
 		private CustomRectangle FindPositionForNewNodeBestAreaFit(int width, int height, ref int bestAreaFit, ref int bestShortSideFit)
 		{
 			CustomRectangle customRectangle = new CustomRectangle(null);
@@ -351,7 +333,6 @@ namespace Modules.Communal.Packer.Model
 			return customRectangle;
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x000030C4 File Offset: 0x000012C4
 		private int CommonIntervalLength(int i1start, int i1end, int i2start, int i2end)
 		{
 			int result;
@@ -366,7 +347,6 @@ namespace Modules.Communal.Packer.Model
 			return result;
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x00003100 File Offset: 0x00001300
 		private int ContactPointScoreNode(int x, int y, int width, int height)
 		{
 			int num = 0;
@@ -392,7 +372,6 @@ namespace Modules.Communal.Packer.Model
 			return num;
 		}
 
-		// Token: 0x06000031 RID: 49 RVA: 0x00003288 File Offset: 0x00001488
 		private CustomRectangle FindPositionForNewNodeContactPoint(int width, int height, ref int bestContactScore)
 		{
 			CustomRectangle customRectangle = new CustomRectangle(null);
@@ -427,7 +406,6 @@ namespace Modules.Communal.Packer.Model
 			return customRectangle;
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x0000343C File Offset: 0x0000163C
 		private bool SplitFreeNode(CustomRectangle freeNode, ref CustomRectangle usedNode)
 		{
 			bool result;
@@ -474,7 +452,6 @@ namespace Modules.Communal.Packer.Model
 			return result;
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x000036D4 File Offset: 0x000018D4
 		private void PruneFreeList()
 		{
 			for (int i = 0; i < this.freeRectangles.Count; i++)
@@ -496,13 +473,11 @@ namespace Modules.Communal.Packer.Model
 			}
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00003794 File Offset: 0x00001994
 		private bool IsContainedIn(CustomRectangle a, CustomRectangle b)
 		{
 			return a.X >= b.X && a.Y >= b.Y && a.X + a.Width <= b.X + b.Width && a.Y + a.Height <= b.Y + b.Height;
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x00003804 File Offset: 0x00001A04
 		private void CaculateEdge(CustomRectangle latestnode)
 		{
 			if (latestnode.Right > this.RightEdge)
@@ -515,33 +490,22 @@ namespace Modules.Communal.Packer.Model
 			}
 		}
 
-		// Token: 0x04000005 RID: 5
 		public int binWidth = 0;
 
-		// Token: 0x04000006 RID: 6
 		public int binHeight = 0;
 
-		// Token: 0x04000007 RID: 7
 		public bool allowRotations;
 
-		// Token: 0x04000008 RID: 8
 		public List<CustomRectangle> usedRectangles = new List<CustomRectangle>();
 
-		// Token: 0x04000009 RID: 9
 		public List<CustomRectangle> freeRectangles = new List<CustomRectangle>();
 
-		// Token: 0x02000006 RID: 6
 		public enum FreeRectChoiceHeuristic
 		{
-			// Token: 0x0400000D RID: 13
 			RectBestShortSideFit,
-			// Token: 0x0400000E RID: 14
 			RectBestLongSideFit,
-			// Token: 0x0400000F RID: 15
 			RectBestAreaFit,
-			// Token: 0x04000010 RID: 16
 			RectBottomLeftRule,
-			// Token: 0x04000011 RID: 17
 			RectContactPointRule
 		}
 	}

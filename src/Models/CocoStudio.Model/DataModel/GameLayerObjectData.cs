@@ -4,17 +4,14 @@ using CocoStudio.Projects;
 
 namespace CocoStudio.Model.DataModel
 {
-	// Token: 0x0200001D RID: 29
 	[DataModelExtension(typeof(GameLayerObject))]
 	public class GameLayerObjectData : AbstractNodeObjectData
 	{
-		// Token: 0x0600013E RID: 318 RVA: 0x0000508E File Offset: 0x0000328E
 		public GameLayerObjectData()
 		{
 			this.ctype = "LayerObjectData";
 		}
 
-		// Token: 0x0600013F RID: 319 RVA: 0x000050A8 File Offset: 0x000032A8
 		public GameLayerObjectData(AbstractNodeObjectData objectData)
 		{
 			this.ctype = "LayerObjectData";

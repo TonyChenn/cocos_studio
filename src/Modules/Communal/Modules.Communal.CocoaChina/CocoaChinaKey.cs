@@ -6,10 +6,8 @@ using System.Web;
 
 namespace Modules.Communal.CocoaChina
 {
-	// Token: 0x02000002 RID: 2
 	public static class CocoaChinaKey
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public static int ConvertDateTimeInt(DateTime time)
 		{
 			DateTime d = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
@@ -17,8 +15,6 @@ namespace Modules.Communal.CocoaChina
 			return (int)totalSeconds - 60;
 		}
 
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000002 RID: 2 RVA: 0x00002098 File Offset: 0x00000298
 		public static string UniversalTime
 		{
 			get
@@ -27,7 +23,6 @@ namespace Modules.Communal.CocoaChina
 			}
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x000020BC File Offset: 0x000002BC
 		public static string GetCocoaUrlEncode(this string str)
 		{
 			string result;
@@ -61,13 +56,10 @@ namespace Modules.Communal.CocoaChina
 			return result;
 		}
 
-		// Token: 0x04000001 RID: 1
 		public const string CocosKey = "f2fb1076691c445a46b25e1fcc9e95f2";
 
-		// Token: 0x04000002 RID: 2
 		public const string CocosSecret = "3f579e7429443a3ec0a9062e27766c72";
 
-		// Token: 0x04000003 RID: 3
 		public const string RedirectClientID = "10";
 	}
 }

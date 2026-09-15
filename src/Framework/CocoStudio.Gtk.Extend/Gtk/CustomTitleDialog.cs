@@ -6,16 +6,13 @@ using Stetic;
 
 namespace Gtk
 {
-	// Token: 0x020000A4 RID: 164
 	public class CustomTitleDialog : Dialog
 	{
-		// Token: 0x06000399 RID: 921 RVA: 0x00012650 File Offset: 0x00010850
 		public CustomTitleDialog()
 		{
 			this.Build();
 		}
 
-		// Token: 0x0600039A RID: 922 RVA: 0x00012664 File Offset: 0x00010864
 		public void InitView(string title, Widget widget, Window parentWnd = null)
 		{
 			this.InitTitle(title);
@@ -42,7 +39,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600039B RID: 923 RVA: 0x00012700 File Offset: 0x00010900
 		private void InitTitle(string title)
 		{
 			base.Title = title;
@@ -58,13 +54,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600039C RID: 924 RVA: 0x0001276D File Offset: 0x0001096D
 		private void HandleCustomTitleBarCloseClicked(object sender, EventArgs args)
 		{
 			base.Respond(ResponseType.Close);
 		}
 
-		// Token: 0x0600039D RID: 925 RVA: 0x0001277C File Offset: 0x0001097C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -114,19 +108,14 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x0400044A RID: 1098
 		private EventBox evtbx_border;
 
-		// Token: 0x0400044B RID: 1099
 		private VBox vbox_window;
 
-		// Token: 0x0400044C RID: 1100
 		private Alignment alignment_title;
 
-		// Token: 0x0400044D RID: 1101
 		private Alignment alignment_main;
 
-		// Token: 0x0400044E RID: 1102
 		private Alignment alignment_dummyBtn;
 	}
 }

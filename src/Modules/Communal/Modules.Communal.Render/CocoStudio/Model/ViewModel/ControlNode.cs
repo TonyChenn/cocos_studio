@@ -17,10 +17,8 @@ using Modules.Communal.Render.Model;
 
 namespace CocoStudio.Model.ViewModel
 {
-	// Token: 0x02000002 RID: 2
 	public class ControlNode : VisualObject, IDisposable
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		private void InitContentSizeEvent()
 		{
 			GlobalCommand.ContentSizeCmd.Execute += this.ContentSizeCmd_Execute;
@@ -29,7 +27,6 @@ namespace CocoStudio.Model.ViewModel
 			GlobalCommand.ContentScaleCmd.Update += this.ContentScaleCmd_Update;
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x000020BC File Offset: 0x000002BC
 		private void ContentSizeCmd_Update(object sender, CommandUpdateArgs e)
 		{
 			if (Services.Workbench.ActiveDocument.File != null && Services.Workbench.ActiveDocument.File.Is2DFile())
@@ -44,13 +41,11 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x0000213D File Offset: 0x0000033D
 		private void ContentSizeCmd_Execute(object sender, CommandRunArgs e)
 		{
 			this.SetIsDragChangeSize(true);
 		}
 
-		// Token: 0x06000004 RID: 4 RVA: 0x00002148 File Offset: 0x00000348
 		private void ContentScaleCmd_Update(object sender, CommandUpdateArgs e)
 		{
 			if (Services.Workbench.ActiveDocument.File != null && Services.Workbench.ActiveDocument.File.Is2DFile())
@@ -65,13 +60,11 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000005 RID: 5 RVA: 0x000021CC File Offset: 0x000003CC
 		private void ContentScaleCmd_Execute(object sender, CommandRunArgs e)
 		{
 			this.SetIsDragChangeSize(false);
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x000021D8 File Offset: 0x000003D8
 		private void SetIsDragChangeSize(bool isDragChangeSize)
 		{
 			bool isDragChangeSize2 = Option.UserConfig.IsDragChangeSize;
@@ -91,9 +84,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000001 RID: 1
-		// (get) Token: 0x06000007 RID: 7 RVA: 0x00002248 File Offset: 0x00000448
-		// (set) Token: 0x06000008 RID: 8 RVA: 0x00002260 File Offset: 0x00000460
 		public List<VisualObject> SelectedObjects
 		{
 			get
@@ -114,9 +104,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000002 RID: 2
-		// (get) Token: 0x06000009 RID: 9 RVA: 0x00002298 File Offset: 0x00000498
-		// (set) Token: 0x0600000A RID: 10 RVA: 0x000022B0 File Offset: 0x000004B0
 		public List<VisualObject> SelectedParentObjects
 		{
 			get
@@ -136,9 +123,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x0600000B RID: 11 RVA: 0x000022E0 File Offset: 0x000004E0
-		// (set) Token: 0x0600000C RID: 12 RVA: 0x000022FD File Offset: 0x000004FD
 		public bool Enabled
 		{
 			get
@@ -151,7 +135,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x00002310 File Offset: 0x00000510
 		public ControlNode(CanvasObject canvasObject)
 		{
 			this.canvasObject = canvasObject;
@@ -166,13 +149,11 @@ namespace CocoStudio.Model.ViewModel
 			this.InitContentSizeEvent();
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x0000243C File Offset: 0x0000063C
 		internal override CSVisualObject GetCSVisual()
 		{
 			return this.innerControlNode;
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x00002454 File Offset: 0x00000654
 		private void Init()
 		{
 			this.innerControlNode.SetAnchorPointVisible(Option.UserConfig.IsShowAnchorPoint);
@@ -180,7 +161,6 @@ namespace CocoStudio.Model.ViewModel
 			this.InitProperty();
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x00002484 File Offset: 0x00000684
 		private void InitProperty()
 		{
 			if (this._selectedObjects.Count == 1)
@@ -256,14 +236,12 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x0000286C File Offset: 0x00000A6C
 		private RectF GetBoundingRect(NodeObject node, SizeF size)
 		{
 			RectF rect = new RectF(PointF.Empty, size);
 			return this.innerControlNode.RectApplyTransform(rect, node.GetCSVisual().ConvertToNodeMatrix(this.canvasObject.GetCSVisual()));
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x000028B0 File Offset: 0x00000AB0
 		private void RefreshOperation()
 		{
 			this.OperationFlag &= ~OperationMask.MoveFlag;
@@ -283,14 +261,12 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000013 RID: 19 RVA: 0x00002968 File Offset: 0x00000B68
 		private void InitAnchorPointEvent()
 		{
 			GlobalCommand.AnchorPointCmd.Execute += this.AnchorPointCmd_Execute;
 			GlobalCommand.AnchorPointCmd.Update += this.AnchorPointCmd_Update;
 		}
 
-		// Token: 0x06000014 RID: 20 RVA: 0x0000299C File Offset: 0x00000B9C
 		private void AnchorPointCmd_Update(object sender, CommandUpdateArgs e)
 		{
 			if (Services.Workbench.ActiveDocument.File != null && Services.Workbench.ActiveDocument.File.Is2DFile())
@@ -304,7 +280,6 @@ namespace CocoStudio.Model.ViewModel
 			e.Info.Checked = Option.UserConfig.IsShowAnchorPoint;
 		}
 
-		// Token: 0x06000015 RID: 21 RVA: 0x00002A10 File Offset: 0x00000C10
 		private void AnchorPointCmd_Execute(object sender, CommandRunArgs e)
 		{
 			Option.UserConfig.IsShowAnchorPoint = !Option.UserConfig.IsShowAnchorPoint;
@@ -322,25 +297,21 @@ namespace CocoStudio.Model.ViewModel
 			LogConfig.Output.Info(message, true);
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x00002A7E File Offset: 0x00000C7E
 		private void OnAlignedObjects(AlignedObjectsArgs obj)
 		{
 			this.Init();
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002A88 File Offset: 0x00000C88
 		private void OnScaleLockedChange(bool locked)
 		{
 			this.isScaleLocked = locked;
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x00002A92 File Offset: 0x00000C92
 		private void OnCanvasSizeChange(CanvasSizeChangeEventArgs obj)
 		{
 			this.Init();
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x00002A9C File Offset: 0x00000C9C
 		private void OnFrameIndexChanged()
 		{
 			if (!this.isMouseDown && !Services.TaskService.IsUndoing)
@@ -349,7 +320,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x00002ACC File Offset: 0x00000CCC
 		public void SelectedObjectsChanged(IEnumerable<VisualObject> selectedObjectList, IEnumerable<VisualObject> selectedParentObjectList)
 		{
 			if (this.SelectedObjects.Count > 0)
@@ -383,7 +353,6 @@ namespace CocoStudio.Model.ViewModel
 			this.mouseOperationType = MouseOperationType.OPERATION_POSITION;
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x00002C08 File Offset: 0x00000E08
 		private void ComControlNode_PropertyChanged(object sender, PropertyChangedEventArgs e)
 		{
 			if (!this.isMouseMoved)
@@ -399,7 +368,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00002C8C File Offset: 0x00000E8C
 		protected override void OnMouseDown(MouseEventArgs args)
 		{
 			base.OnMouseDown(args);
@@ -424,7 +392,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002D74 File Offset: 0x00000F74
 		private RectF GetBoundingBox()
 		{
 			RectF result;
@@ -451,7 +418,6 @@ namespace CocoStudio.Model.ViewModel
 			return result;
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002DF8 File Offset: 0x00000FF8
 		private PointF GetCanvasPosition()
 		{
 			PointF result;
@@ -478,7 +444,6 @@ namespace CocoStudio.Model.ViewModel
 			return result;
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00002EA8 File Offset: 0x000010A8
 		protected override void OnMouseMove(MouseEventArgs args)
 		{
 			base.OnMouseMove(args);
@@ -488,7 +453,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00002F18 File Offset: 0x00001118
 		protected override void OnMouseUp(MouseEventArgs args)
 		{
 			base.OnMouseUp(args);
@@ -516,7 +480,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x00002FF0 File Offset: 0x000011F0
 		protected PointF GetVectorByKey(Gdk.Key key)
 		{
 			PointF pointF = new PointF(0f, 0f);
@@ -547,7 +510,6 @@ namespace CocoStudio.Model.ViewModel
 			return result;
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x00003098 File Offset: 0x00001298
 		protected override void OnKeyDown(KeyPressEventArgs e)
 		{
 			if (!this.isMouseMoved && !this.isMouseDown && this.OperationFlag.HasFlag(OperationMask.MoveFlag))
@@ -612,7 +574,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x000033AC File Offset: 0x000015AC
 		protected override void OnKeyUp(KeyReleaseEventArgs e)
 		{
 			if (!this.isMouseMoved && !this.isMouseDown)
@@ -628,7 +589,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x00003434 File Offset: 0x00001634
 		private void HandleMouseMove(PointF point)
 		{
 			bool flag = true;
@@ -750,13 +710,11 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x000039F4 File Offset: 0x00001BF4
 		private void HandleSkew(PointF point)
 		{
 			throw new NotImplementedException();
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x000039FC File Offset: 0x00001BFC
 		private void HandleAnchorPoint(PointF point)
 		{
 			if (this.horizontalMove && this.verticalMove)
@@ -816,7 +774,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00003CF8 File Offset: 0x00001EF8
 		private bool HandleScale(PointF point)
 		{
 			float scaleX = this.Scale.ScaleX;
@@ -926,7 +883,6 @@ namespace CocoStudio.Model.ViewModel
 			return result;
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00004084 File Offset: 0x00002284
 		private bool HandleSize(PointF point)
 		{
 			PointF anchorPointInPoints = this.innerControlNode.GetAnchorPointInPoints();
@@ -1093,7 +1049,6 @@ namespace CocoStudio.Model.ViewModel
 			return result;
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x000045A8 File Offset: 0x000027A8
 		private void HandleRotation(PointF point)
 		{
 			PointF position = this.Position;
@@ -1132,7 +1087,6 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00004750 File Offset: 0x00002950
 		private void HandlePosition(PointF point)
 		{
 			if (this.horizontalMove || this.verticalMove)
@@ -1196,13 +1150,11 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x000049D8 File Offset: 0x00002BD8
 		private bool TestFloatEqual(float v1, float v2, float threshold = 0.0001f)
 		{
 			return Math.Abs(v1 - v2) <= threshold;
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00004A04 File Offset: 0x00002C04
 		private void AdsorbAnchorPoint(ref float newAnchorValue, float oldAnchorValue, float dstAnchorValue, ref float positionValue, float dstPositionValue)
 		{
 			if (this.CheckFloatEqual(newAnchorValue, dstAnchorValue, 0.1f))
@@ -1219,13 +1171,11 @@ namespace CocoStudio.Model.ViewModel
 			}
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00004A50 File Offset: 0x00002C50
 		private bool CheckFloatEqual(float v1, float v2, float threshold = 0.0001f)
 		{
 			return Math.Abs(v1 - v2) <= threshold;
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00004A7C File Offset: 0x00002C7C
 		private float SimplifyRotation(float r)
 		{
 			r %= 360f;
@@ -1240,7 +1190,6 @@ namespace CocoStudio.Model.ViewModel
 			return r;
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00004AC8 File Offset: 0x00002CC8
 		private float SimplifyRotationDif(float r)
 		{
 			if (r < -180f)
@@ -1254,30 +1203,25 @@ namespace CocoStudio.Model.ViewModel
 			return r;
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x00004B0B File Offset: 0x00002D0B
 		private void Print(CSMatrix m)
 		{
 		}
 
-		// Token: 0x06000031 RID: 49 RVA: 0x00004B10 File Offset: 0x00002D10
 		private static float CC_RADIANS_TO_DEGREES(float v)
 		{
 			return v * 57.29578f;
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x00004B2C File Offset: 0x00002D2C
 		private static float CC_DEGREES_TO_RADIANS(float v)
 		{
 			return v * 0.017453292f;
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x00004B48 File Offset: 0x00002D48
 		private static PointF PointSub(PointF p1, PointF p2)
 		{
 			return new PointF(p1.X - p2.X, p1.Y - p2.Y);
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00004B7C File Offset: 0x00002D7C
 		protected override HitTestResult HitTestCore(PointF point)
 		{
 			HitTestResult result;
@@ -1327,61 +1271,43 @@ namespace CocoStudio.Model.ViewModel
 			return result;
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x00004D5E File Offset: 0x00002F5E
 		public void Dispose()
 		{
 			TimelineActionManager.Instance.CurrentFrameIndexChangedEvent -= this.OnFrameIndexChanged;
 		}
 
-		// Token: 0x04000001 RID: 1
 		private CanvasObject canvasObject;
 
-		// Token: 0x04000002 RID: 2
 		private CSComControlNode innerControlNode;
 
-		// Token: 0x04000003 RID: 3
 		private bool horizontalMove = true;
 
-		// Token: 0x04000004 RID: 4
 		private bool verticalMove = true;
 
-		// Token: 0x04000005 RID: 5
 		private List<VisualObject> _selectedObjects = new List<VisualObject>();
 
-		// Token: 0x04000006 RID: 6
 		private List<VisualObject> _selectedParentObjects = new List<VisualObject>();
 
-		// Token: 0x04000007 RID: 7
 		private bool isScaleLocked = false;
 
-		// Token: 0x04000008 RID: 8
 		private bool isShiftDown = false;
 
-		// Token: 0x04000009 RID: 9
 		private bool isMouseMoved = false;
 
-		// Token: 0x0400000A RID: 10
 		private bool isMouseDown = false;
 
-		// Token: 0x0400000B RID: 11
 		private RectF movingRect = RectF.Empty;
 
-		// Token: 0x0400000C RID: 12
 		private PointF movingPosition;
 
-		// Token: 0x0400000D RID: 13
 		private float lastRotation = 0f;
 
-		// Token: 0x0400000E RID: 14
 		private PointF lastMousePoint = null;
 
-		// Token: 0x0400000F RID: 15
 		private PointF keyVector = null;
 
-		// Token: 0x04000010 RID: 16
 		private MouseOperationType mouseOperationType;
 
-		// Token: 0x04000011 RID: 17
 		private ControlPointType controlPointType;
 	}
 }

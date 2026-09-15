@@ -7,25 +7,14 @@ using ICSharpCode.SharpZipLib.Zip;
 
 namespace Cocos.Launcher.Library
 {
-	// Token: 0x0200000A RID: 10
 	public class ZipModel
 	{
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x0600003D RID: 61 RVA: 0x00003216 File Offset: 0x00001416
-		// (set) Token: 0x0600003E RID: 62 RVA: 0x0000321E File Offset: 0x0000141E
 		public string Error { get; private set; }
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x0600003F RID: 63 RVA: 0x00003227 File Offset: 0x00001427
-		// (set) Token: 0x06000040 RID: 64 RVA: 0x0000322F File Offset: 0x0000142F
 		public bool IsSucceeded { get; private set; }
 
-		// Token: 0x14000003 RID: 3
-		// (add) Token: 0x06000041 RID: 65 RVA: 0x00003238 File Offset: 0x00001438
-		// (remove) Token: 0x06000042 RID: 66 RVA: 0x00003270 File Offset: 0x00001470
 		public event EventHandler<UnZipEndInfoEventArgs> UnZipEndInfoEvent;
 
-		// Token: 0x06000043 RID: 67 RVA: 0x000032A8 File Offset: 0x000014A8
 		public static string GetRootFolderName(string zipFilePath)
 		{
 			if (!File.Exists(zipFilePath))
@@ -56,7 +45,6 @@ namespace Cocos.Launcher.Library
 			return result;
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x00003358 File Offset: 0x00001558
 		public void UnZip(string zipFilePath, string unZipDir = "")
 		{
 			this.UnpackZipFile(zipFilePath, ref unZipDir);
@@ -66,7 +54,6 @@ namespace Cocos.Launcher.Library
 			}
 		}
 
-		// Token: 0x06000045 RID: 69 RVA: 0x00003414 File Offset: 0x00001614
 		public void UnZipAsync(string zipFilePath, string unZipDir = "")
 		{
 			Task task = new Task(delegate()
@@ -84,7 +71,6 @@ namespace Cocos.Launcher.Library
 			task.Start();
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x00003454 File Offset: 0x00001654
 		private void UnpackZipFile(string zipFilePath, ref string unZipDir)
 		{
 			try
@@ -156,10 +142,8 @@ namespace Cocos.Launcher.Library
 			return fullPath2;
 		}
 
-		// Token: 0x0400001D RID: 29
 		private const int bufferSize = 4096;
 
-		// Token: 0x0400001E RID: 30
 		private string zipFilePath;
 	}
 }

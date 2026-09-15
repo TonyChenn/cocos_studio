@@ -9,11 +9,9 @@ using Stetic;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x0200000F RID: 15
 	[ToolboxItem(true)]
 	public class SimulatorWidget : Bin, IPreferenceWidget
 	{
-		// Token: 0x06000045 RID: 69 RVA: 0x00003BE8 File Offset: 0x00001DE8
 		public SimulatorWidget()
 		{
 			this.Build();
@@ -31,8 +29,6 @@ namespace Modules.Communal.Preference
 			this.vbox_main.Remove(this.frame_simulatorOption);
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000046 RID: 70 RVA: 0x00003C77 File Offset: 0x00001E77
 		public EnumPreferenceSetting SettingID
 		{
 			get
@@ -41,8 +37,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000047 RID: 71 RVA: 0x00003C7A File Offset: 0x00001E7A
 		public string DisplayName
 		{
 			get
@@ -51,26 +45,22 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x06000048 RID: 72 RVA: 0x00003C81 File Offset: 0x00001E81
 		public void ApplySetting()
 		{
 			Option.UserConfig.IsShowSimulatorCmd = this.radiobutton_cmdWnd.Active;
 		}
 
-		// Token: 0x06000049 RID: 73 RVA: 0x00003C98 File Offset: 0x00001E98
 		public bool CanApply(out string output)
 		{
 			output = "";
 			return true;
 		}
 
-		// Token: 0x0600004A RID: 74 RVA: 0x00003CA2 File Offset: 0x00001EA2
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x00003CA8 File Offset: 0x00001EA8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -139,28 +129,20 @@ namespace Modules.Communal.Preference
 			base.Hide();
 		}
 
-		// Token: 0x0400003B RID: 59
 		private VBox vbox_main;
 
-		// Token: 0x0400003C RID: 60
 		private Frame frame_simulatorOption;
 
-		// Token: 0x0400003D RID: 61
 		private Alignment GtkAlignment_simulatorOption;
 
-		// Token: 0x0400003E RID: 62
 		private HBox hbox_simulatorOption;
 
-		// Token: 0x0400003F RID: 63
 		private VBox vbox_simulatorOption;
 
-		// Token: 0x04000040 RID: 64
 		private RadioButton radiobutton_outputPad;
 
-		// Token: 0x04000041 RID: 65
 		private RadioButton radiobutton_cmdWnd;
 
-		// Token: 0x04000042 RID: 66
 		private Label GtkLabel_simulatorOption;
 	}
 }

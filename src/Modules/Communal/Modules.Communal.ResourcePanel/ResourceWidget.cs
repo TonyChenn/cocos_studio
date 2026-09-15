@@ -15,11 +15,9 @@ using Stetic;
 
 namespace Modules.Communal.ResourcePanel
 {
-	// Token: 0x02000032 RID: 50
 	[ToolboxItem(true)]
 	public class ResourceWidget : EventBox, ICommandRouter
 	{
-		// Token: 0x060001DC RID: 476 RVA: 0x0000A299 File Offset: 0x00008499
 		public ResourceWidget()
 		{
 			this.Build();
@@ -54,7 +52,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001DD RID: 477 RVA: 0x0000A2BC File Offset: 0x000084BC
 		private void AddButton()
 		{
 			string resourceID = StaticVariable.GetResourceID("import.png");
@@ -110,7 +107,6 @@ namespace Modules.Communal.ResourcePanel
 			this.btn_gridBack.Hide();
 		}
 
-		// Token: 0x060001DE RID: 478 RVA: 0x0000A458 File Offset: 0x00008658
 		private void btn_exprot_Clicked(object sender, ButtonReleaseEventArgs e)
 		{
 			if (ResourceMenu.AdditionMenu != null)
@@ -135,7 +131,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001DF RID: 479 RVA: 0x0000A4DC File Offset: 0x000086DC
 		private void btn_refresh_Clicked(object sender, EventArgs e)
 		{
 			this.treeview.Builder.UpdateAll();
@@ -164,8 +159,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x1700003F RID: 63
-		// (get) Token: 0x060001E0 RID: 480 RVA: 0x0000A4EE File Offset: 0x000086EE
 		public bool SearchBoxFocus
 		{
 			get
@@ -174,7 +167,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001E1 RID: 481 RVA: 0x0000A4FC File Offset: 0x000086FC
 		public void InitiTreeView()
 		{
 			this.treeview = new ResourceTreeView();
@@ -233,7 +225,6 @@ namespace Modules.Communal.ResourcePanel
 			this.previewcontrol = new PreviewControl(base.GdkWindow);
 		}
 
-		// Token: 0x060001E2 RID: 482 RVA: 0x0000A6F8 File Offset: 0x000088F8
 		private void filterTextChanged(object sender, EventArgs e)
 		{
 			Solution currentSelectedSolution = Services.ProjectOperations.CurrentSelectedSolution;
@@ -293,7 +284,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001E3 RID: 483 RVA: 0x0000A7F0 File Offset: 0x000089F0
 		private bool FilterTree(TreeModel model, TreeIter iter)
 		{
 			if (string.IsNullOrWhiteSpace(this.filterText))
@@ -315,14 +305,12 @@ namespace Modules.Communal.ResourcePanel
 			return false;
 		}
 
-		// Token: 0x060001E4 RID: 484 RVA: 0x0000A853 File Offset: 0x00008A53
 		private void InitiStyle()
 		{
 			this.treeview.Tree.ModifyBg(StateType.Normal, new Color(byte.MaxValue, 0, 0));
 			this.vb_root.ModifyBg(StateType.Normal, new Color(byte.MaxValue, 0, 0));
 		}
 
-		// Token: 0x060001E5 RID: 485 RVA: 0x0000A88A File Offset: 0x00008A8A
 		public object GetNextCommandTarget()
 		{
 			return this.treeview;
@@ -484,27 +472,23 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001E6 RID: 486 RVA: 0x0000A892 File Offset: 0x00008A92
 		private void TreeView_OnMouseLeave(object sender, EventArgs e)
 		{
 			this.previewcontrol.ShowImagePath = null;
 		}
 
-		// Token: 0x060001E7 RID: 487 RVA: 0x0000A8A0 File Offset: 0x00008AA0
 		[ConnectBefore]
 		private void TreeView_DragMotion(object o, DragMotionArgs args)
 		{
 			this.previewcontrol.ShowImagePath = null;
 		}
 
-		// Token: 0x060001E8 RID: 488 RVA: 0x0000A8AE File Offset: 0x00008AAE
 		[ConnectBefore]
 		private void TreeView_MotionNotifyEvent(object o, MotionNotifyEventArgs args)
 		{
 			this.SetPreviewControlData((int)args.Event.X, (int)args.Event.Y);
 		}
 
-		// Token: 0x060001E9 RID: 489 RVA: 0x0000A8D0 File Offset: 0x00008AD0
 		[ConnectBefore]
 		private void TreeView_ScrollEvent(object o, ScrollEventArgs args)
 		{
@@ -515,14 +499,12 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001EA RID: 490 RVA: 0x0000A8FB File Offset: 0x00008AFB
 		[ConnectBefore]
 		private void TreeView_LeaveNotifyEvent(object o, LeaveNotifyEventArgs args)
 		{
 			this.previewcontrol.ShowImagePath = null;
 		}
 
-		// Token: 0x060001EB RID: 491 RVA: 0x0000A90C File Offset: 0x00008B0C
 		private void SetPreviewControlData(int x, int y)
 		{
 			TreePath treePath;
@@ -542,7 +524,6 @@ namespace Modules.Communal.ResourcePanel
 			this.previewcontrol.ShowImagePath = null;
 		}
 
-		// Token: 0x060001EC RID: 492 RVA: 0x0000A97C File Offset: 0x00008B7C
 		private void SetPreviewControlLocation(int mx, int my)
 		{
 			if (this.previewcontrol.IsShown)
@@ -568,7 +549,6 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001ED RID: 493 RVA: 0x0000AAED File Offset: 0x00008CED
 		[ConnectBefore]
 		private void ResourceWidget_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
@@ -578,14 +558,12 @@ namespace Modules.Communal.ResourcePanel
 			}
 		}
 
-		// Token: 0x060001EE RID: 494 RVA: 0x0000AB09 File Offset: 0x00008D09
 		[ConnectBefore]
 		private void ResourceWidget_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			this.previewcontrol.ShowImagePath = null;
 		}
 
-		// Token: 0x060001EF RID: 495 RVA: 0x0000AB18 File Offset: 0x00008D18
 		public static bool Filter(ResourceItem root, string filterText)
 		{
 			bool flag = false;
@@ -611,7 +589,6 @@ namespace Modules.Communal.ResourcePanel
 			return flag;
 		}
 
-		// Token: 0x060001F0 RID: 496 RVA: 0x0000ABD4 File Offset: 0x00008DD4
 		public void Reset()
 		{
 			if (this.gridRefreshTimeout != 0U)
@@ -644,7 +621,6 @@ namespace Modules.Communal.ResourcePanel
 			base.OnDestroyed();
 		}
 
-		// Token: 0x060001F1 RID: 497 RVA: 0x0000AC14 File Offset: 0x00008E14
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -691,60 +667,44 @@ namespace Modules.Communal.ResourcePanel
 			base.Hide();
 		}
 
-		// Token: 0x0400009F RID: 159
 		private IconButton btn_exprot;
 
-		// Token: 0x040000A0 RID: 160
 		private IconButton btn_refresh;
 
 		private Button btn_gridBack;
 
 		private Button btn_viewMode;
 
-		// Token: 0x040000A1 RID: 161
 		public bool IsSearchState;
 
-		// Token: 0x040000A2 RID: 162
 		private ResourceTreeView treeview;
 
 		private ResourceGridView gridview;
 
 		private VBox viewBox;
 
-		// Token: 0x040000A3 RID: 163
 		private SearchEntry searchBox;
 
-		// Token: 0x040000A4 RID: 164
 		private TreeModelFilter filter;
 
-		// Token: 0x040000A5 RID: 165
 		private string filterText;
 
-		// Token: 0x040000A6 RID: 166
 		private PreviewControl previewcontrol;
 
-		// Token: 0x040000A7 RID: 167
 		public static Dictionary<ResourceItem, bool> filterHash = new Dictionary<ResourceItem, bool>();
 
-		// Token: 0x040000A8 RID: 168
 		private EventBox entbx_root;
 
-		// Token: 0x040000A9 RID: 169
 		private Alignment alignment1;
 
-		// Token: 0x040000AA RID: 170
 		private VBox vb_root;
 
-		// Token: 0x040000AB RID: 171
 		private EventBox evnt_TreeView;
 
-		// Token: 0x040000AC RID: 172
 		private Alignment alignment2;
 
-		// Token: 0x040000AD RID: 173
 		private HBox hb_flot;
 
-		// Token: 0x040000AE RID: 174
 		private EventBox footEvent;
 
 		private uint gridRefreshTimeout;

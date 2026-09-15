@@ -3,11 +3,8 @@ using Gtk;
 
 namespace Modules.Communal.PropertyGrid
 {
-	// Token: 0x0200000F RID: 15
 	public class BoolEditor : BaseEditor
 	{
-		// Token: 0x17000023 RID: 35
-		// (get) Token: 0x06000064 RID: 100 RVA: 0x00002CBC File Offset: 0x00000EBC
 		public override bool SupportMultiSelect
 		{
 			get
@@ -16,7 +13,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x00002CD0 File Offset: 0x00000ED0
 		protected override Widget OnCreateWidget()
 		{
 			this.widget = new CheckButtonEx();
@@ -29,13 +25,11 @@ namespace Modules.Communal.PropertyGrid
 			return checkButtonHBox;
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x00002D33 File Offset: 0x00000F33
 		private void CheckButtonClickedHandler(object sender, EventArgs e)
 		{
 			this.OnCheckButtonClicked();
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00002D40 File Offset: 0x00000F40
 		protected virtual void OnCheckButtonClicked()
 		{
 			if (this.widget.Inconsistent)
@@ -49,7 +43,6 @@ namespace Modules.Communal.PropertyGrid
 			base.UpdatePropertyValue(this.widget.Active, null);
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x00002DA8 File Offset: 0x00000FA8
 		protected override void OnSetControl()
 		{
 			if (PropertyItem.Objects.Count > 1)
@@ -84,7 +77,6 @@ namespace Modules.Communal.PropertyGrid
 			}
 		}
 
-		// Token: 0x04000015 RID: 21
 		private CheckButtonEx widget;
 	}
 }

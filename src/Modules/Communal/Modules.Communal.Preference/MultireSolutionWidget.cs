@@ -11,12 +11,9 @@ using Stetic;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x02000013 RID: 19
 	[ToolboxItem(true)]
 	public class MultireSolutionWidget : Bin, IPreferenceWidget
 	{
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x0600007D RID: 125 RVA: 0x00007584 File Offset: 0x00005784
 		public EnumPreferenceSetting SettingID
 		{
 			get
@@ -25,8 +22,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x0600007E RID: 126 RVA: 0x00007587 File Offset: 0x00005787
 		public string DisplayName
 		{
 			get
@@ -35,7 +30,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600007F RID: 127 RVA: 0x00007590 File Offset: 0x00005790
 		public MultireSolutionWidget()
 		{
 			this.Build();
@@ -46,7 +40,6 @@ namespace Modules.Communal.Preference
 			this.InitStyle();
 		}
 
-		// Token: 0x06000080 RID: 128 RVA: 0x000075E4 File Offset: 0x000057E4
 		private void InitEvent()
 		{
 			this.btnAdd.Clicked += this.HandleButtonAddClicked;
@@ -58,7 +51,6 @@ namespace Modules.Communal.Preference
 			this.chbAll.Clicked += this.HandleSelectAllCheckbuttonClicked;
 		}
 
-		// Token: 0x06000081 RID: 129 RVA: 0x00007694 File Offset: 0x00005894
 		private void InitTreeView()
 		{
 			this.treeStore = new ListStore(new Type[]
@@ -93,7 +85,6 @@ namespace Modules.Communal.Preference
 			});
 		}
 
-		// Token: 0x06000082 RID: 130 RVA: 0x000077EC File Offset: 0x000059EC
 		private void InitData()
 		{
 			this.configList.AddRange(Option.UserConfig.ResolutionList);
@@ -107,7 +98,6 @@ namespace Modules.Communal.Preference
 			this.RefreshSelectAllCheckBox();
 		}
 
-		// Token: 0x06000083 RID: 131 RVA: 0x000078B4 File Offset: 0x00005AB4
 		private void InitLanguage()
 		{
 			this.btnAdd.Label = LanguageInfo.Dialog_ButtonAdd + "...";
@@ -121,7 +111,6 @@ namespace Modules.Communal.Preference
 			this.chbAll.TooltipText = LanguageInfo.Dialog_ResolutionTooltip;
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x00007968 File Offset: 0x00005B68
 		private void InitStyle()
 		{
 			this.chbAll.Name = "WhiteCheckButton";
@@ -130,7 +119,6 @@ namespace Modules.Communal.Preference
 			this.evtbx_treeBorder.ModifyBg(StateType.Normal, WindowStyle.LineDarkColor);
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x000079C0 File Offset: 0x00005BC0
 		private void RefreshList()
 		{
 			this.treeStore.Clear();
@@ -145,7 +133,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x00007A54 File Offset: 0x00005C54
 		private string ConvertToDisplayStr(string str)
 		{
 			if (string.IsNullOrEmpty(str))
@@ -155,7 +142,6 @@ namespace Modules.Communal.Preference
 			return str.Replace("&", "&amp;").Replace("<", "&lt;").Replace(">", "&gt;");
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x00007A8E File Offset: 0x00005C8E
 		private string ConvertToRealStr(string str)
 		{
 			if (string.IsNullOrEmpty(str))
@@ -165,7 +151,6 @@ namespace Modules.Communal.Preference
 			return str.Replace("&amp;", "&").Replace("&lt;", "<").Replace("&gt;", ">");
 		}
 
-		// Token: 0x06000088 RID: 136 RVA: 0x00007AC8 File Offset: 0x00005CC8
 		private void RefreshSelectAllCheckBox()
 		{
 			bool active = true;
@@ -182,7 +167,6 @@ namespace Modules.Communal.Preference
 			this.enableSelectAll = true;
 		}
 
-		// Token: 0x06000089 RID: 137 RVA: 0x00007B3C File Offset: 0x00005D3C
 		public void ApplySetting()
 		{
 			bool flag = false;
@@ -207,7 +191,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600008A RID: 138 RVA: 0x00007BB4 File Offset: 0x00005DB4
 		public bool CanApply(out string output)
 		{
 			bool flag = false;
@@ -228,13 +211,11 @@ namespace Modules.Communal.Preference
 			return true;
 		}
 
-		// Token: 0x0600008B RID: 139 RVA: 0x00007C24 File Offset: 0x00005E24
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x0600008C RID: 140 RVA: 0x00007C64 File Offset: 0x00005E64
 		private void HandleItemToggle(object o, ToggledArgs args)
 		{
 			TreeIter iter;
@@ -249,7 +230,6 @@ namespace Modules.Communal.Preference
 			this.RefreshSelectAllCheckBox();
 		}
 
-		// Token: 0x0600008D RID: 141 RVA: 0x00007D20 File Offset: 0x00005F20
 		private void HandleSelectAllCheckbuttonClicked(object sender, EventArgs e)
 		{
 			if (!this.enableSelectAll)
@@ -279,7 +259,6 @@ namespace Modules.Communal.Preference
 			this.treeview_resolution.Selection.SelectPath(new TreePath(num.ToString()));
 		}
 
-		// Token: 0x0600008E RID: 142 RVA: 0x00007E14 File Offset: 0x00006014
 		private void HandleButtonResetClicked(object sender, EventArgs e)
 		{
 			this.configList = ResolutionConfig.CreateDefaultList();
@@ -288,7 +267,6 @@ namespace Modules.Communal.Preference
 			this.RefreshSelectAllCheckBox();
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x00007E64 File Offset: 0x00006064
 		private void HandleButtonDeleteClicked(object sender, EventArgs e)
 		{
 			TreeModel treeModel;
@@ -313,7 +291,6 @@ namespace Modules.Communal.Preference
 			this.RefreshSelectAllCheckBox();
 		}
 
-		// Token: 0x06000090 RID: 144 RVA: 0x00007F64 File Offset: 0x00006164
 		private void HandleButtonDownClicked(object sender, EventArgs e)
 		{
 			TreePath[] selectedRows = this.treeview_resolution.Selection.GetSelectedRows();
@@ -334,7 +311,6 @@ namespace Modules.Communal.Preference
 			this.treeview_resolution.Selection.SelectPath(new TreePath((num + 1).ToString()));
 		}
 
-		// Token: 0x06000091 RID: 145 RVA: 0x00008064 File Offset: 0x00006264
 		private void HandleButtonUpClicked(object sender, EventArgs e)
 		{
 			TreePath[] selectedRows = this.treeview_resolution.Selection.GetSelectedRows();
@@ -355,7 +331,6 @@ namespace Modules.Communal.Preference
 			this.treeview_resolution.Selection.SelectPath(new TreePath((num - 1).ToString()));
 		}
 
-		// Token: 0x06000092 RID: 146 RVA: 0x00008134 File Offset: 0x00006334
 		private void HandleButtonEditClicked(object sender, EventArgs e)
 		{
 			TreePath[] selectedRows = this.treeview_resolution.Selection.GetSelectedRows();
@@ -385,7 +360,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x06000093 RID: 147 RVA: 0x00008244 File Offset: 0x00006444
 		private void HandleButtonAddClicked(object sender, EventArgs e)
 		{
 			ResolutionSettingDialog resolutionSettingDialog = new ResolutionSettingDialog(100, 100, null);
@@ -407,7 +381,6 @@ namespace Modules.Communal.Preference
 			resolutionSettingDialog.Destroy();
 		}
 
-		// Token: 0x06000094 RID: 148 RVA: 0x0000830C File Offset: 0x0000650C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -576,79 +549,54 @@ namespace Modules.Communal.Preference
 			base.Hide();
 		}
 
-		// Token: 0x0400009D RID: 157
 		private ListStore treeStore;
 
-		// Token: 0x0400009E RID: 158
 		private List<ResolutionConfig> configList = new List<ResolutionConfig>();
 
-		// Token: 0x0400009F RID: 159
 		private List<ResolutionConfig> configListCache = new List<ResolutionConfig>();
 
-		// Token: 0x040000A0 RID: 160
 		private bool enableSelectAll = true;
 
-		// Token: 0x040000A1 RID: 161
 		private Alignment alignment_main;
 
-		// Token: 0x040000A2 RID: 162
 		private VBox vbox_main;
 
-		// Token: 0x040000A3 RID: 163
 		private HBox hbox_top;
 
-		// Token: 0x040000A4 RID: 164
 		private EventBox evtbx_treeBorder;
 
-		// Token: 0x040000A5 RID: 165
 		private VBox vbox_tree;
 
-		// Token: 0x040000A6 RID: 166
 		private EventBox evtbx_fakeTitle;
 
-		// Token: 0x040000A7 RID: 167
 		private HBox hbox_fakeTitle;
 
-		// Token: 0x040000A8 RID: 168
 		private Alignment alignment_selectAll;
 
-		// Token: 0x040000A9 RID: 169
 		private CheckButton chbAll;
 
-		// Token: 0x040000AA RID: 170
 		private Alignment alignment_name;
 
-		// Token: 0x040000AB RID: 171
 		private Label label_name;
 
-		// Token: 0x040000AC RID: 172
 		private Label label_resolution;
 
-		// Token: 0x040000AD RID: 173
 		private ScrolledWindow GtkScrolledWindow_tree;
 
-		// Token: 0x040000AE RID: 174
 		private TreeView treeview_resolution;
 
-		// Token: 0x040000AF RID: 175
 		private VBox vbox_rightBtns;
 
-		// Token: 0x040000B0 RID: 176
 		private Button btnAdd;
 
-		// Token: 0x040000B1 RID: 177
 		private Button btnModify;
 
-		// Token: 0x040000B2 RID: 178
 		private Button btnUp;
 
-		// Token: 0x040000B3 RID: 179
 		private Button btnDown;
 
-		// Token: 0x040000B4 RID: 180
 		private Button btnDel;
 
-		// Token: 0x040000B5 RID: 181
 		private Button btnReset;
 	}
 }

@@ -7,13 +7,11 @@ namespace ICSharpCode.NRefactory.TypeSystem
 	/// <summary>
 	/// Provides helper methods for inheritance.
 	/// </summary>
-	// Token: 0x020000E8 RID: 232
 	public static class InheritanceHelper
 	{
 		/// <summary>
 		/// Gets the base member that has the same signature.
 		/// </summary>
-		// Token: 0x060008A8 RID: 2216 RVA: 0x00016A54 File Offset: 0x00015A54
 		public static IMember GetBaseMember(IMember member)
 		{
 			return InheritanceHelper.GetBaseMembers(member, false).FirstOrDefault<IMember>();
@@ -25,7 +23,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <returns>
 		/// List of base members with the same signature. The member from the derived-most base class is returned first.
 		/// </returns>
-		// Token: 0x060008A9 RID: 2217 RVA: 0x00016EF8 File Offset: 0x00015EF8
 		public static IEnumerable<IMember> GetBaseMembers(IMember member, bool includeImplementedInterfaces)
 		{
 			if (member == null)
@@ -79,7 +76,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// <summary>
 		/// Finds the member declared in 'derivedType' that has the same signature (could override) 'baseMember'.
 		/// </summary>
-		// Token: 0x060008AA RID: 2218 RVA: 0x00016F44 File Offset: 0x00015F44
 		public static IMember GetDerivedMember(IMember baseMember, ITypeDefinition derivedType)
 		{
 			if (baseMember == null)

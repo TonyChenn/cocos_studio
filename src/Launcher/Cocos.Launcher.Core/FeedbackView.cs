@@ -11,11 +11,9 @@ using Stetic;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x02000060 RID: 96
 	[ToolboxItem(true)]
 	public class FeedbackView : Bin
 	{
-		// Token: 0x0600035A RID: 858 RVA: 0x0000F00F File Offset: 0x0000D20F
 		public FeedbackView()
 		{
 			this.Build();
@@ -25,7 +23,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x0600035B RID: 859 RVA: 0x0000F03C File Offset: 0x0000D23C
 		private void InitView()
 		{
 			this.button_submit = new ButtonView();
@@ -63,7 +60,6 @@ namespace Cocos.Launcher.Core
 			this.hbox3.PackStart(this.linkView, false, false, 0U);
 		}
 
-		// Token: 0x0600035C RID: 860 RVA: 0x0000F270 File Offset: 0x0000D470
 		private void InitLanguage()
 		{
 			this.label_classify.Text = LanguageInfo.Launcher_QUClassify;
@@ -72,13 +68,11 @@ namespace Cocos.Launcher.Core
 			this.linkView.SetLableText(LanguageInfo.Launcher_UsualQuestions);
 		}
 
-		// Token: 0x0600035D RID: 861 RVA: 0x0000F2BD File Offset: 0x0000D4BD
 		private void linkView_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			WebHelper.OpenWeb(ConstantConfig.Constant.UsualQuestionsUrl);
 		}
 
-		// Token: 0x0600035E RID: 862 RVA: 0x0000F2D0 File Offset: 0x0000D4D0
 		private void button_submit_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			if (!Services.LoginService.IsLoginSuccessed)
@@ -98,7 +92,6 @@ namespace Cocos.Launcher.Core
 			httpSync.GetSyncResponseOfString(ConstantConfig.Constant.FeedbackUrl, "post", this.feedbackInfo.GetFeedbackInfo(), null);
 		}
 
-		// Token: 0x0600035F RID: 863 RVA: 0x0000F414 File Offset: 0x0000D614
 		private void FeedbackInfoResived(object sender, HttpSync.HttpSyncArgs e)
 		{
 			GLib.Timeout.Add(0U, delegate
@@ -119,7 +112,6 @@ namespace Cocos.Launcher.Core
 			});
 		}
 
-		// Token: 0x06000360 RID: 864 RVA: 0x0000F448 File Offset: 0x0000D648
 		private bool IsFeedbackSucceed(string retStr)
 		{
 			bool result = false;
@@ -138,7 +130,6 @@ namespace Cocos.Launcher.Core
 			return result;
 		}
 
-		// Token: 0x06000361 RID: 865 RVA: 0x0000F4A0 File Offset: 0x0000D6A0
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -254,55 +245,38 @@ namespace Cocos.Launcher.Core
 			base.Hide();
 		}
 
-		// Token: 0x0400015D RID: 349
 		private ButtonView button_submit;
 
-		// Token: 0x0400015E RID: 350
 		private FeedbackInfo feedbackInfo;
 
-		// Token: 0x0400015F RID: 351
 		private LinkView linkView;
 
-		// Token: 0x04000160 RID: 352
 		private EventBox eventbox1;
 
-		// Token: 0x04000161 RID: 353
 		private Alignment alignment1;
 
-		// Token: 0x04000162 RID: 354
 		private Table table1;
 
-		// Token: 0x04000163 RID: 355
 		private EventBox eventbox_infoLine;
 
-		// Token: 0x04000164 RID: 356
 		private Alignment alignment5;
 
-		// Token: 0x04000165 RID: 357
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x04000166 RID: 358
 		private TextView textview_info;
 
-		// Token: 0x04000167 RID: 359
 		private HBox hbox3;
 
-		// Token: 0x04000168 RID: 360
 		private ComboBox combobox_classify;
 
-		// Token: 0x04000169 RID: 361
 		private Alignment alignment6;
 
-		// Token: 0x0400016A RID: 362
 		private Label label_classify;
 
-		// Token: 0x0400016B RID: 363
 		private Label label_describe;
 
-		// Token: 0x0400016C RID: 364
 		private Label label1;
 
-		// Token: 0x0400016D RID: 365
 		private Label label2;
 	}
 }

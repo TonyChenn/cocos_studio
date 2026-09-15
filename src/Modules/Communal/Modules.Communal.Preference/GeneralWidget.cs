@@ -11,12 +11,9 @@ using Stetic;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x0200000E RID: 14
 	[ToolboxItem(true)]
 	public class GeneralWidget : Bin, IPreferenceWidget
 	{
-		// Token: 0x1700000B RID: 11
-		// (get) Token: 0x0600003B RID: 59 RVA: 0x0000325D File Offset: 0x0000145D
 		public EnumPreferenceSetting SettingID
 		{
 			get
@@ -25,8 +22,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x0600003C RID: 60 RVA: 0x00003260 File Offset: 0x00001460
 		public string DisplayName
 		{
 			get
@@ -35,7 +30,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x00003268 File Offset: 0x00001468
 		public GeneralWidget()
 		{
 			this.Build();
@@ -55,7 +49,6 @@ namespace Modules.Communal.Preference
 			this.SetMultiLanugage();
 		}
 
-		// Token: 0x0600003E RID: 62 RVA: 0x00003300 File Offset: 0x00001500
 		private void InitMultiSampleComboBox()
 		{
 			string b = ((EnumMultiply)Option.UserConfig.MultiplySample).ToString();
@@ -71,7 +64,6 @@ namespace Modules.Communal.Preference
 			this.combobox_multiSample.Changed += this.MultiSampleComboBoxChangedHandler;
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x00003380 File Offset: 0x00001580
 		private void SetMultiLanugage()
 		{
 			this.GtkLabel_ctrls.Text = " " + LanguageInfo.ComToolPad + " ";
@@ -82,7 +74,6 @@ namespace Modules.Communal.Preference
 			this.label_multiSample.Text = LanguageInfo.Preference_MultiSample;
 		}
 
-		// Token: 0x06000040 RID: 64 RVA: 0x0000341C File Offset: 0x0000161C
 		private void MultiSampleComboBoxChangedHandler(object sender, EventArgs e)
 		{
 			if (this.sampleIcon == null)
@@ -94,7 +85,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x0000346C File Offset: 0x0000166C
 		public void ApplySetting()
 		{
 			Option.UserConfig.IsUseMouseWheel = !this.checkbutton_mouse.Active;
@@ -107,20 +97,17 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x000034E9 File Offset: 0x000016E9
 		public bool CanApply(out string output)
 		{
 			output = "";
 			return true;
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x000034F3 File Offset: 0x000016F3
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x000034F8 File Offset: 0x000016F8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -251,67 +238,46 @@ namespace Modules.Communal.Preference
 			base.Hide();
 		}
 
-		// Token: 0x04000026 RID: 38
 		private SelectPathWidget codeIDEWidget;
 
-		// Token: 0x04000027 RID: 39
 		private TooltipIcon sampleIcon;
 
-		// Token: 0x04000028 RID: 40
 		private VBox vbox_main;
 
-		// Token: 0x04000029 RID: 41
 		private Frame frame_ctrls;
 
-		// Token: 0x0400002A RID: 42
 		private Alignment GtkAlignment_ctrls;
 
-		// Token: 0x0400002B RID: 43
 		private CheckButton checkbutton_simplifyRes;
 
-		// Token: 0x0400002C RID: 44
 		private Label GtkLabel_ctrls;
 
-		// Token: 0x0400002D RID: 45
 		private Frame frame_mouse;
 
-		// Token: 0x0400002E RID: 46
 		private Alignment GtkAlignment_mouse;
 
-		// Token: 0x0400002F RID: 47
 		private CheckButton checkbutton_mouse;
 
-		// Token: 0x04000030 RID: 48
 		private Label GtkLabel_mouse;
 
-		// Token: 0x04000031 RID: 49
 		private Frame frame_codeIDE;
 
-		// Token: 0x04000032 RID: 50
 		private Alignment GtkAlignment_codeIDE;
 
-		// Token: 0x04000033 RID: 51
 		private VBox vbox_codeIDE;
 
-		// Token: 0x04000034 RID: 52
 		private Label GtkLabel_codeIDE;
 
-		// Token: 0x04000035 RID: 53
 		private Frame frame_display;
 
-		// Token: 0x04000036 RID: 54
 		private Alignment GtkAlignment_display;
 
-		// Token: 0x04000037 RID: 55
 		private HBox hbox_multiSample;
 
-		// Token: 0x04000038 RID: 56
 		private Label label_multiSample;
 
-		// Token: 0x04000039 RID: 57
 		private ComboBox combobox_multiSample;
 
-		// Token: 0x0400003A RID: 58
 		private Label GtkLabel_display;
 	}
 }

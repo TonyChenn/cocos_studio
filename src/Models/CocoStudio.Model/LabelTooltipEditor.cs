@@ -6,15 +6,12 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model
 {
-	// Token: 0x0200005F RID: 95
 	internal class LabelTooltipEditor : BaseEditor
 	{
-		// Token: 0x0600033E RID: 830 RVA: 0x0000D9F4 File Offset: 0x0000BBF4
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 		}
 
-		// Token: 0x0600033F RID: 831 RVA: 0x0000D9F8 File Offset: 0x0000BBF8
 		protected override Widget OnCreateWidget()
 		{
 			this.table = new Table(1U, 2U, false);
@@ -29,15 +26,12 @@ namespace CocoStudio.Model
 			return this.table;
 		}
 
-		// Token: 0x06000340 RID: 832 RVA: 0x0000DAC3 File Offset: 0x0000BCC3
 		protected override void OnSetControl()
 		{
 		}
 
-		// Token: 0x04000191 RID: 401
 		private Table table;
 
-		// Token: 0x04000192 RID: 402
 		private Label label;
 	}
 }

@@ -15,16 +15,13 @@ using Stetic;
 
 namespace Modules.Communal.AutoUpdate
 {
-	// Token: 0x02000011 RID: 17
 	public class UpdateWindow : Gtk.Window
 	{
-		// Token: 0x0600008C RID: 140 RVA: 0x00003D0C File Offset: 0x00001F0C
 		public UpdateWindow() : base(Gtk.WindowType.Toplevel)
 		{
 			throw new Exception();
 		}
 
-		// Token: 0x0600008D RID: 141 RVA: 0x00003D1C File Offset: 0x00001F1C
 		public UpdateWindow(DownloadMonitor downMonitor, string downloadLink = "") : base(Gtk.WindowType.Toplevel)
 		{
 			this.Build();
@@ -41,14 +38,12 @@ namespace Modules.Communal.AutoUpdate
 			this.InitStatus(downloadLink);
 		}
 
-		// Token: 0x0600008E RID: 142 RVA: 0x00003D7A File Offset: 0x00001F7A
 		private void InitEvent()
 		{
 			base.DeleteEvent += this.WindowsFileProcess_DeleteEvent;
 			this.buttonInstall.Clicked += this.OnButtonYesClicked;
 		}
 
-		// Token: 0x0600008F RID: 143 RVA: 0x00003DA8 File Offset: 0x00001FA8
 		private void InitWidget()
 		{
 			this.label_currentVersion = new Label(string.Format(LanguageInfo.AutoUpdate_CurrentVersion, "2.3.3.0"));
@@ -68,7 +63,6 @@ namespace Modules.Communal.AutoUpdate
 			this.buttonInstall.Name = "MainButton";
 		}
 
-		// Token: 0x06000090 RID: 144 RVA: 0x00003ECC File Offset: 0x000020CC
 		private void InitText()
 		{
 			base.Title = LanguageInfo.AutoUpdate_Title;
@@ -102,7 +96,6 @@ namespace Modules.Communal.AutoUpdate
 			this.textView_des.Buffer.Text = winServerInfo.Desc;
 		}
 
-		// Token: 0x06000091 RID: 145 RVA: 0x00003FFC File Offset: 0x000021FC
 		private void InitStatus(string downloadLink)
 		{
 			if (!string.IsNullOrEmpty(downloadLink))
@@ -124,7 +117,6 @@ namespace Modules.Communal.AutoUpdate
 			this.SwitchStatus(UpdateWindowStatus.Init);
 		}
 
-		// Token: 0x06000092 RID: 146 RVA: 0x00004058 File Offset: 0x00002258
 		private void SwitchStatus(UpdateWindowStatus status)
 		{
 			this.currentStatus = status;
@@ -163,7 +155,6 @@ namespace Modules.Communal.AutoUpdate
 			}
 		}
 
-		// Token: 0x06000093 RID: 147 RVA: 0x00004194 File Offset: 0x00002394
 		private bool RefreshUI()
 		{
 			if (this.hasDisposed)
@@ -200,7 +191,6 @@ namespace Modules.Communal.AutoUpdate
 			return false;
 		}
 
-		// Token: 0x06000094 RID: 148 RVA: 0x0000424C File Offset: 0x0000244C
 		private void Install()
 		{
 			this.isInstallClose = true;
@@ -230,7 +220,6 @@ namespace Modules.Communal.AutoUpdate
 			}
 		}
 
-		// Token: 0x06000095 RID: 149 RVA: 0x000042DC File Offset: 0x000024DC
 		private System.Diagnostics.Process PreInstall()
 		{
 			string text;
@@ -264,7 +253,6 @@ namespace Modules.Communal.AutoUpdate
 			};
 		}
 
-		// Token: 0x06000096 RID: 150 RVA: 0x00004368 File Offset: 0x00002568
 		private bool PreInstallWindows(out string fileName, out string args)
 		{
 			string path = "Cocos.Update.exe";
@@ -304,7 +292,6 @@ namespace Modules.Communal.AutoUpdate
 			return false;
 		}
 
-		// Token: 0x06000097 RID: 151 RVA: 0x00004444 File Offset: 0x00002644
 		private bool PreInstallMac(out string fileName, out string args)
 		{
 			string text;
@@ -337,7 +324,6 @@ namespace Modules.Communal.AutoUpdate
 			return true;
 		}
 
-		// Token: 0x06000098 RID: 152 RVA: 0x000044F4 File Offset: 0x000026F4
 		private void RestartDownload()
 		{
 			string output;
@@ -357,7 +343,6 @@ namespace Modules.Communal.AutoUpdate
 			this.SwitchStatus(UpdateWindowStatus.Downloading);
 		}
 
-		// Token: 0x06000099 RID: 153 RVA: 0x00004560 File Offset: 0x00002760
 		private void Close()
 		{
 			if (this.isInstallClose)
@@ -400,7 +385,6 @@ namespace Modules.Communal.AutoUpdate
 			this.Destroy();
 		}
 
-		// Token: 0x0600009A RID: 154 RVA: 0x00004670 File Offset: 0x00002870
 		private void ChangeBottomLeftWidget(Widget newWidget)
 		{
 			if (this.alignment_bottomLeft.Child == newWidget)
@@ -415,7 +399,6 @@ namespace Modules.Communal.AutoUpdate
 			newWidget.Show();
 		}
 
-		// Token: 0x0600009B RID: 155 RVA: 0x000046C4 File Offset: 0x000028C4
 		private void OnButtonYesClicked(object sender, EventArgs e)
 		{
 			switch (this.currentStatus)
@@ -447,14 +430,12 @@ namespace Modules.Communal.AutoUpdate
 			}
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x00004740 File Offset: 0x00002940
 		private void WindowsFileProcess_DeleteEvent(object o, DeleteEventArgs args)
 		{
 			this.Close();
 			args.RetVal = true;
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x00004754 File Offset: 0x00002954
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -564,82 +545,56 @@ namespace Modules.Communal.AutoUpdate
 			base.Hide();
 		}
 
-		// Token: 0x04000036 RID: 54
 		private const string skipMarp = "#SKIP#";
 
-		// Token: 0x04000037 RID: 55
 		private const int maxTimeoutCount = 200;
 
-		// Token: 0x04000038 RID: 56
 		private bool hasDisposed;
 
-		// Token: 0x04000039 RID: 57
 		private bool isInstallClose;
 
-		// Token: 0x0400003A RID: 58
 		private DownloadMonitor monitor;
 
-		// Token: 0x0400003B RID: 59
 		private int timeoutCount;
 
-		// Token: 0x0400003C RID: 60
 		private UpdateWindowStatus currentStatus;
 
-		// Token: 0x0400003D RID: 61
 		private ProgressBar progressBar;
 
-		// Token: 0x0400003E RID: 62
 		private Label label_currentVersion;
 
-		// Token: 0x0400003F RID: 63
 		private Label label_failed;
 
-		// Token: 0x04000040 RID: 64
 		private LabelLinkButton labelLink_download;
 
-		// Token: 0x04000041 RID: 65
 		private VBox vbox_main;
 
-		// Token: 0x04000042 RID: 66
 		private Alignment alignment_title;
 
-		// Token: 0x04000043 RID: 67
 		private Label label_title;
 
-		// Token: 0x04000044 RID: 68
 		private EventBox eventbox_darkBorder;
 
-		// Token: 0x04000045 RID: 69
 		private Alignment alignment_scrolledWindows;
 
-		// Token: 0x04000046 RID: 70
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x04000047 RID: 71
 		private TextView textView_des;
 
-		// Token: 0x04000048 RID: 72
 		private Alignment alignment_bottom;
 
-		// Token: 0x04000049 RID: 73
 		private HBox hbox_bottom;
 
-		// Token: 0x0400004A RID: 74
 		private VBox vbox_bottomLeft;
 
-		// Token: 0x0400004B RID: 75
 		private Alignment alignment_progressTop;
 
-		// Token: 0x0400004C RID: 76
 		private Alignment alignment_bottomLeft;
 
-		// Token: 0x0400004D RID: 77
 		private Alignment alignment_progressBottom;
 
-		// Token: 0x0400004E RID: 78
 		private Alignment alignment_btnInstall;
 
-		// Token: 0x0400004F RID: 79
 		private Button buttonInstall;
 	}
 }

@@ -10,10 +10,8 @@ using Stetic;
 
 namespace Modules.Communal.CocosCodeIDE
 {
-	// Token: 0x0200000C RID: 12
 	public class SelectPathDialog : Dialog
 	{
-		// Token: 0x0600003A RID: 58 RVA: 0x00002EB0 File Offset: 0x000010B0
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -98,14 +96,12 @@ namespace Modules.Communal.CocosCodeIDE
 			this.buttonOk.Clicked += this.OnBtnOKClicked;
 		}
 
-		// Token: 0x0600003B RID: 59 RVA: 0x00003283 File Offset: 0x00001483
 		public SelectPathDialog()
 		{
 			this.Build();
 			this.Init();
 		}
 
-		// Token: 0x0600003C RID: 60 RVA: 0x00003298 File Offset: 0x00001498
 		private void Init()
 		{
 			this.SetToDialogStyle(null, true, true, true);
@@ -135,7 +131,6 @@ namespace Modules.Communal.CocosCodeIDE
 			}
 		}
 
-		// Token: 0x0600003D RID: 61 RVA: 0x000033B2 File Offset: 0x000015B2
 		private void OnPathSet(object sender, EventArgs e)
 		{
 			if (!string.IsNullOrEmpty(this.selectpathwidget2.FilePath))
@@ -144,7 +139,6 @@ namespace Modules.Communal.CocosCodeIDE
 			}
 		}
 
-		// Token: 0x0600003E RID: 62 RVA: 0x000033D4 File Offset: 0x000015D4
 		protected void OnBtnOKClicked(object sender, EventArgs e)
 		{
 			string filePath = this.selectpathwidget2.FilePath;
@@ -165,7 +159,6 @@ namespace Modules.Communal.CocosCodeIDE
 			this.Destroy();
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x00003440 File Offset: 0x00001640
 		protected void OnDialogKeyPressed(object o, KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Return)
@@ -174,25 +167,18 @@ namespace Modules.Communal.CocosCodeIDE
 			}
 		}
 
-		// Token: 0x0400001F RID: 31
 		private VBox vbox_main;
 
-		// Token: 0x04000020 RID: 32
 		private VBox vbox_up;
 
-		// Token: 0x04000021 RID: 33
 		private HBox hbox_left;
 
-		// Token: 0x04000022 RID: 34
 		private SelectPathWidget selectpathwidget2;
 
-		// Token: 0x04000023 RID: 35
 		private VBox vbox_down;
 
-		// Token: 0x04000024 RID: 36
 		private Button buttonCancel;
 
-		// Token: 0x04000025 RID: 37
 		private Button buttonOk;
 	}
 }

@@ -4,10 +4,8 @@ using System.Text;
 
 namespace CocoStudio.EngineAdapterWrap
 {
-	// Token: 0x0200001E RID: 30
 	public class UTF8Marshaler : ICustomMarshaler
 	{
-		// Token: 0x0600018B RID: 395 RVA: 0x00006D8C File Offset: 0x00004F8C
 		public IntPtr MarshalManagedToNative(object managedObj)
 		{
 			IntPtr result;
@@ -30,7 +28,6 @@ namespace CocoStudio.EngineAdapterWrap
 			return result;
 		}
 
-		// Token: 0x0600018C RID: 396 RVA: 0x00006E04 File Offset: 0x00005004
 		public unsafe object MarshalNativeToManaged(IntPtr pNativeData)
 		{
 			byte* ptr = (byte*)((void*)pNativeData);
@@ -44,30 +41,25 @@ namespace CocoStudio.EngineAdapterWrap
 			return Encoding.UTF8.GetString(array);
 		}
 
-		// Token: 0x0600018D RID: 397 RVA: 0x00006E61 File Offset: 0x00005061
 		public void CleanUpNativeData(IntPtr pNativeData)
 		{
 			Marshal.FreeHGlobal(pNativeData);
 		}
 
-		// Token: 0x0600018E RID: 398 RVA: 0x00006E6B File Offset: 0x0000506B
 		public void CleanUpManagedData(object managedObj)
 		{
 		}
 
-		// Token: 0x0600018F RID: 399 RVA: 0x00006E70 File Offset: 0x00005070
 		public int GetNativeDataSize()
 		{
 			return -1;
 		}
 
-		// Token: 0x06000190 RID: 400 RVA: 0x00006E84 File Offset: 0x00005084
 		public static ICustomMarshaler GetInstance(string cookie)
 		{
 			return UTF8Marshaler.static_instance;
 		}
 
-		// Token: 0x04000021 RID: 33
 		private static UTF8Marshaler static_instance = new UTF8Marshaler();
 	}
 }

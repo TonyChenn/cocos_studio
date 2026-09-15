@@ -8,17 +8,14 @@ using XwtImage = Xwt.Drawing.Image;
 
 namespace Gtk
 {
-	// Token: 0x0200008A RID: 138
 	[ToolboxItem(true)]
 	public class ImageBin : Bin
 	{
-		// Token: 0x060002FC RID: 764 RVA: 0x0000C29E File Offset: 0x0000A49E
 		public ImageBin()
 		{
 			this.Build();
 		}
 
-		// Token: 0x060002FD RID: 765 RVA: 0x0000C2B0 File Offset: 0x0000A4B0
 		public void SetImageView(XwtImage image)
 		{
 			try
@@ -37,13 +34,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x060002FE RID: 766 RVA: 0x0000C330 File Offset: 0x0000A530
 		public MonoDevelopImageView GetImageView()
 		{
 			return this.CurrentImage;
 		}
 
-		// Token: 0x060002FF RID: 767 RVA: 0x0000C348 File Offset: 0x0000A548
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -89,28 +84,20 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x04000370 RID: 880
 		private MonoDevelopImageView CurrentImage;
 
-		// Token: 0x04000371 RID: 881
 		private VBox vbox_main;
 
-		// Token: 0x04000372 RID: 882
 		private Alignment alignment_top;
 
-		// Token: 0x04000373 RID: 883
 		private HBox hbox_main;
 
-		// Token: 0x04000374 RID: 884
 		private Alignment alignment_left;
 
-		// Token: 0x04000375 RID: 885
 		private Alignment alignment_img;
 
-		// Token: 0x04000376 RID: 886
 		private Alignment alignment_right;
 
-		// Token: 0x04000377 RID: 887
 		private Alignment alignment_bottom;
 	}
 }

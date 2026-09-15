@@ -12,12 +12,8 @@ using Modules.Communal.MultiLanguage;
 
 namespace Modules.UI.RenderContextMenu
 {
-	// Token: 0x02000022 RID: 34
 	public class SetStyleMenuItem : MenuItem, IObjectMenuItem
 	{
-		// Token: 0x17000026 RID: 38
-		// (get) Token: 0x06000109 RID: 265 RVA: 0x00006E10 File Offset: 0x00005010
-		// (set) Token: 0x06000108 RID: 264 RVA: 0x00006DEC File Offset: 0x00004FEC
 		public VisualObject TriggerObject
 		{
 			get
@@ -33,7 +29,6 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x0600010A RID: 266 RVA: 0x00006E28 File Offset: 0x00005028
 		public SetStyleMenuItem(string[] filetype, string name, string title) : base(title)
 		{
 			base.Name = name;
@@ -41,7 +36,6 @@ namespace Modules.UI.RenderContextMenu
 			base.ButtonReleaseEvent += new ButtonReleaseEventHandler(this.SetStyle_Click);
 		}
 
-		// Token: 0x0600010B RID: 267 RVA: 0x00006E58 File Offset: 0x00005058
 		private void SetStyle_Click(object sender, EventArgs e)
 		{
 			Menu menu = base.Parent as Menu;
@@ -49,7 +43,6 @@ namespace Modules.UI.RenderContextMenu
 			this.SetWidgetStyle();
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x00006E80 File Offset: 0x00005080
 		public static async Task<ResourceItem> addSourceItem(string[] fileTypes = null)
 		{
 			string[] selectPath = FileChooserDialogModel.GetOpenFilePath(fileTypes, LanguageInfo.MessageBox_Content96, true, Services.ProjectOperations.CurrentSelectedSolution.ItemDirectory.ToString()).FileNames;
@@ -72,7 +65,6 @@ namespace Modules.UI.RenderContextMenu
 			return result2;
 		}
 
-		// Token: 0x0600010D RID: 269 RVA: 0x00006ECC File Offset: 0x000050CC
 		public ResourceFolder GetRootFolder(Solution solution)
 		{
 			if (solution != null)
@@ -86,7 +78,6 @@ namespace Modules.UI.RenderContextMenu
 			return null;
 		}
 
-		// Token: 0x0600010E RID: 270 RVA: 0x00006F14 File Offset: 0x00005114
 		public async void SetWidgetStyle()
 		{
 			if (this.TriggerObject == null)
@@ -120,21 +111,17 @@ namespace Modules.UI.RenderContextMenu
 			}
 		}
 
-		// Token: 0x0600010F RID: 271 RVA: 0x00006F50 File Offset: 0x00005150
 		public string SendSetStyleMessage()
 		{
 			return this.TriggerObject.GetType().Name;
 		}
 
-		// Token: 0x06000110 RID: 272 RVA: 0x00006F72 File Offset: 0x00005172
 		public void UpdateMenuItemState()
 		{
 		}
 
-		// Token: 0x04000077 RID: 119
 		private VisualObject triggerObject;
 
-		// Token: 0x04000078 RID: 120
 		private string[] FileType;
 	}
 }

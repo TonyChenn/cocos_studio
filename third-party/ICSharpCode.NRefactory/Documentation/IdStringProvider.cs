@@ -10,13 +10,11 @@ namespace ICSharpCode.NRefactory.Documentation
 	/// Provides ID strings for entities. (C# 4.0 spec, §A.3.1)
 	/// ID strings are used to identify members in XML documentation files.
 	/// </summary>
-	// Token: 0x0200012F RID: 303
 	public static class IdStringProvider
 	{
 		/// <summary>
 		/// Gets the ID string (C# 4.0 spec, §A.3.1) for the specified entity.
 		/// </summary>
-		// Token: 0x06000A88 RID: 2696 RVA: 0x0001F1D4 File Offset: 0x0001E1D4
 		public static string GetIdString(this IEntity entity)
 		{
 			StringBuilder stringBuilder = new StringBuilder();
@@ -78,7 +76,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x06000A89 RID: 2697 RVA: 0x0001F3C8 File Offset: 0x0001E3C8
 		public static string GetTypeName(IType type)
 		{
 			if (type == null)
@@ -90,7 +87,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x06000A8A RID: 2698 RVA: 0x0001F3F8 File Offset: 0x0001E3F8
 		private static void AppendTypeName(StringBuilder b, IType type, bool explicitInterfaceImpl)
 		{
 			switch (type.Kind)
@@ -165,7 +161,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			IdStringProvider.AppendTypeParameters(b, type, 0, explicitInterfaceImpl);
 		}
 
-		// Token: 0x06000A8B RID: 2699 RVA: 0x0001F598 File Offset: 0x0001E598
 		private static void AppendTypeParameters(StringBuilder b, IType type, int outerTypeParameterCount, bool explicitInterfaceImpl)
 		{
 			int num = type.TypeParameterCount - outerTypeParameterCount;
@@ -203,7 +198,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// and if the member is not found there,
 		/// it will look in all other assemblies of the compilation.
 		/// </remarks>
-		// Token: 0x06000A8C RID: 2700 RVA: 0x0001F61C File Offset: 0x0001E61C
 		public static IMemberReference ParseMemberIdString(string memberIdString)
 		{
 			if (memberIdString == null)
@@ -257,7 +251,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// to resolve the reference to the ITypeParameter.
 		/// </para>
 		/// </remarks>
-		// Token: 0x06000A8D RID: 2701 RVA: 0x0001F6D4 File Offset: 0x0001E6D4
 		public static ITypeReference ParseTypeName(string typeName)
 		{
 			if (typeName == null)
@@ -277,7 +270,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return result;
 		}
 
-		// Token: 0x06000A8E RID: 2702 RVA: 0x0001F720 File Offset: 0x0001E720
 		private static bool IsIDStringSpecialCharacter(char c)
 		{
 			if (c <= '@')
@@ -328,7 +320,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return true;
 		}
 
-		// Token: 0x06000A8F RID: 2703 RVA: 0x0001F794 File Offset: 0x0001E794
 		private static ITypeReference ParseTypeName(string typeName, ref int pos)
 		{
 			if (pos == typeName.Length)
@@ -417,7 +408,6 @@ namespace ICSharpCode.NRefactory.Documentation
 			return typeReference;
 		}
 
-		// Token: 0x06000A90 RID: 2704 RVA: 0x0001F91C File Offset: 0x0001E91C
 		private static string ReadTypeName(string typeName, ref int pos, bool allowDottedName, out int typeParameterCount, List<ITypeReference> typeArguments)
 		{
 			int num = pos;
@@ -471,7 +461,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// <param name="context">Type resolve context</param>
 		/// <returns>Returns the entity, or null if it is not found.</returns>
 		/// <exception cref="T:ICSharpCode.NRefactory.TypeSystem.ReflectionNameParseException">The syntax of the ID string is invalid</exception>
-		// Token: 0x06000A91 RID: 2705 RVA: 0x0001FA20 File Offset: 0x0001EA20
 		public static IEntity FindEntity(string idString, ITypeResolveContext context)
 		{
 			if (idString == null)

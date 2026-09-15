@@ -6,17 +6,14 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Projects.Formates
 {
-	// Token: 0x0200001D RID: 29
 	[Extension(typeof(IFileFormat))]
 	internal class TTFFileFormat : FileFormat
 	{
-		// Token: 0x060000A0 RID: 160 RVA: 0x00003B24 File Offset: 0x00001D24
 		protected override bool OnCanWriteFile(object obj)
 		{
 			return obj is TTFFile;
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x00003B30 File Offset: 0x00001D30
 		protected override bool OnCanReadFile(FilePath filePath, Type expectedObjectType)
 		{
 			return expectedObjectType.Equals(typeof(ResourceItem)) && FileFormat.CheckFileSuffix(filePath, new string[]
@@ -25,13 +22,11 @@ namespace CocoStudio.Projects.Formates
 			});
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x00003B6C File Offset: 0x00001D6C
 		protected override object OnReadFile(FilePath file, Type expectedType, IProgressMonitor monitor)
 		{
 			return new TTFFile(file);
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x00003B74 File Offset: 0x00001D74
 		public static bool CheckDataIsValid(FilePath fileName)
 		{
 			bool result;
@@ -59,7 +54,6 @@ namespace CocoStudio.Projects.Formates
 			return result;
 		}
 
-		// Token: 0x0400002D RID: 45
 		public const string Suffix = ".ttf";
 	}
 }

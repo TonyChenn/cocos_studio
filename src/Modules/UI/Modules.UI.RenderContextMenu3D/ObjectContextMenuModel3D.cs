@@ -17,20 +17,12 @@ using Modules.UI.RenderContextMenu;
 
 namespace Modules.UI.RenderContextMenu3D
 {
-	// Token: 0x02000003 RID: 3
 	public class ObjectContextMenuModel3D
 	{
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000013 RID: 19 RVA: 0x000023B9 File Offset: 0x000005B9
-		// (set) Token: 0x06000014 RID: 20 RVA: 0x000023C1 File Offset: 0x000005C1
 		public List<VisualObject> CopyObjectList { get; set; }
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x06000015 RID: 21 RVA: 0x000023CA File Offset: 0x000005CA
-		// (set) Token: 0x06000016 RID: 22 RVA: 0x000023D2 File Offset: 0x000005D2
 		public ReadOnlyCollection<VisualObject> SelectedParentObjectList { get; set; }
 
-		// Token: 0x06000017 RID: 23 RVA: 0x000023DC File Offset: 0x000005DC
 		public ObjectContextMenuModel3D()
 		{
 			this.eventAggregator = Services.EventsService;
@@ -41,7 +33,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.CopyObjectList = new List<VisualObject>();
 		}
 
-		// Token: 0x06000018 RID: 24 RVA: 0x00002470 File Offset: 0x00000670
 		private void SelectedObjectsChangeEventHandle(SelectedVisualObjectsChangeEventArgs args)
 		{
 			this.SelectedObject = args.SelectedParentObject.FirstOrDefault<VisualObject>();
@@ -58,17 +49,14 @@ namespace Modules.UI.RenderContextMenu3D
 			}
 		}
 
-		// Token: 0x06000019 RID: 25 RVA: 0x000024D7 File Offset: 0x000006D7
 		private void SelectedOne()
 		{
 		}
 
-		// Token: 0x0600001A RID: 26 RVA: 0x000024D9 File Offset: 0x000006D9
 		private void SelectedMultipe()
 		{
 		}
 
-		// Token: 0x0600001B RID: 27 RVA: 0x000024DC File Offset: 0x000006DC
 		private void DeleteVisualObjectsEventHandle(ReadOnlyCollection<VisualObject> objectList)
 		{
 			this.SelectedParentObjectList = objectList;
@@ -78,7 +66,6 @@ namespace Modules.UI.RenderContextMenu3D
 			}
 		}
 
-		// Token: 0x0600001C RID: 28 RVA: 0x00002520 File Offset: 0x00000720
 		private void CopyVisualObjectsEventHandle(ReadOnlyCollection<VisualObject> objectList)
 		{
 			if (objectList == null || objectList.Count == 0)
@@ -88,7 +75,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.CopyObject();
 		}
 
-		// Token: 0x0600001D RID: 29 RVA: 0x00002534 File Offset: 0x00000734
 		private void PasteVisualObjectsEventHandle(PasteObjectsChangeEventArgs args)
 		{
 			if (this.PasteMenuIsAction(this.CopyObjectList))
@@ -98,7 +84,6 @@ namespace Modules.UI.RenderContextMenu3D
 			}
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002563 File Offset: 0x00000763
 		private void CutVisualObjectsEventHandle(ReadOnlyCollection<VisualObject> objectList)
 		{
 			if (objectList == null || objectList.Count == 0)
@@ -108,7 +93,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.CutObject();
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00002577 File Offset: 0x00000777
 		private void ProjectOperations_CurrentSelectedSolutionClosed(object sender, SolutionEventArgs e)
 		{
 			if (this.CopyObjectList != null)
@@ -117,7 +101,6 @@ namespace Modules.UI.RenderContextMenu3D
 			}
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x0000258C File Offset: 0x0000078C
 		private void UpdateSelectedObjects(List<VisualObject> parentObjects = null, List<VisualObject> objects = null)
 		{
 			if (parentObjects == null)
@@ -132,7 +115,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.eventAggregator.GetEvent<SelectedVisualObjectsChangeEvent>().Publish(payload);
 		}
 
-		// Token: 0x06000021 RID: 33 RVA: 0x000025C8 File Offset: 0x000007C8
 		public void AddObject(AbstractNodeObject newObject, PointF position)
 		{
 			if (newObject == null)
@@ -163,7 +145,6 @@ namespace Modules.UI.RenderContextMenu3D
 			}
 		}
 
-		// Token: 0x06000022 RID: 34 RVA: 0x0000268C File Offset: 0x0000088C
 		public void DeleteObject()
 		{
 			if (this.SelectedParentObjectList == null || this.SelectedParentObjectList.Count <= 0)
@@ -188,7 +169,6 @@ namespace Modules.UI.RenderContextMenu3D
 			list.Clear();
 		}
 
-		// Token: 0x06000023 RID: 35 RVA: 0x00002750 File Offset: 0x00000950
 		public void CopyObject()
 		{
 			if (this.SelectedParentObjectList == null || this.SelectedParentObjectList.Count <= 0)
@@ -204,7 +184,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.IsCutObject = false;
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x000027E0 File Offset: 0x000009E0
 		private void SetObjectCenterPositin(ReadOnlyCollection<VisualObject> objectList)
 		{
 			if (objectList.Count == 1)
@@ -214,7 +193,6 @@ namespace Modules.UI.RenderContextMenu3D
 			}
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x0000283C File Offset: 0x00000A3C
 		private void CutObject()
 		{
 			if (this.SelectedParentObjectList == null || this.SelectedParentObjectList.Count <= 0)
@@ -240,7 +218,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.IsCutObject = true;
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x0000293C File Offset: 0x00000B3C
 		private void ResetName(AbstractNodeObject newOne, AbstractNodeObject oldOne)
 		{
 			if (newOne == null || oldOne == null)
@@ -257,7 +234,6 @@ namespace Modules.UI.RenderContextMenu3D
 			}
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x000029E0 File Offset: 0x00000BE0
 		public void PasteObject(PointF position)
 		{
 			if (this.CopyObjectList == null || this.CopyObjectList.Count <= 0)
@@ -289,7 +265,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.IsCutObject = false;
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00002AB4 File Offset: 0x00000CB4
 		private void PasteCopyObjects(PointF position, AbstractNodeObject rootObject, IList<VisualObject> objectList)
 		{
 			List<VisualObject> list = new List<VisualObject>();
@@ -325,7 +300,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.UpdateSelectedObjects(list, list);
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002BB0 File Offset: 0x00000DB0
 		private void PasteCutObjects(PointF position, AbstractNodeObject rootObject, IList<VisualObject> objectList)
 		{
 			List<VisualObject> list = new List<VisualObject>();
@@ -353,7 +327,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.CopyObjectList.Clear();
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002C60 File Offset: 0x00000E60
 		private string GetCloneNewName(string baseName, AbstractNodeObject parentNode)
 		{
 			int num = 0;
@@ -373,13 +346,11 @@ namespace Modules.UI.RenderContextMenu3D
 			return newName;
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00002CC0 File Offset: 0x00000EC0
 		public bool PasteMenuIsAction(IEnumerable<VisualObject> pasteList)
 		{
 			return pasteList != null && pasteList.Count<VisualObject>() != 0 && this.CheckObjectPaste(pasteList);
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00002CD8 File Offset: 0x00000ED8
 		private bool CheckObjectPaste(IEnumerable<VisualObject> pasteList)
 		{
 			GameFile gameFile = Services.ProjectOperations.CurrentSelectedProject.CocosFile as GameFile;
@@ -395,7 +366,6 @@ namespace Modules.UI.RenderContextMenu3D
 			return true;
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00002D78 File Offset: 0x00000F78
 		public IEnumerable<VisualObject> GetAllChildeNode(VisualObject rootNode)
 		{
 			List<VisualObject> list = new List<VisualObject>();
@@ -412,7 +382,6 @@ namespace Modules.UI.RenderContextMenu3D
 			return list;
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00002DF0 File Offset: 0x00000FF0
 		public void RegisterEvent()
 		{
 			this.eventAggregator = Services.EventsService;
@@ -423,7 +392,6 @@ namespace Modules.UI.RenderContextMenu3D
 			this.eventAggregator.GetEvent<CutVisualObjectsEvent>().Subscribe(new Action<ReadOnlyCollection<VisualObject>>(this.CutVisualObjectsEventHandle));
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00002E9C File Offset: 0x0000109C
 		public void UnregisterEvent()
 		{
 			this.eventAggregator = Services.EventsService;
@@ -434,28 +402,20 @@ namespace Modules.UI.RenderContextMenu3D
 			this.eventAggregator.GetEvent<CutVisualObjectsEvent>().Unsubscribe(new Action<ReadOnlyCollection<VisualObject>>(this.CutVisualObjectsEventHandle));
 		}
 
-		// Token: 0x0400000C RID: 12
 		public ReadOnlyCollection<VisualObject> SelectedObjectList;
 
-		// Token: 0x0400000D RID: 13
 		public VisualObject SelectedObject;
 
-		// Token: 0x0400000E RID: 14
 		private IUndoManager taskService;
 
-		// Token: 0x0400000F RID: 15
 		private IEventAggregator eventAggregator;
 
-		// Token: 0x04000010 RID: 16
 		private PointF CopyObjectListCenter = new PointF(0f, 0f);
 
-		// Token: 0x04000011 RID: 17
 		private PointF SingleObjectPosition = new PointF(0f, 0f);
 
-		// Token: 0x04000012 RID: 18
 		private VisualObject BaseRootObject;
 
-		// Token: 0x04000013 RID: 19
 		private bool IsCutObject;
 	}
 }

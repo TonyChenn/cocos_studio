@@ -11,12 +11,9 @@ using Mono.Addins;
 
 namespace Modules.Communal.CocosAdapter.Platform
 {
-	// Token: 0x02000011 RID: 17
 	[Extension(typeof(IPlatform))]
 	internal class AndroidPlatform : BasePlatform
 	{
-		// Token: 0x17000022 RID: 34
-		// (get) Token: 0x06000075 RID: 117 RVA: 0x00003627 File Offset: 0x00001827
 		public override EnumPlatform PlatformType
 		{
 			get
@@ -25,8 +22,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			}
 		}
 
-		// Token: 0x17000023 RID: 35
-		// (get) Token: 0x06000076 RID: 118 RVA: 0x0000362A File Offset: 0x0000182A
 		public override int Order
 		{
 			get
@@ -35,8 +30,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			}
 		}
 
-		// Token: 0x17000024 RID: 36
-		// (get) Token: 0x06000077 RID: 119 RVA: 0x0000362D File Offset: 0x0000182D
 		protected override string PlatformName
 		{
 			get
@@ -45,7 +38,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			}
 		}
 
-		// Token: 0x06000078 RID: 120 RVA: 0x00003634 File Offset: 0x00001834
 		public override string GetDisplayName(EnumOperationType opType)
 		{
 			switch (opType)
@@ -59,7 +51,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			}
 		}
 
-		// Token: 0x06000079 RID: 121 RVA: 0x00003668 File Offset: 0x00001868
 		protected override bool OnCanExecute(EnumOperationType opType, PackageParams prms)
 		{
 			if (string.IsNullOrWhiteSpace(Option.UserConfig.SDKPath) || string.IsNullOrWhiteSpace(Option.UserConfig.NDKPath) || string.IsNullOrWhiteSpace(Option.UserConfig.ANTPath) || string.IsNullOrWhiteSpace(Option.UserConfig.JDKPath))
@@ -83,7 +74,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return opType != EnumOperationType.Run || this.CheckAndroidDevice();
 		}
 
-		// Token: 0x0600007A RID: 122 RVA: 0x00003774 File Offset: 0x00001974
 		private bool CheckAndroidDevice()
 		{
 			bool isDeviceConnected = false;
@@ -128,7 +118,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return true;
 		}
 
-		// Token: 0x0600007B RID: 123 RVA: 0x000038A4 File Offset: 0x00001AA4
 		protected override bool OnExecuteInitialize(EnumOperationType opType, PackageParams prms, CocosMonitor monitor)
 		{
 			if (!this.RegisterkeyStore(prms))
@@ -144,7 +133,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return true;
 		}
 
-		// Token: 0x0600007C RID: 124 RVA: 0x000038D4 File Offset: 0x00001AD4
 		private bool RegisterkeyStore(PackageParams info)
 		{
 			if (string.IsNullOrEmpty(info.AndroidkeyStore))
@@ -183,7 +171,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return true;
 		}
 
-		// Token: 0x0600007D RID: 125 RVA: 0x000039F8 File Offset: 0x00001BF8
 		private bool RenamePackageName(PackageParams info)
 		{
 			if (string.IsNullOrEmpty(info.AndroidManifest) || !File.Exists(info.AndroidManifest))
@@ -212,7 +199,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return true;
 		}
 
-		// Token: 0x0600007E RID: 126 RVA: 0x00003AC8 File Offset: 0x00001CC8
 		protected override string OnCreateConsoleArguments(EnumOperationType opType, PackageParams prms)
 		{
 			string sourcePath = Path.Combine(prms.Directory, "frameworks", "runtime-src", "proj.android");
@@ -232,7 +218,6 @@ namespace Modules.Communal.CocosAdapter.Platform
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x04000026 RID: 38
 		private const string androidManifestKey = "package";
 	}
 }

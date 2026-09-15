@@ -7,11 +7,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000099 RID: 153
 	internal class ResourceGroupEditor : BaseEditor
 	{
-		// Token: 0x17000166 RID: 358
-		// (get) Token: 0x06000537 RID: 1335 RVA: 0x00016BDC File Offset: 0x00014DDC
 		public override bool CanCaching
 		{
 			get
@@ -20,8 +17,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x17000167 RID: 359
-		// (get) Token: 0x06000538 RID: 1336 RVA: 0x00016BF0 File Offset: 0x00014DF0
 		public override bool IsMultiLine
 		{
 			get
@@ -30,7 +25,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000539 RID: 1337 RVA: 0x00016C04 File Offset: 0x00014E04
 		protected override Widget OnCreateWidget()
 		{
 			this.imageEventBoxList = new List<ImageEventBox>();
@@ -60,12 +54,10 @@ namespace CocoStudio.Model.Editor
 			return table;
 		}
 
-		// Token: 0x0600053A RID: 1338 RVA: 0x00016D19 File Offset: 0x00014F19
 		protected override void OnSetControl()
 		{
 		}
 
-		// Token: 0x0600053B RID: 1339 RVA: 0x00016D1C File Offset: 0x00014F1C
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 			foreach (ImageEventBox imageEventBox in this.imageEventBoxList)
@@ -77,7 +69,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000270 RID: 624
 		private List<ImageEventBox> imageEventBoxList;
 	}
 }

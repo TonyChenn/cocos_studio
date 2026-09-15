@@ -12,10 +12,8 @@ using MonoDevelop.Ide.Gui;
 
 namespace CocoStudio.Core
 {
-	// Token: 0x02000051 RID: 81
 	public static class Starter
 	{
-		// Token: 0x06000327 RID: 807 RVA: 0x0000E62C File Offset: 0x0000C82C
 		public static void Initialize(EnumApp appType, string themeName)
 		{
 			Starter.SetCurrentIDE(appType);
@@ -39,7 +37,6 @@ namespace CocoStudio.Core
 			Services.IntinalizeCompleted += Starter.Services_IntinalizeCompleted;
 		}
 
-		// Token: 0x06000328 RID: 808 RVA: 0x0000E6E0 File Offset: 0x0000C8E0
 		private static Tuple<string, string> GetDirectory(EnumApp editorType)
 		{
 			string text;
@@ -80,14 +77,12 @@ namespace CocoStudio.Core
 			return text.Equals(text2, StringComparison.OrdinalIgnoreCase) || text.StartsWith(text2 + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase);
 		}
 
-		// Token: 0x06000329 RID: 809 RVA: 0x0000E721 File Offset: 0x0000C921
 		private static void Services_IntinalizeCompleted(EventArgs obj)
 		{
 			Services.IntinalizeCompleted -= Starter.Services_IntinalizeCompleted;
 			UserStatisticsFactory.Start(ApplicationCurrent.MainWindow);
 		}
 
-		// Token: 0x0600032A RID: 810 RVA: 0x0000E744 File Offset: 0x0000C944
 		public static void Run()
 		{
 			IProgressMonitor monitor = new ConsoleProgressMonitor();
@@ -96,20 +91,17 @@ namespace CocoStudio.Core
 			workbench.Show("Cocos Studio");
 		}
 
-		// Token: 0x0600032B RID: 811 RVA: 0x0000E772 File Offset: 0x0000C972
 		private static void InitApplication()
 		{
 			Application.Init();
 			PlatformAdapter.Initialize();
 		}
 
-		// Token: 0x0600032C RID: 812 RVA: 0x0000E781 File Offset: 0x0000C981
 		private static void SetCurrentIDE(EnumApp editorType)
 		{
 			Option.SetCurrentIDE(editorType);
 		}
 
-		// Token: 0x0600032D RID: 813 RVA: 0x0000E78C File Offset: 0x0000C98C
 		public static void SetupTheme(string themeName)
 		{
 			try

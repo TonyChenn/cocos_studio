@@ -3,10 +3,8 @@ using Gdk;
 
 namespace Gtk
 {
-	// Token: 0x0200005B RID: 91
 	public class BorderEventBox : EventBox
 	{
-		// Token: 0x060001EB RID: 491 RVA: 0x00008A08 File Offset: 0x00006C08
 		protected override void OnSizeAllocated(Rectangle allocation)
 		{
 			base.OnSizeAllocated(allocation);

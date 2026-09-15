@@ -11,20 +11,14 @@ using Stetic;
 
 namespace CocoStudio.ControlLib
 {
-	// Token: 0x02000008 RID: 8
 	public class ProgressDialog : Dialog
 	{
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x0600001C RID: 28 RVA: 0x00002848 File Offset: 0x00000A48
-		// (remove) Token: 0x0600001D RID: 29 RVA: 0x00002884 File Offset: 0x00000A84
 		public event EventHandler OperationCancelled;
 
-		// Token: 0x0600001E RID: 30 RVA: 0x000028C0 File Offset: 0x00000AC0
 		public ProgressDialog(bool allowCancel, bool showDetails) : this(null, allowCancel, showDetails)
 		{
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x000028D0 File Offset: 0x00000AD0
 		public ProgressDialog(Window parent, bool allowCancel, bool showDetails)
 		{
 			this.Build();
@@ -51,7 +45,6 @@ namespace CocoStudio.ControlLib
 			this.SetMultiLanguageInfo();
 		}
 
-		// Token: 0x06000020 RID: 32 RVA: 0x00002A34 File Offset: 0x00000C34
 		private void SetMultiLanguageInfo()
 		{
 			base.Title = Option.CurrentApp.ToString();
@@ -62,9 +55,6 @@ namespace CocoStudio.ControlLib
 			this.label.Text = LanguageInfo.Dialog_Import_Importing;
 		}
 
-		// Token: 0x17000003 RID: 3
-		// (get) Token: 0x06000021 RID: 33 RVA: 0x00002AA8 File Offset: 0x00000CA8
-		// (set) Token: 0x06000022 RID: 34 RVA: 0x00002AC0 File Offset: 0x00000CC0
 		public IAsyncOperation AsyncOperation
 		{
 			get
@@ -77,9 +67,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x17000004 RID: 4
-		// (get) Token: 0x06000023 RID: 35 RVA: 0x00002ACC File Offset: 0x00000CCC
-		// (set) Token: 0x06000024 RID: 36 RVA: 0x00002AE9 File Offset: 0x00000CE9
 		public string Message
 		{
 			get
@@ -92,9 +79,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x17000005 RID: 5
-		// (get) Token: 0x06000025 RID: 37 RVA: 0x00002AFC File Offset: 0x00000CFC
-		// (set) Token: 0x06000026 RID: 38 RVA: 0x00002B19 File Offset: 0x00000D19
 		public double Progress
 		{
 			get
@@ -107,7 +91,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002BC4 File Offset: 0x00000DC4
 		public void BeginTask(string name)
 		{
 			if (name != null && name.Length > 0)
@@ -137,7 +120,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x00002C6C File Offset: 0x00000E6C
 		public void EndTask()
 		{
 			if (this.indents.Count > 0)
@@ -151,7 +133,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x00002D20 File Offset: 0x00000F20
 		public void WriteText(string text)
 		{
 			GLib.Timeout.Add(0U, delegate
@@ -165,7 +146,6 @@ namespace CocoStudio.ControlLib
 			});
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x00002D58 File Offset: 0x00000F58
 		private void AddText(string s)
 		{
 			TextIter endIter = this.buffer.EndIter;
@@ -175,7 +155,6 @@ namespace CocoStudio.ControlLib
 			});
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00002D94 File Offset: 0x00000F94
 		private void Indent()
 		{
 			this.ident++;
@@ -192,7 +171,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x0600002C RID: 44 RVA: 0x00002E40 File Offset: 0x00001040
 		private void Unindent()
 		{
 			if (this.ident >= 0)
@@ -202,7 +180,6 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x0600002D RID: 45 RVA: 0x00002F3C File Offset: 0x0000113C
 		public void ShowDone(bool warnings, bool errors)
 		{
 			GLib.Timeout.Add(0U, delegate
@@ -226,7 +203,6 @@ namespace CocoStudio.ControlLib
 			});
 		}
 
-		// Token: 0x0600002E RID: 46 RVA: 0x00002F7C File Offset: 0x0000117C
 		protected void OnBtnCancelClicked(object sender, EventArgs e)
 		{
 			if (this.asyncOperation != null)
@@ -239,13 +215,11 @@ namespace CocoStudio.ControlLib
 			}
 		}
 
-		// Token: 0x0600002F RID: 47 RVA: 0x00002FBE File Offset: 0x000011BE
 		protected virtual void OnBtnCloseClicked(object sender, EventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x00002FC8 File Offset: 0x000011C8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -356,61 +330,42 @@ namespace CocoStudio.ControlLib
 			this.btnClose.Clicked += this.OnBtnCloseClicked;
 		}
 
-		// Token: 0x04000011 RID: 17
 		private TextBuffer buffer;
 
-		// Token: 0x04000012 RID: 18
 		private TextTag tag;
 
-		// Token: 0x04000013 RID: 19
 		private TextTag bold;
 
-		// Token: 0x04000014 RID: 20
 		private int ident = 0;
 
-		// Token: 0x04000015 RID: 21
 		private List<TextTag> tags = new List<TextTag>();
 
-		// Token: 0x04000016 RID: 22
 		private Stack<string> indents = new Stack<string>();
 
-		// Token: 0x04000017 RID: 23
 		private IAsyncOperation asyncOperation;
 
-		// Token: 0x04000019 RID: 25
 		private static object SnyObject = new object();
 
-		// Token: 0x0400001A RID: 26
 		private VBox vbox2;
 
-		// Token: 0x0400001B RID: 27
 		private Label label;
 
-		// Token: 0x0400001C RID: 28
 		private HBox hbox1;
 
-		// Token: 0x0400001D RID: 29
 		private ProgressBar progressBar;
 
-		// Token: 0x0400001E RID: 30
 		private Button btnCancel;
 
-		// Token: 0x0400001F RID: 31
 		private Button btnClose;
 
-		// Token: 0x04000020 RID: 32
 		private Expander expander;
 
-		// Token: 0x04000021 RID: 33
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x04000022 RID: 34
 		private TextView detailsTextView;
 
-		// Token: 0x04000023 RID: 35
 		private Label expanderLabel;
 
-		// Token: 0x04000024 RID: 36
 		private Button button103;
 	}
 }

@@ -14,11 +14,9 @@ using Stetic;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x02000015 RID: 21
 	[ToolboxItem(true)]
 	public class CocosRoutineWidget : Bin, IPreferenceWidget
 	{
-		// Token: 0x060000A7 RID: 167 RVA: 0x000096FC File Offset: 0x000078FC
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -132,8 +130,6 @@ namespace Modules.Communal.Preference
 			base.Hide();
 		}
 
-		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x060000A8 RID: 168 RVA: 0x00009D6F File Offset: 0x00007F6F
 		public EnumPreferenceSetting SettingID
 		{
 			get
@@ -142,8 +138,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x060000A9 RID: 169 RVA: 0x00009D72 File Offset: 0x00007F72
 		public string DisplayName
 		{
 			get
@@ -152,8 +146,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x060000AA RID: 170 RVA: 0x00009D7C File Offset: 0x00007F7C
 		private string startupCocosLnkPath
 		{
 			get
@@ -163,7 +155,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x060000AB RID: 171 RVA: 0x00009D9D File Offset: 0x00007F9D
 		public CocosRoutineWidget()
 		{
 			this.Build();
@@ -171,7 +162,6 @@ namespace Modules.Communal.Preference
 			this.InitProcedure();
 		}
 
-		// Token: 0x060000AC RID: 172 RVA: 0x00009DB8 File Offset: 0x00007FB8
 		private void InitProcedure()
 		{
 			if (Platform.IsMac)
@@ -191,7 +181,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x060000AD RID: 173 RVA: 0x00009E6C File Offset: 0x0000806C
 		private void InitDownload()
 		{
 			this.GtkLabel_download.Text = " " + LanguageInfo.Preference_SaveDir + " ";
@@ -224,7 +213,6 @@ namespace Modules.Communal.Preference
 			button2.Show();
 		}
 
-		// Token: 0x060000AE RID: 174 RVA: 0x00009FDC File Offset: 0x000081DC
 		public void ApplySetting()
 		{
 			Option.UserConfig.CocosStorePath = this.entry_downloadPath.Text;
@@ -252,7 +240,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x060000AF RID: 175 RVA: 0x0000A09C File Offset: 0x0000829C
 		public bool CanApply(out string output)
 		{
 			string text = this.entry_downloadPath.Text;
@@ -264,7 +251,6 @@ namespace Modules.Communal.Preference
 			return true;
 		}
 
-		// Token: 0x060000B0 RID: 176 RVA: 0x0000A0CC File Offset: 0x000082CC
 		private bool CheckDownloadDirValidity(string dir, out string output)
 		{
 			if (string.IsNullOrEmpty(dir))
@@ -291,13 +277,11 @@ namespace Modules.Communal.Preference
 			return true;
 		}
 
-		// Token: 0x060000B1 RID: 177 RVA: 0x0000A14E File Offset: 0x0000834E
 		public Widget GetWidget()
 		{
 			return this;
 		}
 
-		// Token: 0x060000B2 RID: 178 RVA: 0x0000A154 File Offset: 0x00008354
 		private void HandleButtonBrowseClicked(object sender, EventArgs e)
 		{
 			SelectFolderDialog selectFolderDialog = new SelectFolderDialog();
@@ -312,7 +296,6 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x060000B3 RID: 179 RVA: 0x0000A1D4 File Offset: 0x000083D4
 		private void ButtonOpenFolderClickedHandler(object sender, EventArgs args)
 		{
 			try
@@ -338,58 +321,40 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x040000CB RID: 203
 		private VBox vbox_main;
 
-		// Token: 0x040000CC RID: 204
 		private Frame frame_download;
 
-		// Token: 0x040000CD RID: 205
 		private Alignment GtkAlignment_download;
 
-		// Token: 0x040000CE RID: 206
 		private HBox hbox_path;
 
-		// Token: 0x040000CF RID: 207
 		private Entry entry_downloadPath;
 
-		// Token: 0x040000D0 RID: 208
 		private VBox vbox_browse;
 
-		// Token: 0x040000D1 RID: 209
 		private Alignment alignment_browseTop;
 
-		// Token: 0x040000D2 RID: 210
 		private Alignment alignment_browse;
 
-		// Token: 0x040000D3 RID: 211
 		private Alignment alignment_browseBottom;
 
-		// Token: 0x040000D4 RID: 212
 		private VBox vbox_openFolder;
 
-		// Token: 0x040000D5 RID: 213
 		private Alignment alignment_openTop;
 
-		// Token: 0x040000D6 RID: 214
 		private Alignment alignment_open;
 
-		// Token: 0x040000D7 RID: 215
 		private Alignment alignment_openBottom;
 
-		// Token: 0x040000D8 RID: 216
 		private Label GtkLabel_download;
 
-		// Token: 0x040000D9 RID: 217
 		private Frame frame_procedure;
 
-		// Token: 0x040000DA RID: 218
 		private Alignment GtkAlignment_procedure;
 
-		// Token: 0x040000DB RID: 219
 		private Label GtkLabel_procedure;
 
-		// Token: 0x040000DC RID: 220
 		private CheckboxView checkboxView;
 	}
 }

@@ -12,11 +12,9 @@ using Stetic;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200000D RID: 13
 	[ToolboxItem(true)]
 	public class FinishDownloadItemView : Bin
 	{
-		// Token: 0x06000061 RID: 97 RVA: 0x00003DF4 File Offset: 0x00001FF4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -104,9 +102,6 @@ namespace Cocos.Launcher.Core
 			base.Hide();
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000062 RID: 98 RVA: 0x00004298 File Offset: 0x00002498
-		// (set) Token: 0x06000063 RID: 99 RVA: 0x000042A0 File Offset: 0x000024A0
 		public RunModeEnum RunMode
 		{
 			get
@@ -136,9 +131,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x06000064 RID: 100 RVA: 0x000042F9 File Offset: 0x000024F9
-		// (set) Token: 0x06000065 RID: 101 RVA: 0x00004304 File Offset: 0x00002504
 		public UninstallModeEnum UninstallMode
 		{
 			get
@@ -166,7 +158,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x00004368 File Offset: 0x00002568
 		public FinishDownloadItemView(AssetModel model)
 		{
 			this.Build();
@@ -177,7 +168,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00004398 File Offset: 0x00002598
 		private void InitWidget()
 		{
 			if (!string.IsNullOrEmpty(this.assetModel.AssetInfo.ImagePath) && File.Exists(this.assetModel.AssetInfo.ImagePath))
@@ -231,7 +221,6 @@ namespace Cocos.Launcher.Core
 			this.InitStar(this.assetModel.AssetInfo.Score);
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x00004600 File Offset: 0x00002800
 		private void InitEvent()
 		{
 			this.assetModel.DeleteSelf += this.View_DeleteSelf;
@@ -241,26 +230,22 @@ namespace Cocos.Launcher.Core
 			base.DestroyEvent += this.View_DestroyEvent;
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x0000467B File Offset: 0x0000287B
 		private void UpdateButtonShow()
 		{
 			this.RunMode = this.assetModel.RunMode;
 			this.UninstallMode = this.assetModel.UninstallMode;
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x0000469F File Offset: 0x0000289F
 		private void RefreshUninstallMode(object sender, RefreshUninstallModeEventArgs e)
 		{
 			this.UninstallMode = e.UninstallMode;
 		}
 
-		// Token: 0x0600006B RID: 107 RVA: 0x000046AD File Offset: 0x000028AD
 		private void RefreshRunMode(object sender, RefreshRunModeEventArgs e)
 		{
 			this.RunMode = e.RunMode;
 		}
 
-		// Token: 0x0600006C RID: 108 RVA: 0x000046BC File Offset: 0x000028BC
 		private void View_DestroyEvent(object o, DestroyEventArgs args)
 		{
 			this.assetModel.DeleteSelf -= this.View_DeleteSelf;
@@ -269,19 +254,16 @@ namespace Cocos.Launcher.Core
 			this.assetModel.RefreshUninstallModeEvent -= this.RefreshUninstallMode;
 		}
 
-		// Token: 0x0600006D RID: 109 RVA: 0x00004725 File Offset: 0x00002925
 		private void View_DownloadSelf(object sender, PluginDownloadEventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x0600006E RID: 110 RVA: 0x0000472D File Offset: 0x0000292D
 		private void View_DeleteSelf(object sender, EventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x0600006F RID: 111 RVA: 0x00004738 File Offset: 0x00002938
 		private void InitButton()
 		{
 			this.installButton = this.InitIntallButton();
@@ -293,7 +275,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000070 RID: 112 RVA: 0x000047CC File Offset: 0x000029CC
 		private ButtonView InitUnintallButton()
 		{
 			ButtonView buttonView = new ButtonView();
@@ -307,7 +288,6 @@ namespace Cocos.Launcher.Core
 			return buttonView;
 		}
 
-		// Token: 0x06000071 RID: 113 RVA: 0x0000483C File Offset: 0x00002A3C
 		private ButtonView InitIntallButton()
 		{
 			ButtonView buttonView = new ButtonView();
@@ -320,7 +300,6 @@ namespace Cocos.Launcher.Core
 			return buttonView;
 		}
 
-		// Token: 0x06000072 RID: 114 RVA: 0x000048A0 File Offset: 0x00002AA0
 		private void InitStar(double score)
 		{
 			if (score > 5.0)
@@ -356,7 +335,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000073 RID: 115 RVA: 0x00004984 File Offset: 0x00002B84
 		private string GetSizeToView(float originSize)
 		{
 			string result;
@@ -377,19 +355,16 @@ namespace Cocos.Launcher.Core
 			return result;
 		}
 
-		// Token: 0x06000074 RID: 116 RVA: 0x00004A19 File Offset: 0x00002C19
 		public void UpdateInstallButtonText(string text)
 		{
 			this.installButton.SetLabelText(text);
 		}
 
-		// Token: 0x06000075 RID: 117 RVA: 0x00004A27 File Offset: 0x00002C27
 		public void UpdateUninstallButtonText(string text)
 		{
 			this.uninstallButton.SetLabelText(text);
 		}
 
-		// Token: 0x06000076 RID: 118 RVA: 0x00004A38 File Offset: 0x00002C38
 		public void InstallPlugin(object sender, ButtonReleaseEventArgs args)
 		{
 			switch (this.RunMode)
@@ -411,7 +386,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000077 RID: 119 RVA: 0x00004A94 File Offset: 0x00002C94
 		private void uninstallButton_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			switch (this.UninstallMode)
@@ -427,58 +401,40 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x04000034 RID: 52
 		private EventBox eventbox1;
 
-		// Token: 0x04000035 RID: 53
 		private HBox hbox_all;
 
-		// Token: 0x04000036 RID: 54
 		private Gtk.Alignment alignment_image;
 
-		// Token: 0x04000037 RID: 55
 		private Gtk.Image image2;
 
-		// Token: 0x04000038 RID: 56
 		private Gtk.Alignment alignment_info;
 
-		// Token: 0x04000039 RID: 57
 		private VBox vbox_info;
 
-		// Token: 0x0400003A RID: 58
 		private Gtk.Alignment alignment_name;
 
-		// Token: 0x0400003B RID: 59
 		private Label label_name;
 
-		// Token: 0x0400003C RID: 60
 		private Gtk.Alignment alignment_star;
 
-		// Token: 0x0400003D RID: 61
 		private HBox hbox_star;
 
-		// Token: 0x0400003E RID: 62
 		private Label label_time;
 
-		// Token: 0x0400003F RID: 63
 		private Gtk.Alignment alignment_button;
 
-		// Token: 0x04000040 RID: 64
 		private HBox hbox_button;
 
-		// Token: 0x04000041 RID: 65
 		private ButtonView installButton;
 
-		// Token: 0x04000042 RID: 66
 		private ButtonView uninstallButton;
 
-		// Token: 0x04000043 RID: 67
 		private AssetModel assetModel;
 
-		// Token: 0x04000044 RID: 68
 		private RunModeEnum runMode;
 
-		// Token: 0x04000045 RID: 69
 		private UninstallModeEnum uninstallMode;
 	}
 }

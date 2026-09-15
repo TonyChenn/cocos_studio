@@ -5,11 +5,8 @@ using Xwt.Drawing;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200008F RID: 143
 	internal class FilpEditor : BaseEditor
 	{
-		// Token: 0x1700015C RID: 348
-		// (get) Token: 0x060004E8 RID: 1256 RVA: 0x000155D0 File Offset: 0x000137D0
 		public override bool SupportMultiSelect
 		{
 			get
@@ -18,7 +15,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060004E9 RID: 1257 RVA: 0x000155E4 File Offset: 0x000137E4
 		protected override Widget OnCreateWidget()
 		{
 			Xwt.Drawing.Image icon = ImageIcon.GetIcon("CocoStudio.DefaultResource.EditorResource.horizontalFilp.png");
@@ -36,7 +32,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x060004EA RID: 1258 RVA: 0x00015694 File Offset: 0x00013894
 		protected override void OnSetControl()
 		{
 			IFlipped flipped = PropertyItem.FirstObject as IFlipped;
@@ -59,7 +54,6 @@ namespace CocoStudio.Model.Editor
 			this.toggleBtnY.IsChecked = isChecked2;
 		}
 
-		// Token: 0x060004EB RID: 1259 RVA: 0x0001575C File Offset: 0x0001395C
 		private void HorizonButtonToggleHandler(object sender, EventArgs e)
 		{
 			using (base.GetLock(true))
@@ -73,7 +67,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060004EC RID: 1260 RVA: 0x000157E4 File Offset: 0x000139E4
 		private void VerticalButtonToggleHandler(object sender, EventArgs e)
 		{
 			using (base.GetLock(true))
@@ -87,10 +80,8 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000245 RID: 581
 		private IconToggleButton toggleBtnX;
 
-		// Token: 0x04000246 RID: 582
 		private IconToggleButton toggleBtnY;
 	}
 }

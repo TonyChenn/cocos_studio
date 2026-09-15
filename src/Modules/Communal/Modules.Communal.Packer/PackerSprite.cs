@@ -7,10 +7,8 @@ using Gtk;
 
 namespace Modules.Communal.Packer
 {
-	// Token: 0x0200000F RID: 15
 	internal class PackerSprite
 	{
-		// Token: 0x0600005E RID: 94 RVA: 0x0000430C File Offset: 0x0000250C
 		public PackerSprite(Bitmap _map, string _name, bool bClip, bool bDataOnly, float scale)
 		{
 			this.image = _map;
@@ -34,7 +32,6 @@ namespace Modules.Communal.Packer
 			this.CutEmpty(this.image, bClip);
 		}
 
-		// Token: 0x0600005F RID: 95 RVA: 0x00004420 File Offset: 0x00002620
 		private void CutEmpty(Bitmap _map, bool bclip)
 		{
 			int num = _map.Width - 1;
@@ -83,14 +80,12 @@ namespace Modules.Communal.Packer
 			}
 		}
 
-		// Token: 0x06000060 RID: 96 RVA: 0x000045F9 File Offset: 0x000027F9
 		public void SetPosition(System.Drawing.Point targetPos)
 		{
 			this.x = (float)targetPos.X;
 			this.y = (float)targetPos.Y;
 		}
 
-		// Token: 0x06000061 RID: 97 RVA: 0x00004618 File Offset: 0x00002818
 		public void DrawToImage(Graphics gDraw, string resourcePath)
 		{
 			this.GetImage(resourcePath);
@@ -101,7 +96,6 @@ namespace Modules.Communal.Packer
 			this.image = null;
 		}
 
-		// Token: 0x06000062 RID: 98 RVA: 0x000046A8 File Offset: 0x000028A8
 		private Bitmap GetImage(string resourcePath)
 		{
 			if (this.image == null)
@@ -133,49 +127,34 @@ namespace Modules.Communal.Packer
 			return this.image;
 		}
 
-		// Token: 0x04000026 RID: 38
 		private Bitmap image;
 
-		// Token: 0x04000027 RID: 39
 		public string name;
 
-		// Token: 0x04000028 RID: 40
 		private string pathName;
 
-		// Token: 0x04000029 RID: 41
 		private float originX;
 
-		// Token: 0x0400002A RID: 42
 		private float originY;
 
-		// Token: 0x0400002B RID: 43
 		public float x = 0f;
 
-		// Token: 0x0400002C RID: 44
 		public float y = 0f;
 
-		// Token: 0x0400002D RID: 45
 		public float width = 0f;
 
-		// Token: 0x0400002E RID: 46
 		public float height = 0f;
 
-		// Token: 0x0400002F RID: 47
 		public float offsetX = 0f;
 
-		// Token: 0x04000030 RID: 48
 		public float offsetY = 0f;
 
-		// Token: 0x04000031 RID: 49
 		public float originalWidth = 0f;
 
-		// Token: 0x04000032 RID: 50
 		public float originalHeight = 0f;
 
-		// Token: 0x04000033 RID: 51
 		private float fScale = 1f;
 
-		// Token: 0x04000034 RID: 52
 		public bool dataOnly;
 	}
 }

@@ -15,12 +15,9 @@ using MonoDevelop.Core.Serialization;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x0200002B RID: 43
 	[Extension(Type = typeof(ISolutionUpgrader))]
 	internal class SolutionUpgrader_231 : SolutionUpgrader
 	{
-		// Token: 0x17000061 RID: 97
-		// (get) Token: 0x0600015E RID: 350 RVA: 0x00007E0E File Offset: 0x0000600E
 		public override Version Version
 		{
 			get
@@ -29,7 +26,6 @@ namespace Modules.Communal.CocosAdapter
 			}
 		}
 
-		// Token: 0x0600015F RID: 351 RVA: 0x00007E18 File Offset: 0x00006018
 		protected override bool OnUpgrade(Solution sln)
 		{
 			bool result = false;
@@ -48,7 +44,6 @@ namespace Modules.Communal.CocosAdapter
 			return result;
 		}
 
-		// Token: 0x06000160 RID: 352 RVA: 0x00007E4C File Offset: 0x0000604C
 		private bool FormatPlatformEnum(Solution sln)
 		{
 			bool result;
@@ -161,7 +156,6 @@ namespace Modules.Communal.CocosAdapter
 			return result;
 		}
 
-		// Token: 0x06000161 RID: 353 RVA: 0x0000811C File Offset: 0x0000631C
 		private bool UpgradeSolutionCfgFile(Solution sln)
 		{
 			bool result;
@@ -195,7 +189,6 @@ namespace Modules.Communal.CocosAdapter
 			return result;
 		}
 
-		// Token: 0x06000162 RID: 354 RVA: 0x0000819C File Offset: 0x0000639C
 		private bool? CheckIsOldVersionProperties(string filePath)
 		{
 			if (!File.Exists(filePath))
@@ -216,7 +209,6 @@ namespace Modules.Communal.CocosAdapter
 			return new bool?(string.IsNullOrEmpty(value));
 		}
 
-		// Token: 0x06000163 RID: 355 RVA: 0x00008200 File Offset: 0x00006400
 		private PropertyBag LoadOldVersionProperties(string filePath)
 		{
 			PropertyBag result = null;
@@ -248,7 +240,6 @@ namespace Modules.Communal.CocosAdapter
 			return result;
 		}
 
-		// Token: 0x06000164 RID: 356 RVA: 0x00008308 File Offset: 0x00006508
 		private SolutionConfig UpgradeUserProperties(PropertyBag oldProp, string cfgFilePath)
 		{
 			SolutionConfig solutionConfig = new SolutionConfig(cfgFilePath);
@@ -347,7 +338,6 @@ namespace Modules.Communal.CocosAdapter
 			return solutionConfig;
 		}
 
-		// Token: 0x06000165 RID: 357 RVA: 0x0000858C File Offset: 0x0000678C
 		private bool Upgrader_210(Solution sln)
 		{
 			if (!sln.Config.CustomProperties.Keys.Contains("CCS_CocosPropertis"))
@@ -380,7 +370,6 @@ namespace Modules.Communal.CocosAdapter
 			return result;
 		}
 
-		// Token: 0x040000A8 RID: 168
 		private static readonly Version version = new Version("2.3.1.0");
 	}
 }

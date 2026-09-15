@@ -10,12 +10,8 @@ using Modules.Communal.Packer;
 
 namespace Modules.Communal.TexturePacker
 {
-	// Token: 0x02000009 RID: 9
 	public class PlistInfoItem
 	{
-		// Token: 0x1700000C RID: 12
-		// (get) Token: 0x06000042 RID: 66 RVA: 0x00002A6B File Offset: 0x00000C6B
-		// (set) Token: 0x06000043 RID: 67 RVA: 0x00002A73 File Offset: 0x00000C73
 		public bool Rotate
 		{
 			get
@@ -35,43 +31,20 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700000D RID: 13
-		// (get) Token: 0x06000044 RID: 68 RVA: 0x00002A93 File Offset: 0x00000C93
-		// (set) Token: 0x06000045 RID: 69 RVA: 0x00002A9B File Offset: 0x00000C9B
 		private Gdk.Point Location { get; set; }
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000046 RID: 70 RVA: 0x00002AA4 File Offset: 0x00000CA4
-		// (set) Token: 0x06000047 RID: 71 RVA: 0x00002AAC File Offset: 0x00000CAC
 		public Gdk.Point SourceLocation { get; set; }
 
-		// Token: 0x1700000F RID: 15
-		// (get) Token: 0x06000048 RID: 72 RVA: 0x00002AB5 File Offset: 0x00000CB5
-		// (set) Token: 0x06000049 RID: 73 RVA: 0x00002ABD File Offset: 0x00000CBD
 		public Gdk.Point Offset { get; set; }
 
-		// Token: 0x17000010 RID: 16
-		// (get) Token: 0x0600004A RID: 74 RVA: 0x00002AC6 File Offset: 0x00000CC6
-		// (set) Token: 0x0600004B RID: 75 RVA: 0x00002ACE File Offset: 0x00000CCE
 		public int SourceWidth { get; private set; }
 
-		// Token: 0x17000011 RID: 17
-		// (get) Token: 0x0600004C RID: 76 RVA: 0x00002AD7 File Offset: 0x00000CD7
-		// (set) Token: 0x0600004D RID: 77 RVA: 0x00002ADF File Offset: 0x00000CDF
 		public int SourceHeight { get; private set; }
 
-		// Token: 0x17000012 RID: 18
-		// (get) Token: 0x0600004E RID: 78 RVA: 0x00002AE8 File Offset: 0x00000CE8
-		// (set) Token: 0x0600004F RID: 79 RVA: 0x00002AF0 File Offset: 0x00000CF0
 		public int Width { get; private set; }
 
-		// Token: 0x17000013 RID: 19
-		// (get) Token: 0x06000050 RID: 80 RVA: 0x00002AF9 File Offset: 0x00000CF9
-		// (set) Token: 0x06000051 RID: 81 RVA: 0x00002B01 File Offset: 0x00000D01
 		public int Height { get; private set; }
 
-		// Token: 0x17000014 RID: 20
-		// (get) Token: 0x06000052 RID: 82 RVA: 0x00002B0C File Offset: 0x00000D0C
 		private int RenderWidth
 		{
 			get
@@ -83,8 +56,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x06000053 RID: 83 RVA: 0x00002B68 File Offset: 0x00000D68
 		private int RenderHeight
 		{
 			get
@@ -96,8 +67,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000016 RID: 22
-		// (get) Token: 0x06000054 RID: 84 RVA: 0x00002BC4 File Offset: 0x00000DC4
 		public Gdk.Rectangle RenderRect
 		{
 			get
@@ -106,9 +75,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000017 RID: 23
-		// (get) Token: 0x06000055 RID: 85 RVA: 0x00002C14 File Offset: 0x00000E14
-		// (set) Token: 0x06000056 RID: 86 RVA: 0x00002C1C File Offset: 0x00000E1C
 		public double Scale
 		{
 			get
@@ -130,9 +96,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000018 RID: 24
-		// (get) Token: 0x06000057 RID: 87 RVA: 0x00002C6C File Offset: 0x00000E6C
-		// (set) Token: 0x06000058 RID: 88 RVA: 0x00002C74 File Offset: 0x00000E74
 		public double RenderScale
 		{
 			get
@@ -154,8 +117,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x17000019 RID: 25
-		// (get) Token: 0x06000059 RID: 89 RVA: 0x00002CC4 File Offset: 0x00000EC4
 		public string File
 		{
 			get
@@ -164,8 +125,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700001A RID: 26
-		// (get) Token: 0x0600005A RID: 90 RVA: 0x00002CD1 File Offset: 0x00000ED1
 		public string RelativeFile
 		{
 			get
@@ -174,22 +133,12 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x1700001B RID: 27
-		// (get) Token: 0x0600005B RID: 91 RVA: 0x00002CDE File Offset: 0x00000EDE
-		// (set) Token: 0x0600005C RID: 92 RVA: 0x00002CE6 File Offset: 0x00000EE6
 		public ResourceItem ResourceItem { get; set; }
 
-		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x0600005D RID: 93 RVA: 0x00002CEF File Offset: 0x00000EEF
-		// (set) Token: 0x0600005E RID: 94 RVA: 0x00002CF7 File Offset: 0x00000EF7
 		public bool Select { get; set; }
 
-		// Token: 0x1700001D RID: 29
-		// (get) Token: 0x0600005F RID: 95 RVA: 0x00002D00 File Offset: 0x00000F00
-		// (set) Token: 0x06000060 RID: 96 RVA: 0x00002D08 File Offset: 0x00000F08
 		public PlistInfoModel Model { get; private set; }
 
-		// Token: 0x06000061 RID: 97 RVA: 0x00002D14 File Offset: 0x00000F14
 		public PlistInfoItem(PlistInfoModel model, ResourceItem resourceItem)
 		{
 			this.Model = model;
@@ -208,7 +157,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000062 RID: 98 RVA: 0x00002DB0 File Offset: 0x00000FB0
 		private Pixbuf LoadImageFile(string filePath)
 		{
 			Pixbuf pixbuf = null;
@@ -232,7 +180,6 @@ namespace Modules.Communal.TexturePacker
 			return pixbuf;
 		}
 
-		// Token: 0x06000063 RID: 99 RVA: 0x00002E04 File Offset: 0x00001004
 		public void ReloadFile()
 		{
 			Pixbuf pixbuf = this.LoadImageFile(this.File);
@@ -241,7 +188,6 @@ namespace Modules.Communal.TexturePacker
 			pixbuf.Dispose();
 		}
 
-		// Token: 0x06000064 RID: 100 RVA: 0x00002E34 File Offset: 0x00001034
 		private unsafe void Trim(Pixbuf originPixbuf)
 		{
 			this.SourceWidth = (int)((double)originPixbuf.Width * this.Scale);
@@ -293,7 +239,6 @@ namespace Modules.Communal.TexturePacker
 			this.Height = (int)((double)this.Height * this.Scale);
 		}
 
-		// Token: 0x06000065 RID: 101 RVA: 0x00002FFC File Offset: 0x000011FC
 		private void ScalePixbuf(Pixbuf originPixbuf)
 		{
 			this.SourceWidth = (int)((double)originPixbuf.Width * this.Scale);
@@ -315,7 +260,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000066 RID: 102 RVA: 0x000030C0 File Offset: 0x000012C0
 		private void RotatePixbuf()
 		{
 			Pixbuf pixbuf = this.pixbuf;
@@ -330,7 +274,6 @@ namespace Modules.Communal.TexturePacker
 			pixbuf.Dispose();
 		}
 
-		// Token: 0x06000067 RID: 103 RVA: 0x00003104 File Offset: 0x00001304
 		public ImageInfo GetImageInfo()
 		{
 			System.Drawing.Point sourceLocation = default(System.Drawing.Point);
@@ -355,7 +298,6 @@ namespace Modules.Communal.TexturePacker
 			return result;
 		}
 
-		// Token: 0x06000068 RID: 104 RVA: 0x000031CC File Offset: 0x000013CC
 		public void Draw(PlistInfoItemRender pictureRender)
 		{
 			if (this.pixbuf == null)
@@ -397,7 +339,6 @@ namespace Modules.Communal.TexturePacker
 			}
 		}
 
-		// Token: 0x06000069 RID: 105 RVA: 0x00003368 File Offset: 0x00001568
 		public bool DrawToImage(Pixbuf gImg, bool isDrawToJpeg = false)
 		{
 			if (!System.IO.File.Exists(this.File))
@@ -451,7 +392,6 @@ namespace Modules.Communal.TexturePacker
 			return true;
 		}
 
-		// Token: 0x0600006A RID: 106 RVA: 0x00003506 File Offset: 0x00001706
 		public void ReleaseRef()
 		{
 			if (this.pixbuf != null)
@@ -463,19 +403,14 @@ namespace Modules.Communal.TexturePacker
 			this.Model = null;
 		}
 
-		// Token: 0x04000016 RID: 22
 		private bool broken;
 
-		// Token: 0x04000017 RID: 23
 		private bool rotate;
 
-		// Token: 0x04000018 RID: 24
 		private Pixbuf pixbuf;
 
-		// Token: 0x04000019 RID: 25
 		private double scale = 1.0;
 
-		// Token: 0x0400001A RID: 26
 		private double renderScale = 1.0;
 	}
 }

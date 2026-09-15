@@ -8,10 +8,8 @@ using Stetic;
 
 namespace CocoStudio.ControlLib
 {
-	// Token: 0x02000004 RID: 4
 	public class ImportFileDialog : Dialog
 	{
-		// Token: 0x06000006 RID: 6 RVA: 0x000020B4 File Offset: 0x000002B4
 		public ImportFileDialog(bool keepBothBtnVisible = true)
 		{
 			this.Build();
@@ -23,13 +21,11 @@ namespace CocoStudio.ControlLib
 			this.SetMultiLanguageInfo();
 		}
 
-		// Token: 0x06000007 RID: 7 RVA: 0x00002110 File Offset: 0x00000310
 		public ImportFileDialog(Window parentWindow, bool keepBothBtnVisible = true) : this(keepBothBtnVisible)
 		{
 			this.SetToDialogStyle(parentWindow, true, true, true);
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x00002128 File Offset: 0x00000328
 		private void RegistEvent()
 		{
 			this.btnKeepBoth.Clicked += this.btnKeepBoth_Clicked;
@@ -38,7 +34,6 @@ namespace CocoStudio.ControlLib
 			base.DeleteEvent += this.ImprotFileDialog_DeleteEvent;
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x00002194 File Offset: 0x00000394
 		private void SetMultiLanguageInfo()
 		{
 			base.Title = LanguageInfo.Menu_File_ImportFile;
@@ -48,32 +43,27 @@ namespace CocoStudio.ControlLib
 			this.btnSkip.Label = LanguageInfo.Dialog_Button_Skip;
 		}
 
-		// Token: 0x0600000A RID: 10 RVA: 0x000021F2 File Offset: 0x000003F2
 		[ConnectBefore]
 		private void ImprotFileDialog_DeleteEvent(object o, DeleteEventArgs args)
 		{
 			this.SetResult(EFileOperate.Skip);
 		}
 
-		// Token: 0x0600000B RID: 11 RVA: 0x000021FD File Offset: 0x000003FD
 		private void btnSkip_Clicked(object sender, EventArgs e)
 		{
 			this.SetResult(EFileOperate.Skip);
 		}
 
-		// Token: 0x0600000C RID: 12 RVA: 0x00002208 File Offset: 0x00000408
 		private void btnReplace_Clicked(object sender, EventArgs e)
 		{
 			this.SetResult(EFileOperate.Replace);
 		}
 
-		// Token: 0x0600000D RID: 13 RVA: 0x00002213 File Offset: 0x00000413
 		private void btnKeepBoth_Clicked(object sender, EventArgs e)
 		{
 			this.SetResult(EFileOperate.KeepBoth);
 		}
 
-		// Token: 0x0600000E RID: 14 RVA: 0x0000221E File Offset: 0x0000041E
 		private void SetResult(EFileOperate btnResult)
 		{
 			this.result.ButtonResult = btnResult;
@@ -81,7 +71,6 @@ namespace CocoStudio.ControlLib
 			this.Dispose();
 		}
 
-		// Token: 0x0600000F RID: 15 RVA: 0x0000223C File Offset: 0x0000043C
 		public DialogResult ShowRun()
 		{
 			base.Run();
@@ -89,7 +78,6 @@ namespace CocoStudio.ControlLib
 			return this.result;
 		}
 
-		// Token: 0x06000010 RID: 16 RVA: 0x000022AC File Offset: 0x000004AC
 		public Task<DialogResult> ShowRunAsync()
 		{
 			return Task.Run<DialogResult>(delegate()
@@ -100,14 +88,12 @@ namespace CocoStudio.ControlLib
 			});
 		}
 
-		// Token: 0x06000011 RID: 17 RVA: 0x000022CF File Offset: 0x000004CF
 		public void RefreshMessage(string fileName, bool keepBothBtnVisible = true)
 		{
 			this.btnKeepBoth.Visible = keepBothBtnVisible;
 			this.labDescribe.Text = string.Format(LanguageInfo.MessageBox218_FileAlreadyExists, fileName);
 		}
 
-		// Token: 0x06000012 RID: 18 RVA: 0x000022F8 File Offset: 0x000004F8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -200,28 +186,20 @@ namespace CocoStudio.ControlLib
 			base.Hide();
 		}
 
-		// Token: 0x04000002 RID: 2
 		private DialogResult result;
 
-		// Token: 0x04000003 RID: 3
 		private Alignment alignment1;
 
-		// Token: 0x04000004 RID: 4
 		private Label labDescribe;
 
-		// Token: 0x04000005 RID: 5
 		private CheckButton ckbIsChangeAll;
 
-		// Token: 0x04000006 RID: 6
 		private HBox hbox4;
 
-		// Token: 0x04000007 RID: 7
 		private Button btnKeepBoth;
 
-		// Token: 0x04000008 RID: 8
 		private Button btnReplace;
 
-		// Token: 0x04000009 RID: 9
 		private Button btnSkip;
 	}
 }

@@ -10,11 +10,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000096 RID: 150
 	internal class PropertyColorEditor : BaseEditor
 	{
-		// Token: 0x17000165 RID: 357
-		// (get) Token: 0x06000523 RID: 1315 RVA: 0x00016344 File Offset: 0x00014544
 		public override bool CanCaching
 		{
 			get
@@ -23,7 +20,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000524 RID: 1316 RVA: 0x00016358 File Offset: 0x00014558
 		protected override Widget OnCreateWidget()
 		{
 			this.color = new ColorEx();
@@ -88,13 +84,11 @@ namespace CocoStudio.Model.Editor
 			return vbox;
 		}
 
-		// Token: 0x06000525 RID: 1317 RVA: 0x0001663F File Offset: 0x0001483F
 		private void color_ColorChanged(object sender, ColorExEvent e)
 		{
 			base.UpdatePropertyValue(e.Color, this.textColorProperty);
 		}
 
-		// Token: 0x06000526 RID: 1318 RVA: 0x0001665C File Offset: 0x0001485C
 		private void SetColorValue()
 		{
 			if (this.textColorProperty != null)
@@ -107,7 +101,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000527 RID: 1319 RVA: 0x000166B4 File Offset: 0x000148B4
 		private void SetFontValue()
 		{
 			if (this.fontSizeProperty == null)
@@ -123,13 +116,11 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000528 RID: 1320 RVA: 0x0001674C File Offset: 0x0001494C
 		public Gdk.Color ConvertColor(System.Drawing.Color color)
 		{
 			return new Gdk.Color(color.R, color.G, color.B);
 		}
 
-		// Token: 0x06000529 RID: 1321 RVA: 0x00016778 File Offset: 0x00014978
 		private int IndexCombox(int num)
 		{
 			for (int i = 0; i < this.comboxList.Length; i++)
@@ -142,7 +133,6 @@ namespace CocoStudio.Model.Editor
 			return -1;
 		}
 
-		// Token: 0x0600052A RID: 1322 RVA: 0x000167BC File Offset: 0x000149BC
 		private void combox_Changed(object sender, EventArgs e)
 		{
 			ComboBoxEntry comboBoxEntry = sender as ComboBoxEntry;
@@ -152,7 +142,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600052B RID: 1323 RVA: 0x00016808 File Offset: 0x00014A08
 		private void Entry_Changed(object sender, EventArgs e)
 		{
 			if (!this.combox.Entry.IsFocus)
@@ -161,7 +150,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600052C RID: 1324 RVA: 0x00016834 File Offset: 0x00014A34
 		private void Entry_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			string text = this.combox.Entry.Text;
@@ -176,7 +164,6 @@ namespace CocoStudio.Model.Editor
 			this.isKeyPress = false;
 		}
 
-		// Token: 0x0600052D RID: 1325 RVA: 0x00016898 File Offset: 0x00014A98
 		private void Entry_KeyReleaseEvent(object o, KeyReleaseEventArgs args)
 		{
 			this.isKeyPress = true;
@@ -187,7 +174,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600052E RID: 1326 RVA: 0x000168F8 File Offset: 0x00014AF8
 		private void FontValue()
 		{
 			if (this.combox.Entry == null || string.IsNullOrEmpty(this.combox.Entry.Text))
@@ -220,14 +206,12 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600052F RID: 1327 RVA: 0x00016A28 File Offset: 0x00014C28
 		protected override void OnSetControl()
 		{
 			this.SetColorValue();
 			this.SetFontValue();
 		}
 
-		// Token: 0x06000530 RID: 1328 RVA: 0x00016A3C File Offset: 0x00014C3C
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 			string propertyName = e.PropertyName;
@@ -240,13 +224,10 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000259 RID: 601
 		private ColorEx color;
 
-		// Token: 0x0400025A RID: 602
 		private ComboBoxEntry combox;
 
-		// Token: 0x0400025B RID: 603
 		private int[] comboxList = new int[]
 		{
 			6,
@@ -268,19 +249,14 @@ namespace CocoStudio.Model.Editor
 			72
 		};
 
-		// Token: 0x0400025C RID: 604
 		private string colorText = string.Empty;
 
-		// Token: 0x0400025D RID: 605
 		private PropertyInfo textColorProperty;
 
-		// Token: 0x0400025E RID: 606
 		private PropertyInfo fontSizeProperty;
 
-		// Token: 0x0400025F RID: 607
 		private bool isKeyPress = false;
 
-		// Token: 0x04000260 RID: 608
 		private int comboxOldValue = 5;
 	}
 }

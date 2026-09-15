@@ -12,11 +12,9 @@ using MonoDevelop.Core;
 
 namespace Cocos.Launcher.Core.View
 {
-	// Token: 0x02000056 RID: 86
 	[ToolboxItem(true)]
 	public class LoginView : HBox
 	{
-		// Token: 0x060002DD RID: 733 RVA: 0x0000B4D0 File Offset: 0x000096D0
 		public LoginView()
 		{
 			this.Initialize();
@@ -24,7 +22,6 @@ namespace Cocos.Launcher.Core.View
 			this.Initlanguage();
 		}
 
-		// Token: 0x060002DE RID: 734 RVA: 0x0000B4EC File Offset: 0x000096EC
 		private void Initialize()
 		{
 			this.loginService = new LoginService();
@@ -61,7 +58,6 @@ namespace Cocos.Launcher.Core.View
 			CocoStudio.Core.Services.NetworkService.NetworkChanged += this.NetworkService_NetworkChanged;
 		}
 
-		// Token: 0x060002DF RID: 735 RVA: 0x0000B68C File Offset: 0x0000988C
 		private void InitEvent()
 		{
 			this.launcherlink_login.LinkClicked += this.launcherlink_login_LinkClicked;
@@ -69,13 +65,11 @@ namespace Cocos.Launcher.Core.View
 			this.loginService.LoginChanged += this.loginService_LoginChanged;
 		}
 
-		// Token: 0x060002E0 RID: 736 RVA: 0x0000B6DE File Offset: 0x000098DE
 		private void Initlanguage()
 		{
 			this.SetDefaultLoginValue();
 		}
 
-		// Token: 0x060002E1 RID: 737 RVA: 0x0000B6E6 File Offset: 0x000098E6
 		private void SetDefaultLoginValue()
 		{
 			this.launcherlink_login.SetLableText(LanguageInfo.Launcher_Login);
@@ -83,7 +77,6 @@ namespace Cocos.Launcher.Core.View
 			this.launcherlink_register.SetLableText(LanguageInfo.Launcher_Signup);
 		}
 
-		// Token: 0x060002E2 RID: 738 RVA: 0x0000B718 File Offset: 0x00009918
 		public void ShowLoginWindow()
 		{
 			int num;
@@ -103,7 +96,6 @@ namespace Cocos.Launcher.Core.View
 			loginWindow.ShowAll();
 		}
 
-		// Token: 0x060002E3 RID: 739 RVA: 0x0000B78C File Offset: 0x0000998C
 		private void ShowUserName()
 		{
 			string text = this.loginService.LoginInfo.UserName;
@@ -115,7 +107,6 @@ namespace Cocos.Launcher.Core.View
 			this.launcherlink_login.SetTag(this.loginService.LoginInfo.UserName);
 		}
 
-		// Token: 0x060002E4 RID: 740 RVA: 0x0000B7FC File Offset: 0x000099FC
 		private void GetUserID()
 		{
 			Login login = new Login();
@@ -123,7 +114,6 @@ namespace Cocos.Launcher.Core.View
 			login.SyncCocosUserInfo(this.loginService.LoginInfo.Access_token);
 		}
 
-		// Token: 0x060002E5 RID: 741 RVA: 0x0000B850 File Offset: 0x00009A50
 		private void LoginSuccessed()
 		{
 			GLib.Timeout.Add(0U, delegate
@@ -134,7 +124,6 @@ namespace Cocos.Launcher.Core.View
 			});
 		}
 
-		// Token: 0x060002E6 RID: 742 RVA: 0x0000B868 File Offset: 0x00009A68
 		private void QuitLogin()
 		{
 			this.loginService.LoginInfo.UserID = null;
@@ -146,7 +135,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x060002E7 RID: 743 RVA: 0x0000B8B4 File Offset: 0x00009AB4
 		private void AutoLoginCocos()
 		{
 			if (this.loginService.LoginInfo.IsAutoLogin)
@@ -157,7 +145,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x060002E8 RID: 744 RVA: 0x0000B914 File Offset: 0x00009B14
 		private void login_OnResived(object sender, CocoaUserArgs e)
 		{
 			try
@@ -183,7 +170,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x060002E9 RID: 745 RVA: 0x0000BA00 File Offset: 0x00009C00
 		private void NetworkService_NetworkChanged(object sender, NetworkChangedEventArgs e)
 		{
 			if (e.IsNetworkingSuccessed)
@@ -193,14 +179,12 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x060002EA RID: 746 RVA: 0x0000BA26 File Offset: 0x00009C26
 		private static void RegisterClicked(object sender, LinkClickedEventArgs e)
 		{
 			WebHelper.OnOpenWeb(sender, e);
 			Tracker.Add(ViewRegions.None, "SignUp", "", "");
 		}
 
-		// Token: 0x060002EB RID: 747 RVA: 0x0000BA44 File Offset: 0x00009C44
 		private void launcherlink_login_LinkClicked(object sender, LinkClickedEventArgs e)
 		{
 			if (this.launcherlink_login.GetTag().ToString() == LanguageInfo.Launcher_Login)
@@ -214,7 +198,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x060002EC RID: 748 RVA: 0x0000BA91 File Offset: 0x00009C91
 		private void launcherlink_register_LinkClicked(object sender, LinkClickedEventArgs e)
 		{
 			if (this.launcherlink_register.GetLableText() == LanguageInfo.Launcher_Signup)
@@ -225,13 +208,11 @@ namespace Cocos.Launcher.Core.View
 			this.loginService.IsLoginSuccessed = false;
 		}
 
-		// Token: 0x060002ED RID: 749 RVA: 0x0000BABE File Offset: 0x00009CBE
 		private void window_LoginCompleted(object sender, EventArgs e)
 		{
 			this.GetUserID();
 		}
 
-		// Token: 0x060002EE RID: 750 RVA: 0x0000BAC8 File Offset: 0x00009CC8
 		private void UserInfo_OnResived(object sender, CocoaUserArgs e)
 		{
 			try
@@ -252,7 +233,6 @@ namespace Cocos.Launcher.Core.View
 			}
 		}
 
-		// Token: 0x060002EF RID: 751 RVA: 0x0000BB48 File Offset: 0x00009D48
 		private void loginService_LoginChanged(object sender, LoginChangedEventArgs e)
 		{
 			if (this.loginService.IsLoginSuccessed)
@@ -263,13 +243,10 @@ namespace Cocos.Launcher.Core.View
 			this.QuitLogin();
 		}
 
-		// Token: 0x04000114 RID: 276
 		private LinkView launcherlink_register;
 
-		// Token: 0x04000115 RID: 277
 		private LinkView launcherlink_login;
 
-		// Token: 0x04000116 RID: 278
 		private LoginService loginService;
 	}
 }

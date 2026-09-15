@@ -4,15 +4,10 @@ using MonoDevelop.Core;
 
 namespace Gtk
 {
-	// Token: 0x02000091 RID: 145
 	public class WidgetAnimationModel
 	{
-		// Token: 0x14000020 RID: 32
-		// (add) Token: 0x06000316 RID: 790 RVA: 0x0000CA90 File Offset: 0x0000AC90
-		// (remove) Token: 0x06000317 RID: 791 RVA: 0x0000CACC File Offset: 0x0000ACCC
 		public event EventHandler<EndAnimationClickEventArgs> EndAnimationClick;
 
-		// Token: 0x06000319 RID: 793 RVA: 0x0000CC50 File Offset: 0x0000AE50
 		public void StartPositionAnimation(Window window, int end_x, int end_y)
 		{
 			double t = 0.0;

@@ -7,17 +7,14 @@ using Stetic;
 
 namespace Gtk
 {
-	// Token: 0x0200009D RID: 157
 	public class CustomTitleWindow : Window
 	{
-		// Token: 0x06000362 RID: 866 RVA: 0x0000F59A File Offset: 0x0000D79A
 		public CustomTitleWindow() : base(WindowType.Toplevel)
 		{
 			this.Build();
 			base.KeyPressEvent += this.HandleKeyPressed;
 		}
 
-		// Token: 0x06000363 RID: 867 RVA: 0x0000F5C0 File Offset: 0x0000D7C0
 		public void InitView(string title, Widget widget)
 		{
 			this.InitTitle(title);
@@ -39,7 +36,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000364 RID: 868 RVA: 0x0000F648 File Offset: 0x0000D848
 		private void InitTitle(string title)
 		{
 			base.Title = title;
@@ -55,13 +51,11 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000365 RID: 869 RVA: 0x0000F6B5 File Offset: 0x0000D8B5
 		private void HandleCustomTitleBarCloseClicked(object sender, EventArgs args)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x06000366 RID: 870 RVA: 0x0000F6C0 File Offset: 0x0000D8C0
 		private void HandleKeyPressed(object o, KeyPressEventArgs args)
 		{
 			if (args.Event.Key == Gdk.Key.Escape)
@@ -70,7 +64,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x06000367 RID: 871 RVA: 0x0000F6F0 File Offset: 0x0000D8F0
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -106,16 +99,12 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x040003FD RID: 1021
 		private EventBox evtbx_border;
 
-		// Token: 0x040003FE RID: 1022
 		private VBox vbox_window;
 
-		// Token: 0x040003FF RID: 1023
 		private Alignment alignment_title;
 
-		// Token: 0x04000400 RID: 1024
 		private Alignment alignment_main;
 	}
 }

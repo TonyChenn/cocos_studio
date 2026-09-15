@@ -14,13 +14,10 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.NewSolution
 {
-	// Token: 0x02000006 RID: 6
 	[Extension(typeof(ISolutionTemplate))]
 	[SolutionTemplate(true)]
 	internal class ResourceSolutionTemplate : BaseSolutionTemplate
 	{
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000015 RID: 21 RVA: 0x000023AA File Offset: 0x000005AA
 		public override EnumTemplateGroup Group
 		{
 			get
@@ -29,7 +26,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000016 RID: 22 RVA: 0x000023B0 File Offset: 0x000005B0
 		public ResourceSolutionTemplate()
 		{
 			string newSolution_EmptyResource = LanguageInfo.NewSolution_EmptyResource;
@@ -39,7 +35,6 @@ namespace Modules.Communal.NewSolution
 			base.Info = new SolutionTypeInfo(newSolution_EmptyResource, newSolution_EmptyResourceDes, enumSolutionType, iconImage, false, false, false, false, null);
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x00002418 File Offset: 0x00000618
 		protected override bool OnCreateNewSolution(CreateParams prms, CocosMonitor monitor)
 		{
 			Solution solution = Services.ProjectsService.CreateSolution(prms.Directory, prms.ProjName);
@@ -69,8 +64,6 @@ namespace Modules.Communal.NewSolution
 			return true;
 		}
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x06000018 RID: 24 RVA: 0x00002574 File Offset: 0x00000774
 		public override bool Enable
 		{
 			get

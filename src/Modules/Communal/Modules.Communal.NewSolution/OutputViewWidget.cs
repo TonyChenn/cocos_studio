@@ -12,11 +12,9 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.NewSolution
 {
-	// Token: 0x02000023 RID: 35
 	[ToolboxItem(true)]
 	public class OutputViewWidget : Bin
 	{
-		// Token: 0x06000109 RID: 265 RVA: 0x000089E1 File Offset: 0x00006BE1
 		public OutputViewWidget(Dialog parentDlg, string fullOutput)
 		{
 			this.Build();
@@ -25,7 +23,6 @@ namespace Modules.Communal.NewSolution
 			this.InitStyle();
 		}
 
-		// Token: 0x0600010A RID: 266 RVA: 0x00008A04 File Offset: 0x00006C04
 		private void InitWidget(string output)
 		{
 			this.label_text.Text = LanguageInfo.MessageBox227_FailedToCreateSolution;
@@ -57,7 +54,6 @@ namespace Modules.Communal.NewSolution
 			widget.Show();
 		}
 
-		// Token: 0x0600010B RID: 267 RVA: 0x00008AF4 File Offset: 0x00006CF4
 		private void InitStyle()
 		{
 			this.GtkScrolledWindow.BorderWidth = 1U;
@@ -83,7 +79,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x00008B7D File Offset: 0x00006D7D
 		private void CheckButtonToggledHandler(object sender, EventArgs e)
 		{
 			if (!this.checkbutton_output.Active)
@@ -95,13 +90,11 @@ namespace Modules.Communal.NewSolution
 			this.alignment_output.Add(this.vbox_output);
 		}
 
-		// Token: 0x0600010D RID: 269 RVA: 0x00008BB4 File Offset: 0x00006DB4
 		private void ButtonOkClickedHandler(object sender, EventArgs e)
 		{
 			this.parentDialog.Respond(ResponseType.Ok);
 		}
 
-		// Token: 0x0600010E RID: 270 RVA: 0x00008BC4 File Offset: 0x00006DC4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -252,70 +245,48 @@ namespace Modules.Communal.NewSolution
 			base.Hide();
 		}
 
-		// Token: 0x040000D1 RID: 209
 		private Dialog parentDialog;
 
-		// Token: 0x040000D2 RID: 210
 		private VBox vbox_dialog;
 
-		// Token: 0x040000D3 RID: 211
 		private Alignment alignment_main;
 
-		// Token: 0x040000D4 RID: 212
 		private VBox vbox_main;
 
-		// Token: 0x040000D5 RID: 213
 		private HBox hbox_main;
 
-		// Token: 0x040000D6 RID: 214
 		private VBox vbox_image;
 
-		// Token: 0x040000D7 RID: 215
 		private Alignment alignment_image;
 
-		// Token: 0x040000D8 RID: 216
 		private ImageBin imageBin;
 
-		// Token: 0x040000D9 RID: 217
 		private VBox vbox_text;
 
-		// Token: 0x040000DA RID: 218
 		private Alignment alignment_text;
 
-		// Token: 0x040000DB RID: 219
 		private Label label_text;
 
-		// Token: 0x040000DC RID: 220
 		private Alignment alignment_buttons;
 
-		// Token: 0x040000DD RID: 221
 		private HBox hbox_buttons;
 
-		// Token: 0x040000DE RID: 222
 		private CheckButton checkbutton_output;
 
-		// Token: 0x040000DF RID: 223
 		private Alignment alignment_btn;
 
-		// Token: 0x040000E0 RID: 224
 		private Alignment alignment_output;
 
-		// Token: 0x040000E1 RID: 225
 		private VBox vbox_output;
 
-		// Token: 0x040000E2 RID: 226
 		private EventBox eventbox_seperator;
 
-		// Token: 0x040000E3 RID: 227
 		private Alignment alignment_textView;
 
-		// Token: 0x040000E4 RID: 228
 		private EventBox eventbox_textViewBg;
 
-		// Token: 0x040000E5 RID: 229
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x040000E6 RID: 230
 		private TextView textview_output;
 	}
 }

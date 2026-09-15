@@ -11,13 +11,9 @@ using Stetic;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x0200000B RID: 11
 	[ToolboxItem(true)]
 	public class SerializerWidget : Bin
 	{
-		// Token: 0x17000007 RID: 7
-		// (get) Token: 0x06000037 RID: 55 RVA: 0x000043A8 File Offset: 0x000025A8
-		// (set) Token: 0x06000038 RID: 56 RVA: 0x000043B5 File Offset: 0x000025B5
 		public bool IsSelected
 		{
 			get
@@ -30,18 +26,10 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x17000008 RID: 8
-		// (get) Token: 0x06000039 RID: 57 RVA: 0x000043C3 File Offset: 0x000025C3
-		// (set) Token: 0x0600003A RID: 58 RVA: 0x000043CB File Offset: 0x000025CB
 		public bool IsFitDefaultSerializer { get; private set; }
 
-		// Token: 0x14000001 RID: 1
-		// (add) Token: 0x0600003B RID: 59 RVA: 0x000043D4 File Offset: 0x000025D4
-		// (remove) Token: 0x0600003C RID: 60 RVA: 0x0000440C File Offset: 0x0000260C
 		public event EventHandler Selected;
 
-		// Token: 0x17000009 RID: 9
-		// (get) Token: 0x0600003D RID: 61 RVA: 0x00004441 File Offset: 0x00002641
 		public IGameFileSerializer Serializer
 		{
 			get
@@ -50,8 +38,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x1700000A RID: 10
-		// (get) Token: 0x0600003E RID: 62 RVA: 0x00004449 File Offset: 0x00002649
 		public string SolutionLink
 		{
 			get
@@ -60,13 +46,11 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x0600003F RID: 63 RVA: 0x00004456 File Offset: 0x00002656
 		public SerializerWidget()
 		{
 			throw new Exception("请使用有参构造");
 		}
 
-		// Token: 0x06000040 RID: 64 RVA: 0x00004468 File Offset: 0x00002668
 		public SerializerWidget(BaseCocosFileSerializer serializer, SList group)
 		{
 			this.Build();
@@ -76,7 +60,6 @@ namespace Modules.Communal.ProjectSetting
 			this.label_des.Text = serializer.Description;
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x000044B8 File Offset: 0x000026B8
 		protected void HandleRadioButtonToggled(object sender, EventArgs e)
 		{
 			if (this.radiobutton.Active)
@@ -105,7 +88,6 @@ namespace Modules.Communal.ProjectSetting
 			}
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x00004558 File Offset: 0x00002758
 		protected void HandleVBoxMainSizeAllocated(object o, SizeAllocatedArgs args)
 		{
 			int widthRequest = args.Allocation.Width - 25;
@@ -114,7 +96,6 @@ namespace Modules.Communal.ProjectSetting
 			this.label_des.Wrap = true;
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x00004598 File Offset: 0x00002798
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -174,25 +155,18 @@ namespace Modules.Communal.ProjectSetting
 			this.radiobutton.Toggled += this.HandleRadioButtonToggled;
 		}
 
-		// Token: 0x0400003F RID: 63
 		private BaseCocosFileSerializer currentSerializer;
 
-		// Token: 0x04000041 RID: 65
 		private VBox vbox_main;
 
-		// Token: 0x04000042 RID: 66
 		private RadioButton radiobutton;
 
-		// Token: 0x04000043 RID: 67
 		private VBox vbox_des;
 
-		// Token: 0x04000044 RID: 68
 		private HBox hbox_des;
 
-		// Token: 0x04000045 RID: 69
 		private Gtk.Alignment alignment_des;
 
-		// Token: 0x04000046 RID: 70
 		private Label label_des;
 	}
 }

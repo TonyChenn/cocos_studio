@@ -10,11 +10,8 @@ using Xwt.Drawing;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200009B RID: 155
 	internal class ScaleEditor : BaseEditor
 	{
-		// Token: 0x1700016A RID: 362
-		// (get) Token: 0x06000543 RID: 1347 RVA: 0x00016E98 File Offset: 0x00015098
 		public override bool SupportMultiSelect
 		{
 			get
@@ -23,7 +20,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000544 RID: 1348 RVA: 0x00016EAC File Offset: 0x000150AC
 		protected override Widget OnCreateWidget()
 		{
 			this.uniformBtn = new ScaleEditor.UniformToggleButton();
@@ -47,7 +43,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x06000545 RID: 1349 RVA: 0x00016FBC File Offset: 0x000151BC
 		protected override void OnSetControl()
 		{
 			VisualObject visualObject = PropertyItem.FirstObject as VisualObject;
@@ -94,7 +89,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000546 RID: 1350 RVA: 0x0001714C File Offset: 0x0001534C
 		private void UniformButtonCheckChangedHandler(object sender, EventArgs e)
 		{
 			using (base.GetLock(true))
@@ -111,7 +105,6 @@ namespace CocoStudio.Model.Editor
 			Services.EventsService.GetEvent<ScaleLockedChangeEvent>().Publish(this.uniformBtn.IsUniformScale);
 		}
 
-		// Token: 0x06000547 RID: 1351 RVA: 0x000171F0 File Offset: 0x000153F0
 		private void XEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			float num = e.Value / 100f;
@@ -139,7 +132,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000548 RID: 1352 RVA: 0x0001730C File Offset: 0x0001550C
 		private void YEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			float num = e.Value / 100f;
@@ -167,7 +159,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000549 RID: 1353 RVA: 0x00017428 File Offset: 0x00015628
 		public override void HandlePropertyChanged(PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == base.PropertyItem.Name || e.PropertyName == "UniformScale")
@@ -176,21 +167,14 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x04000272 RID: 626
 		private ScaleEditor.UniformToggleButton uniformBtn;
 
-		// Token: 0x04000273 RID: 627
 		private NoUndoNumEntry xInnerEntry;
 
-		// Token: 0x04000274 RID: 628
 		private NoUndoNumEntry yInnerEntry;
 
-		// Token: 0x0200009C RID: 156
 		private class UniformToggleButton : EventBox
 		{
-			// Token: 0x1700016B RID: 363
-			// (get) Token: 0x0600054E RID: 1358 RVA: 0x00017508 File Offset: 0x00015708
-			// (set) Token: 0x0600054F RID: 1359 RVA: 0x00017520 File Offset: 0x00015720
 			public bool IsUniformScale
 			{
 				get
@@ -216,12 +200,8 @@ namespace CocoStudio.Model.Editor
 				}
 			}
 
-			// Token: 0x14000008 RID: 8
-			// (add) Token: 0x06000550 RID: 1360 RVA: 0x0001759C File Offset: 0x0001579C
-			// (remove) Token: 0x06000551 RID: 1361 RVA: 0x000175D8 File Offset: 0x000157D8
 			public event EventHandler CheckChanged;
 
-			// Token: 0x06000552 RID: 1362 RVA: 0x00017614 File Offset: 0x00015814
 			public UniformToggleButton()
 			{
 				this.lockImg = ImageIcon.GetIcon("CocoStudio.DefaultResource.EditorResource.lock.png");
@@ -233,22 +213,17 @@ namespace CocoStudio.Model.Editor
 				base.ButtonPressEvent += this.ButtonPressEventHandler;
 			}
 
-			// Token: 0x06000553 RID: 1363 RVA: 0x00017692 File Offset: 0x00015892
 			private void ButtonPressEventHandler(object o, ButtonPressEventArgs args)
 			{
 				this.IsUniformScale = !this.IsUniformScale;
 			}
 
-			// Token: 0x04000278 RID: 632
 			private Xwt.Drawing.Image lockImg;
 
-			// Token: 0x04000279 RID: 633
 			private Xwt.Drawing.Image unlockImg;
 
-			// Token: 0x0400027A RID: 634
 			private ImageView imageView;
 
-			// Token: 0x0400027B RID: 635
 			private bool _isUniformScale = false;
 		}
 	}

@@ -7,17 +7,14 @@ using Mono.Addins;
 
 namespace CocoStudio.Model.EditorController
 {
-	// Token: 0x0200000A RID: 10
 	[Extension(typeof(IEditorController))]
 	internal class Light3DController : Base3DController
 	{
-		// Token: 0x06000075 RID: 117 RVA: 0x000027CC File Offset: 0x000009CC
 		public Light3DController()
 		{
 			base.AddCorrespondProperty("Type");
 		}
 
-		// Token: 0x06000076 RID: 118 RVA: 0x000027E0 File Offset: 0x000009E0
 		public override void RefreshEditor(IReadOnlyList<object> selectedObjs, string propertyName)
 		{
 			IPropertyGrid service = Services.GetService<IPropertyGrid>();

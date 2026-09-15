@@ -11,13 +11,10 @@ using MonoDevelop.Core;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200001C RID: 28
 	[Extension(typeof(BaseAssetModel))]
 	[AssetOrder(6)]
 	public class WinExeAssetModel : BaseAssetModel
 	{
-		// Token: 0x1700001F RID: 31
-		// (get) Token: 0x06000104 RID: 260 RVA: 0x00006493 File Offset: 0x00004693
 		public override int Order
 		{
 			get
@@ -26,8 +23,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x17000020 RID: 32
-		// (get) Token: 0x06000105 RID: 261 RVA: 0x00006498 File Offset: 0x00004698
 		public override bool HasInstalled
 		{
 			get
@@ -36,23 +31,19 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000106 RID: 262 RVA: 0x000064B7 File Offset: 0x000046B7
 		public WinExeAssetModel()
 		{
 		}
 
-		// Token: 0x06000107 RID: 263 RVA: 0x000064BF File Offset: 0x000046BF
 		public WinExeAssetModel(Plugin model) : base(model)
 		{
 		}
 
-		// Token: 0x06000108 RID: 264 RVA: 0x000064C8 File Offset: 0x000046C8
 		public override bool CanHandle(Plugin pluginModel)
 		{
 			return Platform.IsWindows && pluginModel.OpenType == OperationType.exe.ToString();
 		}
 
-		// Token: 0x06000109 RID: 265 RVA: 0x000064EC File Offset: 0x000046EC
 		public override bool InitRunMode()
 		{
 			if (!base.InitRunMode())
@@ -69,7 +60,6 @@ namespace Cocos.Launcher.Core
 			return true;
 		}
 
-		// Token: 0x0600010A RID: 266 RVA: 0x00006514 File Offset: 0x00004714
 		public override bool InitUninstallMode()
 		{
 			if (base.AssetInfo.IsInstalled)
@@ -83,7 +73,6 @@ namespace Cocos.Launcher.Core
 			return true;
 		}
 
-		// Token: 0x0600010B RID: 267 RVA: 0x00006534 File Offset: 0x00004734
 		public override bool ExistsToFull()
 		{
 			bool result = true;
@@ -95,7 +84,6 @@ namespace Cocos.Launcher.Core
 			return result;
 		}
 
-		// Token: 0x0600010C RID: 268 RVA: 0x00006574 File Offset: 0x00004774
 		protected override IProgressMonitor OnInstall()
 		{
 			IProgressMonitor @default = CocoStudio.Core.Services.ProgressMonitors.Default;
@@ -111,7 +99,6 @@ namespace Cocos.Launcher.Core
 			return @default;
 		}
 
-		// Token: 0x0600010D RID: 269 RVA: 0x000065D4 File Offset: 0x000047D4
 		protected override IProgressMonitor OnUninstall()
 		{
 			IProgressMonitor @default = CocoStudio.Core.Services.ProgressMonitors.Default;
@@ -150,7 +137,6 @@ namespace Cocos.Launcher.Core
 			return @default;
 		}
 
-		// Token: 0x0600010E RID: 270 RVA: 0x00006714 File Offset: 0x00004914
 		protected override IProgressMonitor OnOpen()
 		{
 			IProgressMonitor @default = CocoStudio.Core.Services.ProgressMonitors.Default;
@@ -197,13 +183,11 @@ namespace Cocos.Launcher.Core
 			return @default;
 		}
 
-		// Token: 0x0600010F RID: 271 RVA: 0x0000684C File Offset: 0x00004A4C
 		public override bool UninstallPrompt()
 		{
 			return base.DeletePrompt(LanguageInfo.Launcher_ConfirmUninstall, base.AssetInfo.PluginName);
 		}
 
-		// Token: 0x06000110 RID: 272 RVA: 0x0000686C File Offset: 0x00004A6C
 		private string GetPluginProgramPath()
 		{
 			return string.Empty;

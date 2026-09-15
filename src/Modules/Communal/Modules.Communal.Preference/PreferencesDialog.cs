@@ -9,10 +9,8 @@ using Stetic;
 
 namespace Modules.Communal.Preference
 {
-	// Token: 0x0200000D RID: 13
 	public class PreferencesDialog : Dialog
 	{
-		// Token: 0x0600002F RID: 47 RVA: 0x0000261C File Offset: 0x0000081C
 		public PreferencesDialog(EnumPreferenceSetting initWidget = EnumPreferenceSetting.Default)
 		{
 			this.Build();
@@ -21,7 +19,6 @@ namespace Modules.Communal.Preference
 			this.InitTreeView(initWidget);
 		}
 
-		// Token: 0x06000030 RID: 48 RVA: 0x00002654 File Offset: 0x00000854
 		private void InitWidgetList()
 		{
 			if (Option.CurrentApp == EnumApp.Launcher)
@@ -35,7 +32,6 @@ namespace Modules.Communal.Preference
 			this.environmentWidgets.Add(new GuidesSettingsWidget());
 		}
 
-		// Token: 0x06000031 RID: 49 RVA: 0x000026BC File Offset: 0x000008BC
 		private void InitStyle()
 		{
 			if (Option.CurrentApp == EnumApp.Launcher)
@@ -82,7 +78,6 @@ namespace Modules.Communal.Preference
 			this.InitOkCancelButton();
 		}
 
-		// Token: 0x06000032 RID: 50 RVA: 0x00002830 File Offset: 0x00000A30
 		private void InitOkCancelButton()
 		{
 			Bin bin;
@@ -125,7 +120,6 @@ namespace Modules.Communal.Preference
 			this.hbox_bottomBtn.ShowAll();
 		}
 
-		// Token: 0x06000033 RID: 51 RVA: 0x00002954 File Offset: 0x00000B54
 		private void InitTreeView(EnumPreferenceSetting initWidget)
 		{
 			TreeStore treeStore = new TreeStore(new Type[]
@@ -162,7 +156,6 @@ namespace Modules.Communal.Preference
 			this.ChangeWidget(this.currentWidget);
 		}
 
-		// Token: 0x06000034 RID: 52 RVA: 0x00002AB4 File Offset: 0x00000CB4
 		private void ChangeWidget(IPreferenceWidget newWidget)
 		{
 			if (this.currentWidget != null)
@@ -174,7 +167,6 @@ namespace Modules.Communal.Preference
 			this.currentWidget = newWidget;
 		}
 
-		// Token: 0x06000035 RID: 53 RVA: 0x00002B04 File Offset: 0x00000D04
 		protected void HandleButtonOKClicked(object sender, EventArgs e)
 		{
 			foreach (IPreferenceWidget preferenceWidget in this.widgetsDictionary.Values)
@@ -205,7 +197,6 @@ namespace Modules.Communal.Preference
 			base.Respond(ResponseType.Ok);
 		}
 
-		// Token: 0x06000036 RID: 54 RVA: 0x00002BE8 File Offset: 0x00000DE8
 		protected void HandleTreeSelectChanged(object sender, EventArgs e)
 		{
 			TreeIter key;
@@ -233,25 +224,21 @@ namespace Modules.Communal.Preference
 			}
 		}
 
-		// Token: 0x06000037 RID: 55 RVA: 0x00002C7B File Offset: 0x00000E7B
 		protected void HandleButttonCancelClicked(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.Cancel);
 		}
 
-		// Token: 0x06000038 RID: 56 RVA: 0x00002C85 File Offset: 0x00000E85
 		private void HandleCustomTitleBarCloseClicked(object sender, EventArgs e)
 		{
 			base.Respond(ResponseType.Close);
 		}
 
-		// Token: 0x06000039 RID: 57 RVA: 0x00002C8F File Offset: 0x00000E8F
 		private void HanldeDialogSizeAllocated(object o, SizeAllocatedArgs args)
 		{
 			base.VBox.BorderWidth = 1U;
 		}
 
-		// Token: 0x0600003A RID: 58 RVA: 0x00002CA0 File Offset: 0x00000EA0
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -363,58 +350,40 @@ namespace Modules.Communal.Preference
 			base.Hide();
 		}
 
-		// Token: 0x04000014 RID: 20
 		private IPreferenceWidget currentWidget;
 
-		// Token: 0x04000015 RID: 21
 		private TreeIter oldTreeIter;
 
-		// Token: 0x04000016 RID: 22
 		private List<IPreferenceWidget> environmentWidgets = new List<IPreferenceWidget>();
 
-		// Token: 0x04000017 RID: 23
 		private Dictionary<TreeIter, IPreferenceWidget> widgetsDictionary = new Dictionary<TreeIter, IPreferenceWidget>();
 
-		// Token: 0x04000018 RID: 24
 		private VBox vbox_window;
 
-		// Token: 0x04000019 RID: 25
 		private Alignment alignment_title;
 
-		// Token: 0x0400001A RID: 26
 		private EventBox evtbx_bg;
 
-		// Token: 0x0400001B RID: 27
 		private VBox vbox_main;
 
-		// Token: 0x0400001C RID: 28
 		private HBox hbox_main;
 
-		// Token: 0x0400001D RID: 29
 		private EventBox evtbx_left;
 
-		// Token: 0x0400001E RID: 30
 		private Alignment alignment_left;
 
-		// Token: 0x0400001F RID: 31
 		private TreeView treeview_preferences;
 
-		// Token: 0x04000020 RID: 32
 		private EventBox evtbx_right;
 
-		// Token: 0x04000021 RID: 33
 		private EventBox evtbx_line;
 
-		// Token: 0x04000022 RID: 34
 		private HBox hbox_bottomBtn;
 
-		// Token: 0x04000023 RID: 35
 		private Alignment alignment_bottomBtnRight;
 
-		// Token: 0x04000024 RID: 36
 		private Alignment alignment_bottomBtnLeft;
 
-		// Token: 0x04000025 RID: 37
 		private Alignment alignment_occupy;
 	}
 }

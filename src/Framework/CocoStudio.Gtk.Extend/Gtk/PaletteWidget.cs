@@ -8,11 +8,9 @@ using Stetic;
 
 namespace Gtk
 {
-	// Token: 0x020000A0 RID: 160
 	[ToolboxItem(true)]
 	public class PaletteWidget : Bin
 	{
-		// Token: 0x0600037B RID: 891 RVA: 0x00010733 File Offset: 0x0000E933
 		public PaletteWidget(ColorSelection selection)
 		{
 			this.Build();
@@ -20,7 +18,6 @@ namespace Gtk
 			this.label_title.LabelProp = LanguageInfo.ColorPicker_Palette;
 		}
 
-		// Token: 0x0600037C RID: 892 RVA: 0x00010760 File Offset: 0x0000E960
 		private void InitColorTable(ColorSelection selection)
 		{
 			this.colorList = new Color[20];
@@ -57,7 +54,6 @@ namespace Gtk
 			this.table_palette.TooltipText = LanguageInfo.ColorPicker_PaletteInfo;
 		}
 
-		// Token: 0x0600037D RID: 893 RVA: 0x00010A98 File Offset: 0x0000EC98
 		private Color[] LoadColors(Color[] colors)
 		{
 			string paletteColors = Option.UserConfig.PaletteColors;
@@ -90,7 +86,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x0600037E RID: 894 RVA: 0x00010B3C File Offset: 0x0000ED3C
 		public void SaveColors()
 		{
 			Color[] array = new Color[20];
@@ -106,7 +101,6 @@ namespace Gtk
 			Option.UserConfig.Save();
 		}
 
-		// Token: 0x0600037F RID: 895 RVA: 0x00010BE4 File Offset: 0x0000EDE4
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -141,16 +135,12 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x0400041D RID: 1053
 		private Color[] colorList;
 
-		// Token: 0x0400041E RID: 1054
 		private VBox vbox_main;
 
-		// Token: 0x0400041F RID: 1055
 		private Label label_title;
 
-		// Token: 0x04000420 RID: 1056
 		private Table table_palette;
 	}
 }

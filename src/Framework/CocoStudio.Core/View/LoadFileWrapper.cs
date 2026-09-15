@@ -6,10 +6,8 @@ using MonoDevelop.Projects.Text;
 
 namespace CocoStudio.Core.View
 {
-	// Token: 0x02000057 RID: 87
 	internal class LoadFileWrapper
 	{
-		// Token: 0x06000376 RID: 886 RVA: 0x0000FF4C File Offset: 0x0000E14C
 		public LoadFileWrapper(IProgressMonitor monitor, MainWindow workbench, IViewDisplayBuilder binding, CocosItem project, FileOpenInfo fileInfo)
 		{
 			this.monitor = monitor;
@@ -19,7 +17,6 @@ namespace CocoStudio.Core.View
 			this.project = project;
 		}
 
-		// Token: 0x06000377 RID: 887 RVA: 0x0000FF7C File Offset: 0x0000E17C
 		public void Invoke(string fileName)
 		{
 			try
@@ -77,22 +74,16 @@ namespace CocoStudio.Core.View
 			}
 		}
 
-		// Token: 0x0400017B RID: 379
 		private IViewDisplayBuilder builder;
 
-		// Token: 0x0400017C RID: 380
 		private CocosItem project;
 
-		// Token: 0x0400017D RID: 381
 		private FileOpenInfo fileInfo;
 
-		// Token: 0x0400017E RID: 382
 		private MainWindow workbench;
 
-		// Token: 0x0400017F RID: 383
 		private IProgressMonitor monitor;
 
-		// Token: 0x04000180 RID: 384
 		private IViewContentExtend newContent;
 	}
 }

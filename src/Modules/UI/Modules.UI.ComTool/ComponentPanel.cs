@@ -13,10 +13,8 @@ using Stetic;
 
 namespace Modules.UI.ComTool
 {
-	// Token: 0x02000010 RID: 16
 	public class ComponentPanel : EventBox, IComToolPad, IService
 	{
-		// Token: 0x0600004C RID: 76 RVA: 0x00003A0C File Offset: 0x00001C0C
 		public ComponentPanel()
 		{
 			this.Build();
@@ -36,7 +34,6 @@ namespace Modules.UI.ComTool
 			Services.RegisterService<IComToolPad>(this);
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x00003B10 File Offset: 0x00001D10
 		private void RefreshControlsView()
 		{
 			foreach (KeyValuePair<string, CustomExpender> keyValuePair in this.groupDict)
@@ -63,14 +60,12 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00003C1C File Offset: 0x00001E1C
 		private void ComponentPanel_Shown(object sender, EventArgs e)
 		{
 			this.SetDeprecatedControl(true);
 			this.RefreshControlsView();
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x00003C30 File Offset: 0x00001E30
 		private void UserConfigChanged(object sender, PropertyChangedEventArgs e)
 		{
 			if (e.PropertyName == "IsShowDeprecatedControl")
@@ -79,18 +74,15 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x00003C5F File Offset: 0x00001E5F
 		private void SetDeprecatedControl(bool isQueueResize = true)
 		{
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x00003C62 File Offset: 0x00001E62
 		private void HandleSizeAllocated(object o, SizeAllocatedArgs args)
 		{
 			this.AutoSize();
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x00003C6C File Offset: 0x00001E6C
 		public void AutoSize()
 		{
 			if (this.comRootVbox != null)
@@ -126,7 +118,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x06000053 RID: 83 RVA: 0x00003D94 File Offset: 0x00001F94
 		public void AutoLayoutTable(Table table, int rows, int cloums)
 		{
 			table.NRows = (uint)rows;
@@ -152,7 +143,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x06000054 RID: 84 RVA: 0x00004048 File Offset: 0x00002248
 		private void InitPanel()
 		{
 			if (this.viewModel.UIList != null)
@@ -226,9 +216,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x1700000E RID: 14
-		// (get) Token: 0x06000055 RID: 85 RVA: 0x000043E4 File Offset: 0x000025E4
-		// (set) Token: 0x06000056 RID: 86 RVA: 0x00004404 File Offset: 0x00002604
 		public IControlsViewFilter ControlsViewFilter
 		{
 			get
@@ -252,7 +239,6 @@ namespace Modules.UI.ComTool
 			}
 		}
 
-		// Token: 0x06000057 RID: 87 RVA: 0x0000445C File Offset: 0x0000265C
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -280,31 +266,22 @@ namespace Modules.UI.ComTool
 			base.Hide();
 		}
 
-		// Token: 0x04000041 RID: 65
 		private VBox comRootVbox;
 
-		// Token: 0x04000042 RID: 66
 		private ComToolUCViewModel viewModel = null;
 
-		// Token: 0x04000043 RID: 67
 		private int columnSpacing = 0;
 
-		// Token: 0x04000044 RID: 68
 		private int rowSpacing = 0;
 
-		// Token: 0x04000045 RID: 69
 		private Dictionary<string, CustomExpender> groupDict = new Dictionary<string, CustomExpender>();
 
-		// Token: 0x04000046 RID: 70
 		private Dictionary<string, ComponentItem> itemDict = new Dictionary<string, ComponentItem>();
 
-		// Token: 0x04000047 RID: 71
 		private ScrolledWindow scrolledwindow1;
 
-		// Token: 0x04000048 RID: 72
 		private EventBox evtbx_root;
 
-		// Token: 0x04000049 RID: 73
 		private HBox hbx_root;
 	}
 }

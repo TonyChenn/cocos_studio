@@ -5,15 +5,12 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000018 RID: 24
 	internal class ViewSizeEditor : TwoNumberEditor
 	{
-		// Token: 0x060000C9 RID: 201 RVA: 0x0000408D File Offset: 0x0000228D
 		public ViewSizeEditor() : base(LanguageInfo.Display_ResourceWidth, LanguageInfo.Display_ResourceHeight)
 		{
 		}
 
-		// Token: 0x060000CA RID: 202 RVA: 0x000040D4 File Offset: 0x000022D4
 		protected override void OnSetControl()
 		{
 			PointF pointF = (PointF)base.PropertyItem.Values[0];

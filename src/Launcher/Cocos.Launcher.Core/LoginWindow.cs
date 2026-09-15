@@ -11,15 +11,10 @@ using Stetic;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200005E RID: 94
 	public class LoginWindow : Window
 	{
-		// Token: 0x14000014 RID: 20
-		// (add) Token: 0x06000339 RID: 825 RVA: 0x0000D560 File Offset: 0x0000B760
-		// (remove) Token: 0x0600033A RID: 826 RVA: 0x0000D598 File Offset: 0x0000B798
 		public event EventHandler<EventArgs> LoginCompleted;
 
-		// Token: 0x0600033B RID: 827 RVA: 0x0000D5D0 File Offset: 0x0000B7D0
 		public LoginWindow(LoginService loginService) : base(WindowType.Toplevel)
 		{
 			this.Build();
@@ -32,7 +27,6 @@ namespace Cocos.Launcher.Core
 			this.button.GrabDefault();
 		}
 
-		// Token: 0x0600033C RID: 828 RVA: 0x0000D624 File Offset: 0x0000B824
 		private void InitValue()
 		{
 			this.launcherlink_forgetPassword = new LinkView();
@@ -95,7 +89,6 @@ namespace Cocos.Launcher.Core
 			this.button.GrabFocus();
 		}
 
-		// Token: 0x0600033D RID: 829 RVA: 0x0000D914 File Offset: 0x0000BB14
 		private void InitEvent()
 		{
 			base.FocusOutEvent += this.LoginWindow_FocusOutEvent;
@@ -107,7 +100,6 @@ namespace Cocos.Launcher.Core
 			this.entry_password.Changed += this.entry_username_Changed;
 		}
 
-		// Token: 0x0600033E RID: 830 RVA: 0x0000D9C0 File Offset: 0x0000BBC0
 		private void InitStyle()
 		{
 			if (Platform.IsWindows)
@@ -127,7 +119,6 @@ namespace Cocos.Launcher.Core
 			this.label_error.ModifyFg(StateType.Normal, ConstantConfig.Colors.ErrorColor);
 		}
 
-		// Token: 0x0600033F RID: 831 RVA: 0x0000DA68 File Offset: 0x0000BC68
 		public void RemoveWindowBorder()
 		{
 			if (Platform.IsWindows)
@@ -139,7 +130,6 @@ namespace Cocos.Launcher.Core
 			NativeGdkMac.SetNSWindowStyle(base.GdkWindow, style);
 		}
 
-		// Token: 0x06000340 RID: 832 RVA: 0x0000DA94 File Offset: 0x0000BC94
 		private void SaveInfo()
 		{
 			this.loginService.LoginInfo.IsAutoLogin = this.checkbutton_AutoLogin.Active;
@@ -147,7 +137,6 @@ namespace Cocos.Launcher.Core
 			this.loginService.LoginInfo.UserPassword = this.entry_password.Text;
 		}
 
-		// Token: 0x06000341 RID: 833 RVA: 0x0000DAF4 File Offset: 0x0000BCF4
 		private void Login()
 		{
 			this.button.GrabFocus();
@@ -172,31 +161,26 @@ namespace Cocos.Launcher.Core
 			login.SyncLoginCocos(name, text2);
 		}
 
-		// Token: 0x06000342 RID: 834 RVA: 0x0000DB91 File Offset: 0x0000BD91
 		private void LoginWindow_FocusOutEvent(object o, FocusOutEventArgs args)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x06000343 RID: 835 RVA: 0x0000DB99 File Offset: 0x0000BD99
 		private void eventbox_login_LeaveNotifyEvent(object o, LeaveNotifyEventArgs args)
 		{
 			this.image_login.SetImageView(ImageIcon.GetIcon("Cocos.Launcher.Resource.LauncherResource.login1.png"));
 		}
 
-		// Token: 0x06000344 RID: 836 RVA: 0x0000DBB0 File Offset: 0x0000BDB0
 		private void eventbox_login_EnterNotifyEvent(object o, EnterNotifyEventArgs args)
 		{
 			this.image_login.SetImageView(ImageIcon.GetIcon("Cocos.Launcher.Resource.LauncherResource.login2.png"));
 		}
 
-		// Token: 0x06000345 RID: 837 RVA: 0x0000DBC7 File Offset: 0x0000BDC7
 		private void entry_username_Changed(object sender, EventArgs e)
 		{
 			this.label_error.Text = string.Empty;
 		}
 
-		// Token: 0x06000346 RID: 838 RVA: 0x0000DBD9 File Offset: 0x0000BDD9
 		private void eventbox_login_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			if (args.Event.Button != 1U)
@@ -206,7 +190,6 @@ namespace Cocos.Launcher.Core
 			this.Login();
 		}
 
-		// Token: 0x06000347 RID: 839 RVA: 0x0000DBF0 File Offset: 0x0000BDF0
 		private void login_OnResived(object sender, CocoaUserArgs e)
 		{
 			try
@@ -244,13 +227,11 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000348 RID: 840 RVA: 0x0000DD00 File Offset: 0x0000BF00
 		private void button_Clicked(object sender, EventArgs e)
 		{
 			this.Login();
 		}
 
-		// Token: 0x06000349 RID: 841 RVA: 0x0000DD08 File Offset: 0x0000BF08
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -425,82 +406,56 @@ namespace Cocos.Launcher.Core
 			base.Show();
 		}
 
-		// Token: 0x04000133 RID: 307
 		private Label lable_login;
 
-		// Token: 0x04000134 RID: 308
 		private Button button;
 
-		// Token: 0x04000136 RID: 310
 		private LinkView launcherlink_forgetPassword;
 
-		// Token: 0x04000137 RID: 311
 		private LoginService loginService;
 
-		// Token: 0x04000138 RID: 312
 		private EventBox eventbox1;
 
-		// Token: 0x04000139 RID: 313
 		private Fixed fixed2;
 
-		// Token: 0x0400013A RID: 314
 		private ImageBin image_back;
 
-		// Token: 0x0400013B RID: 315
 		private Alignment alignment1;
 
-		// Token: 0x0400013C RID: 316
 		private VBox vbox2;
 
-		// Token: 0x0400013D RID: 317
 		private VBox vbox5;
 
-		// Token: 0x0400013E RID: 318
 		private VBox vbox3;
 
-		// Token: 0x0400013F RID: 319
 		private Label label_hint;
 
-		// Token: 0x04000140 RID: 320
 		private Fixed fixed3;
 
-		// Token: 0x04000141 RID: 321
 		private ImageBin image_userName;
 
-		// Token: 0x04000142 RID: 322
 		private PlaceholderEntry entry_username;
 
-		// Token: 0x04000143 RID: 323
 		private Fixed fixed4;
 
-		// Token: 0x04000144 RID: 324
 		private ImageBin image_password;
 
-		// Token: 0x04000145 RID: 325
 		private PlaceholderEntry entry_password;
 
-		// Token: 0x04000146 RID: 326
 		private VBox vbox4;
 
-		// Token: 0x04000147 RID: 327
 		private Label label_error;
 
-		// Token: 0x04000148 RID: 328
 		private HBox hbox1;
 
-		// Token: 0x04000149 RID: 329
 		private CheckboxView checkbutton_AutoLogin;
 
-		// Token: 0x0400014A RID: 330
 		private Alignment alignment2;
 
-		// Token: 0x0400014B RID: 331
 		private EventBox eventbox_login;
 
-		// Token: 0x0400014C RID: 332
 		private Fixed fixed5;
 
-		// Token: 0x0400014D RID: 333
 		private ImageBin image_login;
 	}
 }

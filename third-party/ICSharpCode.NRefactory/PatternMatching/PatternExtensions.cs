@@ -2,7 +2,6 @@
 
 namespace ICSharpCode.NRefactory.PatternMatching
 {
-	// Token: 0x02000028 RID: 40
 	public static class PatternExtensions
 	{
 		/// <summary>
@@ -17,7 +16,6 @@ namespace ICSharpCode.NRefactory.PatternMatching
 		/// However, it is also possible to match two ASTs without any pattern nodes -
 		/// doing so will produce a successful match if the two ASTs are structurally identical.
 		/// </remarks>
-		// Token: 0x06000156 RID: 342 RVA: 0x000049BC File Offset: 0x000039BC
 		public static Match Match(this INode pattern, INode other)
 		{
 			if (pattern == null)
@@ -32,7 +30,6 @@ namespace ICSharpCode.NRefactory.PatternMatching
 			return default(Match);
 		}
 
-		// Token: 0x06000157 RID: 343 RVA: 0x000049F2 File Offset: 0x000039F2
 		public static bool IsMatch(this INode pattern, INode other)
 		{
 			if (pattern == null)

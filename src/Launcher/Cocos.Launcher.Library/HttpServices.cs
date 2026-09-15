@@ -9,16 +9,13 @@ using CocoStudio.Basic;
 
 namespace Cocos.Launcher.Library
 {
-	// Token: 0x02000005 RID: 5
 	public static class HttpServices
 	{
-		// Token: 0x06000023 RID: 35 RVA: 0x00002828 File Offset: 0x00000A28
 		static HttpServices()
 		{
 			ServicePointManager.ServerCertificateValidationCallback = (RemoteCertificateValidationCallback)Delegate.Combine(ServicePointManager.ServerCertificateValidationCallback, new RemoteCertificateValidationCallback((object se, X509Certificate cert, X509Chain chain, SslPolicyErrors sslerror) => true));
 		}
 
-		// Token: 0x06000024 RID: 36 RVA: 0x00002898 File Offset: 0x00000A98
 		public static HttpWebRequest CreatRequest(this string url, string method = "get")
 		{
 			HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -34,7 +31,6 @@ namespace Cocos.Launcher.Library
 			return httpWebRequest;
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x0000290C File Offset: 0x00000B0C
 		public static Stream GetResponseOfStream(this string url, string method = "get", string data = "")
 		{
 			Stream result;
@@ -68,7 +64,6 @@ namespace Cocos.Launcher.Library
 			return result;
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x000029E4 File Offset: 0x00000BE4
 		public static string GetResponseOfString(this string url, string method = "get", string data = "")
 		{
 			string result;
@@ -105,13 +100,10 @@ namespace Cocos.Launcher.Library
 			return result;
 		}
 
-		// Token: 0x04000018 RID: 24
 		public static string IE7 = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022; .NET4.0C; .NET4.0E; COCOS " + Option.EditorVersion.ToString() + ")";
 
-		// Token: 0x04000019 RID: 25
 		public static CookieContainer CookieContainers = new CookieContainer();
 
-		// Token: 0x0400001A RID: 26
 		public static Dictionary<string, string> Cookies = new Dictionary<string, string>();
 	}
 }

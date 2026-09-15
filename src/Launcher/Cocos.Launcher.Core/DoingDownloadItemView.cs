@@ -14,11 +14,9 @@ using Stetic;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200000A RID: 10
 	[ToolboxItem(true)]
 	public class DoingDownloadItemView : Bin
 	{
-		// Token: 0x06000040 RID: 64 RVA: 0x000028CC File Offset: 0x00000ACC
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -126,7 +124,6 @@ namespace Cocos.Launcher.Core
 			base.Hide();
 		}
 
-		// Token: 0x06000041 RID: 65 RVA: 0x00002E77 File Offset: 0x00001077
 		public DoingDownloadItemView(AssetModel model)
 		{
 			this.Build();
@@ -137,7 +134,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x06000042 RID: 66 RVA: 0x00002EA4 File Offset: 0x000010A4
 		private void InitWidget()
 		{
 			try
@@ -187,7 +183,6 @@ namespace Cocos.Launcher.Core
 			this.progressbar3.Name = "ProgressbarBg_Plugin";
 		}
 
-		// Token: 0x06000043 RID: 67 RVA: 0x00003118 File Offset: 0x00001318
 		private void InitEvent()
 		{
 			this.startCheckbox.Clicked += this.startCheckbox_Clicked;
@@ -198,25 +193,21 @@ namespace Cocos.Launcher.Core
 			base.Destroyed += this.DoingDownloadView_Destroyed;
 		}
 
-		// Token: 0x06000044 RID: 68 RVA: 0x000031A9 File Offset: 0x000013A9
 		private void LoadingProgressChanged(object sender, Cocos.Launcher.Library.ProgressChangedEventArgs e)
 		{
 			this.UpdateProgress(e.Fraction, e.FileSize, e.DownloadSpeed, e.RemainTime);
 		}
 
-		// Token: 0x06000045 RID: 69 RVA: 0x000031C9 File Offset: 0x000013C9
 		private void DownloadOverEvent(object sender, DownloadSucceedEventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x06000046 RID: 70 RVA: 0x000031D1 File Offset: 0x000013D1
 		private void DeleteView(object sender, EventArgs e)
 		{
 			this.Destroy();
 		}
 
-		// Token: 0x06000047 RID: 71 RVA: 0x000031DC File Offset: 0x000013DC
 		private void InitView()
 		{
 			if (this.m_Model.AssetInfo.IsLoading)
@@ -227,7 +218,6 @@ namespace Cocos.Launcher.Core
 			this.UpdateProgress(this.m_Model.AssetInfo.PluginFraction, this.m_Model.AssetInfo.PluginSize, -1f, -1L);
 		}
 
-		// Token: 0x06000048 RID: 72 RVA: 0x00003258 File Offset: 0x00001458
 		private void DoingDownloadView_Destroyed(object sender, EventArgs e)
 		{
 			base.Destroyed -= this.DoingDownloadView_Destroyed;
@@ -237,7 +227,6 @@ namespace Cocos.Launcher.Core
 			CocoStudio.Core.Services.NetworkService.NetworkChanged -= this.NetworkService_NetworkChanged;
 		}
 
-		// Token: 0x06000049 RID: 73 RVA: 0x000032D2 File Offset: 0x000014D2
 		private void NetworkService_NetworkChanged(object sender, NetworkChangedEventArgs e)
 		{
 			if (!e.IsNetworkingSuccessed)
@@ -246,7 +235,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600004A RID: 74 RVA: 0x000032E8 File Offset: 0x000014E8
 		private void DownloadPic()
 		{
 			if (!string.IsNullOrEmpty(this.m_Model.AssetInfo.ImageUrl) && !string.IsNullOrEmpty(this.m_Model.AssetInfo.ImagePath))
@@ -261,7 +249,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x0600004B RID: 75 RVA: 0x0000337C File Offset: 0x0000157C
 		private bool DeleteFile(string path)
 		{
 			try
@@ -279,13 +266,11 @@ namespace Cocos.Launcher.Core
 			return true;
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x000033C8 File Offset: 0x000015C8
 		public void StartDownload()
 		{
 			this.startCheckbox.Active = true;
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x000033D8 File Offset: 0x000015D8
 		public void UpdateProgress(float fraction, float totalSize, float speed = 0f, long remainTime = -1L)
 		{
 			if (speed < 0f)
@@ -299,7 +284,6 @@ namespace Cocos.Launcher.Core
 			this.UpdateProgress(fraction2, sizeStr, loadSpeedToString, remainTimeStr);
 		}
 
-		// Token: 0x0600004E RID: 78 RVA: 0x00003426 File Offset: 0x00001626
 		private void UpdateProgress(float fraction, string downloadSize, string speed, string remainTime)
 		{
 			this.progressbar3.Fraction = (double)fraction;
@@ -308,7 +292,6 @@ namespace Cocos.Launcher.Core
 			this.label_time.Text = remainTime;
 		}
 
-		// Token: 0x0600004F RID: 79 RVA: 0x0000345C File Offset: 0x0000165C
 		private string GetLoadSpeedToString(float speed)
 		{
 			string result = string.Empty;
@@ -328,14 +311,12 @@ namespace Cocos.Launcher.Core
 			return result;
 		}
 
-		// Token: 0x06000050 RID: 80 RVA: 0x000034B8 File Offset: 0x000016B8
 		private string GetSizeStr(float Fraction, float size)
 		{
 			float num = Fraction * size / 100f;
 			return string.Format("{0:0.00} MB/", num) + Math.Round((double)size, 2).ToString() + "MB";
 		}
 
-		// Token: 0x06000051 RID: 81 RVA: 0x000034FC File Offset: 0x000016FC
 		private string GetRemainTimeStr(long remainTime)
 		{
 			string result = string.Empty;
@@ -346,7 +327,6 @@ namespace Cocos.Launcher.Core
 			return result;
 		}
 
-		// Token: 0x06000052 RID: 82 RVA: 0x00003548 File Offset: 0x00001748
 		private string GetShowString(string oldstr, int lenght = 10)
 		{
 			if (string.IsNullOrEmpty(oldstr))
@@ -361,7 +341,6 @@ namespace Cocos.Launcher.Core
 			return str + "...";
 		}
 
-		// Token: 0x06000053 RID: 83 RVA: 0x00003584 File Offset: 0x00001784
 		private void downloadpic_HttpDownLoadEndInfoEvent(object sender, DownloadFinishedEventArgs e)
 		{
 			HttpDownload httpDownload = sender as HttpDownload;
@@ -386,7 +365,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000054 RID: 84 RVA: 0x00003648 File Offset: 0x00001848
 		private void startCheckbox_Clicked(object sender, EventArgs e)
 		{
 			if (this.startCheckbox.Active)
@@ -397,7 +375,6 @@ namespace Cocos.Launcher.Core
 			this.m_Model.StopDownload();
 		}
 
-		// Token: 0x06000055 RID: 85 RVA: 0x00003670 File Offset: 0x00001870
 		private void deleteButton_ButtonReleaseEvent(object o, ButtonReleaseEventArgs args)
 		{
 			bool active = this.startCheckbox.Active;
@@ -411,55 +388,38 @@ namespace Cocos.Launcher.Core
 			this.startCheckbox.Active = active;
 		}
 
-		// Token: 0x04000016 RID: 22
 		private EventBox eventbox_bg;
 
-		// Token: 0x04000017 RID: 23
 		private HBox hbox;
 
-		// Token: 0x04000018 RID: 24
 		private Gtk.Alignment alignment_image;
 
-		// Token: 0x04000019 RID: 25
 		private Gtk.Image image;
 
-		// Token: 0x0400001A RID: 26
 		private Gtk.Alignment alignment_loading;
 
-		// Token: 0x0400001B RID: 27
 		private VBox vbox1;
 
-		// Token: 0x0400001C RID: 28
 		private Label label_title;
 
-		// Token: 0x0400001D RID: 29
 		private Gtk.Alignment alignment6;
 
-		// Token: 0x0400001E RID: 30
 		private ProgressBar progressbar3;
 
-		// Token: 0x0400001F RID: 31
 		private HBox hbox2;
 
-		// Token: 0x04000020 RID: 32
 		private Label label_size;
 
-		// Token: 0x04000021 RID: 33
 		private Label label_speed;
 
-		// Token: 0x04000022 RID: 34
 		private Label label_time;
 
-		// Token: 0x04000023 RID: 35
 		private Gtk.Alignment alignment_button;
 
-		// Token: 0x04000024 RID: 36
 		private HBox hbox1;
 
-		// Token: 0x04000025 RID: 37
 		private CheckboxView startCheckbox;
 
-		// Token: 0x04000026 RID: 38
 		private AssetModel m_Model;
 	}
 }

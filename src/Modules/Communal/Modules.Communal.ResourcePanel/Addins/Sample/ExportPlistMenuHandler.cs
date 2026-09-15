@@ -10,10 +10,8 @@ using Modules.Communal.Packer;
 
 namespace Addins.Sample
 {
-	// Token: 0x02000024 RID: 36
 	internal class ExportPlistMenuHandler : MenuHandler
 	{
-		// Token: 0x06000103 RID: 259 RVA: 0x00004DEC File Offset: 0x00002FEC
 		protected override void Run()
 		{
 			List<ResourceItem> currentResourceItems = Services.ProjectsService.CurrentResourceItems;
@@ -50,7 +48,6 @@ namespace Addins.Sample
 			}
 		}
 
-		// Token: 0x06000104 RID: 260 RVA: 0x00004ED0 File Offset: 0x000030D0
 		protected override void Update(MenuInfo info)
 		{
 			List<ResourceItem> currentResourceItems = Services.ProjectsService.CurrentResourceItems;

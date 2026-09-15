@@ -2,30 +2,18 @@
 
 namespace CocoStudio.Model.ViewModel.HitTest
 {
-	// Token: 0x0200011F RID: 287
 	public enum ControlPointType
 	{
-		// Token: 0x0400048B RID: 1163
 		POINT_NONE = -1,
-		// Token: 0x0400048C RID: 1164
 		POINT_LEFT_TOP,
-		// Token: 0x0400048D RID: 1165
 		POINT_LEFT_BOTTOM,
-		// Token: 0x0400048E RID: 1166
 		POINT_RIGHT_BOTTOM,
-		// Token: 0x0400048F RID: 1167
 		POINT_RIGHT_TOP,
-		// Token: 0x04000490 RID: 1168
 		POINT_LEFT_MIDDLE,
-		// Token: 0x04000491 RID: 1169
 		POINT_MIDDLE_BOTTOM,
-		// Token: 0x04000492 RID: 1170
 		POINT_RIGHT_MIDDLE,
-		// Token: 0x04000493 RID: 1171
 		POINT_MIDDLE_TOP,
-		// Token: 0x04000494 RID: 1172
 		POINT_ANCHOR,
-		// Token: 0x04000495 RID: 1173
 		POINT_MAX
 	}
 }

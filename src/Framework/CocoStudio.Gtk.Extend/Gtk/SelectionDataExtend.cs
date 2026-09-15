@@ -5,10 +5,8 @@ using Gdk;
 
 namespace Gtk
 {
-	// Token: 0x0200007B RID: 123
 	public static class SelectionDataExtend
 	{
-		// Token: 0x060002C3 RID: 707 RVA: 0x0000AD28 File Offset: 0x00008F28
 		public static FileDropInfo GetFileArray(this SelectionData selectionData)
 		{
 			string @string = Encoding.UTF8.GetString(selectionData.Data);
@@ -25,7 +23,6 @@ namespace Gtk
 			return new FileDropInfo(filearray);
 		}
 
-		// Token: 0x060002C4 RID: 708 RVA: 0x0000AE04 File Offset: 0x00009004
 		public static Color? GetCurrentColor(this SelectionData selectionData)
 		{
 			Color? result;

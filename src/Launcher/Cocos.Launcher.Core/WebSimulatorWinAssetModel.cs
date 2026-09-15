@@ -10,13 +10,10 @@ using MonoDevelop.Core;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200001D RID: 29
 	[Extension(typeof(BaseAssetModel))]
 	[AssetOrder(4)]
 	internal class WebSimulatorWinAssetModel : WinExeAssetModel
 	{
-		// Token: 0x17000021 RID: 33
-		// (get) Token: 0x06000111 RID: 273 RVA: 0x00006880 File Offset: 0x00004A80
 		public override int Order
 		{
 			get
@@ -25,25 +22,21 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x06000112 RID: 274 RVA: 0x00006883 File Offset: 0x00004A83
 		public WebSimulatorWinAssetModel()
 		{
 			base.DownloadSucceed += this.DownloadSucceedHandler;
 		}
 
-		// Token: 0x06000113 RID: 275 RVA: 0x0000689D File Offset: 0x00004A9D
 		public WebSimulatorWinAssetModel(Plugin model) : base(model)
 		{
 			base.DownloadSucceed += this.DownloadSucceedHandler;
 		}
 
-		// Token: 0x06000114 RID: 276 RVA: 0x000068B8 File Offset: 0x00004AB8
 		public override bool CanHandle(Plugin pluginModel)
 		{
 			return Platform.IsWindows && pluginModel.PluginName.Equals("Cocos Simulator for Web");
 		}
 
-		// Token: 0x06000115 RID: 277 RVA: 0x000068D8 File Offset: 0x00004AD8
 		protected override IProgressMonitor OnInstall()
 		{
 			string pluginPath = base.AssetInfo.PluginPath;
@@ -81,7 +74,6 @@ namespace Cocos.Launcher.Core
 			return @default;
 		}
 
-		// Token: 0x06000116 RID: 278 RVA: 0x00006A1C File Offset: 0x00004C1C
 		protected override IProgressMonitor OnOpen()
 		{
 			IProgressMonitor @default = CocoStudio.Core.Services.ProgressMonitors.Default;
@@ -118,7 +110,6 @@ namespace Cocos.Launcher.Core
 			return @default;
 		}
 
-		// Token: 0x06000117 RID: 279 RVA: 0x00006AE4 File Offset: 0x00004CE4
 		private void DownloadSucceedHandler(object sender, DownloadSucceedEventArgs e)
 		{
 			this.Install(false);

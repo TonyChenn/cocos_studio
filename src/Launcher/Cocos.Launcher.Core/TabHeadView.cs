@@ -6,12 +6,8 @@ using Modules.Communal.MultiLanguage;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x02000050 RID: 80
 	public class TabHeadView : EventBox, ITabHead
 	{
-		// Token: 0x17000093 RID: 147
-		// (get) Token: 0x060002A1 RID: 673 RVA: 0x0000A847 File Offset: 0x00008A47
-		// (set) Token: 0x060002A2 RID: 674 RVA: 0x0000A854 File Offset: 0x00008A54
 		public string HeadName
 		{
 			get
@@ -24,9 +20,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x17000094 RID: 148
-		// (get) Token: 0x060002A3 RID: 675 RVA: 0x0000A862 File Offset: 0x00008A62
-		// (set) Token: 0x060002A4 RID: 676 RVA: 0x0000A86A File Offset: 0x00008A6A
 		public bool IsSelected
 		{
 			get
@@ -40,9 +33,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x17000095 RID: 149
-		// (get) Token: 0x060002A5 RID: 677 RVA: 0x0000A87A File Offset: 0x00008A7A
-		// (set) Token: 0x060002A6 RID: 678 RVA: 0x0000A882 File Offset: 0x00008A82
 		public bool IsShowRed
 		{
 			get
@@ -56,7 +46,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x060002A7 RID: 679 RVA: 0x0000A894 File Offset: 0x00008A94
 		public TabHeadView()
 		{
 			base.WidthRequest = 140;
@@ -97,7 +86,6 @@ namespace Cocos.Launcher.Core
 			base.ButtonPressEvent += this.TabHeadView_ButtonPressEvent;
 		}
 
-		// Token: 0x060002A8 RID: 680 RVA: 0x0000AA2C File Offset: 0x00008C2C
 		private void ShowRed(bool isShow)
 		{
 			if (this.image == null)
@@ -118,7 +106,6 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x060002A9 RID: 681 RVA: 0x0000AABC File Offset: 0x00008CBC
 		public void SetNumber(int number)
 		{
 			if (this.numberButton == null)
@@ -143,7 +130,6 @@ namespace Cocos.Launcher.Core
 			this.numberButton.SetLabelBoldText(number.ToString());
 		}
 
-		// Token: 0x060002AA RID: 682 RVA: 0x0000AB3C File Offset: 0x00008D3C
 		private void ChangeBgColor(Color color)
 		{
 			if (this.IsSelected)
@@ -155,7 +141,6 @@ namespace Cocos.Launcher.Core
 			eventBox.ModifyBg(StateType.Normal, color);
 		}
 
-		// Token: 0x060002AB RID: 683 RVA: 0x0000AB7C File Offset: 0x00008D7C
 		private void SetSelecetItemStyle(bool isSelected)
 		{
 			Color color;
@@ -180,7 +165,6 @@ namespace Cocos.Launcher.Core
 			label.ModifyFg(StateType.Normal, color3);
 		}
 
-		// Token: 0x060002AC RID: 684 RVA: 0x0000AC20 File Offset: 0x00008E20
 		private void ShowPluginLogo(bool isShow)
 		{
 			if (this.numberButton == null)
@@ -207,19 +191,16 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x060002AD RID: 685 RVA: 0x0000AD08 File Offset: 0x00008F08
 		private void eventbox_LeaveNotifyEvent(object o, LeaveNotifyEventArgs args)
 		{
 			this.ChangeBgColor(ConstantConfig.Colors.MainLeftColor);
 		}
 
-		// Token: 0x060002AE RID: 686 RVA: 0x0000AD1A File Offset: 0x00008F1A
 		private void eventbox_EnterNotifyEvent(object o, EnterNotifyEventArgs args)
 		{
 			this.ChangeBgColor(ConstantConfig.Colors.TabEnterBgColor);
 		}
 
-		// Token: 0x060002AF RID: 687 RVA: 0x0000AD2C File Offset: 0x00008F2C
 		private void TabHeadView_ButtonPressEvent(object o, ButtonPressEventArgs args)
 		{
 			base.HasFocus = true;
@@ -231,12 +212,8 @@ namespace Cocos.Launcher.Core
 			args.RetVal = true;
 		}
 
-		// Token: 0x14000012 RID: 18
-		// (add) Token: 0x060002B0 RID: 688 RVA: 0x0000AD50 File Offset: 0x00008F50
-		// (remove) Token: 0x060002B1 RID: 689 RVA: 0x0000AD88 File Offset: 0x00008F88
 		public event EventHandler<SelectedChangingEventArgs> SelectedChanging;
 
-		// Token: 0x060002B2 RID: 690 RVA: 0x0000ADBD File Offset: 0x00008FBD
 		private void RaiseSelectedChanged()
 		{
 			if (this.SelectedChanging != null)
@@ -245,19 +222,14 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x04000101 RID: 257
 		private Label label;
 
-		// Token: 0x04000102 RID: 258
 		private bool isSelected;
 
-		// Token: 0x04000103 RID: 259
 		private ImageBin image;
 
-		// Token: 0x04000104 RID: 260
 		private ButtonView numberButton;
 
-		// Token: 0x04000105 RID: 261
 		private bool isShowRed;
 	}
 }

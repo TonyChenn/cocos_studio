@@ -5,10 +5,8 @@ using Mono.Addins;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x02000071 RID: 113
 	internal class SerializeManager : ISerializeManager
 	{
-		// Token: 0x06000380 RID: 896 RVA: 0x0000C8A4 File Offset: 0x0000AAA4
 		internal SerializeManager()
 		{
 			this.serializerList = new List<IGameFileSerializer>();
@@ -28,9 +26,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000094 RID: 148
-		// (get) Token: 0x06000381 RID: 897 RVA: 0x0000C92C File Offset: 0x0000AB2C
-		// (set) Token: 0x06000382 RID: 898 RVA: 0x0000C970 File Offset: 0x0000AB70
 		public IGameFileSerializer CurrentSerializer
 		{
 			get
@@ -64,8 +59,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x17000095 RID: 149
-		// (get) Token: 0x06000383 RID: 899 RVA: 0x0000C9AC File Offset: 0x0000ABAC
 		public IGameFileSerializer DefaultSerializer
 		{
 			get
@@ -89,13 +82,11 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000384 RID: 900 RVA: 0x0000C9F3 File Offset: 0x0000ABF3
 		public IEnumerable<IGameFileSerializer> GetSerializerList()
 		{
 			return this.serializerList.ToList<IGameFileSerializer>();
 		}
 
-		// Token: 0x06000385 RID: 901 RVA: 0x0000CA00 File Offset: 0x0000AC00
 		private IGameFileSerializer GetSerializerById(string id)
 		{
 			foreach (IGameFileSerializer gameFileSerializer in this.serializerList)
@@ -108,7 +99,6 @@ namespace CocoStudio.Projects
 			return null;
 		}
 
-		// Token: 0x040000D6 RID: 214
 		private List<IGameFileSerializer> serializerList;
 	}
 }

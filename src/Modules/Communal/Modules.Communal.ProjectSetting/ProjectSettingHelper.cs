@@ -7,10 +7,8 @@ using CocoStudio.Projects;
 
 namespace Modules.Communal.ProjectSetting
 {
-	// Token: 0x02000004 RID: 4
 	internal class ProjectSettingHelper
 	{
-		// Token: 0x06000007 RID: 7 RVA: 0x00002050 File Offset: 0x00000250
 		public static string GetUnifiedPath(string newPath, string basePath)
 		{
 			if (!newPath.EndsWith(Path.DirectorySeparatorChar.ToString()))
@@ -36,7 +34,6 @@ namespace Modules.Communal.ProjectSetting
 			return result;
 		}
 
-		// Token: 0x06000008 RID: 8 RVA: 0x000020F8 File Offset: 0x000002F8
 		public static bool CheckPathValidity(string path)
 		{
 			if (string.IsNullOrEmpty(path))
@@ -61,7 +58,6 @@ namespace Modules.Communal.ProjectSetting
 			return Option.CheckIsWritableDir(dir);
 		}
 
-		// Token: 0x06000009 RID: 9 RVA: 0x0000217C File Offset: 0x0000037C
 		public static string ConvertToAbsolutePath(string path)
 		{
 			Solution currentSelectedSolution = Services.ProjectOperations.CurrentSelectedSolution;

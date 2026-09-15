@@ -4,30 +4,25 @@ using CocoStudio.Model.DataModel;
 
 namespace CocoStudio.Model.Lua.Templates
 {
-	// Token: 0x02000030 RID: 48
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaTimelineAction : LuaBaseObject
 	{
-		// Token: 0x06000119 RID: 281 RVA: 0x00008488 File Offset: 0x00006688
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x0600011A RID: 282 RVA: 0x000084A0 File Offset: 0x000066A0
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(TimelineActionData) == objectData.GetType();
 		}
 
-		// Token: 0x0600011B RID: 283 RVA: 0x000084B7 File Offset: 0x000066B7
 		public override void CreateObject(BaseObjectData objectData)
 		{
 			base.Write("result['animation'] = ccs.ActionTimeline:create()\r\n  \r\n");
 		}
 
-		// Token: 0x0600011C RID: 284 RVA: 0x000084C4 File Offset: 0x000066C4
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			TimelineActionData timelineActionData = objectData as TimelineActionData;
@@ -62,7 +57,6 @@ namespace CocoStudio.Model.Lua.Templates
 			}
 		}
 
-		// Token: 0x0600011D RID: 285 RVA: 0x0000864C File Offset: 0x0000684C
 		private bool WriteTimeLine(TimelineData timelineData)
 		{
 			ILuaObjectSerializer serializer = LuaObjectManager.GetSerializer(timelineData);

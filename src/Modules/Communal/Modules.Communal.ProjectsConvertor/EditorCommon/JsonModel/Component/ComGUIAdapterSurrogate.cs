@@ -11,18 +11,15 @@ using Mono.Addins;
 
 namespace EditorCommon.JsonModel.Component
 {
-	// Token: 0x02000011 RID: 17
 	[DataContract]
 	[Extension(typeof(IJsonModel))]
 	internal class ComGUIAdapterSurrogate : ComRenderSurrogate
 	{
-		// Token: 0x06000095 RID: 149 RVA: 0x00004774 File Offset: 0x00002974
 		public ComGUIAdapterSurrogate()
 		{
 			this.classname = "GUIComponent";
 		}
 
-		// Token: 0x06000096 RID: 150 RVA: 0x00004788 File Offset: 0x00002988
 		public override void SetValue(object obj)
 		{
 			base.SetValue(obj);
@@ -48,7 +45,6 @@ namespace EditorCommon.JsonModel.Component
 			}
 		}
 
-		// Token: 0x06000097 RID: 151 RVA: 0x0000485C File Offset: 0x00002A5C
 		protected override object CreateModelObject()
 		{
 			return new FileNodeObjectData();

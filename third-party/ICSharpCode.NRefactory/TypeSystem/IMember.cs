@@ -6,7 +6,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 	/// <summary>
 	/// Method/field/property/event.
 	/// </summary>
-	// Token: 0x0200005E RID: 94
 	public interface IMember : IEntity, ISymbol, ICompilationProvider, INamedElement, IHasAccessibility
 	{
 		/// <summary>
@@ -14,8 +13,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// Returns <c>this</c> if this is not a specialized member.
 		/// Specialized members are the result of overload resolution with type substitution.
 		/// </summary>
-		// Token: 0x17000112 RID: 274
-		// (get) Token: 0x060002E6 RID: 742
 		IMember MemberDefinition { get; }
 
 		/// <summary>
@@ -28,52 +25,38 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// defining partial method declaration otherwise.
 		/// For the members used to represent the built-in C# operators like "operator +(int, int);", this property returns <c>null</c>.
 		/// </remarks>
-		// Token: 0x17000113 RID: 275
-		// (get) Token: 0x060002E7 RID: 743
 		IUnresolvedMember UnresolvedMember { get; }
 
 		/// <summary>
 		/// Gets the return type of this member.
 		/// This property never returns <c>null</c>.
 		/// </summary>
-		// Token: 0x17000114 RID: 276
-		// (get) Token: 0x060002E8 RID: 744
 		IType ReturnType { get; }
 
 		/// <summary>
 		/// Gets the interface members implemented by this member (both implicitly and explicitly).
 		/// </summary>
-		// Token: 0x17000115 RID: 277
-		// (get) Token: 0x060002E9 RID: 745
 		IList<IMember> ImplementedInterfaceMembers { get; }
 
 		/// <summary>
 		/// Gets whether this member is explicitly implementing an interface.
 		/// </summary>
-		// Token: 0x17000116 RID: 278
-		// (get) Token: 0x060002EA RID: 746
 		bool IsExplicitInterfaceImplementation { get; }
 
 		/// <summary>
 		/// Gets if the member is virtual. Is true only if the "virtual" modifier was used, but non-virtual
 		/// members can be overridden, too; if they are abstract or overriding a method.
 		/// </summary>
-		// Token: 0x17000117 RID: 279
-		// (get) Token: 0x060002EB RID: 747
 		bool IsVirtual { get; }
 
 		/// <summary>
 		/// Gets whether this member is overriding another member.
 		/// </summary>
-		// Token: 0x17000118 RID: 280
-		// (get) Token: 0x060002EC RID: 748
 		bool IsOverride { get; }
 
 		/// <summary>
 		/// Gets if the member can be overridden. Returns true when the member is "abstract", "virtual" or "override" but not "sealed".
 		/// </summary>
-		// Token: 0x17000119 RID: 281
-		// (get) Token: 0x060002ED RID: 749
 		bool IsOverridable { get; }
 
 		/// <summary>
@@ -83,7 +66,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// If this member is specialized using open generic types, the resulting member reference will need to be looked up in an appropriate generic context.
 		/// Otherwise, the main resolve context of a compilation is sufficient.
 		/// </remarks>
-		// Token: 0x060002EE RID: 750
 		[Obsolete("Use the ToReference method instead.")]
 		IMemberReference ToMemberReference();
 
@@ -94,22 +76,18 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// If this member is specialized using open generic types, the resulting member reference will need to be looked up in an appropriate generic context.
 		/// Otherwise, the main resolve context of a compilation is sufficient.
 		/// </remarks>
-		// Token: 0x060002EF RID: 751
 		IMemberReference ToReference();
 
 		/// <summary>
 		/// Gets the substitution belonging to this specialized member.
 		/// Returns TypeParameterSubstitution.Identity for not specialized members.
 		/// </summary>
-		// Token: 0x1700011A RID: 282
-		// (get) Token: 0x060002F0 RID: 752
 		TypeParameterSubstitution Substitution { get; }
 
 		/// <summary>
 		/// Specializes this member with the given substitution.
 		/// If this member is already specialized, the new substitution is composed with the existing substition.
 		/// </summary>
-		// Token: 0x060002F1 RID: 753
 		IMember Specialize(TypeParameterSubstitution substitution);
 	}
 }

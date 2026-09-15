@@ -8,10 +8,8 @@ using MonoDevelop.Core;
 
 namespace Modules.Communal.Skeleton
 {
-	// Token: 0x0200002A RID: 42
 	public class SkeletonGraphDialog : Gtk.Window
 	{
-		// Token: 0x060001DB RID: 475 RVA: 0x000098C4 File Offset: 0x00007AC4
 		public SkeletonGraphDialog() : base(Gtk.WindowType.Toplevel)
 		{
 			this.hpaned = new HPaned();
@@ -110,7 +108,6 @@ namespace Modules.Communal.Skeleton
 			this.CenterToParentWindow(ApplicationCurrent.MainWindow);
 		}
 
-		// Token: 0x060001DC RID: 476 RVA: 0x00009DD4 File Offset: 0x00007FD4
 		protected override bool OnKeyReleaseEvent(EventKey evnt)
 		{
 			if ((Platform.IsMac && KeyboardExtend.IsModifyKeyPressed(ModifierType.Mod2Mask)) || (!Platform.IsMac && KeyboardExtend.IsModifyKeyPressed(ModifierType.ControlMask)))
@@ -133,7 +130,6 @@ namespace Modules.Communal.Skeleton
 			return base.OnKeyReleaseEvent(evnt);
 		}
 
-		// Token: 0x060001DD RID: 477 RVA: 0x00009E7D File Offset: 0x0000807D
 		private void Workbench_ActiveDocumentChanged(object sender, EventArgs e)
 		{
 			if (this.animationFixed != null)
@@ -143,20 +139,17 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060001DE RID: 478 RVA: 0x00009E93 File Offset: 0x00008093
 		protected override void OnDestroyed()
 		{
 			Services.Workbench.ActiveDocumentChanged -= this.Workbench_ActiveDocumentChanged;
 			base.OnDestroyed();
 		}
 
-		// Token: 0x060001DF RID: 479 RVA: 0x00009EB1 File Offset: 0x000080B1
 		private void combox_Changed(object sender, EventArgs e)
 		{
 			this.animationFixed.CurrentScale = (double)(this.combox.Active + 1) / 2.0;
 		}
 
-		// Token: 0x060001E0 RID: 480 RVA: 0x00009ED8 File Offset: 0x000080D8
 		private void InitToolTip()
 		{
 			this.button_Normal.TooltipText = LanguageInfo.Group_Routine;
@@ -166,19 +159,16 @@ namespace Modules.Communal.Skeleton
 			base.Title = LanguageInfo.Skeleton_SkeletonView;
 		}
 
-		// Token: 0x060001E1 RID: 481 RVA: 0x00009F30 File Offset: 0x00008130
 		private void button_Reference_Clicked(object sender, ButtonReleaseEventArgs e)
 		{
 			this.InitTreeMap();
 		}
 
-		// Token: 0x060001E2 RID: 482 RVA: 0x00009F38 File Offset: 0x00008138
 		private void button_UnBindBone_Clicked(object sender, ButtonReleaseEventArgs e)
 		{
 			this.animationFixed.Unbinding();
 		}
 
-		// Token: 0x060001E3 RID: 483 RVA: 0x00009F45 File Offset: 0x00008145
 		private void button_BindBone_CheckChanged(object sender, EventArgs e)
 		{
 			if (this.button_BindBone.IsChecked)
@@ -187,7 +177,6 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060001E4 RID: 484 RVA: 0x00009F60 File Offset: 0x00008160
 		private void button_Normal_CheckChanged(object sender, EventArgs e)
 		{
 			if (this.button_Normal.IsChecked)
@@ -196,75 +185,56 @@ namespace Modules.Communal.Skeleton
 			}
 		}
 
-		// Token: 0x060001E5 RID: 485 RVA: 0x00009F7B File Offset: 0x0000817B
 		private void AnimationRelation_SizeAllocated(object o, SizeAllocatedArgs args)
 		{
 			this.animationFixed.DrawLine();
 		}
 
-		// Token: 0x060001E6 RID: 486 RVA: 0x00009F88 File Offset: 0x00008188
 		private void InitTreeMap()
 		{
 			this.animationFixed.SkeletonDialog = this;
 			this.animationFixed.InitData();
 		}
 
-		// Token: 0x060001E7 RID: 487 RVA: 0x00009FA1 File Offset: 0x000081A1
 		public void BoneSkinSum(int bonecount, int skinSum)
 		{
 			this.boneLabel.Text = string.Format(LanguageInfo.Skeleton_BoneNum, bonecount);
 			this.skinLabel.Text = string.Format(LanguageInfo.Skeleton_SkinNum, skinSum);
 		}
 
-		// Token: 0x060001E8 RID: 488 RVA: 0x00009FD9 File Offset: 0x000081D9
 		private void InitBoneOrderList()
 		{
 			this.treeOrder.InitModel();
 		}
 
-		// Token: 0x04000088 RID: 136
 		private FixedEx animationFixed;
 
-		// Token: 0x04000089 RID: 137
 		private ScrolledWindow sw;
 
-		// Token: 0x0400008A RID: 138
 		private HBox hbox;
 
-		// Token: 0x0400008B RID: 139
 		private IconRadioButton button_Normal;
 
-		// Token: 0x0400008C RID: 140
 		private IconRadioButton button_BindBone;
 
-		// Token: 0x0400008D RID: 141
 		private IconButton button_UnBindBone;
 
-		// Token: 0x0400008E RID: 142
 		private IconButton button_Reference;
 
-		// Token: 0x0400008F RID: 143
 		private Table graphicalTable;
 
-		// Token: 0x04000090 RID: 144
 		private ComboBox combox;
 
-		// Token: 0x04000091 RID: 145
 		private Table bottomTable;
 
-		// Token: 0x04000092 RID: 146
 		private Table mainTable;
 
-		// Token: 0x04000093 RID: 147
 		private HPaned hpaned;
 
-		// Token: 0x04000094 RID: 148
 		private BoneOrderList treeOrder;
 
-		// Token: 0x04000095 RID: 149
 		private Label boneLabel;
 
-		// Token: 0x04000096 RID: 150
 		private Label skinLabel;
 	}
 }

@@ -10,24 +10,16 @@ namespace ICSharpCode.NRefactory.Analysis
 	/// when a name of one symbol changes. For example if a type definition name should be changed
 	/// the constructors and destructor names should change as well.
 	/// </summary>
-	// Token: 0x0200013C RID: 316
 	public class SymbolCollector
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether this <see cref="T:ICSharpCode.NRefactory.Analysis.SymbolCollector" /> should include overloads.
 		/// </summary>
 		/// <value><c>true</c> if overloads should be included; otherwise, <c>false</c>.</value>
-		// Token: 0x1700041C RID: 1052
-		// (get) Token: 0x06000AE2 RID: 2786 RVA: 0x000207EF File Offset: 0x0001F7EF
-		// (set) Token: 0x06000AE3 RID: 2787 RVA: 0x000207F7 File Offset: 0x0001F7F7
 		public bool IncludeOverloads { get; set; }
 
-		// Token: 0x1700041D RID: 1053
-		// (get) Token: 0x06000AE4 RID: 2788 RVA: 0x00020800 File Offset: 0x0001F800
-		// (set) Token: 0x06000AE5 RID: 2789 RVA: 0x00020808 File Offset: 0x0001F808
 		public bool GroupForRenaming { get; set; }
 
-		// Token: 0x06000AE6 RID: 2790 RVA: 0x00020A10 File Offset: 0x0001FA10
 		private static IEnumerable<ISymbol> CollectTypeRelatedMembers(ITypeDefinition type)
 		{
 			yield return type;
@@ -38,7 +30,6 @@ namespace ICSharpCode.NRefactory.Analysis
 			yield break;
 		}
 
-		// Token: 0x06000AE7 RID: 2791 RVA: 0x00020A5C File Offset: 0x0001FA5C
 		private static IEnumerable<ISymbol> CollectOverloads(IMethod method)
 		{
 			return from m in method.DeclaringType.GetMethods((IUnresolvedMethod m) => m.Name == method.Name, GetMemberOptions.None)
@@ -46,7 +37,6 @@ namespace ICSharpCode.NRefactory.Analysis
 			select m;
 		}
 
-		// Token: 0x06000AE8 RID: 2792 RVA: 0x00020AA4 File Offset: 0x0001FAA4
 		private static IMember SearchMember(ITypeDefinition derivedType, IMember method)
 		{
 			foreach (IMember member in derivedType.Members)
@@ -59,7 +49,6 @@ namespace ICSharpCode.NRefactory.Analysis
 			return null;
 		}
 
-		// Token: 0x06000AE9 RID: 2793 RVA: 0x00020CC0 File Offset: 0x0001FCC0
 		private static IEnumerable<ISymbol> MakeUnique(List<ISymbol> symbols)
 		{
 			HashSet<ISymbol> taken = new HashSet<ISymbol>();
@@ -80,7 +69,6 @@ namespace ICSharpCode.NRefactory.Analysis
 		/// <returns>The related symbols.</returns>
 		/// <param name="g">The type graph.</param>
 		/// <param name="m">The symbol to search</param>
-		// Token: 0x06000AEA RID: 2794 RVA: 0x00020CE8 File Offset: 0x0001FCE8
 		public IEnumerable<ISymbol> GetRelatedSymbols(Lazy<TypeGraph> g, ISymbol m)
 		{
 			switch (m.SymbolKind)

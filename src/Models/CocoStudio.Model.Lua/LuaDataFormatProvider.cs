@@ -3,10 +3,8 @@ using CocoStudio.Model.DataModel;
 
 namespace CocoStudio.Model.Lua
 {
-	// Token: 0x02000003 RID: 3
 	public class LuaDataFormatProvider : IFormatProvider, ICustomFormatter
 	{
-		// Token: 0x06000005 RID: 5 RVA: 0x00002050 File Offset: 0x00000250
 		public object GetFormat(Type formatType)
 		{
 			if (formatType == typeof(ICustomFormatter))
@@ -16,7 +14,6 @@ namespace CocoStudio.Model.Lua
 			return null;
 		}
 
-		// Token: 0x06000006 RID: 6 RVA: 0x00002068 File Offset: 0x00000268
 		public string Format(string format, object arg, IFormatProvider formatProvider)
 		{
 			if (formatProvider != this)

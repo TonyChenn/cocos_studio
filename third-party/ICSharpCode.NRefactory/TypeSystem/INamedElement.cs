@@ -2,7 +2,6 @@
 
 namespace ICSharpCode.NRefactory.TypeSystem
 {
-	// Token: 0x02000056 RID: 86
 	public interface INamedElement
 	{
 		/// <summary>
@@ -13,8 +12,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// "System.Collections.Generic.List" for List&lt;string&gt;
 		/// "System.Environment.SpecialFolder" for Environment.SpecialFolder
 		/// </returns>
-		// Token: 0x170000CC RID: 204
-		// (get) Token: 0x0600026B RID: 619
 		string FullName { get; }
 
 		/// <summary>
@@ -25,8 +22,6 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// "List" for List&lt;string&gt;
 		/// "SpecialFolder" for Environment.SpecialFolder
 		/// </returns>
-		// Token: 0x170000CD RID: 205
-		// (get) Token: 0x0600026C RID: 620
 		string Name { get; }
 
 		/// <summary>
@@ -42,15 +37,11 @@ namespace ICSharpCode.NRefactory.TypeSystem
 		/// "System.Collections.Generic.List`1[[System.String]]" for List&lt;string&gt;
 		/// "System.Environment+SpecialFolder" for Environment.SpecialFolder
 		/// </returns>
-		// Token: 0x170000CE RID: 206
-		// (get) Token: 0x0600026D RID: 621
 		string ReflectionName { get; }
 
 		/// <summary>
 		/// Gets the full name of the namespace containing this entity.
 		/// </summary>
-		// Token: 0x170000CF RID: 207
-		// (get) Token: 0x0600026E RID: 622
 		string Namespace { get; }
 	}
 }

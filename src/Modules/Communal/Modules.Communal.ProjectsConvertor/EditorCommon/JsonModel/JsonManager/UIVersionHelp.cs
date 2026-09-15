@@ -5,10 +5,8 @@ using Newtonsoft.Json.Linq;
 
 namespace EditorCommon.JsonModel.JsonManager
 {
-	// Token: 0x02000033 RID: 51
 	public class UIVersionHelp
 	{
-		// Token: 0x0600036B RID: 875 RVA: 0x00008C34 File Offset: 0x00006E34
 		public static UIVersion IsNeedToConvert(string jsonData)
 		{
 			JObject jobject = null;
@@ -34,7 +32,6 @@ namespace EditorCommon.JsonModel.JsonManager
 			return UIVersion.undefine;
 		}
 
-		// Token: 0x0600036C RID: 876 RVA: 0x00008C98 File Offset: 0x00006E98
 		public static string ConvertToNewJsonData(string jsonData)
 		{
 			UIVersion uiversion = UIVersionHelp.IsNeedToConvert(jsonData);
@@ -105,7 +102,6 @@ namespace EditorCommon.JsonModel.JsonManager
 			return text;
 		}
 
-		// Token: 0x0600036D RID: 877 RVA: 0x0000904C File Offset: 0x0000724C
 		public static void ConvertToNewAnimationData(string jsonData)
 		{
 			JObject jobject = null;

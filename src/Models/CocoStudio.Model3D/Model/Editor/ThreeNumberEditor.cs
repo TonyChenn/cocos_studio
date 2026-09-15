@@ -5,11 +5,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x02000011 RID: 17
 	internal class ThreeNumberEditor : BaseEditor
 	{
-		// Token: 0x17000032 RID: 50
-		// (get) Token: 0x06000097 RID: 151 RVA: 0x000031BF File Offset: 0x000013BF
 		public override bool SupportMultiSelect
 		{
 			get
@@ -18,7 +15,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x06000098 RID: 152 RVA: 0x000031C2 File Offset: 0x000013C2
 		public ThreeNumberEditor()
 		{
 			this.xHeadText = "X";
@@ -26,7 +22,6 @@ namespace CocoStudio.Model.Editor
 			this.zHeadText = "Z";
 		}
 
-		// Token: 0x06000099 RID: 153 RVA: 0x000031EB File Offset: 0x000013EB
 		public ThreeNumberEditor(string xHead, string yHead, string zHead)
 		{
 			this.xHeadText = xHead;
@@ -34,7 +29,6 @@ namespace CocoStudio.Model.Editor
 			this.zHeadText = zHead;
 		}
 
-		// Token: 0x0600009A RID: 154 RVA: 0x00003208 File Offset: 0x00001408
 		protected override Widget OnCreateWidget()
 		{
 			this.xInnerEntry = new NoUndoNumEntry();
@@ -59,7 +53,6 @@ namespace CocoStudio.Model.Editor
 			return hbox;
 		}
 
-		// Token: 0x0600009B RID: 155 RVA: 0x00003304 File Offset: 0x00001504
 		protected override void OnSetControl()
 		{
 			Point3F point3F = (Point3F)base.PropertyItem.Values[0];
@@ -68,7 +61,6 @@ namespace CocoStudio.Model.Editor
 			this.zInnerEntry.Value = point3F.Z;
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x0000335C File Offset: 0x0000155C
 		protected virtual void OnXValueChanged(EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -82,7 +74,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x000033D8 File Offset: 0x000015D8
 		protected virtual void OnYValueChanged(EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -96,7 +87,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600009E RID: 158 RVA: 0x00003454 File Offset: 0x00001654
 		protected virtual void OnZValueChanged(EntryIntEventArgs e)
 		{
 			using (base.GetLock(true))
@@ -110,7 +100,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600009F RID: 159 RVA: 0x000034D0 File Offset: 0x000016D0
 		protected void CompareNumber(Func<Node3DObject, Node3DObject, bool> funcX, Func<Node3DObject, Node3DObject, bool> funcY, Func<Node3DObject, Node3DObject, bool> funcZ)
 		{
 			Point3F point3F = (Point3F)base.PropertyItem.Values[0];
@@ -146,40 +135,31 @@ namespace CocoStudio.Model.Editor
 			this.zInnerEntry.Value = point3F.Z;
 		}
 
-		// Token: 0x060000A0 RID: 160 RVA: 0x000035AF File Offset: 0x000017AF
 		private void XEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			this.OnXValueChanged(e);
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x000035B8 File Offset: 0x000017B8
 		private void YEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			this.OnYValueChanged(e);
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x000035C1 File Offset: 0x000017C1
 		private void ZEntryValueChangedHandler(object sender, EntryIntEventArgs e)
 		{
 			this.OnZValueChanged(e);
 		}
 
-		// Token: 0x04000042 RID: 66
 		protected NoUndoNumEntry xInnerEntry;
 
-		// Token: 0x04000043 RID: 67
 		protected NoUndoNumEntry yInnerEntry;
 
-		// Token: 0x04000044 RID: 68
 		protected NoUndoNumEntry zInnerEntry;
 
-		// Token: 0x04000045 RID: 69
 		private string xHeadText;
 
-		// Token: 0x04000046 RID: 70
 		private string yHeadText;
 
-		// Token: 0x04000047 RID: 71
 		private string zHeadText;
 	}
 }

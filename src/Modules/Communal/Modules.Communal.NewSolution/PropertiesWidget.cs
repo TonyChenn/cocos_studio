@@ -20,32 +20,20 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.NewSolution
 {
-	// Token: 0x02000015 RID: 21
 	[ToolboxItem(true)]
 	public class PropertiesWidget : Bin
 	{
-		// Token: 0x1700001E RID: 30
-		// (get) Token: 0x0600008E RID: 142 RVA: 0x00005368 File Offset: 0x00003568
-		// (set) Token: 0x0600008F RID: 143 RVA: 0x00005370 File Offset: 0x00003570
 		public bool IsEnable { get; private set; }
 
-		// Token: 0x14000004 RID: 4
-		// (add) Token: 0x06000090 RID: 144 RVA: 0x0000537C File Offset: 0x0000357C
-		// (remove) Token: 0x06000091 RID: 145 RVA: 0x000053B4 File Offset: 0x000035B4
 		public event EventHandler<EnableChangedArgs> EnableChanged;
 
-		// Token: 0x14000005 RID: 5
-		// (add) Token: 0x06000092 RID: 146 RVA: 0x000053EC File Offset: 0x000035EC
-		// (remove) Token: 0x06000093 RID: 147 RVA: 0x00005424 File Offset: 0x00003624
 		public event EventHandler<CreateParamsSetArgs> CreateParamsSet;
 
-		// Token: 0x06000094 RID: 148 RVA: 0x00005459 File Offset: 0x00003659
 		public PropertiesWidget()
 		{
 			throw new Exception("请使用有参构造");
 		}
 
-		// Token: 0x06000095 RID: 149 RVA: 0x0000546B File Offset: 0x0000366B
 		public PropertiesWidget(ISolutionTemplate slnTemplate)
 		{
 			this.Build();
@@ -57,7 +45,6 @@ namespace Modules.Communal.NewSolution
 			this.RefreshButtonEnable();
 		}
 
-		// Token: 0x06000096 RID: 150 RVA: 0x000054A0 File Offset: 0x000036A0
 		private void InitStyles()
 		{
 			if (Option.CurrentApp == EnumApp.Launcher)
@@ -105,7 +92,6 @@ namespace Modules.Communal.NewSolution
 			this.screenWidgetV.UseBgColor = true;
 		}
 
-		// Token: 0x06000097 RID: 151 RVA: 0x000056C4 File Offset: 0x000038C4
 		private void SetFontSizeRecursive(Widget widget, int size)
 		{
 			if (widget == null)
@@ -124,7 +110,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000098 RID: 152 RVA: 0x00005734 File Offset: 0x00003934
 		private void InitEvent()
 		{
 			this.entry_name.Changed += this.OnEntryNameChanged;
@@ -133,7 +118,6 @@ namespace Modules.Communal.NewSolution
 			this.entry_path.ActivatesDefault = true;
 		}
 
-		// Token: 0x06000099 RID: 153 RVA: 0x00005788 File Offset: 0x00003988
 		private void InitControls()
 		{
 			RadioGroup radioGroup = new RadioGroup("未命名");
@@ -173,7 +157,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x0600009A RID: 154 RVA: 0x0000592C File Offset: 0x00003B2C
 		private void InitDisplayText()
 		{
 			this.label_projTypeName.Text = this.solutionTemplate.Info.Name;
@@ -204,7 +187,6 @@ namespace Modules.Communal.NewSolution
 			this.SetFontSizeRecursive(this.table_property, 12);
 		}
 
-		// Token: 0x0600009B RID: 155 RVA: 0x00005AA0 File Offset: 0x00003CA0
 		protected override void OnActivate()
 		{
 			string info;
@@ -223,7 +205,6 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x0600009C RID: 156 RVA: 0x00005AE0 File Offset: 0x00003CE0
 		public CreateParams GetCreateParams(out string output)
 		{
 			if (!this.CheckParamsValidity(out output))
@@ -286,7 +267,6 @@ namespace Modules.Communal.NewSolution
 			return createParams;
 		}
 
-		// Token: 0x0600009D RID: 157 RVA: 0x00005BF0 File Offset: 0x00003DF0
 		private bool CheckParamsValidity(out string output)
 		{
 			string text = this.entry_name.Text;
@@ -362,7 +342,6 @@ namespace Modules.Communal.NewSolution
 			return true;
 		}
 
-		// Token: 0x0600009E RID: 158 RVA: 0x00005DC4 File Offset: 0x00003FC4
 		private string GetDefaultSolutionName(string path)
 		{
 			string defaultSolutionName = this.solutionTemplate.Info.DefaultSolutionName;
@@ -393,7 +372,6 @@ namespace Modules.Communal.NewSolution
 			return defaultSolutionName + num.ToString();
 		}
 
-		// Token: 0x0600009F RID: 159 RVA: 0x00005E40 File Offset: 0x00004040
 		private string GetPackageName(string projName)
 		{
 			string text = projName.Replace(",", "").Replace("_", "").Replace("-", "");
@@ -404,7 +382,6 @@ namespace Modules.Communal.NewSolution
 			return "org.cocos." + text;
 		}
 
-		// Token: 0x060000A0 RID: 160 RVA: 0x00005E98 File Offset: 0x00004098
 		private void RefreshButtonEnable()
 		{
 			bool isEnable = this.IsEnable;
@@ -422,21 +399,18 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x060000A1 RID: 161 RVA: 0x00005F1A File Offset: 0x0000411A
 		public override void Destroy()
 		{
 			this.tipicon_noFramework.HideTooltip();
 			base.Destroy();
 		}
 
-		// Token: 0x060000A2 RID: 162 RVA: 0x00005F2D File Offset: 0x0000412D
 		protected void OnEntryNameChanged(object sender, EventArgs e)
 		{
 			this.hasNameChanged = true;
 			this.RefreshButtonEnable();
 		}
 
-		// Token: 0x060000A3 RID: 163 RVA: 0x00005F3C File Offset: 0x0000413C
 		protected void OnBtnBrowseClicked(object sender, EventArgs e)
 		{
 			if (Option.IsXP)
@@ -468,7 +442,6 @@ namespace Modules.Communal.NewSolution
 			this.RefreshButtonEnable();
 		}
 
-		// Token: 0x060000A4 RID: 164 RVA: 0x00006024 File Offset: 0x00004224
 		protected void OnX86CheckBtnToggled(object sender, EventArgs e)
 		{
 			if (this.checkbutton_x86.Active)
@@ -479,7 +452,6 @@ namespace Modules.Communal.NewSolution
 			this.table_buildOptimize.HideAll();
 		}
 
-		// Token: 0x060000A5 RID: 165 RVA: 0x0000604C File Offset: 0x0000424C
 		private void ComboboxChangedHandler(object sender, EventArgs e)
 		{
 			if (this.combobox_framework.Active == -1)
@@ -511,7 +483,6 @@ namespace Modules.Communal.NewSolution
 			this.tipicon_noFramework.Hide();
 		}
 
-		// Token: 0x060000A6 RID: 166 RVA: 0x00006114 File Offset: 0x00004314
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -906,127 +877,86 @@ namespace Modules.Communal.NewSolution
 			this.button_browse.Clicked += this.OnBtnBrowseClicked;
 		}
 
-		// Token: 0x04000058 RID: 88
 		private bool hasNameChanged;
 
-		// Token: 0x04000059 RID: 89
 		private ISolutionTemplate solutionTemplate;
 
-		// Token: 0x0400005C RID: 92
 		private Alignment alignment_property;
 
-		// Token: 0x0400005D RID: 93
 		private Table table_property;
 
-		// Token: 0x0400005E RID: 94
 		private Entry entry_name;
 
-		// Token: 0x0400005F RID: 95
 		private HBox hbox_framework;
 
-		// Token: 0x04000060 RID: 96
 		private ComboBox combobox_framework;
 
-		// Token: 0x04000061 RID: 97
 		private VBox vbox_tip;
 
-		// Token: 0x04000062 RID: 98
 		private Alignment alignment_tipTop;
 
-		// Token: 0x04000063 RID: 99
 		private Alignment alignment_tipIcon;
 
-		// Token: 0x04000064 RID: 100
 		private TooltipIcon tipicon_noFramework;
 
-		// Token: 0x04000065 RID: 101
 		private Alignment alignment_tipBottom;
 
-		// Token: 0x04000066 RID: 102
 		private HBox hbox_path;
 
-		// Token: 0x04000067 RID: 103
 		private Entry entry_path;
 
-		// Token: 0x04000068 RID: 104
 		private Button button_browse;
 
-		// Token: 0x04000069 RID: 105
 		private HBox hbox_screen;
 
-		// Token: 0x0400006A RID: 106
 		private RadioItemWidget screenWidgetH;
 
-		// Token: 0x0400006B RID: 107
 		private RadioItemWidget screenWidgetV;
 
-		// Token: 0x0400006C RID: 108
 		private HBox hbox_x86;
 
-		// Token: 0x0400006D RID: 109
 		private CheckButton checkbutton_x86;
 
-		// Token: 0x0400006E RID: 110
 		private Label label_addition;
 
-		// Token: 0x0400006F RID: 111
 		private Label label_framework;
 
-		// Token: 0x04000070 RID: 112
 		private Label label_language;
 
-		// Token: 0x04000071 RID: 113
 		private Label label_name;
 
-		// Token: 0x04000072 RID: 114
 		private Label label_path;
 
-		// Token: 0x04000073 RID: 115
 		private Label label_projTypeName;
 
-		// Token: 0x04000074 RID: 116
 		private Label label_screen;
 
-		// Token: 0x04000075 RID: 117
 		private Label label_type;
 
-		// Token: 0x04000076 RID: 118
 		private Table table_buildOptimize;
 
-		// Token: 0x04000077 RID: 119
 		private Label label_optimizeType;
 
-		// Token: 0x04000078 RID: 120
 		private Label label_x86DefaultDes;
 
-		// Token: 0x04000079 RID: 121
 		private Label label_x86GCCDes;
 
-		// Token: 0x0400007A RID: 122
 		private RadioButton radiobutton_x86Default;
 
-		// Token: 0x0400007B RID: 123
 		private RadioButton radiobutton_x86GCC;
 
-		// Token: 0x0400007C RID: 124
 		private Table table_language;
 
-		// Token: 0x0400007D RID: 125
 		private Label label_cppDes;
 
-		// Token: 0x0400007E RID: 126
 		private Label label_jsDes;
 
-		// Token: 0x0400007F RID: 127
 		private Label label_luaDes;
 
-		// Token: 0x04000080 RID: 128
 		private RadioButton radiobutton1_lua;
 
-		// Token: 0x04000081 RID: 129
 		private RadioButton radiobutton2_cpp;
 
-		// Token: 0x04000082 RID: 130
 		private RadioButton radiobutton3_js;
 	}
 }

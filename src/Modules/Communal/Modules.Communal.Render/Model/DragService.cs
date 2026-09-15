@@ -17,10 +17,8 @@ using Mono.Addins;
 
 namespace Modules.Communal.Render.Model
 {
-	// Token: 0x02000023 RID: 35
 	internal class DragService : IDragEventHandler
 	{
-		// Token: 0x06000125 RID: 293 RVA: 0x00007AF4 File Offset: 0x00005CF4
 		public DragService(IGLView glView, IEventAggregator eventAggregator)
 		{
 			if (eventAggregator != null)
@@ -32,7 +30,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x06000126 RID: 294 RVA: 0x00007B48 File Offset: 0x00005D48
 		private IObjectDragMenu CreateDragMenu()
 		{
 			ExtensionNodeList extensionNodes = AddinManager.GetExtensionNodes(typeof(IObjectDragMenu));
@@ -52,7 +49,6 @@ namespace Modules.Communal.Render.Model
 			return result;
 		}
 
-		// Token: 0x06000127 RID: 295 RVA: 0x00007BEC File Offset: 0x00005DEC
 		public void OnDragLeave(DragLeaveArgs e)
 		{
 			if (this.lastDragOverObject != null && this.lastDragMotionArgs != null)
@@ -62,7 +58,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x06000128 RID: 296 RVA: 0x00007C30 File Offset: 0x00005E30
 		public void OnDragDrop(DragDropArgs e)
 		{
 			if (this.IsDropingFromOutside(e.Context))
@@ -76,7 +71,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x06000129 RID: 297 RVA: 0x00007C84 File Offset: 0x00005E84
 		public void OnDragOver(DragMotionArgs e)
 		{
 			this.CreateFileDropData(e);
@@ -88,7 +82,6 @@ namespace Modules.Communal.Render.Model
 			this.ChangeCurrentDragOverObject(currentDragOverObject, e);
 		}
 
-		// Token: 0x0600012A RID: 298 RVA: 0x00007CCC File Offset: 0x00005ECC
 		public void DragDataReceived(DragDataReceivedArgs args)
 		{
 			if (this.IsDropingFromOutside(args.Context) && this.lastDragDropArgs != null)
@@ -99,7 +92,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600012B RID: 299 RVA: 0x00007D28 File Offset: 0x00005F28
 		private VisualObject GetCurrentDragOverObject(int x, int y)
 		{
 			HitTestResult hitVisual = HitTestService.Current.GetHitVisual(this.rootVisualObject, new PointF((float)x, (float)y));
@@ -111,7 +103,6 @@ namespace Modules.Communal.Render.Model
 			return hitVisual2;
 		}
 
-		// Token: 0x0600012C RID: 300 RVA: 0x00007D70 File Offset: 0x00005F70
 		private void CreateFileDropData(DragMotionArgs e)
 		{
 			if (e != this.lastDragMotionArgs)
@@ -123,13 +114,11 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600012D RID: 301 RVA: 0x00007DBC File Offset: 0x00005FBC
 		private bool IsDropingFromOutside(DragContext e)
 		{
 			return e.DragProtocol == DragProtocol.Win32Dropfiles || e.GetSourceWidget() == null;
 		}
 
-		// Token: 0x0600012E RID: 302 RVA: 0x00007DFC File Offset: 0x00005FFC
 		private void ChangeCurrentDragOverObject(VisualObject currentDragOverObject, DragMotionArgs e)
 		{
 			if (this.lastDragOverObject != null && this.lastDragOverObject.Equals(currentDragOverObject))
@@ -150,7 +139,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x0600012F RID: 303 RVA: 0x00007E7C File Offset: 0x0000607C
 		private void DispatchDragDropEvent(DragDropArgs e)
 		{
 			if (this.lastDragOverObject == null)
@@ -168,7 +156,6 @@ namespace Modules.Communal.Render.Model
 			}
 		}
 
-		// Token: 0x06000130 RID: 304 RVA: 0x00007F1C File Offset: 0x0000611C
 		private bool DropResourceToReplace(DragDropArgs e)
 		{
 			object dragData = e.Context.GetDragData();
@@ -203,25 +190,18 @@ namespace Modules.Communal.Render.Model
 			return false;
 		}
 
-		// Token: 0x04000049 RID: 73
 		private IEventAggregator eventAggregator;
 
-		// Token: 0x0400004A RID: 74
 		private VisualObject rootVisualObject;
 
-		// Token: 0x0400004B RID: 75
 		private VisualObject lastDragOverObject;
 
-		// Token: 0x0400004C RID: 76
 		private IGLView glView;
 
-		// Token: 0x0400004D RID: 77
 		private DragMotionArgs lastDragMotionArgs;
 
-		// Token: 0x0400004E RID: 78
 		private DragDropArgs lastDragDropArgs;
 
-		// Token: 0x0400004F RID: 79
 		private IObjectDragMenu dragMenu;
 	}
 }

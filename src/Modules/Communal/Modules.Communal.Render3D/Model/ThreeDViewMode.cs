@@ -16,17 +16,14 @@ using Mono.Addins;
 
 namespace Modules.Communal.Render3D.Model
 {
-	// Token: 0x02000006 RID: 6
 	[Extension(typeof(IViewMode))]
 	public class ThreeDViewMode : BaseViewMode
 	{
-		// Token: 0x06000024 RID: 36 RVA: 0x00002823 File Offset: 0x00000A23
 		public override bool CanHandle(CocosItem cocosItem)
 		{
 			return cocosItem.Is3DFile();
 		}
 
-		// Token: 0x06000025 RID: 37 RVA: 0x0000282C File Offset: 0x00000A2C
 		public override void Initialize(IGLView glView)
 		{
 			base.Initialize(glView);
@@ -58,13 +55,11 @@ namespace Modules.Communal.Render3D.Model
 			this.currentOperate = this.toolGroup;
 		}
 
-		// Token: 0x06000026 RID: 38 RVA: 0x00002978 File Offset: 0x00000B78
 		public override IObjectContextMenu GetContextMenu()
 		{
 			return this.contextMenu;
 		}
 
-		// Token: 0x06000027 RID: 39 RVA: 0x00002980 File Offset: 0x00000B80
 		public override void Activated(CocosItem cocosItem)
 		{
 			base.Activated(cocosItem);
@@ -73,7 +68,6 @@ namespace Modules.Communal.Render3D.Model
 			Services.GetService<IComToolPad>().ControlsViewFilter = this._controlToolViewFilter;
 		}
 
-		// Token: 0x06000028 RID: 40 RVA: 0x000029C0 File Offset: 0x00000BC0
 		public override void OnDocumentChanged(CocosItem cocosItem)
 		{
 			base.OnDocumentChanged(cocosItem);
@@ -84,13 +78,11 @@ namespace Modules.Communal.Render3D.Model
 			}
 		}
 
-		// Token: 0x06000029 RID: 41 RVA: 0x000029E9 File Offset: 0x00000BE9
 		public override void ResetView()
 		{
 			this.MoveCanvasToZeroPoint();
 		}
 
-		// Token: 0x0600002A RID: 42 RVA: 0x000029F1 File Offset: 0x00000BF1
 		private void MoveCanvasToZeroPoint()
 		{
 			if (GameWindow.Current == null)
@@ -100,7 +92,6 @@ namespace Modules.Communal.Render3D.Model
 			GameWindow.Current.GetCanvasObject().Position = PointF.Empty;
 		}
 
-		// Token: 0x0600002B RID: 43 RVA: 0x00002A0F File Offset: 0x00000C0F
 		public override Widget GetToolbar()
 		{
 			if (this.toolbar == null)
@@ -110,13 +101,10 @@ namespace Modules.Communal.Render3D.Model
 			return this.toolbar;
 		}
 
-		// Token: 0x0400000B RID: 11
 		private IObjectContextMenu contextMenu;
 
-		// Token: 0x0400000C RID: 12
 		private Toolbar3D toolbar;
 
-		// Token: 0x0400000D RID: 13
 		private IControlsViewFilter _controlToolViewFilter = new ThreeDControlsViewFilter();
 	}
 }

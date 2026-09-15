@@ -8,21 +8,13 @@ using Stetic;
 
 namespace Modules.Communal.NewSolution
 {
-	// Token: 0x02000013 RID: 19
 	[ToolboxItem(true)]
 	public class SelectTemplateWidget : Bin
 	{
-		// Token: 0x14000003 RID: 3
-		// (add) Token: 0x0600007E RID: 126 RVA: 0x0000476C File Offset: 0x0000296C
-		// (remove) Token: 0x0600007F RID: 127 RVA: 0x000047A4 File Offset: 0x000029A4
 		public event EventHandler<TemplateSelectedArgs> TemplateSelected;
 
-		// Token: 0x1700001C RID: 28
-		// (get) Token: 0x06000080 RID: 128 RVA: 0x000047D9 File Offset: 0x000029D9
-		// (set) Token: 0x06000081 RID: 129 RVA: 0x000047E1 File Offset: 0x000029E1
 		public ISolutionTemplate CurrentTemplate { get; private set; }
 
-		// Token: 0x06000082 RID: 130 RVA: 0x000047EA File Offset: 0x000029EA
 		public SelectTemplateWidget()
 		{
 			this.Build();
@@ -30,7 +22,6 @@ namespace Modules.Communal.NewSolution
 			this.InitRadioItems();
 		}
 
-		// Token: 0x06000083 RID: 131 RVA: 0x00004804 File Offset: 0x00002A04
 		private void InitStyles()
 		{
 			if (Option.CurrentApp == EnumApp.Launcher)
@@ -48,7 +39,6 @@ namespace Modules.Communal.NewSolution
 			this.label_itemTitle.SetFontSize(12.0);
 		}
 
-		// Token: 0x06000084 RID: 132 RVA: 0x00004898 File Offset: 0x00002A98
 		private void InitRadioItems()
 		{
 			List<RadioItemWidget> solutionTemplates = TemplateManager.Instance.GetSolutionTemplates();
@@ -70,7 +60,6 @@ namespace Modules.Communal.NewSolution
 			soltuionGroups[0].Select();
 		}
 
-		// Token: 0x06000085 RID: 133 RVA: 0x000049B0 File Offset: 0x00002BB0
 		private void RefreshItemsTable(RadioGroup itemGroup)
 		{
 			foreach (object obj in this.table_slnItems)
@@ -109,7 +98,6 @@ namespace Modules.Communal.NewSolution
 			itemGroup.RadioItemList[0].Select();
 		}
 
-		// Token: 0x06000086 RID: 134 RVA: 0x00004B4C File Offset: 0x00002D4C
 		private void OnSolutionItemSelected(object sender, RadioItemArgs e)
 		{
 			this.CurrentTemplate = (e.RadioItem.Tag as ISolutionTemplate);
@@ -117,14 +105,12 @@ namespace Modules.Communal.NewSolution
 			this.label_itemTitle.Text = this.CurrentTemplate.Info.Name;
 		}
 
-		// Token: 0x06000087 RID: 135 RVA: 0x00004BA8 File Offset: 0x00002DA8
 		private void OnGroupTypeSelected(object sender, RadioItemArgs e)
 		{
 			GroupTypeContent groupTypeContent = e.RadioItem.GtkContent as GroupTypeContent;
 			this.RefreshItemsTable(groupTypeContent.Group);
 		}
 
-		// Token: 0x06000088 RID: 136 RVA: 0x00004BD2 File Offset: 0x00002DD2
 		private void OnCardWidgetDoubleClicked(object sender, RadioItemArgs e)
 		{
 			this.CurrentTemplate = (e.RadioItem.Tag as ISolutionTemplate);
@@ -134,13 +120,11 @@ namespace Modules.Communal.NewSolution
 			}
 		}
 
-		// Token: 0x06000089 RID: 137 RVA: 0x00004C09 File Offset: 0x00002E09
 		protected void OnRightVobxSizeAllocated(object o, SizeAllocatedArgs args)
 		{
 			this.label_itemDes.WidthRequest = args.Allocation.Width;
 		}
 
-		// Token: 0x0600008A RID: 138 RVA: 0x00004C24 File Offset: 0x00002E24
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -272,67 +256,46 @@ namespace Modules.Communal.NewSolution
 			this.vbox_rightMain.SizeAllocated += this.OnRightVobxSizeAllocated;
 		}
 
-		// Token: 0x04000041 RID: 65
 		private HBox hbox_main;
 
-		// Token: 0x04000042 RID: 66
 		private EventBox evtbx_leftListBg;
 
-		// Token: 0x04000043 RID: 67
 		private Alignment alignment_leftList;
 
-		// Token: 0x04000044 RID: 68
 		private VBox vbox_leftList;
 
-		// Token: 0x04000045 RID: 69
 		private EventBox evtbx_vSeperator;
 
-		// Token: 0x04000046 RID: 70
 		private EventBox evtbx_rightBg;
 
-		// Token: 0x04000047 RID: 71
 		private EventBox evtbx_rightBorder;
 
-		// Token: 0x04000048 RID: 72
 		private Alignment alignment_rightContent;
 
-		// Token: 0x04000049 RID: 73
 		private VBox vbox_rightMain;
 
-		// Token: 0x0400004A RID: 74
 		private ScrolledWindow scrolledwindow_itemTable;
 
-		// Token: 0x0400004B RID: 75
 		private Alignment alignment_table;
 
-		// Token: 0x0400004C RID: 76
 		private EventBox evtbx_tableBg;
 
-		// Token: 0x0400004D RID: 77
 		private Table table_slnItems;
 
-		// Token: 0x0400004E RID: 78
 		private Alignment alignment_rightSeperator;
 
-		// Token: 0x0400004F RID: 79
 		private EventBox evtbx_rightHSeperator;
 
-		// Token: 0x04000050 RID: 80
 		private Alignment alignment_itemTitle;
 
-		// Token: 0x04000051 RID: 81
 		private HBox hbox_itemTitle;
 
-		// Token: 0x04000052 RID: 82
 		private Label label_itemTitle;
 
-		// Token: 0x04000053 RID: 83
 		private Alignment alignment_itemDes;
 
-		// Token: 0x04000054 RID: 84
 		private HBox hbox_itemDes;
 
-		// Token: 0x04000055 RID: 85
 		private Label label_itemDes;
 	}
 }

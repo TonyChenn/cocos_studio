@@ -8,10 +8,8 @@ using Xwt.Drawing;
 
 namespace Modules.Communal.CocosAdapter
 {
-	// Token: 0x0200002A RID: 42
 	public class RunInfoDialog : Dialog
 	{
-		// Token: 0x0600015B RID: 347 RVA: 0x000077B7 File Offset: 0x000059B7
 		public RunInfoDialog()
 		{
 			this.Build();
@@ -19,7 +17,6 @@ namespace Modules.Communal.CocosAdapter
 			this.SetToDialogStyle(null, true, true, true);
 		}
 
-		// Token: 0x0600015C RID: 348 RVA: 0x000077D8 File Offset: 0x000059D8
 		private void Init()
 		{
 			base.Title = LanguageInfo.MessageBox_Notification;
@@ -34,7 +31,6 @@ namespace Modules.Communal.CocosAdapter
 			labelLinkButton.URL = LanguageAdapter.GetLocalizedUrl(HelpLinkUrl.AndroidDeviceConnect);
 		}
 
-		// Token: 0x0600015D RID: 349 RVA: 0x00007864 File Offset: 0x00005A64
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -150,40 +146,28 @@ namespace Modules.Communal.CocosAdapter
 			base.Hide();
 		}
 
-		// Token: 0x0400009C RID: 156
 		private EventBox evtbx_bg;
 
-		// Token: 0x0400009D RID: 157
 		private Alignment alignment_main;
 
-		// Token: 0x0400009E RID: 158
 		private HBox hbox_main;
 
-		// Token: 0x0400009F RID: 159
 		private VBox vbox_image;
 
-		// Token: 0x040000A0 RID: 160
 		private Alignment alignment_image;
 
-		// Token: 0x040000A1 RID: 161
 		private ImageBin imageBin;
 
-		// Token: 0x040000A2 RID: 162
 		private VBox vbox_text;
 
-		// Token: 0x040000A3 RID: 163
 		private Alignment alignment_text;
 
-		// Token: 0x040000A4 RID: 164
 		private Label label_text;
 
-		// Token: 0x040000A5 RID: 165
 		private HBox hbox_labelLink;
 
-		// Token: 0x040000A6 RID: 166
 		private Alignment alignment_labelLink;
 
-		// Token: 0x040000A7 RID: 167
 		private Button buttonOk;
 	}
 }

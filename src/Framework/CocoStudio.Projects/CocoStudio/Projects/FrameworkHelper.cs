@@ -11,11 +11,8 @@ using MonoDevelop.Core;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x0200004F RID: 79
 	public class FrameworkHelper
 	{
-		// Token: 0x1700004A RID: 74
-		// (get) Token: 0x06000225 RID: 549 RVA: 0x0000863C File Offset: 0x0000683C
 		private static string ServerVersionFilePath
 		{
 			get
@@ -24,8 +21,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x1700004B RID: 75
-		// (get) Token: 0x06000226 RID: 550 RVA: 0x0000864D File Offset: 0x0000684D
 		private static string LocalVersionFilePath
 		{
 			get
@@ -34,8 +29,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x1700004C RID: 76
-		// (get) Token: 0x06000227 RID: 551 RVA: 0x00008660 File Offset: 0x00006860
 		public static string FrameworkBaseDirectory
 		{
 			get
@@ -79,8 +72,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x1700004D RID: 77
-		// (get) Token: 0x06000228 RID: 552 RVA: 0x0000872C File Offset: 0x0000692C
 		public static string SupportNewestVersion
 		{
 			get
@@ -94,8 +85,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x1700004E RID: 78
-		// (get) Token: 0x06000229 RID: 553 RVA: 0x0000877C File Offset: 0x0000697C
 		public static IReadOnlyList<string> EnabledVersions
 		{
 			get
@@ -117,7 +106,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x0600022A RID: 554 RVA: 0x000087FC File Offset: 0x000069FC
 		public static void Initialize()
 		{
 			if (FrameworkHelper.hasInitialized)
@@ -143,7 +131,6 @@ namespace CocoStudio.Projects
 			FrameworkHelper.hasInitialized = true;
 		}
 
-		// Token: 0x0600022B RID: 555 RVA: 0x000088AC File Offset: 0x00006AAC
 		private static XElement GetXmlInfoFromServer()
 		{
 			try
@@ -165,7 +152,6 @@ namespace CocoStudio.Projects
 			return null;
 		}
 
-		// Token: 0x0600022C RID: 556 RVA: 0x00008934 File Offset: 0x00006B34
 		private static XElement GetXmlInfoFromLocalFile()
 		{
 			XElement result;
@@ -189,7 +175,6 @@ namespace CocoStudio.Projects
 			return result;
 		}
 
-		// Token: 0x0600022D RID: 557 RVA: 0x00008988 File Offset: 0x00006B88
 		private static List<string> LoadVersionFromXml(XElement xml)
 		{
 			List<string> list = new List<string>();
@@ -220,7 +205,6 @@ namespace CocoStudio.Projects
 			return list;
 		}
 
-		// Token: 0x0600022E RID: 558 RVA: 0x00008AA0 File Offset: 0x00006CA0
 		private static void InitUsingServer()
 		{
 			XElement xmlInfoFromServer = FrameworkHelper.GetXmlInfoFromServer();
@@ -235,7 +219,6 @@ namespace CocoStudio.Projects
 			FrameworkHelper.SaveXmlInfo(xmlInfoFromServer);
 		}
 
-		// Token: 0x0600022F RID: 559 RVA: 0x00008AFC File Offset: 0x00006CFC
 		private static void SaveXmlInfo(XElement xml)
 		{
 			try
@@ -253,7 +236,6 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000230 RID: 560 RVA: 0x00008B54 File Offset: 0x00006D54
 		public static bool IsVersionEnabled(string frameworkVersion)
 		{
 			if (string.IsNullOrEmpty(frameworkVersion))
@@ -270,7 +252,6 @@ namespace CocoStudio.Projects
 			return false;
 		}
 
-		// Token: 0x06000231 RID: 561 RVA: 0x00008BB4 File Offset: 0x00006DB4
 		public static Version TryParseVersion(string versionText)
 		{
 			Version result;
@@ -288,19 +269,14 @@ namespace CocoStudio.Projects
 			return result;
 		}
 
-		// Token: 0x04000087 RID: 135
 		private const string node_CocosStudio = "CocosStudio";
 
-		// Token: 0x04000088 RID: 136
 		private const string node_Framework = "Framework";
 
-		// Token: 0x04000089 RID: 137
 		private const string attribute_Version = "Version";
 
-		// Token: 0x0400008A RID: 138
 		private const string versionFileName = "FrameworkVersionList.xml";
 
-		// Token: 0x0400008B RID: 139
 		private static IReadOnlyList<string> defaultVersions = new List<string>
 		{
 			"cocos2d-x-3.4",
@@ -316,7 +292,6 @@ namespace CocoStudio.Projects
 			"cocos2d-x-3.9"
 		};
 
-		// Token: 0x0400008C RID: 140
 		public static IReadOnlyList<string> disableSupplymentVersions = new List<string>
 		{
 			"cocos2d-x-3.4",
@@ -326,13 +301,10 @@ namespace CocoStudio.Projects
 			"cocos2d-x-3.5"
 		};
 
-		// Token: 0x0400008D RID: 141
 		private static bool hasInitialized = false;
 
-		// Token: 0x0400008E RID: 142
 		private static string frameworkBaseDir = string.Empty;
 
-		// Token: 0x0400008F RID: 143
 		private static List<string> supportVersion;
 	}
 }

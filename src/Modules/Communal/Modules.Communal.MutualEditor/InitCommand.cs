@@ -11,17 +11,14 @@ using MonoDevelop.Components;
 
 namespace Modules.Communal.MutualEditor
 {
-	// Token: 0x02000007 RID: 7
 	[Extension(Type = typeof(ICommandHandle))]
 	public class InitCommand : ICommandHandle
 	{
-		// Token: 0x06000016 RID: 22 RVA: 0x0000248D File Offset: 0x0000068D
 		public void Initialize()
 		{
 			GlobalCommand.OpenCmd.Execute += InitCommand.OpenCmd_Execute;
 		}
 
-		// Token: 0x06000017 RID: 23 RVA: 0x000024A8 File Offset: 0x000006A8
 		private static void OpenCmd_Execute(object sender, CommandRunArgs e)
 		{
 			string text = null;

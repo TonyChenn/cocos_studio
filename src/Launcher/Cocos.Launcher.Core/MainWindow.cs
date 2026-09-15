@@ -12,20 +12,12 @@ using Xwt.GtkBackend;
 
 namespace Cocos.Launcher.Core
 {
-	// Token: 0x0200004B RID: 75
 	public class MainWindow : Gtk.Window
 	{
-		// Token: 0x1400000F RID: 15
-		// (add) Token: 0x0600027F RID: 639 RVA: 0x0000A2BC File Offset: 0x000084BC
-		// (remove) Token: 0x06000280 RID: 640 RVA: 0x0000A2F4 File Offset: 0x000084F4
 		public event EventHandler<CancelEventArgs> Closing;
 
-		// Token: 0x14000010 RID: 16
-		// (add) Token: 0x06000281 RID: 641 RVA: 0x0000A32C File Offset: 0x0000852C
-		// (remove) Token: 0x06000282 RID: 642 RVA: 0x0000A364 File Offset: 0x00008564
 		public event EventHandler<EventArgs> ShowByTray;
 
-		// Token: 0x06000283 RID: 643 RVA: 0x0000A399 File Offset: 0x00008599
 		public MainWindow() : base(Gtk.WindowType.Toplevel)
 		{
 			Services.MainWindow = this;
@@ -38,7 +30,6 @@ namespace Cocos.Launcher.Core
 			base.Present();
 		}
 
-		// Token: 0x06000284 RID: 644 RVA: 0x0000A3C6 File Offset: 0x000085C6
 		private void Initialize()
 		{
 			base.WindowPosition = WindowPosition.Center;
@@ -49,7 +40,6 @@ namespace Cocos.Launcher.Core
 			base.ShowAll();
 		}
 
-		// Token: 0x06000285 RID: 645 RVA: 0x0000A400 File Offset: 0x00008600
 		private void CreateComponents()
 		{
 			base.WidthRequest = 1100;
@@ -78,7 +68,6 @@ namespace Cocos.Launcher.Core
 			((BannerView)topContent).InitDefault();
 		}
 
-		// Token: 0x06000286 RID: 646 RVA: 0x0000A514 File Offset: 0x00008714
 		private void CreateWindowBorder(EventBox innerBox)
 		{
 			if (MonoDevelop.Core.Platform.IsWindows)
@@ -100,14 +89,12 @@ namespace Cocos.Launcher.Core
 			NativeGdkMac.SetNSWindowStyle(base.GdkWindow, style);
 		}
 
-		// Token: 0x06000287 RID: 647 RVA: 0x0000A58F File Offset: 0x0000878F
 		private void InitMenu()
 		{
 			Services.CommandService.SetMultiRootWindow(this);
 			this.MenuManager = MainPartFactory.GetMenuManager();
 		}
 
-		// Token: 0x06000288 RID: 648 RVA: 0x0000A5A7 File Offset: 0x000087A7
 		protected override void OnFocusGrabbed()
 		{
 			base.Show();
@@ -115,20 +102,17 @@ namespace Cocos.Launcher.Core
 			base.OnFocusGrabbed();
 		}
 
-		// Token: 0x06000289 RID: 649 RVA: 0x0000A5BB File Offset: 0x000087BB
 		private void MainWindow_DeleteEvent(object o, DeleteEventArgs args)
 		{
 			base.GdkWindow.Hide();
 		}
 
-		// Token: 0x0600028A RID: 650 RVA: 0x0000A5C8 File Offset: 0x000087C8
 		protected override bool OnDeleteEvent(Event evnt)
 		{
 			base.GdkWindow.Hide();
 			return true;
 		}
 
-		// Token: 0x0600028B RID: 651 RVA: 0x0000A5D8 File Offset: 0x000087D8
 		public bool MainWindowQuit()
 		{
 			if (this.Closing != null)
@@ -147,14 +131,12 @@ namespace Cocos.Launcher.Core
 			return true;
 		}
 
-		// Token: 0x0600028C RID: 652 RVA: 0x0000A62C File Offset: 0x0000882C
 		private void innerBox_ButtonPressEvent(object sender, ButtonPressEventArgs args)
 		{
 			EventBox eventBox = sender as EventBox;
 			eventBox.HasFocus = true;
 		}
 
-		// Token: 0x0600028D RID: 653 RVA: 0x0000A647 File Offset: 0x00008847
 		public void PresentWindow()
 		{
 			base.Show();
@@ -165,16 +147,12 @@ namespace Cocos.Launcher.Core
 			}
 		}
 
-		// Token: 0x040000F5 RID: 245
 		private HBox windowTitleHBox;
 
-		// Token: 0x040000F6 RID: 246
 		private HBox topHBox;
 
-		// Token: 0x040000F7 RID: 247
 		private HBox tabAreaHBox;
 
-		// Token: 0x040000F8 RID: 248
 		public MenuManager MenuManager;
 	}
 }

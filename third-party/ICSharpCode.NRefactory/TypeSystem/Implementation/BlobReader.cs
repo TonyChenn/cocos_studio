@@ -5,10 +5,8 @@ using ICSharpCode.NRefactory.Semantics;
 
 namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 {
-	// Token: 0x02000077 RID: 119
 	internal sealed class BlobReader
 	{
-		// Token: 0x060003CA RID: 970 RVA: 0x000091D0 File Offset: 0x000081D0
 		internal static int GetBlobHashCode(byte[] blob)
 		{
 			int num = 0;
@@ -20,7 +18,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return num;
 		}
 
-		// Token: 0x060003CB RID: 971 RVA: 0x00009200 File Offset: 0x00008200
 		internal static bool BlobEquals(byte[] a, byte[] b)
 		{
 			if (a.Length != b.Length)
@@ -37,7 +34,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return true;
 		}
 
-		// Token: 0x060003CC RID: 972 RVA: 0x00009230 File Offset: 0x00008230
 		public BlobReader(byte[] buffer, IAssembly currentResolvedAssembly)
 		{
 			if (buffer == null)
@@ -48,19 +44,16 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			this.currentResolvedAssembly = currentResolvedAssembly;
 		}
 
-		// Token: 0x060003CD RID: 973 RVA: 0x00009254 File Offset: 0x00008254
 		public byte ReadByte()
 		{
 			return this.buffer[this.position++];
 		}
 
-		// Token: 0x060003CE RID: 974 RVA: 0x00009279 File Offset: 0x00008279
 		public sbyte ReadSByte()
 		{
 			return (sbyte)this.ReadByte();
 		}
 
-		// Token: 0x060003CF RID: 975 RVA: 0x00009284 File Offset: 0x00008284
 		public byte[] ReadBytes(int length)
 		{
 			byte[] array = new byte[length];
@@ -69,7 +62,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return array;
 		}
 
-		// Token: 0x060003D0 RID: 976 RVA: 0x000092BC File Offset: 0x000082BC
 		public ushort ReadUInt16()
 		{
 			ushort result = (ushort)((int)this.buffer[this.position] | (int)this.buffer[this.position + 1] << 8);
@@ -77,13 +69,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return result;
 		}
 
-		// Token: 0x060003D1 RID: 977 RVA: 0x000092F9 File Offset: 0x000082F9
 		public short ReadInt16()
 		{
 			return (short)this.ReadUInt16();
 		}
 
-		// Token: 0x060003D2 RID: 978 RVA: 0x00009304 File Offset: 0x00008304
 		public uint ReadUInt32()
 		{
 			uint result = (uint)((int)this.buffer[this.position] | (int)this.buffer[this.position + 1] << 8 | (int)this.buffer[this.position + 2] << 16 | (int)this.buffer[this.position + 3] << 24);
@@ -91,13 +81,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return result;
 		}
 
-		// Token: 0x060003D3 RID: 979 RVA: 0x00009366 File Offset: 0x00008366
 		public int ReadInt32()
 		{
 			return (int)this.ReadUInt32();
 		}
 
-		// Token: 0x060003D4 RID: 980 RVA: 0x00009370 File Offset: 0x00008370
 		public ulong ReadUInt64()
 		{
 			uint num = this.ReadUInt32();
@@ -105,13 +93,11 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return (ulong)num2 << 32 | (ulong)num;
 		}
 
-		// Token: 0x060003D5 RID: 981 RVA: 0x00009393 File Offset: 0x00008393
 		public long ReadInt64()
 		{
 			return (long)this.ReadUInt64();
 		}
 
-		// Token: 0x060003D6 RID: 982 RVA: 0x0000939C File Offset: 0x0000839C
 		public uint ReadCompressedUInt32()
 		{
 			byte b = this.ReadByte();
@@ -126,7 +112,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return (uint)(((int)b & -193) << 24 | (int)this.ReadByte() << 16 | (int)this.ReadByte() << 8 | (int)this.ReadByte());
 		}
 
-		// Token: 0x060003D7 RID: 983 RVA: 0x000093F8 File Offset: 0x000083F8
 		public float ReadSingle()
 		{
 			if (!BitConverter.IsLittleEndian)
@@ -140,7 +125,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return result;
 		}
 
-		// Token: 0x060003D8 RID: 984 RVA: 0x00009444 File Offset: 0x00008444
 		public double ReadDouble()
 		{
 			if (!BitConverter.IsLittleEndian)
@@ -154,7 +138,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return result;
 		}
 
-		// Token: 0x060003D9 RID: 985 RVA: 0x00009490 File Offset: 0x00008490
 		public ResolveResult ReadFixedArg(IType argType)
 		{
 			if (argType.Kind != TypeKind.Array)
@@ -188,7 +171,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return new ArrayCreateResolveResult(argType, sizeArguments, array);
 		}
 
-		// Token: 0x060003DA RID: 986 RVA: 0x00009554 File Offset: 0x00008554
 		public ResolveResult ReadElem(IType elementType)
 		{
 			ITypeDefinition definition;
@@ -225,7 +207,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			}
 		}
 
-		// Token: 0x060003DB RID: 987 RVA: 0x000095EC File Offset: 0x000085EC
 		private object ReadElemValue(KnownTypeCode typeCode)
 		{
 			switch (typeCode)
@@ -260,7 +241,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			throw new NotSupportedException();
 		}
 
-		// Token: 0x060003DC RID: 988 RVA: 0x000096EC File Offset: 0x000086EC
 		public string ReadSerString()
 		{
 			if (this.buffer[this.position] == 255)
@@ -278,7 +258,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return @string;
 		}
 
-		// Token: 0x060003DD RID: 989 RVA: 0x00009798 File Offset: 0x00008798
 		public KeyValuePair<IMember, ResolveResult> ReadNamedArg(IType attributeType)
 		{
 			byte b = this.ReadByte();
@@ -308,7 +287,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return new KeyValuePair<IMember, ResolveResult>(key, value);
 		}
 
-		// Token: 0x060003DE RID: 990 RVA: 0x00009878 File Offset: 0x00008878
 		private IType ReadCustomAttributeFieldOrPropType()
 		{
 			ICompilation compilation = this.currentResolvedAssembly.Compilation;
@@ -371,7 +349,6 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			throw new NotSupportedException(string.Format("Custom attribute type 0x{0:x} is not supported.", b));
 		}
 
-		// Token: 0x060003DF RID: 991 RVA: 0x000099B0 File Offset: 0x000089B0
 		private IType ReadType()
 		{
 			string reflectionTypeName = this.ReadSerString();
@@ -389,13 +366,10 @@ namespace ICSharpCode.NRefactory.TypeSystem.Implementation
 			return type;
 		}
 
-		// Token: 0x040000F6 RID: 246
 		private byte[] buffer;
 
-		// Token: 0x040000F7 RID: 247
 		private int position;
 
-		// Token: 0x040000F8 RID: 248
 		private readonly IAssembly currentResolvedAssembly;
 	}
 }

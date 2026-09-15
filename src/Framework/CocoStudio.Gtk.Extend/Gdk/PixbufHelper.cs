@@ -3,10 +3,8 @@ using System.IO;
 
 namespace Gdk
 {
-	// Token: 0x02000067 RID: 103
 	public static class PixbufHelper
 	{
-		// Token: 0x0600023B RID: 571 RVA: 0x00009D30 File Offset: 0x00007F30
 		public static Pixbuf Load(string filePath)
 		{
 			Pixbuf result;
@@ -31,7 +29,6 @@ namespace Gdk
 			return result;
 		}
 
-		// Token: 0x0600023C RID: 572 RVA: 0x00009D94 File Offset: 0x00007F94
 		public static Pixbuf Load(string filePath, out string format)
 		{
 			format = string.Empty;
@@ -61,7 +58,6 @@ namespace Gdk
 			return result;
 		}
 
-		// Token: 0x0600023D RID: 573 RVA: 0x00009E24 File Offset: 0x00008024
 		public static bool Save(Pixbuf buf, string filePath, string type)
 		{
 			bool result = false;

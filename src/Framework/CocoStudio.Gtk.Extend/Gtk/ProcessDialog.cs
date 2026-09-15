@@ -8,10 +8,8 @@ using Stetic;
 
 namespace Gtk
 {
-	// Token: 0x020000A2 RID: 162
 	public class ProcessDialog : Dialog
 	{
-		// Token: 0x06000389 RID: 905 RVA: 0x00011764 File Offset: 0x0000F964
 		public ProcessDialog(string title, bool showOuput, bool initExpandOutput = false)
 		{
 			this.Build();
@@ -38,7 +36,6 @@ namespace Gtk
 			this.SetToDialogStyle(this.parentWindow, true, true, true);
 		}
 
-		// Token: 0x0600038A RID: 906 RVA: 0x000118A8 File Offset: 0x0000FAA8
 		public void StartRunning(CocosMonitor monitor)
 		{
 			this.monitor = monitor;
@@ -49,7 +46,6 @@ namespace Gtk
 			Timeout.Add(10U, () => this.RefreshUI(monitor));
 		}
 
-		// Token: 0x0600038B RID: 907 RVA: 0x00011910 File Offset: 0x0000FB10
 		private bool RefreshUI(CocosMonitor monitor)
 		{
 			bool result;
@@ -96,7 +92,6 @@ namespace Gtk
 			return result;
 		}
 
-		// Token: 0x0600038C RID: 908 RVA: 0x00011A24 File Offset: 0x0000FC24
 		private void CloseWindow()
 		{
 			if (!this.hasDestroyed)
@@ -106,7 +101,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600038D RID: 909 RVA: 0x00011A4C File Offset: 0x0000FC4C
 		private void ButtonCancelClickedHandler(object sender, EventArgs e)
 		{
 			if (this.monitor != null && this.monitor.IsProcessing)
@@ -119,7 +113,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x0600038E RID: 910 RVA: 0x00011B34 File Offset: 0x0000FD34
 		private void OutputUpdatedHandler(object sender, OutputEventArgs e)
 		{
 			Timeout.Add(0U, delegate
@@ -131,7 +124,6 @@ namespace Gtk
 			});
 		}
 
-		// Token: 0x0600038F RID: 911 RVA: 0x00011B6C File Offset: 0x0000FD6C
 		private void DestroyedHandler(object sender, EventArgs e)
 		{
 			if (this.monitor != null)
@@ -149,7 +141,6 @@ namespace Gtk
 			base.Respond(ResponseType.Close);
 		}
 
-		// Token: 0x06000390 RID: 912 RVA: 0x00011BE8 File Offset: 0x0000FDE8
 		protected virtual void Build()
 		{
 			Gui.Initialize(this);
@@ -265,58 +256,40 @@ namespace Gtk
 			base.Hide();
 		}
 
-		// Token: 0x04000432 RID: 1074
 		private Window parentWindow;
 
-		// Token: 0x04000433 RID: 1075
 		private bool isParentWndModal;
 
-		// Token: 0x04000434 RID: 1076
 		private CocosMonitor monitor;
 
-		// Token: 0x04000435 RID: 1077
 		private bool isShowOutput;
 
-		// Token: 0x04000436 RID: 1078
 		private bool hasDestroyed = false;
 
-		// Token: 0x04000437 RID: 1079
 		private VBox vbox_main;
 
-		// Token: 0x04000438 RID: 1080
 		private Label label_topInfo;
 
-		// Token: 0x04000439 RID: 1081
 		private HBox hbox_process;
 
-		// Token: 0x0400043A RID: 1082
 		private Button button_cancel;
 
-		// Token: 0x0400043B RID: 1083
 		private VBox vbox_progressBar;
 
-		// Token: 0x0400043C RID: 1084
 		private Alignment alignment_progressTop;
 
-		// Token: 0x0400043D RID: 1085
 		private ProgressBar progressbar;
 
-		// Token: 0x0400043E RID: 1086
 		private Alignment alignment_progressBottom;
 
-		// Token: 0x0400043F RID: 1087
 		private Expander expander_output;
 
-		// Token: 0x04000440 RID: 1088
 		private ScrolledWindow GtkScrolledWindow;
 
-		// Token: 0x04000441 RID: 1089
 		private TextView textview_output;
 
-		// Token: 0x04000442 RID: 1090
 		private Label GtkLabel_showOutput;
 
-		// Token: 0x04000443 RID: 1091
 		private Alignment alignment_occupy;
 	}
 }

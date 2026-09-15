@@ -9,34 +9,22 @@ using Mono.Addins;
 
 namespace EditorCommon.JsonModel.Component.GUI
 {
-	// Token: 0x0200001D RID: 29
 	[Extension(typeof(IJsonModel))]
 	[DataContract]
 	internal class ComGUIExportSurrogate : BaseEntitySurrogate
 	{
-		// Token: 0x17000070 RID: 112
-		// (get) Token: 0x06000143 RID: 323 RVA: 0x00005715 File Offset: 0x00003915
-		// (set) Token: 0x06000144 RID: 324 RVA: 0x0000571D File Offset: 0x0000391D
 		[DataMember]
 		public WidgetSurrogate options { get; set; }
 
-		// Token: 0x17000071 RID: 113
-		// (get) Token: 0x06000145 RID: 325 RVA: 0x00005726 File Offset: 0x00003926
-		// (set) Token: 0x06000146 RID: 326 RVA: 0x0000572E File Offset: 0x0000392E
 		[DataMember]
 		public List<ComGUIExportSurrogate> children { get; set; }
 
-		// Token: 0x17000072 RID: 114
-		// (get) Token: 0x06000147 RID: 327 RVA: 0x00005737 File Offset: 0x00003937
-		// (set) Token: 0x06000148 RID: 328 RVA: 0x0000573F File Offset: 0x0000393F
 		public ComGUIExportSurrogate parent { get; set; }
 
-		// Token: 0x06000149 RID: 329 RVA: 0x00005748 File Offset: 0x00003948
 		protected ComGUIExportSurrogate()
 		{
 		}
 
-		// Token: 0x0600014A RID: 330 RVA: 0x00005750 File Offset: 0x00003950
 		public override void SetValue(object obj)
 		{
 			AbstractNodeObjectData abstractNodeObjectData = obj as AbstractNodeObjectData;
@@ -124,7 +112,6 @@ namespace EditorCommon.JsonModel.Component.GUI
 			}
 		}
 
-		// Token: 0x0600014B RID: 331 RVA: 0x00005A60 File Offset: 0x00003C60
 		public void ConvertScrollViewChildrenPercentValue(AbstractNodeObjectData newObj)
 		{
 			float num = 1f;
@@ -153,7 +140,6 @@ namespace EditorCommon.JsonModel.Component.GUI
 			}
 		}
 
-		// Token: 0x0600014C RID: 332 RVA: 0x00005B90 File Offset: 0x00003D90
 		public void ConvertWidgetPositionFromLayout(AbstractNodeObjectData newObj)
 		{
 			WidgetObjectData widgetObjectData = newObj as WidgetObjectData;
@@ -258,7 +244,6 @@ namespace EditorCommon.JsonModel.Component.GUI
 			}
 		}
 
-		// Token: 0x0600014D RID: 333 RVA: 0x00006260 File Offset: 0x00004460
 		private float calculateLinearBrothersMargin(bool isHorizontal)
 		{
 			float num = 0f;
@@ -293,7 +278,6 @@ namespace EditorCommon.JsonModel.Component.GUI
 			return num;
 		}
 
-		// Token: 0x0600014E RID: 334 RVA: 0x000063A8 File Offset: 0x000045A8
 		public virtual void RefreshChildPropertyAfferInitFor3X()
 		{
 			Point point = new Point((int)this.options.width, (int)this.options.height);
@@ -333,58 +317,40 @@ namespace EditorCommon.JsonModel.Component.GUI
 			}
 		}
 
-		// Token: 0x04000084 RID: 132
 		private const string classname_Panel = "Panel";
 
-		// Token: 0x04000085 RID: 133
 		private const string classname_Button = "Button";
 
-		// Token: 0x04000086 RID: 134
 		private const string classname_CheckBox = "CheckBox";
 
-		// Token: 0x04000087 RID: 135
 		private const string classname_ImageView = "ImageView";
 
-		// Token: 0x04000088 RID: 136
 		private const string classname_TextAtlas = "TextAtlas";
 
-		// Token: 0x04000089 RID: 137
 		private const string classname_LabelAtlas = "LabelAtlas";
 
-		// Token: 0x0400008A RID: 138
 		private const string classname_LabelBMFont = "LabelBMFont";
 
-		// Token: 0x0400008B RID: 139
 		private const string classname_TextBMFont = "TextBMFont";
 
-		// Token: 0x0400008C RID: 140
 		private const string classname_Text = "Text";
 
-		// Token: 0x0400008D RID: 141
 		private const string classname_LoadingBar = "LoadingBar";
 
-		// Token: 0x0400008E RID: 142
 		private const string classname_TextField = "TextField";
 
-		// Token: 0x0400008F RID: 143
 		private const string classname_Slider = "Slider";
 
-		// Token: 0x04000090 RID: 144
 		private const string classname_Layout = "Layout";
 
-		// Token: 0x04000091 RID: 145
 		private const string classname_ScrollView = "ScrollView";
 
-		// Token: 0x04000092 RID: 146
 		private const string classname_ListView = "ListView";
 
-		// Token: 0x04000093 RID: 147
 		private const string classname_PageView = "PageView";
 
-		// Token: 0x04000094 RID: 148
 		private const string classname_Widget = "Widget";
 
-		// Token: 0x04000095 RID: 149
 		private const string classname_Label = "Label";
 	}
 }

@@ -8,11 +8,8 @@ using Modules.Communal.PropertyGrid;
 
 namespace CocoStudio.Model.Editor
 {
-	// Token: 0x0200004E RID: 78
 	public class AnimateListEditor : BaseEditor
 	{
-		// Token: 0x170000EA RID: 234
-		// (get) Token: 0x0600029E RID: 670 RVA: 0x00008660 File Offset: 0x00006860
 		public override bool IsMultiLine
 		{
 			get
@@ -21,7 +18,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x0600029F RID: 671 RVA: 0x00008674 File Offset: 0x00006874
 		protected override Widget OnCreateWidget()
 		{
 			this.table = new Table(3U, 3U, false);
@@ -73,21 +69,18 @@ namespace CocoStudio.Model.Editor
 			return this.table;
 		}
 
-		// Token: 0x060002A0 RID: 672 RVA: 0x000089F8 File Offset: 0x00006BF8
 		private void singleTextBox_EntryValueChanged(object sender, EntryIntEventArgs e)
 		{
 			this.actionValue = new InnerActionValue(this.actionValue.ActionType, this.actionValue.AnimationNames, this.actionValue.ActivedAnimationName, (int)this.singleTextBox.Value);
 			base.UpdatePropertyValue(this.actionValue, null);
 		}
 
-		// Token: 0x060002A1 RID: 673 RVA: 0x00008A4C File Offset: 0x00006C4C
 		private void animationCombox_Changed(object sender, EventArgs e)
 		{
 			this.actionValue = new InnerActionValue(this.actionValue.ActionType, this.actionValue.AnimationNames, this.animationCombox.ActiveText, this.actionValue.SingleFrameIndex);
 			base.UpdatePropertyValue(this.actionValue, null);
 		}
 
-		// Token: 0x060002A2 RID: 674 RVA: 0x00008AA0 File Offset: 0x00006CA0
 		private void typeCombox_Changed(object sender, EventArgs e)
 		{
 			if (this.typeCombox.Active == 2)
@@ -116,7 +109,6 @@ namespace CocoStudio.Model.Editor
 			base.UpdatePropertyValue(this.actionValue, null);
 		}
 
-		// Token: 0x060002A3 RID: 675 RVA: 0x00008BC8 File Offset: 0x00006DC8
 		protected override void OnSetControl()
 		{
 			this.actionValue = (InnerActionValue)base.PropertyItem.Values[0];
@@ -139,7 +131,6 @@ namespace CocoStudio.Model.Editor
 			}
 		}
 
-		// Token: 0x060002A4 RID: 676 RVA: 0x00008CD8 File Offset: 0x00006ED8
 		private void InitActionType()
 		{
 			this.typeCombox.Clear();
@@ -164,7 +155,6 @@ namespace CocoStudio.Model.Editor
 			this.typeCombox.AddAttribute(cell, "text", 0);
 		}
 
-		// Token: 0x060002A5 RID: 677 RVA: 0x00008DA0 File Offset: 0x00006FA0
 		private void InitAnimationNames()
 		{
 			this.animationCombox.Clear();
@@ -199,46 +189,32 @@ namespace CocoStudio.Model.Editor
 			this.animationCombox.Active = active;
 		}
 
-		// Token: 0x04000115 RID: 277
 		private Table table;
 
-		// Token: 0x04000116 RID: 278
 		private Table firTable;
 
-		// Token: 0x04000117 RID: 279
 		private Label firLabel;
 
-		// Token: 0x04000118 RID: 280
 		private ComBoxEx typeCombox;
 
-		// Token: 0x04000119 RID: 281
 		private Alignment firAlign;
 
-		// Token: 0x0400011A RID: 282
 		private Table secTable;
 
-		// Token: 0x0400011B RID: 283
 		private Label secLabel;
 
-		// Token: 0x0400011C RID: 284
 		private EntryIntEx singleTextBox;
 
-		// Token: 0x0400011D RID: 285
 		private Alignment secAlign;
 
-		// Token: 0x0400011E RID: 286
 		private Table thiTable;
 
-		// Token: 0x0400011F RID: 287
 		private Label thiLabel;
 
-		// Token: 0x04000120 RID: 288
 		private ComBoxEx animationCombox;
 
-		// Token: 0x04000121 RID: 289
 		private Alignment thiAlign;
 
-		// Token: 0x04000122 RID: 290
 		private InnerActionValue actionValue;
 	}
 }

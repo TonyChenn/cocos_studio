@@ -10,12 +10,9 @@ using MonoDevelop.Core.Serialization;
 
 namespace CocoStudio.Projects
 {
-	// Token: 0x02000053 RID: 83
 	[DataItem(Name = "Fnt")]
 	public class FntFile : CompositeResourceFile
 	{
-		// Token: 0x17000052 RID: 82
-		// (get) Token: 0x06000246 RID: 582 RVA: 0x00009074 File Offset: 0x00007274
 		internal override string PreviewImagePath
 		{
 			get
@@ -32,22 +29,18 @@ namespace CocoStudio.Projects
 			}
 		}
 
-		// Token: 0x06000247 RID: 583 RVA: 0x000090E3 File Offset: 0x000072E3
 		private FntFile()
 		{
 		}
 
-		// Token: 0x06000248 RID: 584 RVA: 0x000090EB File Offset: 0x000072EB
 		public FntFile(FilePath file) : base(file)
 		{
 		}
 
-		// Token: 0x06000249 RID: 585 RVA: 0x000090F4 File Offset: 0x000072F4
 		public FntFile(ResourceData resourceData) : base(resourceData)
 		{
 		}
 
-		// Token: 0x0600024A RID: 586 RVA: 0x00009100 File Offset: 0x00007300
 		protected override void OnMove(FilePath newMovePath)
 		{
 			try
@@ -65,7 +58,6 @@ namespace CocoStudio.Projects
 			base.OnMove(newMovePath);
 		}
 
-		// Token: 0x0600024B RID: 587 RVA: 0x00009174 File Offset: 0x00007374
 		protected override ICompositeResourceProcesser GetCompositeResourceProcesser()
 		{
 			if (FntFile.pairResourceProcesser == null)
@@ -75,7 +67,6 @@ namespace CocoStudio.Projects
 			return FntFile.pairResourceProcesser;
 		}
 
-		// Token: 0x0600024C RID: 588 RVA: 0x0000919C File Offset: 0x0000739C
 		protected override DataError OnCheckDataError()
 		{
 			string text;
@@ -87,7 +78,6 @@ namespace CocoStudio.Projects
 			return base.OnCheckDataError();
 		}
 
-		// Token: 0x0600024D RID: 589 RVA: 0x000091CC File Offset: 0x000073CC
 		protected override void OnRefresh()
 		{
 			if (File.Exists(this.FullPath))
@@ -97,13 +87,10 @@ namespace CocoStudio.Projects
 			base.OnRefresh();
 		}
 
-		// Token: 0x04000098 RID: 152
 		public const string FileSuffix = ".fnt";
 
-		// Token: 0x04000099 RID: 153
 		private string previewImagePath;
 
-		// Token: 0x0400009A RID: 154
 		private static ICompositeResourceProcesser pairResourceProcesser;
 	}
 }

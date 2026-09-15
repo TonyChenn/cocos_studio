@@ -5,10 +5,8 @@ using MonoDevelop.Core;
 
 namespace Gtk
 {
-	// Token: 0x020000A6 RID: 166
 	public static class WindowStyleExtend
 	{
-		// Token: 0x060003A7 RID: 935 RVA: 0x00012D38 File Offset: 0x00010F38
 		public static void SetToDialogStyle(this Window window, Window parentWindow = null, bool closeable = true, bool centerToParent = true, bool setTransient = true)
 		{
 			if (parentWindow == null)
@@ -39,7 +37,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x060003A8 RID: 936 RVA: 0x00012DC4 File Offset: 0x00010FC4
 		public static void PreSetBeforeShow(this Window child, int width, int height, Window parent)
 		{
 			int num;
@@ -60,7 +57,6 @@ namespace Gtk
 			}
 		}
 
-		// Token: 0x060003A9 RID: 937 RVA: 0x00012E3C File Offset: 0x0001103C
 		public static void CenterToParentWindow(this Window child, Window parent)
 		{
 			int num;
@@ -77,7 +73,6 @@ namespace Gtk
 			child.Move(x, y);
 		}
 
-		// Token: 0x060003AA RID: 938 RVA: 0x00012E98 File Offset: 0x00011098
 		public static void RemoveWindowBorder(this Window wnd)
 		{
 			if (Platform.IsMac)

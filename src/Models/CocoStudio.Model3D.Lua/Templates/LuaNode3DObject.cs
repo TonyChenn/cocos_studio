@@ -6,24 +6,20 @@ using CocoStudio.Model.Lua.Templates;
 
 namespace CocoStudio.Model3D.Lua.Templates
 {
-	// Token: 0x02000002 RID: 2
 	[GeneratedCode("Microsoft.VisualStudio.TextTemplating", "12.0.0.0")]
 	public class LuaNode3DObject : LuaNodeObject
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
 		public override string TransformText()
 		{
 			base.Write("\r\n");
 			return base.GenerationEnvironment.ToString();
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x00002068 File Offset: 0x00000268
 		public override bool CanSerialize(BaseObjectData objectData)
 		{
 			return typeof(Node3DObjectData) == objectData.GetType();
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x0000208C File Offset: 0x0000028C
 		public override void InitializeObject(BaseObjectData objectData)
 		{
 			Node3DObjectData node3DObjectData = objectData as Node3DObjectData;

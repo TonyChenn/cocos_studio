@@ -7,14 +7,11 @@ namespace ICSharpCode.NRefactory.Documentation
 	/// <summary>
 	/// Represents a documentation comment.
 	/// </summary>
-	// Token: 0x02000007 RID: 7
 	public class DocumentationComment
 	{
 		/// <summary>
 		/// Gets the XML code for this documentation comment.
 		/// </summary>
-		// Token: 0x17000006 RID: 6
-		// (get) Token: 0x0600001A RID: 26 RVA: 0x00002A6D File Offset: 0x00001A6D
 		public ITextSource Xml
 		{
 			get
@@ -28,7 +25,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// </summary>
 		/// <param name="xml">The XML text.</param>
 		/// <param name="context">Context for resolving cref attributes.</param>
-		// Token: 0x0600001B RID: 27 RVA: 0x00002A75 File Offset: 0x00001A75
 		public DocumentationComment(ITextSource xml, ITypeResolveContext context)
 		{
 			if (xml == null)
@@ -48,7 +44,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// </summary>
 		/// <param name="xml">The XML text.</param>
 		/// <param name="context">Context for resolving cref attributes.</param>
-		// Token: 0x0600001C RID: 28 RVA: 0x00002AA7 File Offset: 0x00001AA7
 		public DocumentationComment(string xml, ITypeResolveContext context)
 		{
 			if (xml == null)
@@ -67,7 +62,6 @@ namespace ICSharpCode.NRefactory.Documentation
 		/// Resolves the given cref value to an entity.
 		/// Returns null if the entity is not found, or if the cref attribute is syntactically invalid.
 		/// </summary>
-		// Token: 0x0600001D RID: 29 RVA: 0x00002AE0 File Offset: 0x00001AE0
 		public virtual IEntity ResolveCref(string cref)
 		{
 			IEntity result;
@@ -82,13 +76,11 @@ namespace ICSharpCode.NRefactory.Documentation
 			return result;
 		}
 
-		// Token: 0x0600001E RID: 30 RVA: 0x00002B14 File Offset: 0x00001B14
 		public override string ToString()
 		{
 			return this.Xml.Text;
 		}
 
-		// Token: 0x0600001F RID: 31 RVA: 0x00002B21 File Offset: 0x00001B21
 		public static implicit operator string(DocumentationComment documentationComment)
 		{
 			if (documentationComment != null)
@@ -98,10 +90,8 @@ namespace ICSharpCode.NRefactory.Documentation
 			return null;
 		}
 
-		// Token: 0x0400000E RID: 14
 		private ITextSource xml;
 
-		// Token: 0x0400000F RID: 15
 		protected readonly ITypeResolveContext context;
 	}
 }

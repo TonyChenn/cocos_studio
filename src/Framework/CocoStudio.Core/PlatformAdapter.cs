@@ -8,11 +8,8 @@ using Xwt;
 
 namespace CocoStudio.Core
 {
-	// Token: 0x02000053 RID: 83
 	public static class PlatformAdapter
 	{
-		// Token: 0x170000D1 RID: 209
-		// (get) Token: 0x06000348 RID: 840 RVA: 0x0000EA90 File Offset: 0x0000CC90
 		public static PlatformService PlatformService
 		{
 			get
@@ -25,7 +22,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x06000349 RID: 841 RVA: 0x0000EAC4 File Offset: 0x0000CCC4
 		public static void Initialize()
 		{
 			try
@@ -54,8 +50,6 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x170000D2 RID: 210
-		// (get) Token: 0x0600034A RID: 842 RVA: 0x0000EBB8 File Offset: 0x0000CDB8
 		public static Toolkit NativeToolkit
 		{
 			get
@@ -68,10 +62,8 @@ namespace CocoStudio.Core
 			}
 		}
 
-		// Token: 0x04000170 RID: 368
 		private static PlatformService platformService;
 
-		// Token: 0x04000171 RID: 369
 		private static Toolkit nativeToolkit;
 	}
 }

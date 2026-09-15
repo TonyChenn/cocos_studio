@@ -5,12 +5,9 @@ using Mono.Addins;
 
 namespace CocoStudio.Model.DataModel
 {
-	// Token: 0x0200000D RID: 13
 	[Extension(Type = typeof(IFileUpgrader))]
 	internal class GameFileUpgrader_208 : GameFileUpgrader
 	{
-		// Token: 0x17000015 RID: 21
-		// (get) Token: 0x0600004B RID: 75 RVA: 0x000028CC File Offset: 0x00000ACC
 		public override Version Version
 		{
 			get
@@ -19,7 +16,6 @@ namespace CocoStudio.Model.DataModel
 			}
 		}
 
-		// Token: 0x0600004C RID: 76 RVA: 0x000028E4 File Offset: 0x00000AE4
 		protected override bool OnUpgrade(GameFileData projectData)
 		{
 			bool flag = false;
@@ -46,7 +42,6 @@ namespace CocoStudio.Model.DataModel
 			return result;
 		}
 
-		// Token: 0x0600004D RID: 77 RVA: 0x000029A4 File Offset: 0x00000BA4
 		private void ConvertFrameType(TimelineData item, List<TimelineData> alphaTimelines)
 		{
 			if (item.FrameType == "PositionFrame")
@@ -94,7 +89,6 @@ namespace CocoStudio.Model.DataModel
 			}
 		}
 
-		// Token: 0x04000015 RID: 21
 		private static readonly Version version = new Version("2.0.8.0");
 	}
 }
