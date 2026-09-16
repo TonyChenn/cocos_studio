@@ -78,9 +78,8 @@ namespace CocoStudio.Model.DataModel
 
 		public override bool Equals(object obj)
 		{
-			ColorData colorData = obj as ColorData;
-			return colorData != null && this.R == colorData.R && this.G == colorData.G && this.B == colorData.B && this.A == colorData.A;
-		}
+            return obj is ColorData colorData && this.R == colorData.R && this.G == colorData.G && this.B == colorData.B && this.A == colorData.A;
+        }
 
 		public static readonly ColorData White = new ColorData(byte.MaxValue, byte.MaxValue, byte.MaxValue, byte.MaxValue);
 	}

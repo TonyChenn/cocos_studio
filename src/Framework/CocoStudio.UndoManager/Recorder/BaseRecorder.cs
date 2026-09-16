@@ -60,39 +60,35 @@ namespace CocoStudio.UndoManager.Recorder
 
 		internal void Redoing(RecorderTaskEventArgs args)
 		{
-			IRecordableCallback recordableCallback = this.objectItem as IRecordableCallback;
-			if (recordableCallback != null)
-			{
-				recordableCallback.Redoing(args);
-			}
-		}
+            if (this.objectItem is IRecordableCallback recordableCallback)
+            {
+                recordableCallback.Redoing(args);
+            }
+        }
 
 		internal void Redone(RecorderTaskEventArgs args)
 		{
-			IRecordableCallback recordableCallback = this.objectItem as IRecordableCallback;
-			if (recordableCallback != null)
-			{
-				recordableCallback.Redone(args);
-			}
-		}
+            if (this.objectItem is IRecordableCallback recordableCallback)
+            {
+                recordableCallback.Redone(args);
+            }
+        }
 
 		internal void Undoing(RecorderTaskEventArgs args)
 		{
-			IRecordableCallback recordableCallback = this.objectItem as IRecordableCallback;
-			if (recordableCallback != null)
-			{
-				recordableCallback.Undoing(args);
-			}
-		}
+            if (this.objectItem is IRecordableCallback recordableCallback)
+            {
+                recordableCallback.Undoing(args);
+            }
+        }
 
 		internal void Undone(RecorderTaskEventArgs args)
 		{
-			IRecordableCallback recordableCallback = this.objectItem as IRecordableCallback;
-			if (recordableCallback != null)
-			{
-				recordableCallback.Undone(args);
-			}
-		}
+            if (this.objectItem is IRecordableCallback recordableCallback)
+            {
+                recordableCallback.Undone(args);
+            }
+        }
 
 		protected virtual void OnStart(bool isCreateRecorder)
 		{
@@ -105,11 +101,8 @@ namespace CocoStudio.UndoManager.Recorder
 		public void AddRecord(UndoTask undoTask)
 		{
 			CompositeTaskManager.Instance.AddRecord(undoTask);
-			if (this.RecorderCreatedEvent != null)
-			{
-				this.RecorderCreatedEvent(this, new RecorderCreatedEventArgs(this.objectItem, undoTask));
-			}
-		}
+            this.RecorderCreatedEvent?.Invoke(this, new RecorderCreatedEventArgs(this.objectItem, undoTask));
+        }
 
 		public void Start(bool isCreateRecorder = true, bool isSoleRecoder = false)
 		{

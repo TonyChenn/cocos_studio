@@ -178,24 +178,23 @@ namespace CocoStudio.Core
 							autoReset.WaitOne();
 						}
 						hasPendingFiles = (copyQueue.Count > 0);
-						FileCopyInfo fileCopyInfo;
-						if (copyQueue.TryDequeue(out fileCopyInfo))
-						{
-							monitor.Step(1);
-							if (!filterList.Any((string sourcePath) => string.Equals(sourcePath, fileCopyInfo.SourcePath, StringComparison.InvariantCultureIgnoreCase)))
-							{
-								bool flag2 = fileCopyInfo.Copy(monitor);
-								if (flag2)
-								{
-									list.Add(fileCopyInfo);
-								}
-							}
-							else
-							{
-								monitor.Step(2);
-							}
-						}
-					}
+                        if (copyQueue.TryDequeue(out FileCopyInfo fileCopyInfo))
+                        {
+                            monitor.Step(1);
+                            if (!filterList.Any((string sourcePath) => string.Equals(sourcePath, fileCopyInfo.SourcePath, StringComparison.InvariantCultureIgnoreCase)))
+                            {
+                                bool flag2 = fileCopyInfo.Copy(monitor);
+                                if (flag2)
+                                {
+                                    list.Add(fileCopyInfo);
+                                }
+                            }
+                            else
+                            {
+                                monitor.Step(2);
+                            }
+                        }
+                    }
 				}
 				catch (Exception message)
 				{
@@ -261,12 +260,8 @@ namespace CocoStudio.Core
 			{
 				resourceFolder = (ImportFileService.CreateItem(root, fullPath.ParentDirectory, monitor, outResources) as ResourceFolder);
 			}
-			ResourceItem resourceItem = ImportFileService.FindResourceItem<ResourceItem>(resourceFolder, fullPath);
-			if (resourceItem == null)
-			{
-				resourceItem = ImportFileService.CreateResourceItemByPath(monitor, resourceFolder, fullPath);
-			}
-			if (!outResources.ContainsKey(fullPath))
+            ResourceItem resourceItem = ImportFileService.FindResourceItem<ResourceItem>(resourceFolder, fullPath) ?? ImportFileService.CreateResourceItemByPath(monitor, resourceFolder, fullPath);
+            if (!outResources.ContainsKey(fullPath))
 			{
 				outResources.Add(fullPath, resourceItem);
 			}
@@ -276,9 +271,9 @@ namespace CocoStudio.Core
 		private static ResourceItem CreateResourceItemByPath(IProgressMonitor monitor, ResourceFolder parent, string itemFileName)
 		{
 			ResourceItem resourceItem = Services.ProjectsService.ReadResourceItem(monitor, itemFileName);
-			if (resourceItem is IInitialize)
+			if (resourceItem is IInitialize initialize)
 			{
-				((IInitialize)resourceItem).Initialize(Services.ProgressMonitors.Default);
+				initialize.Initialize(Services.ProgressMonitors.Default);
 			}
 			parent.Items.Add(resourceItem);
 			return resourceItem;

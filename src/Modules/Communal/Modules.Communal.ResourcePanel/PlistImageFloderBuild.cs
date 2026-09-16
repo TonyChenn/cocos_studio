@@ -51,12 +51,11 @@ namespace Modules.Communal.ResourcePanel
 
 		public override void OnNodeAdded(object dateObject)
 		{
-			ResourceFolder resourceFolder = dateObject as ResourceFolder;
-			if (resourceFolder != null)
-			{
-				resourceFolder.Items.CollectionChanged += this.Items_CollectionChanged;
-			}
-		}
+            if (dateObject is ResourceFolder resourceFolder)
+            {
+                resourceFolder.Items.CollectionChanged += this.Items_CollectionChanged;
+            }
+        }
 
 		private void Items_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
 		{
@@ -76,7 +75,6 @@ namespace Modules.Communal.ResourcePanel
 					treeBuilder.AddChild(parent, obj, false);
 				}
 				return;
-				break;
 			case NotifyCollectionChangedAction.Remove:
 				break;
 			default:
@@ -93,12 +91,11 @@ namespace Modules.Communal.ResourcePanel
 
 		public override void OnNodeRemoved(object dateObject)
 		{
-			ResourceFolder resourceFolder = dateObject as ResourceFolder;
-			if (resourceFolder != null)
-			{
-				resourceFolder.Items.CollectionChanged -= this.Items_CollectionChanged;
-			}
-		}
+            if (dateObject is ResourceFolder resourceFolder)
+            {
+                resourceFolder.Items.CollectionChanged -= this.Items_CollectionChanged;
+            }
+        }
 
 		private static readonly Xwt.Drawing.Image expandIcon = ImageIcon.GetIcon(StaticVariable.GetResourceID("plistFolder.png"));
 	}

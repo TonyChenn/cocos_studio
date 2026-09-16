@@ -53,13 +53,12 @@ namespace Modules.Communal.Render3D.Model
 
 		private CameraData LoadCameraData(CocosItem cocosItem)
 		{
-			IUserData userData = null;
-			if (!cocosItem.UserData.Properties.TryGetValue("CameraData", out userData))
-			{
-				userData = new CameraData();
-				cocosItem.UserData.Properties["CameraData"] = userData;
-			}
-			return userData as CameraData;
+            if (!cocosItem.UserData.Properties.TryGetValue("CameraData", out IUserData userData))
+            {
+                userData = new CameraData();
+                cocosItem.UserData.Properties["CameraData"] = userData;
+            }
+            return userData as CameraData;
 		}
 
 		private void SaveCameraData(CocosItem cocosItem)
@@ -218,7 +217,6 @@ namespace Modules.Communal.Render3D.Model
 					default:
 						return result;
 					}
-					break;
 				}
 			}
 			else if (key != Gdk.Key.w)

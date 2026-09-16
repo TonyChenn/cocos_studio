@@ -64,12 +64,11 @@ namespace CocoStudio.Projects
 			{
 				return null;
 			}
-			Cocos2dxInfo result;
-			if (Cocos2dxInfo.TryCreateDefaultCodeInfo(text, version, out result))
-			{
-				return result;
-			}
-			return null;
+            if (Cocos2dxInfo.TryCreateDefaultCodeInfo(text, version, out Cocos2dxInfo result))
+            {
+                return result;
+            }
+            return null;
 		}
 
 		private static string TryGetFrameworkPath(string frameworkName)

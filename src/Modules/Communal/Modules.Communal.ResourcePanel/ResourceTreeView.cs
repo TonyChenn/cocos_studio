@@ -101,10 +101,8 @@ namespace Modules.Communal.ResourcePanel
 				double yroot = args.Event.YRoot;
 				int width = base.Allocation.Width;
 				int height = base.Allocation.Height;
-				int num;
-				int num2;
-				base.GdkWindow.GetOrigin(out num, out num2);
-				if (xroot < (double)num || xroot > (double)(num + width) || yroot < (double)num2 || yroot > (double)(num2 + height))
+                base.GdkWindow.GetOrigin(out int num, out int num2);
+                if (xroot < (double)num || xroot > (double)(num + width) || yroot < (double)num2 || yroot > (double)(num2 + height))
 				{
 					base.HasFocus = true;
 				}
@@ -140,20 +138,18 @@ namespace Modules.Communal.ResourcePanel
 
 		private void InitialSelection()
 		{
-			TreeIter iter;
-			if (this.tree.Selection.CountSelectedRows() == 0 && this.Tree.CurrentModel.GetIterFirst(out iter))
-			{
-				TreePath path = this.Tree.CurrentModel.GetPath(iter);
-				this.tree.SetCursor(path, this.tree.Columns[0], false);
-				this.tree.ExpandRow(path, false);
-			}
-		}
+            if (this.tree.Selection.CountSelectedRows() == 0 && this.Tree.CurrentModel.GetIterFirst(out TreeIter iter))
+            {
+                TreePath path = this.Tree.CurrentModel.GetPath(iter);
+                this.tree.SetCursor(path, this.tree.Columns[0], false);
+                this.tree.ExpandRow(path, false);
+            }
+        }
 
 		public object GetValueByTreePath(TreePath treePath)
 		{
-			TreeIter iter;
-			this.Tree.CurrentModel.GetIter(out iter, treePath);
-			NodeInfo nodeInfo = this.Tree.CurrentModel.GetValue(iter, 0) as NodeInfo;
+            this.Tree.CurrentModel.GetIter(out TreeIter iter, treePath);
+            NodeInfo nodeInfo = this.Tree.CurrentModel.GetValue(iter, 0) as NodeInfo;
 			if (nodeInfo == null)
 			{
 				return null;
@@ -198,35 +194,28 @@ namespace Modules.Communal.ResourcePanel
 		private void HandleMotionNotifyEvent(object o, MotionNotifyEventArgs args)
 		{
 			bool flag = false;
-			TreePath path;
-			TreeViewColumn treeViewColumn;
-			int num;
-			int num2;
-			TreeIter treeIter;
-			if (this.tree.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out path, out treeViewColumn, out num, out num2) && this.store.GetIter(out treeIter, path))
-			{
-				NodeInfo nodeInfo = (NodeInfo)this.store.GetValue(treeIter, 0);
-				if (nodeInfo != null && !string.IsNullOrWhiteSpace(nodeInfo.StatusMessage) && nodeInfo.IconInfo.StatusIconInternal != null)
-				{
-					Rectangle cellArea = this.tree.GetCellArea(path, this.tree.Columns[0]);
-					this.tree.QueueDrawArea(cellArea.X, cellArea.Y, cellArea.Width, cellArea.Height);
-					Rectangle cellArea2 = this.tree.GetCellArea(path, this.tree.Columns[0]);
-					int num3;
-					int width;
-					treeViewColumn.CellGetPosition(this.text_render, out num3, out width);
-					cellArea2.X += num3;
-					cellArea2.Width = width;
-					Rectangle statusIconArea = this.text_render.GetStatusIconArea(this.tree, cellArea2);
-					if (num >= statusIconArea.X && num <= statusIconArea.Right)
-					{
-						double value = base.Hadjustment.Value;
-						statusIconArea.X -= (int)value;
-						this.ShowStatusMessage(treeIter, statusIconArea, nodeInfo);
-						flag = true;
-					}
-				}
-			}
-			if (!flag)
+            if (this.tree.GetPathAtPos((int)args.Event.X, (int)args.Event.Y, out TreePath path, out TreeViewColumn treeViewColumn, out int num, out int num2) && this.store.GetIter(out TreeIter treeIter, path))
+            {
+                NodeInfo nodeInfo = (NodeInfo)this.store.GetValue(treeIter, 0);
+                if (nodeInfo != null && !string.IsNullOrWhiteSpace(nodeInfo.StatusMessage) && nodeInfo.IconInfo.StatusIconInternal != null)
+                {
+                    Rectangle cellArea = this.tree.GetCellArea(path, this.tree.Columns[0]);
+                    this.tree.QueueDrawArea(cellArea.X, cellArea.Y, cellArea.Width, cellArea.Height);
+                    Rectangle cellArea2 = this.tree.GetCellArea(path, this.tree.Columns[0]);
+                    treeViewColumn.CellGetPosition(this.text_render, out int num3, out int width);
+                    cellArea2.X += num3;
+                    cellArea2.Width = width;
+                    Rectangle statusIconArea = this.text_render.GetStatusIconArea(this.tree, cellArea2);
+                    if (num >= statusIconArea.X && num <= statusIconArea.Right)
+                    {
+                        double value = base.Hadjustment.Value;
+                        statusIconArea.X -= (int)value;
+                        this.ShowStatusMessage(treeIter, statusIconArea, nodeInfo);
+                        flag = true;
+                    }
+                }
+            }
+            if (!flag)
 			{
 				this.HideStatusMessage();
 			}
@@ -244,10 +233,7 @@ namespace Modules.Communal.ResourcePanel
 			{
 				return;
 			}
-			if (this.statusPopover != null)
-			{
-				this.statusPopover.Destroy();
-			}
+			this.statusPopover?.Destroy();
 			this.statusMessageVisible = true;
 			this.statusIconIter = it;
 			this.statusPopover = new TooltipPopoverWindow
@@ -287,9 +273,8 @@ namespace Modules.Communal.ResourcePanel
 
 		internal NodeBuilder[] GetBuilderChain(Type type)
 		{
-			NodeBuilder[] array;
-			this.builderChains.TryGetValue(type, out array);
-			if (array == null)
+            this.builderChains.TryGetValue(type, out NodeBuilder[] array);
+            if (array == null)
 			{
 				IEnumerable<NodeBuilder> enumerable = from n in ResourcePanelManager.Instance.NodeBuildes
 				where n.NodeDataType == type
@@ -324,12 +309,11 @@ namespace Modules.Communal.ResourcePanel
 
 		internal Pixbuf GetResourceIcon(ResourceItem resourceItem)
 		{
-			TreeIter iter;
-			if (resourceItem == null || !this.builder.GetFirstNode(resourceItem, out iter))
-			{
-				return null;
-			}
-			NodeInfo nodeInfo = this.store.GetValue(iter, 0) as NodeInfo;
+            if (resourceItem == null || !this.builder.GetFirstNode(resourceItem, out TreeIter iter))
+            {
+                return null;
+            }
+            NodeInfo nodeInfo = this.store.GetValue(iter, 0) as NodeInfo;
 			if (nodeInfo == null || nodeInfo.IconInfo == null || nodeInfo.IconInfo.ExpandIcon == null)
 			{
 				return null;
@@ -421,9 +405,8 @@ namespace Modules.Communal.ResourcePanel
 				info.Enabled = false;
 				return;
 			}
-			TreeIter treeIter;
-			NodeInfo nodeInfo = this.builder.GetFristSelecteValue(0, out treeIter) as NodeInfo;
-			if (nodeInfo != null)
+            NodeInfo nodeInfo = this.builder.GetFristSelecteValue(0, out TreeIter treeIter) as NodeInfo;
+            if (nodeInfo != null)
 			{
 				info.Enabled = this.ExisteResource(nodeInfo.DataItem);
 			}
@@ -437,9 +420,8 @@ namespace Modules.Communal.ResourcePanel
 				info.Enabled = false;
 				return;
 			}
-			TreeIter treeIter;
-			NodeInfo nodeInfo = this.builder.GetFristSelecteValue(0, out treeIter) as NodeInfo;
-			if (nodeInfo != null)
+            NodeInfo nodeInfo = this.builder.GetFristSelecteValue(0, out TreeIter treeIter) as NodeInfo;
+            if (nodeInfo != null)
 			{
 				info.Enabled = this.ExisteResource(nodeInfo.DataItem);
 			}
@@ -500,22 +482,21 @@ namespace Modules.Communal.ResourcePanel
 				info.Bypass = true;
 				return;
 			}
-			NodeInfo nodeInfo = this.builder.GetFristSelecteValue(0) as NodeInfo;
-			if (nodeInfo != null && nodeInfo.DataItem != null)
-			{
-				NodeBuilder nodeBuilder = this.GetBuilder(nodeInfo.DataItem.GetType());
-				if (nodeBuilder != null)
-				{
-					info.Enabled = nodeBuilder.CanDelete();
-					return;
-				}
-			}
-			else
-			{
-				info.Enabled = false;
-				info.Bypass = true;
-			}
-		}
+            if (this.builder.GetFristSelecteValue(0) is NodeInfo nodeInfo && nodeInfo.DataItem != null)
+            {
+                NodeBuilder nodeBuilder = this.GetBuilder(nodeInfo.DataItem.GetType());
+                if (nodeBuilder != null)
+                {
+                    info.Enabled = nodeBuilder.CanDelete();
+                    return;
+                }
+            }
+            else
+            {
+                info.Enabled = false;
+                info.Bypass = true;
+            }
+        }
 
 		[CommandHandler(CmdEnum.DeleteCmd2)]
 		[CommandHandler(CmdEnum.DeleteCmd)]
@@ -590,9 +571,8 @@ namespace Modules.Communal.ResourcePanel
 				List<ResourceItem> list = new List<ResourceItem>();
 				foreach (ResourceItem resourceItem in this.copyItems)
 				{
-					TreeIter iter;
-					this.builder.GetFirstNode(resourceItem.Parent, out iter);
-					ResourceItem resourceItem2 = StaticVariable.CopyScene(resourceItem.Parent, resourceItem);
+                    this.builder.GetFirstNode(resourceItem.Parent, out TreeIter iter);
+                    ResourceItem resourceItem2 = StaticVariable.CopyScene(resourceItem.Parent, resourceItem);
 					if (resourceItem2 != null)
 					{
 						this.builder.AddChildToTreeIter(resourceItem2, iter, false);
@@ -614,13 +594,12 @@ namespace Modules.Communal.ResourcePanel
 			{
 				foreach (ResourceItem resourceItem in currentSelectes)
 				{
-					CocosItem cocosItem = resourceItem as CocosItem;
-					if (cocosItem == null || !(cocosItem.ContentType != "Plist") || cocosItem.DataError != null)
-					{
-						enabled = false;
-						break;
-					}
-					enabled = true;
+                    if (!(resourceItem is CocosItem cocosItem) || !(cocosItem.ContentType != "Plist") || cocosItem.DataError != null)
+                    {
+                        enabled = false;
+                        break;
+                    }
+                    enabled = true;
 				}
 			}
 			info.Enabled = enabled;
@@ -635,38 +614,35 @@ namespace Modules.Communal.ResourcePanel
 
 		public void StartLabelEditInternal()
 		{
-			TreeIter iter;
-			NodeInfo nodeInfo = this.builder.GetFristSelecteValue(0, out iter) as NodeInfo;
-			if (nodeInfo != null)
-			{
-				ResourceItem item = nodeInfo.DataItem as ResourceItem;
-				Idle.Add(delegate
-				{
-					Entry entry = this.currentLabelEditable;
-					if (item == null || entry == null || string.IsNullOrWhiteSpace(item.Name))
-					{
-						return false;
-					}
-					if (item is ResourceFile)
-					{
-						System.IO.Path.GetExtension(item.FullPath);
-						int length = System.IO.Path.GetFileNameWithoutExtension(item.FullPath).Length;
-						if (length > 0)
-						{
-							entry.SelectRegion(0, length);
-						}
-						entry.DeleteText(length, item.Name.Length);
-					}
-					else
-					{
-						entry.SelectRegion(0, item.Name.Length);
-					}
-					return false;
-				});
-				this.text_render.Editable = true;
-				this.tree.SetCursor(this.Tree.CurrentModel.GetPath(iter), this.complete_column, true);
-			}
-		}
+            if (this.builder.GetFristSelecteValue(0, out TreeIter iter) is NodeInfo nodeInfo)
+            {
+                Idle.Add(delegate
+                {
+                    Entry entry = this.currentLabelEditable;
+                    if (!(nodeInfo.DataItem is ResourceItem item) || entry == null || string.IsNullOrWhiteSpace(item.Name))
+                    {
+                        return false;
+                    }
+                    if (item is ResourceFile)
+                    {
+                        System.IO.Path.GetExtension(item.FullPath);
+                        int length = System.IO.Path.GetFileNameWithoutExtension(item.FullPath).Length;
+                        if (length > 0)
+                        {
+                            entry.SelectRegion(0, length);
+                        }
+                        entry.DeleteText(length, item.Name.Length);
+                    }
+                    else
+                    {
+                        entry.SelectRegion(0, item.Name.Length);
+                    }
+                    return false;
+                });
+                this.text_render.Editable = true;
+                this.tree.SetCursor(this.Tree.CurrentModel.GetPath(iter), this.complete_column, true);
+            }
+        }
 
 		[ConnectBefore]
 		private void HandleEditingStarted(object o, EditingStartedArgs e)
@@ -680,12 +656,11 @@ namespace Modules.Communal.ResourcePanel
 		{
 			this.text_render.Editable = false;
 			this.currentLabelEditable = null;
-			TreeIter iter;
-			if (!this.Tree.CurrentModel.GetIterFromString(out iter, e.Path))
-			{
-				throw new Exception("Error calculating iter for path " + e.Path);
-			}
-			this.Raname(iter, e.NewText, true);
+            if (!this.Tree.CurrentModel.GetIterFromString(out TreeIter iter, e.Path))
+            {
+                throw new Exception("Error calculating iter for path " + e.Path);
+            }
+            this.Raname(iter, e.NewText, true);
 			this.IsRanameStatus = false;
 		}
 
@@ -720,20 +695,18 @@ namespace Modules.Communal.ResourcePanel
 						ResourceItem resourceItem = null;
 						if (isOnEdit)
 						{
-							NodeInfo nodeInfo = this.Tree.CurrentModel.GetValue(iter, 0) as NodeInfo;
-							if (nodeInfo != null)
-							{
-								resourceItem = (nodeInfo.DataItem as ResourceItem);
-							}
-						}
+                            if (this.Tree.CurrentModel.GetValue(iter, 0) is NodeInfo nodeInfo)
+                            {
+                                resourceItem = (nodeInfo.DataItem as ResourceItem);
+                            }
+                        }
 						else
 						{
-							NodeInfo nodeInfo2 = this.store.GetValue(iter, 0) as NodeInfo;
-							if (nodeInfo2 != null)
-							{
-								resourceItem = (nodeInfo2.DataItem as ResourceItem);
-							}
-						}
+                            if (this.store.GetValue(iter, 0) is NodeInfo nodeInfo2)
+                            {
+                                resourceItem = (nodeInfo2.DataItem as ResourceItem);
+                            }
+                        }
 						if (resourceItem != null)
 						{
 							string directoryName = System.IO.Path.GetDirectoryName(resourceItem.FullPath);
@@ -774,12 +747,11 @@ namespace Modules.Communal.ResourcePanel
 
 		internal void RenameResource(ResourceItem resourceItem, string newName)
 		{
-			TreeIter iter;
-			if (resourceItem != null && this.builder.GetFirstNode(resourceItem, out iter))
-			{
-				this.Raname(iter, newName, false);
-			}
-		}
+            if (resourceItem != null && this.builder.GetFirstNode(resourceItem, out TreeIter iter))
+            {
+                this.Raname(iter, newName, false);
+            }
+        }
 
 		private bool IsSubitem(ResourceFolder parent, FilePath path)
 		{
