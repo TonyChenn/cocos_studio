@@ -48,7 +48,8 @@ namespace CocoStudio.Model.Editor
 		{
 			return target is TextFieldObject && propertyName == "FontResource" ||
 				target is TextObject && propertyName == "FontResource" ||
-				target is ParticleObject && propertyName == "FileData";
+				target is ParticleObject && propertyName == "FileData" ||
+				target is FileNodeObject && propertyName == "FileData";
 		}
 
 		private void ResourceLocateButton_Clicked(object sender, EventArgs e)
