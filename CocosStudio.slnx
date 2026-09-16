@@ -6,7 +6,9 @@
     <Project Path="src/Applications/Cocos.Update/Cocos.Update.csproj" Id="586b49fe-0ab3-49b2-82d1-023b39c99a0e">
       <Platform Project="x86" />
     </Project>
-    <Project Path="src/Applications/Cocos/Cocos.csproj" Id="43e58ea6-9cf8-47ec-94fd-dcb682ed5537" />
+    <Project Path="src/Applications/Cocos/Cocos.csproj" Id="43e58ea6-9cf8-47ec-94fd-dcb682ed5537">
+      <Platform Project="x86" />
+    </Project>
     <Project Path="src/Applications/CocosStudio/CocosStudio.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23723">
       <BuildDependency Project="src/Launcher/Cocos.Launcher.Core/Cocos.Launcher.Core.csproj" />
       <BuildDependency Project="src/Models/CocoStudio.Model.Lua/CocoStudio.Model.Lua.csproj" />
@@ -43,97 +45,182 @@
     </Project>
   </Folder>
   <Folder Name="/02 Launcher/">
-    <Project Path="src/Launcher/Cocos.Launcher.Control/Cocos.Launcher.Control.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23721" />
-    <Project Path="src/Launcher/Cocos.Launcher.Core/Cocos.Launcher.Core.csproj" Id="307e660a-49e7-4ac8-beae-052da94ad1ff" />
-    <Project Path="src/Launcher/Cocos.Launcher.Library/Cocos.Launcher.Library.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23722" />
-    <Project Path="src/Launcher/Cocos.Launcher.Resource/Cocos.Launcher.Resource.csproj" Id="7c1a9e26-27b3-4b91-ae0d-a3c338acb201" />
+    <Project Path="src/Launcher/Cocos.Launcher.Control/Cocos.Launcher.Control.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23721">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Launcher/Cocos.Launcher.Core/Cocos.Launcher.Core.csproj" Id="307e660a-49e7-4ac8-beae-052da94ad1ff">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Launcher/Cocos.Launcher.Library/Cocos.Launcher.Library.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23722">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Launcher/Cocos.Launcher.Resource/Cocos.Launcher.Resource.csproj" Id="7c1a9e26-27b3-4b91-ae0d-a3c338acb201">
+      <Platform Project="x86" />
+    </Project>
   </Folder>
   <Folder Name="/03 Framework/Resources/">
-    <Project Path="src/Resources/CocoStudio.DefaultResource/CocoStudio.DefaultResource.csproj" Id="55d7ddb2-2921-4ca8-8d5f-7a4a9f4b8c02" />
+    <Project Path="src/Resources/CocoStudio.DefaultResource/CocoStudio.DefaultResource.csproj" Id="55d7ddb2-2921-4ca8-8d5f-7a4a9f4b8c02">
+      <Platform Project="x86" />
+    </Project>
   </Folder>
   <Folder Name="/03 Framework/">
     <Project Path="src/Framework/CocoStudio.Basic/CocoStudio.Basic.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23724">
-      <Platform Solution="Release|x86" Project="x86" />
+      <Platform Project="x86" />
     </Project>
-    <Project Path="src/Framework/CocoStudio.ControlLib/CocoStudio.ControlLib.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23725" />
+    <Project Path="src/Framework/CocoStudio.ControlLib/CocoStudio.ControlLib.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23725">
+      <Platform Project="x86" />
+    </Project>
     <Project Path="src/Framework/CocoStudio.Core/CocoStudio.Core.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23726">
-      <Platform Solution="Release|x86" Project="x86" />
+      <Platform Project="x86" />
     </Project>
-    <Project Path="src/Framework/CocoStudio.EngineAdapterWrap/CocoStudio.EngineAdapterWrap.csproj" Id="c16a1c9e-99c2-4d23-9503-017e93cbd07f" />
+    <Project Path="src/Framework/CocoStudio.EngineAdapterWrap/CocoStudio.EngineAdapterWrap.csproj" Id="c16a1c9e-99c2-4d23-9503-017e93cbd07f">
+      <Platform Project="x86" />
+    </Project>
     <Project Path="src/Framework/CocoStudio.Gtk.Extend/CocoStudio.Gtk.Extend.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23728">
-      <Platform Solution="Release|x86" Project="x86" />
+      <Platform Project="x86" />
     </Project>
-    <Project Path="src/Framework/CocoStudio.Lib.Prism/CocoStudio.Lib.Prism.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23729" />
+    <Project Path="src/Framework/CocoStudio.Lib.Prism/CocoStudio.Lib.Prism.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23729">
+      <Platform Project="x86" />
+    </Project>
     <Project Path="src/Framework/CocoStudio.Projects/CocoStudio.Projects.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b2372b">
       <Platform Project="x86" />
     </Project>
     <Project Path="src/Framework/CocoStudio.UndoManager/CocoStudio.UndoManager.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b2372c">
-      <Platform Solution="Release|x86" Project="x86" />
+      <Platform Project="x86" />
     </Project>
     <Project Path="src/Framework/CocoStudio.UserStatistics/CocoStudio.UserStatistics.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b2372d">
-      <Platform Solution="Release|x86" Project="x86" />
+      <Platform Project="x86" />
     </Project>
   </Folder>
   <Folder Name="/04 Models/">
-    <Project Path="src/Models/CocoStudio.Model.Basic/CocoStudio.Model.Basic.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf91" />
-    <Project Path="src/Models/CocoStudio.Model.Lua/CocoStudio.Model.Lua.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf93" />
-    <Project Path="src/Models/CocoStudio.Model/CocoStudio.Model.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf92" />
-    <Project Path="src/Models/CocoStudio.Model3D.Lua/CocoStudio.Model3D.Lua.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf95" />
-    <Project Path="src/Models/CocoStudio.Model3D/CocoStudio.Model3D.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf94" />
+    <Project Path="src/Models/CocoStudio.Model.Basic/CocoStudio.Model.Basic.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf91">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Models/CocoStudio.Model.Lua/CocoStudio.Model.Lua.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf93">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Models/CocoStudio.Model/CocoStudio.Model.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf92">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Models/CocoStudio.Model3D.Lua/CocoStudio.Model3D.Lua.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf95">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Models/CocoStudio.Model3D/CocoStudio.Model3D.csproj" Id="ae2e6dcf-b30d-4a03-bf56-67765709cf94">
+      <Platform Project="x86" />
+    </Project>
   </Folder>
   <Folder Name="/05 Addins/" />
   <Folder Name="/05 Addins/Communal/">
     <Project Path="src/Modules/Communal/Modules.Communal.AutoUpdate/Modules.Communal.AutoUpdate.csproj" Id="fbeeb9d6-c396-4bbb-89a3-edc5f19dd15f">
       <Platform Project="x86" />
     </Project>
-    <Project Path="src/Modules/Communal/Modules.Communal.CocoaChina/Modules.Communal.CocoaChina.csproj" Id="41cb032b-ba5e-4e92-8586-e11fe72aaf67" />
-    <Project Path="src/Modules/Communal/Modules.Communal.CocosAdapter/Modules.Communal.CocosAdapter.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c0" />
-    <Project Path="src/Modules/Communal/Modules.Communal.CocosCodeIDE/Modules.Communal.CocosCodeIDE.csproj" Id="41cb032b-ba5e-4e92-8586-e11fe72aaf68" />
-    <Project Path="src/Modules/Communal/Modules.Communal.DragMenu/Modules.Communal.DragMenu.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c1" />
+    <Project Path="src/Modules/Communal/Modules.Communal.CocoaChina/Modules.Communal.CocoaChina.csproj" Id="41cb032b-ba5e-4e92-8586-e11fe72aaf67">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.CocosAdapter/Modules.Communal.CocosAdapter.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c0">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.CocosCodeIDE/Modules.Communal.CocosCodeIDE.csproj" Id="41cb032b-ba5e-4e92-8586-e11fe72aaf68">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.DragMenu/Modules.Communal.DragMenu.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c1">
+      <Platform Project="x86" />
+    </Project>
     <Project Path="src/Modules/Communal/Modules.Communal.MultiLanguage/Modules.Communal.MultiLanguage.csproj" Id="80909f4b-fd59-4fad-99f3-1345795e6348">
-      <Platform Solution="Release|x86" Project="x86" />
+      <Platform Project="x86" />
     </Project>
     <Project Path="src/Modules/Communal/Modules.Communal.MutualEditor/Modules.Communal.MutualEditor.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b2372f">
-      <Platform Solution="Release|x86" Project="x86" />
+      <Platform Project="x86" />
     </Project>
-    <Project Path="src/Modules/Communal/Modules.Communal.NewSolution/Modules.Communal.NewSolution.csproj" Id="41cb032b-ba5e-4e92-8586-e11fe72aaf69" />
-    <Project Path="src/Modules/Communal/Modules.Communal.Output/Modules.Communal.Output.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c2" />
-    <Project Path="src/Modules/Communal/Modules.Communal.Packer/Modules.Communal.Packer.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c3" />
-    <Project Path="src/Modules/Communal/Modules.Communal.PList/Modules.Communal.PList.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c4" />
-    <Project Path="src/Modules/Communal/Modules.Communal.Preference/Modules.Communal.Preference.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c5" />
-    <Project Path="src/Modules/Communal/Modules.Communal.ProjectsConvertor/Modules.Communal.ProjectsConvertor.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c6" />
-    <Project Path="src/Modules/Communal/Modules.Communal.ProjectSetting/Modules.Communal.ProjectSetting.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c7" />
-    <Project Path="src/Modules/Communal/Modules.Communal.PropertyGrid/Modules.Communal.PropertyGrid.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c8" />
-    <Project Path="src/Modules/Communal/Modules.Communal.Publish/Modules.Communal.Publish.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c9" />
-    <Project Path="src/Modules/Communal/Modules.Communal.Render/Modules.Communal.Render.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510ca" />
-    <Project Path="src/Modules/Communal/Modules.Communal.Render3D/Modules.Communal.Render3D.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510cb" />
-    <Project Path="src/Modules/Communal/Modules.Communal.ResourcePanel/Modules.Communal.ResourcePanel.csproj" Id="65e21e22-4793-47e4-ac65-fa6b8543e58d" />
-    <Project Path="src/Modules/Communal/Modules.Communal.Skeleton/Modules.Communal.Skeleton.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510cc" />
+    <Project Path="src/Modules/Communal/Modules.Communal.NewSolution/Modules.Communal.NewSolution.csproj" Id="41cb032b-ba5e-4e92-8586-e11fe72aaf69">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.Output/Modules.Communal.Output.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c2">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.Packer/Modules.Communal.Packer.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c3">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.PList/Modules.Communal.PList.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c4">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.Preference/Modules.Communal.Preference.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c5">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.ProjectsConvertor/Modules.Communal.ProjectsConvertor.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c6">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.ProjectSetting/Modules.Communal.ProjectSetting.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c7">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.PropertyGrid/Modules.Communal.PropertyGrid.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c8">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.Publish/Modules.Communal.Publish.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510c9">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.Render/Modules.Communal.Render.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510ca">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.Render3D/Modules.Communal.Render3D.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510cb">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.ResourcePanel/Modules.Communal.ResourcePanel.csproj" Id="65e21e22-4793-47e4-ac65-fa6b8543e58d">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.Skeleton/Modules.Communal.Skeleton.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510cc">
+      <Platform Project="x86" />
+    </Project>
     <Project Path="src/Modules/Communal/Modules.Communal.StartAutoRecover/Modules.Communal.StartAutoRecover.csproj" Id="9751112a-bbbb-4a1c-b265-f23595b23730">
-      <Platform Solution="Release|x86" Project="x86" />
+      <Platform Project="x86" />
     </Project>
-    <Project Path="src/Modules/Communal/Modules.Communal.Status/Modules.Communal.Status.csproj" Id="7abf72a6-f57e-4a50-a473-06e88f57b542" />
-    <Project Path="src/Modules/Communal/Modules.Communal.TexturePacker/Modules.Communal.TexturePacker.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510cd" />
+    <Project Path="src/Modules/Communal/Modules.Communal.Status/Modules.Communal.Status.csproj" Id="7abf72a6-f57e-4a50-a473-06e88f57b542">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/Communal/Modules.Communal.TexturePacker/Modules.Communal.TexturePacker.csproj" Id="63cb54f8-9358-4c89-923e-2ddc289510cd">
+      <Platform Project="x86" />
+    </Project>
   </Folder>
   <Folder Name="/05 Addins/UI/">
-    <Project Path="src/Modules/UI/Modules.UI.ComTool/Modules.UI.ComTool.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cb" />
-    <Project Path="src/Modules/UI/Modules.UI.MainTool/Modules.UI.MainTool.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cc" />
-    <Project Path="src/Modules/UI/Modules.UI.Menu/Modules.UI.Menu.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cd" />
-    <Project Path="src/Modules/UI/Modules.UI.RenderContextMenu/Modules.UI.RenderContextMenu.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965ce" />
-    <Project Path="src/Modules/UI/Modules.UI.RenderContextMenu3D/Modules.UI.RenderContextMenu3D.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cf" />
-    <Project Path="src/Modules/UI/Modules.UI.StructTree/Modules.UI.StructTree.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965d0" />
+    <Project Path="src/Modules/UI/Modules.UI.ComTool/Modules.UI.ComTool.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cb">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/UI/Modules.UI.MainTool/Modules.UI.MainTool.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cc">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/UI/Modules.UI.Menu/Modules.UI.Menu.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cd">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/UI/Modules.UI.RenderContextMenu/Modules.UI.RenderContextMenu.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965ce">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/UI/Modules.UI.RenderContextMenu3D/Modules.UI.RenderContextMenu3D.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cf">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="src/Modules/UI/Modules.UI.StructTree/Modules.UI.StructTree.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965d0">
+      <Platform Project="x86" />
+    </Project>
   </Folder>
   <Folder Name="/06 Editors/">
-    <Project Path="src/Editor/CocoStudio.LuaBinding/CocoStudio.LuaBinding.Restored.csproj" Id="7750920f-0762-4d81-b2e3-794af5e8da33" />
+    <Project Path="src/Editor/CocoStudio.LuaBinding/CocoStudio.LuaBinding.Restored.csproj" Id="7750920f-0762-4d81-b2e3-794af5e8da33">
+      <Platform Project="x86" />
+    </Project>
     <Project Path="src/Editor/CocoStudio.SourceEditor/CocoStudio.SourceEditor.Restored.csproj" Id="291b5e09-8fbd-45f2-9f15-f7227a4b2c5e">
       <BuildDependency Project="third-party/MonoDevelop/MonoDevelop.SourceEditor2/MonoDevelop.SourceEditor2.Restored.csproj" />
+      <Platform Project="x86" />
     </Project>
   </Folder>
   <Folder Name="/07 Platforms/">
-    <Project Path="src/Platforms/CocoStudio.WindowsPlatform/CocoStudio.WindowsPlatform.Restored.csproj" Id="5adc59f6-ff36-4d90-bd8c-aa346b7d5272" />
+    <Project Path="src/Platforms/CocoStudio.WindowsPlatform/CocoStudio.WindowsPlatform.Restored.csproj" Id="5adc59f6-ff36-4d90-bd8c-aa346b7d5272">
+      <Platform Project="x86" />
+    </Project>
   </Folder>
   <Folder Name="/08 Third-party/MonoDevelop/">
-    <Project Path="third-party/MonoDevelop/MonoDevelop.Projects.Formats.MSBuild/MonoDevelop.Projects.Formats.MSBuild.Restored.csproj" Id="e378c4de-15a9-4713-9740-0ced60a5da65" />
-    <Project Path="third-party/MonoDevelop/MonoDevelop.SourceEditor2/MonoDevelop.SourceEditor2.Restored.csproj" Id="c35da2dc-cbab-4c73-9d90-a7d35ae0a82e" />
+    <Project Path="third-party/MonoDevelop/MonoDevelop.Projects.Formats.MSBuild/MonoDevelop.Projects.Formats.MSBuild.Restored.csproj" Id="e378c4de-15a9-4713-9740-0ced60a5da65">
+      <Platform Project="x86" />
+    </Project>
+    <Project Path="third-party/MonoDevelop/MonoDevelop.SourceEditor2/MonoDevelop.SourceEditor2.Restored.csproj" Id="c35da2dc-cbab-4c73-9d90-a7d35ae0a82e">
+      <Platform Project="x86" />
+    </Project>
   </Folder>
 </Solution>
