@@ -16,6 +16,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
+    <NoWarn>$(NoWarn);0436</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
