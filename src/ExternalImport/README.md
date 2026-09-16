@@ -145,8 +145,8 @@ CLI 与已运行的 Studio 使用当前 Windows 用户专属的命名管道通�
 构建入口（Protocol 会通过 ProjectReference 自动构建）：
 
 ```powershell
-msbuild .\src\ExternalImport\Client\CocosStudio.ExternalImport.csproj /restore /t:Rebuild /p:Configuration=Debug /p:Platform=AnyCPU
-msbuild .\src\ExternalImport\StudioPlugin\CocosStudio.ExternalImport.StudioPlugin.csproj /restore /t:Rebuild /p:Configuration=Debug /p:Platform=AnyCPU
+msbuild .\src\ExternalImport\Client\CocosStudio.ExternalImport.csproj /restore /t:Rebuild /p:Configuration=Debug /p:Platform=x86
+msbuild .\src\ExternalImport\StudioPlugin\CocosStudio.ExternalImport.StudioPlugin.csproj /restore /t:Rebuild /p:Configuration=Debug /p:Platform=x86
 ```
 
 默认产物目录：

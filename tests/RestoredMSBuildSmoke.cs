@@ -45,7 +45,7 @@ internal static class RestoredMSBuildSmoke
                 "<Target Name=\"Broken\"><Error Text=\"测试错误\" Code=\"SMOKE02\"/></Target></Project>";
             File.WriteAllText(file, xml, new UTF8Encoding(false));
             var config = new[] { new ProjectConfigurationInfo { ProjectFile = file,
-                ProjectGuid = "{FB03C697-35E4-4428-A5B9-32F99806C3B7}", Configuration = "Debug", Platform = "AnyCPU" } };
+                ProjectGuid = "{FB03C697-35E4-4428-A5B9-32F99806C3B7}", Configuration = "Debug", Platform = "x86" } };
             domain = AppDomain.CreateDomain("IsolatedBuildBridge", null, new AppDomainSetup {
                 ApplicationBase = AppDomain.CurrentDomain.BaseDirectory });
             var engine = (IBuildEngine)domain.CreateInstanceAndUnwrap(typeof(BuildEngine).Assembly.FullName, typeof(BuildEngine).FullName);

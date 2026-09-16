@@ -2,7 +2,7 @@
   <PropertyGroup>
     <IsRestoredMonoDevelopProject>true</IsRestoredMonoDevelopProject>
     <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
-    <Platform Condition="'$(Platform)' == ''">AnyCPU</Platform>
+    <Platform Condition="'$(Platform)' == ''">x86</Platform>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
   <PropertyGroup>
@@ -11,7 +11,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AssemblyName>MonoDevelop.Projects.Formats.MSBuild</AssemblyName>
     <RootNamespace>MonoDevelop.Projects.Formats.MSBuild</RootNamespace>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
