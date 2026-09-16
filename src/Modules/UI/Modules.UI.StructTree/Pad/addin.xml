@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ExtensionModel>
+  <Extension path="/CocoStudio/Ide/Pads">
+    <Pad id="Modules.UI.StructTree.HierarchyPad"
+      _label="HierarchyPad"
+      class="Modules.UI.StructTree.HierarchyPad"
+      defaultPlacement="Modules.Communal.ResourcePanel.ResourcePad/Top"
+      defaultLayout="*"/>
+  </Extension>
+</ExtensionModel>

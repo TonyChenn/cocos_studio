@@ -131,6 +131,7 @@
   <Item Key="ContextMenu_Clear" Value="清空" />
   <Item Key="ContextMenu_Ranking" Value="排列" />
   <Item Key="Animation" Value="動畫" />
+  <Item Key="HierarchyPad" Value="層級樹" />
   <Item Key="PropertyGridPad" Value="屬性" />
   <Item Key="ResourcePad" Value="資源" />
   <Item Key="Output" Value="輸出" />

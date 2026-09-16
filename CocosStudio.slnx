@@ -40,6 +40,7 @@
       <BuildDependency Project="src/Modules/UI/Modules.UI.Menu/Modules.UI.Menu.csproj" />
       <BuildDependency Project="src/Modules/UI/Modules.UI.RenderContextMenu/Modules.UI.RenderContextMenu.csproj" />
       <BuildDependency Project="src/Modules/UI/Modules.UI.RenderContextMenu3D/Modules.UI.RenderContextMenu3D.csproj" />
+      <BuildDependency Project="src/Modules/UI/Modules.UI.StructTree/Modules.UI.StructTree.csproj" />
       <Platform Project="x86" />
     </Project>
   </Folder>
@@ -122,6 +123,7 @@
     <Project Path="src/Modules/UI/Modules.UI.Menu/Modules.UI.Menu.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cd" />
     <Project Path="src/Modules/UI/Modules.UI.RenderContextMenu/Modules.UI.RenderContextMenu.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965ce" />
     <Project Path="src/Modules/UI/Modules.UI.RenderContextMenu3D/Modules.UI.RenderContextMenu3D.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965cf" />
+    <Project Path="src/Modules/UI/Modules.UI.StructTree/Modules.UI.StructTree.csproj" Id="485242ee-ff89-4da2-8d60-36c0ba5965d0" />
   </Folder>
   <Folder Name="/06 Editors/">
     <Project Path="src/Editor/CocoStudio.LuaBinding/CocoStudio.LuaBinding.Restored.csproj" Id="7750920f-0762-4d81-b2e3-794af5e8da33" />

@@ -131,6 +131,7 @@
   <Item Key="ContextMenu_Clear" Value="Clear" />
   <Item Key="ContextMenu_Ranking" Value="Sorting" />
   <Item Key="Animation" Value="Animation" />
+  <Item Key="HierarchyPad" Value="Hierarchy" />
   <Item Key="PropertyGridPad" Value="Properties" />
   <Item Key="ResourcePad" Value="Resources" />
   <Item Key="Output" Value="Output" />

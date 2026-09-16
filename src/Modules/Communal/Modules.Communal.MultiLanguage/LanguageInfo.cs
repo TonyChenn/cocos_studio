@@ -270,6 +270,8 @@ namespace Modules.Communal.MultiLanguage
 
 		public static string Animation = "动画";
 
+		public static string HierarchyPad = "层级树";
+
 		public static string PropertyGridPad = "属性";
 
 		public static string ResourcePad = "资源";
