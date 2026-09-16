@@ -4,7 +4,7 @@
     <Pad id = "Modules.Communal.Output.OutputPad"
       _label = "Output"
       class = "Modules.Communal.Output.OutputPad"
-      defaultPlacement = "Bottom"
+      defaultPlacement = "Documents/Bottom"
       defaultLayout="*"/>   <!--defaultStatus="AutoHide"-->
   </Extension>
 </ExtensionModel>

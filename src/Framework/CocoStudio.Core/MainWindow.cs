@@ -373,7 +373,7 @@ namespace CocoStudio.Core
 						DockItem dockItem = this.dock.GetItem(padCodon.PadId);
 						if (dockItem != null)
 						{
-							dockItem.Visible = true;
+							dockItem.Visible = padCodon.PadId != MainWindow.AnimationPadId;
 							if (!string.IsNullOrEmpty(padCodon.DefaultPlacement))
 							{
 								dockItem.SetDockLocation(this.ToDockLocation(padCodon.DefaultPlacement));
@@ -390,7 +390,20 @@ namespace CocoStudio.Core
 						dockItem.Visible = false;
 					}
 				}
+				this.ApplyObjectOutputDefaultDocking();
 			}
+		}
+
+		private void ApplyObjectOutputDefaultDocking()
+		{
+			DockItem outputPad = this.dock.GetItem(MainWindow.OutputPadId);
+			DockItem objectPad = this.dock.GetItem(MainWindow.ObjectPadId);
+			if (outputPad == null || objectPad == null)
+			{
+				return;
+			}
+			outputPad.SetDockLocation("Documents/Bottom");
+			objectPad.SetDockLocation(MainWindow.OutputPadId + "/CenterBefore");
 		}
 
 		private void CreateComponents()
@@ -1253,6 +1266,12 @@ namespace CocoStudio.Core
 		public const string DefaultLayoutID = "DefaultLayout";
 
 		public const string CustomLayoutID = "CustomLayout";
+
+		private const string AnimationPadId = "Modules.Animation.AnimationPad";
+
+		private const string ObjectPadId = "Modules.UI.ComTool.ComToolPad";
+
+		private const string OutputPadId = "Modules.Communal.Output.OutputPad";
 
 		private const string fullViewModeTag = "[FullViewMode]";
 

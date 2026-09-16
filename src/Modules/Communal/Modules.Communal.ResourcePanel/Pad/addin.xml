@@ -3,7 +3,7 @@
     <Pad id = "Modules.Communal.ResourcePanel.ResourcePad"
       _label = "ResourcePad"
       class = "Modules.Communal.ResourcePanel.ResourcePad"
-      defaultPlacement = "Modules.UI.ComTool.ComToolPad/Bottom"
+      defaultPlacement = "Left"
       defaultLayout="*"/>
   </Extension>
 </ExtensionModel>

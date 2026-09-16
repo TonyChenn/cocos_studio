@@ -4,7 +4,7 @@
     <Pad id = "Modules.UI.ComTool.ComToolPad"
       _label = "ObjectPad"
       class = "Modules.UI.ComTool.ComToolPad"
-      defaultPlacement = "Left"
+      defaultPlacement = "Modules.Communal.Output.OutputPad/CenterBefore"
       defaultLayout="*"/>
   </Extension>
 </ExtensionModel>
